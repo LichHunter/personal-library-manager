@@ -1,0 +1,582 @@
+[
+  {
+    "id": "easy_python_01",
+    "question": "Who created Python?",
+    "answer": "Guido van Rossum created Python in the late 1980s at Centrum Wiskunde & Informatica (CWI) in the Netherlands.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_1"],
+    "evidence": ["Python was conceived in the late 1980s by Guido van Rossum at Centrum Wiskunde & Informatica (CWI) in the Netherlands."],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_python_02",
+    "question": "When was Python 3.0 released?",
+    "answer": "Python 3.0 was released on 3 December 2008.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_1"],
+    "evidence": ["Python 3.0 was released on 3 December 2008"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_python_03",
+    "question": "What is CPython?",
+    "answer": "CPython is the reference implementation of Python, written in C.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_6_1"],
+    "evidence": ["CPython is the reference implementation of Python. This implementation is written in C"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_python_04",
+    "question": "What does BDFL stand for in the Python community?",
+    "answer": "BDFL stands for 'benevolent dictator for life', a title given to Guido van Rossum.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_1"],
+    "evidence": ["benevolent dictator for life\" (BDFL); this title was bestowed on him by the Python community"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_python_05",
+    "question": "What comedy group inspired Python's name?",
+    "answer": "Python's name was inspired by the British comedy group Monty Python.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_9"],
+    "evidence": ["Python's name is inspired by the British comedy group Monty Python"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_rust_01",
+    "question": "Who started the Rust programming language?",
+    "answer": "Graydon Hoare started Rust as a personal project in 2006 while working at Mozilla.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_1_1"],
+    "evidence": ["Rust began as a personal project by Mozilla employee Graydon Hoare in 2006"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_rust_02",
+    "question": "When was Rust 1.0 released?",
+    "answer": "Rust 1.0 was released on May 15, 2015.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_1_3"],
+    "evidence": ["Rust 1.0 was published and became the first stable release on May 15, 2015"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_rust_03",
+    "question": "What is Cargo in Rust?",
+    "answer": "Cargo is Rust's build system and package manager.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_6_2"],
+    "evidence": ["Cargo is Rust's build system and package manager"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_rust_04",
+    "question": "When was the Rust Foundation formed?",
+    "answer": "The Rust Foundation was formed on February 8, 2021.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_1_5"],
+    "evidence": ["On February 8, 2021, the formation of the Rust Foundation was announced"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_rust_05",
+    "question": "Why was the Rust language named 'Rust'?",
+    "answer": "Rust was named after the rust fungi, which Hoare described as 'over-engineered for survival'.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_1_1"],
+    "evidence": ["named the language after the group of fungi of the same name that is \"over-engineered for survival\""],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_os_01",
+    "question": "What is a kernel in an operating system?",
+    "answer": "The kernel is the part of the operating system that provides protection between different applications and users, and is always running.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_1"],
+    "evidence": ["The kernel is the part of the operating system that provides protection between different applications and users"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_os_02",
+    "question": "What is virtual memory?",
+    "answer": "Virtual memory provides the programmer or user with the perception that there is much more RAM in the computer than actually exists.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_5"],
+    "evidence": ["Virtual memory provides the programmer or the user with the perception that there is a much larger amount of RAM in the computer than is really there"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_os_03",
+    "question": "What is the most popular operating system as of 2025?",
+    "answer": "Android is the most popular operating system with 38% market share as of October 2025.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_9"],
+    "evidence": ["As of October 2025, Android, based on the Linux kernel, is the most popular operating system with a 38% market share"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_os_04",
+    "question": "What was the first popular computer to use a graphical user interface?",
+    "answer": "Apple's Macintosh was the first popular computer to use a graphical user interface (GUI).",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_3_1"],
+    "evidence": ["Apple's Macintosh was the first popular computer to use a graphical user interface (GUI)"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_os_05",
+    "question": "What is a hypervisor?",
+    "answer": "A hypervisor is an operating system that runs a virtual machine.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_2_5"],
+    "evidence": ["A hypervisor is an operating system that runs a virtual machine"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_network_01",
+    "question": "What is a router in computer networking?",
+    "answer": "A router is an internetworking device that forwards packets between networks by processing addressing or routing information.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_2_2_5"],
+    "evidence": ["A router is an internetworking device that forwards packets between networks by processing the addressing or routing information included in the packet"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_network_02",
+    "question": "What does TCP/IP stand for?",
+    "answer": "TCP stands for Transmission Control Protocol, and IP stands for Internet Protocol.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_3_3_1"],
+    "evidence": ["the first Transmission Control Protocol (TCP) specification", "Internet protocol (IP)"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_network_03",
+    "question": "What is a firewall?",
+    "answer": "A firewall is a network device or software for controlling network security and access rules.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_2_2_7"],
+    "evidence": ["A firewall is a network device or software for controlling network security and access rules"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_network_04",
+    "question": "What year was the first ARPANET connection made?",
+    "answer": "The first ARPANET nodes were connected in 1969.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_1_2"],
+    "evidence": ["the ARPANET, which began in 1969. That year, the first four nodes of the ARPANET were connected"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "easy_network_05",
+    "question": "What is a LAN?",
+    "answer": "A LAN (Local Area Network) is a network that connects computers and devices in a limited geographical area such as a home, school, or office building.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_4_4"],
+    "evidence": ["A local area network (LAN) is a network that connects computers and devices in a limited geographical area such as a home, school, office building"],
+    "difficulty": "easy",
+    "query_type": "factual"
+  },
+  {
+    "id": "medium_python_01",
+    "question": "Why does Python use indentation instead of curly braces?",
+    "answer": "Python uses whitespace indentation to delimit blocks because the program's visual structure accurately represents its semantic structure, improving readability. This is called the off-side rule.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_3_1"],
+    "evidence": ["Python uses whitespace indentation, rather than curly brackets or keywords, to delimit blocks", "the program's visual structure accurately represents its semantic structure", "This feature is sometimes termed the off-side rule"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_python_02",
+    "question": "What are three ways to improve Python's performance?",
+    "answer": "Three ways to improve Python performance are: (1) Just-in-time compilation using libraries like Numba or PyPy, (2) Static compilation using tools like Cython, and (3) Concurrency and parallelism using multiprocessing.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_7_6"],
+    "evidence": ["Just-in-time compilation: Dynamically compiling parts of a Python program", "Static compilation: Sometimes, Python code can be compiled into machine code", "Concurrency and parallelism: Multiple tasks can be run simultaneously"],
+    "difficulty": "medium",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "medium_python_03",
+    "question": "How does Python's division behavior differ from C?",
+    "answer": "In Python 3, the / operator always represents floating-point division (5/2 = 2.5), while // represents floor division. In C and earlier Python versions, / performed integer division when both operands were integers.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_3_6"],
+    "evidence": ["Python (i.e., since 3.0) changed the / operator to always represent floating-point division", "The floor division // operator was introduced"],
+    "difficulty": "medium",
+    "query_type": "comparison"
+  },
+  {
+    "id": "medium_python_04",
+    "question": "What makes Python 'strongly typed' even though it's dynamically typed?",
+    "answer": "Python is strongly typed because it forbids operations that are poorly defined, like adding a number and a string, rather than quietly attempting to interpret them. Despite being dynamically typed (types are checked at runtime, not definition time), type constraints are enforced during execution.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_3_4"],
+    "evidence": ["Despite being dynamically typed, Python is strongly typed, forbidding operations that are poorly defined (e.g., adding a number and a string) rather than quietly attempting to interpret them"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_python_05",
+    "question": "What is the Zen of Python and who wrote it?",
+    "answer": "The Zen of Python (PEP 20) is a collection of aphorisms that summarize Python's core philosophy, written by Tim Peters. It includes principles like 'Explicit is better than implicit' and 'Readability counts'.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_2"],
+    "evidence": ["Python's core philosophy is summarized in the Zen of Python (PEP 20) written by Tim Peters", "Explicit is better than implicit", "Readability counts"],
+    "difficulty": "medium",
+    "query_type": "factual"
+  },
+  {
+    "id": "medium_rust_01",
+    "question": "How does Rust's ownership system provide memory safety without garbage collection?",
+    "answer": "Rust's ownership system ensures each value has exactly one owner at a time. Values are moved or borrowed between owners, and when a value goes out of scope, its destructor runs automatically. The borrow checker verifies these rules at compile time, preventing dangling pointers without runtime garbage collection overhead.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_2_9"],
+    "evidence": ["At compile time, each value must be attached to a variable called the owner", "every value must have exactly one owner", "When a value goes out of scope, it is dropped by running its destructor"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_rust_02",
+    "question": "What are Rust's lifetime parameters and why are they needed?",
+    "answer": "Lifetime parameters (like 'a, 'b) explicitly indicate how long references are valid. They allow the borrow checker to verify that references don't outlive the data they point to, preventing dangling pointer bugs at compile time.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_2_9_1"],
+    "evidence": ["Object lifetime refers to the period of time during which a reference is valid", "they can also be indicated explicitly with named lifetime parameters (often denoted 'a, 'b, and so on)", "The borrow checker in the Rust compiler then enforces that references are only used in the locations of the source code where the associated lifetime is valid"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_rust_03",
+    "question": "What is the difference between static dispatch and dynamic dispatch in Rust?",
+    "answer": "Static dispatch monomorphizes generic functions at compile time for each concrete type, giving performance equivalent to type-specific code. Dynamic dispatch uses trait objects with lookup tables at runtime, adding a small performance cost but reducing binary size.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_2_14_3"],
+    "evidence": ["static dispatch: the compiler monomorphizes the function for each concrete type instance", "trait objects &dyn Trait and Box<dyn Trait>. Trait object calls use dynamic dispatch via a lookup table"],
+    "difficulty": "medium",
+    "query_type": "comparison"
+  },
+  {
+    "id": "medium_rust_04",
+    "question": "Why did Mozilla lay off the Servo team and what happened to Rust afterwards?",
+    "answer": "Mozilla laid off the Servo team in August 2020 during COVID-19 corporate restructuring. This raised concerns about Rust's future, but the community responded by forming the Rust Foundation in February 2021 with backing from Amazon, Google, Huawei, Microsoft, and Mozilla.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_1_5"],
+    "evidence": ["In August 2020, Mozilla laid off 250 of its 1,000 employees", "The team behind Servo was disbanded", "On February 8, 2021, the formation of the Rust Foundation was announced by five founding companies"],
+    "difficulty": "medium",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "medium_rust_05",
+    "question": "What is 'unsafe' Rust and when is it necessary?",
+    "answer": "Unsafe Rust allows bypassing memory safety checks to perform low-level operations like dereferencing raw pointers, calling external code, or implementing complex data structures like doubly linked lists that are difficult to express in safe Rust.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_2_13"],
+    "evidence": ["Rust's memory safety checks may be circumvented through the use of unsafe blocks", "Some low-level functionality enabled in this way includes volatile memory access", "it is difficult or impossible to implement doubly linked lists in safe Rust"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_os_01",
+    "question": "How do interrupts improve operating system efficiency?",
+    "answer": "Interrupts allow the CPU to react to events without constantly polling. When an I/O device completes, it sends an interrupt signal, causing the CPU to switch context to handle it. This prevents the CPU from wasting cycles waiting for slow I/O operations.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_1_2"],
+    "evidence": ["An interrupt provides an efficient way for most operating systems to react to the environment", "Instead, a computer may implement interrupts for I/O completion, avoiding the need for polling or busy waiting"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_os_02",
+    "question": "What is the difference between cooperative and preemptive multitasking?",
+    "answer": "In cooperative multitasking, threads run until they voluntarily relinquish control, risking monopolization by a single thread. In preemptive multitasking, the OS can interrupt any thread, ensuring fair CPU sharing and preventing unresponsive programs from freezing the system.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_6"],
+    "evidence": ["a thread could run until it relinquished control (cooperative multitasking)", "Because this model can allow a single thread to monopolize the processor, most operating systems now can interrupt a thread (preemptive multitasking)"],
+    "difficulty": "medium",
+    "query_type": "comparison"
+  },
+  {
+    "id": "medium_os_03",
+    "question": "How does memory protection work in modern operating systems?",
+    "answer": "Memory protection uses hardware features like segmentation and paging. Protected mode registers specify which memory addresses a program can access. Accessing unauthorized memory triggers an interrupt that returns control to the kernel, which typically terminates the offending program.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_4"],
+    "evidence": ["Memory protection enables the kernel to limit a process' access to the computer's memory", "Various methods of memory protection exist, including memory segmentation and paging", "Attempts to access other addresses trigger an interrupt"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_os_04",
+    "question": "What is POSIX and why is it important?",
+    "answer": "POSIX (Portable Operating System Interface) is an IEEE standard for operating system APIs. It provides commonalities that reduce the cost of porting applications between different operating systems, enabling software to run on multiple UNIX-like systems.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_7"],
+    "evidence": ["POSIX and OS abstraction layers provide commonalities that reduce porting costs"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_os_05",
+    "question": "What is a microkernel and how does it improve security?",
+    "answer": "A microkernel separates the kernel's privileges into many separate security domains, keeping only essential functions in the kernel while moving other services to user space. This limits the damage from any single kernel breach and reduces the attack surface.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_11"],
+    "evidence": ["microkernels that separate the kernel's privileges into many separate security domains and reduce the consequences of a single kernel breach"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_network_01",
+    "question": "What is the difference between circuit switching and packet switching?",
+    "answer": "Circuit switching establishes a dedicated communication path for the duration of a connection (like phone calls). Packet switching divides data into packets that can take different routes, allowing bandwidth to be shared among many users more efficiently.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_3_1"],
+    "evidence": ["With packets, the bandwidth of the transmission medium can be better shared among users than if the network were circuit switched"],
+    "difficulty": "medium",
+    "query_type": "comparison"
+  },
+  {
+    "id": "medium_network_02",
+    "question": "How does a network switch differ from a hub?",
+    "answer": "A hub forwards incoming frames to all ports, while a switch only forwards frames to the ports involved in the communication. Switches learn MAC-to-port associations and use them for efficient forwarding, reducing collision domains.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_2_2_3"],
+    "evidence": ["Network bridges and network switches are distinct from a hub in that they only forward frames to the ports involved in the communication whereas a hub forwards to all ports"],
+    "difficulty": "medium",
+    "query_type": "comparison"
+  },
+  {
+    "id": "medium_network_03",
+    "question": "What is an overlay network and give an example?",
+    "answer": "An overlay network is a virtual network built on top of another network, where nodes are connected by virtual links that may traverse many physical links. The Internet itself is an overlay network built on top of the telephone network, and VPNs are another common example.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_4_1_5"],
+    "evidence": ["An overlay network is a virtual network that is built on top of another network", "The most striking example of an overlay network is the Internet itself"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_network_04",
+    "question": "What causes network congestion and how is it handled?",
+    "answer": "Network congestion occurs when a link receives more data than it can handle, causing packet loss and delays. Modern networks use congestion control techniques like exponential backoff, TCP window reduction, and fair queueing to slow transmission and avoid congestive collapse.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_5_4"],
+    "evidence": ["Network congestion occurs when a link or node is subjected to a greater data load than it is rated for", "Modern networks use congestion control, congestion avoidance and traffic control techniques", "exponential backoff", "window reduction in TCP"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "medium_network_05",
+    "question": "What is end-to-end encryption and what are its limitations?",
+    "answer": "End-to-end encryption (E2EE) ensures only the sender and recipient can decrypt data, with no intermediaries able to read it. However, E2EE doesn't protect against risks at the endpoints themselves, poor random number generators, or traffic analysis that can reveal communication patterns.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_6_4"],
+    "evidence": ["End-to-end encryption (E2EE) is a digital communications paradigm of uninterrupted protection", "The end-to-end encryption paradigm does not directly address risks at the endpoints", "E2EE also does not address traffic analysis"],
+    "difficulty": "medium",
+    "query_type": "explanation"
+  },
+  {
+    "id": "hard_python_01",
+    "question": "How do Python's design philosophy and its performance limitations relate to each other?",
+    "answer": "Python prioritizes readability over performance by design. The Zen of Python emphasizes clarity and simplicity. This philosophy leads to features like dynamic typing and interpreted execution that make code readable but slow. CPython is 75x less energy efficient than C, but Python developers consider this acceptable because readability enables faster development and fewer bugs.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_2", "sec_6_2"],
+    "evidence": ["Python's developers typically prioritise readability over performance", "they reject patches to non-critical parts of the CPython reference implementation that would offer increases in speed that do not justify the cost of clarity and readability", "The energy usage of Python with CPython for typically written code is much worse than C by a factor of 75.88"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_python_02",
+    "question": "How has Python's governance evolved from Guido van Rossum's creation to today's structure?",
+    "answer": "Python started with Guido van Rossum as sole BDFL (Benevolent Dictator for Life). He resigned in 2018 after controversy over adding the walrus operator. In 2019, the community elected a five-member Steering Council. Development now uses the PEP (Python Enhancement Proposal) process for proposing features, reviewed by the community and steering council.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_1", "sec_8"],
+    "evidence": ["Van Rossum assumed sole responsibility for the project", "benevolent dictator for life\" (BDFL)", "Guido van Rossum resigned as Benevolent Dictator for Life after conflict about adding the assignment expression operator", "In January 2019, active Python core developers elected a five-member Steering Council", "Python Enhancement Proposal (PEP) process"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_python_03",
+    "question": "Compare the different approaches to making Python code run faster: PyPy, Cython, and Numba.",
+    "answer": "PyPy is a complete Python implementation using JIT compilation, often faster than CPython but doesn't support all C libraries. Cython compiles a Python superset to C for use as extension modules. Numba uses JIT to compile a subset of Python/NumPy via decorators. Each trades generality for performance: PyPy is most general, Cython requires code changes, Numba is limited to numerical code.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_6_4", "sec_6_5", "sec_7_6"],
+    "evidence": ["PyPy is a faster, compliant interpreter of Python", "PyPy's just-in-time compiler often improves speed significantly", "PyPy does not support some libraries written in C", "Cython compiles a superset of Python to C", "Numba is a JIT compiler that is used from Python"],
+    "difficulty": "hard",
+    "query_type": "comparison"
+  },
+  {
+    "id": "hard_python_04",
+    "question": "What is the Global Interpreter Lock (GIL) and how do different Python implementations handle it?",
+    "answer": "The GIL limits CPython to one thread executing Python bytecode at a time, affecting CPU-bound multithreaded performance. The multiprocessing module works around it by using separate processes. PyPy offers a stackless version. Codon compiles Python-like code to native code with native multithreading, avoiding the GIL entirely.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_6_4", "sec_7_6"],
+    "evidence": ["limitations of the Global Interpreter Lock (GIL) in CPU tasks", "multiprocessing` to support this form of parallelism. Moreover, this approach helps to overcome limitations of the Global Interpreter Lock", "Codon compiles to machine code (via LLVM) and supports native multithreading"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_rust_01",
+    "question": "How did Rust's design evolve from its early years to version 1.0, and what features were removed?",
+    "answer": "Early Rust (2006-2012) included explicit OOP via 'obj' keyword, typestates, a garbage collector, pure functions, and specialized pointer types. These were removed to simplify the language: the garbage collector was rarely used once the ownership system matured by 2013. The language went through substantial type system changes from 2012-2015, consolidating memory management into the ownership system.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_1_1", "sec_1_3"],
+    "evidence": ["Features of early Rust that were later removed include explicit object-oriented programming via an obj keyword, and a typestates system", "By 2013, the garbage collector was rarely used, and was removed in favor of the ownership system", "Other features were removed in order to simplify the language, including typestates, the pure keyword, various specialized pointer types"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_rust_02",
+    "question": "Compare how Rust and Python approach memory safety and what tradeoffs each makes.",
+    "answer": "Python uses garbage collection with reference counting and cycle detection - simple for programmers but adds runtime overhead. Rust uses compile-time ownership and borrowing rules - zero runtime cost but requires understanding lifetimes and satisfying the borrow checker. Python allows any operation dynamically; Rust catches memory errors at compile time but requires more upfront design.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_2_9", "sec_2_12"],
+    "evidence": ["Rust does not use garbage collection. Memory and other resources are instead managed through the \"resource acquisition is initialization\" convention", "Rust provides deterministic management of resources, with very low overhead", "The safety and validity of the underlying pointers is verified at compile time"],
+    "difficulty": "hard",
+    "query_type": "comparison"
+  },
+  {
+    "id": "hard_rust_03",
+    "question": "Why has Rust been adopted for operating system development and what companies are using it?",
+    "answer": "Rust's memory safety without garbage collection makes it ideal for kernel development where GC pauses are unacceptable. Linux began experimental Rust support in version 6.1 (2022) and declared it production-ready in 2025. Microsoft rewrote parts of Windows in Rust. Android uses Rust for new components. Redox and Fuchsia are new OSes written largely in Rust.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_7", "sec_1_5"],
+    "evidence": ["the Linux kernel began introducing experimental support for Rust code in Version 6.1", "Rust usage for kernel code will no longer be considered experimental", "Microsoft has rewritten parts of Windows in Rust", "The Android developers used Rust in 2021 to rewrite existing components"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_rust_04",
+    "question": "How does Rust's trait system compare to traditional object-oriented programming?",
+    "answer": "Rust uses traits instead of class inheritance. Traits define shared behavior that types can implement. Unlike OOP classes, Rust separates data (structs) from behavior (impl blocks). Traits enable both static dispatch (monomorphization, zero cost) and dynamic dispatch (trait objects, runtime cost). This composition-over-inheritance approach avoids diamond inheritance problems.",
+    "document_id": "wiki_e2723b0d",
+    "section_ids": ["sec_2_10", "sec_2_14"],
+    "evidence": ["The impl keyword can define methods for a user-defined type. Data and functions are defined separately", "Implementations fulfill a role similar to that of classes within other languages", "Rust supports polymorphism through traits, generic functions, and trait objects"],
+    "difficulty": "hard",
+    "query_type": "comparison"
+  },
+  {
+    "id": "hard_os_01",
+    "question": "How have operating systems evolved from mainframes to mobile devices?",
+    "answer": "1950s mainframes needed operators to manually schedule jobs. 1960s brought multiprogramming (OS/360) and time-sharing (MULTICS). UNIX simplified MULTICS for single users. 1980s brought personal computers with CP/M, then MS-DOS, then GUIs (Macintosh, Windows). 2000s mobile OSes emerged: Symbian, BlackBerry, iOS (2007), Android (2008). Today Android leads with 38% share.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_3", "sec_3_1", "sec_9"],
+    "evidence": ["mainframes still had rudimentary operating systems", "The OS/360 also was the first popular operating system to support multiprogramming", "UNIX operating system originated as a development of MULTICS", "Apple's Macintosh was the first popular computer to use a graphical user interface", "Symbian OS was dominant at first", "Android operating system (introduced 2008)"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_os_02",
+    "question": "Compare the security approaches of monolithic kernels, microkernels, and unikernels.",
+    "answer": "Monolithic kernels run all services in kernel mode - fast but a single vulnerability compromises everything. Microkernels isolate services in separate security domains with minimal kernel code - more secure but overhead from IPC. Unikernels run a single application with only needed OS components - minimal attack surface but no isolation between applications.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_11"],
+    "evidence": ["those with a monolithic kernel like most general-purpose operating systems are still vulnerable if any part of the kernel is compromised", "microkernels that separate the kernel's privileges into many separate security domains", "Unikernels are another approach that improves security by minimizing the kernel"],
+    "difficulty": "hard",
+    "query_type": "comparison"
+  },
+  {
+    "id": "hard_os_03",
+    "question": "How do different types of operating systems handle the tradeoff between isolation and performance?",
+    "answer": "General-purpose OS (Windows, Linux) prioritize isolation between applications using memory protection and process isolation. Real-time OS may skip protection for timing guarantees. Embedded OS often have no protection since they run single applications. Library OS/unikernels eliminate protection overhead by running as single applications. The more isolation, the more overhead from context switches.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_2_4", "sec_2_5", "sec_2_6"],
+    "evidence": ["The distinguishing factor is that they do not load user-installed software. Consequently, they do not need protection between different applications", "Hard real-time systems require exact timing and are common in manufacturing", "The operating system code and application code are not executed in separated protection domains"],
+    "difficulty": "hard",
+    "query_type": "comparison"
+  },
+  {
+    "id": "hard_os_04",
+    "question": "Explain the relationship between file systems, virtual memory, and process management in modern operating systems.",
+    "answer": "These components are interconnected: processes use virtual memory to access more RAM than physically exists by swapping pages to disk (file system). The file system's disk blocks are managed similarly to memory pages. Both use caches for performance. When a process page faults, the OS loads data from disk, potentially swapping another process's pages out. Context switches must save/restore memory mappings.",
+    "document_id": "wiki_d83f147f",
+    "section_ids": ["sec_4_4", "sec_4_5", "sec_4_7"],
+    "evidence": ["memory which is accessed less frequently can be temporarily stored on a disk or other media to make that space available for use by other programs. This is called swapping", "Virtual memory provides the programmer or the user with the perception that there is a much larger amount of RAM", "The operating system's efforts to reduce latency include storing recently requested blocks of memory in a cache"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_network_01",
+    "question": "Trace the evolution of the Internet from ARPANET to modern cloud computing.",
+    "answer": "ARPANET (1969) connected 4 universities using 50kbit/s circuits. TCP/IP was invented in 1974 by Cerf and Kahn. NSFNET (1986) expanded to research networks. Ethernet grew from 2.94Mbit/s to 800Gbit/s by 2025. Commercial adoption began in 1995 with web commerce, leading to cloud computing which evolved from MULTICS' hundreds-of-users vision to today's hyperscale datacenters.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_1_2", "sec_1_3", "sec_1_4"],
+    "evidence": ["the first four nodes of the ARPANET were connected using 50 kbit/s circuits", "In 1974, Vint Cerf and Bob Kahn published their seminal 1974 paper on internetworking", "In 1986, the National Science Foundation (NSF) launched the National Science Foundation Network"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_network_02",
+    "question": "Compare the OSI model layers with how real network protocols like TCP/IP and Ethernet work together.",
+    "answer": "The OSI model has 7 layers (physical through application). In practice, TCP/IP uses 4 layers. Ethernet operates at layers 1-2 (physical and data link). IP provides layer 3 routing. TCP provides layer 4 reliable transport. HTTP/HTTPS work at layer 7. When you browse the web, HTTP runs over TCP over IP over Ethernet - each layer adds headers that lower layers treat as payload.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_3_1", "sec_3_3_1", "sec_3_3_2"],
+    "evidence": ["In a protocol stack, often constructed per the OSI model, communications functions are divided into protocol layers", "An important example of a protocol stack is HTTP, the World Wide Web protocol. HTTP runs over TCP over IP"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_network_03",
+    "question": "How do different network topologies affect performance, cost, and reliability?",
+    "answer": "Bus topology is cheap but a single failure kills the network. Star topology isolates failures to single nodes but depends on the central switch. Ring provides redundancy if bidirectional. Mesh offers maximum reliability through multiple paths but is most expensive. Tree scales well for hierarchical organizations. The more interconnections, the more robust but more expensive to build.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_4_1"],
+    "evidence": ["with many technologies, such as bus or star networks, a single failure can cause the network to fail entirely", "In general, the more interconnections there are, the more robust the network is; but the more expensive it is to install"],
+    "difficulty": "hard",
+    "query_type": "comparison"
+  },
+  {
+    "id": "hard_network_04",
+    "question": "Explain how network security has evolved from SSL to modern end-to-end encryption.",
+    "answer": "SSL was created by Netscape in the 1990s for e-commerce, using certificates and symmetric key exchange. It evolved into TLS. End-to-end encryption (E2EE) like HTTPS, PGP, and Signal goes further by ensuring only endpoints can decrypt - even service providers can't read data. But E2EE doesn't prevent endpoint compromise, metadata analysis, or traffic analysis attacks.",
+    "document_id": "wiki_20a8b555",
+    "section_ids": ["sec_6_4", "sec_6_5"],
+    "evidence": ["The introduction and rapid growth of e-commerce on the World Wide Web in the mid-1990s made it obvious that some form of authentication and encryption was needed", "Netscape created a standard called secure socket layer (SSL)", "End-to-end encryption prevents intermediaries, such as Internet service providers or application service providers, from reading or tampering with communications"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_cross_01",
+    "question": "How do programming language design choices affect operating system development?",
+    "answer": "Low-level languages like C give direct memory control needed for OS kernel development but are error-prone. Rust provides memory safety without GC, making it attractive for OS work (Linux, Windows components, Android). Python's GC and dynamic typing make it unsuitable for kernels but good for OS scripting. The 2024 White House report urged moving from C/C++ to memory-safe languages like Rust.",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_7_6"],
+    "evidence": ["Most operating systems are written in C or C++, which create potential vulnerabilities for exploitation"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  },
+  {
+    "id": "hard_cross_02",
+    "question": "Compare how different systems handle concurrent execution: Python's GIL, Rust's ownership, and OS thread scheduling.",
+    "answer": "OS schedulers provide preemptive multitasking, switching between threads/processes using interrupts. Python's GIL serializes bytecode execution, limiting true parallelism to multiprocessing. Rust's ownership prevents data races at compile time, enabling safe multithreading without runtime locks. Each level addresses concurrency differently: hardware (interrupts), OS (scheduling), language (safety guarantees).",
+    "document_id": "wiki_88b6b781",
+    "section_ids": ["sec_7_6"],
+    "evidence": ["limitations of the Global Interpreter Lock (GIL) in CPU tasks", "Threads enable splitting a process' work into multiple parts that can run simultaneously"],
+    "difficulty": "hard",
+    "query_type": "synthesis"
+  }
+]

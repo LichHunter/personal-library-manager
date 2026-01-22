@@ -1,0 +1,32 @@
+# Quick Test Configuration
+# 
+# Minimal config for testing the benchmark pipeline.
+# Uses 5 documents, 1 run per query, flat strategy only.
+
+id: quick_test
+description: "Quick test with flat strategy on memory backend"
+
+data:
+  documents_dir: "../../test_data/output/documents"
+  ground_truth_path: "../../test_data/output/ground_truth.json"
+  max_documents: null  # Load all documents to ensure ground truth doc is included
+  max_queries: 10
+
+benchmark:
+  runs_per_query: 1
+  top_k_values: [1, 3, 5, 10]
+  random_seed: 42
+
+embeddings:
+  - model: "all-MiniLM-L6-v2"
+    provider: "sentence_transformers"
+
+backends:
+  - name: "memory"
+
+strategies:
+  - name: "flat"
+    chunk_size: 500
+    chunk_overlap: 50
+
+output_dir: "./results"

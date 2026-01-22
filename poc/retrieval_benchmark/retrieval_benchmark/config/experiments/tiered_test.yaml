@@ -1,0 +1,49 @@
+id: tiered_test
+description: "Test all strategies with tiered difficulty questions (easy/medium/hard)"
+
+data:
+  documents_dir: "../../test_data/output/documents"
+  ground_truth_path: "config/experiments/tiered_ground_truth.json"
+  max_documents: null
+  max_queries: null
+
+benchmark:
+  runs_per_query: 1
+  top_k_values: [1, 3, 5]
+  random_seed: 42
+
+embeddings:
+  - model: "all-MiniLM-L6-v2"
+    provider: "sentence_transformers"
+
+backends:
+  - name: "memory"
+
+strategies:
+  - name: "flat"
+    chunk_size: 500
+    chunk_overlap: 50
+
+  - name: "lod_embed"
+    chunk_size: 500
+    chunk_overlap: 50
+    doc_top_k: 5
+    section_top_k: 10
+
+  - name: "lod_llm"
+    chunk_size: 500
+    chunk_overlap: 50
+    doc_top_k: 5
+    section_top_k: 10
+
+  - name: "raptor"
+    chunk_size: 500
+    chunk_overlap: 50
+    max_layers: 3
+    cluster_threshold: 0.1
+
+llms:
+  - model: "llama3.2:3b"
+    provider: "ollama"
+
+output_dir: "./results"

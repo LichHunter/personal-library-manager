@@ -1,0 +1,98 @@
+{
+  "num_chunks": 21,
+  "num_nodes": 26,
+  "num_layers": 1,
+  "num_summaries": 5,
+  "chunking_time": 0.0011542689999259892,
+  "embedding_time": 0.1673611570004141,
+  "clustering_time": 0.34310444699985965,
+  "summarization_time": 40.279293642000084,
+  "total_indexing_time": 40.86259678699935,
+  "retrieval_accuracy": 80.0,
+  "qa_accuracy": 70.0,
+  "qa_details": [
+    {
+      "question": "Who created Python?",
+      "expected": "Guido van Rossum",
+      "actual": "Guido van Rossum.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 2/2 keywords"
+    },
+    {
+      "question": "When was Python first released?",
+      "expected": "1991",
+      "actual": "According to the context, Python was first released in 1991.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 1/1 keywords"
+    },
+    {
+      "question": "What inspired the name Python?",
+      "expected": "Monty Python (the comedy group)",
+      "actual": "The name \"Python\" was inspired by the British comedy group Monty Python.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 2/2 keywords"
+    },
+    {
+      "question": "When did Python 2 reach end of life?",
+      "expected": "January 1, 2020",
+      "actual": "Python 2 reached the end of life on January 1, 2020.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 2/2 keywords"
+    },
+    {
+      "question": "What is PEP 20?",
+      "expected": "The Zen of Python",
+      "actual": "According to the context, PEP 20 is a document that summarizes the language's core philosophy of Python, and it contains aphorisms such as \"Beautiful is better than ugly\" and \"Explicit is better than implicit\".",
+      "retrieval_hit": false,
+      "qa_correct": false,
+      "reason": "Only found 0/2 keywords"
+    },
+    {
+      "question": "How many packages are on PyPI?",
+      "expected": "Over 400,000",
+      "actual": "There are over 400,000 packages on PyPI as of 2023.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 1/2 keywords"
+    },
+    {
+      "question": "What web framework does Instagram use?",
+      "expected": "Django (or Python)",
+      "actual": "Instagram uses Django.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 1/2 keywords"
+    },
+    {
+      "question": "Who manages Python after Guido stepped down?",
+      "expected": "A five-member steering council",
+      "actual": "The Python Software Foundation (PSF) manages Python after Guido van Rossum stepped down.",
+      "retrieval_hit": true,
+      "qa_correct": false,
+      "reason": "Only found 0/2 keywords"
+    },
+    {
+      "question": "What is Python's design philosophy?",
+      "expected": "Readability and simplicity",
+      "actual": "According to the context, Python's design philosophy emphasizes code readability and simplicity.",
+      "retrieval_hit": true,
+      "qa_correct": true,
+      "reason": "Found 2/3 keywords"
+    },
+    {
+      "question": "What is PyPy?",
+      "expected": "A Just-In-Time compiler for Python",
+      "actual": "I cannot find this information in the provided context. The text only mentions PyPI, but not PyPy.",
+      "retrieval_hit": false,
+      "qa_correct": false,
+      "reason": "Model indicated information not found"
+    }
+  ],
+  "model_name": "llama3.2:3b",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "chunk_size": 50
+}

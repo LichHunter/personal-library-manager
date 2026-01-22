@@ -1,0 +1,44 @@
+# RAPTOR Test Configuration
+#
+# Compares Flat vs RAPTOR retrieval strategies.
+# Uses small document set due to slow RAPTOR indexing (LLM summarization).
+
+id: raptor_test
+description: "RAPTOR vs Flat comparison on memory backend"
+
+data:
+  documents_dir: "../../test_data/output/documents"
+  ground_truth_path: "../../test_data/output/ground_truth.json"
+  max_documents: null  # Load all to ensure ground truth docs are included
+  max_queries: 2
+
+benchmark:
+  runs_per_query: 1
+  top_k_values: [1, 3, 5]
+  random_seed: 42
+
+embeddings:
+  - model: "all-MiniLM-L6-v2"
+    provider: "sentence_transformers"
+
+backends:
+  - name: "memory"
+
+strategies:
+  # Baseline - flat embedding search
+  - name: "flat"
+    chunk_size: 500
+    chunk_overlap: 50
+
+  # RAPTOR - hierarchical tree with clustering + summarization
+  - name: "raptor"
+    chunk_size: 500
+    chunk_overlap: 50
+    max_layers: 3
+    cluster_threshold: 0.1
+
+llms:
+  - model: "llama3.2:3b"
+    provider: "ollama"
+
+output_dir: "./results"

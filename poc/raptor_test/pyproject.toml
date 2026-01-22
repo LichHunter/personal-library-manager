@@ -1,0 +1,24 @@
+[project]
+name = "raptor-test"
+version = "0.1.0"
+description = "POC to test RAPTOR with local models"
+requires-python = ">=3.11"
+dependencies = [
+    # RAPTOR core dependencies
+    "numpy>=1.26.0",
+    "scikit-learn>=1.4.0",
+    "tiktoken>=0.5.0",
+    
+    # Local embeddings
+    "sentence-transformers>=2.2.2",
+    "torch>=2.0.0",
+    
+    # Ollama for local LLM
+    "ollama>=0.4.0",
+    
+    # Utilities
+    "rich>=13.0.0",  # Nice output formatting
+]
+
+[dependency-groups]
+dev = []

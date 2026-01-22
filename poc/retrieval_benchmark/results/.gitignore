@@ -1,0 +1,3 @@
+# Ignore all benchmark results (can be large)
+*
+!.gitignore

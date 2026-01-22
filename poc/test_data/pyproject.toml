@@ -1,0 +1,13 @@
+[project]
+name = "test-data"
+version = "0.1.0"
+description = "Test data generation and evaluation framework for RAG systems"
+requires-python = ">=3.11"
+dependencies = [
+    "wikipedia-api>=0.6.0",
+    "ollama>=0.4.0",
+    "rich>=13.0.0",
+]
+
+[dependency-groups]
+dev = []
