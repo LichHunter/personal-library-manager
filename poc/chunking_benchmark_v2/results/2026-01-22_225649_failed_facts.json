@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "total_facts_tested": 4,
+    "always_failed": 4,
+    "sometimes_failed": 0,
+    "total_combinations": 1
+  },
+  "always_failed": [
+    {
+      "query_id": "simple_002",
+      "query": "What database does CloudFlow use?",
+      "fact": "JSONB",
+      "expected_docs": [
+        "adr_001",
+        "config_database"
+      ],
+      "failure_rate": "1/1"
+    },
+    {
+      "query_id": "complex_051",
+      "query": "How does CloudFlow ensure security across the stack?",
+      "fact": "bcrypt",
+      "expected_docs": [
+        "adr_003",
+        "arch_authentication_service",
+        "arch_api_gateway",
+        "howto_set_up_data_encryption"
+      ],
+      "failure_rate": "1/1"
+    },
+    {
+      "query_id": "complex_053",
+      "query": "How does CloudFlow handle failures and recovery?",
+      "fact": "Idempotency",
+      "expected_docs": [
+        "arch_workflow_engine",
+        "adr_005",
+        "howto_implement_retry_logic"
+      ],
+      "failure_rate": "1/1"
+    },
+    {
+      "query_id": "complex_053",
+      "query": "How does CloudFlow handle failures and recovery?",
+      "fact": "dead letter queues",
+      "expected_docs": [
+        "arch_workflow_engine",
+        "adr_005",
+        "howto_implement_retry_logic"
+      ],
+      "failure_rate": "1/1"
+    }
+  ],
+  "sometimes_failed": []
+}

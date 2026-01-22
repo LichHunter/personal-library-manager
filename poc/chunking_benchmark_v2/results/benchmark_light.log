@@ -1,0 +1,104 @@
+[23:02:26] INFO: Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_light.yaml
+
+================================================================================
+[23:02:26] INFO: COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+
+================================================================================
+[23:02:26] INFO: BENCHMARK CONFIGURATION
+================================================================================
+[23:02:26] INFO: Device: cuda
+[23:02:26] INFO: Ollama available: True
+[23:02:26] INFO: Loading corpus...
+[23:02:26] INFO: Loaded 52 documents
+[23:02:26] INFO: Loaded 53 queries
+[23:02:26] INFO: Total key facts: 180
+[23:02:26] INFO: Enabled embedders: 1
+[23:02:26] INFO: Enabled rerankers: 1
+[23:02:26] INFO: Enabled LLMs: 0
+[23:02:26] INFO: Enabled chunking strategies: 3
+[23:02:26] INFO: Enabled retrieval strategies: 3
+[23:02:26] INFO: Total strategy combinations: 9
+[23:02:26] INFO: Total evaluations (with k and metrics): 18
+
+================================================================================
+[23:02:26] INFO: RETRIEVAL STRATEGY: semantic
+================================================================================
+[23:02:26] INFO: Loading embedder: all-MiniLM-L6-v2
+[23:02:29] INFO: [1/9] semantic_all-MiniLM-L6-v2_fixed_512_0pct
+[23:02:29] INFO:   Created 52 chunks
+[23:02:29] INFO:   Indexed in 0.26s
+[23:02:29] INFO:   k=5 exact_match: 96.1% (173/180)
+[23:02:29] INFO:   k=10 exact_match: 97.8% (176/180)
+[23:02:29] INFO: [2/9] semantic_all-MiniLM-L6-v2_fixed_256_0pct
+[23:02:29] INFO:   Created 52 chunks
+[23:02:29] INFO:   Indexed in 0.08s
+[23:02:29] INFO:   k=5 exact_match: 96.1% (173/180)
+[23:02:30] INFO:   k=10 exact_match: 97.8% (176/180)
+[23:02:30] INFO: [3/9] semantic_all-MiniLM-L6-v2_recursive_1000_0pct
+[23:02:30] INFO:   Created 80 chunks
+[23:02:30] INFO:   Indexed in 0.11s
+[23:02:30] INFO:   k=5 exact_match: 91.1% (164/180)
+[23:02:30] INFO:   k=10 exact_match: 96.7% (174/180)
+
+================================================================================
+[23:02:30] INFO: RETRIEVAL STRATEGY: hybrid
+================================================================================
+[23:02:30] INFO: Loading embedder: all-MiniLM-L6-v2
+[23:02:32] INFO: [4/9] hybrid_all-MiniLM-L6-v2_fixed_512_0pct
+[23:02:32] INFO:   Created 52 chunks
+[23:02:32] INFO:   Indexed in 0.08s
+[23:02:32] INFO:   k=5 exact_match: 95.0% (171/180)
+[23:02:33] INFO:   k=10 exact_match: 97.8% (176/180)
+[23:02:33] INFO: [5/9] hybrid_all-MiniLM-L6-v2_fixed_256_0pct
+[23:02:33] INFO:   Created 52 chunks
+[23:02:33] INFO:   Indexed in 0.08s
+[23:02:33] INFO:   k=5 exact_match: 95.0% (171/180)
+[23:02:33] INFO:   k=10 exact_match: 97.8% (176/180)
+[23:02:33] INFO: [6/9] hybrid_all-MiniLM-L6-v2_recursive_1000_0pct
+[23:02:33] INFO:   Created 80 chunks
+[23:02:33] INFO:   Indexed in 0.11s
+[23:02:33] INFO:   k=5 exact_match: 93.3% (168/180)
+[23:02:34] INFO:   k=10 exact_match: 97.2% (175/180)
+
+================================================================================
+[23:02:34] INFO: RETRIEVAL STRATEGY: hybrid_rerank
+================================================================================
+[23:02:34] INFO: Loading embedder: all-MiniLM-L6-v2
+[23:02:36] INFO: Loading reranker: cross-encoder/ms-marco-MiniLM-L-6-v2
+[23:02:37] INFO: [7/9] hybrid_rerank_all-MiniLM-L6-v2_ms-marco-MiniLM-L-6-v2_fixed_512_0pct
+[23:02:37] INFO:   Created 52 chunks
+[23:02:37] INFO:   Indexed in 0.08s
+[23:02:45] INFO:   k=5 exact_match: 94.4% (170/180)
+[23:02:54] INFO:   k=10 exact_match: 98.3% (177/180)
+[23:02:54] INFO: [8/9] hybrid_rerank_all-MiniLM-L6-v2_ms-marco-MiniLM-L-6-v2_fixed_256_0pct
+[23:02:54] INFO:   Created 52 chunks
+[23:02:54] INFO:   Indexed in 0.08s
+[23:03:02] INFO:   k=5 exact_match: 94.4% (170/180)
+[23:03:10] INFO:   k=10 exact_match: 98.3% (177/180)
+[23:03:10] INFO: [9/9] hybrid_rerank_all-MiniLM-L6-v2_ms-marco-MiniLM-L-6-v2_recursive_1000_0pct
+[23:03:10] INFO:   Created 80 chunks
+[23:03:10] INFO:   Indexed in 0.11s
+[23:03:16] INFO:   k=5 exact_match: 91.7% (165/180)
+[23:03:25] INFO:   k=10 exact_match: 95.6% (172/180)
+[23:03:25] INFO: Saved failed facts analysis to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-22_230325_failed_facts.json
+[23:03:25] INFO:   Always failed: 2 facts
+[23:03:25] INFO:   Sometimes failed: 27 facts
+
+================================================================================
+[23:03:25] INFO: SAVING RESULTS
+================================================================================
+[23:03:25] INFO: Saved detailed results to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-22_230325_detailed.json
+[23:03:25] INFO: Saved summary to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-22_230325_summary.json
+
+================================================================================
+[23:03:25] INFO: BENCHMARK COMPLETE
+================================================================================
+[23:03:25] INFO: Total evaluations: 18
+[23:03:25] INFO: 
+Top 5 strategies (exact match, k=5):
+[23:03:25] INFO:   1. semantic+fixed_512_0pct+all-MiniLM-L6-v2: 96.1%
+[23:03:25] INFO:   2. semantic+fixed_256_0pct+all-MiniLM-L6-v2: 96.1%
+[23:03:25] INFO:   3. hybrid+fixed_512_0pct+all-MiniLM-L6-v2: 95.0%
+[23:03:25] INFO:   4. hybrid+fixed_256_0pct+all-MiniLM-L6-v2: 95.0%
+[23:03:25] INFO:   5. hybrid_rerank+fixed_512_0pct+all-MiniLM-L6-v2: 94.4%

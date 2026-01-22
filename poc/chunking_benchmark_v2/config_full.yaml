@@ -294,7 +294,7 @@ retrieval_strategies:
     
   - name: "lod_llm"
     type: "lod_llm"
-    enabled: true
+    enabled: false  # DISABLED: ~100 LLM calls per query = hours per combination
     params:
       chunk_size: 512
       doc_top_k: 3

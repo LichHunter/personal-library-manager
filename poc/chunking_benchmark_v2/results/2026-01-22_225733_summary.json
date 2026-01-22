@@ -1,0 +1,14 @@
+{
+  "best_by_k": {
+    "k=10": {
+      "strategy": "semantic",
+      "chunking": "fixed_512_0pct",
+      "embedder": "all-MiniLM-L6-v2",
+      "coverage": 0.9777777777777777,
+      "found": 176,
+      "total": 180
+    }
+  },
+  "best_by_strategy_type": {},
+  "best_by_embedder": {}
+}
