@@ -1,0 +1,795 @@
+{
+  "description": "Expanded test corpus for RAG benchmarking",
+  "version": "2.0-expanded",
+  "document_count": 52,
+  "query_count": 53,
+  "total_key_facts": 180,
+  "queries": [
+    {
+      "id": "simple_001",
+      "category": "simple_lookup",
+      "query": "What is the default rate limit for API requests?",
+      "expected_docs": [
+        "api_workflows",
+        "arch_api_gateway"
+      ],
+      "key_facts": [
+        "100 requests per minute",
+        "rate limit"
+      ],
+      "ground_truth_answer": "The default rate limit is 100 requests per minute per user."
+    },
+    {
+      "id": "simple_002",
+      "category": "simple_lookup",
+      "query": "What database does CloudFlow use?",
+      "expected_docs": [
+        "adr_001",
+        "config_database"
+      ],
+      "key_facts": [
+        "PostgreSQL",
+        "JSONB"
+      ],
+      "ground_truth_answer": "CloudFlow uses PostgreSQL as the primary database with JSONB for flexible data."
+    },
+    {
+      "id": "simple_003",
+      "category": "simple_lookup",
+      "query": "How long do access tokens last?",
+      "expected_docs": [
+        "adr_003",
+        "arch_authentication_service"
+      ],
+      "key_facts": [
+        "1 hour",
+        "7 days",
+        "refresh tokens"
+      ],
+      "ground_truth_answer": "Access tokens expire after 1 hour. Refresh tokens last 7 days."
+    },
+    {
+      "id": "simple_004",
+      "category": "simple_lookup",
+      "query": "What is the maximum workflow execution time?",
+      "expected_docs": [
+        "config_workflow_engine"
+      ],
+      "key_facts": [
+        "3600",
+        "WORKFLOW_TIMEOUT_SECONDS"
+      ],
+      "ground_truth_answer": "The maximum workflow execution time is 3600 seconds (1 hour)."
+    },
+    {
+      "id": "simple_005",
+      "category": "simple_lookup",
+      "query": "What container orchestration does CloudFlow use?",
+      "expected_docs": [
+        "adr_002"
+      ],
+      "key_facts": [
+        "Kubernetes",
+        "EKS",
+        "Helm"
+      ],
+      "ground_truth_answer": "CloudFlow uses Kubernetes on EKS with Helm for deployments."
+    },
+    {
+      "id": "simple_006",
+      "category": "simple_lookup",
+      "query": "What is the cache TTL?",
+      "expected_docs": [
+        "config_cache"
+      ],
+      "key_facts": [
+        "300",
+        "CACHE_TTL_SECONDS"
+      ],
+      "ground_truth_answer": "The default cache TTL is 300 seconds."
+    },
+    {
+      "id": "simple_007",
+      "category": "simple_lookup",
+      "query": "What encryption is used for data at rest?",
+      "expected_docs": [
+        "howto_set_up_data_encryption"
+      ],
+      "key_facts": [
+        "AES-256",
+        "encryption at rest"
+      ],
+      "ground_truth_answer": "All data is encrypted at rest using AES-256."
+    },
+    {
+      "id": "simple_008",
+      "category": "simple_lookup",
+      "query": "What is the maximum number of steps in a workflow?",
+      "expected_docs": [
+        "config_workflow_engine"
+      ],
+      "key_facts": [
+        "100",
+        "WORKFLOW_MAX_STEPS"
+      ],
+      "ground_truth_answer": "The maximum number of steps per workflow is 100."
+    },
+    {
+      "id": "simple_009",
+      "category": "simple_lookup",
+      "query": "What is the API gateway timeout?",
+      "expected_docs": [
+        "config_api_gateway"
+      ],
+      "key_facts": [
+        "30000",
+        "GATEWAY_TIMEOUT_MS"
+      ],
+      "ground_truth_answer": "The API gateway timeout is 30000 milliseconds."
+    },
+    {
+      "id": "simple_010",
+      "category": "simple_lookup",
+      "query": "What message broker is used for workflows?",
+      "expected_docs": [
+        "adr_005"
+      ],
+      "key_facts": [
+        "Kafka",
+        "event-driven"
+      ],
+      "ground_truth_answer": "CloudFlow uses Kafka for event-driven workflow execution."
+    },
+    {
+      "id": "cross_011",
+      "category": "cross_document",
+      "query": "How is authentication implemented across the system?",
+      "expected_docs": [
+        "adr_003",
+        "arch_authentication_service",
+        "arch_api_gateway"
+      ],
+      "key_facts": [
+        "OAuth 2.0",
+        "JWT",
+        "bcrypt",
+        "RS256",
+        "cost factor 12"
+      ],
+      "ground_truth_answer": "Authentication uses OAuth 2.0 with JWT tokens signed with RS256. Passwords are hashed with bcrypt cost factor 12."
+    },
+    {
+      "id": "cross_012",
+      "category": "cross_document",
+      "query": "What monitoring and observability tools does CloudFlow use?",
+      "expected_docs": [
+        "arch_monitoring_stack"
+      ],
+      "key_facts": [
+        "Prometheus",
+        "Thanos",
+        "Loki",
+        "Grafana",
+        "Jaeger",
+        "OpenTelemetry"
+      ],
+      "ground_truth_answer": "CloudFlow uses Prometheus with Thanos for metrics, Loki with Grafana for logs, and Jaeger with OpenTelemetry for tracing."
+    },
+    {
+      "id": "cross_013",
+      "category": "cross_document",
+      "query": "What caching strategy is used across the system?",
+      "expected_docs": [
+        "arch_caching_layer",
+        "adr_004",
+        "config_cache"
+      ],
+      "key_facts": [
+        "Redis Cluster",
+        "Ristretto",
+        "CloudFront",
+        "cache-aside"
+      ],
+      "ground_truth_answer": "Multi-tier caching with Ristretto local cache, Redis Cluster distributed cache, and CloudFront CDN."
+    },
+    {
+      "id": "cross_014",
+      "category": "cross_document",
+      "query": "How does CloudFlow handle data storage?",
+      "expected_docs": [
+        "adr_001",
+        "adr_008",
+        "arch_data_pipeline"
+      ],
+      "key_facts": [
+        "PostgreSQL",
+        "S3",
+        "Iceberg",
+        "Parquet"
+      ],
+      "ground_truth_answer": "PostgreSQL for transactional data, S3 for object storage, and Iceberg tables for data lake."
+    },
+    {
+      "id": "cross_015",
+      "category": "cross_document",
+      "query": "What are all the API authentication methods?",
+      "expected_docs": [
+        "api_users",
+        "api_integrations",
+        "adr_003"
+      ],
+      "key_facts": [
+        "Bearer",
+        "API key",
+        "OAuth 2.0",
+        "Authorization"
+      ],
+      "ground_truth_answer": "API authentication supports Bearer tokens (JWT), API keys, and OAuth 2.0."
+    },
+    {
+      "id": "howto_016",
+      "category": "how_to",
+      "query": "How do I set up CI/CD for CloudFlow?",
+      "expected_docs": [
+        "howto_set_up_ci/cd_pipeline"
+      ],
+      "key_facts": [
+        "GitHub Actions",
+        "cloudflow/deploy-action",
+        "CLOUDFLOW_API_KEY"
+      ],
+      "ground_truth_answer": "Create GitHub Actions workflow, add CLOUDFLOW_API_KEY secret, use cloudflow/deploy-action@v2."
+    },
+    {
+      "id": "howto_017",
+      "category": "how_to",
+      "query": "How do I configure a custom domain?",
+      "expected_docs": [
+        "howto_configure_custom_domain"
+      ],
+      "key_facts": [
+        "CNAME",
+        "ingress.cloudflow.io",
+        "Let's Encrypt"
+      ],
+      "ground_truth_answer": "Add CNAME pointing to ingress.cloudflow.io, SSL is automatically provisioned via Let's Encrypt."
+    },
+    {
+      "id": "howto_018",
+      "category": "how_to",
+      "query": "How do I implement retry logic?",
+      "expected_docs": [
+        "howto_implement_retry_logic"
+      ],
+      "key_facts": [
+        "retry",
+        "exponential backoff",
+        "on_failure"
+      ],
+      "ground_truth_answer": "Define retry policy with exponential backoff. Configure on_failure handler for exhausted retries."
+    },
+    {
+      "id": "howto_019",
+      "category": "how_to",
+      "query": "How do I set up database connection?",
+      "expected_docs": [
+        "howto_set_up_database_connecti"
+      ],
+      "key_facts": [
+        "DATABASE_URL",
+        "cloudflow secrets set",
+        "require-ssl"
+      ],
+      "ground_truth_answer": "Store DATABASE_URL as secret, configure pool size, enable SSL for production."
+    },
+    {
+      "id": "howto_020",
+      "category": "how_to",
+      "query": "How do I create a scheduled workflow?",
+      "expected_docs": [
+        "howto_create_scheduled_workflo"
+      ],
+      "key_facts": [
+        "cron",
+        "0 9 * * MON-FRI",
+        "timezone"
+      ],
+      "ground_truth_answer": "Use cron expression like '0 9 * * MON-FRI' for weekdays at 9 AM, specify timezone."
+    },
+    {
+      "id": "howto_021",
+      "category": "how_to",
+      "query": "How do I configure SSO?",
+      "expected_docs": [
+        "howto_configure_single_sign-on"
+      ],
+      "key_facts": [
+        "SAML 2.0",
+        "OpenID Connect",
+        "ACS URL"
+      ],
+      "ground_truth_answer": "CloudFlow supports SAML 2.0 and OpenID Connect. ACS URL is https://auth.cloudflow.io/saml/callback."
+    },
+    {
+      "id": "howto_022",
+      "category": "how_to",
+      "query": "How do I debug a failed execution?",
+      "expected_docs": [
+        "howto_debug_failed_execution"
+      ],
+      "key_facts": [
+        "cloudflow executions get",
+        "cloudflow executions logs",
+        "--debug"
+      ],
+      "ground_truth_answer": "Use cloudflow executions get for details, logs for output, and --debug flag for verbose mode."
+    },
+    {
+      "id": "compare_023",
+      "category": "comparison",
+      "query": "What database options were considered and why was PostgreSQL chosen?",
+      "expected_docs": [
+        "adr_001"
+      ],
+      "key_facts": [
+        "PostgreSQL",
+        "MongoDB",
+        "CockroachDB",
+        "JSONB",
+        "Team expertise"
+      ],
+      "ground_truth_answer": "PostgreSQL, MongoDB, and CockroachDB were considered. PostgreSQL chosen for JSONB support and team expertise."
+    },
+    {
+      "id": "compare_024",
+      "category": "comparison",
+      "query": "Compare Kubernetes vs ECS for container orchestration",
+      "expected_docs": [
+        "adr_002"
+      ],
+      "key_facts": [
+        "Kubernetes",
+        "ECS",
+        "industry standard",
+        "AWS lock-in",
+        "ecosystem"
+      ],
+      "ground_truth_answer": "Kubernetes offers industry standard and rich ecosystem. ECS has AWS lock-in but simpler operations."
+    },
+    {
+      "id": "compare_025",
+      "category": "comparison",
+      "query": "What authentication options were evaluated?",
+      "expected_docs": [
+        "adr_003"
+      ],
+      "key_facts": [
+        "OAuth 2.0",
+        "Session-based",
+        "API keys",
+        "stateless validation"
+      ],
+      "ground_truth_answer": "OAuth 2.0 with JWT, session-based auth, and API keys only were evaluated. JWT chosen for stateless validation."
+    },
+    {
+      "id": "compare_026",
+      "category": "comparison",
+      "query": "Compare caching options: Redis vs Memcached",
+      "expected_docs": [
+        "adr_004"
+      ],
+      "key_facts": [
+        "Redis Cluster",
+        "Memcached",
+        "data structures",
+        "persistence"
+      ],
+      "ground_truth_answer": "Redis offers rich data structures and persistence. Memcached is simpler but lacks clustering."
+    },
+    {
+      "id": "troubleshoot_027",
+      "category": "troubleshooting",
+      "query": "How do I diagnose high CPU usage?",
+      "expected_docs": [
+        "runbook_high_cpu_usage"
+      ],
+      "key_facts": [
+        "kubectl top pods",
+        "cloudflow debug profile",
+        "rollout restart"
+      ],
+      "ground_truth_answer": "Check CPU with kubectl top pods, profile with cloudflow debug profile, restart or scale as needed."
+    },
+    {
+      "id": "troubleshoot_028",
+      "category": "troubleshooting",
+      "query": "What to do when database connections are exhausted?",
+      "expected_docs": [
+        "runbook_database_connection_ex"
+      ],
+      "key_facts": [
+        "pg_stat_activity",
+        "SHOW POOLS",
+        "pg_terminate_backend"
+      ],
+      "ground_truth_answer": "Check connections with pg_stat_activity, verify PgBouncer with SHOW POOLS, kill long queries."
+    },
+    {
+      "id": "troubleshoot_029",
+      "category": "troubleshooting",
+      "query": "How to handle Kafka consumer lag?",
+      "expected_docs": [
+        "runbook_kafka_consumer_lag"
+      ],
+      "key_facts": [
+        "kafka-consumer-groups.sh",
+        "consumer lag",
+        "reset-offsets"
+      ],
+      "ground_truth_answer": "Check lag with kafka-consumer-groups.sh, scale consumers or reset offsets if needed."
+    },
+    {
+      "id": "troubleshoot_030",
+      "category": "troubleshooting",
+      "query": "What to do when SSL certificate is expiring?",
+      "expected_docs": [
+        "runbook_ssl_certificate_expir"
+      ],
+      "key_facts": [
+        "openssl s_client",
+        "cert-manager",
+        "Let's Encrypt"
+      ],
+      "ground_truth_answer": "Check expiry with openssl, verify cert-manager status, trigger renewal or manually upload."
+    },
+    {
+      "id": "troubleshoot_031",
+      "category": "troubleshooting",
+      "query": "How to fix OOM kills?",
+      "expected_docs": [
+        "runbook_out_of_memory_oom_kill"
+      ],
+      "key_facts": [
+        "OOMKilled",
+        "resources.limits.memory",
+        "HeapDumpOnOutOfMemoryError"
+      ],
+      "ground_truth_answer": "Check OOM events, increase memory limits, enable heap dumps for leak investigation."
+    },
+    {
+      "id": "troubleshoot_032",
+      "category": "troubleshooting",
+      "query": "How to troubleshoot API Gateway 5xx errors?",
+      "expected_docs": [
+        "runbook_api_gateway_5xx_error"
+      ],
+      "key_facts": [
+        "kubectl logs",
+        "circuit breaker",
+        "kubectl get endpoints"
+      ],
+      "ground_truth_answer": "Check Kong logs, verify backend health, enable circuit breaker if cascading failures."
+    },
+    {
+      "id": "arch_033",
+      "category": "architecture",
+      "query": "Explain the Workflow Engine architecture",
+      "expected_docs": [
+        "arch_workflow_engine"
+      ],
+      "key_facts": [
+        "Scheduler",
+        "Executor",
+        "State Store",
+        "PostgreSQL with JSONB",
+        "5000 executions/minute"
+      ],
+      "ground_truth_answer": "Workflow Engine has Scheduler, Executor (K8s Jobs), and State Store (PostgreSQL). Throughput: 5000 executions/minute."
+    },
+    {
+      "id": "arch_034",
+      "category": "architecture",
+      "query": "How does the API Gateway work?",
+      "expected_docs": [
+        "arch_api_gateway"
+      ],
+      "key_facts": [
+        "Kong",
+        "TLS termination",
+        "50000 requests/second",
+        "5ms"
+      ],
+      "ground_truth_answer": "Kong Gateway handles TLS, auth, rate limiting. 50000 req/s throughput, token validation under 5ms."
+    },
+    {
+      "id": "arch_035",
+      "category": "architecture",
+      "query": "Describe the Data Pipeline architecture",
+      "expected_docs": [
+        "arch_data_pipeline"
+      ],
+      "key_facts": [
+        "Kafka",
+        "Flink",
+        "Spark",
+        "100000 messages per second",
+        "Iceberg"
+      ],
+      "ground_truth_answer": "Stream processing with Kafka/Flink (100k msg/s), batch with Spark, storage in S3 with Iceberg."
+    },
+    {
+      "id": "arch_036",
+      "category": "architecture",
+      "query": "How does the Search Service work?",
+      "expected_docs": [
+        "arch_search_service"
+      ],
+      "key_facts": [
+        "Elasticsearch",
+        "500ms",
+        "autocomplete",
+        "20ms"
+      ],
+      "ground_truth_answer": "Elasticsearch-based with 500ms indexing latency. Autocomplete suggestions within 20ms."
+    },
+    {
+      "id": "arch_037",
+      "category": "architecture",
+      "query": "Explain the Authentication Service",
+      "expected_docs": [
+        "arch_authentication_service"
+      ],
+      "key_facts": [
+        "bcrypt",
+        "cost factor 12",
+        "RS256",
+        "refresh tokens"
+      ],
+      "ground_truth_answer": "Password hashing with bcrypt cost factor 12, JWT with RS256, 1-hour access tokens, 7-day refresh tokens."
+    },
+    {
+      "id": "api_038",
+      "category": "api_reference",
+      "query": "How do I list workflows via API?",
+      "expected_docs": [
+        "api_workflows"
+      ],
+      "key_facts": [
+        "GET /workflows",
+        "limit",
+        "status"
+      ],
+      "ground_truth_answer": "GET /workflows with optional limit and status parameters."
+    },
+    {
+      "id": "api_039",
+      "category": "api_reference",
+      "query": "How do I create a workflow via API?",
+      "expected_docs": [
+        "api_workflows"
+      ],
+      "key_facts": [
+        "POST /workflows",
+        "201",
+        "name",
+        "definition"
+      ],
+      "ground_truth_answer": "POST /workflows with name and definition. Returns 201 on success."
+    },
+    {
+      "id": "api_040",
+      "category": "api_reference",
+      "query": "How do I cancel a running execution?",
+      "expected_docs": [
+        "api_executions"
+      ],
+      "key_facts": [
+        "POST /executions/{id}/cancel",
+        "reason"
+      ],
+      "ground_truth_answer": "POST /executions/{id}/cancel with optional reason parameter."
+    },
+    {
+      "id": "api_041",
+      "category": "api_reference",
+      "query": "How do I get current user profile?",
+      "expected_docs": [
+        "api_users"
+      ],
+      "key_facts": [
+        "GET /users/me",
+        "email",
+        "role"
+      ],
+      "ground_truth_answer": "GET /users/me returns user object with id, email, and role."
+    },
+    {
+      "id": "api_042",
+      "category": "api_reference",
+      "query": "How do I add a team member?",
+      "expected_docs": [
+        "api_teams"
+      ],
+      "key_facts": [
+        "POST /teams/{id}/members",
+        "user_id",
+        "role"
+      ],
+      "ground_truth_answer": "POST /teams/{id}/members with user_id and role (owner, admin, member, viewer)."
+    },
+    {
+      "id": "api_043",
+      "category": "api_reference",
+      "query": "How do I create a webhook?",
+      "expected_docs": [
+        "api_webhooks"
+      ],
+      "key_facts": [
+        "POST /webhooks",
+        "url",
+        "events",
+        "secret"
+      ],
+      "ground_truth_answer": "POST /webhooks with HTTPS url, events array, and signing secret."
+    },
+    {
+      "id": "api_044",
+      "category": "api_reference",
+      "query": "How do I get billing usage?",
+      "expected_docs": [
+        "api_billing"
+      ],
+      "key_facts": [
+        "GET /billing/usage",
+        "executions",
+        "compute_minutes"
+      ],
+      "ground_truth_answer": "GET /billing/usage returns executions, compute_minutes, and storage_gb."
+    },
+    {
+      "id": "api_045",
+      "category": "api_reference",
+      "query": "How do I manage secrets?",
+      "expected_docs": [
+        "api_secrets"
+      ],
+      "key_facts": [
+        "PUT /secrets/{name}",
+        "DELETE /secrets/{name}",
+        "encrypted at rest"
+      ],
+      "ground_truth_answer": "PUT to create/update, DELETE to remove. Values encrypted at rest."
+    },
+    {
+      "id": "release_046",
+      "category": "release_notes",
+      "query": "What's new in version 3.2.0?",
+      "expected_docs": [
+        "release_3_2_0"
+      ],
+      "key_facts": [
+        "Workflow versioning",
+        "Python SDK",
+        "async support",
+        "v4.0"
+      ],
+      "ground_truth_answer": "Workflow versioning with rollback, new Python SDK with async support. API v1 deprecated."
+    },
+    {
+      "id": "release_047",
+      "category": "release_notes",
+      "query": "What security fixes were in v3.0.0?",
+      "expected_docs": [
+        "release_3_0_0"
+      ],
+      "key_facts": [
+        "critical security issue",
+        "token validation"
+      ],
+      "ground_truth_answer": "Fixed critical security issue in token validation."
+    },
+    {
+      "id": "release_048",
+      "category": "release_notes",
+      "query": "What breaking changes are in v3.0.0?",
+      "expected_docs": [
+        "release_3_0_0"
+      ],
+      "key_facts": [
+        "Authentication API",
+        "Legacy webhook format",
+        "Node.js version now 18"
+      ],
+      "ground_truth_answer": "Authentication API rewritten, legacy webhook format removed, minimum Node.js 18."
+    },
+    {
+      "id": "release_049",
+      "category": "release_notes",
+      "query": "When was GraphQL API released?",
+      "expected_docs": [
+        "release_3_1_0"
+      ],
+      "key_facts": [
+        "GraphQL API beta",
+        "2023-12-01"
+      ],
+      "ground_truth_answer": "GraphQL API was released in beta in v3.1.0 on 2023-12-01."
+    },
+    {
+      "id": "complex_050",
+      "category": "complex_multi_hop",
+      "query": "What are all the technologies used for data storage and caching?",
+      "expected_docs": [
+        "adr_001",
+        "adr_004",
+        "adr_008",
+        "arch_caching_layer",
+        "arch_data_pipeline"
+      ],
+      "key_facts": [
+        "PostgreSQL",
+        "Redis Cluster",
+        "S3",
+        "Ristretto",
+        "CloudFront",
+        "Iceberg"
+      ],
+      "ground_truth_answer": "PostgreSQL for OLTP, Redis Cluster for caching, S3 for objects, Ristretto for local cache, CloudFront CDN, Iceberg for data lake."
+    },
+    {
+      "id": "complex_051",
+      "category": "complex_multi_hop",
+      "query": "How does CloudFlow ensure security across the stack?",
+      "expected_docs": [
+        "adr_003",
+        "arch_authentication_service",
+        "arch_api_gateway",
+        "howto_set_up_data_encryption"
+      ],
+      "key_facts": [
+        "OAuth 2.0",
+        "JWT",
+        "bcrypt",
+        "AES-256",
+        "TLS",
+        "Zero Trust"
+      ],
+      "ground_truth_answer": "OAuth 2.0 with JWT auth, bcrypt password hashing, AES-256 encryption at rest, TLS in transit, Zero Trust at gateway."
+    },
+    {
+      "id": "complex_052",
+      "category": "complex_multi_hop",
+      "query": "What configuration is needed for production deployment?",
+      "expected_docs": [
+        "config_workflow_engine",
+        "config_api_gateway",
+        "config_database",
+        "config_cache"
+      ],
+      "key_facts": [
+        "DATABASE_URL",
+        "REDIS_URL",
+        "GATEWAY_SSL_ENABLED",
+        "DATABASE_SSL_MODE"
+      ],
+      "ground_truth_answer": "Set DATABASE_URL, REDIS_URL, enable GATEWAY_SSL_ENABLED and DATABASE_SSL_MODE=require."
+    },
+    {
+      "id": "complex_053",
+      "category": "complex_multi_hop",
+      "query": "How does CloudFlow handle failures and recovery?",
+      "expected_docs": [
+        "arch_workflow_engine",
+        "adr_005",
+        "howto_implement_retry_logic"
+      ],
+      "key_facts": [
+        "Idempotency",
+        "retry",
+        "exponential backoff",
+        "dead letter queues"
+      ],
+      "ground_truth_answer": "Idempotent operations, configurable retry with exponential backoff, dead letter queues for failed messages."
+    }
+  ]
+}

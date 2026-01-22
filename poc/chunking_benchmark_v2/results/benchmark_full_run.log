@@ -1,0 +1,1277 @@
+[21:02:20] INFO: Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_full.yaml
+
+================================================================================
+[21:02:20] INFO: COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+
+================================================================================
+[21:02:20] INFO: BENCHMARK CONFIGURATION
+================================================================================
+[21:02:20] INFO: Device: cuda
+[21:02:20] INFO: Ollama available: True
+[21:02:20] INFO: Loading corpus...
+[21:02:20] INFO: Loaded 52 documents
+[21:02:20] INFO: Loaded 53 queries
+[21:02:20] INFO: Total key facts: 180
+[21:02:20] INFO: Enabled embedders: 5
+[21:02:20] INFO: Enabled rerankers: 2
+[21:02:20] INFO: Enabled LLMs: 6
+[21:02:20] INFO: Enabled chunking strategies: 20
+[21:02:20] INFO: Enabled retrieval strategies: 6
+[21:02:20] INFO: Total strategy combinations: 1035
+[21:02:20] INFO: Total evaluations (with k and metrics): 4140
+
+================================================================================
+[21:02:20] INFO: RETRIEVAL STRATEGY: semantic
+================================================================================
+[21:02:20] INFO: Loading embedder: all-MiniLM-L6-v2
+[21:02:23] INFO: [1/1035] semantic_all-MiniLM-L6-v2_fixed_512_0pct
+[21:02:23] INFO:   Created 52 chunks
+[21:02:23] INFO:   Indexed in 0.26s
+[21:02:23] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:24] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:24] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:24] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:24] INFO: [2/1035] semantic_all-MiniLM-L6-v2_fixed_512_15pct
+[21:02:24] INFO:   Created 52 chunks
+[21:02:24] INFO:   Indexed in 0.08s
+[21:02:24] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:24] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:25] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:25] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:25] INFO: [3/1035] semantic_all-MiniLM-L6-v2_fixed_400_0pct
+[21:02:25] INFO:   Created 52 chunks
+[21:02:25] INFO:   Indexed in 0.08s
+[21:02:25] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:25] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:25] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:26] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:26] INFO: [4/1035] semantic_all-MiniLM-L6-v2_fixed_300_0pct
+[21:02:26] INFO:   Created 52 chunks
+[21:02:26] INFO:   Indexed in 0.07s
+[21:02:26] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:26] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:26] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:26] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:26] INFO: [5/1035] semantic_all-MiniLM-L6-v2_fixed_200_0pct
+[21:02:26] INFO:   Created 70 chunks
+[21:02:26] INFO:   Indexed in 0.10s
+[21:02:27] INFO:   k=5 exact_match: 91.7% (165/180)
+[21:02:27] INFO:   k=5 fuzzy_match: 91.7% (165/180)
+[21:02:27] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:02:27] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:02:27] INFO: [6/1035] semantic_all-MiniLM-L6-v2_recursive_2000_0pct
+[21:02:27] INFO:   Created 52 chunks
+[21:02:27] INFO:   Indexed in 0.07s
+[21:02:27] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:28] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:28] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:28] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:28] INFO: [7/1035] semantic_all-MiniLM-L6-v2_recursive_1600_0pct
+[21:02:28] INFO:   Created 52 chunks
+[21:02:28] INFO:   Indexed in 0.08s
+[21:02:28] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:28] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:29] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:29] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:29] INFO: [8/1035] semantic_all-MiniLM-L6-v2_recursive_1600_15pct
+[21:02:29] INFO:   Created 52 chunks
+[21:02:29] INFO:   Indexed in 0.08s
+[21:02:29] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:29] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:29] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:29] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:29] INFO: [9/1035] semantic_all-MiniLM-L6-v2_recursive_1200_0pct
+[21:02:29] INFO:   Created 58 chunks
+[21:02:30] INFO:   Indexed in 0.08s
+[21:02:30] INFO:   k=5 exact_match: 95.6% (172/180)
+[21:02:30] INFO:   k=5 fuzzy_match: 95.6% (172/180)
+[21:02:30] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:02:30] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:02:30] INFO: [10/1035] semantic_all-MiniLM-L6-v2_recursive_800_0pct
+[21:02:30] INFO:   Created 95 chunks
+[21:02:30] INFO:   Indexed in 0.12s
+[21:02:31] INFO:   k=5 exact_match: 92.2% (166/180)
+[21:02:31] INFO:   k=5 fuzzy_match: 92.2% (166/180)
+[21:02:31] INFO:   k=10 exact_match: 94.4% (170/180)
+[21:02:31] INFO:   k=10 fuzzy_match: 94.4% (170/180)
+[21:02:31] INFO: [11/1035] semantic_all-MiniLM-L6-v2_semantic_400
+[21:02:31] INFO:   Created 52 chunks
+[21:02:31] INFO:   Indexed in 0.07s
+[21:02:32] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:32] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:32] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:32] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:32] INFO: [12/1035] semantic_all-MiniLM-L6-v2_semantic_200
+[21:02:32] INFO:   Created 71 chunks
+[21:02:32] INFO:   Indexed in 0.10s
+[21:02:33] INFO:   k=5 exact_match: 93.3% (168/180)
+[21:02:33] INFO:   k=5 fuzzy_match: 93.3% (168/180)
+[21:02:33] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:02:33] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:02:33] INFO: [13/1035] semantic_all-MiniLM-L6-v2_heading_based_h3
+[21:02:33] INFO:   Created 430 chunks
+[21:02:33] INFO:   Indexed in 0.14s
+[21:02:33] INFO:   k=5 exact_match: 47.2% (85/180)
+[21:02:34] INFO:   k=5 fuzzy_match: 47.8% (86/180)
+[21:02:34] INFO:   k=10 exact_match: 65.0% (117/180)
+[21:02:34] INFO:   k=10 fuzzy_match: 67.2% (121/180)
+[21:02:34] INFO: [14/1035] semantic_all-MiniLM-L6-v2_heading_limited_512
+[21:02:34] INFO:   Created 340 chunks
+[21:02:34] INFO:   Indexed in 0.13s
+[21:02:34] INFO:   k=5 exact_match: 52.2% (94/180)
+[21:02:34] INFO:   k=5 fuzzy_match: 53.3% (96/180)
+[21:02:35] INFO:   k=10 exact_match: 73.3% (132/180)
+[21:02:35] INFO:   k=10 fuzzy_match: 75.0% (135/180)
+[21:02:35] INFO: [15/1035] semantic_all-MiniLM-L6-v2_hierarchical_h4
+[21:02:35] INFO:   Created 482 chunks
+[21:02:35] INFO:   Indexed in 0.15s
+[21:02:35] INFO:   k=5 exact_match: 43.3% (78/180)
+[21:02:35] INFO:   k=5 fuzzy_match: 43.9% (79/180)
+[21:02:35] INFO:   k=10 exact_match: 57.2% (103/180)
+[21:02:36] INFO:   k=10 fuzzy_match: 59.4% (107/180)
+[21:02:36] INFO: [16/1035] semantic_all-MiniLM-L6-v2_heading_paragraph_h3
+[21:02:36] INFO:   Created 900 chunks
+[21:02:36] INFO:   Indexed in 0.30s
+[21:02:36] INFO:   k=5 exact_match: 41.1% (74/180)
+[21:02:36] INFO:   k=5 fuzzy_match: 42.8% (77/180)
+[21:02:36] INFO:   k=10 exact_match: 52.8% (95/180)
+[21:02:37] INFO:   k=10 fuzzy_match: 54.4% (98/180)
+[21:02:37] INFO: [17/1035] semantic_all-MiniLM-L6-v2_paragraphs_50_256
+[21:02:37] INFO:   Created 185 chunks
+[21:02:37] INFO:   Indexed in 0.13s
+[21:02:37] INFO:   k=5 exact_match: 69.4% (125/180)
+[21:02:37] INFO:   k=5 fuzzy_match: 69.4% (125/180)
+[21:02:37] INFO:   k=10 exact_match: 82.2% (148/180)
+[21:02:37] INFO:   k=10 fuzzy_match: 82.8% (149/180)
+[21:02:37] INFO: [18/1035] semantic_all-MiniLM-L6-v2_paragraph_50_256
+[21:02:37] INFO:   Created 343 chunks
+[21:02:38] INFO:   Indexed in 0.13s
+[21:02:38] INFO:   k=5 exact_match: 42.8% (77/180)
+[21:02:38] INFO:   k=5 fuzzy_match: 45.0% (81/180)
+[21:02:38] INFO:   k=10 exact_match: 57.2% (103/180)
+[21:02:38] INFO:   k=10 fuzzy_match: 60.6% (109/180)
+[21:02:38] INFO: [19/1035] semantic_all-MiniLM-L6-v2_paragraph_50_256_heading
+[21:02:38] INFO:   Created 343 chunks
+[21:02:38] INFO:   Indexed in 0.14s
+[21:02:39] INFO:   k=5 exact_match: 52.2% (94/180)
+[21:02:39] INFO:   k=5 fuzzy_match: 53.3% (96/180)
+[21:02:39] INFO:   k=10 exact_match: 73.3% (132/180)
+[21:02:39] INFO:   k=10 fuzzy_match: 75.0% (135/180)
+[21:02:39] INFO: [20/1035] semantic_all-MiniLM-L6-v2_fixed_size_512_v1
+[21:02:39] INFO:   Created 52 chunks
+[21:02:39] INFO:   Indexed in 0.07s
+[21:02:39] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:02:39] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:02:40] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:40] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:40] INFO: Loading embedder: all-MiniLM-L12-v2
+[21:02:42] INFO: [21/1035] semantic_all-MiniLM-L12-v2_fixed_512_0pct
+[21:02:42] INFO:   Created 52 chunks
+[21:02:42] INFO:   Indexed in 0.07s
+[21:02:42] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:43] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:43] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:43] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:43] INFO: [22/1035] semantic_all-MiniLM-L12-v2_fixed_512_15pct
+[21:02:43] INFO:   Created 52 chunks
+[21:02:43] INFO:   Indexed in 0.07s
+[21:02:44] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:44] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:44] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:44] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:44] INFO: [23/1035] semantic_all-MiniLM-L12-v2_fixed_400_0pct
+[21:02:44] INFO:   Created 52 chunks
+[21:02:44] INFO:   Indexed in 0.07s
+[21:02:45] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:45] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:45] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:46] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:46] INFO: [24/1035] semantic_all-MiniLM-L12-v2_fixed_300_0pct
+[21:02:46] INFO:   Created 52 chunks
+[21:02:46] INFO:   Indexed in 0.07s
+[21:02:46] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:46] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:47] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:47] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:47] INFO: [25/1035] semantic_all-MiniLM-L12-v2_fixed_200_0pct
+[21:02:47] INFO:   Created 70 chunks
+[21:02:47] INFO:   Indexed in 0.10s
+[21:02:47] INFO:   k=5 exact_match: 92.8% (167/180)
+[21:02:48] INFO:   k=5 fuzzy_match: 92.8% (167/180)
+[21:02:48] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:02:48] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:02:48] INFO: [26/1035] semantic_all-MiniLM-L12-v2_recursive_2000_0pct
+[21:02:48] INFO:   Created 52 chunks
+[21:02:48] INFO:   Indexed in 0.07s
+[21:02:49] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:49] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:49] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:50] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:50] INFO: [27/1035] semantic_all-MiniLM-L12-v2_recursive_1600_0pct
+[21:02:50] INFO:   Created 52 chunks
+[21:02:50] INFO:   Indexed in 0.07s
+[21:02:50] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:50] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:51] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:51] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:51] INFO: [28/1035] semantic_all-MiniLM-L12-v2_recursive_1600_15pct
+[21:02:51] INFO:   Created 52 chunks
+[21:02:51] INFO:   Indexed in 0.07s
+[21:02:51] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:52] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:52] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:52] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:52] INFO: [29/1035] semantic_all-MiniLM-L12-v2_recursive_1200_0pct
+[21:02:52] INFO:   Created 58 chunks
+[21:02:52] INFO:   Indexed in 0.08s
+[21:02:53] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:02:53] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:02:53] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:02:54] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:02:54] INFO: [30/1035] semantic_all-MiniLM-L12-v2_recursive_800_0pct
+[21:02:54] INFO:   Created 95 chunks
+[21:02:54] INFO:   Indexed in 0.13s
+[21:02:54] INFO:   k=5 exact_match: 91.1% (164/180)
+[21:02:54] INFO:   k=5 fuzzy_match: 91.1% (164/180)
+[21:02:55] INFO:   k=10 exact_match: 93.3% (168/180)
+[21:02:55] INFO:   k=10 fuzzy_match: 93.3% (168/180)
+[21:02:55] INFO: [31/1035] semantic_all-MiniLM-L12-v2_semantic_400
+[21:02:55] INFO:   Created 52 chunks
+[21:02:55] INFO:   Indexed in 0.07s
+[21:02:56] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:02:56] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:02:56] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:02:57] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:02:57] INFO: [32/1035] semantic_all-MiniLM-L12-v2_semantic_200
+[21:02:57] INFO:   Created 71 chunks
+[21:02:57] INFO:   Indexed in 0.09s
+[21:02:57] INFO:   k=5 exact_match: 85.0% (153/180)
+[21:02:58] INFO:   k=5 fuzzy_match: 85.6% (154/180)
+[21:02:58] INFO:   k=10 exact_match: 93.9% (169/180)
+[21:02:58] INFO:   k=10 fuzzy_match: 93.9% (169/180)
+[21:02:58] INFO: [33/1035] semantic_all-MiniLM-L12-v2_heading_based_h3
+[21:02:58] INFO:   Created 430 chunks
+[21:02:58] INFO:   Indexed in 0.23s
+[21:02:59] INFO:   k=5 exact_match: 51.1% (92/180)
+[21:02:59] INFO:   k=5 fuzzy_match: 51.7% (93/180)
+[21:02:59] INFO:   k=10 exact_match: 67.2% (121/180)
+[21:03:00] INFO:   k=10 fuzzy_match: 67.8% (122/180)
+[21:03:00] INFO: [34/1035] semantic_all-MiniLM-L12-v2_heading_limited_512
+[21:03:00] INFO:   Created 340 chunks
+[21:03:00] INFO:   Indexed in 0.22s
+[21:03:00] INFO:   k=5 exact_match: 56.7% (102/180)
+[21:03:00] INFO:   k=5 fuzzy_match: 57.8% (104/180)
+[21:03:01] INFO:   k=10 exact_match: 71.7% (129/180)
+[21:03:01] INFO:   k=10 fuzzy_match: 72.2% (130/180)
+[21:03:01] INFO: [35/1035] semantic_all-MiniLM-L12-v2_hierarchical_h4
+[21:03:01] INFO:   Created 482 chunks
+[21:03:01] INFO:   Indexed in 0.25s
+[21:03:02] INFO:   k=5 exact_match: 41.7% (75/180)
+[21:03:02] INFO:   k=5 fuzzy_match: 42.2% (76/180)
+[21:03:02] INFO:   k=10 exact_match: 61.7% (111/180)
+[21:03:02] INFO:   k=10 fuzzy_match: 63.3% (114/180)
+[21:03:02] INFO: [36/1035] semantic_all-MiniLM-L12-v2_heading_paragraph_h3
+[21:03:02] INFO:   Created 900 chunks
+[21:03:03] INFO:   Indexed in 0.54s
+[21:03:03] INFO:   k=5 exact_match: 41.1% (74/180)
+[21:03:04] INFO:   k=5 fuzzy_match: 41.7% (75/180)
+[21:03:04] INFO:   k=10 exact_match: 55.6% (100/180)
+[21:03:04] INFO:   k=10 fuzzy_match: 57.8% (104/180)
+[21:03:04] INFO: [37/1035] semantic_all-MiniLM-L12-v2_paragraphs_50_256
+[21:03:04] INFO:   Created 185 chunks
+[21:03:04] INFO:   Indexed in 0.22s
+[21:03:05] INFO:   k=5 exact_match: 72.8% (131/180)
+[21:03:05] INFO:   k=5 fuzzy_match: 73.3% (132/180)
+[21:03:05] INFO:   k=10 exact_match: 83.3% (150/180)
+[21:03:05] INFO:   k=10 fuzzy_match: 83.9% (151/180)
+[21:03:05] INFO: [38/1035] semantic_all-MiniLM-L12-v2_paragraph_50_256
+[21:03:05] INFO:   Created 343 chunks
+[21:03:06] INFO:   Indexed in 0.21s
+[21:03:06] INFO:   k=5 exact_match: 39.4% (71/180)
+[21:03:06] INFO:   k=5 fuzzy_match: 40.6% (73/180)
+[21:03:07] INFO:   k=10 exact_match: 57.8% (104/180)
+[21:03:07] INFO:   k=10 fuzzy_match: 60.6% (109/180)
+[21:03:07] INFO: [39/1035] semantic_all-MiniLM-L12-v2_paragraph_50_256_heading
+[21:03:07] INFO:   Created 343 chunks
+[21:03:07] INFO:   Indexed in 0.24s
+[21:03:07] INFO:   k=5 exact_match: 56.7% (102/180)
+[21:03:08] INFO:   k=5 fuzzy_match: 57.8% (104/180)
+[21:03:08] INFO:   k=10 exact_match: 71.7% (129/180)
+[21:03:08] INFO:   k=10 fuzzy_match: 72.2% (130/180)
+[21:03:08] INFO: [40/1035] semantic_all-MiniLM-L12-v2_fixed_size_512_v1
+[21:03:08] INFO:   Created 52 chunks
+[21:03:08] INFO:   Indexed in 0.07s
+[21:03:09] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:03:09] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:03:09] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:03:10] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:03:10] INFO: Loading embedder: BAAI/bge-small-en-v1.5
+[21:03:12] INFO: [41/1035] semantic_bge-small-en-v1.5_fixed_512_0pct
+[21:03:12] INFO:   Created 52 chunks
+[21:03:13] INFO:   Indexed in 0.27s
+[21:03:13] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:13] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:13] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:14] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:14] INFO: [42/1035] semantic_bge-small-en-v1.5_fixed_512_15pct
+[21:03:14] INFO:   Created 52 chunks
+[21:03:14] INFO:   Indexed in 0.26s
+[21:03:14] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:15] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:15] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:15] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:15] INFO: [43/1035] semantic_bge-small-en-v1.5_fixed_400_0pct
+[21:03:15] INFO:   Created 52 chunks
+[21:03:15] INFO:   Indexed in 0.26s
+[21:03:16] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:16] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:16] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:17] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:17] INFO: [44/1035] semantic_bge-small-en-v1.5_fixed_300_0pct
+[21:03:17] INFO:   Created 52 chunks
+[21:03:17] INFO:   Indexed in 0.26s
+[21:03:17] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:17] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:18] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:18] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:18] INFO: [45/1035] semantic_bge-small-en-v1.5_fixed_200_0pct
+[21:03:18] INFO:   Created 70 chunks
+[21:03:18] INFO:   Indexed in 0.27s
+[21:03:19] INFO:   k=5 exact_match: 92.2% (166/180)
+[21:03:19] INFO:   k=5 fuzzy_match: 92.2% (166/180)
+[21:03:19] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:03:20] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:03:20] INFO: [46/1035] semantic_bge-small-en-v1.5_recursive_2000_0pct
+[21:03:20] INFO:   Created 52 chunks
+[21:03:20] INFO:   Indexed in 0.26s
+[21:03:20] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:20] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:21] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:21] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:21] INFO: [47/1035] semantic_bge-small-en-v1.5_recursive_1600_0pct
+[21:03:21] INFO:   Created 52 chunks
+[21:03:21] INFO:   Indexed in 0.26s
+[21:03:22] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:22] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:22] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:23] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:23] INFO: [48/1035] semantic_bge-small-en-v1.5_recursive_1600_15pct
+[21:03:23] INFO:   Created 52 chunks
+[21:03:23] INFO:   Indexed in 0.26s
+[21:03:23] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:23] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:24] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:24] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:24] INFO: [49/1035] semantic_bge-small-en-v1.5_recursive_1200_0pct
+[21:03:24] INFO:   Created 58 chunks
+[21:03:24] INFO:   Indexed in 0.26s
+[21:03:25] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:03:25] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:03:25] INFO:   k=10 exact_match: 96.7% (174/180)
+[21:03:25] INFO:   k=10 fuzzy_match: 96.7% (174/180)
+[21:03:25] INFO: [50/1035] semantic_bge-small-en-v1.5_recursive_800_0pct
+[21:03:25] INFO:   Created 95 chunks
+[21:03:26] INFO:   Indexed in 0.24s
+[21:03:26] INFO:   k=5 exact_match: 88.9% (160/180)
+[21:03:26] INFO:   k=5 fuzzy_match: 88.9% (160/180)
+[21:03:27] INFO:   k=10 exact_match: 93.3% (168/180)
+[21:03:27] INFO:   k=10 fuzzy_match: 93.3% (168/180)
+[21:03:27] INFO: [51/1035] semantic_bge-small-en-v1.5_semantic_400
+[21:03:27] INFO:   Created 52 chunks
+[21:03:28] INFO:   Indexed in 0.26s
+[21:03:28] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:28] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:28] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:29] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:29] INFO: [52/1035] semantic_bge-small-en-v1.5_semantic_200
+[21:03:29] INFO:   Created 71 chunks
+[21:03:29] INFO:   Indexed in 0.27s
+[21:03:30] INFO:   k=5 exact_match: 90.0% (162/180)
+[21:03:30] INFO:   k=5 fuzzy_match: 90.0% (162/180)
+[21:03:30] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:03:31] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:03:31] INFO: [53/1035] semantic_bge-small-en-v1.5_heading_based_h3
+[21:03:31] INFO:   Created 430 chunks
+[21:03:31] INFO:   Indexed in 0.26s
+[21:03:31] INFO:   k=5 exact_match: 49.4% (89/180)
+[21:03:32] INFO:   k=5 fuzzy_match: 50.6% (91/180)
+[21:03:32] INFO:   k=10 exact_match: 65.0% (117/180)
+[21:03:32] INFO:   k=10 fuzzy_match: 65.0% (117/180)
+[21:03:32] INFO: [54/1035] semantic_bge-small-en-v1.5_heading_limited_512
+[21:03:32] INFO:   Created 340 chunks
+[21:03:32] INFO:   Indexed in 0.24s
+[21:03:33] INFO:   k=5 exact_match: 52.2% (94/180)
+[21:03:33] INFO:   k=5 fuzzy_match: 53.3% (96/180)
+[21:03:33] INFO:   k=10 exact_match: 70.6% (127/180)
+[21:03:34] INFO:   k=10 fuzzy_match: 71.1% (128/180)
+[21:03:34] INFO: [55/1035] semantic_bge-small-en-v1.5_hierarchical_h4
+[21:03:34] INFO:   Created 482 chunks
+[21:03:34] INFO:   Indexed in 0.28s
+[21:03:34] INFO:   k=5 exact_match: 43.9% (79/180)
+[21:03:35] INFO:   k=5 fuzzy_match: 45.6% (82/180)
+[21:03:35] INFO:   k=10 exact_match: 62.8% (113/180)
+[21:03:35] INFO:   k=10 fuzzy_match: 63.3% (114/180)
+[21:03:35] INFO: [56/1035] semantic_bge-small-en-v1.5_heading_paragraph_h3
+[21:03:35] INFO:   Created 900 chunks
+[21:03:36] INFO:   Indexed in 0.56s
+[21:03:36] INFO:   k=5 exact_match: 43.3% (78/180)
+[21:03:36] INFO:   k=5 fuzzy_match: 45.0% (81/180)
+[21:03:37] INFO:   k=10 exact_match: 55.6% (100/180)
+[21:03:37] INFO:   k=10 fuzzy_match: 56.7% (102/180)
+[21:03:37] INFO: [57/1035] semantic_bge-small-en-v1.5_paragraphs_50_256
+[21:03:37] INFO:   Created 185 chunks
+[21:03:37] INFO:   Indexed in 0.26s
+[21:03:37] INFO:   k=5 exact_match: 72.8% (131/180)
+[21:03:38] INFO:   k=5 fuzzy_match: 72.8% (131/180)
+[21:03:38] INFO:   k=10 exact_match: 81.7% (147/180)
+[21:03:38] INFO:   k=10 fuzzy_match: 82.2% (148/180)
+[21:03:38] INFO: [58/1035] semantic_bge-small-en-v1.5_paragraph_50_256
+[21:03:38] INFO:   Created 343 chunks
+[21:03:39] INFO:   Indexed in 0.23s
+[21:03:39] INFO:   k=5 exact_match: 45.6% (82/180)
+[21:03:39] INFO:   k=5 fuzzy_match: 47.2% (85/180)
+[21:03:39] INFO:   k=10 exact_match: 56.7% (102/180)
+[21:03:40] INFO:   k=10 fuzzy_match: 58.3% (105/180)
+[21:03:40] INFO: [59/1035] semantic_bge-small-en-v1.5_paragraph_50_256_heading
+[21:03:40] INFO:   Created 343 chunks
+[21:03:40] INFO:   Indexed in 0.26s
+[21:03:40] INFO:   k=5 exact_match: 51.7% (93/180)
+[21:03:41] INFO:   k=5 fuzzy_match: 52.8% (95/180)
+[21:03:41] INFO:   k=10 exact_match: 69.4% (125/180)
+[21:03:41] INFO:   k=10 fuzzy_match: 70.0% (126/180)
+[21:03:41] INFO: [60/1035] semantic_bge-small-en-v1.5_fixed_size_512_v1
+[21:03:41] INFO:   Created 52 chunks
+[21:03:42] INFO:   Indexed in 0.26s
+[21:03:42] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:03:42] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:03:42] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:43] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:43] INFO: Loading embedder: thenlper/gte-small
+[21:03:46] INFO: [61/1035] semantic_gte-small_fixed_512_0pct
+[21:03:46] INFO:   Created 52 chunks
+[21:03:46] INFO:   Indexed in 0.27s
+[21:03:47] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:47] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:47] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:47] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:47] INFO: [62/1035] semantic_gte-small_fixed_512_15pct
+[21:03:47] INFO:   Created 52 chunks
+[21:03:48] INFO:   Indexed in 0.26s
+[21:03:48] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:48] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:48] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:49] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:49] INFO: [63/1035] semantic_gte-small_fixed_400_0pct
+[21:03:49] INFO:   Created 52 chunks
+[21:03:49] INFO:   Indexed in 0.26s
+[21:03:49] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:50] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:50] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:50] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:50] INFO: [64/1035] semantic_gte-small_fixed_300_0pct
+[21:03:50] INFO:   Created 52 chunks
+[21:03:50] INFO:   Indexed in 0.26s
+[21:03:51] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:51] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:51] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:52] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:52] INFO: [65/1035] semantic_gte-small_fixed_200_0pct
+[21:03:52] INFO:   Created 70 chunks
+[21:03:52] INFO:   Indexed in 0.27s
+[21:03:52] INFO:   k=5 exact_match: 92.2% (166/180)
+[21:03:52] INFO:   k=5 fuzzy_match: 92.2% (166/180)
+[21:03:53] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:03:53] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:03:53] INFO: [66/1035] semantic_gte-small_recursive_2000_0pct
+[21:03:53] INFO:   Created 52 chunks
+[21:03:53] INFO:   Indexed in 0.26s
+[21:03:54] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:54] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:54] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:54] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:54] INFO: [67/1035] semantic_gte-small_recursive_1600_0pct
+[21:03:54] INFO:   Created 52 chunks
+[21:03:55] INFO:   Indexed in 0.26s
+[21:03:55] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:55] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:56] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:56] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:56] INFO: [68/1035] semantic_gte-small_recursive_1600_15pct
+[21:03:56] INFO:   Created 52 chunks
+[21:03:56] INFO:   Indexed in 0.26s
+[21:03:56] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:03:57] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:03:57] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:03:57] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:03:57] INFO: [69/1035] semantic_gte-small_recursive_1200_0pct
+[21:03:57] INFO:   Created 58 chunks
+[21:03:58] INFO:   Indexed in 0.27s
+[21:03:58] INFO:   k=5 exact_match: 95.6% (172/180)
+[21:03:58] INFO:   k=5 fuzzy_match: 95.6% (172/180)
+[21:03:59] INFO:   k=10 exact_match: 96.7% (174/180)
+[21:03:59] INFO:   k=10 fuzzy_match: 96.7% (174/180)
+[21:03:59] INFO: [70/1035] semantic_gte-small_recursive_800_0pct
+[21:03:59] INFO:   Created 95 chunks
+[21:03:59] INFO:   Indexed in 0.24s
+[21:03:59] INFO:   k=5 exact_match: 88.9% (160/180)
+[21:04:00] INFO:   k=5 fuzzy_match: 88.9% (160/180)
+[21:04:00] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:04:00] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:04:00] INFO: [71/1035] semantic_gte-small_semantic_400
+[21:04:01] INFO:   Created 52 chunks
+[21:04:01] INFO:   Indexed in 0.26s
+[21:04:02] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:04:02] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:04:02] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:04:02] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:04:02] INFO: [72/1035] semantic_gte-small_semantic_200
+[21:04:03] INFO:   Created 71 chunks
+[21:04:03] INFO:   Indexed in 0.25s
+[21:04:03] INFO:   k=5 exact_match: 90.0% (162/180)
+[21:04:04] INFO:   k=5 fuzzy_match: 90.6% (163/180)
+[21:04:04] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:04] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:04] INFO: [73/1035] semantic_gte-small_heading_based_h3
+[21:04:04] INFO:   Created 430 chunks
+[21:04:05] INFO:   Indexed in 0.27s
+[21:04:05] INFO:   k=5 exact_match: 50.0% (90/180)
+[21:04:05] INFO:   k=5 fuzzy_match: 50.0% (90/180)
+[21:04:06] INFO:   k=10 exact_match: 64.4% (116/180)
+[21:04:06] INFO:   k=10 fuzzy_match: 64.4% (116/180)
+[21:04:06] INFO: [74/1035] semantic_gte-small_heading_limited_512
+[21:04:06] INFO:   Created 340 chunks
+[21:04:06] INFO:   Indexed in 0.24s
+[21:04:06] INFO:   k=5 exact_match: 54.4% (98/180)
+[21:04:07] INFO:   k=5 fuzzy_match: 54.4% (98/180)
+[21:04:07] INFO:   k=10 exact_match: 70.6% (127/180)
+[21:04:07] INFO:   k=10 fuzzy_match: 71.1% (128/180)
+[21:04:07] INFO: [75/1035] semantic_gte-small_hierarchical_h4
+[21:04:07] INFO:   Created 482 chunks
+[21:04:08] INFO:   Indexed in 0.27s
+[21:04:08] INFO:   k=5 exact_match: 42.8% (77/180)
+[21:04:08] INFO:   k=5 fuzzy_match: 42.8% (77/180)
+[21:04:09] INFO:   k=10 exact_match: 61.7% (111/180)
+[21:04:09] INFO:   k=10 fuzzy_match: 61.7% (111/180)
+[21:04:09] INFO: [76/1035] semantic_gte-small_heading_paragraph_h3
+[21:04:09] INFO:   Created 900 chunks
+[21:04:09] INFO:   Indexed in 0.57s
+[21:04:10] INFO:   k=5 exact_match: 44.4% (80/180)
+[21:04:10] INFO:   k=5 fuzzy_match: 45.0% (81/180)
+[21:04:10] INFO:   k=10 exact_match: 56.7% (102/180)
+[21:04:11] INFO:   k=10 fuzzy_match: 57.2% (103/180)
+[21:04:11] INFO: [77/1035] semantic_gte-small_paragraphs_50_256
+[21:04:11] INFO:   Created 185 chunks
+[21:04:11] INFO:   Indexed in 0.26s
+[21:04:11] INFO:   k=5 exact_match: 73.3% (132/180)
+[21:04:11] INFO:   k=5 fuzzy_match: 73.3% (132/180)
+[21:04:12] INFO:   k=10 exact_match: 84.4% (152/180)
+[21:04:12] INFO:   k=10 fuzzy_match: 85.0% (153/180)
+[21:04:12] INFO: [78/1035] semantic_gte-small_paragraph_50_256
+[21:04:12] INFO:   Created 343 chunks
+[21:04:12] INFO:   Indexed in 0.23s
+[21:04:13] INFO:   k=5 exact_match: 41.1% (74/180)
+[21:04:13] INFO:   k=5 fuzzy_match: 41.7% (75/180)
+[21:04:13] INFO:   k=10 exact_match: 52.8% (95/180)
+[21:04:13] INFO:   k=10 fuzzy_match: 53.9% (97/180)
+[21:04:13] INFO: [79/1035] semantic_gte-small_paragraph_50_256_heading
+[21:04:13] INFO:   Created 343 chunks
+[21:04:14] INFO:   Indexed in 0.26s
+[21:04:14] INFO:   k=5 exact_match: 54.4% (98/180)
+[21:04:14] INFO:   k=5 fuzzy_match: 54.4% (98/180)
+[21:04:15] INFO:   k=10 exact_match: 70.0% (126/180)
+[21:04:15] INFO:   k=10 fuzzy_match: 70.6% (127/180)
+[21:04:15] INFO: [80/1035] semantic_gte-small_fixed_size_512_v1
+[21:04:15] INFO:   Created 52 chunks
+[21:04:15] INFO:   Indexed in 0.26s
+[21:04:16] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:04:16] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:04:16] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:04:16] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:04:16] INFO: Loading embedder: BAAI/bge-base-en-v1.5
+[21:04:19] INFO: [81/1035] semantic_bge-base-en-v1.5_fixed_512_0pct
+[21:04:19] INFO:   Created 52 chunks
+[21:04:20] INFO:   Indexed in 0.73s
+[21:04:20] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:20] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:21] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:21] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:21] INFO: [82/1035] semantic_bge-base-en-v1.5_fixed_512_15pct
+[21:04:21] INFO:   Created 52 chunks
+[21:04:22] INFO:   Indexed in 0.74s
+[21:04:22] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:22] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:23] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:23] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:23] INFO: [83/1035] semantic_bge-base-en-v1.5_fixed_400_0pct
+[21:04:23] INFO:   Created 52 chunks
+[21:04:24] INFO:   Indexed in 0.74s
+[21:04:24] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:24] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:25] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:25] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:25] INFO: [84/1035] semantic_bge-base-en-v1.5_fixed_300_0pct
+[21:04:25] INFO:   Created 52 chunks
+[21:04:26] INFO:   Indexed in 0.73s
+[21:04:26] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:27] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:27] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:27] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:27] INFO: [85/1035] semantic_bge-base-en-v1.5_fixed_200_0pct
+[21:04:27] INFO:   Created 70 chunks
+[21:04:28] INFO:   Indexed in 0.79s
+[21:04:28] INFO:   k=5 exact_match: 91.1% (164/180)
+[21:04:29] INFO:   k=5 fuzzy_match: 91.1% (164/180)
+[21:04:29] INFO:   k=10 exact_match: 94.4% (170/180)
+[21:04:29] INFO:   k=10 fuzzy_match: 94.4% (170/180)
+[21:04:29] INFO: [86/1035] semantic_bge-base-en-v1.5_recursive_2000_0pct
+[21:04:29] INFO:   Created 52 chunks
+[21:04:30] INFO:   Indexed in 0.74s
+[21:04:30] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:31] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:31] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:32] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:32] INFO: [87/1035] semantic_bge-base-en-v1.5_recursive_1600_0pct
+[21:04:32] INFO:   Created 52 chunks
+[21:04:32] INFO:   Indexed in 0.75s
+[21:04:33] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:33] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:33] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:34] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:34] INFO: [88/1035] semantic_bge-base-en-v1.5_recursive_1600_15pct
+[21:04:34] INFO:   Created 52 chunks
+[21:04:34] INFO:   Indexed in 0.74s
+[21:04:35] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:35] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:35] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:36] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:36] INFO: [89/1035] semantic_bge-base-en-v1.5_recursive_1200_0pct
+[21:04:36] INFO:   Created 58 chunks
+[21:04:36] INFO:   Indexed in 0.76s
+[21:04:37] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:04:37] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:04:37] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:04:38] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:04:38] INFO: [90/1035] semantic_bge-base-en-v1.5_recursive_800_0pct
+[21:04:38] INFO:   Created 95 chunks
+[21:04:38] INFO:   Indexed in 0.70s
+[21:04:39] INFO:   k=5 exact_match: 89.4% (161/180)
+[21:04:39] INFO:   k=5 fuzzy_match: 89.4% (161/180)
+[21:04:39] INFO:   k=10 exact_match: 93.3% (168/180)
+[21:04:40] INFO:   k=10 fuzzy_match: 93.3% (168/180)
+[21:04:40] INFO: [91/1035] semantic_bge-base-en-v1.5_semantic_400
+[21:04:41] INFO:   Created 52 chunks
+[21:04:42] INFO:   Indexed in 0.75s
+[21:04:42] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:04:42] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:04:43] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:04:43] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:04:43] INFO: [92/1035] semantic_bge-base-en-v1.5_semantic_200
+[21:04:44] INFO:   Created 71 chunks
+[21:04:45] INFO:   Indexed in 0.80s
+[21:04:45] INFO:   k=5 exact_match: 91.7% (165/180)
+[21:04:46] INFO:   k=5 fuzzy_match: 91.7% (165/180)
+[21:04:46] INFO:   k=10 exact_match: 94.4% (170/180)
+[21:04:46] INFO:   k=10 fuzzy_match: 94.4% (170/180)
+[21:04:46] INFO: [93/1035] semantic_bge-base-en-v1.5_heading_based_h3
+[21:04:46] INFO:   Created 430 chunks
+[21:04:47] INFO:   Indexed in 0.79s
+[21:04:47] INFO:   k=5 exact_match: 56.7% (102/180)
+[21:04:48] INFO:   k=5 fuzzy_match: 56.7% (102/180)
+[21:04:48] INFO:   k=10 exact_match: 68.3% (123/180)
+[21:04:48] INFO:   k=10 fuzzy_match: 68.9% (124/180)
+[21:04:48] INFO: [94/1035] semantic_bge-base-en-v1.5_heading_limited_512
+[21:04:48] INFO:   Created 340 chunks
+[21:04:49] INFO:   Indexed in 0.74s
+[21:04:49] INFO:   k=5 exact_match: 60.6% (109/180)
+[21:04:50] INFO:   k=5 fuzzy_match: 60.6% (109/180)
+[21:04:50] INFO:   k=10 exact_match: 72.2% (130/180)
+[21:04:50] INFO:   k=10 fuzzy_match: 73.3% (132/180)
+[21:04:50] INFO: [95/1035] semantic_bge-base-en-v1.5_hierarchical_h4
+[21:04:50] INFO:   Created 482 chunks
+[21:04:51] INFO:   Indexed in 0.82s
+[21:04:52] INFO:   k=5 exact_match: 50.6% (91/180)
+[21:04:52] INFO:   k=5 fuzzy_match: 50.6% (91/180)
+[21:04:52] INFO:   k=10 exact_match: 66.7% (120/180)
+[21:04:53] INFO:   k=10 fuzzy_match: 67.8% (122/180)
+[21:04:53] INFO: [96/1035] semantic_bge-base-en-v1.5_heading_paragraph_h3
+[21:04:53] INFO:   Created 900 chunks
+[21:04:54] INFO:   Indexed in 1.69s
+[21:04:55] INFO:   k=5 exact_match: 49.4% (89/180)
+[21:04:55] INFO:   k=5 fuzzy_match: 50.0% (90/180)
+[21:04:56] INFO:   k=10 exact_match: 60.0% (108/180)
+[21:04:56] INFO:   k=10 fuzzy_match: 60.6% (109/180)
+[21:04:56] INFO: [97/1035] semantic_bge-base-en-v1.5_paragraphs_50_256
+[21:04:56] INFO:   Created 185 chunks
+[21:04:57] INFO:   Indexed in 0.80s
+[21:04:57] INFO:   k=5 exact_match: 76.7% (138/180)
+[21:04:58] INFO:   k=5 fuzzy_match: 76.7% (138/180)
+[21:04:58] INFO:   k=10 exact_match: 83.9% (151/180)
+[21:04:58] INFO:   k=10 fuzzy_match: 83.9% (151/180)
+[21:04:58] INFO: [98/1035] semantic_bge-base-en-v1.5_paragraph_50_256
+[21:04:58] INFO:   Created 343 chunks
+[21:04:59] INFO:   Indexed in 0.69s
+[21:04:59] INFO:   k=5 exact_match: 48.3% (87/180)
+[21:05:00] INFO:   k=5 fuzzy_match: 50.0% (90/180)
+[21:05:00] INFO:   k=10 exact_match: 59.4% (107/180)
+[21:05:01] INFO:   k=10 fuzzy_match: 61.7% (111/180)
+[21:05:01] INFO: [99/1035] semantic_bge-base-en-v1.5_paragraph_50_256_heading
+[21:05:01] INFO:   Created 343 chunks
+[21:05:01] INFO:   Indexed in 0.79s
+[21:05:02] INFO:   k=5 exact_match: 60.6% (109/180)
+[21:05:02] INFO:   k=5 fuzzy_match: 60.6% (109/180)
+[21:05:02] INFO:   k=10 exact_match: 72.2% (130/180)
+[21:05:03] INFO:   k=10 fuzzy_match: 73.3% (132/180)
+[21:05:03] INFO: [100/1035] semantic_bge-base-en-v1.5_fixed_size_512_v1
+[21:05:03] INFO:   Created 52 chunks
+[21:05:03] INFO:   Indexed in 0.75s
+[21:05:04] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:05:04] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:05:04] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:05:05] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+
+================================================================================
+[21:05:05] INFO: RETRIEVAL STRATEGY: hybrid
+================================================================================
+[21:05:05] INFO: Loading embedder: all-MiniLM-L6-v2
+[21:05:11] INFO: [101/1035] hybrid_all-MiniLM-L6-v2_fixed_512_0pct
+[21:05:11] INFO:   Created 52 chunks
+[21:05:11] INFO:   Indexed in 0.09s
+[21:05:11] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:11] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:11] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:11] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:11] INFO: [102/1035] hybrid_all-MiniLM-L6-v2_fixed_512_15pct
+[21:05:11] INFO:   Created 52 chunks
+[21:05:12] INFO:   Indexed in 0.08s
+[21:05:12] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:12] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:12] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:12] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:12] INFO: [103/1035] hybrid_all-MiniLM-L6-v2_fixed_400_0pct
+[21:05:12] INFO:   Created 52 chunks
+[21:05:12] INFO:   Indexed in 0.08s
+[21:05:13] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:13] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:13] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:13] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:13] INFO: [104/1035] hybrid_all-MiniLM-L6-v2_fixed_300_0pct
+[21:05:13] INFO:   Created 52 chunks
+[21:05:13] INFO:   Indexed in 0.08s
+[21:05:13] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:14] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:14] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:14] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:14] INFO: [105/1035] hybrid_all-MiniLM-L6-v2_fixed_200_0pct
+[21:05:14] INFO:   Created 70 chunks
+[21:05:14] INFO:   Indexed in 0.10s
+[21:05:14] INFO:   k=5 exact_match: 90.0% (162/180)
+[21:05:14] INFO:   k=5 fuzzy_match: 90.0% (162/180)
+[21:05:15] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:05:15] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:05:15] INFO: [106/1035] hybrid_all-MiniLM-L6-v2_recursive_2000_0pct
+[21:05:15] INFO:   Created 52 chunks
+[21:05:15] INFO:   Indexed in 0.08s
+[21:05:15] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:15] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:15] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:16] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:16] INFO: [107/1035] hybrid_all-MiniLM-L6-v2_recursive_1600_0pct
+[21:05:16] INFO:   Created 52 chunks
+[21:05:16] INFO:   Indexed in 0.08s
+[21:05:16] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:16] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:16] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:16] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:16] INFO: [108/1035] hybrid_all-MiniLM-L6-v2_recursive_1600_15pct
+[21:05:16] INFO:   Created 52 chunks
+[21:05:16] INFO:   Indexed in 0.08s
+[21:05:17] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:17] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:17] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:17] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:17] INFO: [109/1035] hybrid_all-MiniLM-L6-v2_recursive_1200_0pct
+[21:05:17] INFO:   Created 58 chunks
+[21:05:17] INFO:   Indexed in 0.09s
+[21:05:17] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:05:18] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:05:18] INFO:   k=10 exact_match: 97.2% (175/180)
+[21:05:18] INFO:   k=10 fuzzy_match: 97.2% (175/180)
+[21:05:18] INFO: [110/1035] hybrid_all-MiniLM-L6-v2_recursive_800_0pct
+[21:05:18] INFO:   Created 95 chunks
+[21:05:18] INFO:   Indexed in 0.12s
+[21:05:18] INFO:   k=5 exact_match: 87.2% (157/180)
+[21:05:18] INFO:   k=5 fuzzy_match: 87.2% (157/180)
+[21:05:19] INFO:   k=10 exact_match: 93.9% (169/180)
+[21:05:19] INFO:   k=10 fuzzy_match: 93.9% (169/180)
+[21:05:19] INFO: [111/1035] hybrid_all-MiniLM-L6-v2_semantic_400
+[21:05:19] INFO:   Created 52 chunks
+[21:05:19] INFO:   Indexed in 0.08s
+[21:05:19] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:20] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:20] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:20] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:20] INFO: [112/1035] hybrid_all-MiniLM-L6-v2_semantic_200
+[21:05:20] INFO:   Created 71 chunks
+[21:05:20] INFO:   Indexed in 0.10s
+[21:05:20] INFO:   k=5 exact_match: 87.2% (157/180)
+[21:05:21] INFO:   k=5 fuzzy_match: 87.2% (157/180)
+[21:05:21] INFO:   k=10 exact_match: 93.3% (168/180)
+[21:05:21] INFO:   k=10 fuzzy_match: 93.3% (168/180)
+[21:05:21] INFO: [113/1035] hybrid_all-MiniLM-L6-v2_heading_based_h3
+[21:05:21] INFO:   Created 430 chunks
+[21:05:21] INFO:   Indexed in 0.14s
+[21:05:21] INFO:   k=5 exact_match: 52.8% (95/180)
+[21:05:22] INFO:   k=5 fuzzy_match: 52.8% (95/180)
+[21:05:22] INFO:   k=10 exact_match: 58.3% (105/180)
+[21:05:22] INFO:   k=10 fuzzy_match: 59.4% (107/180)
+[21:05:22] INFO: [114/1035] hybrid_all-MiniLM-L6-v2_heading_limited_512
+[21:05:22] INFO:   Created 340 chunks
+[21:05:22] INFO:   Indexed in 0.13s
+[21:05:22] INFO:   k=5 exact_match: 56.7% (102/180)
+[21:05:22] INFO:   k=5 fuzzy_match: 57.2% (103/180)
+[21:05:23] INFO:   k=10 exact_match: 65.0% (117/180)
+[21:05:23] INFO:   k=10 fuzzy_match: 66.1% (119/180)
+[21:05:23] INFO: [115/1035] hybrid_all-MiniLM-L6-v2_hierarchical_h4
+[21:05:23] INFO:   Created 482 chunks
+[21:05:23] INFO:   Indexed in 0.15s
+[21:05:23] INFO:   k=5 exact_match: 46.7% (84/180)
+[21:05:23] INFO:   k=5 fuzzy_match: 47.2% (85/180)
+[21:05:24] INFO:   k=10 exact_match: 53.3% (96/180)
+[21:05:24] INFO:   k=10 fuzzy_match: 53.3% (96/180)
+[21:05:24] INFO: [116/1035] hybrid_all-MiniLM-L6-v2_heading_paragraph_h3
+[21:05:24] INFO:   Created 900 chunks
+[21:05:24] INFO:   Indexed in 0.31s
+[21:05:24] INFO:   k=5 exact_match: 43.3% (78/180)
+[21:05:25] INFO:   k=5 fuzzy_match: 43.9% (79/180)
+[21:05:25] INFO:   k=10 exact_match: 56.1% (101/180)
+[21:05:25] INFO:   k=10 fuzzy_match: 57.2% (103/180)
+[21:05:25] INFO: [117/1035] hybrid_all-MiniLM-L6-v2_paragraphs_50_256
+[21:05:25] INFO:   Created 185 chunks
+[21:05:25] INFO:   Indexed in 0.14s
+[21:05:25] INFO:   k=5 exact_match: 69.4% (125/180)
+[21:05:26] INFO:   k=5 fuzzy_match: 69.4% (125/180)
+[21:05:26] INFO:   k=10 exact_match: 76.7% (138/180)
+[21:05:26] INFO:   k=10 fuzzy_match: 78.9% (142/180)
+[21:05:26] INFO: [118/1035] hybrid_all-MiniLM-L6-v2_paragraph_50_256
+[21:05:26] INFO:   Created 343 chunks
+[21:05:26] INFO:   Indexed in 0.13s
+[21:05:26] INFO:   k=5 exact_match: 42.2% (76/180)
+[21:05:26] INFO:   k=5 fuzzy_match: 43.9% (79/180)
+[21:05:27] INFO:   k=10 exact_match: 52.8% (95/180)
+[21:05:27] INFO:   k=10 fuzzy_match: 55.6% (100/180)
+[21:05:27] INFO: [119/1035] hybrid_all-MiniLM-L6-v2_paragraph_50_256_heading
+[21:05:27] INFO:   Created 343 chunks
+[21:05:27] INFO:   Indexed in 0.14s
+[21:05:27] INFO:   k=5 exact_match: 56.1% (101/180)
+[21:05:27] INFO:   k=5 fuzzy_match: 56.7% (102/180)
+[21:05:28] INFO:   k=10 exact_match: 63.9% (115/180)
+[21:05:28] INFO:   k=10 fuzzy_match: 65.0% (117/180)
+[21:05:28] INFO: [120/1035] hybrid_all-MiniLM-L6-v2_fixed_size_512_v1
+[21:05:28] INFO:   Created 52 chunks
+[21:05:28] INFO:   Indexed in 0.08s
+[21:05:28] INFO:   k=5 exact_match: 95.0% (171/180)
+[21:05:28] INFO:   k=5 fuzzy_match: 95.0% (171/180)
+[21:05:28] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:29] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:29] INFO: Loading embedder: all-MiniLM-L12-v2
+[21:05:32] INFO: [121/1035] hybrid_all-MiniLM-L12-v2_fixed_512_0pct
+[21:05:32] INFO:   Created 52 chunks
+[21:05:33] INFO:   Indexed in 0.07s
+[21:05:33] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:33] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:33] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:34] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:34] INFO: [122/1035] hybrid_all-MiniLM-L12-v2_fixed_512_15pct
+[21:05:34] INFO:   Created 52 chunks
+[21:05:34] INFO:   Indexed in 0.07s
+[21:05:34] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:34] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:35] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:35] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:35] INFO: [123/1035] hybrid_all-MiniLM-L12-v2_fixed_400_0pct
+[21:05:35] INFO:   Created 52 chunks
+[21:05:35] INFO:   Indexed in 0.07s
+[21:05:35] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:36] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:36] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:36] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:36] INFO: [124/1035] hybrid_all-MiniLM-L12-v2_fixed_300_0pct
+[21:05:36] INFO:   Created 52 chunks
+[21:05:36] INFO:   Indexed in 0.07s
+[21:05:37] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:37] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:37] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:38] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:38] INFO: [125/1035] hybrid_all-MiniLM-L12-v2_fixed_200_0pct
+[21:05:38] INFO:   Created 70 chunks
+[21:05:38] INFO:   Indexed in 0.09s
+[21:05:38] INFO:   k=5 exact_match: 92.8% (167/180)
+[21:05:38] INFO:   k=5 fuzzy_match: 92.8% (167/180)
+[21:05:39] INFO:   k=10 exact_match: 95.0% (171/180)
+[21:05:39] INFO:   k=10 fuzzy_match: 95.0% (171/180)
+[21:05:39] INFO: [126/1035] hybrid_all-MiniLM-L12-v2_recursive_2000_0pct
+[21:05:39] INFO:   Created 52 chunks
+[21:05:39] INFO:   Indexed in 0.07s
+[21:05:39] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:40] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:40] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:40] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:40] INFO: [127/1035] hybrid_all-MiniLM-L12-v2_recursive_1600_0pct
+[21:05:40] INFO:   Created 52 chunks
+[21:05:40] INFO:   Indexed in 0.07s
+[21:05:41] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:41] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:41] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:42] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:42] INFO: [128/1035] hybrid_all-MiniLM-L12-v2_recursive_1600_15pct
+[21:05:42] INFO:   Created 52 chunks
+[21:05:42] INFO:   Indexed in 0.07s
+[21:05:42] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:42] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:42] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:43] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:43] INFO: [129/1035] hybrid_all-MiniLM-L12-v2_recursive_1200_0pct
+[21:05:43] INFO:   Created 58 chunks
+[21:05:43] INFO:   Indexed in 0.08s
+[21:05:43] INFO:   k=5 exact_match: 96.1% (173/180)
+[21:05:43] INFO:   k=5 fuzzy_match: 96.1% (173/180)
+[21:05:44] INFO:   k=10 exact_match: 97.8% (176/180)
+[21:05:44] INFO:   k=10 fuzzy_match: 97.8% (176/180)
+[21:05:44] INFO: [130/1035] hybrid_all-MiniLM-L12-v2_recursive_800_0pct
+[21:05:44] INFO:   Created 95 chunks
+[21:05:44] INFO:   Indexed in 0.13s
+[21:05:45] INFO:   k=5 exact_match: 90.0% (162/180)
+[21:05:45] INFO:   k=5 fuzzy_match: 90.0% (162/180)
+[21:05:45] INFO:   k=10 exact_match: 94.4% (170/180)
+[21:05:46] INFO:   k=10 fuzzy_match: 94.4% (170/180)
+[21:05:46] INFO: [131/1035] hybrid_all-MiniLM-L12-v2_semantic_400
+[21:05:46] INFO:   Created 52 chunks
+[21:05:46] INFO:   Indexed in 0.07s
+[21:05:46] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:05:47] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:05:47] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:05:47] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:05:47] INFO: [132/1035] hybrid_all-MiniLM-L12-v2_semantic_200
+[21:05:48] INFO:   Created 71 chunks
+[21:05:48] INFO:   Indexed in 0.10s
+[21:05:48] INFO:   k=5 exact_match: 85.6% (154/180)
+[21:05:49] INFO:   k=5 fuzzy_match: 85.6% (154/180)
+[21:05:49] INFO:   k=10 exact_match: 92.2% (166/180)
+[21:05:49] INFO:   k=10 fuzzy_match: 92.2% (166/180)
+[21:05:49] INFO: [133/1035] hybrid_all-MiniLM-L12-v2_heading_based_h3
+[21:05:49] INFO:   Created 430 chunks
+[21:05:50] INFO:   Indexed in 0.25s
+[21:05:50] INFO:   k=5 exact_match: 50.6% (91/180)
+[21:05:50] INFO:   k=5 fuzzy_match: 50.6% (91/180)
+[21:05:51] INFO:   k=10 exact_match: 58.3% (105/180)
+[21:05:51] INFO:   k=10 fuzzy_match: 58.3% (105/180)
+[21:05:51] INFO: [134/1035] hybrid_all-MiniLM-L12-v2_heading_limited_512
+[21:05:51] INFO:   Created 340 chunks
+[21:05:51] INFO:   Indexed in 0.22s
+[21:05:51] INFO:   k=5 exact_match: 55.6% (100/180)
+[21:05:52] INFO:   k=5 fuzzy_match: 55.6% (100/180)
+[21:05:52] INFO:   k=10 exact_match: 63.3% (114/180)
+[21:05:52] INFO:   k=10 fuzzy_match: 63.9% (115/180)
+[21:05:52] INFO: [135/1035] hybrid_all-MiniLM-L12-v2_hierarchical_h4
+[21:05:52] INFO:   Created 482 chunks
+[21:05:53] INFO:   Indexed in 0.25s
+[21:05:53] INFO:   k=5 exact_match: 46.7% (84/180)
+[21:05:53] INFO:   k=5 fuzzy_match: 46.7% (84/180)
+[21:05:54] INFO:   k=10 exact_match: 52.8% (95/180)
+[21:05:54] INFO:   k=10 fuzzy_match: 52.8% (95/180)
+[21:05:54] INFO: [136/1035] hybrid_all-MiniLM-L12-v2_heading_paragraph_h3
+[21:05:54] INFO:   Created 900 chunks
+[21:05:55] INFO:   Indexed in 0.55s
+[21:05:55] INFO:   k=5 exact_match: 43.9% (79/180)
+[21:05:55] INFO:   k=5 fuzzy_match: 44.4% (80/180)
+[21:05:56] INFO:   k=10 exact_match: 53.9% (97/180)
+[21:05:56] INFO:   k=10 fuzzy_match: 53.9% (97/180)
+[21:05:56] INFO: [137/1035] hybrid_all-MiniLM-L12-v2_paragraphs_50_256
+[21:05:56] INFO:   Created 185 chunks
+[21:05:56] INFO:   Indexed in 0.23s
+[21:05:57] INFO:   k=5 exact_match: 69.4% (125/180)
+[21:05:57] INFO:   k=5 fuzzy_match: 70.0% (126/180)
+[21:05:57] INFO:   k=10 exact_match: 76.7% (138/180)
+[21:05:58] INFO:   k=10 fuzzy_match: 78.9% (142/180)
+[21:05:58] INFO: [138/1035] hybrid_all-MiniLM-L12-v2_paragraph_50_256
+[21:05:58] INFO:   Created 343 chunks
+[21:05:58] INFO:   Indexed in 0.21s
+[21:05:58] INFO:   k=5 exact_match: 41.7% (75/180)
+[21:05:58] INFO:   k=5 fuzzy_match: 42.8% (77/180)
+[21:05:59] INFO:   k=10 exact_match: 54.4% (98/180)
+[21:05:59] INFO:   k=10 fuzzy_match: 56.7% (102/180)
+[21:05:59] INFO: [139/1035] hybrid_all-MiniLM-L12-v2_paragraph_50_256_heading
+[21:05:59] INFO:   Created 343 chunks
+[21:05:59] INFO:   Indexed in 0.24s
+[21:06:00] INFO:   k=5 exact_match: 52.2% (94/180)
+[21:06:00] INFO:   k=5 fuzzy_match: 52.2% (94/180)
+[21:06:00] INFO:   k=10 exact_match: 61.7% (111/180)
+[21:06:01] INFO:   k=10 fuzzy_match: 62.2% (112/180)
+[21:06:01] INFO: [140/1035] hybrid_all-MiniLM-L12-v2_fixed_size_512_v1
+[21:06:01] INFO:   Created 52 chunks
+[21:06:01] INFO:   Indexed in 0.07s
+[21:06:01] INFO:   k=5 exact_match: 96.7% (174/180)
+[21:06:02] INFO:   k=5 fuzzy_match: 96.7% (174/180)
+[21:06:02] INFO:   k=10 exact_match: 98.3% (177/180)
+[21:06:02] INFO:   k=10 fuzzy_match: 98.3% (177/180)
+[21:06:02] INFO: Loading embedder: BAAI/bge-small-en-v1.5
+[21:06:05] INFO: [141/1035] hybrid_bge-small-en-v1.5_fixed_512_0pct
+[21:06:05] INFO:   Created 52 chunks
+[21:06:05] INFO:   Indexed in 0.27s
+[21:06:05] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:06] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:06] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:06] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:06] INFO: [142/1035] hybrid_bge-small-en-v1.5_fixed_512_15pct
+[21:06:06] INFO:   Created 52 chunks
+[21:06:07] INFO:   Indexed in 0.26s
+[21:06:07] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:07] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:07] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:08] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:08] INFO: [143/1035] hybrid_bge-small-en-v1.5_fixed_400_0pct
+[21:06:08] INFO:   Created 52 chunks
+[21:06:08] INFO:   Indexed in 0.26s
+[21:06:08] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:09] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:09] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:09] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:09] INFO: [144/1035] hybrid_bge-small-en-v1.5_fixed_300_0pct
+[21:06:09] INFO:   Created 52 chunks
+[21:06:10] INFO:   Indexed in 0.26s
+[21:06:10] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:10] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:10] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:11] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:11] INFO: [145/1035] hybrid_bge-small-en-v1.5_fixed_200_0pct
+[21:06:11] INFO:   Created 70 chunks
+[21:06:11] INFO:   Indexed in 0.28s
+[21:06:11] INFO:   k=5 exact_match: 90.6% (163/180)
+[21:06:12] INFO:   k=5 fuzzy_match: 90.6% (163/180)
+[21:06:12] INFO:   k=10 exact_match: 93.3% (168/180)
+[21:06:12] INFO:   k=10 fuzzy_match: 93.3% (168/180)
+[21:06:12] INFO: [146/1035] hybrid_bge-small-en-v1.5_recursive_2000_0pct
+[21:06:12] INFO:   Created 52 chunks
+[21:06:13] INFO:   Indexed in 0.26s
+[21:06:13] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:13] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:14] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:14] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:14] INFO: [147/1035] hybrid_bge-small-en-v1.5_recursive_1600_0pct
+[21:06:14] INFO:   Created 52 chunks
+[21:06:14] INFO:   Indexed in 0.27s
+[21:06:15] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:15] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:15] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:16] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:16] INFO: [148/1035] hybrid_bge-small-en-v1.5_recursive_1600_15pct
+[21:06:16] INFO:   Created 52 chunks
+[21:06:16] INFO:   Indexed in 0.27s
+[21:06:16] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:17] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:17] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:17] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:17] INFO: [149/1035] hybrid_bge-small-en-v1.5_recursive_1200_0pct
+[21:06:17] INFO:   Created 58 chunks
+[21:06:17] INFO:   Indexed in 0.27s
+[21:06:18] INFO:   k=5 exact_match: 93.3% (168/180)
+[21:06:18] INFO:   k=5 fuzzy_match: 93.3% (168/180)
+[21:06:18] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:06:19] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:06:19] INFO: [150/1035] hybrid_bge-small-en-v1.5_recursive_800_0pct
+[21:06:19] INFO:   Created 95 chunks
+[21:06:19] INFO:   Indexed in 0.24s
+[21:06:19] INFO:   k=5 exact_match: 86.1% (155/180)
+[21:06:20] INFO:   k=5 fuzzy_match: 86.1% (155/180)
+[21:06:20] INFO:   k=10 exact_match: 92.2% (166/180)
+[21:06:20] INFO:   k=10 fuzzy_match: 92.2% (166/180)
+[21:06:20] INFO: [151/1035] hybrid_bge-small-en-v1.5_semantic_400
+[21:06:21] INFO:   Created 52 chunks
+[21:06:21] INFO:   Indexed in 0.27s
+[21:06:21] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:22] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:22] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:22] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:22] INFO: [152/1035] hybrid_bge-small-en-v1.5_semantic_200
+[21:06:23] INFO:   Created 71 chunks
+[21:06:23] INFO:   Indexed in 0.28s
+[21:06:23] INFO:   k=5 exact_match: 86.1% (155/180)
+[21:06:24] INFO:   k=5 fuzzy_match: 86.1% (155/180)
+[21:06:24] INFO:   k=10 exact_match: 94.4% (170/180)
+[21:06:24] INFO:   k=10 fuzzy_match: 94.4% (170/180)
+[21:06:24] INFO: [153/1035] hybrid_bge-small-en-v1.5_heading_based_h3
+[21:06:24] INFO:   Created 430 chunks
+[21:06:24] INFO:   Indexed in 0.27s
+[21:06:25] INFO:   k=5 exact_match: 48.9% (88/180)
+[21:06:25] INFO:   k=5 fuzzy_match: 48.9% (88/180)
+[21:06:25] INFO:   k=10 exact_match: 54.4% (98/180)
+[21:06:26] INFO:   k=10 fuzzy_match: 54.4% (98/180)
+[21:06:26] INFO: [154/1035] hybrid_bge-small-en-v1.5_heading_limited_512
+[21:06:26] INFO:   Created 340 chunks
+[21:06:26] INFO:   Indexed in 0.24s
+[21:06:26] INFO:   k=5 exact_match: 51.1% (92/180)
+[21:06:27] INFO:   k=5 fuzzy_match: 51.1% (92/180)
+[21:06:27] INFO:   k=10 exact_match: 60.6% (109/180)
+[21:06:27] INFO:   k=10 fuzzy_match: 61.1% (110/180)
+[21:06:27] INFO: [155/1035] hybrid_bge-small-en-v1.5_hierarchical_h4
+[21:06:27] INFO:   Created 482 chunks
+[21:06:28] INFO:   Indexed in 0.28s
+[21:06:28] INFO:   k=5 exact_match: 43.3% (78/180)
+[21:06:28] INFO:   k=5 fuzzy_match: 43.3% (78/180)
+[21:06:29] INFO:   k=10 exact_match: 52.8% (95/180)
+[21:06:29] INFO:   k=10 fuzzy_match: 52.8% (95/180)
+[21:06:29] INFO: [156/1035] hybrid_bge-small-en-v1.5_heading_paragraph_h3
+[21:06:29] INFO:   Created 900 chunks
+[21:06:30] INFO:   Indexed in 0.57s
+[21:06:30] INFO:   k=5 exact_match: 41.1% (74/180)
+[21:06:30] INFO:   k=5 fuzzy_match: 42.8% (77/180)
+[21:06:31] INFO:   k=10 exact_match: 51.7% (93/180)
+[21:06:31] INFO:   k=10 fuzzy_match: 51.7% (93/180)
+[21:06:31] INFO: [157/1035] hybrid_bge-small-en-v1.5_paragraphs_50_256
+[21:06:31] INFO:   Created 185 chunks
+[21:06:31] INFO:   Indexed in 0.27s
+[21:06:32] INFO:   k=5 exact_match: 64.4% (116/180)
+[21:06:32] INFO:   k=5 fuzzy_match: 64.4% (116/180)
+[21:06:32] INFO:   k=10 exact_match: 74.4% (134/180)
+[21:06:33] INFO:   k=10 fuzzy_match: 75.6% (136/180)
+[21:06:33] INFO: [158/1035] hybrid_bge-small-en-v1.5_paragraph_50_256
+[21:06:33] INFO:   Created 343 chunks
+[21:06:33] INFO:   Indexed in 0.24s
+[21:06:33] INFO:   k=5 exact_match: 41.1% (74/180)
+[21:06:33] INFO:   k=5 fuzzy_match: 42.8% (77/180)
+[21:06:34] INFO:   k=10 exact_match: 51.7% (93/180)
+[21:06:34] INFO:   k=10 fuzzy_match: 53.9% (97/180)
+[21:06:34] INFO: [159/1035] hybrid_bge-small-en-v1.5_paragraph_50_256_heading
+[21:06:34] INFO:   Created 343 chunks
+[21:06:34] INFO:   Indexed in 0.26s
+[21:06:35] INFO:   k=5 exact_match: 52.2% (94/180)
+[21:06:35] INFO:   k=5 fuzzy_match: 52.2% (94/180)
+[21:06:35] INFO:   k=10 exact_match: 59.4% (107/180)
+[21:06:36] INFO:   k=10 fuzzy_match: 60.0% (108/180)
+[21:06:36] INFO: [160/1035] hybrid_bge-small-en-v1.5_fixed_size_512_v1
+[21:06:36] INFO:   Created 52 chunks
+[21:06:36] INFO:   Indexed in 0.27s
+[21:06:36] INFO:   k=5 exact_match: 94.4% (170/180)
+[21:06:37] INFO:   k=5 fuzzy_match: 94.4% (170/180)
+[21:06:37] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:37] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:37] INFO: Loading embedder: thenlper/gte-small
+[21:06:40] INFO: [161/1035] hybrid_gte-small_fixed_512_0pct
+[21:06:40] INFO:   Created 52 chunks
+[21:06:41] INFO:   Indexed in 0.27s
+[21:06:41] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:41] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:42] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:42] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:42] INFO: [162/1035] hybrid_gte-small_fixed_512_15pct
+[21:06:42] INFO:   Created 52 chunks
+[21:06:42] INFO:   Indexed in 0.27s
+[21:06:42] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:43] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:43] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:43] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:43] INFO: [163/1035] hybrid_gte-small_fixed_400_0pct
+[21:06:43] INFO:   Created 52 chunks
+[21:06:44] INFO:   Indexed in 0.27s
+[21:06:44] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:44] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:45] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:45] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:45] INFO: [164/1035] hybrid_gte-small_fixed_300_0pct
+[21:06:45] INFO:   Created 52 chunks
+[21:06:45] INFO:   Indexed in 0.27s
+[21:06:46] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:46] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:46] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:47] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:47] INFO: [165/1035] hybrid_gte-small_fixed_200_0pct
+[21:06:47] INFO:   Created 70 chunks
+[21:06:47] INFO:   Indexed in 0.28s
+[21:06:47] INFO:   k=5 exact_match: 90.0% (162/180)
+[21:06:48] INFO:   k=5 fuzzy_match: 90.0% (162/180)
+[21:06:48] INFO:   k=10 exact_match: 92.2% (166/180)
+[21:06:48] INFO:   k=10 fuzzy_match: 92.2% (166/180)
+[21:06:48] INFO: [166/1035] hybrid_gte-small_recursive_2000_0pct
+[21:06:48] INFO:   Created 52 chunks
+[21:06:48] INFO:   Indexed in 0.27s
+[21:06:49] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:49] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:49] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:50] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:50] INFO: [167/1035] hybrid_gte-small_recursive_1600_0pct
+[21:06:50] INFO:   Created 52 chunks
+[21:06:50] INFO:   Indexed in 0.27s
+[21:06:50] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:51] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:51] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:51] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:51] INFO: [168/1035] hybrid_gte-small_recursive_1600_15pct
+[21:06:51] INFO:   Created 52 chunks
+[21:06:52] INFO:   Indexed in 0.27s
+[21:06:52] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:52] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:53] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:53] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:53] INFO: [169/1035] hybrid_gte-small_recursive_1200_0pct
+[21:06:53] INFO:   Created 58 chunks
+[21:06:53] INFO:   Indexed in 0.27s
+[21:06:53] INFO:   k=5 exact_match: 93.3% (168/180)
+[21:06:54] INFO:   k=5 fuzzy_match: 93.3% (168/180)
+[21:06:54] INFO:   k=10 exact_match: 95.6% (172/180)
+[21:06:54] INFO:   k=10 fuzzy_match: 95.6% (172/180)
+[21:06:54] INFO: [170/1035] hybrid_gte-small_recursive_800_0pct
+[21:06:54] INFO:   Created 95 chunks
+[21:06:55] INFO:   Indexed in 0.24s
+[21:06:55] INFO:   k=5 exact_match: 87.2% (157/180)
+[21:06:55] INFO:   k=5 fuzzy_match: 87.2% (157/180)
+[21:06:56] INFO:   k=10 exact_match: 91.1% (164/180)
+[21:06:56] INFO:   k=10 fuzzy_match: 91.1% (164/180)
+[21:06:56] INFO: [171/1035] hybrid_gte-small_semantic_400
+[21:06:56] INFO:   Created 52 chunks
+[21:06:57] INFO:   Indexed in 0.27s
+[21:06:57] INFO:   k=5 exact_match: 93.9% (169/180)
+[21:06:57] INFO:   k=5 fuzzy_match: 93.9% (169/180)
+[21:06:58] INFO:   k=10 exact_match: 96.1% (173/180)
+[21:06:58] INFO:   k=10 fuzzy_match: 96.1% (173/180)
+[21:06:58] INFO: [172/1035] hybrid_gte-small_semantic_200
+[21:06:58] INFO:   Created 71 chunks
+[21:06:59] INFO:   Indexed in 0.25s
+[21:06:59] INFO:   k=5 exact_match: 87.8% (158/180)
+[21:06:59] INFO:   k=5 fuzzy_match: 87.8% (158/180)
+[21:07:00] INFO:   k=10 exact_match: 93.3% (168/180)
+[21:07:00] INFO:   k=10 fuzzy_match: 93.3% (168/180)
+[21:07:00] INFO: [173/1035] hybrid_gte-small_heading_based_h3
+[21:07:00] INFO:   Created 430 chunks
+[21:07:00] INFO:   Indexed in 0.27s
+[21:07:01] INFO:   k=5 exact_match: 46.1% (83/180)
+[21:07:01] INFO:   k=5 fuzzy_match: 46.1% (83/180)
+[21:07:01] INFO:   k=10 exact_match: 56.7% (102/180)
+[21:07:02] INFO:   k=10 fuzzy_match: 56.7% (102/180)
+[21:07:02] INFO: [174/1035] hybrid_gte-small_heading_limited_512
+[21:07:02] INFO:   Created 340 chunks
+[21:07:02] INFO:   Indexed in 0.25s
+[21:07:02] INFO:   k=5 exact_match: 50.6% (91/180)
+[21:07:02] INFO:   k=5 fuzzy_match: 50.6% (91/180)
+[21:07:03] INFO:   k=10 exact_match: 59.4% (107/180)
+[21:07:03] INFO:   k=10 fuzzy_match: 60.0% (108/180)
+[21:07:03] INFO: [175/1035] hybrid_gte-small_hierarchical_h4
+[21:07:03] INFO:   Created 482 chunks
+[21:07:03] INFO:   Indexed in 0.28s
+[21:07:04] INFO:   k=5 exact_match: 39.4% (71/180)
+[21:07:04] INFO:   k=5 fuzzy_match: 39.4% (71/180)
+[21:07:04] INFO:   k=10 exact_match: 51.1% (92/180)
+[21:07:05] INFO:   k=10 fuzzy_match: 51.1% (92/180)
+[21:07:05] INFO: [176/1035] hybrid_gte-small_heading_paragraph_h3
+[21:07:05] INFO:   Created 900 chunks
+[21:07:05] INFO:   Indexed in 0.58s
+[21:07:06] INFO:   k=5 exact_match: 41.1% (74/180)
+[21:07:06] INFO:   k=5 fuzzy_match: 42.2% (76/180)
+[21:07:07] INFO:   k=10 exact_match: 50.0% (90/180)
+[21:07:07] INFO:   k=10 fuzzy_match: 50.0% (90/180)
+[21:07:07] INFO: [177/1035] hybrid_gte-small_paragraphs_50_256
+[21:07:07] INFO:   Created 185 chunks
+[21:07:07] INFO:   Indexed in 0.26s
+[21:07:08] INFO:   k=5 exact_match: 63.9% (115/180)
+[21:07:08] INFO:   k=5 fuzzy_match: 63.9% (115/180)
+[21:07:08] INFO:   k=10 exact_match: 75.0% (135/180)

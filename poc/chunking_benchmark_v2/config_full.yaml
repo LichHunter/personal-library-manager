@@ -1,0 +1,326 @@
+# Full Benchmark Configuration for RTX 3070 8GB
+# ==============================================
+# This config includes all strategies and models that fit on 8GB VRAM.
+#
+# Model VRAM estimates:
+# - all-MiniLM-L6-v2: ~90MB
+# - all-MiniLM-L12-v2: ~130MB
+# - BAAI/bge-small-en-v1.5: ~130MB
+# - BAAI/bge-base-en-v1.5: ~440MB
+# - thenlper/gte-small: ~130MB
+# - ms-marco-MiniLM-L-6-v2: ~90MB
+# - ms-marco-MiniLM-L-12-v2: ~130MB
+# - llama3.2:3b (Ollama): ~2GB
+#
+# Total combinations: 20 chunking x 5 embedders x 6 retrieval = 600 base
+# With rerankers/LLMs: ~800+ evaluations
+# Estimated runtime: 3-5 hours
+
+# =============================================================================
+# CORPUS CONFIGURATION
+# =============================================================================
+corpus:
+  documents_dir: "corpus/expanded_documents"
+  metadata_file: "corpus/corpus_metadata_expanded.json"
+  ground_truth_file: "corpus/ground_truth_expanded.json"
+
+# =============================================================================
+# EVALUATION SETTINGS
+# =============================================================================
+evaluation:
+  k_values: [5, 10]
+  metrics:
+    - exact_match
+    - fuzzy_match
+
+# =============================================================================
+# EMBEDDING MODELS (all fit on 8GB)
+# =============================================================================
+embedding_models:
+  # Small/fast models (~90-130MB VRAM)
+  - name: "all-MiniLM-L6-v2"
+    enabled: true
+    use_prefix: false
+    
+  - name: "all-MiniLM-L12-v2"
+    enabled: true
+    use_prefix: false
+    
+  - name: "BAAI/bge-small-en-v1.5"
+    enabled: true
+    use_prefix: true
+    
+  - name: "thenlper/gte-small"
+    enabled: true
+    use_prefix: false
+    
+  # Medium models (~440MB VRAM)
+  - name: "BAAI/bge-base-en-v1.5"
+    enabled: true
+    use_prefix: true
+
+# =============================================================================
+# RERANKER MODELS
+# =============================================================================
+reranker_models:
+  - name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    enabled: true
+    
+  - name: "cross-encoder/ms-marco-MiniLM-L-12-v2"
+    enabled: true
+
+# =============================================================================
+# LLM MODELS (via Ollama - runs separately from embedding models)
+# All models below fit on 8GB VRAM (3b-7b parameter range)
+# =============================================================================
+llm_models:
+  # Small models (~2GB VRAM)
+  - name: "llama3.2:3b"
+    enabled: true
+    
+  - name: "qwen2.5:3b"
+    enabled: true
+    
+  - name: "phi3:3.8b"
+    enabled: true
+    
+  # Medium models (~4-5GB VRAM)  
+  - name: "llama3.2:7b"
+    enabled: true
+    
+  - name: "qwen2.5:7b"
+    enabled: true
+    
+  - name: "mistral:7b"
+    enabled: true
+    
+  - name: "gemma2:9b"
+    enabled: false  # 9B may be tight on 8GB, disable by default
+
+# =============================================================================
+# CHUNKING STRATEGIES (all 20)
+# =============================================================================
+chunking_strategies:
+  # --- Fixed Size (5 configs) ---
+  - name: "fixed_512_0pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 512
+      overlap: 0
+      
+  - name: "fixed_512_15pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 512
+      overlap: 77
+      
+  - name: "fixed_400_0pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 400
+      overlap: 0
+      
+  - name: "fixed_300_0pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 300
+      overlap: 0
+      
+  - name: "fixed_200_0pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 200
+      overlap: 0
+
+  # --- Recursive Splitter (5 configs) ---
+  - name: "recursive_2000_0pct"
+    type: "recursive_splitter"
+    enabled: true
+    params:
+      chunk_size: 2000
+      chunk_overlap: 0
+      
+  - name: "recursive_1600_0pct"
+    type: "recursive_splitter"
+    enabled: true
+    params:
+      chunk_size: 1600
+      chunk_overlap: 0
+      
+  - name: "recursive_1600_15pct"
+    type: "recursive_splitter"
+    enabled: true
+    params:
+      chunk_size: 1600
+      chunk_overlap: 240
+      
+  - name: "recursive_1200_0pct"
+    type: "recursive_splitter"
+    enabled: true
+    params:
+      chunk_size: 1200
+      chunk_overlap: 0
+      
+  - name: "recursive_800_0pct"
+    type: "recursive_splitter"
+    enabled: true
+    params:
+      chunk_size: 800
+      chunk_overlap: 0
+
+  # --- Semantic Clustering (2 configs) ---
+  - name: "semantic_400"
+    type: "cluster_semantic"
+    enabled: true
+    params:
+      target_chunk_size: 400
+      
+  - name: "semantic_200"
+    type: "cluster_semantic"
+    enabled: true
+    params:
+      target_chunk_size: 200
+
+  # --- Heading-based (4 configs) ---
+  - name: "heading_based_h3"
+    type: "heading_based"
+    enabled: true
+    params:
+      max_heading_level: 3
+      
+  - name: "heading_limited_512"
+    type: "heading_limited"
+    enabled: true
+    params:
+      max_heading_level: 3
+      max_tokens: 512
+      
+  - name: "hierarchical_h4"
+    type: "hierarchical"
+    enabled: true
+    params:
+      max_heading_level: 4
+      
+  - name: "heading_paragraph_h3"
+    type: "heading_paragraph"
+    enabled: true
+    params:
+      max_heading_level: 3
+
+  # --- Paragraph-based (4 configs) ---
+  - name: "paragraphs_50_256"
+    type: "paragraphs"
+    enabled: true
+    params:
+      min_tokens: 50
+      max_tokens: 256
+      
+  - name: "paragraph_50_256"
+    type: "paragraph_heading"
+    enabled: true
+    params:
+      min_tokens: 50
+      max_tokens: 256
+      prepend_heading: false
+      
+  - name: "paragraph_50_256_heading"
+    type: "paragraph_heading"
+    enabled: true
+    params:
+      min_tokens: 50
+      max_tokens: 256
+      prepend_heading: true
+
+  - name: "fixed_size_512_v1"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 512
+      overlap: 0
+
+# =============================================================================
+# RETRIEVAL STRATEGIES (all 6)
+# =============================================================================
+retrieval_strategies:
+  # --- Flat Strategies ---
+  - name: "semantic"
+    type: "semantic"
+    enabled: true
+    params: {}
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: false
+    
+  - name: "hybrid"
+    type: "hybrid"
+    enabled: true
+    params:
+      rrf_k: 60
+      candidate_multiplier: 10
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: false
+    
+  - name: "hybrid_rerank"
+    type: "hybrid_rerank"
+    enabled: true
+    params:
+      rrf_k: 60
+      candidate_multiplier: 4
+    requires_embedder: true
+    requires_reranker: true
+    requires_llm: false
+    requires_structured_docs: false
+
+  # --- Hierarchical Strategies ---
+  - name: "lod"
+    type: "lod"
+    enabled: true
+    params:
+      chunk_size: 512
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: true
+    
+  - name: "lod_llm"
+    type: "lod_llm"
+    enabled: true
+    params:
+      chunk_size: 512
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+    
+  - name: "raptor"
+    type: "raptor"
+    enabled: true
+    params:
+      max_layers: 2
+      cluster_threshold: 0.1
+      search_mode: "collapsed"
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: false
+
+# =============================================================================
+# OUTPUT SETTINGS
+# =============================================================================
+output:
+  results_dir: "results"
+  save_detailed_results: true
+  save_summary: true
+  format: "json"

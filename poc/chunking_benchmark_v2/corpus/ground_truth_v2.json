@@ -1,0 +1,1537 @@
+{
+  "description": "Ground truth queries with character-level spans for token-level evaluation",
+  "version": "2.0",
+  "queries": [
+    {
+      "id": "simple_01",
+      "category": "simple_lookup",
+      "query": "What database does CloudFlow use?",
+      "expected_docs": [
+        "arch_database",
+        "adr_001"
+      ],
+      "expected_sections": [
+        "Database Design > Overview",
+        "ADR-001 > Decision"
+      ],
+      "ground_truth_answer": "CloudFlow uses PostgreSQL 15 as the primary database.",
+      "key_facts": [
+        "PostgreSQL",
+        "version 15",
+        "AWS RDS"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_database",
+          "start": 109,
+          "end": 226,
+          "text": "[merged span covering 117 chars]",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 1850,
+          "end": 1977,
+          "text": "[merged span covering 127 chars]",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 2002,
+          "end": 2057,
+          "text": "- Production: `postgresql://app:${DB_PASSWORD}@prod-db.",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 15,
+          "end": 45,
+          "text": "PostgreSQL as Primary Database",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 318,
+          "end": 342,
+          "text": "### Option 1: PostgreSQL",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 826,
+          "end": 849,
+          "text": "- PostgreSQL compatible",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 986,
+          "end": 1037,
+          "text": "We will use **PostgreSQL** as our primary database.",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 1123,
+          "end": 1160,
+          "text": "Team already has PostgreSQL expertise",
+          "matched_fact": "PostgreSQL"
+        }
+      ]
+    },
+    {
+      "id": "simple_02",
+      "category": "simple_lookup",
+      "query": "What is the rate limit for API requests?",
+      "expected_docs": [
+        "arch_overview",
+        "arch_api"
+      ],
+      "expected_sections": [
+        "API Gateway",
+        "Rate Limiting"
+      ],
+      "ground_truth_answer": "The rate limit is 100 requests/minute per user for standard tier, 1000 for Pro, and custom limits for Enterprise.",
+      "key_facts": [
+        "100 requests/minute",
+        "Standard tier",
+        "1000 for Pro"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 490,
+          "end": 536,
+          "text": "- Rate limiting (100 requests/minute per user)",
+          "matched_fact": "100 requests/minute"
+        },
+        {
+          "doc_id": "arch_api",
+          "start": 1662,
+          "end": 1693,
+          "text": "- Standard: 100 requests/minute",
+          "matched_fact": "100 requests/minute"
+        }
+      ]
+    },
+    {
+      "id": "simple_03",
+      "category": "simple_lookup",
+      "query": "How long do JWT tokens last before expiring?",
+      "expected_docs": [
+        "arch_overview",
+        "adr_003"
+      ],
+      "expected_sections": [
+        "Authentication",
+        "Token Lifetimes"
+      ],
+      "ground_truth_answer": "Access tokens expire after 1 hour. Refresh tokens last 7 days.",
+      "key_facts": [
+        "1 hour",
+        "refresh tokens",
+        "7 days"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 1876,
+          "end": 1945,
+          "text": "[merged span covering 69 chars]",
+          "matched_fact": "1 hour"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 416,
+          "end": 441,
+          "text": "- Supports refresh tokens",
+          "matched_fact": "refresh tokens"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 1105,
+          "end": 1151,
+          "text": "[merged span covering 46 chars]",
+          "matched_fact": "1 hour"
+        }
+      ]
+    },
+    {
+      "id": "simple_04",
+      "category": "simple_lookup",
+      "query": "What connection pooler does CloudFlow use?",
+      "expected_docs": [
+        "arch_overview",
+        "arch_database"
+      ],
+      "expected_sections": [
+        "Database Architecture",
+        "Connection Pooling"
+      ],
+      "ground_truth_answer": "CloudFlow uses PgBouncer for connection pooling with a pool size of 100 connections per service.",
+      "key_facts": [
+        "PgBouncer",
+        "100 connections",
+        "transaction mode"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 1716,
+          "end": 1807,
+          "text": "[merged span covering 91 chars]",
+          "matched_fact": "PgBouncer"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 1662,
+          "end": 1702,
+          "text": "We use PgBouncer for connection pooling:",
+          "matched_fact": "PgBouncer"
+        }
+      ]
+    },
+    {
+      "id": "simple_05",
+      "category": "simple_lookup",
+      "query": "What encryption is used for data at rest?",
+      "expected_docs": [
+        "arch_overview",
+        "security_policy"
+      ],
+      "expected_sections": [
+        "Data Encryption",
+        "Encryption"
+      ],
+      "ground_truth_answer": "All data is encrypted at rest using AES-256. Data in transit uses TLS 1.3.",
+      "key_facts": [
+        "AES-256",
+        "at rest",
+        "TLS 1.3"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 2167,
+          "end": 2241,
+          "text": "[merged span covering 74 chars]",
+          "matched_fact": "AES-256"
+        },
+        {
+          "doc_id": "security_policy",
+          "start": 122,
+          "end": 162,
+          "text": "[merged span covering 40 chars]",
+          "matched_fact": "AES-256"
+        }
+      ]
+    },
+    {
+      "id": "section_01",
+      "category": "section_retrieval",
+      "query": "Explain the workflow engine execution model",
+      "expected_docs": [
+        "arch_overview"
+      ],
+      "expected_sections": [
+        "Workflow Engine > Execution Model"
+      ],
+      "ground_truth_answer": "Workflows are executed using an event-driven model. Each step produces events that trigger subsequent steps. The engine supports sequential execution, parallel execution, conditional branching, and error handling with retries.",
+      "key_facts": [
+        "event-driven",
+        "sequential",
+        "parallel",
+        "conditional branching",
+        "retries"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 804,
+          "end": 855,
+          "text": "Workflows are executed using an event-driven model.",
+          "matched_fact": "event-driven"
+        },
+        {
+          "doc_id": "arch_overview",
+          "start": 949,
+          "end": 1045,
+          "text": "[merged span covering 96 chars]",
+          "matched_fact": "sequential"
+        }
+      ]
+    },
+    {
+      "id": "section_02",
+      "category": "section_retrieval",
+      "query": "How do I deploy CloudFlow to production?",
+      "expected_docs": [
+        "howto_deploy"
+      ],
+      "expected_sections": [
+        "Deployment Process"
+      ],
+      "ground_truth_answer": "Deploy by: 1) Building container images with make build-all, 2) Running database migrations with Flyway, 3) Deploying with Helm using helm upgrade --install, 4) Verifying with kubectl get pods and health checks.",
+      "key_facts": [
+        "make build-all",
+        "Flyway",
+        "helm upgrade --install",
+        "kubectl get pods"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_deploy",
+          "start": 449,
+          "end": 484,
+          "text": "# Build all services\nmake build-all",
+          "matched_fact": "make build-all"
+        },
+        {
+          "doc_id": "howto_deploy",
+          "start": 814,
+          "end": 885,
+          "text": "[merged span covering 71 chars]",
+          "matched_fact": "Flyway"
+        },
+        {
+          "doc_id": "howto_deploy",
+          "start": 987,
+          "end": 1041,
+          "text": "# Deploy to staging\nhelm upgrade --install cloudflow .",
+          "matched_fact": "helm upgrade --install"
+        },
+        {
+          "doc_id": "howto_deploy",
+          "start": 1118,
+          "end": 1175,
+          "text": "# Deploy to production\nhelm upgrade --install cloudflow .",
+          "matched_fact": "helm upgrade --install"
+        },
+        {
+          "doc_id": "howto_deploy",
+          "start": 1296,
+          "end": 1345,
+          "text": "# Check pod status\nkubectl get pods -n production",
+          "matched_fact": "kubectl get pods"
+        }
+      ]
+    },
+    {
+      "id": "section_03",
+      "category": "section_retrieval",
+      "query": "What are the RBAC roles in CloudFlow?",
+      "expected_docs": [
+        "arch_overview",
+        "security_policy"
+      ],
+      "expected_sections": [
+        "Authorization",
+        "Access Control"
+      ],
+      "ground_truth_answer": "CloudFlow has four RBAC roles: Owner (full access + billing), Admin (user management + all workflows), Editor (create/edit workflows), and Viewer (read-only access).",
+      "key_facts": [
+        "Owner",
+        "Admin",
+        "Editor",
+        "Viewer",
+        "RBAC"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 1966,
+          "end": 2039,
+          "text": "Role-based access control (RBAC) is implemented at the API Gateway level.",
+          "matched_fact": "RBAC"
+        },
+        {
+          "doc_id": "arch_overview",
+          "start": 2055,
+          "end": 2144,
+          "text": "[merged span covering 89 chars]",
+          "matched_fact": "Admin"
+        },
+        {
+          "doc_id": "security_policy",
+          "start": 357,
+          "end": 403,
+          "text": "- MFA: TOTP-based, required for admin accounts",
+          "matched_fact": "Admin"
+        },
+        {
+          "doc_id": "security_policy",
+          "start": 468,
+          "end": 635,
+          "text": "[merged span covering 167 chars]",
+          "matched_fact": "RBAC"
+        }
+      ]
+    },
+    {
+      "id": "section_04",
+      "category": "section_retrieval",
+      "query": "How do I create a workflow with a webhook trigger?",
+      "expected_docs": [
+        "howto_workflows"
+      ],
+      "expected_sections": [
+        "Trigger Types > Webhook Trigger"
+      ],
+      "ground_truth_answer": "Create a webhook trigger by specifying type: webhook in the trigger section, with a path like /process-order and optionally a method like POST.",
+      "key_facts": [
+        "type: webhook",
+        "path",
+        "method: POST"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_workflows",
+          "start": 337,
+          "end": 371,
+          "text": "[merged span covering 34 chars]",
+          "matched_fact": "type: webhook"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 920,
+          "end": 971,
+          "text": "[merged span covering 51 chars]",
+          "matched_fact": "type: webhook"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 1322,
+          "end": 1334,
+          "text": "method: POST",
+          "matched_fact": "method: POST"
+        }
+      ]
+    },
+    {
+      "id": "section_05",
+      "category": "section_retrieval",
+      "query": "What is the incident severity classification?",
+      "expected_docs": [
+        "runbook_incidents"
+      ],
+      "expected_sections": [
+        "Severity Levels"
+      ],
+      "ground_truth_answer": "P1 (Critical): service down, data loss, security breach - immediate response, 1hr resolution. P2 (High): major feature unavailable, >10% users affected - 15min response, 4hr resolution. P3 (Medium): minor issues with workaround - 1hr response, 24hr resolution.",
+      "key_facts": [
+        "P1",
+        "P2",
+        "P3",
+        "Critical",
+        "High",
+        "Medium"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "runbook_incidents",
+          "start": 96,
+          "end": 113,
+          "text": "[merged span covering 17 chars]",
+          "matched_fact": "P1"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 234,
+          "end": 247,
+          "text": "[merged span covering 13 chars]",
+          "matched_fact": "P2"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 396,
+          "end": 411,
+          "text": "[merged span covering 15 chars]",
+          "matched_fact": "P3"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 1557,
+          "end": 1578,
+          "text": "### High Memory Usage",
+          "matched_fact": "High"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 2499,
+          "end": 2613,
+          "text": "[merged span covering 114 chars]",
+          "matched_fact": "P1"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 2786,
+          "end": 2816,
+          "text": "[merged span covering 30 chars]",
+          "matched_fact": "P1"
+        }
+      ]
+    },
+    {
+      "id": "cross_01",
+      "category": "cross_document",
+      "query": "How is authentication implemented across the system?",
+      "expected_docs": [
+        "arch_overview",
+        "adr_003",
+        "arch_api",
+        "security_policy"
+      ],
+      "expected_sections": [
+        "Authentication",
+        "API Authentication Strategy",
+        "Security"
+      ],
+      "ground_truth_answer": "CloudFlow uses OAuth 2.0 with JWT tokens. Tokens contain user_id, email, role, and expire after 1 hour. API keys are also supported for machine-to-machine auth. Passwords are hashed with bcrypt (cost factor 12), and MFA is required for admin accounts.",
+      "key_facts": [
+        "OAuth 2.0",
+        "JWT",
+        "API keys",
+        "bcrypt",
+        "MFA"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 467,
+          "end": 489,
+          "text": "- JWT token validation",
+          "matched_fact": "JWT"
+        },
+        {
+          "doc_id": "arch_overview",
+          "start": 1842,
+          "end": 1875,
+          "text": "[merged span covering 33 chars]",
+          "matched_fact": "OAuth 2.0"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 182,
+          "end": 225,
+          "text": "- Support for API keys (machine-to-machine)",
+          "matched_fact": "API keys"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 304,
+          "end": 336,
+          "text": "[merged span covering 32 chars]",
+          "matched_fact": "OAuth 2.0"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 675,
+          "end": 702,
+          "text": "### Option 3: API Keys only",
+          "matched_fact": "API keys"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 829,
+          "end": 883,
+          "text": "[merged span covering 54 chars]",
+          "matched_fact": "OAuth 2.0"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 1153,
+          "end": 1224,
+          "text": "[merged span covering 71 chars]",
+          "matched_fact": "API keys"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 1488,
+          "end": 1536,
+          "text": "- API keys require separate management interface",
+          "matched_fact": "API keys"
+        },
+        {
+          "doc_id": "security_policy",
+          "start": 317,
+          "end": 403,
+          "text": "[merged span covering 86 chars]",
+          "matched_fact": "bcrypt"
+        }
+      ]
+    },
+    {
+      "id": "cross_02",
+      "category": "cross_document",
+      "query": "What monitoring and observability tools does CloudFlow use?",
+      "expected_docs": [
+        "arch_overview",
+        "howto_deploy",
+        "runbook_incidents"
+      ],
+      "expected_sections": [
+        "Infrastructure",
+        "Monitoring",
+        "Diagnosis"
+      ],
+      "ground_truth_answer": "CloudFlow uses Prometheus + Grafana for monitoring, with metrics exposed at /metrics. Logs are sent to CloudWatch, errors to Sentry. Kubernetes monitoring uses kubectl commands for diagnosis.",
+      "key_facts": [
+        "Prometheus",
+        "Grafana",
+        "CloudWatch",
+        "Sentry",
+        "/metrics"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 1573,
+          "end": 1610,
+          "text": "[merged span covering 37 chars]",
+          "matched_fact": "Prometheus"
+        },
+        {
+          "doc_id": "howto_deploy",
+          "start": 2069,
+          "end": 2169,
+          "text": "[merged span covering 100 chars]",
+          "matched_fact": "Prometheus"
+        }
+      ]
+    },
+    {
+      "id": "cross_03",
+      "category": "cross_document",
+      "query": "What are the database tables and their relationships?",
+      "expected_docs": [
+        "arch_database"
+      ],
+      "expected_sections": [
+        "Schema Design > Core Tables"
+      ],
+      "ground_truth_answer": "Core tables: users (id, email, password_hash, name, role), workflows (id, user_id FK, name, description, definition JSONB, status), executions (id, workflow_id FK, status, started_at, completed_at, result JSONB, error).",
+      "key_facts": [
+        "users",
+        "workflows",
+        "executions",
+        "user_id FK",
+        "workflow_id FK",
+        "JSONB"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_database",
+          "start": 263,
+          "end": 273,
+          "text": "#### users",
+          "matched_fact": "users"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 316,
+          "end": 336,
+          "text": "CREATE TABLE users (",
+          "matched_fact": "users"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 618,
+          "end": 632,
+          "text": "#### workflows",
+          "matched_fact": "workflows"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 671,
+          "end": 695,
+          "text": "CREATE TABLE workflows (",
+          "matched_fact": "workflows"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 751,
+          "end": 785,
+          "text": "user_id UUID REFERENCES users(id),",
+          "matched_fact": "users"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 844,
+          "end": 870,
+          "text": "definition JSONB NOT NULL,",
+          "matched_fact": "JSONB"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 998,
+          "end": 1076,
+          "text": "[merged span covering 78 chars]",
+          "matched_fact": "executions"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 1132,
+          "end": 1174,
+          "text": "workflow_id UUID REFERENCES workflows(id),",
+          "matched_fact": "workflows"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 1280,
+          "end": 1293,
+          "text": "result JSONB,",
+          "matched_fact": "JSONB"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 1367,
+          "end": 1606,
+          "text": "[merged span covering 239 chars]",
+          "matched_fact": "workflows"
+        }
+      ]
+    },
+    {
+      "id": "cross_04",
+      "category": "cross_document",
+      "query": "What are all the API endpoints for workflows?",
+      "expected_docs": [
+        "arch_api",
+        "api_reference"
+      ],
+      "expected_sections": [
+        "Endpoints > Workflows",
+        "REST API Design"
+      ],
+      "ground_truth_answer": "Workflow endpoints: GET /workflows (list), POST /workflows (create), GET /workflows/{id} (get), PUT /workflows/{id} (update), DELETE /workflows/{id} (delete), POST /workflows/{id}/execute (execute).",
+      "key_facts": [
+        "GET /workflows",
+        "POST /workflows",
+        "PUT /workflows/{id}",
+        "DELETE /workflows/{id}",
+        "POST /workflows/{id}/execute"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_api",
+          "start": 237,
+          "end": 506,
+          "text": "[merged span covering 269 chars]",
+          "matched_fact": "GET /workflows"
+        }
+      ]
+    },
+    {
+      "id": "comparison_01",
+      "category": "comparison",
+      "query": "What database options were considered and why was PostgreSQL chosen?",
+      "expected_docs": [
+        "adr_001"
+      ],
+      "expected_sections": [
+        "Options Considered",
+        "Decision",
+        "Rationale"
+      ],
+      "ground_truth_answer": "Three options were considered: PostgreSQL (chosen for JSONB support, team expertise, mature ecosystem), MongoDB (rejected due to weaker consistency, team training needed), CockroachDB (rejected due to higher complexity and cost). PostgreSQL was chosen because the team has expertise, it has proven reliability, and JSONB covers flexible workflow definitions.",
+      "key_facts": [
+        "PostgreSQL",
+        "MongoDB",
+        "CockroachDB",
+        "JSONB",
+        "team expertise",
+        "consistency"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "adr_001",
+          "start": 15,
+          "end": 45,
+          "text": "PostgreSQL as Primary Database",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 318,
+          "end": 395,
+          "text": "[merged span covering 77 chars]",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 596,
+          "end": 617,
+          "text": "### Option 2: MongoDB",
+          "matched_fact": "MongoDB"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 711,
+          "end": 742,
+          "text": "- Weaker consistency guarantees",
+          "matched_fact": "consistency"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 793,
+          "end": 849,
+          "text": "[merged span covering 56 chars]",
+          "matched_fact": "CockroachDB"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 874,
+          "end": 894,
+          "text": "- Strong consistency",
+          "matched_fact": "consistency"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 986,
+          "end": 1037,
+          "text": "We will use **PostgreSQL** as our primary database.",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 1056,
+          "end": 1160,
+          "text": "[merged span covering 104 chars]",
+          "matched_fact": "JSONB"
+        }
+      ]
+    },
+    {
+      "id": "comparison_02",
+      "category": "comparison",
+      "query": "Compare the different trigger types available for workflows",
+      "expected_docs": [
+        "howto_workflows"
+      ],
+      "expected_sections": [
+        "Trigger Types"
+      ],
+      "ground_truth_answer": "Four trigger types: Manual (execute via API/CLI), Webhook (HTTP endpoint that starts workflow), Schedule (cron-based, e.g., '0 9 * * *' for daily at 9 AM), Event (react to system events like S3 object.created).",
+      "key_facts": [
+        "manual",
+        "webhook",
+        "schedule",
+        "event",
+        "cron"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_workflows",
+          "start": 337,
+          "end": 350,
+          "text": "type: webhook",
+          "matched_fact": "webhook"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 761,
+          "end": 779,
+          "text": "### Manual Trigger",
+          "matched_fact": "manual"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 825,
+          "end": 862,
+          "text": "[merged span covering 37 chars]",
+          "matched_fact": "manual"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 920,
+          "end": 933,
+          "text": "type: webhook",
+          "matched_fact": "webhook"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 977,
+          "end": 1021,
+          "text": "[merged span covering 44 chars]",
+          "matched_fact": "schedule"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 1042,
+          "end": 1141,
+          "text": "[merged span covering 99 chars]",
+          "matched_fact": "schedule"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 1162,
+          "end": 1173,
+          "text": "type: event",
+          "matched_fact": "event"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 1189,
+          "end": 1203,
+          "text": "event: object.",
+          "matched_fact": "event"
+        }
+      ]
+    },
+    {
+      "id": "comparison_03",
+      "category": "comparison",
+      "query": "What are the pros and cons of Kubernetes vs ECS?",
+      "expected_docs": [
+        "adr_002"
+      ],
+      "expected_sections": [
+        "Options Considered"
+      ],
+      "ground_truth_answer": "Kubernetes pros: industry standard, rich ecosystem, auto-scaling, strong community. Cons: complex to operate, learning curve. ECS pros: simpler, native AWS integration, lower operational overhead. Cons: AWS lock-in, less flexible, smaller ecosystem.",
+      "key_facts": [
+        "Kubernetes",
+        "ECS",
+        "industry standard",
+        "AWS lock-in",
+        "ecosystem"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "adr_002",
+          "start": 18,
+          "end": 56,
+          "text": "Kubernetes for Container Orchestration",
+          "matched_fact": "Kubernetes"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 300,
+          "end": 374,
+          "text": "[merged span covering 74 chars]",
+          "matched_fact": "Kubernetes"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 500,
+          "end": 554,
+          "text": "[merged span covering 54 chars]",
+          "matched_fact": "ECS"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 616,
+          "end": 629,
+          "text": "- AWS lock-in",
+          "matched_fact": "AWS lock-in"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 646,
+          "end": 665,
+          "text": "- Smaller ecosystem",
+          "matched_fact": "ecosystem"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 826,
+          "end": 887,
+          "text": "We will use **Kubernetes (EKS)** for container orchestration.",
+          "matched_fact": "Kubernetes"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 906,
+          "end": 1017,
+          "text": "[merged span covering 111 chars]",
+          "matched_fact": "industry standard"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 1186,
+          "end": 1225,
+          "text": "- Need to invest in Kubernetes training",
+          "matched_fact": "Kubernetes"
+        }
+      ]
+    },
+    {
+      "id": "exhaustive_01",
+      "category": "exhaustive",
+      "query": "List all environment variables mentioned in the documentation",
+      "expected_docs": [
+        "howto_deploy",
+        "howto_quickstart"
+      ],
+      "expected_sections": [
+        "Environment Variables"
+      ],
+      "ground_truth_answer": "Environment variables: DATABASE_URL (PostgreSQL connection string), REDIS_URL (Redis connection string), JWT_SECRET (secret for JWT signing), AWS_REGION (AWS region), CLOUDFLOW_API_KEY (API authentication).",
+      "key_facts": [
+        "DATABASE_URL",
+        "REDIS_URL",
+        "JWT_SECRET",
+        "AWS_REGION",
+        "CLOUDFLOW_API_KEY"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_deploy",
+          "start": 1794,
+          "end": 2026,
+          "text": "[merged span covering 232 chars]",
+          "matched_fact": "DATABASE_URL"
+        },
+        {
+          "doc_id": "howto_quickstart",
+          "start": 482,
+          "end": 519,
+          "text": "export CLOUDFLOW_API_KEY=your-api-key",
+          "matched_fact": "CLOUDFLOW_API_KEY"
+        }
+      ]
+    },
+    {
+      "id": "exhaustive_02",
+      "category": "exhaustive",
+      "query": "What are all the error HTTP status codes the API can return?",
+      "expected_docs": [
+        "arch_api"
+      ],
+      "expected_sections": [
+        "Error Handling"
+      ],
+      "ground_truth_answer": "Error status codes: 400 (Bad Request), 401 (Unauthorized), 403 (Forbidden), 404 (Not Found), 429 (Too Many Requests), 500 (Internal Server Error).",
+      "key_facts": [
+        "400",
+        "401",
+        "403",
+        "404",
+        "429",
+        "500"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_api",
+          "start": 1040,
+          "end": 1166,
+          "text": "[merged span covering 126 chars]",
+          "matched_fact": "400"
+        }
+      ]
+    },
+    {
+      "id": "exhaustive_03",
+      "category": "exhaustive",
+      "query": "List all the data stores used in CloudFlow",
+      "expected_docs": [
+        "arch_overview",
+        "arch_database"
+      ],
+      "expected_sections": [
+        "Data Layer"
+      ],
+      "ground_truth_answer": "CloudFlow uses: PostgreSQL (transactional data, workflow state), Redis (caching, session storage), S3 (file storage), Elasticsearch (search and analytics).",
+      "key_facts": [
+        "PostgreSQL",
+        "Redis",
+        "S3",
+        "Elasticsearch"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "arch_overview",
+          "start": 1070,
+          "end": 1112,
+          "text": "Workflow state is persisted in PostgreSQL.",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_overview",
+          "start": 1276,
+          "end": 1414,
+          "text": "[merged span covering 138 chars]",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_overview",
+          "start": 1639,
+          "end": 1714,
+          "text": "PostgreSQL runs in a primary-replica configuration with automated failover.",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 109,
+          "end": 154,
+          "text": "We use PostgreSQL 15 as our primary database.",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 1850,
+          "end": 1977,
+          "text": "[merged span covering 127 chars]",
+          "matched_fact": "PostgreSQL"
+        },
+        {
+          "doc_id": "arch_database",
+          "start": 2002,
+          "end": 2057,
+          "text": "- Production: `postgresql://app:${DB_PASSWORD}@prod-db.",
+          "matched_fact": "PostgreSQL"
+        }
+      ]
+    },
+    {
+      "id": "decision_01",
+      "category": "decision_rationale",
+      "query": "Why did CloudFlow choose Kubernetes over other options?",
+      "expected_docs": [
+        "adr_002"
+      ],
+      "expected_sections": [
+        "Rationale",
+        "Decision"
+      ],
+      "ground_truth_answer": "Kubernetes was chosen because: 1) Industry standard - easy to hire engineers, 2) Rich ecosystem (Helm, Istio, Prometheus), 3) Cloud-agnostic - can migrate to GKE/AKS, 4) Powerful auto-scaling, 5) Strong secret management with external-secrets operator.",
+      "key_facts": [
+        "industry standard",
+        "ecosystem",
+        "cloud-agnostic",
+        "auto-scaling",
+        "secret management"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "adr_002",
+          "start": 157,
+          "end": 185,
+          "text": "- Auto-scaling based on load",
+          "matched_fact": "auto-scaling"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 228,
+          "end": 247,
+          "text": "- Secret management",
+          "matched_fact": "secret management"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 338,
+          "end": 400,
+          "text": "[merged span covering 62 chars]",
+          "matched_fact": "industry standard"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 646,
+          "end": 665,
+          "text": "- Smaller ecosystem",
+          "matched_fact": "ecosystem"
+        },
+        {
+          "doc_id": "adr_002",
+          "start": 906,
+          "end": 1167,
+          "text": "[merged span covering 261 chars]",
+          "matched_fact": "industry standard"
+        }
+      ]
+    },
+    {
+      "id": "decision_02",
+      "category": "decision_rationale",
+      "query": "Why was JWT with OAuth 2.0 chosen for authentication?",
+      "expected_docs": [
+        "adr_003"
+      ],
+      "expected_sections": [
+        "Decision",
+        "Rationale"
+      ],
+      "ground_truth_answer": "JWT with OAuth 2.0 was chosen because it's an industry standard, enables stateless verification, works with SSO providers, and supports refresh tokens. The alternatives (session-based, API keys only) were rejected due to scalability concerns and lack of SSO support.",
+      "key_facts": [
+        "industry standard",
+        "stateless verification",
+        "SSO",
+        "refresh tokens"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "adr_003",
+          "start": 344,
+          "end": 441,
+          "text": "[merged span covering 97 chars]",
+          "matched_fact": "industry standard"
+        },
+        {
+          "doc_id": "adr_003",
+          "start": 798,
+          "end": 814,
+          "text": "- No SSO support",
+          "matched_fact": "SSO"
+        }
+      ]
+    },
+    {
+      "id": "decision_03",
+      "category": "decision_rationale",
+      "query": "What are the consequences of choosing PostgreSQL?",
+      "expected_docs": [
+        "adr_001"
+      ],
+      "expected_sections": [
+        "Consequences"
+      ],
+      "ground_truth_answer": "Consequences include: need for application-level sharding if outgrowing single-node, must set up PgBouncer for connection pooling, need to invest in monitoring and query optimization, and database migrations require careful planning.",
+      "key_facts": [
+        "application-level sharding",
+        "PgBouncer",
+        "monitoring",
+        "query optimization",
+        "migrations"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "adr_001",
+          "start": 1220,
+          "end": 1276,
+          "text": "[merged span covering 56 chars]",
+          "matched_fact": "monitoring"
+        },
+        {
+          "doc_id": "adr_001",
+          "start": 1399,
+          "end": 1624,
+          "text": "[merged span covering 225 chars]",
+          "matched_fact": "application-level sharding"
+        }
+      ]
+    },
+    {
+      "id": "howto_01",
+      "category": "how_to",
+      "query": "How do I install the CloudFlow CLI?",
+      "expected_docs": [
+        "howto_quickstart"
+      ],
+      "expected_sections": [
+        "Step 1: Install the CLI"
+      ],
+      "ground_truth_answer": "Install CLI: macOS: brew install cloudflow-cli, Linux: curl -fsSL https://get.cloudflow.io | bash, Windows: choco install cloudflow-cli.",
+      "key_facts": [
+        "brew install",
+        "curl -fsSL",
+        "choco install"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_quickstart",
+          "start": 208,
+          "end": 275,
+          "text": "[merged span covering 67 chars]",
+          "matched_fact": "brew install"
+        },
+        {
+          "doc_id": "howto_quickstart",
+          "start": 296,
+          "end": 333,
+          "text": "# Windows\nchoco install cloudflow-cli",
+          "matched_fact": "choco install"
+        }
+      ]
+    },
+    {
+      "id": "howto_02",
+      "category": "how_to",
+      "query": "How do I rollback a failed deployment?",
+      "expected_docs": [
+        "howto_deploy"
+      ],
+      "expected_sections": [
+        "Rollback Procedure"
+      ],
+      "ground_truth_answer": "Rollback with: helm rollback cloudflow -n production (to previous version), or helm rollback cloudflow 5 -n production (to specific revision number).",
+      "key_facts": [
+        "helm rollback",
+        "-n production",
+        "revision number"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_deploy",
+          "start": 1315,
+          "end": 1345,
+          "text": "kubectl get pods -n production",
+          "matched_fact": "-n production"
+        },
+        {
+          "doc_id": "howto_deploy",
+          "start": 1518,
+          "end": 1655,
+          "text": "[merged span covering 137 chars]",
+          "matched_fact": "helm rollback"
+        }
+      ]
+    },
+    {
+      "id": "howto_03",
+      "category": "how_to",
+      "query": "How do I handle errors in workflows?",
+      "expected_docs": [
+        "howto_workflows"
+      ],
+      "expected_sections": [
+        "Error Handling"
+      ],
+      "ground_truth_answer": "Handle errors using retry configuration (attempts, delay, backoff: exponential) or on_error handlers that can trigger notification steps like type: notify with channel and message.",
+      "key_facts": [
+        "retry",
+        "attempts",
+        "backoff: exponential",
+        "on_error",
+        "notify"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "howto_workflows",
+          "start": 1697,
+          "end": 1709,
+          "text": "type: notify",
+          "matched_fact": "notify"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 1986,
+          "end": 2009,
+          "text": "### Retry Configuration",
+          "matched_fact": "retry"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 2092,
+          "end": 2114,
+          "text": "[merged span covering 22 chars]",
+          "matched_fact": "retry"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 2133,
+          "end": 2153,
+          "text": "backoff: exponential",
+          "matched_fact": "backoff: exponential"
+        },
+        {
+          "doc_id": "howto_workflows",
+          "start": 2250,
+          "end": 2303,
+          "text": "[merged span covering 53 chars]",
+          "matched_fact": "on_error"
+        }
+      ]
+    },
+    {
+      "id": "howto_04",
+      "category": "how_to",
+      "query": "How do I set up local development?",
+      "expected_docs": [
+        "onboarding"
+      ],
+      "expected_sections": [
+        "Local Development"
+      ],
+      "ground_truth_answer": "Set up local dev: 1) Clone repo: git clone git@github.com:cloudflow/cloudflow.git, 2) Install deps: make setup, 3) Start env: docker-compose up -d && make dev, 4) Run tests: make test. Local services run at API localhost:8080, UI localhost:3000.",
+      "key_facts": [
+        "git clone",
+        "make setup",
+        "docker-compose up",
+        "make dev",
+        "localhost:8080"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "onboarding",
+          "start": 361,
+          "end": 382,
+          "text": "git clone git@github.",
+          "matched_fact": "git clone"
+        },
+        {
+          "doc_id": "onboarding",
+          "start": 473,
+          "end": 483,
+          "text": "make setup",
+          "matched_fact": "make setup"
+        },
+        {
+          "doc_id": "onboarding",
+          "start": 534,
+          "end": 566,
+          "text": "[merged span covering 32 chars]",
+          "matched_fact": "docker-compose up"
+        },
+        {
+          "doc_id": "onboarding",
+          "start": 647,
+          "end": 675,
+          "text": "- API: http://localhost:8080",
+          "matched_fact": "localhost:8080"
+        }
+      ]
+    },
+    {
+      "id": "troubleshoot_01",
+      "category": "troubleshooting",
+      "query": "How do I diagnose API Gateway 502 errors?",
+      "expected_docs": [
+        "runbook_incidents"
+      ],
+      "expected_sections": [
+        "Common Issues > API Gateway 502 Errors"
+      ],
+      "ground_truth_answer": "Diagnose 502 errors: Check Kong logs with kubectl logs -l app=kong, verify pod health with kubectl get pods and describe pod, check endpoints with kubectl get endpoints. Common causes: unhealthy pods, OOMKilled containers.",
+      "key_facts": [
+        "kubectl logs -l app=kong",
+        "kubectl get pods",
+        "kubectl get endpoints",
+        "OOMKilled"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "runbook_incidents",
+          "start": 659,
+          "end": 784,
+          "text": "[merged span covering 125 chars]",
+          "matched_fact": "kubectl logs -l app=kong"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 867,
+          "end": 965,
+          "text": "[merged span covering 98 chars]",
+          "matched_fact": "kubectl get endpoints"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 1590,
+          "end": 1606,
+          "text": "- OOMKilled pods",
+          "matched_fact": "OOMKilled"
+        }
+      ]
+    },
+    {
+      "id": "troubleshoot_02",
+      "category": "troubleshooting",
+      "query": "What to do if database connections are failing?",
+      "expected_docs": [
+        "runbook_incidents"
+      ],
+      "expected_sections": [
+        "Common Issues > Database Connection Errors"
+      ],
+      "ground_truth_answer": "For DB connection errors: Check PgBouncer stats with SHOW POOLS, check connection count with SELECT count(*) FROM pg_stat_activity, verify PgBouncer is running, look for long-running queries, kill stuck queries if needed.",
+      "key_facts": [
+        "SHOW POOLS",
+        "pg_stat_activity",
+        "PgBouncer",
+        "long-running queries"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "runbook_incidents",
+          "start": 1145,
+          "end": 1239,
+          "text": "[merged span covering 94 chars]",
+          "matched_fact": "PgBouncer"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 1266,
+          "end": 1344,
+          "text": "kubectl exec -it postgres-0 -- psql -c \"SELECT count(*) FROM pg_stat_activity\"",
+          "matched_fact": "pg_stat_activity"
+        },
+        {
+          "doc_id": "runbook_incidents",
+          "start": 1403,
+          "end": 1511,
+          "text": "[merged span covering 108 chars]",
+          "matched_fact": "PgBouncer"
+        }
+      ]
+    },
+    {
+      "id": "factual_01",
+      "category": "factual",
+      "query": "What was discussed in the Q1 2024 planning meeting?",
+      "expected_docs": [
+        "meeting_notes_q1"
+      ],
+      "expected_sections": [
+        "Q1 Priorities"
+      ],
+      "ground_truth_answer": "Q1 priorities: P0 (must have): workflow versioning by end of February, improved monitoring by end of January. P1 (should have): new workflow editor by end of March, Python SDK v2 by end of February. Also discussed Q4 accomplishments including GraphQL API launch and 50% user growth.",
+      "key_facts": [
+        "workflow versioning",
+        "monitoring",
+        "workflow editor",
+        "Python SDK v2",
+        "GraphQL API"
+      ],
+      "relevant_spans": [
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 239,
+          "end": 261,
+          "text": "- Launched GraphQL API",
+          "matched_fact": "GraphQL API"
+        },
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 522,
+          "end": 579,
+          "text": "**Workflow versioning** - Customers need to track changes",
+          "matched_fact": "workflow versioning"
+        },
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 633,
+          "end": 681,
+          "text": "**Improved monitoring** - Need better visibility",
+          "matched_fact": "monitoring"
+        },
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 752,
+          "end": 799,
+          "text": "**New workflow editor** - Current one is clunky",
+          "matched_fact": "workflow editor"
+        },
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 850,
+          "end": 896,
+          "text": "**Python SDK v2** - Based on customer feedback",
+          "matched_fact": "Python SDK v2"
+        },
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 1146,
+          "end": 1174,
+          "text": "| Monitoring | 1 | 4 weeks |",
+          "matched_fact": "monitoring"
+        },
+        {
+          "doc_id": "meeting_notes_q1",
+          "start": 1459,
+          "end": 1495,
+          "text": "- [ ] Tom: Evaluate monitoring tools",
+          "matched_fact": "monitoring"
+        }
+      ]
+    }
+  ]
+}
