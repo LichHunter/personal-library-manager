@@ -17,9 +17,10 @@ from .hybrid_rerank import HybridRerankRetrieval
 from .lod import LODRetrieval
 from .lod_llm import LODLLMRetrieval
 from .raptor import RAPTORRetrieval
+from .hyde import HyDERetrieval
+from .multi_query import MultiQueryRetrieval
+from .reverse_hyde import ReverseHyDERetrieval
 
-
-# Registry mapping strategy names to classes
 RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "semantic": SemanticRetrieval,
     "hybrid": HybridRetrieval,
@@ -27,32 +28,44 @@ RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "lod": LODRetrieval,
     "lod_llm": LODLLMRetrieval,
     "raptor": RAPTORRetrieval,
+    "hyde": HyDERetrieval,
+    "multi_query": MultiQueryRetrieval,
+    "reverse_hyde": ReverseHyDERetrieval,
 }
+
+COLBERT_AVAILABLE = False
+try:
+    from .colbert import ColBERTRetrieval as _ColBERTRetrieval
+    from .colbert import ColBERTReranker as _ColBERTReranker
+
+    RETRIEVAL_STRATEGIES["colbert"] = _ColBERTRetrieval
+    RETRIEVAL_STRATEGIES["colbert_rerank"] = _ColBERTReranker
+    COLBERT_AVAILABLE = True
+except ImportError:
+    pass
 
 
 def create_retrieval_strategy(
-    strategy_type: str,
-    name: str | None = None,
-    **kwargs
+    strategy_type: str, name: str | None = None, **kwargs
 ) -> RetrievalStrategy:
     """Create a retrieval strategy by type name.
-    
+
     Args:
-        strategy_type: One of "semantic", "hybrid", "hybrid_rerank", 
+        strategy_type: One of "semantic", "hybrid", "hybrid_rerank",
                       "lod", "lod_llm", "raptor"
         name: Optional custom name for the strategy instance
         **kwargs: Strategy-specific parameters
-        
+
     Returns:
         Configured RetrievalStrategy instance
-        
+
     Raises:
         ValueError: If strategy_type is unknown
     """
     if strategy_type not in RETRIEVAL_STRATEGIES:
         valid = ", ".join(RETRIEVAL_STRATEGIES.keys())
         raise ValueError(f"Unknown strategy type: {strategy_type}. Valid: {valid}")
-    
+
     strategy_class = RETRIEVAL_STRATEGIES[strategy_type]
     instance_name = name or strategy_type
     return strategy_class(name=instance_name, **kwargs)
@@ -64,22 +77,23 @@ def list_retrieval_strategies() -> list[str]:
 
 
 __all__ = [
-    # Base classes
     "RetrievalStrategy",
-    "EmbedderMixin", 
+    "EmbedderMixin",
     "RerankerMixin",
     "Section",
     "StructuredDocument",
     "parse_document_sections",
-    # Strategy classes
     "SemanticRetrieval",
     "HybridRetrieval",
     "HybridRerankRetrieval",
     "LODRetrieval",
     "LODLLMRetrieval",
     "RAPTORRetrieval",
-    # Registry functions
+    "HyDERetrieval",
+    "MultiQueryRetrieval",
+    "ReverseHyDERetrieval",
     "RETRIEVAL_STRATEGIES",
     "create_retrieval_strategy",
     "list_retrieval_strategies",
+    "COLBERT_AVAILABLE",
 ]
