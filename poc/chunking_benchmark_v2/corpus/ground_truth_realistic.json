@@ -1,0 +1,724 @@
+{
+  "queries": [
+    {
+      "id": "realistic_001",
+      "category": "api_reference",
+      "original_query": "What is the API rate limit per minute?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How many requests can I make per minute to the API?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My API calls are getting blocked, what's the limit?"
+        },
+        {
+          "dimension": "casual",
+          "query": "api rate limit"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm building a batch job that calls CloudFlow API repeatedly, what rate limit should I expect?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why is the API rejecting my requests after 100 calls?"
+        }
+      ],
+      "key_facts": [
+        "100 requests per minute per authenticated user",
+        "20 requests per minute for unauthenticated requests"
+      ],
+      "expected_docs": [
+        "api_reference"
+      ],
+      "ground_truth_answer": "CloudFlow enforces a rate limit of 100 requests per minute per authenticated user. Unauthenticated requests are limited to 20 requests per minute. There is also a burst allowance of 150 requests in a 10-second window."
+    },
+    {
+      "id": "realistic_002",
+      "category": "troubleshooting",
+      "original_query": "How do I fix 429 Too Many Requests errors?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What should I do when I get rate limited?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My requests keep failing with 429 status code"
+        },
+        {
+          "dimension": "casual",
+          "query": "429 error fix"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm getting throttled by CloudFlow API, how can I handle this in my application?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why am I being blocked with rate limit errors?"
+        }
+      ],
+      "key_facts": [
+        "429 Too Many Requests",
+        "X-RateLimit-Remaining",
+        "Retry-After",
+        "Monitor X-RateLimit-Remaining header values",
+        "Implement exponential backoff when receiving 429 responses"
+      ],
+      "expected_docs": [
+        "api_reference",
+        "troubleshooting_guide"
+      ],
+      "ground_truth_answer": "When you receive a 429 Too Many Requests error, check the Retry-After header to see how long to wait. Monitor the X-RateLimit-Remaining header to track your remaining quota. Implement exponential backoff when receiving 429 responses, cache responses when appropriate, and consider upgrading to Enterprise tier for higher limits (1000 req/min)."
+    },
+    {
+      "id": "realistic_003",
+      "category": "api_reference",
+      "original_query": "What is the JWT token expiration time?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How long do access tokens last?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My authentication keeps expiring after an hour"
+        },
+        {
+          "dimension": "casual",
+          "query": "token expiry time"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need to implement token refresh logic, when do JWT tokens expire?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why does my token stop working after 3600 seconds?"
+        }
+      ],
+      "key_facts": [
+        "3600 seconds",
+        "max 3600 seconds from iat",
+        "All tokens expire after 3600 seconds"
+      ],
+      "expected_docs": [
+        "api_reference"
+      ],
+      "ground_truth_answer": "JWT tokens in CloudFlow expire after 3600 seconds (1 hour). The exp (expiration) claim must have a maximum of 3600 seconds from the iat (issued at) timestamp. All tokens expire after 3600 seconds, so you need to implement token refresh logic in your application."
+    },
+    {
+      "id": "realistic_004",
+      "category": "architecture",
+      "original_query": "What database technology does CloudFlow use?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which database system powers CloudFlow?"
+        },
+        {
+          "dimension": "problem",
+          "query": "I need to understand the data storage architecture"
+        },
+        {
+          "dimension": "casual",
+          "query": "database stack"
+        },
+        {
+          "dimension": "contextual",
+          "query": "For capacity planning, what databases does CloudFlow rely on?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Is CloudFlow using MySQL or something else?"
+        }
+      ],
+      "key_facts": [
+        "PostgreSQL 15.4",
+        "Redis 7.2",
+        "Apache Kafka 3.6"
+      ],
+      "expected_docs": [
+        "architecture_overview"
+      ],
+      "ground_truth_answer": "CloudFlow uses PostgreSQL 15.4 as the primary database, Redis 7.2 for caching and session storage, and Apache Kafka 3.6 as the message broker for event streaming and inter-service communication."
+    },
+    {
+      "id": "realistic_005",
+      "category": "simple_lookup",
+      "original_query": "What is the Kubernetes namespace for production deployment?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which namespace is used for CloudFlow production?"
+        },
+        {
+          "dimension": "problem",
+          "query": "I can't find the production pods"
+        },
+        {
+          "dimension": "casual",
+          "query": "prod namespace"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need to deploy to production, what namespace should I use?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I see resources in the default namespace?"
+        }
+      ],
+      "key_facts": [
+        "cloudflow-prod"
+      ],
+      "expected_docs": [
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "CloudFlow production deployments use the cloudflow-prod namespace in Kubernetes."
+    },
+    {
+      "id": "realistic_006",
+      "category": "architecture",
+      "original_query": "What are the resource requirements for the API Gateway?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How much CPU and memory does the API Gateway need?"
+        },
+        {
+          "dimension": "problem",
+          "query": "The API Gateway pods keep getting OOMKilled"
+        },
+        {
+          "dimension": "casual",
+          "query": "api gateway resources"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm provisioning infrastructure, what are the compute specs for API Gateway?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why is 1GB RAM not enough for API Gateway?"
+        }
+      ],
+      "key_facts": [
+        "2 vCPU, 4GB RAM per pod"
+      ],
+      "expected_docs": [
+        "architecture_overview"
+      ],
+      "ground_truth_answer": "The API Gateway requires 2 vCPU and 4GB RAM per pod. In production, CloudFlow runs 12 API Gateway pods with auto-scaling configured between 8-20 pods based on CPU utilization."
+    },
+    {
+      "id": "realistic_007",
+      "category": "simple_lookup",
+      "original_query": "What are the health check endpoints?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which URLs should I use for health monitoring?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My load balancer health checks are failing"
+        },
+        {
+          "dimension": "casual",
+          "query": "health endpoints"
+        },
+        {
+          "dimension": "contextual",
+          "query": "Setting up monitoring, what endpoints indicate service health?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why doesn't /status return health information?"
+        }
+      ],
+      "key_facts": [
+        "/health",
+        "/ready"
+      ],
+      "expected_docs": [
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "CloudFlow provides two health check endpoints: /health for liveness checks and /ready for readiness checks. The health endpoint returns basic status, while the ready endpoint checks dependencies like database and redis connectivity."
+    },
+    {
+      "id": "realistic_008",
+      "category": "architecture",
+      "original_query": "What are the HPA scaling parameters?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How does horizontal pod autoscaling work?"
+        },
+        {
+          "dimension": "problem",
+          "query": "Pods aren't scaling up during traffic spikes"
+        },
+        {
+          "dimension": "casual",
+          "query": "autoscaling config"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need to configure autoscaling, what are the min/max replicas and thresholds?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why do we have 3 replicas even with low traffic?"
+        }
+      ],
+      "key_facts": [
+        "minReplicas: 3",
+        "maxReplicas: 10",
+        "targetCPUUtilizationPercentage: 70"
+      ],
+      "expected_docs": [
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "CloudFlow's HPA is configured with minReplicas: 3, maxReplicas: 10, targetCPUUtilizationPercentage: 70, and targetMemoryUtilizationPercentage: 80. The autoscaler will scale up when CPU exceeds 70% or memory exceeds 80%."
+    },
+    {
+      "id": "realistic_009",
+      "category": "architecture",
+      "original_query": "What is the P99 latency target for API operations?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What's the 99th percentile response time target?"
+        },
+        {
+          "dimension": "problem",
+          "query": "Our API latency is 500ms, is that acceptable?"
+        },
+        {
+          "dimension": "casual",
+          "query": "api latency target"
+        },
+        {
+          "dimension": "contextual",
+          "query": "Setting SLOs for our service, what P99 latency does CloudFlow guarantee?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why are we getting alerts at 200ms latency?"
+        }
+      ],
+      "key_facts": [
+        "P99 latency: < 200ms",
+        "average P99 latency of 180ms for API operations"
+      ],
+      "expected_docs": [
+        "architecture_overview"
+      ],
+      "ground_truth_answer": "CloudFlow targets a P99 latency of less than 200ms for API operations. The platform currently achieves an average P99 latency of 180ms for API operations. For workflow execution, the P99 latency target is 4.2 seconds."
+    },
+    {
+      "id": "realistic_010",
+      "category": "architecture",
+      "original_query": "What are the disaster recovery RPO and RTO values?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What's the maximum data loss and recovery time?"
+        },
+        {
+          "dimension": "problem",
+          "query": "How long will it take to recover from a disaster?"
+        },
+        {
+          "dimension": "casual",
+          "query": "RPO RTO"
+        },
+        {
+          "dimension": "contextual",
+          "query": "For our business continuity plan, what are CloudFlow's recovery objectives?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't we guarantee zero data loss?"
+        }
+      ],
+      "key_facts": [
+        "RPO (Recovery Point Objective): 1 hour",
+        "RTO (Recovery Time Objective): 4 hours"
+      ],
+      "expected_docs": [
+        "architecture_overview",
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "CloudFlow's disaster recovery objectives are: RPO (Recovery Point Objective) of 1 hour, meaning maximum acceptable data loss is 1 hour of transactions, and RTO (Recovery Time Objective) of 4 hours, which is the maximum acceptable downtime for full system recovery. Automated runbooks can reduce RTO to less than 2 hours for common scenarios."
+    },
+    {
+      "id": "realistic_011",
+      "category": "how_to",
+      "original_query": "What is the maximum workflow execution timeout?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How long can a workflow run before timing out?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My workflow is being killed after an hour"
+        },
+        {
+          "dimension": "casual",
+          "query": "workflow timeout"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I have a long-running data processing workflow, what's the time limit?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why did my workflow fail after 3600 seconds?"
+        }
+      ],
+      "key_facts": [
+        "3600 seconds",
+        "exceeded maximum execution time of 3600 seconds"
+      ],
+      "expected_docs": [
+        "troubleshooting_guide",
+        "user_guide"
+      ],
+      "ground_truth_answer": "CloudFlow workflows have a maximum execution timeout of 3600 seconds (60 minutes). Workflows exceeding this timeout are automatically terminated. Enterprise plans can request custom timeout limits of up to 7200 seconds (2 hours)."
+    },
+    {
+      "id": "realistic_012",
+      "category": "api_reference",
+      "original_query": "What JWT algorithm is used for token signing?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which signing algorithm does CloudFlow use for JWTs?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My JWT validation is failing with algorithm mismatch"
+        },
+        {
+          "dimension": "casual",
+          "query": "jwt algorithm"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm implementing JWT verification, what algorithm should I expect?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why doesn't HS256 work for token validation?"
+        }
+      ],
+      "key_facts": [
+        "RS256",
+        "RS256 algorithm",
+        "RS256 signing algorithm"
+      ],
+      "expected_docs": [
+        "api_reference"
+      ],
+      "ground_truth_answer": "CloudFlow uses the RS256 (RSA Signature with SHA-256) algorithm for JWT token signing. This is an asymmetric signing algorithm that requires a private key for signing and a public key for validation."
+    },
+    {
+      "id": "realistic_013",
+      "category": "architecture",
+      "original_query": "What is the Redis cache TTL for workflow definitions?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How long are workflow definitions cached?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My workflow updates aren't reflecting immediately"
+        },
+        {
+          "dimension": "casual",
+          "query": "cache ttl workflows"
+        },
+        {
+          "dimension": "contextual",
+          "query": "After updating a workflow, how long until the cache expires?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why are changes taking an hour to appear?"
+        }
+      ],
+      "key_facts": [
+        "TTL: 1 hour",
+        "Workflow Definitions: TTL: 1 hour"
+      ],
+      "expected_docs": [
+        "architecture_overview"
+      ],
+      "ground_truth_answer": "Workflow definitions are cached in Redis with a TTL (Time To Live) of 1 hour. The cache key pattern is workflow:def:{workflow_id} and is invalidated on workflow update or manual flush. The cache achieves a hit rate of 94.2% in production."
+    },
+    {
+      "id": "realistic_014",
+      "category": "architecture",
+      "original_query": "What monitoring tools does CloudFlow use?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which observability platform is integrated?"
+        },
+        {
+          "dimension": "problem",
+          "query": "Where can I view CloudFlow metrics and logs?"
+        },
+        {
+          "dimension": "casual",
+          "query": "monitoring stack"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need to set up dashboards, what monitoring systems are available?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I see metrics in Datadog?"
+        }
+      ],
+      "key_facts": [
+        "Prometheus",
+        "Grafana",
+        "Jaeger for distributed tracing"
+      ],
+      "expected_docs": [
+        "architecture_overview",
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "CloudFlow uses Prometheus for metrics collection, Grafana for dashboards and visualization, and Jaeger for distributed tracing. Additionally, CloudWatch is used for log aggregation and application logs are shipped via Fluent Bit."
+    },
+    {
+      "id": "realistic_015",
+      "category": "troubleshooting",
+      "original_query": "How do I diagnose database connection pool exhaustion?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What should I check when I run out of database connections?"
+        },
+        {
+          "dimension": "problem",
+          "query": "Getting 'could not obtain connection from pool' errors"
+        },
+        {
+          "dimension": "casual",
+          "query": "connection pool full"
+        },
+        {
+          "dimension": "contextual",
+          "query": "My app is failing with connection pool errors, how do I troubleshoot?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I get a database connection even though CPU is low?"
+        }
+      ],
+      "key_facts": [
+        "could not obtain connection from pool within 5000ms",
+        "connection pool exhausted (100/100 connections in use)",
+        "PgBouncer",
+        "max_db_connections = 100"
+      ],
+      "expected_docs": [
+        "troubleshooting_guide",
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "Connection pool exhaustion shows errors like 'could not obtain connection from pool within 5000ms' or 'connection pool exhausted (100/100 connections in use)'. Check pool status with cloudflow db pool status, identify long-running queries, and consider using PgBouncer for connection pooling with max_db_connections set to 100. You can also add read replicas or increase the connection limit."
+    },
+    {
+      "id": "realistic_016",
+      "category": "api_reference",
+      "original_query": "How do I handle API authentication?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What authentication methods are supported?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My API requests are getting 401 errors"
+        },
+        {
+          "dimension": "casual",
+          "query": "auth methods"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm integrating with CloudFlow API, what authentication options do I have?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why isn't basic auth working?"
+        }
+      ],
+      "key_facts": [
+        "OAuth 2.0",
+        "API keys",
+        "JWT tokens"
+      ],
+      "expected_docs": [
+        "api_reference"
+      ],
+      "ground_truth_answer": "CloudFlow supports three authentication methods: API Keys for server-to-server communication (use X-API-Key header), OAuth 2.0 for user-delegated access with Authorization Code flow and PKCE, and JWT Tokens with RS256 signing algorithm for advanced use cases. API keys should be rotated every 90 days."
+    },
+    {
+      "id": "realistic_017",
+      "category": "cross_document",
+      "original_query": "What is PgBouncer and why is it used in CloudFlow?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What's the purpose of the connection pooler?"
+        },
+        {
+          "dimension": "problem",
+          "query": "Should I connect directly to PostgreSQL or through PgBouncer?"
+        },
+        {
+          "dimension": "casual",
+          "query": "pgbouncer purpose"
+        },
+        {
+          "dimension": "contextual",
+          "query": "Optimizing database connections, what role does PgBouncer play?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I connect directly to the database?"
+        }
+      ],
+      "key_facts": [
+        "PgBouncer",
+        "connection pooling",
+        "max_db_connections = 100",
+        "default_pool_size = 25",
+        "pool_mode = transaction"
+      ],
+      "expected_docs": [
+        "deployment_guide",
+        "architecture_overview"
+      ],
+      "ground_truth_answer": "PgBouncer is a database connection pooler used in CloudFlow to efficiently manage PostgreSQL connections. It's configured with pool_mode=transaction, default_pool_size=25, and max_db_connections=100. PgBouncer allows the application to handle many client connections while maintaining a smaller pool of actual database connections, preventing connection exhaustion."
+    },
+    {
+      "id": "realistic_018",
+      "category": "how_to",
+      "original_query": "How do I implement retry logic for failed workflow steps?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What's the retry strategy for transient failures?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My workflow fails on temporary network errors"
+        },
+        {
+          "dimension": "casual",
+          "query": "retry config"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I want workflows to automatically retry on errors, what are the options?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why doesn't my workflow retry after failing?"
+        }
+      ],
+      "key_facts": [
+        "max_attempts: 3",
+        "backoff_type: exponential",
+        "initial_interval: 1000",
+        "max retries: 3"
+      ],
+      "expected_docs": [
+        "troubleshooting_guide",
+        "user_guide"
+      ],
+      "ground_truth_answer": "CloudFlow implements automatic retry with exponential backoff. Default settings are: max_attempts: 3, initial_interval: 1000ms, backoff_type: exponential with multiplier of 2.0, and max_interval: 30000ms. The retry sequence is: Attempt 1 (immediate), Attempt 2 (wait 1s), Attempt 3 (wait 2s), Attempt 4 (wait 4s). You can customize retry behavior per step including which errors trigger retries."
+    },
+    {
+      "id": "realistic_019",
+      "category": "simple_lookup",
+      "original_query": "What Helm chart repository should I use for deployment?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Where is the CloudFlow Helm chart hosted?"
+        },
+        {
+          "dimension": "problem",
+          "query": "helm repo add is failing, what's the correct URL?"
+        },
+        {
+          "dimension": "casual",
+          "query": "helm repo"
+        },
+        {
+          "dimension": "contextual",
+          "query": "Setting up deployment pipeline, which Helm repository has CloudFlow charts?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I find CloudFlow in the official Helm hub?"
+        }
+      ],
+      "key_facts": [
+        "helm repo add cloudflow https://charts.cloudflow.io"
+      ],
+      "expected_docs": [
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "The CloudFlow Helm repository is at https://charts.cloudflow.io. Add it with: helm repo add cloudflow https://charts.cloudflow.io && helm repo update"
+    },
+    {
+      "id": "realistic_020",
+      "category": "architecture",
+      "original_query": "What is the minimum scheduling interval for workflows?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How frequently can I schedule a workflow?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My every-30-seconds schedule is being rejected"
+        },
+        {
+          "dimension": "casual",
+          "query": "min schedule interval"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need near real-time execution, what's the fastest schedule I can set?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I schedule workflows every 30 seconds?"
+        }
+      ],
+      "key_facts": [
+        "minimum scheduling interval is 1 minute",
+        "The minimum scheduling interval is **1 minute**"
+      ],
+      "expected_docs": [
+        "user_guide"
+      ],
+      "ground_truth_answer": "The minimum scheduling interval for CloudFlow workflows is 1 minute. Expressions that evaluate to more frequent executions will be rejected. For near real-time processing, consider using webhook triggers or event-based triggers instead of scheduled triggers."
+    }
+  ]
+}

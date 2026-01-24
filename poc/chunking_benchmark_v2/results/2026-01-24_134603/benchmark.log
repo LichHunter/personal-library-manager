@@ -1,0 +1,84 @@
+================================================================================
+Benchmark Log - 2026-01-24 13:46:03
+================================================================================
+
+[13:46:03] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_realistic_best.yaml
+
+================================================================================
+[13:46:03] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+
+================================================================================
+[13:46:03] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[13:46:03] METRIC | device=cuda
+[13:46:03] METRIC | ollama_available=False
+[13:46:03] INFO  | Device: cuda
+[13:46:03] INFO  | Ollama available: False
+[13:46:03] INFO  | Loading corpus...
+[13:46:03] METRIC | documents=5
+[13:46:03] METRIC | queries=20
+[13:46:03] METRIC | total_facts=53
+[13:46:03] METRIC | has_human_queries=True
+[13:46:03] INFO  | Loaded 5 documents
+[13:46:03] INFO  | Loaded 20 queries
+[13:46:03] INFO  | Total key facts: 53
+[13:46:03] INFO  | Human query variations: True
+[13:46:03] INFO  | Enabled embedders: 1
+[13:46:03] INFO  | Enabled rerankers: 0
+[13:46:03] INFO  | Enabled LLMs: 0
+[13:46:03] INFO  | Enabled chunking strategies: 1
+[13:46:03] INFO  | Enabled retrieval strategies: 1
+[13:46:03] METRIC | total_combinations=1
+[13:46:03] METRIC | total_evaluations=1
+[13:46:03] INFO  | Total strategy combinations: 1
+[13:46:03] INFO  | Total evaluations (with k and metrics): 1
+
+================================================================================
+[13:46:03] INFO  | RETRIEVAL STRATEGY: semantic
+================================================================================
+[13:46:03] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[13:46:06] PROG  | [  1/  1] ████████████████████ 100.0% | semantic_bge-base-en-v1.5_fixed_200_0pct
+[13:46:06] INFO  |   Created 125 chunks
+[13:46:08] INFO  |   Indexed in 2.22s
+[13:46:09] INFO  |   k=5 exact_match: 56.6% (30/53)
+[13:46:09] INFO  |     synonym: 60.4%
+[13:46:09] INFO  |     problem: 52.8%
+[13:46:09] INFO  |     casual: 58.5%
+[13:46:09] INFO  |     contextual: 52.8%
+[13:46:09] INFO  |     negation: 41.5%
+[13:46:09] METRIC | total_benchmark_time=5.385s
+
+================================================================================
+[13:46:09] INFO  | SAVING RESULTS
+================================================================================
+[13:46:09] INFO  | Saved full results to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-24_134603/benchmark_results.json
+[13:46:09] INFO  | Saved summary to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-24_134603/summary.json
+
+================================================================================
+[13:46:09] INFO  | BENCHMARK COMPLETE
+================================================================================
+[13:46:09] INFO  | Total evaluations: 1
+
+Coverage by Query Dimension
+Dimension  | Coverage | Delta 
+-----------+----------+-------
+casual     | 58.5%    | +1.9% 
+contextual | 52.8%    | -3.8% 
+negation   | 41.5%    | -15.1%
+original   | 56.6%    | -     
+problem    | 52.8%    | -3.8% 
+synonym    | 60.4%    | +3.8% 
+
+================================================================================
+[13:46:09] INFO  | RUN SUMMARY
+================================================================================
+[13:46:09] INFO  | Total runtime: 5.39s
+
+------------------------------------------------------------
+[13:46:09] INFO  | Timing Breakdown
+------------------------------------------------------------
+Phase           | Duration
+----------------+---------
+total_benchmark | 5.38s   
+[13:46:09] INFO  | Log saved to: /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-24_134603/benchmark.log

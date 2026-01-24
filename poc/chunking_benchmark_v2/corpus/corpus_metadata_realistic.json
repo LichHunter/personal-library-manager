@@ -1,0 +1,32 @@
+[
+  {
+    "id": "api_reference",
+    "title": "CloudFlow API Reference",
+    "filename": "api_reference.md",
+    "category": "api"
+  },
+  {
+    "id": "architecture_overview",
+    "title": "CloudFlow System Architecture",
+    "filename": "architecture_overview.md",
+    "category": "architecture"
+  },
+  {
+    "id": "deployment_guide",
+    "title": "CloudFlow Deployment and Operations Guide",
+    "filename": "deployment_guide.md",
+    "category": "operations"
+  },
+  {
+    "id": "troubleshooting_guide",
+    "title": "CloudFlow Troubleshooting Guide",
+    "filename": "troubleshooting_guide.md",
+    "category": "troubleshooting"
+  },
+  {
+    "id": "user_guide",
+    "title": "CloudFlow User Guide",
+    "filename": "user_guide.md",
+    "category": "user"
+  }
+]

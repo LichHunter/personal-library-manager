@@ -17,9 +17,8 @@ import argparse
 import json
 import sys
 import time
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 import torch
@@ -49,24 +48,31 @@ from retrieval import (
     StructuredDocument,
     RetrievalStrategy,
 )
+from logger import BenchmarkLogger
 
 
 # =============================================================================
-# LOGGING
+# LOGGING (module-level logger, set in main)
 # =============================================================================
+
+logger: BenchmarkLogger | None = None
 
 
 def log(msg: str, level: str = "INFO"):
-    """Simple timestamped logging."""
-    timestamp = time.strftime("%H:%M:%S")
-    print(f"[{timestamp}] {level}: {msg}", flush=True)
+    if logger:
+        getattr(logger, level.lower(), logger.info)(msg)
+    else:
+        timestamp = time.strftime("%H:%M:%S")
+        print(f"[{timestamp}] {level}: {msg}", flush=True)
 
 
 def log_section(title: str):
-    """Log a section header."""
-    print(f"\n{'=' * 80}", flush=True)
-    log(title)
-    print("=" * 80, flush=True)
+    if logger:
+        logger.section(title)
+    else:
+        print(f"\n{'=' * 80}", flush=True)
+        log(title)
+        print("=" * 80, flush=True)
 
 
 # =============================================================================
@@ -169,24 +175,50 @@ MATCH_FUNCTIONS = {
 }
 
 
-@dataclass
-class EvaluationResult:
-    """Result of evaluating a strategy."""
+DIMENSIONS = ["original", "synonym", "problem", "casual", "contextual", "negation"]
 
-    strategy_name: str
-    chunking_name: str
-    embedder_name: str
-    reranker_name: Optional[str]
-    llm_name: Optional[str]
-    k: int
-    metric: str
-    coverage: float
-    found: int
-    total: int
-    avg_latency_ms: float
-    p95_latency_ms: float
-    num_chunks: int
-    index_time_s: float
+
+def get_query_text(q: dict) -> str:
+    return q.get("query") or q.get("original_query", "")
+
+
+def evaluate_single_query(
+    strategy: RetrievalStrategy,
+    query_text: str,
+    key_facts: list[str],
+    expected_docs: list[str],
+    k: int,
+    match_fn,
+) -> dict:
+    start = time.perf_counter()
+    retrieved = strategy.retrieve(query_text, k=k)
+    latency_ms = (time.perf_counter() - start) * 1000
+
+    combined_text = " ".join(c.content for c in retrieved)
+
+    found_facts = [f for f in key_facts if match_fn(f, combined_text)]
+    missed_facts = [f for f in key_facts if not match_fn(f, combined_text)]
+
+    retrieved_chunks = []
+    for chunk in retrieved:
+        retrieved_chunks.append(
+            {
+                "doc_id": chunk.doc_id,
+                "chunk_id": chunk.id,
+                "content": chunk.content,
+                "score": getattr(chunk, "score", None),
+            }
+        )
+
+    return {
+        "key_facts": key_facts,
+        "found_facts": found_facts,
+        "missed_facts": missed_facts,
+        "coverage": len(found_facts) / len(key_facts) if key_facts else 0,
+        "expected_docs": expected_docs,
+        "retrieved_chunks": retrieved_chunks,
+        "latency_ms": latency_ms,
+    }
 
 
 def evaluate_strategy(
@@ -194,50 +226,54 @@ def evaluate_strategy(
     queries: list[dict],
     k: int,
     metric_name: str,
-    track_failures: bool = False,
 ) -> dict:
-    """Evaluate a retrieval strategy on queries."""
     match_fn = MATCH_FUNCTIONS.get(metric_name, exact_match)
 
-    total_facts = sum(len(q.get("key_facts", [])) for q in queries)
-    found = 0
-    latencies = []
-    failed_facts = []
+    per_query_results = []
 
     for q in queries:
-        start = time.perf_counter()
-        retrieved = strategy.retrieve(q["query"], k=k)
-        latencies.append(time.perf_counter() - start)
+        query_id = q.get("id", "unknown")
+        key_facts = q.get("key_facts", [])
+        expected_docs = q.get("expected_docs", [])
+        original_query = get_query_text(q)
+        human_queries = q.get("human_queries", [])
 
-        text = " ".join(c.content for c in retrieved)
-        retrieved_doc_ids = list(set(c.doc_id for c in retrieved))
+        original_result = evaluate_single_query(
+            strategy, original_query, key_facts, expected_docs, k, match_fn
+        )
+        original_result["query_id"] = query_id
+        original_result["dimension"] = "original"
+        original_result["query"] = original_query
+        per_query_results.append(original_result)
 
-        for fact in q.get("key_facts", []):
-            if match_fn(fact, text):
-                found += 1
-            elif track_failures:
-                failed_facts.append(
-                    {
-                        "query_id": q.get("id", "unknown"),
-                        "query": q["query"],
-                        "fact": fact,
-                        "expected_docs": q.get("expected_docs", []),
-                        "retrieved_docs": retrieved_doc_ids,
-                    }
-                )
+        for hq in human_queries:
+            hq_result = evaluate_single_query(
+                strategy, hq["query"], key_facts, expected_docs, k, match_fn
+            )
+            hq_result["query_id"] = query_id
+            hq_result["dimension"] = hq.get("dimension", "unknown")
+            hq_result["query"] = hq["query"]
+            per_query_results.append(hq_result)
 
-    result = {
-        "coverage": found / total_facts if total_facts else 0,
-        "found": found,
-        "total": total_facts,
-        "avg_latency_ms": np.mean(latencies) * 1000,
-        "p95_latency_ms": np.percentile(latencies, 95) * 1000 if latencies else 0,
+    dimension_stats = {}
+    for dim in DIMENSIONS:
+        dim_results = [r for r in per_query_results if r["dimension"] == dim]
+        if dim_results:
+            total_facts = sum(len(r["key_facts"]) for r in dim_results)
+            found_facts = sum(len(r["found_facts"]) for r in dim_results)
+            latencies = [r["latency_ms"] for r in dim_results]
+            dimension_stats[dim] = {
+                "coverage": found_facts / total_facts if total_facts else 0,
+                "found": found_facts,
+                "total": total_facts,
+                "avg_latency_ms": np.mean(latencies),
+                "p95_latency_ms": np.percentile(latencies, 95) if latencies else 0,
+            }
+
+    return {
+        "aggregate": dimension_stats,
+        "per_query": per_query_results,
     }
-
-    if track_failures:
-        result["failed_facts"] = failed_facts
-
-    return result
 
 
 # =============================================================================
@@ -298,32 +334,36 @@ def run_benchmark(
     config: dict,
     base_dir: Path,
     dry_run: bool = False,
-    skip_from: int = 0,
-    resume_file: str | None = None,
-) -> list[EvaluationResult]:
-    """Run the full benchmark matrix."""
-
+) -> dict:
     log_section("BENCHMARK CONFIGURATION")
 
-    # Setup
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    log(f"Device: {device}")
-
     ollama_available = check_ollama_available()
+
+    if logger:
+        logger.metric("device", device)
+        logger.metric("ollama_available", ollama_available)
+
+    log(f"Device: {device}")
     log(f"Ollama available: {ollama_available}")
 
-    # Load data
     log("Loading corpus...")
     flat_docs, structured_docs = load_corpus(config, base_dir)
-    log(f"Loaded {len(flat_docs)} documents")
-
     queries = load_queries(config, base_dir)
-    log(f"Loaded {len(queries)} queries")
-
     total_facts = sum(len(q.get("key_facts", [])) for q in queries)
-    log(f"Total key facts: {total_facts}")
+    has_human_queries = any(q.get("human_queries") for q in queries)
 
-    # Get enabled items from config
+    if logger:
+        logger.metric("documents", len(flat_docs))
+        logger.metric("queries", len(queries))
+        logger.metric("total_facts", total_facts)
+        logger.metric("has_human_queries", has_human_queries)
+
+    log(f"Loaded {len(flat_docs)} documents")
+    log(f"Loaded {len(queries)} queries")
+    log(f"Total key facts: {total_facts}")
+    log(f"Human query variations: {has_human_queries}")
+
     enabled_embedders = [
         e for e in config["embedding_models"] if e.get("enabled", True)
     ]
@@ -336,16 +376,16 @@ def run_benchmark(
         r for r in config["retrieval_strategies"] if r.get("enabled", True)
     ]
 
-    log(f"Enabled embedders: {len(enabled_embedders)}")
-    log(f"Enabled rerankers: {len(enabled_rerankers)}")
-    log(f"Enabled LLMs: {len(enabled_llms)}")
-    log(f"Enabled chunking strategies: {len(enabled_chunking)}")
-    log(f"Enabled retrieval strategies: {len(enabled_retrieval)}")
+    if logger:
+        logger.info(f"Enabled embedders: {len(enabled_embedders)}")
+        logger.info(f"Enabled rerankers: {len(enabled_rerankers)}")
+        logger.info(f"Enabled LLMs: {len(enabled_llms)}")
+        logger.info(f"Enabled chunking strategies: {len(enabled_chunking)}")
+        logger.info(f"Enabled retrieval strategies: {len(enabled_retrieval)}")
 
     k_values = config["evaluation"]["k_values"]
     metrics = config["evaluation"]["metrics"]
 
-    # Calculate total combinations
     total_combinations = 0
     for retrieval_cfg in enabled_retrieval:
         n_embedders = len(enabled_embedders)
@@ -361,52 +401,23 @@ def run_benchmark(
         total_combinations += n_embedders * n_rerankers * n_llms * n_chunking
 
     total_evaluations = total_combinations * len(k_values) * len(metrics)
+
+    if logger:
+        logger.metric("total_combinations", total_combinations)
+        logger.metric("total_evaluations", total_evaluations)
+
     log(f"Total strategy combinations: {total_combinations}")
     log(f"Total evaluations (with k and metrics): {total_evaluations}")
 
     if dry_run:
         log("DRY RUN - not executing benchmark")
-        return []
+        return {}
 
-    # Initialize model cache
     model_cache = ModelCache(device)
 
-    results: list[EvaluationResult] = []
-    all_failed_facts: list[dict] = []
+    all_results: list[dict] = []
     combination_idx = 0
 
-    # Load previous results if resuming
-    if resume_file:
-        resume_path = Path(resume_file)
-        if resume_path.exists():
-            with open(resume_path) as f:
-                prev_data = json.load(f)
-            log(f"Loaded {len(prev_data)} previous results from {resume_file}")
-            # Convert back to EvaluationResult objects
-            for r in prev_data:
-                results.append(
-                    EvaluationResult(
-                        strategy_name=r["strategy"],
-                        chunking_name=r["chunking"],
-                        embedder_name=r["embedder"],
-                        reranker_name=r.get("reranker"),
-                        llm_name=r.get("llm"),
-                        k=r["k"],
-                        metric=r["metric"],
-                        coverage=r["coverage"],
-                        found=r["found"],
-                        total=r["total"],
-                        avg_latency_ms=r["avg_latency_ms"],
-                        p95_latency_ms=r["p95_latency_ms"],
-                        num_chunks=r["num_chunks"],
-                        index_time_s=r["index_time_s"],
-                    )
-                )
-
-    if skip_from > 0:
-        log(f"Will skip to combination {skip_from}")
-
-    # Main benchmark loop
     for retrieval_cfg in enabled_retrieval:
         retrieval_type = retrieval_cfg["type"]
         retrieval_name = retrieval_cfg["name"]
@@ -416,23 +427,17 @@ def run_benchmark(
 
         log_section(f"RETRIEVAL STRATEGY: {retrieval_name}")
 
-        # Determine which chunking strategies to use
         if requires_structured:
-            # Hierarchical strategies do their own chunking
             chunking_configs = [{"name": "structured", "type": None}]
         else:
             chunking_configs = enabled_chunking
 
-        # Determine rerankers to use
         reranker_configs = enabled_rerankers if requires_reranker else [None]
-
-        # Determine LLMs to use
         llm_configs = enabled_llms if requires_llm else [None]
 
         for embedder_cfg in enabled_embedders:
             embedder_name = embedder_cfg["name"]
             use_prefix = embedder_cfg.get("use_prefix", False)
-
             embedder = model_cache.get_embedder(embedder_name)
 
             for reranker_cfg in reranker_configs:
@@ -444,19 +449,15 @@ def run_benchmark(
                 for llm_cfg in llm_configs:
                     llm_name = llm_cfg["name"] if llm_cfg else None
 
-                    # Skip LLM strategies if Ollama not available
                     if llm_name and not ollama_available:
                         log(
-                            f"Skipping {retrieval_name} with {llm_name} (Ollama not available)"
+                            f"Skipping {retrieval_name} with {llm_name} (Ollama unavailable)"
                         )
                         continue
 
                     for chunking_cfg in chunking_configs:
                         chunking_name = chunking_cfg["name"]
                         combination_idx += 1
-
-                        if skip_from > 0 and combination_idx < skip_from:
-                            continue
 
                         parts = [retrieval_name, embedder_name.split("/")[-1]]
                         if reranker_name:
@@ -465,40 +466,37 @@ def run_benchmark(
                             parts.append(llm_name.replace(":", "_"))
                         if chunking_name != "structured":
                             parts.append(chunking_name)
-
                         full_name = "_".join(parts)
 
-                        log(f"[{combination_idx}/{total_combinations}] {full_name}")
+                        if logger:
+                            logger.progress(
+                                combination_idx, total_combinations, full_name
+                            )
+                        else:
+                            log(f"[{combination_idx}/{total_combinations}] {full_name}")
 
                         try:
-                            # Create chunks
                             if chunking_name == "structured":
                                 chunks = None
                             else:
                                 chunker = create_chunking_strategy(chunking_cfg)
-                                # Some chunkers (like ClusterSemanticStrategy) need embedder
                                 if hasattr(chunker, "set_embedder"):
                                     chunker.set_embedder(embedder)
                                 chunks = chunker.chunk_many(flat_docs)
                                 log(f"  Created {len(chunks)} chunks")
 
-                            # Create retrieval strategy
                             strategy = create_retrieval_strategy(
                                 retrieval_type,
                                 name=full_name,
                                 **retrieval_cfg.get("params", {}),
                             )
-
-                            # Configure strategy
                             strategy.set_embedder(embedder, use_prefix)
 
                             if hasattr(strategy, "set_reranker") and reranker:
                                 strategy.set_reranker(reranker)
-
                             if hasattr(strategy, "set_llm_model") and llm_name:
                                 strategy.set_llm_model(llm_name)
 
-                            # Index
                             index_start = time.perf_counter()
                             strategy.index(
                                 chunks=chunks,
@@ -510,7 +508,6 @@ def run_benchmark(
                             index_time = time.perf_counter() - index_start
                             log(f"  Indexed in {index_time:.2f}s")
 
-                            # Get chunk count
                             stats = strategy.get_index_stats()
                             num_chunks = stats.get(
                                 "num_chunks", len(chunks) if chunks else 0
@@ -519,222 +516,138 @@ def run_benchmark(
                             for k in k_values:
                                 for metric in metrics:
                                     eval_result = evaluate_strategy(
-                                        strategy,
-                                        queries,
-                                        k,
-                                        metric,
-                                        track_failures=True,
+                                        strategy, queries, k, metric
                                     )
 
-                                    results.append(
-                                        EvaluationResult(
-                                            strategy_name=retrieval_name,
-                                            chunking_name=chunking_name,
-                                            embedder_name=embedder_name,
-                                            reranker_name=reranker_name,
-                                            llm_name=llm_name,
-                                            k=k,
-                                            metric=metric,
-                                            coverage=eval_result["coverage"],
-                                            found=eval_result["found"],
-                                            total=eval_result["total"],
-                                            avg_latency_ms=eval_result[
-                                                "avg_latency_ms"
-                                            ],
-                                            p95_latency_ms=eval_result[
-                                                "p95_latency_ms"
-                                            ],
-                                            num_chunks=num_chunks,
-                                            index_time_s=index_time,
-                                        )
+                                    orig_stats = eval_result["aggregate"].get(
+                                        "original", {}
                                     )
-
                                     log(
-                                        f"  k={k} {metric}: {eval_result['coverage']:.1%} ({eval_result['found']}/{eval_result['total']})"
+                                        f"  k={k} {metric}: {orig_stats.get('coverage', 0):.1%} "
+                                        f"({orig_stats.get('found', 0)}/{orig_stats.get('total', 0)})"
                                     )
 
-                                    if eval_result.get("failed_facts"):
-                                        combo_name = f"{retrieval_name}_{embedder_name}_{chunking_name}"
-                                        for ff in eval_result["failed_facts"]:
-                                            ff["combo"] = combo_name
-                                            ff["k"] = k
-                                            all_failed_facts.append(ff)
+                                    if has_human_queries:
+                                        for dim in DIMENSIONS[1:]:
+                                            dim_stats = eval_result["aggregate"].get(
+                                                dim, {}
+                                            )
+                                            if dim_stats:
+                                                log(
+                                                    f"    {dim}: {dim_stats.get('coverage', 0):.1%}"
+                                                )
+
+                                    all_results.append(
+                                        {
+                                            "strategy": retrieval_name,
+                                            "chunking": chunking_name,
+                                            "embedder": embedder_name,
+                                            "reranker": reranker_name,
+                                            "llm": llm_name,
+                                            "k": k,
+                                            "metric": metric,
+                                            "num_chunks": num_chunks,
+                                            "index_time_s": index_time,
+                                            "aggregate": eval_result["aggregate"],
+                                            "per_query": eval_result["per_query"],
+                                        }
+                                    )
 
                         except Exception as e:
                             log(f"  ERROR: {e}", level="ERROR")
+                            import traceback
+
+                            traceback.print_exc()
                             continue
 
         model_cache.clear()
 
-    if all_failed_facts:
-        save_failed_facts(all_failed_facts, base_dir, config)
-
-    return results
-
-
-def save_failed_facts(failed_facts: list[dict], base_dir: Path, config: dict):
-    """Aggregate and save failed facts analysis."""
-    results_dir = base_dir / config["output"]["results_dir"]
-    results_dir.mkdir(exist_ok=True)
-
-    from collections import Counter
-
-    fact_failure_count: Counter[tuple[str, str]] = Counter()
-    for ff in failed_facts:
-        key = (ff["query_id"], ff["fact"])
-        fact_failure_count[key] += 1
-
-    total_combos = len(set(ff["combo"] for ff in failed_facts)) if failed_facts else 1
-
-    always_failed = []
-    sometimes_failed = []
-
-    seen = set()
-    for ff in failed_facts:
-        key = (ff["query_id"], ff["fact"])
-        if key in seen:
-            continue
-        seen.add(key)
-
-        count = fact_failure_count[key]
-        entry = {
-            "query_id": ff["query_id"],
-            "query": ff["query"],
-            "fact": ff["fact"],
-            "expected_docs": ff["expected_docs"],
-            "retrieved_docs": ff.get("retrieved_docs", []),
-            "failure_rate": f"{count}/{total_combos}",
-        }
-
-        if count == total_combos:
-            always_failed.append(entry)
-        else:
-            sometimes_failed.append(entry)
-
-    output = {
-        "summary": {
-            "total_facts_tested": len(seen),
-            "always_failed": len(always_failed),
-            "sometimes_failed": len(sometimes_failed),
-            "total_combinations": total_combos,
+    return {
+        "metadata": {
+            "timestamp": time.strftime("%Y-%m-%d_%H%M%S"),
+            "num_documents": len(flat_docs),
+            "num_queries": len(queries),
+            "total_facts": total_facts,
+            "has_human_queries": has_human_queries,
         },
-        "always_failed": always_failed,
-        "sometimes_failed": sometimes_failed,
+        "evaluations": all_results,
     }
 
-    timestamp = time.strftime("%Y-%m-%d_%H%M%S")
-    output_path = results_dir / f"{timestamp}_failed_facts.json"
-    with open(output_path, "w") as f:
-        json.dump(output, f, indent=2)
 
-    log(f"Saved failed facts analysis to {output_path}")
-    log(f"  Always failed: {len(always_failed)} facts")
-    log(f"  Sometimes failed: {len(sometimes_failed)} facts")
+def save_results(benchmark_results: dict, config: dict, base_dir: Path) -> Path:
+    results_base = base_dir / config["output"]["results_dir"]
+    timestamp = benchmark_results["metadata"]["timestamp"]
+    run_dir = results_base / timestamp
+    run_dir.mkdir(parents=True, exist_ok=True)
 
+    results_path = run_dir / "benchmark_results.json"
+    with open(results_path, "w") as f:
+        json.dump(benchmark_results, f, indent=2)
+    log(f"Saved full results to {results_path}")
 
-def save_results(results: list[EvaluationResult], config: dict, base_dir: Path):
-    """Save benchmark results."""
-    results_dir = base_dir / config["output"]["results_dir"]
-    results_dir.mkdir(exist_ok=True)
+    summary = generate_summary(benchmark_results)
+    summary_path = run_dir / "summary.json"
+    with open(summary_path, "w") as f:
+        json.dump(summary, f, indent=2)
+    log(f"Saved summary to {summary_path}")
 
-    timestamp = time.strftime("%Y-%m-%d_%H%M%S")
-
-    # Convert to dict for JSON
-    results_data = [
-        {
-            "strategy": r.strategy_name,
-            "chunking": r.chunking_name,
-            "embedder": r.embedder_name,
-            "reranker": r.reranker_name,
-            "llm": r.llm_name,
-            "k": r.k,
-            "metric": r.metric,
-            "coverage": r.coverage,
-            "found": r.found,
-            "total": r.total,
-            "avg_latency_ms": r.avg_latency_ms,
-            "p95_latency_ms": r.p95_latency_ms,
-            "num_chunks": r.num_chunks,
-            "index_time_s": r.index_time_s,
-        }
-        for r in results
-    ]
-
-    # Save detailed results
-    if config["output"].get("save_detailed_results", True):
-        detailed_path = results_dir / f"{timestamp}_detailed.json"
-        with open(detailed_path, "w") as f:
-            json.dump(results_data, f, indent=2)
-        log(f"Saved detailed results to {detailed_path}")
-
-    # Save summary
-    if config["output"].get("save_summary", True):
-        summary = generate_summary(results)
-        summary_path = results_dir / f"{timestamp}_summary.json"
-        with open(summary_path, "w") as f:
-            json.dump(summary, f, indent=2)
-        log(f"Saved summary to {summary_path}")
-
-    return results_dir / f"{timestamp}_detailed.json"
+    return run_dir
 
 
-def generate_summary(results: list[EvaluationResult]) -> dict:
-    """Generate a summary of benchmark results."""
-    if not results:
+def generate_summary(benchmark_results: dict) -> dict:
+    evaluations = benchmark_results.get("evaluations", [])
+    if not evaluations:
         return {}
 
-    # Group by k and metric
     summary = {
-        "best_by_k": {},
-        "best_by_strategy_type": {},
-        "best_by_embedder": {},
+        "metadata": benchmark_results.get("metadata", {}),
+        "dimension_comparison": {},
+        "best_configurations": {},
+        "degradation_analysis": [],
     }
 
-    # Find best for each k value (using exact_match)
-    k_values = set(r.k for r in results)
-    for k in k_values:
-        k_results = [r for r in results if r.k == k and r.metric == "exact_match"]
-        if k_results:
-            best = max(k_results, key=lambda r: r.coverage)
-            summary["best_by_k"][f"k={k}"] = {
-                "strategy": best.strategy_name,
-                "chunking": best.chunking_name,
-                "embedder": best.embedder_name,
-                "coverage": best.coverage,
-                "found": best.found,
-                "total": best.total,
+    all_dimensions = set()
+    for ev in evaluations:
+        all_dimensions.update(ev.get("aggregate", {}).keys())
+
+    for dim in sorted(all_dimensions):
+        dim_coverages = []
+        for ev in evaluations:
+            agg = ev.get("aggregate", {}).get(dim, {})
+            if agg:
+                dim_coverages.append(agg.get("coverage", 0))
+        if dim_coverages:
+            summary["dimension_comparison"][dim] = {
+                "avg_coverage": np.mean(dim_coverages),
+                "min_coverage": min(dim_coverages),
+                "max_coverage": max(dim_coverages),
             }
 
-    # Best by strategy type
-    strategy_types = set(r.strategy_name for r in results)
-    for st in strategy_types:
-        st_results = [
-            r
-            for r in results
-            if r.strategy_name == st and r.metric == "exact_match" and r.k == 5
-        ]
-        if st_results:
-            best = max(st_results, key=lambda r: r.coverage)
-            summary["best_by_strategy_type"][st] = {
-                "chunking": best.chunking_name,
-                "embedder": best.embedder_name,
-                "coverage": best.coverage,
-            }
+    if "original" in summary["dimension_comparison"]:
+        orig_cov = summary["dimension_comparison"]["original"]["avg_coverage"]
+        for dim, stats in summary["dimension_comparison"].items():
+            if dim != "original":
+                delta = stats["avg_coverage"] - orig_cov
+                summary["degradation_analysis"].append(
+                    {
+                        "dimension": dim,
+                        "avg_coverage": stats["avg_coverage"],
+                        "delta_from_original": delta,
+                        "percent_degradation": (delta / orig_cov * 100)
+                        if orig_cov
+                        else 0,
+                    }
+                )
+        summary["degradation_analysis"].sort(key=lambda x: x["delta_from_original"])
 
-    # Best by embedder
-    embedders = set(r.embedder_name for r in results)
-    for emb in embedders:
-        emb_results = [
-            r
-            for r in results
-            if r.embedder_name == emb and r.metric == "exact_match" and r.k == 5
-        ]
-        if emb_results:
-            best = max(emb_results, key=lambda r: r.coverage)
-            summary["best_by_embedder"][emb] = {
-                "strategy": best.strategy_name,
-                "chunking": best.chunking_name,
-                "coverage": best.coverage,
+    for ev in evaluations:
+        key = f"{ev['strategy']}_{ev['chunking']}_{ev['embedder']}"
+        orig_agg = ev.get("aggregate", {}).get("original", {})
+        if orig_agg:
+            summary["best_configurations"][key] = {
+                "coverage": orig_agg.get("coverage", 0),
+                "k": ev.get("k"),
+                "metric": ev.get("metric"),
             }
 
     return summary
@@ -746,14 +659,13 @@ def generate_summary(results: list[EvaluationResult]) -> dict:
 
 
 def main():
+    global logger
+
     parser = argparse.ArgumentParser(
         description="Run comprehensive retrieval benchmark"
     )
     parser.add_argument(
-        "--config",
-        "-c",
-        default="config.yaml",
-        help="Path to config file (default: config.yaml)",
+        "--config", "-c", default="config.yaml", help="Path to config file"
     )
     parser.add_argument(
         "--dry-run",
@@ -761,33 +673,25 @@ def main():
         action="store_true",
         help="Show what would be run without executing",
     )
-    parser.add_argument(
-        "--resume",
-        "-r",
-        type=str,
-        default=None,
-        help="Resume from a previous results JSON file",
-    )
-    parser.add_argument(
-        "--skip-from",
-        "-s",
-        type=int,
-        default=0,
-        help="Skip to combination N (1-indexed)",
-    )
-    parser.add_argument(
-        "--track-failures",
-        "-f",
-        action="store_true",
-        help="Track and save failed facts for analysis",
-    )
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent
     config_path = base_dir / args.config
 
+    timestamp = time.strftime("%Y-%m-%d_%H%M%S")
+    results_dir = base_dir / "results" / timestamp
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    logger = BenchmarkLogger(
+        log_dir=results_dir,
+        log_file="benchmark.log",
+        console=True,
+        min_level="INFO",
+    )
+
     if not config_path.exists():
         log(f"Config file not found: {config_path}", level="ERROR")
+        logger.close()
         sys.exit(1)
 
     log(f"Loading config from {config_path}")
@@ -796,29 +700,41 @@ def main():
 
     log_section("COMPREHENSIVE RETRIEVAL BENCHMARK")
 
-    results = run_benchmark(
-        config,
-        base_dir,
-        dry_run=args.dry_run,
-        skip_from=args.skip_from,
-        resume_file=args.resume,
-    )
+    with logger.timer("total_benchmark"):
+        benchmark_results = run_benchmark(config, base_dir, dry_run=args.dry_run)
 
-    if results:
+    if benchmark_results and benchmark_results.get("evaluations"):
+        benchmark_results["metadata"]["timestamp"] = timestamp
+
         log_section("SAVING RESULTS")
-        output_path = save_results(results, config, base_dir)
+        save_results(benchmark_results, config, base_dir)
 
         log_section("BENCHMARK COMPLETE")
-        log(f"Total evaluations: {len(results)}")
+        log(f"Total evaluations: {len(benchmark_results['evaluations'])}")
 
-        # Print top results
-        exact_k5 = [r for r in results if r.metric == "exact_match" and r.k == 5]
-        if exact_k5:
-            top5 = sorted(exact_k5, key=lambda r: r.coverage, reverse=True)[:5]
-            log("\nTop 5 strategies (exact match, k=5):")
-            for i, r in enumerate(top5, 1):
-                name = f"{r.strategy_name}+{r.chunking_name}+{r.embedder_name.split('/')[-1]}"
-                log(f"  {i}. {name}: {r.coverage:.1%}")
+        summary = generate_summary(benchmark_results)
+        if summary.get("dimension_comparison"):
+            rows = []
+            orig_cov = (
+                summary["dimension_comparison"]
+                .get("original", {})
+                .get("avg_coverage", 0)
+            )
+            for dim, stats in sorted(summary["dimension_comparison"].items()):
+                delta = stats["avg_coverage"] - orig_cov if dim != "original" else 0
+                rows.append(
+                    [
+                        dim,
+                        f"{stats['avg_coverage']:.1%}",
+                        f"{delta:+.1%}" if dim != "original" else "-",
+                    ]
+                )
+            logger.table(
+                ["Dimension", "Coverage", "Delta"], rows, "Coverage by Query Dimension"
+            )
+
+    logger.summary()
+    logger.close()
 
 
 if __name__ == "__main__":
