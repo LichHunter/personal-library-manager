@@ -1249,6 +1249,16 @@ RRF fusion combines both signals equally:
 2. **Consider multi-query retrieval**: Retrieve for both original and expanded queries, merge results
 3. **Adjust RRF k parameter**: Lower k value would give more weight to top-ranked results
 
+### Additional Testing: Expanded Query for Both BM25 and Semantic
+
+**Test**: Modified implementation to use expanded query for BOTH BM25 and semantic search (not just BM25).
+
+**Result**: No improvement - still 79.2% coverage.
+
+**Analysis**: The semantic embedding of the expanded query still doesn't match well with the chunks containing RPO/RTO facts. The BGE embedding model doesn't have strong semantic understanding of domain-specific acronyms like "RPO" and "RTO". Even with expansion terms like "recovery point objective", the embedding doesn't capture the semantic relationship.
+
+**Key Finding**: Query expansion helps BM25 (keyword-based) but doesn't help semantic search (embedding-based) because the embedding model lacks domain-specific knowledge.
+
 ### Next Steps
 
 The current implementation achieves 79.2% coverage, which is below the 85% minimum threshold. Options:

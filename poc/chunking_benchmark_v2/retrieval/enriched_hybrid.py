@@ -183,7 +183,7 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
 
         expanded_query = expand_query(query, debug=self.debug)
         if expanded_query != query:
-            self._trace_log(f"EXPANDED_QUERY (BM25 only): {expanded_query}")
+            self._trace_log(f"EXPANDED_QUERY: {expanded_query}")
 
         if (
             hasattr(self, "embedder")
@@ -199,7 +199,7 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
             f"n_candidates={n_candidates} (k={k} * multiplier={self.candidate_multiplier})"
         )
 
-        q_emb = self.encode_query(query)
+        q_emb = self.encode_query(expanded_query)
         sem_scores = np.dot(self.embeddings, q_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
 
