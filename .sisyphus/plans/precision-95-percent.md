@@ -208,7 +208,7 @@ Task 7 (Document results)
 
 ---
 
-- [ ] 2. Create BMX-based hybrid retrieval strategy
+- [x] 2. Create BMX-based hybrid retrieval strategy
 
   **What to do**:
   - Copy `enriched_hybrid.py` to `enriched_hybrid_bmx.py`
@@ -271,7 +271,7 @@ Task 7 (Document results)
 
 ---
 
-- [ ] 3. Run Phase 1 benchmark (BMX vs BM25)
+- [x] 3. Run Phase 1 benchmark (BMX vs BM25)
 
   **What to do**:
   - Run baseline benchmark with existing BM25 strategy (for fresh comparison)
@@ -317,7 +317,7 @@ Task 7 (Document results)
 
 ---
 
-- [ ] 4. Analyze Phase 1 results and decide on Phase 2
+- [x] 4. Analyze Phase 1 results and decide on Phase 2
 
   **What to do**:
   - Compare BMX vs BM25 coverage

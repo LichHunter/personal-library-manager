@@ -23,6 +23,7 @@ from .reverse_hyde import ReverseHyDERetrieval
 from .enriched_lod import EnrichedLODRetrieval
 from .enriched_hybrid import EnrichedHybridRetrieval
 from .enriched_hybrid_bmx import EnrichedHybridBMXRetrieval
+from .enriched_hybrid_llm import EnrichedHybridLLMRetrieval
 
 RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "semantic": SemanticRetrieval,
@@ -42,6 +43,7 @@ RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "enriched_lod_entities": EnrichedLODRetrieval,
     "enriched_hybrid": EnrichedHybridRetrieval,
     "enriched_hybrid_bmx": EnrichedHybridBMXRetrieval,
+    "enriched_hybrid_llm": EnrichedHybridLLMRetrieval,
 }
 
 COLBERT_AVAILABLE = False
@@ -106,6 +108,7 @@ __all__ = [
     "EnrichedLODRetrieval",
     "EnrichedHybridRetrieval",
     "EnrichedHybridBMXRetrieval",
+    "EnrichedHybridLLMRetrieval",
     "RETRIEVAL_STRATEGIES",
     "create_retrieval_strategy",
     "list_retrieval_strategies",

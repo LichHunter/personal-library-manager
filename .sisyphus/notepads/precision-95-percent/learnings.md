@@ -285,3 +285,149 @@ Create a new retrieval strategy `EnrichedHybridBMXRetrieval` by adapting `Enrich
 ### Next Steps
 - Task 2 complete: BMX-based hybrid retrieval strategy implemented ✓
 - Ready for benchmarking and integration testing
+
+---
+
+## Task 3: Benchmark Comparison - BM25 vs BMX
+
+### Objective
+Run benchmarks to compare BMX vs BM25 performance on the RAG retrieval task, capturing detailed metrics for coverage, latency, and index time.
+
+### Benchmark Setup
+
+#### Configuration
+- **Config file**: `config_bmx_comparison.yaml` (created for this task)
+- **Corpus**: 5 CloudFlow documents (~3400 words each)
+- **Queries**: 20 test queries with 53 total facts
+- **Chunking**: Fixed 512-token chunks with 0% overlap
+- **Embedding**: BAAI/bge-base-en-v1.5 with prefix
+- **Strategies tested**:
+  1. `enriched_hybrid_fast` (BM25-based baseline)
+  2. `enriched_hybrid_bmx` (BMX-based new strategy)
+
+#### Execution
+```bash
+cd /home/fujin/Code/personal-library-manager
+nix develop
+cd poc/chunking_benchmark_v2
+source .venv/bin/activate
+python run_benchmark.py --config config_bmx_comparison.yaml --trace
+```
+
+### Benchmark Results
+
+#### Results Location
+- Timestamp: `2026-01-25_145654`
+- Results file: `results/2026-01-25_145654/benchmark_results.json`
+- Log file: `results/phase1_comparison.log`
+
+#### Detailed Metrics
+
+**BM25 (enriched_hybrid_fast)**
+- Coverage (original): 83.0% (44/53 facts)
+- Coverage by dimension:
+  - Original: 83.0%
+  - Synonym: 66.0%
+  - Problem: 64.2%
+  - Casual: 71.7%
+  - Contextual: 69.8%
+  - Negation: 52.8%
+- Index time: 1.24s
+- Avg query latency: 14.9ms
+- Num chunks: 51
+
+**BMX (enriched_hybrid_bmx)**
+- Coverage (original): 41.5% (22/53 facts)
+- Coverage by dimension:
+  - Original: 41.5%
+  - Synonym: 28.3%
+  - Problem: 54.7%
+  - Casual: 37.7%
+  - Contextual: 28.3%
+  - Negation: 41.5%
+- Index time: 1.85s
+- Avg query latency: 46.0ms
+- Num chunks: 51
+
+#### Comparison Table
+
+| Metric | BM25 (baseline) | BMX | Delta | Notes |
+|--------|-----------------|-----|-------|-------|
+| Coverage (original) | 83.0% | 41.5% | -41.5% | Target: 95%+ |
+| Index time | 1.24s | 1.85s | +0.61s | +49% slower |
+| Query latency | 14.9ms | 46.0ms | +31.1ms | +208% slower |
+
+### Key Findings
+
+#### 1. BMX Performance is Significantly Worse
+- **Coverage**: BMX achieves only 41.5% vs BM25's 83.0% - a **50% reduction**
+- **Latency**: BMX queries are **3.1x slower** (46.0ms vs 14.9ms)
+- **Index time**: BMX indexing is **49% slower** (1.85s vs 1.24s)
+
+#### 2. Coverage Degradation Across All Dimensions
+BMX shows consistent degradation across all query types:
+- Original: -41.5% (83.0% → 41.5%)
+- Synonym: -37.7% (66.0% → 28.3%)
+- Problem: -9.5% (64.2% → 54.7%) - least affected
+- Casual: -34.0% (71.7% → 37.7%)
+- Contextual: -41.5% (69.8% → 28.3%)
+- Negation: -10.9% (52.8% → 41.5%)
+
+#### 3. Problem Queries Show Relative Strength
+BMX performs better on "problem" queries (54.7%) compared to other dimensions, suggesting it may be better at matching technical terminology. However, this is still below BM25's 64.2%.
+
+### Root Cause Analysis
+
+#### Hypothesis 1: Query Expansion Issue
+The enriched_hybrid strategies use query expansion (DOMAIN_EXPANSIONS) to improve coverage. BMX may not be handling expanded queries as effectively as BM25.
+
+**Evidence**: 
+- The trace logs show BMX is receiving expanded queries
+- But coverage is consistently lower across all dimensions
+- Suggests BMX's tokenization or scoring may not align well with expanded terms
+
+#### Hypothesis 2: Tokenization Mismatch
+BMX has built-in tokenization (unlike BM25 which uses manual tokenization). The tokenization strategy may differ:
+- BM25: Manual split on whitespace + lowercase
+- BMX: Built-in tokenizer (likely more sophisticated)
+
+**Evidence**:
+- BMX scores are on a different scale (0.0-4.55 vs BM25's 0.0-3.69)
+- RRF fusion should normalize this, but the underlying retrieval quality is lower
+
+#### Hypothesis 3: RRF Fusion Imbalance
+The RRF fusion may be weighting BMX scores incorrectly. Since BMX scores are ~1.22x larger than BM25, the RRF calculation might be biased.
+
+**Evidence**:
+- Trace logs show BMX returning high scores (7.3979 for top result)
+- But final RRF ranking still produces poor coverage
+- Suggests the issue is in the underlying BMX retrieval, not RRF fusion
+
+### Implications for Task 4
+
+**Current Status**: BMX is NOT a viable replacement for BM25 in the current implementation.
+
+**Next Steps**:
+1. Investigate why BMX coverage is so much lower
+2. Consider alternative sparse retrieval methods (e.g., ColBERT, SPLADE)
+3. Evaluate whether BMX needs different parameters or preprocessing
+4. Assess if the 95% coverage target is achievable with current strategies
+
+### Files Created/Modified
+- `config_bmx_comparison.yaml` - New config for side-by-side comparison
+- `results/2026-01-25_145654/` - Benchmark results directory
+
+### Time Spent
+~15 minutes (benchmark execution + result extraction + analysis)
+
+### Conclusion
+
+The BMX-based hybrid retrieval strategy underperforms significantly compared to BM25:
+- **50% lower coverage** on original queries
+- **3.1x slower query latency**
+- **49% slower indexing**
+
+This suggests that while BMX is technically compatible with RRF fusion (as verified in Task 1), it does not provide the retrieval quality needed for our RAG use case. The 95% coverage target is not achievable with BMX in its current form.
+
+**Recommendation**: Focus on optimizing the BM25-based approach or exploring other sparse retrieval methods that maintain better coverage while potentially offering other benefits (e.g., efficiency, interpretability).
+
