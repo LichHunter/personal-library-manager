@@ -1,8 +1,9 @@
 {
-  "active_plan": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/manual-testing-interface.md",
-  "started_at": "2026-01-25T15:43:06.037Z",
-  "session_ids": [
-    "ses_40b85dac1ffeI3OiM87XAyiF9J"
-  ],
-  "plan_name": "manual-testing-interface"
+  "active_plan": null,
+  "last_completed": {
+    "plan": "smart-chunking-manual-test",
+    "completed_at": "2026-01-25T18:30:00.000Z",
+    "result": "SUCCESS - 94% accuracy achieved, exceeding 65-75% hypothesis",
+    "archived_to": ".sisyphus/archive/smart-chunking-manual-test-COMPLETED-2026-01-25.md"
+  }
 }
