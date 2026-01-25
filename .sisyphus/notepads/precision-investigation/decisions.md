@@ -85,3 +85,48 @@ If weighted RRF < 85%:
 - HyDE for remaining hard queries
 - Query-type classification (route technical queries to BM25-heavy path)
 
+
+## [2026-01-25 12:35] Task 8.1: Oracle Final Validation
+
+### Oracle Assessment
+
+**Production Readiness**: ✅ ACCEPTABLE
+
+**Coverage**: 83% within acceptable 80-85% range
+**Performance**: ✅ <500ms latency maintained
+**Complexity**: ✅ Low (~120 lines, no dependencies)
+**Maintainability**: ✅ Good (dictionary-based, testable)
+
+### Recommendations
+
+**Ship current solution** - ROI on further non-LLM improvements is diminishing.
+
+**Monitoring**:
+- Track expansion trigger rate (target: 5-15%)
+- Log zero-result queries for dictionary expansion
+- Monitor latency percentiles (alert if p95 > 400ms)
+
+**Maintenance**:
+- Weekly review of zero-result queries
+- Add to dictionary when 3+ similar patterns found
+- Keep dictionary under 50 entries
+
+**Escalation Triggers** (for LLM solutions):
+- Coverage drops below 80%
+- Users report "can't find X" for existing facts
+- Business requires >90% coverage
+
+**What NOT to pursue**:
+- Further dictionary expansion (diminishing returns)
+- Negation rewriting (only 3 facts affected)
+- Fact extraction (requires LLM, save for v2)
+
+### Action Plan
+
+1. ✅ Merge to main
+2. ✅ Add basic logging
+3. ✅ Document dictionary maintenance
+4. ⏸️ Park negation handling for future
+
+**Final verdict**: Ship it. Monitor. Move on.
+
