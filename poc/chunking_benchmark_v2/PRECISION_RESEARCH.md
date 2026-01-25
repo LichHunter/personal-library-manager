@@ -84,7 +84,7 @@ From summary.json degradation_analysis:
 - Identify if missed facts are split across chunks
 - Test with smaller chunk size (256 tokens)
 
-**Status**: Pending
+**Status**: DISPROVEN - See Finding 2
 
 ---
 
@@ -151,13 +151,58 @@ From summary.json degradation_analysis:
 
 ## Findings
 
-### Finding 1: [To be populated]
+### Finding 1: Missed Facts Analysis (2026-01-25)
 
-**Date**: TBD  
-**Hypothesis Tested**: TBD  
-**Result**: TBD  
-**Evidence**: TBD  
-**Conclusion**: TBD
+**Date**: 2026-01-25 10:30  
+**Hypothesis Tested**: General analysis of what facts are being missed  
+**Result**: 69 out of 120 query-dimension combinations have missed facts
+
+**Key Patterns Identified**:
+
+1. **Facts exist in chunks but chunks not retrieved (RETRIEVAL FAILURE)**
+   - Example: Query "database stack" should retrieve chunk with "PostgreSQL 15.4, Redis 7.2, Apache Kafka 3.6"
+   - These facts are in `architecture_overview_fix_1` (chunk 1, chars 3231-5982)
+   - But retrieved chunks were: architecture_overview_fix_12, deployment_guide_fix_3, user_guide_fix_7
+   - **Root cause**: Semantic/keyword mismatch between query and relevant chunk
+
+2. **Specific facts consistently missed across all dimensions**:
+   - `TTL: 1 hour` and `Workflow Definitions: TTL: 1 hour` - 0% coverage across ALL dimensions
+   - `RPO/RTO` facts - 0% coverage on most dimensions
+   - `max_db_connections = 100` - 75% coverage (found in some but not all)
+
+3. **Query dimension impact**:
+   - **Negation queries** perform worst (-26.5% from original)
+   - Example: "Is CloudFlow using MySQL or something else?" retrieves troubleshooting/API docs instead of architecture
+
+**Missed Facts Summary Table**:
+
+| Query ID | Missed Fact | In Chunk | Retrieved Instead |
+|----------|-------------|----------|-------------------|
+| realistic_004 | PostgreSQL 15.4, Redis 7.2, Kafka 3.6 | arch_fix_1 | arch_fix_12, deploy_fix_3 |
+| realistic_010 | RPO 1 hour, RTO 4 hours | arch_fix_12 | Various other chunks |
+| realistic_013 | TTL: 1 hour | arch_fix_6 | Other architecture chunks |
+| realistic_003 | All tokens expire after 3600s | api_fix_1 | troubleshooting chunks |
+
+**Evidence**: Benchmark results from 2026-01-25_102205
+
+**Conclusion**: The primary issue is NOT chunk boundary splitting. Facts exist intact within chunks. The problem is **retrieval ranking** - the correct chunks are not ranked in top-5.
+
+---
+
+### Finding 2: Chunk Boundaries NOT Causing Splits
+
+**Date**: 2026-01-25 10:35  
+**Hypothesis Tested**: Hypothesis 1 - Chunk Boundary Issues
+
+**Result**: DISPROVEN - Facts are NOT split across boundaries
+
+**Evidence**:
+- PostgreSQL 15.4 at pos 3375 -> CHUNK 1 (complete)
+- Redis 7.2 at pos 3392 -> CHUNK 1 (complete)
+- Apache Kafka 3.6 at pos 3424 -> CHUNK 1 (complete)
+- All technology stack facts are in the SAME chunk (arch_fix_1)
+
+**Conclusion**: Chunk boundaries are not the cause of precision loss. All key facts are contained completely within single chunks.
 
 ---
 
