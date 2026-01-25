@@ -12,15 +12,19 @@ cd poc/chunking_benchmark_v2
 python run_benchmark.py --config config_realistic.yaml
 ```
 
-## Latest Results (2026-01-24)
+## Latest Results (2026-01-25)
 
-| Strategy | Original | Synonym | Problem | Casual | Contextual | Negation |
-|----------|----------|---------|---------|--------|------------|----------|
-| semantic | 67.9% | 60.4% | 54.7% | 54.7% | 62.3% | 54.7% |
-| hybrid | **75.5%** | **69.8%** | 54.7% | 64.2% | 60.4% | 52.8% |
-| hybrid_rerank | **75.5%** | 60.4% | **66.0%** | 64.2% | **69.8%** | **56.6%** |
+| Strategy | Original | Synonym | Problem | Casual | Contextual | Negation | Latency |
+|----------|----------|---------|---------|--------|------------|----------|---------|
+| semantic | 67.9% | 60.4% | 54.7% | 54.7% | 62.3% | 54.7% | ~10ms |
+| hybrid | 75.5% | 69.8% | 54.7% | 64.2% | 60.4% | 52.8% | ~15ms |
+| hybrid_rerank | 75.5% | 60.4% | 66.0% | 64.2% | 69.8% | 56.6% | ~50ms |
+| enriched_hybrid_fast | 83.0% | 66.0% | 64.2% | 71.7% | 69.8% | 52.8% | ~15ms |
+| **enriched_hybrid_llm** | **88.7%** | **73.6%** | **79.2%** | **79.2%** | **75.5%** | **77.4%** | **~960ms** |
 
-Configuration: BGE-base embedder, 512-token chunks, MS-MARCO reranker.
+Configuration: BGE-base embedder, 512-token chunks, Claude Haiku for query rewriting.
+
+**Best Strategy**: `enriched_hybrid_llm` - 88.7% coverage with LLM query rewriting (suitable for batch/offline retrieval)
 
 ## Structure
 
@@ -35,6 +39,10 @@ Configuration: BGE-base embedder, 512-token chunks, MS-MARCO reranker.
 │   ├── semantic.py
 │   ├── hybrid.py
 │   ├── hybrid_rerank.py
+│   ├── enriched_hybrid.py      # BM25 + semantic + enrichment
+│   ├── enriched_hybrid_llm.py  # + LLM query rewriting (best: 88.7%)
+│   ├── enriched_hybrid_bmx.py  # BMX variant (not recommended)
+│   ├── query_rewrite.py        # Claude Haiku query rewriting
 │   ├── hyde.py
 │   ├── multi_query.py
 │   └── reverse_hyde.py
@@ -44,10 +52,24 @@ Configuration: BGE-base embedder, 512-token chunks, MS-MARCO reranker.
 
 ## Key Findings
 
-1. **Hybrid retrieval (BM25 + semantic)** outperforms pure semantic: 75.5% vs 67.9%
-2. **Reranking helps with difficult queries**: problem queries improved from 54.7% to 66.0%
-3. **BGE embedder with prefix** performs well for this corpus
-4. **512-token chunks** provide good balance of context and precision
+1. **LLM query rewriting is highly effective**: 88.7% coverage (best result)
+2. **Hybrid retrieval (BM25 + semantic)** outperforms pure semantic: 75.5% vs 67.9%
+3. **Enrichment improves coverage**: 83.0% vs 75.5% baseline
+4. **Reranking helps with difficult queries**: problem queries improved from 54.7% to 66.0%
+5. **BGE embedder with prefix** performs well for this corpus
+6. **512-token chunks** provide good balance of context and precision
+
+## Recommended Strategy
+
+For **best coverage** (88.7%): Use `enriched_hybrid_llm`
+```bash
+python run_benchmark.py --strategies enriched_hybrid_llm
+```
+
+For **low latency** (83.0%): Use `enriched_hybrid_fast`
+```bash
+python run_benchmark.py --strategies enriched_hybrid_fast
+```
 
 ## Configuration
 
