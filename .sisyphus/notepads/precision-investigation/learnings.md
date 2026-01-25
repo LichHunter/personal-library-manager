@@ -105,3 +105,33 @@ Phase 4: Iteration if needed
 83% is in "ACCEPTABLE-TO-GOOD" range per Oracle guidance.
 Remaining 9 missed facts require more specific expansions or different approach.
 
+
+## [2026-01-25 12:30] Investigation Complete
+
+### Final Summary
+
+**Duration**: ~3 hours
+**Baseline**: 77.4% coverage
+**Final**: 83.0% coverage
+**Improvement**: +5.7 percentage points
+
+### Key Learnings
+
+1. Query expansion works for BM25, not semantic embeddings
+2. RRF fusion can dilute gains - need dynamic weighting
+3. 95% target unrealistic without LLM solutions
+4. Oracle consultation saved hours of trial-and-error
+5. Iterative testing reveals fundamental limitations
+
+### Solution Delivered
+
+Query Expansion with Weighted RRF:
+- Domain dictionary for acronyms and vocabulary
+- Dynamic BM25/semantic weighting when expansion triggers
+- 100% success on RPO/RTO and database stack queries
+
+### Status
+
+ACCEPTABLE (80-85% range per Oracle guidance)
+Ready for production deployment with realistic expectations
+
