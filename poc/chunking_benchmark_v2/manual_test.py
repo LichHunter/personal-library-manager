@@ -181,18 +181,21 @@ def generate_questions(
 ) -> list[dict]:
     """Generate test questions from corpus documents using Claude.
 
-    Uses Claude Haiku to read corpus documents and generate human-like test
-    questions with expected answers grounded in the corpus. Each question
+    Processes documents one at a time, using Claude Haiku to generate human-like
+    test questions with expected answers grounded in each document. Each question
     includes the query text, expected answer (verified to exist in corpus),
     source document, and difficulty level.
 
-    The function automatically determines the number of questions based on
-    document coverage if num_questions is None (max 15 questions).
+    When num_questions is None, automatically determines questions per document
+    based on word count:
+    - < 1000 words: 3 questions
+    - 1000-3000 words: 4 questions
+    - > 3000 words: 5 questions
 
     Args:
         documents: List of Document objects with id, title, and content
-        num_questions: Number of questions to generate. If None, agent decides
-                      based on document coverage (max 15). Must be <= 15.
+        num_questions: Questions to generate PER DOCUMENT. If None, auto-sized
+                       based on word count. Must be <= 5 per document.
 
     Returns:
         List of question dicts with keys:
@@ -204,10 +207,10 @@ def generate_questions(
         Returns empty list if LLM generation fails.
 
     Example:
-        >>> docs = load_corpus_documents()
+        >>> docs = load_corpus_documents()  # 5 documents
         >>> questions = generate_questions(docs, num_questions=5)
         >>> len(questions)
-        5
+        25
         >>> questions[0].keys()
         dict_keys(['query', 'expected_answer', 'source_doc', 'difficulty'])
     """
@@ -240,89 +243,91 @@ def generate_questions(
 
     style_guide_text = "\n".join(style_guide_samples) if style_guide_samples else ""
 
-    # Determine number of questions
-    if num_questions is None:
-        # Agent decides based on document coverage: 2-3 questions per document, max 15
-        num_questions = min(len(documents) * 2, 15)
-    else:
-        num_questions = min(num_questions, 15)
+    all_questions = []
 
-    # Build document content string with clear separators
-    doc_contents = []
-    for doc in documents:
-        doc_contents.append(
-            f"=== DOCUMENT: {doc.title} (id: {doc.id}) ===\n{doc.content}\n"
+    for doc_idx, doc in enumerate(documents, 1):
+        print(
+            f"  Generating questions for document {doc_idx}/{len(documents)}: {doc.title}"
         )
 
-    documents_text = "\n".join(doc_contents)
+        word_count = len(doc.content.split())
+        if num_questions is None:
+            if word_count < 1000:
+                questions_per_doc = 3
+            elif word_count < 3000:
+                questions_per_doc = 4
+            else:
+                questions_per_doc = 5
+        else:
+            questions_per_doc = min(num_questions, 5)
 
-    # Build the prompt
-    prompt = f"""You are testing a RAG retrieval system. Read these documents carefully and generate {num_questions} test questions.
+        prompt = f"""You are testing a RAG retrieval system. Read this document carefully and generate {questions_per_doc} test questions.
 
-DOCUMENTS:
-{documents_text}
+DOCUMENT:
+Title: {doc.title}
+ID: {doc.id}
+
+{doc.content}
 
 STYLE GUIDE (from existing queries - shows different question dimensions):
 {style_guide_text}
 
 For each question, output a JSON object with these fields:
 - query: The test question (string)
-- expected_answer: A direct quote or paraphrase from the documents (string)
+- expected_answer: A direct quote or paraphrase from the document (string)
 - source_doc: The document id where the answer is found (string)
-- difficulty: One of "easy" (direct lookup), "medium" (requires inference), or "hard" (cross-document or complex reasoning)
+- difficulty: One of "easy" (direct lookup), "medium" (requires inference), or "hard" (complex reasoning)
 
 Rules:
-1. Questions MUST have answers that exist IN the documents (verify before including)
+1. Questions MUST have answers that exist IN the document (verify before including)
 2. Mix difficulty levels: aim for roughly equal distribution
-3. Cover all documents proportionally
-4. Use realistic human phrasing: casual, problem-oriented, technical
-5. Expected answer must be a direct quote or close paraphrase from the document
-6. Verify each answer exists in the document before including the question
-7. Do NOT generate questions about topics not in the corpus
+3. Use realistic human phrasing: casual, problem-oriented, technical
+4. Expected answer must be a direct quote or close paraphrase from the document
+5. Verify each answer exists in the document before including the question
+6. Do NOT generate questions about topics not in the document
 
 Output ONLY a valid JSON array of objects, no markdown formatting, no explanation.
 Example format:
 [
-  {{"query": "What is the API rate limit?", "expected_answer": "100 requests per minute", "source_doc": "api_reference", "difficulty": "easy"}},
-  {{"query": "How do I deploy to production?", "expected_answer": "Use the deployment guide...", "source_doc": "deployment_guide", "difficulty": "medium"}}
+  {{"query": "What is the API rate limit?", "expected_answer": "100 requests per minute", "source_doc": "{doc.id}", "difficulty": "easy"}},
+  {{"query": "How do I deploy to production?", "expected_answer": "Use the deployment guide...", "source_doc": "{doc.id}", "difficulty": "medium"}}
 ]"""
 
-    try:
-        response = call_llm(prompt, model="claude-haiku", timeout=90)
-    except Exception as e:
-        print(f"Warning: LLM generation failed: {e}")
-        return []
+        try:
+            response = call_llm(prompt, model="claude-haiku", timeout=90)
+        except Exception as e:
+            print(f"    Warning: LLM generation failed: {e}")
+            continue
 
-    # Parse JSON response
-    try:
-        # Try to extract JSON from response (in case there's extra text)
-        response_text = response.strip()
-        if response_text.startswith("["):
-            questions = json.loads(response_text)
-        else:
-            # Try to find JSON array in response
-            start_idx = response_text.find("[")
-            end_idx = response_text.rfind("]") + 1
-            if start_idx >= 0 and end_idx > start_idx:
-                questions = json.loads(response_text[start_idx:end_idx])
+        try:
+            response_text = response.strip()
+            if response_text.startswith("["):
+                doc_questions = json.loads(response_text)
             else:
-                print("Warning: Could not find JSON array in LLM response")
-                return []
-    except json.JSONDecodeError as e:
-        print(f"Warning: Failed to parse LLM response as JSON: {e}")
-        return []
+                start_idx = response_text.find("[")
+                end_idx = response_text.rfind("]") + 1
+                if start_idx >= 0 and end_idx > start_idx:
+                    doc_questions = json.loads(response_text[start_idx:end_idx])
+                else:
+                    print(f"    Warning: Could not find JSON array in LLM response")
+                    continue
+        except json.JSONDecodeError as e:
+            print(f"    Warning: Failed to parse LLM response as JSON: {e}")
+            continue
 
-    # Validate each question has required fields
-    validated_questions = []
-    for q in questions:
-        if isinstance(q, dict) and all(
-            key in q for key in ["query", "expected_answer", "source_doc", "difficulty"]
-        ):
-            # Validate difficulty is one of the allowed values
-            if q.get("difficulty") in ["easy", "medium", "hard"]:
-                validated_questions.append(q)
+        validated_doc_questions = []
+        for q in doc_questions:
+            if isinstance(q, dict) and all(
+                key in q
+                for key in ["query", "expected_answer", "source_doc", "difficulty"]
+            ):
+                if q.get("difficulty") in ["easy", "medium", "hard"]:
+                    validated_doc_questions.append(q)
 
-    return validated_questions
+        print(f"    Generated {len(validated_doc_questions)} valid questions")
+        all_questions.extend(validated_doc_questions)
+
+    return all_questions
 
 
 # ============================================================================
