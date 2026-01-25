@@ -22,6 +22,7 @@ from .multi_query import MultiQueryRetrieval
 from .reverse_hyde import ReverseHyDERetrieval
 from .enriched_lod import EnrichedLODRetrieval
 from .enriched_hybrid import EnrichedHybridRetrieval
+from .enriched_hybrid_bmx import EnrichedHybridBMXRetrieval
 
 RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "semantic": SemanticRetrieval,
@@ -40,6 +41,7 @@ RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "enriched_lod_summary": EnrichedLODRetrieval,
     "enriched_lod_entities": EnrichedLODRetrieval,
     "enriched_hybrid": EnrichedHybridRetrieval,
+    "enriched_hybrid_bmx": EnrichedHybridBMXRetrieval,
 }
 
 COLBERT_AVAILABLE = False
@@ -103,6 +105,7 @@ __all__ = [
     "ReverseHyDERetrieval",
     "EnrichedLODRetrieval",
     "EnrichedHybridRetrieval",
+    "EnrichedHybridBMXRetrieval",
     "RETRIEVAL_STRATEGIES",
     "create_retrieval_strategy",
     "list_retrieval_strategies",

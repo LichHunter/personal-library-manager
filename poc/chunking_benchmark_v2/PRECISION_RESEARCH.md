@@ -1522,3 +1522,127 @@ The key insight is that **retrieval precision is fundamentally limited by embedd
 
 **Investigation Complete**: 2026-01-25 12:30
 
+
+---
+
+## Phase 2: LLM Integration Research (2026-01-25)
+
+### Research Objective
+
+Achieve 95%+ coverage by integrating Claude Haiku for query processing.
+
+### Research Findings
+
+#### BMX Algorithm
+- **What**: New BM25 successor by Mixedbread/Hong Kong PolyU (Aug 2024)
+- **Features**: Entropy-weighted similarity, semantic enhancement
+- **Library**: `baguetter` (mixedbread-ai/baguetter)
+- **Verdict**: SKIP - Oracle advises it doesn't address our actual failure modes (vocabulary mismatch)
+
+#### Existing LLM Infrastructure
+- **AnthropicProvider**: Full OAuth-based Claude integration exists
+- **Models**: claude-haiku (claude-3-5-haiku-latest), claude-sonnet
+- **Function**: `call_llm(prompt, model="claude-haiku")` ready to use
+- **Existing Strategies**: HyDE, Multi-Query, LOD_LLM, Reverse HyDE
+
+### Oracle Strategic Recommendation
+
+**Primary Solution**: LLM Query Rewriting with Claude Haiku
+
+**Rationale**:
+- Addresses 5-6 of 9 missed facts (vocabulary mismatch, technical jargon, indirect queries)
+- Lowest complexity, acceptable latency (+200-300ms)
+- Transforms user questions into document-aligned terminology
+
+**Example**:
+- User: "Why can't I schedule workflows every 30 seconds?"
+- Rewritten: "What is the minimum scheduling interval for workflows?"
+- Document: "The minimum scheduling interval is 1 minute"
+
+### Testable Hypotheses
+
+#### Hypothesis A: LLM Query Rewriting
+
+**Hypothesis**: Using Claude Haiku to rewrite user queries into documentation-aligned terminology will improve coverage from 83% to 90%+.
+
+**Root Causes Addressed**:
+- TECHNICAL_JARGON (1 fact): "iat" → "JWT issued-at claim"
+- NOT_IN_DICTIONARY (1 fact): Scheduling terminology
+- GRANULARITY (2 facts): Specific config questions
+- INDIRECT_QUERY (3 facts): Negation/problem framing
+
+**Expected Impact**: 5-6 additional facts → 89-94% coverage
+
+**Implementation**:
+```python
+QUERY_REWRITE_PROMPT = """Rewrite this user question as a direct documentation lookup query.
+Convert problem descriptions to feature questions.
+Expand abbreviations and technical jargon.
+
+User question: {query}
+
+Rewritten query (one line):"""
+```
+
+**Test Procedure**:
+1. Implement query rewriting in retrieval pipeline
+2. Use Claude Haiku (claude-3-5-haiku-latest)
+3. Apply rewriting before hybrid retrieval
+4. Run full benchmark
+5. Measure coverage improvement
+
+**Success Criteria**: Coverage >= 90% on original queries
+
+**Latency Budget**: +300ms acceptable (total < 700ms)
+
+---
+
+#### Hypothesis B: HyDE with Claude Haiku (Backup)
+
+**Hypothesis**: If query rewriting alone doesn't reach 95%, HyDE with Claude Haiku will bridge the semantic gap for remaining failures.
+
+**Only test if**: Hypothesis A yields < 90% coverage
+
+**Expected Impact**: Additional 2-3 facts
+
+**Implementation**: Modify existing hyde.py to use AnthropicProvider
+
+---
+
+#### Hypothesis C: BMX Replacement (Low Priority)
+
+**Hypothesis**: Replacing BM25 with BMX may provide marginal improvements.
+
+**Status**: SKIP per Oracle guidance - doesn't address actual failure modes
+
+---
+
+### Test Priority Order
+
+1. **Hypothesis A**: LLM Query Rewriting (FIRST)
+2. **Hypothesis B**: HyDE with Haiku (only if A < 90%)
+3. **Hypothesis C**: BMX (skip unless A and B fail)
+
+### Quick Validation Test
+
+Before full implementation, manually test query rewriting:
+
+```python
+from enrichment.provider import call_llm
+
+test_queries = [
+    "Why can't I schedule workflows every 30 seconds?",
+    "Why does my token stop working after 3600 seconds?",
+    "Why doesn't HS256 work for token validation?",
+    "What's the RPO and RTO?",
+    "Why do we have 3 replicas even with low traffic?"
+]
+
+for q in test_queries:
+    prompt = f"Rewrite this user question as a direct documentation lookup query. Convert problem descriptions to feature questions. Expand abbreviations.\n\nUser question: {q}\n\nRewritten query:"
+    print(f"Original: {q}")
+    print(f"Rewritten: {call_llm(prompt, 'claude-haiku')}\n")
+```
+
+If rewrites look good, proceed with full implementation.
+

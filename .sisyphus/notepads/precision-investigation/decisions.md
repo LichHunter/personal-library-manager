@@ -130,3 +130,47 @@ If weighted RRF < 85%:
 
 **Final verdict**: Ship it. Monitor. Move on.
 
+
+## [2026-01-25 13:00] Research Phase: BMX and LLM Integration
+
+### Research Findings
+
+**BMX Algorithm**:
+- New BM25 successor by Mixedbread (Aug 2024)
+- Entropy-weighted similarity + semantic enhancement
+- Python library: `baguetter` (mixedbread-ai/baguetter)
+- Claims to outperform BM25 on BEIR benchmarks
+
+**Existing LLM Infrastructure**:
+- AnthropicProvider ready (supports Claude Haiku/Sonnet)
+- HyDE, Multi-Query, LOD_LLM strategies exist
+- call_llm() function available
+
+### Oracle Strategic Guidance
+
+**Key Insight**: "Your BM25 isn't the bottleneck - it's vocabulary mismatch. BMX won't help."
+
+**Recommended Approach**: LLM Query Rewriting with Claude Haiku
+
+**Why**:
+- Addresses 5-6 of 9 missed facts (vocabulary mismatch, technical jargon, indirect queries)
+- Lowest complexity, acceptable latency (+200-300ms)
+- Haiku sufficient for simple reformulation task
+
+**Skip BMX**: Not worth testing - doesn't address actual failure modes
+
+### Test Order (Per Oracle)
+
+1. **Phase 1**: Query Rewriting with Claude Haiku (2-4h)
+   - Expected: 4-6 additional facts → 89-94% coverage
+   
+2. **Phase 2**: Targeted Fact Extraction (if needed)
+   - Only if Phase 1 doesn't hit 95%
+
+3. **Skip BMX**: Unless LLM approaches fail
+
+### Acceptable Tradeoffs
+
+- Latency: 500-700ms total (vs 200ms now) - ACCEPTABLE
+- Cost: ~$0.000025/query with Haiku - NEGLIGIBLE
+
