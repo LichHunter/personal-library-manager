@@ -722,3 +722,91 @@ Result: 0/3 facts found. Root cause: VOCABULARY_MISMATCH
 #### Low Priority (Address 1 fact each)
 5. **Markdown Normalization** - Strip formatting before fact matching
 6. **Synonym Injection** - Add "monitoring" -> "Prometheus Grafana Jaeger" mappings
+
+---
+
+## Oracle Consultation (2026-01-25)
+
+**Session**: Task 3.1 - Validate Root Cause Analysis
+
+### Oracle Feedback Summary
+
+**Diagnosis Validation**: ✅ Sound and well-structured
+
+**Key Refinement**: VOCABULARY_MISMATCH and ACRONYM_GAP are the **same root cause** - query-document vocabulary gaps. Both "database stack" → "PostgreSQL Redis Kafka" and "RPO RTO" → "Recovery Point Objective" are vocabulary mismatches.
+
+### Recommended Solution Priority
+
+#### Priority 1: Query Expansion with Domain Dictionary
+- **Effort**: Quick (2-4 hours)
+- **Addresses**: 5 facts (VOCABULARY_MISMATCH + ACRONYM_GAP)
+- **Expected Coverage**: 86.8% (from 77.4%)
+- **Implementation**: Add domain expansion dictionary to retrieval layer
+- **Rationale**: Highest ROI - 5 facts with ~50 lines of code, no model changes
+
+**Example Implementation**:
+```python
+DOMAIN_EXPANSIONS = {
+    "rpo": "recovery point objective RPO data loss",
+    "rto": "recovery time objective RTO downtime recovery",
+    "database stack": "PostgreSQL Redis Kafka database storage",
+    "monitoring": "Prometheus Grafana Jaeger observability metrics",
+}
+```
+
+#### Priority 2: Negation-Aware Query Rewriting
+- **Effort**: Short (4-8 hours)
+- **Addresses**: 2 facts (INDIRECT_QUERY)
+- **Expected Coverage**: 90.6% (from 86.8%)
+- **Implementation**: Pattern-based query rewriting + multi-query retrieval
+- **Rationale**: Handles "Why doesn't X work?" patterns
+
+#### Priority 3: Deferred
+- FACT_BURIED (1 fact): Extraction problem, not retrieval
+- GRANULARITY (1 fact): Solved by Priority 1 dictionary
+- PHRASING_MISMATCH (1 fact): Low value for 1 fact
+
+### Testing Strategy
+
+**Incremental Stacking** (recommended over isolated testing):
+1. Baseline (current): 77.4%
+2. Query expansion only: Expected 86.8%
+3. Query expansion + negation: Expected 90.6%
+
+**Rationale**: Solutions are additive, stacking shows cumulative progress
+
+### Acceptable Thresholds
+
+| Coverage | Assessment | Notes |
+|----------|------------|-------|
+| **90%+** | Excellent | Production-ready, edge cases only |
+| **85-90%** | Good | Acceptable gaps, systematic coverage |
+| **80-85%** | Minimum viable | Below 80%, users notice missing info |
+
+### Action Plan
+
+| Step | Task | Effort | Expected Gain |
+|------|------|--------|---------------|
+| 1 | Implement domain expansion dictionary | 2h | +5 facts → 86.8% |
+| 2 | Test expansion in isolation | 1h | Validate approach |
+| 3 | Add negation query rewriting | 4h | +2 facts → 90.6% |
+| 4 | Run full benchmark | 30m | Confirm stacked results |
+| 5 | Analyze remaining misses | 1h | Decide if worth pursuing |
+
+**Estimated Total**: 1 day to reach ~90% coverage
+
+### Watch Out For
+
+1. **Over-expansion**: Aggressive dictionary may retrieve irrelevant chunks
+2. **Negation rewriting false positives**: "Why doesn't X work?" might want troubleshooting, not feature docs
+3. **Benchmark overfitting**: 20 queries is small sample, consider adding 10-20 more
+
+### Escalation Triggers
+
+Consider complex solutions (HyDE, fine-tuned embeddings, LLM query rewriting) only if:
+- Query expansion + negation handling yields < 85% coverage
+- New systematic failure pattern affecting 3+ facts identified
+- Production user feedback shows retrieval failures not in benchmark
+
+---
+
