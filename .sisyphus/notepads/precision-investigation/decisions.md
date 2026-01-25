@@ -51,3 +51,37 @@ Oracle consultation was completed in Task 3.1 and already validated the solution
 
 No additional consultation needed. Proceeding to implementation.
 
+
+## [2026-01-25 12:15] Task 7.1: Oracle Consultation - Weighted RRF Strategy
+
+### Oracle Recommendation
+
+**Don't abandon query expansion** - it's working for BM25. Problem is RRF fusion diluting BM25's gains.
+
+**Solution: Weighted RRF with Expansion-Aware Boosting**
+
+1. Weight BM25 higher when query expansion fires (1.5x)
+2. Dampen semantic when expansion triggers (0.7x)
+3. Increase candidate pool for expanded queries (2x multiplier)
+4. Lower RRF k-constant for expanded queries (60 → 30)
+
+**Expected Result**: 83-87% coverage (~3 hours effort)
+
+### Rationale
+
+Current RPO/RTO example:
+- BM25 rank #1 → RRF: 1/(60+0) = 0.0167
+- Semantic rank #26 → RRF: 1/(60+25) = 0.0118
+- Combined: 0.0285 (loses to balanced ranks)
+
+With weighted RRF:
+- BM25: 1.5/(60+0) = 0.025
+- Semantic: 0.7/(60+25) = 0.0082
+- Combined: 0.0332 (competitive with top results)
+
+### Escalation Path
+
+If weighted RRF < 85%:
+- HyDE for remaining hard queries
+- Query-type classification (route technical queries to BM25-heavy path)
+
