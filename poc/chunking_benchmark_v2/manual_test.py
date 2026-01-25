@@ -35,7 +35,7 @@ from sentence_transformers import SentenceTransformer
 from enrichment.provider import call_llm
 from retrieval import create_retrieval_strategy, EmbedderMixin
 from strategies.base import Document
-from strategies import FixedSizeStrategy
+from strategies import MarkdownSemanticStrategy
 
 # ============================================================================
 # GRADING RUBRIC
@@ -390,151 +390,20 @@ def run_retrieval(strategy, query: str, k: int = 5) -> dict:
 
 
 def grade_result(question: dict, retrieval_result: dict) -> dict:
-    """Grade a retrieval result using Claude Haiku with deterministic scoring.
+    """Stub function - manual grading is now performed by humans.
 
-    Uses Claude Haiku to evaluate whether retrieved chunks adequately answer
-    the question. Produces a 1-10 score with explanation and verdict mapping.
-
-    The grading is deterministic (temperature=0) to ensure consistent results
-    across multiple runs with identical inputs.
+    This function is kept for backward compatibility but no longer performs
+    automated LLM grading. Manual grading instructions are included in the
+    generated report instead.
 
     Args:
-        question: Dict with keys:
-            - query: str - The test question
-            - expected_answer: str - Direct quote or paraphrase from corpus
-            - source_doc: str - Document id where answer is found
-            - difficulty: str - One of "easy", "medium", "hard"
-
-        retrieval_result: Dict with keys:
-            - query: str - The query that was executed
-            - chunks: list - List of dicts with content, score, doc_id
-            - latency_ms: float - Retrieval time in milliseconds
+        question: Dict with question data (unused)
+        retrieval_result: Dict with retrieval result (unused)
 
     Returns:
-        Dict with:
-            - score: int - 1-10 score (1=failed, 10=perfect)
-            - explanation: str - Justification for the score with specific evidence
-            - verdict: str - One of "PASS" (>=7), "PARTIAL" (4-6), "FAIL" (<=3)
-
-        On LLM failure, returns:
-            - score: 0
-            - explanation: "Grading failed"
-            - verdict: "FAIL"
-
-    Example:
-        >>> question = {
-        ...     "query": "What is the API rate limit?",
-        ...     "expected_answer": "100 requests per minute",
-        ...     "source_doc": "api_reference",
-        ...     "difficulty": "easy"
-        ... }
-        >>> retrieval_result = {
-        ...     "query": "What is the API rate limit?",
-        ...     "chunks": [
-        ...         {"content": "The API rate limit is 100 requests per minute...", "score": 0.95, "doc_id": "api_reference"},
-        ...     ],
-        ...     "latency_ms": 123.45
-        ... }
-        >>> result = grade_result(question, retrieval_result)
-        >>> result["score"]
-        9
-        >>> result["verdict"]
-        'PASS'
+        Empty dict (grading is now manual)
     """
-    try:
-        # Extract question components
-        query = question.get("query", "")
-        expected_answer = question.get("expected_answer", "")
-
-        # Extract chunks and format for prompt
-        chunks = retrieval_result.get("chunks", [])
-        chunks_text = ""
-        for i, chunk in enumerate(chunks, 1):
-            content = chunk.get("content", "")[:500]  # Truncate to 500 chars
-            doc_id = chunk.get("doc_id", "unknown")
-            chunks_text += f"Chunk {i} (doc: {doc_id}):\n{content}\n---\n"
-
-        # Build the grading prompt
-        prompt = f"""You are grading a RAG retrieval system's response.
-
-QUESTION: {query}
-EXPECTED ANSWER: {expected_answer}
-
-RETRIEVED CONTENT:
-{chunks_text}
-
-GRADING RUBRIC:
-{GRADING_RUBRIC}
-
-Grade this retrieval. Output JSON:
-{{"score": N, "explanation": "...", "verdict": "PASS|PARTIAL|FAIL"}}
-
-Rules:
-- Score must be 1-10 (integer)
-- PASS = score >= 7 (good answer, usable)
-- PARTIAL = score 4-6 (some relevant info, incomplete)
-- FAIL = score <= 3 (mostly irrelevant or wrong)
-- Explanation must justify the score with specific evidence from retrieved content
-- Be strict but fair: if the answer is there, give credit even if buried in noise
-
-Output ONLY valid JSON, no markdown formatting."""
-
-        # Call LLM with temperature=0 for deterministic grading
-        response = call_llm(prompt, model="claude-haiku", timeout=120)
-
-        # Parse JSON response
-        response_text = response.strip()
-        try:
-            # Try to extract JSON from response
-            if response_text.startswith("{"):
-                result = json.loads(response_text)
-            else:
-                # Try to find JSON object in response
-                start_idx = response_text.find("{")
-                end_idx = response_text.rfind("}") + 1
-                if start_idx >= 0 and end_idx > start_idx:
-                    result = json.loads(response_text[start_idx:end_idx])
-                else:
-                    raise ValueError("No JSON object found in response")
-        except json.JSONDecodeError as e:
-            print(f"Warning: Failed to parse grading response as JSON: {e}")
-            return {
-                "score": 0,
-                "explanation": "Grading failed",
-                "verdict": "FAIL",
-            }
-
-        # Validate and normalize score
-        score = result.get("score", 0)
-        if not isinstance(score, int) or score < 1 or score > 10:
-            score = (
-                max(1, min(10, int(score))) if isinstance(score, (int, float)) else 0
-            )
-
-        # Map score to verdict
-        if score >= 7:
-            verdict = "PASS"
-        elif score >= 4:
-            verdict = "PARTIAL"
-        else:
-            verdict = "FAIL"
-
-        # Get explanation
-        explanation = result.get("explanation", "No explanation provided")
-
-        return {
-            "score": score,
-            "explanation": explanation,
-            "verdict": verdict,
-        }
-
-    except Exception as e:
-        print(f"Error during grading: {e}")
-        return {
-            "score": 0,
-            "explanation": "Grading failed",
-            "verdict": "FAIL",
-        }
+    return {}
 
 
 # ============================================================================
@@ -545,11 +414,10 @@ Output ONLY valid JSON, no markdown formatting."""
 def generate_report(
     questions: list[dict], results: list[dict], output_path: str
 ) -> None:
-    """Generate comprehensive markdown report of manual testing results.
+    """Generate manual grading template for human evaluation.
 
-    Creates a detailed markdown report with Summary, Results Table, Detailed
-    Findings, and Conclusion sections. Calculates aggregate score and compares
-    to benchmark (88.7% coverage claim).
+    Creates a markdown template with questions, expected answers, and retrieved
+    chunks for manual human grading. Includes grading rubric and instructions.
 
     Args:
         questions: List of question dicts with keys:
@@ -561,38 +429,15 @@ def generate_report(
         results: List of result dicts with keys:
             - question: dict - The question object
             - retrieval: dict - Retrieval result with chunks, latency_ms
-            - grade: dict - Grade with score, explanation, verdict
 
         output_path: Path to write markdown report to
 
     Returns:
         None (writes to file)
-
-    Report Structure:
-        1. Summary: timestamp, strategy, question count, average score,
-                   benchmark comparison, validation verdict
-        2. Results Table: # | Question (50 chars) | Score | Verdict | Source
-        3. Detailed Findings: For each question, show query, expected answer,
-                             score/verdict, explanation, retrieved chunks
-                             (truncated to 200 chars)
-        4. Conclusion: Validation verdict with reasoning based on average score
     """
     if not results:
         print("Warning: No results to report")
         return
-
-    # Calculate aggregate score
-    scores = [r["grade"]["score"] for r in results]
-    average_score = sum(scores) / len(scores) if scores else 0.0
-
-    # Get validation verdict
-    validation_verdict = get_verdict(average_score)
-
-    # Benchmark comparison
-    benchmark_score = 88.7
-    benchmark_comparison = (
-        f"✓ MEETS BENCHMARK" if average_score >= 7.5 else "✗ BELOW BENCHMARK"
-    )
 
     # Build markdown report
     lines = []
@@ -605,49 +450,30 @@ def generate_report(
     lines.append(f"Questions: {len(questions)}")
     lines.append("")
 
-    # Summary section
-    lines.append("## Summary")
+    # Instructions section
+    lines.append("## Instructions")
     lines.append("")
-    lines.append(f"- **Average Score**: {average_score:.1f} / 10")
-    lines.append(f"- **Benchmark Claim**: {benchmark_score}% coverage")
-    lines.append(f"- **Validation**: {validation_verdict}")
-    lines.append(f"- **Status**: {benchmark_comparison}")
+    lines.append("For each question below, manually grade the retrieved chunks:")
     lines.append("")
-
-    # Results table
-    lines.append("## Results")
-    lines.append("")
-    lines.append("| # | Question (truncated) | Score | Verdict | Source |")
-    lines.append("|---|---------------------|-------|---------|--------|")
-
-    for i, result in enumerate(results, 1):
-        question = result["question"]
-        grade = result["grade"]
-
-        # Truncate question to 50 chars
-        query_truncated = question["query"][:50]
-        if len(question["query"]) > 50:
-            query_truncated += "..."
-
-        # Escape pipe characters in query
-        query_truncated = query_truncated.replace("|", "\\|")
-
-        source = question.get("source_doc", "unknown")
-        score = grade["score"]
-        verdict = grade["verdict"]
-
-        lines.append(f"| {i} | {query_truncated} | {score} | {verdict} | {source} |")
-
+    lines.append("1. Read the **QUESTION**")
+    lines.append("2. Read the **EXPECTED ANSWER**")
+    lines.append("3. Review the **RETRIEVED CHUNKS**")
+    lines.append("4. Assign a score 1-10 using the rubric below")
     lines.append("")
 
-    # Detailed findings section
-    lines.append("## Detailed Findings")
+    # Grading rubric
+    lines.append("### Grading Rubric")
+    lines.append("")
+    lines.append(GRADING_RUBRIC)
+    lines.append("")
+
+    # Questions section
+    lines.append("## Questions")
     lines.append("")
 
     for i, result in enumerate(results, 1):
         question = result["question"]
         retrieval = result["retrieval"]
-        grade = result["grade"]
 
         lines.append(f"### Question {i}: {question['query']}")
         lines.append("")
@@ -656,12 +482,10 @@ def generate_report(
         lines.append(f"**Expected Answer**: {question['expected_answer']}")
         lines.append("")
 
-        # Score and verdict
-        lines.append(f"**Score**: {grade['score']}/10 ({grade['verdict']})")
+        # Grading fields
+        lines.append("**Your Score**: ___ / 10")
         lines.append("")
-
-        # Explanation
-        lines.append(f"**Explanation**: {grade['explanation']}")
+        lines.append("**Your Notes**: ")
         lines.append("")
 
         # Retrieved chunks
@@ -672,49 +496,17 @@ def generate_report(
         for j, chunk in enumerate(chunks, 1):
             content = chunk.get("content", "")
             doc_id = chunk.get("doc_id", "unknown")
-            score_val = chunk.get("score")
-
-            # Truncate content to 200 chars
-            if len(content) > 200:
-                content_display = content[:200] + "..."
-            else:
-                content_display = content
 
             # Escape markdown special characters
-            content_display = content_display.replace("|", "\\|")
+            content_display = content.replace("|", "\\|")
 
-            score_str = f" (score: {score_val:.3f})" if score_val is not None else ""
-            lines.append(f"{j}. **[{doc_id}]** {content_display}{score_str}")
+            lines.append(f"{j}. **[{doc_id}]**")
+            lines.append("")
+            lines.append(f"   {content_display}")
+            lines.append("")
 
+        lines.append("---")
         lines.append("")
-
-    # Conclusion section
-    lines.append("## Conclusion")
-    lines.append("")
-
-    if validation_verdict == "VALIDATED":
-        conclusion = (
-            f"✓ **VALIDATED**: Average score of {average_score:.1f}/10 meets the "
-            f"validation threshold (≥7.5). The enriched_hybrid_llm strategy "
-            f"demonstrates strong retrieval performance and supports the 88.7% "
-            f"coverage benchmark claim."
-        )
-    elif validation_verdict == "INCONCLUSIVE":
-        conclusion = (
-            f"⚠ **INCONCLUSIVE**: Average score of {average_score:.1f}/10 falls in "
-            f"the inconclusive range (5.5-7.4). Results show mixed performance. "
-            f"More testing is needed to validate or invalidate the 88.7% benchmark claim."
-        )
-    else:  # INVALIDATED
-        conclusion = (
-            f"✗ **INVALIDATED**: Average score of {average_score:.1f}/10 is below "
-            f"the validation threshold (<5.5). The enriched_hybrid_llm strategy "
-            f"shows insufficient retrieval performance. The 88.7% coverage benchmark "
-            f"claim appears to be overstated."
-        )
-
-    lines.append(conclusion)
-    lines.append("")
 
     # Write to file
     output_file = Path(output_path)
@@ -771,29 +563,33 @@ def main():
         print(f"  Generated {len(questions)} questions")
 
         print("Creating chunks...")
-        chunker = FixedSizeStrategy(chunk_size=512, overlap=0)
+        chunker = MarkdownSemanticStrategy(
+            max_heading_level=4,  # Split on h1-h4
+            target_chunk_size=400,  # Target ~400 words per chunk
+            min_chunk_size=50,  # Merge tiny sections
+            max_chunk_size=800,  # Split very large sections
+            overlap_sentences=1,  # 1 sentence overlap
+        )
         if hasattr(chunker, "set_embedder"):
             chunker.set_embedder(
                 strategy.embedder if hasattr(strategy, "embedder") else None
             )
         chunks = chunker.chunk_many(documents)
-        print(f"  Created {len(chunks)} chunks")
+        print(f"  Created {len(chunks)} chunks using {chunker.name}")
 
         print("Indexing strategy with documents...")
         strategy.index(chunks=chunks, documents=documents)
         print("  Strategy indexed")
 
-        print("\nRunning retrieval and grading...")
+        print("\nRunning retrieval...")
         results = []
         for i, question in enumerate(questions, 1):
             print(f"  Testing question {i}/{len(questions)}...")
             retrieval_result = run_retrieval(strategy, question["query"])
-            grade = grade_result(question, retrieval_result)
             results.append(
                 {
                     "question": question,
                     "retrieval": retrieval_result,
-                    "grade": grade,
                 }
             )
 
@@ -801,18 +597,16 @@ def main():
         generate_report(questions, results, args.output)
         print(f"  Report saved to: {args.output}")
 
-        # Calculate and display summary
-        scores = [r["grade"]["score"] for r in results]
-        average_score = sum(scores) / len(scores) if scores else 0.0
-        verdict = get_verdict(average_score)
-
         print(f"\n{'=' * 60}")
-        print(f"SUMMARY")
+        print(f"MANUAL GRADING TEMPLATE GENERATED")
         print(f"{'=' * 60}")
-        print(f"Questions tested: {len(questions)}")
-        print(f"Average score: {average_score:.1f}/10")
-        print(f"Validation verdict: {verdict}")
-        print(f"Benchmark (88.7%): {'✓ MEETS' if average_score >= 7.5 else '✗ BELOW'}")
+        print(f"Questions: {len(questions)}")
+        print(f"Output: {args.output}")
+        print(f"\nNext steps:")
+        print(f"1. Open the report file")
+        print(f"2. For each question, review the retrieved chunks")
+        print(f"3. Assign a score 1-10 using the provided rubric")
+        print(f"4. Add notes explaining your score")
         print(f"{'=' * 60}")
 
         # End timing
