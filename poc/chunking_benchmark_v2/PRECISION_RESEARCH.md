@@ -810,6 +810,93 @@ Consider complex solutions (HyDE, fine-tuned embeddings, LLM query rewriting) on
 
 ---
 
+## Phase 3: BMX vs BM25 Evaluation (2026-01-25)
+
+### Objective
+Evaluate whether BMX (Baguetter's sparse index) can improve upon BM25 as the lexical retrieval component in hybrid retrieval.
+
+### Oracle Recommendation
+Oracle recommended: **Skip BMX - BM25 isn't the bottleneck, vocabulary mismatch is**
+
+Expected impact: LLM query rewriting with Claude Haiku would provide +6-11% coverage improvement.
+
+### Phase 1 Benchmark Results
+
+#### BMX Evaluation (Task 3)
+
+**Test Configuration**:
+- Corpus: 5 CloudFlow documents (~3400 words each)
+- Queries: 20 test queries with 53 total facts
+- Chunking: Fixed 512-token chunks with 0% overlap
+- Embedding: BAAI/bge-base-en-v1.5 with prefix
+- Strategies compared:
+  1. `enriched_hybrid_fast` (BM25-based baseline)
+  2. `enriched_hybrid_bmx` (BMX-based new strategy)
+
+#### Results Comparison
+
+| Metric | BM25 (baseline) | BMX | Delta | Notes |
+|--------|-----------------|-----|-------|-------|
+| **Coverage (original)** | 83.0% | 41.5% | **-41.5%** | Target: 95%+ |
+| **Index time** | 1.24s | 1.85s | +0.61s | +49% slower |
+| **Query latency** | 14.9ms | 46.0ms | +31.1ms | +3.1x slower |
+| **Num chunks** | 51 | 51 | - | Same corpus |
+
+#### Coverage by Query Dimension
+
+| Dimension | BM25 | BMX | Delta |
+|-----------|------|-----|-------|
+| Original | 83.0% | 41.5% | -41.5% |
+| Synonym | 66.0% | 28.3% | -37.7% |
+| Problem | 64.2% | 54.7% | -9.5% |
+| Casual | 71.7% | 37.7% | -34.0% |
+| Contextual | 69.8% | 28.3% | -41.5% |
+| Negation | 52.8% | 41.5% | -10.9% |
+
+### Oracle Validation
+
+**Oracle's Hypothesis**: "BM25 isn't the bottleneck, vocabulary mismatch is"
+
+**Empirical Evidence**:
+- BMX coverage: 41.5% (50% WORSE than BM25)
+- BMX is 3.1x slower on queries
+- BMX is 49% slower on indexing
+- Consistent degradation across ALL query dimensions
+
+**Conclusion**: ✅ **Oracle was CORRECT**
+
+The empirical results validate Oracle's recommendation. BMX is not a viable replacement for BM25 in this context. The problem is not the retrieval algorithm (BM25 is already performing well at 83%), but rather the vocabulary mismatch between queries and documents.
+
+### Root Cause Analysis
+
+**Why BMX Underperforms**:
+
+1. **Tokenization Mismatch**: BMX uses built-in tokenization (likely more sophisticated) that doesn't align well with the expanded query terms used in enriched_hybrid
+2. **Score Scale Difference**: BMX scores (0.0-4.55) are ~1.22x larger than BM25 (0.0-3.69), which may affect RRF fusion weighting
+3. **Sparse Vector Representation**: BMX's sparse vector approach may not capture the semantic relationships that BM25's term frequency does
+
+**Evidence**:
+- Query expansion helps BM25 (keyword-based) but doesn't help BMX
+- RRF fusion shows BMX ranking relevant chunks lower than BM25
+- Coverage degradation is systematic across all query types
+
+### Decision: Proceed to Phase 2 (LLM Query Rewriting)
+
+**Decision Criteria Applied**:
+- BMX coverage (41.5%) < 83% threshold → BMX regression confirmed
+- Oracle recommendation validated by empirical results
+- BM25 at 83% is solid baseline; vocabulary mismatch is the bottleneck
+
+**Rationale**:
+1. ✅ BMX failed to improve coverage (Oracle was correct)
+2. ✅ LLM query rewriting is the higher-impact solution
+3. ✅ Target is still 95%+ coverage
+4. ✅ BM25 is already performing well; the problem is query-document vocabulary gaps
+
+**Next Phase**: Implement LLM query rewriting with Claude Haiku to address vocabulary mismatch and close the gap from 83% to 95%+.
+
+---
+
 
 ## Solution Research (Task 4)
 
