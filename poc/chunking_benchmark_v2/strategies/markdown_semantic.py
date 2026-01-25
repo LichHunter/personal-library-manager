@@ -12,7 +12,8 @@ Features:
 """
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Optional
 from .base import ChunkingStrategy, Chunk, Document
 
 
@@ -27,6 +28,7 @@ class Section:
     content: str
     start_char: int
     end_char: int
+    heading_path: list[str] = field(default_factory=list)
 
 
 def extract_code_blocks(text: str) -> list[tuple[int, int, str]]:
@@ -152,6 +154,7 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
             return []
 
         sections = []
+        heading_stack = []
 
         if headings[0]["start"] > 0:
             intro_content = content[: headings[0]["start"]].strip()
@@ -163,10 +166,16 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
                         content=intro_content,
                         start_char=0,
                         end_char=headings[0]["start"],
+                        heading_path=["Introduction"],
                     )
                 )
 
         for i, heading in enumerate(headings):
+            while heading_stack and heading_stack[-1]["level"] >= heading["level"]:
+                heading_stack.pop()
+            heading_stack.append(heading)
+            heading_path = [h["title"] for h in heading_stack]
+
             section_end = (
                 headings[i + 1]["start"] if i + 1 < len(headings) else len(content)
             )
@@ -183,6 +192,7 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
                     content=full_content,
                     start_char=heading["start"],
                     end_char=section_end,
+                    heading_path=heading_path,
                 )
             )
 
@@ -209,6 +219,7 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
                     content=combined_content,
                     start_char=section.start_char,
                     end_char=next_section.end_char,
+                    heading_path=section.heading_path,
                 )
                 merged.append(merged_section)
                 i += 2
@@ -324,6 +335,19 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
         """Create a Chunk object with metadata."""
         code_ratio = calculate_code_ratio(content)
 
+        metadata = {
+            "strategy": self.name,
+            "heading_level": section.heading_level,
+            "is_split": is_split,
+            "part_idx": part_idx,
+            "code_ratio": round(code_ratio, 2),
+            "is_mostly_code": code_ratio > 0.5,
+            "word_count": word_count(content),
+        }
+
+        if section.heading_path:
+            metadata["heading_path_str"] = " > ".join(section.heading_path)
+
         return Chunk(
             id=f"{doc_id}_mdsem_{part_idx}",
             doc_id=doc_id,
@@ -331,17 +355,9 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
             start_char=section.start_char,
             end_char=section.end_char,
             heading=section.heading,
-            heading_path=[section.heading],
+            heading_path=section.heading_path,
             level=section.heading_level,
-            metadata={
-                "strategy": self.name,
-                "heading_level": section.heading_level,
-                "is_split": is_split,
-                "part_idx": part_idx,
-                "code_ratio": round(code_ratio, 2),
-                "is_mostly_code": code_ratio > 0.5,
-                "word_count": word_count(content),
-            },
+            metadata=metadata,
         )
 
     def _create_single_chunk(self, document: Document, content: str) -> list[Chunk]:
