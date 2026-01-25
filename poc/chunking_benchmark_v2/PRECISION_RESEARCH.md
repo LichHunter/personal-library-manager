@@ -1299,3 +1299,85 @@ RRF fusion combines both signals equally:
 
 ---
 
+
+## Final Solution (Task 8)
+
+### Solution Summary
+
+**Approach**: Query Expansion with Weighted RRF
+
+**Components**:
+1. **Domain Expansion Dictionary**: Expands queries with domain-specific terms and acronym definitions
+2. **Weighted RRF Fusion**: Dynamically adjusts BM25/semantic weights when expansion triggers
+
+**Implementation**: `retrieval/enriched_hybrid.py`
+
+### Final Performance
+
+| Metric | Baseline | Final | Improvement |
+|--------|----------|-------|-------------|
+| **Coverage (original)** | 77.4% | **83.0%** | **+5.7%** |
+| Facts found | 41/53 | 44/53 | +3 facts |
+| Casual queries | 64.2% | 71.7% | +7.5% |
+| Contextual queries | 67.9% | 69.8% | +1.9% |
+| Problem queries | 62.3% | 64.2% | +1.9% |
+
+### Key Achievements
+
+✅ **RPO/RTO queries**: 0% → 100% (all 6 queries now find facts)  
+✅ **Database stack queries**: 0% → 100% (all 3 facts found)  
+✅ **Monitoring queries**: Improved retrieval of Jaeger/Prometheus facts  
+✅ **No performance degradation**: Retrieval latency remains < 500ms
+
+### Remaining Gaps (9 missed facts)
+
+1. **JWT "iat" terminology** (1 fact) - Requires more specific JWT expansion
+2. **Scheduling interval** (1 fact) - Not in expansion dictionary
+3. **Specific config values** (2 facts) - targetCPUUtilizationPercentage, minReplicas
+4. **Negation queries** (3 facts) - Still 54.7% coverage, no improvement
+5. **Fact buried in chunk** (2 facts) - Extraction problem, not retrieval
+
+### Assessment
+
+**Status**: **ACCEPTABLE** (83% in 80-85% range per Oracle guidance)
+
+**Rationale**:
+- Achieved significant improvement (+5.7%) with minimal complexity
+- Solved highest-impact failures (RPO/RTO, database stack)
+- Remaining failures require different approaches (negation handling, fact extraction)
+- 95% target may be unrealistic for this corpus without LLM-based solutions
+
+### Trade-offs
+
+**Advantages**:
+- ✅ Simple implementation (~100 lines of code)
+- ✅ No external dependencies (no LLM API calls)
+- ✅ Fast (no added latency)
+- ✅ Maintainable (dictionary-based, easy to extend)
+
+**Limitations**:
+- ❌ Requires manual dictionary maintenance
+- ❌ Doesn't handle negation queries
+- ❌ Doesn't extract facts from retrieved chunks
+- ❌ Limited to vocabulary matching (not semantic understanding)
+
+### Recommendations for Production
+
+1. **Monitor expansion dictionary coverage**: Track which queries trigger expansion
+2. **Iteratively expand dictionary**: Add new terms based on user query patterns
+3. **Consider LLM-based solutions for remaining gaps**: HyDE for negation queries, fact extraction for buried facts
+4. **Validate on larger query set**: 53 facts is small sample, test on 100+ queries before production
+
+### Future Work
+
+If 85%+ coverage is required:
+1. **Expand dictionary**: Add JWT, scheduling, config value terms
+2. **Negation-aware rewriting**: Implement pattern-based query rewriting (Hypothesis 2)
+3. **Fact extraction**: Use LLM to extract specific facts from retrieved chunks
+4. **HyDE**: Generate hypothetical documents for hard queries
+
+If 90%+ coverage is required:
+- Consider fine-tuning embeddings on domain data
+- Implement query-type classification (route technical queries to BM25-heavy path)
+- Use LLM-based query understanding and rewriting
+
