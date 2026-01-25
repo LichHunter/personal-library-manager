@@ -85,3 +85,23 @@ Phase 4: Iteration if needed
 - 80-85%: ACCEPTABLE
 - <80%: FAILURE
 
+
+## [2026-01-25 12:25] Weighted RRF Success - 83% Coverage Achieved
+
+### Implementation
+- BM25 weight: 3.0x when expansion triggers
+- Semantic weight: 0.3x when expansion triggers  
+- RRF k: 10 (vs 60 normally)
+- Candidate multiplier: 2x
+
+### Results
+- Baseline: 77.4%
+- After weighted RRF: **83.0%** (+5.7%)
+- RPO/RTO queries: 0% → 100% ✅
+- Database stack: 0% → 100% ✅
+- Casual queries: +7.5%
+
+### Assessment
+83% is in "ACCEPTABLE-TO-GOOD" range per Oracle guidance.
+Remaining 9 missed facts require more specific expansions or different approach.
+

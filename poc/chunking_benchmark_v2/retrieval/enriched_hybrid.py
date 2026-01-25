@@ -182,8 +182,23 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
         self._trace_log(f"ORIGINAL_QUERY: {query}")
 
         expanded_query = expand_query(query, debug=self.debug)
-        if expanded_query != query:
+        expansion_triggered = expanded_query != query
+        if expansion_triggered:
             self._trace_log(f"EXPANDED_QUERY: {expanded_query}")
+
+        bm25_weight = 3.0 if expansion_triggered else 1.0
+        sem_weight = 0.3 if expansion_triggered else 1.0
+        multiplier = (
+            self.candidate_multiplier * 2
+            if expansion_triggered
+            else self.candidate_multiplier
+        )
+        rrf_k = 10 if expansion_triggered else self.rrf_k
+
+        if expansion_triggered:
+            self._trace_log(
+                f"WEIGHTED_RRF: bm25_weight={bm25_weight} sem_weight={sem_weight} rrf_k={rrf_k}"
+            )
 
         if (
             hasattr(self, "embedder")
@@ -194,9 +209,9 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
             if prefix:
                 self._trace_log(f"ENRICHMENT_PREFIX: {prefix}")
 
-        n_candidates = min(k * self.candidate_multiplier, len(self.chunks))
+        n_candidates = min(k * multiplier, len(self.chunks))
         self._trace_log(
-            f"n_candidates={n_candidates} (k={k} * multiplier={self.candidate_multiplier})"
+            f"n_candidates={n_candidates} (k={k} * multiplier={multiplier})"
         )
 
         q_emb = self.encode_query(expanded_query)
@@ -228,14 +243,11 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
                 f"  BM25[{rank}] idx={idx} chunk_id={chunk.id} score={bm25_scores[idx]:.4f} | {content_preview}..."
             )
 
-        # Calculate RRF scores with detailed logging
         rrf_scores: dict[int, float] = {}
-        rrf_components: dict[
-            int, tuple[float, float]
-        ] = {}  # (sem_component, bm25_component)
+        rrf_components: dict[int, tuple[float, float]] = {}
 
         for rank, idx in enumerate(sem_ranks[:n_candidates]):
-            sem_component = 1 / (self.rrf_k + rank)
+            sem_component = sem_weight / (rrf_k + rank)
             rrf_scores[idx] = rrf_scores.get(idx, 0) + sem_component
             if idx not in rrf_components:
                 rrf_components[idx] = (0.0, 0.0)
@@ -245,7 +257,7 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
             )
 
         for rank, idx in enumerate(bm25_ranks[:n_candidates]):
-            bm25_component = 1 / (self.rrf_k + rank)
+            bm25_component = bm25_weight / (rrf_k + rank)
             rrf_scores[idx] = rrf_scores.get(idx, 0) + bm25_component
             if idx not in rrf_components:
                 rrf_components[idx] = (0.0, 0.0)

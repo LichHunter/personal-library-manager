@@ -1259,12 +1259,43 @@ RRF fusion combines both signals equally:
 
 **Key Finding**: Query expansion helps BM25 (keyword-based) but doesn't help semantic search (embedding-based) because the embedding model lacks domain-specific knowledge.
 
-### Next Steps
+### Weighted RRF Implementation (2026-01-25)
 
-The current implementation achieves 79.2% coverage, which is below the 85% minimum threshold. Options:
-1. Implement weighted RRF (give more weight to BM25 when expansion is applied)
-2. Proceed to Hypothesis 2 (Negation Rewriting) to see cumulative effect
-3. Consult Oracle for alternative approaches
+**Approach**: When query expansion triggers, adjust RRF parameters to favor BM25:
+- BM25 weight: 3.0 (vs 1.0 normally)
+- Semantic weight: 0.3 (vs 1.0 normally)
+- RRF k: 10 (vs 60 normally)
+- Candidate multiplier: 2x (vs 1x normally)
+
+**Results**:
+
+| Dimension | Baseline | Weighted RRF | Delta |
+|-----------|----------|--------------|-------|
+| **original** | 77.4% | **83.0%** | **+5.7%** |
+| synonym | 71.7% | 66.0% | -5.7% |
+| problem | 62.3% | 64.2% | +1.9% |
+| casual | 64.2% | 71.7% | +7.5% |
+| contextual | 67.9% | 69.8% | +1.9% |
+| negation | 54.7% | 54.7% | +0.0% |
+
+**Coverage Achieved**: 83.0% (44/53 facts found)
+**Target**: 85%
+**Status**: BELOW TARGET (but significant improvement)
+
+**What Worked**:
+- RPO/RTO queries now find both facts (0% → 100%)
+- Database stack queries find all 3 facts
+- Casual queries improved significantly (+7.5%)
+
+**Remaining Misses**:
+1. "Monitor X-RateLimit-Remaining header values" - not in expansion dictionary
+2. "max 3600 seconds from iat" - JWT "iat" terminology not matching
+3. "minimum scheduling interval is 1 minute" - scheduling terminology
+
+**Next Steps**:
+1. Add more terms to expansion dictionary (iat, scheduling interval)
+2. Consider Hypothesis 2 (Negation Rewriting) for additional improvement
+3. Accept 83% as acceptable if further optimization has diminishing returns
 
 ---
 
