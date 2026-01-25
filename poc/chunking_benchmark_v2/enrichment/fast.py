@@ -161,18 +161,29 @@ class FastEnricher(Enricher):
         entities = {}
 
         try:
+            yake_start = time.perf_counter()
             yake_extractor = _get_yake_extractor()
             yake_results = yake_extractor.extract_keywords(text_for_nlp)
             keywords = [kw for kw, score in yake_results[: self.max_keywords]]
+            yake_elapsed = time.perf_counter() - yake_start
 
             self._debug_log(
                 f"YAKE extracted {len(keywords)} keywords: {keywords[:5]}..."
             )
+
+            if yake_results:
+                scored_keywords = [
+                    f"{kw}({score:.3f})"
+                    for kw, score in yake_results[: self.max_keywords]
+                ]
+                self._trace_log(f"YAKE keywords with scores: {scored_keywords}")
+            self._trace_log(f"YAKE extraction took {yake_elapsed * 1000:.1f}ms")
         except Exception as e:
             self._debug_log(f"YAKE error: {e}")
 
         if self.include_entities:
             try:
+                spacy_start = time.perf_counter()
                 nlp = _get_spacy_nlp()
                 doc = nlp(text_for_nlp[:5000])
 
@@ -186,8 +197,13 @@ class FastEnricher(Enricher):
                 for label in entities:
                     entities[label] = entities[label][:5]
 
+                spacy_elapsed = time.perf_counter() - spacy_start
                 entity_count = sum(len(v) for v in entities.values())
                 self._debug_log(f"spaCy extracted {entity_count} entities: {entities}")
+
+                for label, values in entities.items():
+                    self._trace_log(f"spaCy {label}: {values}")
+                self._trace_log(f"spaCy NER took {spacy_elapsed * 1000:.1f}ms")
             except Exception as e:
                 self._debug_log(f"spaCy error: {e}")
 
@@ -203,25 +219,25 @@ class FastEnricher(Enricher):
             if entity_values:
                 prefix_parts.append(", ".join(entity_values[:5]))
 
+        prefix = ""
         if prefix_parts:
             prefix = " | ".join(prefix_parts)
             enhanced = f"{prefix}\n\n{content}"
+            self._trace_log(f"Generated prefix: {prefix}")
         else:
             enhanced = content
+            self._trace_log("No prefix generated (no keywords or entities)")
 
         elapsed = time.perf_counter() - start_time
         self._total_processed += 1
         self._total_time += elapsed
 
-        prefix_len = len(prefix) if prefix_parts else 0
+        prefix_len = len(prefix)
         self._debug_log(
             f"Enriched in {elapsed * 1000:.1f}ms | "
             f"keywords={len(keywords)} entities={sum(len(v) for v in entities.values())} | "
             f"prefix_len={prefix_len}"
         )
-
-        if prefix_parts:
-            self._trace_log(f"OUTPUT PREFIX: {prefix}")
 
         return EnrichmentResult(
             original_content=content,
