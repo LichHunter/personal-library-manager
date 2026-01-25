@@ -1,0 +1,58 @@
+corpus:
+  documents_dir: "corpus/realistic_documents"
+  metadata_file: "corpus/corpus_metadata_realistic.json"
+  ground_truth_file: "corpus/ground_truth_realistic.json"
+
+evaluation:
+  k_values: [5]
+  metrics:
+    - exact_match
+
+embedding_models:
+  - name: "BAAI/bge-base-en-v1.5"
+    enabled: true
+    use_prefix: true
+
+reranker_models:
+  - name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    enabled: false
+
+llm_models:
+  - name: "fast"
+    enabled: true
+
+chunking_strategies:
+  - name: "fixed_512_0pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 512
+      overlap: 0
+
+retrieval_strategies:
+  - name: "hybrid"
+    type: "hybrid"
+    enabled: true
+    params:
+      rrf_k: 60
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: false
+
+  - name: "enriched_hybrid_llm"
+    type: "enriched_hybrid_llm"
+    enabled: true
+    params:
+      rrf_k: 60
+      debug: true
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: false
+
+output:
+  results_dir: "results"
+  save_detailed_results: true
+  save_summary: true
+  format: "json"

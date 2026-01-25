@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-25_150639",
+    "num_documents": 5,
+    "num_queries": 20,
+    "total_facts": 53,
+    "has_human_queries": true
+  },
+  "dimension_comparison": {
+    "casual": {
+      "avg_coverage": 0.660377358490566,
+      "min_coverage": 0.660377358490566,
+      "max_coverage": 0.660377358490566
+    },
+    "contextual": {
+      "avg_coverage": 0.6037735849056604,
+      "min_coverage": 0.6037735849056604,
+      "max_coverage": 0.6037735849056604
+    },
+    "negation": {
+      "avg_coverage": 0.5094339622641509,
+      "min_coverage": 0.5094339622641509,
+      "max_coverage": 0.5094339622641509
+    },
+    "original": {
+      "avg_coverage": 0.7547169811320755,
+      "min_coverage": 0.7547169811320755,
+      "max_coverage": 0.7547169811320755
+    },
+    "problem": {
+      "avg_coverage": 0.5471698113207547,
+      "min_coverage": 0.5471698113207547,
+      "max_coverage": 0.5471698113207547
+    },
+    "synonym": {
+      "avg_coverage": 0.6981132075471698,
+      "min_coverage": 0.6981132075471698,
+      "max_coverage": 0.6981132075471698
+    }
+  },
+  "best_configurations": {
+    "hybrid_fixed_512_0pct_BAAI/bge-base-en-v1.5": {
+      "coverage": 0.7547169811320755,
+      "k": 5,
+      "metric": "exact_match"
+    }
+  },
+  "degradation_analysis": [
+    {
+      "dimension": "negation",
+      "avg_coverage": 0.5094339622641509,
+      "delta_from_original": -0.24528301886792458,
+      "percent_degradation": -32.50000000000001
+    },
+    {
+      "dimension": "problem",
+      "avg_coverage": 0.5471698113207547,
+      "delta_from_original": -0.20754716981132082,
+      "percent_degradation": -27.500000000000007
+    },
+    {
+      "dimension": "contextual",
+      "avg_coverage": 0.6037735849056604,
+      "delta_from_original": -0.15094339622641517,
+      "percent_degradation": -20.00000000000001
+    },
+    {
+      "dimension": "casual",
+      "avg_coverage": 0.660377358490566,
+      "delta_from_original": -0.09433962264150952,
+      "percent_degradation": -12.50000000000001
+    },
+    {
+      "dimension": "synonym",
+      "avg_coverage": 0.6981132075471698,
+      "delta_from_original": -0.05660377358490576,
+      "percent_degradation": -7.500000000000012
+    }
+  ]
+}

@@ -1,0 +1,1233 @@
+[15:06:39] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_phase2_llm.yaml
+
+================================================================================
+[15:06:39] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+[15:06:39] DEBUG | Timer 'total_benchmark' started
+
+================================================================================
+[15:06:39] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[15:06:39] METRIC | device=cuda
+[15:06:39] METRIC | ollama_available=False
+[15:06:39] INFO  | Device: cuda
+[15:06:39] INFO  | Ollama available: False
+[15:06:39] INFO  | Loading corpus...
+[15:06:39] METRIC | documents=5
+[15:06:39] METRIC | queries=20
+[15:06:39] METRIC | total_facts=53
+[15:06:39] METRIC | has_human_queries=True
+[15:06:39] INFO  | Loaded 5 documents
+[15:06:39] INFO  | Loaded 20 queries
+[15:06:39] INFO  | Total key facts: 53
+[15:06:39] INFO  | Human query variations: True
+[15:06:39] INFO  | Enabled embedders: 1
+[15:06:39] INFO  | Enabled rerankers: 0
+[15:06:39] INFO  | Enabled LLMs: 1
+[15:06:39] INFO  | Enabled chunking strategies: 1
+[15:06:39] INFO  | Enabled retrieval strategies: 2
+[15:06:39] METRIC | total_combinations=2
+[15:06:39] METRIC | total_evaluations=2
+[15:06:39] INFO  | Total strategy combinations: 2
+[15:06:39] INFO  | Total evaluations (with k and metrics): 2
+
+================================================================================
+[15:06:39] INFO  | RETRIEVAL STRATEGY: hybrid
+================================================================================
+[15:06:39] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[15:06:42] PROG  | [  1/  2] ██████████░░░░░░░░░░  50.0% | hybrid_bge-base-en-v1.5_fixed_512_0pct
+[15:06:42] DEBUG | Chunking document 'api_reference': 1792 words, 16663 chars
+[15:06:42] DEBUG |   Chunk 0: chars [0-3160] words=376 tokens≈500 preview='# CloudFlow API Reference Version 2.1.0 | Last Updated: January 2026 ## Overview The CloudFlow API i...'
+[15:06:42] DEBUG |   Chunk 1: chars [3161-6111] words=379 tokens≈504 preview='## Rate Limiting To ensure fair usage and system stability, CloudFlow enforces rate limits on all AP...'
+[15:06:42] DEBUG |   Chunk 2: chars [6112-8827] words=296 tokens≈393 preview='**Endpoint:** `POST /workflows` **Request Body:** ```json { "name": "Email Campaign Automation", "de...'
+[15:06:42] DEBUG |   Chunk 3: chars [8828-11402] words=269 tokens≈357 preview='**Endpoint:** `GET /pipelines/{pipeline_id}/executions` **Query Parameters:** - `status` (optional):...'
+[15:06:42] DEBUG |   Chunk 4: chars [11403-14151] words=365 tokens≈485 preview='### Error Response Format ```json { "error": { "code": "invalid_parameter", "message": "The 'limit' ...'
+[15:06:42] DEBUG |   Chunk 5: chars [14152-15213] words=107 tokens≈142 preview='**Supported Events:** - `workflow.started` - `workflow.completed` - `workflow.failed` - `pipeline.co...'
+[15:06:42] DEBUG | Created 6 chunks for document 'api_reference'
+[15:06:42] DEBUG | Chunking document 'architecture_overview': 4607 words, 36722 chars
+[15:06:42] DEBUG |   Chunk 0: chars [0-3230] words=370 tokens≈492 preview='# CloudFlow Platform - System Architecture Overview **Document Version:** 2.3.1 **Last Updated:** Ja...'
+[15:06:42] DEBUG |   Chunk 1: chars [3231-5982] words=380 tokens≈505 preview='**Technology**: Node.js with Express.js framework **Replicas**: 12 pods (production), auto-scaling 8...'
+[15:06:42] DEBUG |   Chunk 2: chars [5983-7875] words=248 tokens≈329 preview='**Technology**: Node.js with TypeScript, Bull queue library **Replicas**: 16 pods (production), auto...'
+[15:06:42] DEBUG |   Chunk 3: chars [7876-9478] words=219 tokens≈291 preview='**Technology**: Go with distributed locking via Redis **Replicas**: 4 pods (production), active-pass...'
+[15:06:42] DEBUG |   Chunk 4: chars [9479-11878] words=354 tokens≈470 preview='**Technology**: Node.js with worker pool pattern **Replicas**: 8 pods (production), auto-scaling 6-1...'
+[15:06:42] DEBUG |   Chunk 5: chars [11879-14634] words=368 tokens≈489 preview='Success/failure events published back to Kafka ``` **Event Schema**: ```json { "event_id": "uuid-v4"...'
+[15:06:42] DEBUG |   Chunk 6: chars [14635-17394] words=384 tokens≈510 preview='**Session Storage**: - Key pattern: `session:{user_id}` - TTL: 15 minutes (aligned with JWT expiry) ...'
+[15:06:42] DEBUG |   Chunk 7: chars [17395-20141] words=381 tokens≈506 preview='records: 500 - Session timeout: 30 seconds --- ## Message Queue Patterns ### Pub/Sub Pattern Used fo...'
+[15:06:42] DEBUG |   Chunk 8: chars [20142-22843] words=384 tokens≈510 preview='### Cache Invalidation Strategies **Time-Based Expiration (TTL)**: - Short-lived data: 5-15 minutes ...'
+[15:06:42] DEBUG |   Chunk 9: chars [22844-25362] words=384 tokens≈510 preview='per API key (default: 1000 RPM) ### Secrets Management **HashiCorp Vault Integration**: - Dynamic da...'
+[15:06:42] DEBUG |   Chunk 10: chars [25363-27842] words=384 tokens≈510 preview='- Execution start rate: 500 per second - Completion rate: 450 per second (average 2-second execution...'
+[15:06:42] DEBUG |   Chunk 11: chars [27843-30286] words=375 tokens≈498 preview='Service (2) - PostgreSQL Primary - PostgreSQL Replica - PostgreSQL Replica - Redis Primary (2) - Red...'
+[15:06:42] DEBUG |   Chunk 12: chars [30287-32834] words=376 tokens≈500 preview='Resume normal operations - Recovery time: 1-3 hours depending on data volume - Data loss: None if co...'
+[15:06:42] DEBUG | Created 13 chunks for document 'architecture_overview'
+[15:06:42] DEBUG | Chunking document 'deployment_guide': 2777 words, 25837 chars
+[15:06:42] DEBUG |   Chunk 0: chars [0-3165] words=384 tokens≈510 preview='# CloudFlow Platform - Deployment and Operations Guide **Version:** 2.4.0 **Last Updated:** January ...'
+[15:06:42] DEBUG |   Chunk 1: chars [3166-6560] words=384 tokens≈510 preview='create cluster -f cluster-config.yaml ``` ### Storage Configuration Install the EBS CSI driver for p...'
+[15:06:42] DEBUG |   Chunk 2: chars [6561-8755] words=251 tokens≈333 preview='- secretName: cloudflow-tls hosts: - api.cloudflow.io healthCheck: enabled: true livenessProbe: path...'
+[15:06:42] DEBUG |   Chunk 3: chars [8756-12138] words=384 tokens≈510 preview='Deploy PostgreSQL using the Bitnami Helm chart: ```yaml # postgres-values.yaml global: postgresql: a...'
+[15:06:42] DEBUG |   Chunk 4: chars [12139-14139] words=204 tokens≈271 preview='--set prometheus.prometheusSpec.retention=30d \ --set prometheus.prometheusSpec.storageSpec.volumeCl...'
+[15:06:42] DEBUG |   Chunk 5: chars [14140-17194] words=372 tokens≈494 preview='Configure log aggregation: ```bash # Install Fluent Bit for log forwarding helm install fluent-bit f...'
+[15:06:42] DEBUG |   Chunk 6: chars [17195-20069] words=384 tokens≈510 preview='**Verify Service Health**: ```bash kubectl get pods -n cloudflow-prod curl https://api.cloudflow.io/...'
+[15:06:42] DEBUG |   Chunk 7: chars [20070-23221] words=384 tokens≈510 preview='podSelector: matchLabels: app: cloudflow policyTypes: - Ingress - Egress ingress: - from: - namespac...'
+[15:06:42] DEBUG |   Chunk 8: chars [23222-23448] words=30 tokens≈39 preview='UTC - **Secondary**: Wednesday 10:00-12:00 UTC All deployments should target these windows to minimi...'
+[15:06:42] DEBUG | Created 9 chunks for document 'deployment_guide'
+[15:06:42] DEBUG | Chunking document 'troubleshooting_guide': 4032 words, 32183 chars
+[15:06:42] DEBUG |   Chunk 0: chars [0-2666] words=320 tokens≈425 preview='# CloudFlow Platform Troubleshooting Guide **Version:** 3.2.1 **Last Updated:** January 2026 **Audie...'
+[15:06:42] DEBUG |   Chunk 1: chars [2667-5007] words=321 tokens≈426 preview='**Diagnosis:** ```bash # Check system time timedatectl status # Compare with NTP server ntpdate -q p...'
+[15:06:42] DEBUG |   Chunk 2: chars [5008-8037] words=376 tokens≈500 preview='Review Query Execution Plans** ```sql -- Connect to CloudFlow database cloudflow db connect --readon...'
+[15:06:42] DEBUG |   Chunk 3: chars [8038-10862] words=356 tokens≈473 preview='Workflow Context Accumulation** Large workflow executions may accumulate state in memory. **Solution...'
+[15:06:42] DEBUG |   Chunk 4: chars [10863-13827] words=384 tokens≈510 preview='**Implement connection pooling optimization:** ```bash # Use PgBouncer for connection pooling kubect...'
+[15:06:42] DEBUG |   Chunk 5: chars [13828-16401] words=334 tokens≈444 preview='exec_7h3j6k9m2n --show-bottlenecks ``` #### Solutions **1. Increase workflow timeout (if justified):...'
+[15:06:42] DEBUG |   Chunk 6: chars [16402-19022] words=329 tokens≈437 preview='Data Validation Errors** ``` ValidationError: Field 'customer_id' is required but missing in 234 rec...'
+[15:06:42] DEBUG |   Chunk 7: chars [19023-20595] words=194 tokens≈258 preview='Waiting {retry_after} seconds...") time.sleep(retry_after) continue remaining = int(response.headers...'
+[15:06:42] DEBUG |   Chunk 8: chars [20596-23454] words=384 tokens≈510 preview='Leverage caching:** ```bash # Enable client-side caching export CLOUDFLOW_CACHE_ENABLED=true export ...'
+[15:06:42] DEBUG |   Chunk 9: chars [23455-26239] words=384 tokens≈510 preview='in" # Find workflow failures by ID kubectl logs -n cloudflow deployment/cloudflow-workflow-engine | ...'
+[15:06:42] DEBUG |   Chunk 10: chars [26240-29039] words=384 tokens≈510 preview='database nc -zv cloudflow-db.internal.company.com 5432 # Trace route traceroute api.cloudflow.io # C...'
+[15:06:42] DEBUG |   Chunk 11: chars [29040-31206] words=266 tokens≈353 preview='outage" # Create war room cloudflow incident war-room create incident-2024012401 ``` **For SEV-2 (Hi...'
+[15:06:42] DEBUG | Created 12 chunks for document 'troubleshooting_guide'
+[15:06:42] DEBUG | Chunking document 'user_guide': 3735 words, 31582 chars
+[15:06:42] DEBUG |   Chunk 0: chars [0-2617] words=375 tokens≈498 preview='# CloudFlow User Guide Welcome to CloudFlow, the modern workflow automation platform that helps you ...'
+[15:06:42] DEBUG |   Chunk 1: chars [2618-5224] words=348 tokens≈462 preview='Open the Visual Editor by clicking **"Create Workflow"** or editing an existing workflow 2. Add a tr...'
+[15:06:42] DEBUG |   Chunk 2: chars [5225-8372] words=381 tokens≈506 preview='### HTTP Requests Make HTTP requests to any API endpoint: **Configuration:** - **Method**: GET, POST...'
+[15:06:42] DEBUG |   Chunk 3: chars [8373-11268] words=336 tokens≈446 preview='``` **Slack App Integration:** - Install the CloudFlow Slack app in your workspace - Authenticate on...'
+[15:06:42] DEBUG |   Chunk 4: chars [11269-13371] words=375 tokens≈498 preview='### Cron Syntax Use standard cron expressions to define schedules: ``` * * * * * ┬ ┬ ┬ ┬ ┬ │ │ │ │ │...'
+[15:06:42] DEBUG |   Chunk 5: chars [13372-16105] words=383 tokens≈509 preview='Save and activate **Testing Schedules:** Use the built-in schedule calculator to preview upcoming ex...'
+[15:06:42] DEBUG |   Chunk 6: chars [16106-18686] words=363 tokens≈482 preview='Filter by error type, date range, or execution ID 3. Click an execution to view full details 4. Clic...'
+[15:06:42] DEBUG |   Chunk 7: chars [18687-21448] words=364 tokens≈484 preview='Handle Errors Gracefully Always implement error handling for external API calls and database operati...'
+[15:06:42] DEBUG |   Chunk 8: chars [21449-24677] words=384 tokens≈510 preview='Version Control For critical workflows: - Export YAML definitions regularly - Store in version contr...'
+[15:06:42] DEBUG |   Chunk 9: chars [24678-27975] words=371 tokens≈493 preview='Requester: {{trigger.body.requester}} Description: {{trigger.body.description}} Approve: https://app...'
+[15:06:42] DEBUG |   Chunk 10: chars [27976-28481] words=55 tokens≈73 preview='- **Documentation**: https://docs.cloudflow.io - **Community Forum**: https://community.cloudflow.io...'
+[15:06:42] DEBUG | Created 11 chunks for document 'user_guide'
+[15:06:42] INFO  |   Created 51 chunks
+[15:06:43] INFO  |   Indexed in 1.15s
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What is the API rate limit per minute?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] 100 requests per minute per authenticated user
+[15:06:43] TRACE |   FOUND[2] 20 requests per minute for unauthenticated requests
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: How many requests can I make per minute to the API?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] 100 requests per minute per authenticated user
+[15:06:43] TRACE |   FOUND[2] 20 requests per minute for unauthenticated requests
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: My API calls are getting blocked, what's the limit?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] 100 requests per minute per authenticated user
+[15:06:43] TRACE |   FOUND[2] 20 requests per minute for unauthenticated requests
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: api rate limit
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] 100 requests per minute per authenticated user
+[15:06:43] TRACE |   FOUND[2] 20 requests per minute for unauthenticated requests
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I'm building a batch job that calls CloudFlow API repeatedly, what rate limit should I expect?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] 100 requests per minute per authenticated user
+[15:06:43] TRACE |   FOUND[2] 20 requests per minute for unauthenticated requests
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why is the API rejecting my requests after 100 calls?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] 100 requests per minute per authenticated user
+[15:06:43] TRACE |   FOUND[2] 20 requests per minute for unauthenticated requests
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: How do I fix 429 Too Many Requests errors?
+[15:06:43] TRACE | Total key facts: 5
+[15:06:43] TRACE | Found facts: 4/5
+[15:06:43] TRACE |   FOUND[1] 429 Too Many Requests
+[15:06:43] TRACE |   FOUND[2] X-RateLimit-Remaining
+[15:06:43] TRACE |   FOUND[3] Retry-After
+[15:06:43] TRACE |   FOUND[4] Implement exponential backoff when receiving 429 responses
+[15:06:43] TRACE | Missed facts: 1/5
+[15:06:43] TRACE |   MISSED[1] Monitor X-RateLimit-Remaining header values
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What should I do when I get rate limited?
+[15:06:43] TRACE | Total key facts: 5
+[15:06:43] TRACE | Found facts: 3/5
+[15:06:43] TRACE |   FOUND[1] 429 Too Many Requests
+[15:06:43] TRACE |   FOUND[2] X-RateLimit-Remaining
+[15:06:43] TRACE |   FOUND[3] Implement exponential backoff when receiving 429 responses
+[15:06:43] TRACE | Missed facts: 2/5
+[15:06:43] TRACE |   MISSED[1] Retry-After
+[15:06:43] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_6 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] Monitor X-RateLimit-Remaining header values
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: My requests keep failing with 429 status code
+[15:06:43] TRACE | Total key facts: 5
+[15:06:43] TRACE | Found facts: 3/5
+[15:06:43] TRACE |   FOUND[1] 429 Too Many Requests
+[15:06:43] TRACE |   FOUND[2] X-RateLimit-Remaining
+[15:06:43] TRACE |   FOUND[3] Retry-After
+[15:06:43] TRACE | Missed facts: 2/5
+[15:06:43] TRACE |   MISSED[1] Monitor X-RateLimit-Remaining header values
+[15:06:43] TRACE |   MISSED[2] Implement exponential backoff when receiving 429 responses
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: 429 error fix
+[15:06:43] TRACE | Total key facts: 5
+[15:06:43] TRACE | Found facts: 3/5
+[15:06:43] TRACE |   FOUND[1] 429 Too Many Requests
+[15:06:43] TRACE |   FOUND[2] X-RateLimit-Remaining
+[15:06:43] TRACE |   FOUND[3] Retry-After
+[15:06:43] TRACE | Missed facts: 2/5
+[15:06:43] TRACE |   MISSED[1] Monitor X-RateLimit-Remaining header values
+[15:06:43] TRACE |   MISSED[2] Implement exponential backoff when receiving 429 responses
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I'm getting throttled by CloudFlow API, how can I handle this in my application?
+[15:06:43] TRACE | Total key facts: 5
+[15:06:43] TRACE | Found facts: 0/5
+[15:06:43] TRACE | Missed facts: 5/5
+[15:06:43] TRACE |   MISSED[1] 429 Too Many Requests
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] X-RateLimit-Remaining
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[3] Retry-After
+[15:06:43] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_6 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[4] Monitor X-RateLimit-Remaining header values
+[15:06:43] TRACE |   MISSED[5] Implement exponential backoff when receiving 429 responses
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why am I being blocked with rate limit errors?
+[15:06:43] TRACE | Total key facts: 5
+[15:06:43] TRACE | Found facts: 4/5
+[15:06:43] TRACE |   FOUND[1] 429 Too Many Requests
+[15:06:43] TRACE |   FOUND[2] X-RateLimit-Remaining
+[15:06:43] TRACE |   FOUND[3] Retry-After
+[15:06:43] TRACE |   FOUND[4] Implement exponential backoff when receiving 429 responses
+[15:06:43] TRACE | Missed facts: 1/5
+[15:06:43] TRACE |   MISSED[1] Monitor X-RateLimit-Remaining header values
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What is the JWT token expiration time?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 1/3
+[15:06:43] TRACE |   FOUND[1] 3600 seconds
+[15:06:43] TRACE | Missed facts: 2/3
+[15:06:43] TRACE |   MISSED[1] max 3600 seconds from iat
+[15:06:43] TRACE |   MISSED[2] All tokens expire after 3600 seconds
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: How long do access tokens last?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 1/3
+[15:06:43] TRACE |   FOUND[1] 3600 seconds
+[15:06:43] TRACE | Missed facts: 2/3
+[15:06:43] TRACE |   MISSED[1] max 3600 seconds from iat
+[15:06:43] TRACE |   MISSED[2] All tokens expire after 3600 seconds
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: My authentication keeps expiring after an hour
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 1/3
+[15:06:43] TRACE |   FOUND[1] 3600 seconds
+[15:06:43] TRACE | Missed facts: 2/3
+[15:06:43] TRACE |   MISSED[1] max 3600 seconds from iat
+[15:06:43] TRACE |   MISSED[2] All tokens expire after 3600 seconds
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: token expiry time
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 1/3
+[15:06:43] TRACE |   FOUND[1] 3600 seconds
+[15:06:43] TRACE | Missed facts: 2/3
+[15:06:43] TRACE |   MISSED[1] max 3600 seconds from iat
+[15:06:43] TRACE |   MISSED[2] All tokens expire after 3600 seconds
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I need to implement token refresh logic, when do JWT tokens expire?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 1/3
+[15:06:43] TRACE |   FOUND[1] 3600 seconds
+[15:06:43] TRACE | Missed facts: 2/3
+[15:06:43] TRACE |   MISSED[1] max 3600 seconds from iat
+[15:06:43] TRACE |   MISSED[2] All tokens expire after 3600 seconds
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why does my token stop working after 3600 seconds?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 1/3
+[15:06:43] TRACE |   FOUND[1] 3600 seconds
+[15:06:43] TRACE | Missed facts: 2/3
+[15:06:43] TRACE |   MISSED[1] max 3600 seconds from iat
+[15:06:43] TRACE |   MISSED[2] All tokens expire after 3600 seconds
+[15:06:43] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What database technology does CloudFlow use?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 3/3
+[15:06:43] TRACE |   FOUND[1] PostgreSQL 15.4
+[15:06:43] TRACE |   FOUND[2] Redis 7.2
+[15:06:43] TRACE |   FOUND[3] Apache Kafka 3.6
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Which database system powers CloudFlow?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 3/3
+[15:06:43] TRACE |   FOUND[1] PostgreSQL 15.4
+[15:06:43] TRACE |   FOUND[2] Redis 7.2
+[15:06:43] TRACE |   FOUND[3] Apache Kafka 3.6
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I need to understand the data storage architecture
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 3/3
+[15:06:43] TRACE |   FOUND[1] PostgreSQL 15.4
+[15:06:43] TRACE |   FOUND[2] Redis 7.2
+[15:06:43] TRACE |   FOUND[3] Apache Kafka 3.6
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: database stack
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 0/3
+[15:06:43] TRACE | Missed facts: 3/3
+[15:06:43] TRACE |   MISSED[1] PostgreSQL 15.4
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] Redis 7.2
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[3] Apache Kafka 3.6
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: For capacity planning, what databases does CloudFlow rely on?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 3/3
+[15:06:43] TRACE |   FOUND[1] PostgreSQL 15.4
+[15:06:43] TRACE |   FOUND[2] Redis 7.2
+[15:06:43] TRACE |   FOUND[3] Apache Kafka 3.6
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Is CloudFlow using MySQL or something else?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 0/3
+[15:06:43] TRACE | Missed facts: 3/3
+[15:06:43] TRACE |   MISSED[1] PostgreSQL 15.4
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] Redis 7.2
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[3] Apache Kafka 3.6
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What is the Kubernetes namespace for production deployment?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] cloudflow-prod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Which namespace is used for CloudFlow production?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] cloudflow-prod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I can't find the production pods
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] cloudflow-prod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: prod namespace
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] cloudflow-prod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I need to deploy to production, what namespace should I use?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] cloudflow-prod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why can't I see resources in the default namespace?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] cloudflow-prod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What are the resource requirements for the API Gateway?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 0/1
+[15:06:43] TRACE | Missed facts: 1/1
+[15:06:43] TRACE |   MISSED[1] 2 vCPU, 4GB RAM per pod
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: How much CPU and memory does the API Gateway need?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] 2 vCPU, 4GB RAM per pod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: The API Gateway pods keep getting OOMKilled
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] 2 vCPU, 4GB RAM per pod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: api gateway resources
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] 2 vCPU, 4GB RAM per pod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I'm provisioning infrastructure, what are the compute specs for API Gateway?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] 2 vCPU, 4GB RAM per pod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why is 1GB RAM not enough for API Gateway?
+[15:06:43] TRACE | Total key facts: 1
+[15:06:43] TRACE | Found facts: 1/1
+[15:06:43] TRACE |   FOUND[1] 2 vCPU, 4GB RAM per pod
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What are the health check endpoints?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] /health
+[15:06:43] TRACE |   FOUND[2] /ready
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Which URLs should I use for health monitoring?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] /health
+[15:06:43] TRACE |   FOUND[2] /ready
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: My load balancer health checks are failing
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 1/2
+[15:06:43] TRACE |   FOUND[1] /health
+[15:06:43] TRACE | Missed facts: 1/2
+[15:06:43] TRACE |   MISSED[1] /ready
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_2 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: health endpoints
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] /health
+[15:06:43] TRACE |   FOUND[2] /ready
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Setting up monitoring, what endpoints indicate service health?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] /health
+[15:06:43] TRACE |   FOUND[2] /ready
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why doesn't /status return health information?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 2/2
+[15:06:43] TRACE |   FOUND[1] /health
+[15:06:43] TRACE |   FOUND[2] /ready
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What are the HPA scaling parameters?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 2/3
+[15:06:43] TRACE |   FOUND[1] minReplicas: 3
+[15:06:43] TRACE |   FOUND[2] maxReplicas: 10
+[15:06:43] TRACE | Missed facts: 1/3
+[15:06:43] TRACE |   MISSED[1] targetCPUUtilizationPercentage: 70
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: How does horizontal pod autoscaling work?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 2/3
+[15:06:43] TRACE |   FOUND[1] minReplicas: 3
+[15:06:43] TRACE |   FOUND[2] maxReplicas: 10
+[15:06:43] TRACE | Missed facts: 1/3
+[15:06:43] TRACE |   MISSED[1] targetCPUUtilizationPercentage: 70
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Pods aren't scaling up during traffic spikes
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 2/3
+[15:06:43] TRACE |   FOUND[1] minReplicas: 3
+[15:06:43] TRACE |   FOUND[2] maxReplicas: 10
+[15:06:43] TRACE | Missed facts: 1/3
+[15:06:43] TRACE |   MISSED[1] targetCPUUtilizationPercentage: 70
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: autoscaling config
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 3/3
+[15:06:43] TRACE |   FOUND[1] minReplicas: 3
+[15:06:43] TRACE |   FOUND[2] maxReplicas: 10
+[15:06:43] TRACE |   FOUND[3] targetCPUUtilizationPercentage: 70
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: I need to configure autoscaling, what are the min/max replicas and thresholds?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 0/3
+[15:06:43] TRACE | Missed facts: 3/3
+[15:06:43] TRACE |   MISSED[1] minReplicas: 3
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] maxReplicas: 10
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[3] targetCPUUtilizationPercentage: 70
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why do we have 3 replicas even with low traffic?
+[15:06:43] TRACE | Total key facts: 3
+[15:06:43] TRACE | Found facts: 0/3
+[15:06:43] TRACE | Missed facts: 3/3
+[15:06:43] TRACE |   MISSED[1] minReplicas: 3
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] maxReplicas: 10
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[3] targetCPUUtilizationPercentage: 70
+[15:06:43] TRACE |     -> Found in chunk_id=deployment_guide_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What is the P99 latency target for API operations?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 1/2
+[15:06:43] TRACE |   FOUND[1] average P99 latency of 180ms for API operations
+[15:06:43] TRACE | Missed facts: 1/2
+[15:06:43] TRACE |   MISSED[1] P99 latency: < 200ms
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: What's the 99th percentile response time target?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 0/2
+[15:06:43] TRACE | Missed facts: 2/2
+[15:06:43] TRACE |   MISSED[1] P99 latency: < 200ms
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] average P99 latency of 180ms for API operations
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Our API latency is 500ms, is that acceptable?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 1/2
+[15:06:43] TRACE |   FOUND[1] average P99 latency of 180ms for API operations
+[15:06:43] TRACE | Missed facts: 1/2
+[15:06:43] TRACE |   MISSED[1] P99 latency: < 200ms
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: api latency target
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 0/2
+[15:06:43] TRACE | Missed facts: 2/2
+[15:06:43] TRACE |   MISSED[1] P99 latency: < 200ms
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] average P99 latency of 180ms for API operations
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Setting SLOs for our service, what P99 latency does CloudFlow guarantee?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 1/2
+[15:06:43] TRACE |   FOUND[1] average P99 latency of 180ms for API operations
+[15:06:43] TRACE | Missed facts: 1/2
+[15:06:43] TRACE |   MISSED[1] P99 latency: < 200ms
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:43] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:43] TRACE | Query: Why are we getting alerts at 200ms latency?
+[15:06:43] TRACE | Total key facts: 2
+[15:06:43] TRACE | Found facts: 0/2
+[15:06:43] TRACE | Missed facts: 2/2
+[15:06:43] TRACE |   MISSED[1] P99 latency: < 200ms
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:43] TRACE |   MISSED[2] average P99 latency of 180ms for API operations
+[15:06:43] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:43] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What are the disaster recovery RPO and RTO values?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] RPO (Recovery Point Objective): 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] RTO (Recovery Time Objective): 4 hours
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What's the maximum data loss and recovery time?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 2/2
+[15:06:44] TRACE |   FOUND[1] RPO (Recovery Point Objective): 1 hour
+[15:06:44] TRACE |   FOUND[2] RTO (Recovery Time Objective): 4 hours
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How long will it take to recover from a disaster?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] RPO (Recovery Point Objective): 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] RTO (Recovery Time Objective): 4 hours
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: RPO RTO
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] RPO (Recovery Point Objective): 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] RTO (Recovery Time Objective): 4 hours
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: For our business continuity plan, what are CloudFlow's recovery objectives?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] RPO (Recovery Point Objective): 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] RTO (Recovery Time Objective): 4 hours
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why can't we guarantee zero data loss?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] RPO (Recovery Point Objective): 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] RTO (Recovery Time Objective): 4 hours
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_10 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What is the maximum workflow execution timeout?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] 3600 seconds
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] exceeded maximum execution time of 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_4 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How long can a workflow run before timing out?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] 3600 seconds
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] exceeded maximum execution time of 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_4 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My workflow is being killed after an hour
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] 3600 seconds
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] exceeded maximum execution time of 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_4 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: workflow timeout
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] 3600 seconds
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] exceeded maximum execution time of 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_4 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: I have a long-running data processing workflow, what's the time limit?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] exceeded maximum execution time of 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_4 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why did my workflow fail after 3600 seconds?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] 3600 seconds
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] exceeded maximum execution time of 3600 seconds
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_4 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What JWT algorithm is used for token signing?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] RS256
+[15:06:44] TRACE |   FOUND[2] RS256 algorithm
+[15:06:44] TRACE |   FOUND[3] RS256 signing algorithm
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Which signing algorithm does CloudFlow use for JWTs?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] RS256
+[15:06:44] TRACE |   FOUND[2] RS256 signing algorithm
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] RS256 algorithm
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_1 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My JWT validation is failing with algorithm mismatch
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] RS256
+[15:06:44] TRACE |   FOUND[2] RS256 algorithm
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] RS256 signing algorithm
+[15:06:44] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: jwt algorithm
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] RS256
+[15:06:44] TRACE |   FOUND[2] RS256 algorithm
+[15:06:44] TRACE |   FOUND[3] RS256 signing algorithm
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: I'm implementing JWT verification, what algorithm should I expect?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] RS256
+[15:06:44] TRACE |   FOUND[2] RS256 algorithm
+[15:06:44] TRACE |   FOUND[3] RS256 signing algorithm
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why doesn't HS256 work for token validation?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] RS256
+[15:06:44] TRACE |   FOUND[2] RS256 algorithm
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] RS256 signing algorithm
+[15:06:44] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What is the Redis cache TTL for workflow definitions?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] TTL: 1 hour
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] Workflow Definitions: TTL: 1 hour
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How long are workflow definitions cached?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] TTL: 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_6 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] Workflow Definitions: TTL: 1 hour
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My workflow updates aren't reflecting immediately
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] TTL: 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_6 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] Workflow Definitions: TTL: 1 hour
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: cache ttl workflows
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] TTL: 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_6 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] Workflow Definitions: TTL: 1 hour
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: After updating a workflow, how long until the cache expires?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] TTL: 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_6 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] Workflow Definitions: TTL: 1 hour
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why are changes taking an hour to appear?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 0/2
+[15:06:44] TRACE | Missed facts: 2/2
+[15:06:44] TRACE |   MISSED[1] TTL: 1 hour
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_6 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] Workflow Definitions: TTL: 1 hour
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What monitoring tools does CloudFlow use?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] Prometheus
+[15:06:44] TRACE |   FOUND[2] Grafana
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] Jaeger for distributed tracing
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Which observability platform is integrated?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] Prometheus
+[15:06:44] TRACE |   FOUND[2] Grafana
+[15:06:44] TRACE |   FOUND[3] Jaeger for distributed tracing
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Where can I view CloudFlow metrics and logs?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] Prometheus
+[15:06:44] TRACE |   FOUND[2] Grafana
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] Jaeger for distributed tracing
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: monitoring stack
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] Prometheus
+[15:06:44] TRACE |   FOUND[2] Grafana
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] Jaeger for distributed tracing
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: I need to set up dashboards, what monitoring systems are available?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] Prometheus
+[15:06:44] TRACE |   FOUND[2] Grafana
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] Jaeger for distributed tracing
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why can't I see metrics in Datadog?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] Prometheus
+[15:06:44] TRACE |   FOUND[2] Grafana
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] Jaeger for distributed tracing
+[15:06:44] TRACE |     -> Found in chunk_id=architecture_overview_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How do I diagnose database connection pool exhaustion?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] could not obtain connection from pool within 5000ms
+[15:06:44] TRACE |   FOUND[2] connection pool exhausted (100/100 connections in use)
+[15:06:44] TRACE |   FOUND[3] PgBouncer
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What should I check when I run out of database connections?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] could not obtain connection from pool within 5000ms
+[15:06:44] TRACE |   FOUND[2] connection pool exhausted (100/100 connections in use)
+[15:06:44] TRACE |   FOUND[3] PgBouncer
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Getting 'could not obtain connection from pool' errors
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] could not obtain connection from pool within 5000ms
+[15:06:44] TRACE |   FOUND[2] connection pool exhausted (100/100 connections in use)
+[15:06:44] TRACE |   FOUND[3] PgBouncer
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: connection pool full
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] could not obtain connection from pool within 5000ms
+[15:06:44] TRACE |   FOUND[2] connection pool exhausted (100/100 connections in use)
+[15:06:44] TRACE |   FOUND[3] PgBouncer
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My app is failing with connection pool errors, how do I troubleshoot?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] could not obtain connection from pool within 5000ms
+[15:06:44] TRACE |   FOUND[2] connection pool exhausted (100/100 connections in use)
+[15:06:44] TRACE |   FOUND[3] PgBouncer
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why can't I get a database connection even though CPU is low?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] could not obtain connection from pool within 5000ms
+[15:06:44] TRACE |   FOUND[2] connection pool exhausted (100/100 connections in use)
+[15:06:44] TRACE |   FOUND[3] PgBouncer
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How do I handle API authentication?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] OAuth 2.0
+[15:06:44] TRACE |   FOUND[2] API keys
+[15:06:44] TRACE |   FOUND[3] JWT tokens
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What authentication methods are supported?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] OAuth 2.0
+[15:06:44] TRACE |   FOUND[2] API keys
+[15:06:44] TRACE |   FOUND[3] JWT tokens
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My API requests are getting 401 errors
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 2/3
+[15:06:44] TRACE |   FOUND[1] OAuth 2.0
+[15:06:44] TRACE |   FOUND[2] API keys
+[15:06:44] TRACE | Missed facts: 1/3
+[15:06:44] TRACE |   MISSED[1] JWT tokens
+[15:06:44] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: auth methods
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] OAuth 2.0
+[15:06:44] TRACE |   FOUND[2] API keys
+[15:06:44] TRACE |   FOUND[3] JWT tokens
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: I'm integrating with CloudFlow API, what authentication options do I have?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 3/3
+[15:06:44] TRACE |   FOUND[1] OAuth 2.0
+[15:06:44] TRACE |   FOUND[2] API keys
+[15:06:44] TRACE |   FOUND[3] JWT tokens
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why isn't basic auth working?
+[15:06:44] TRACE | Total key facts: 3
+[15:06:44] TRACE | Found facts: 1/3
+[15:06:44] TRACE |   FOUND[1] OAuth 2.0
+[15:06:44] TRACE | Missed facts: 2/3
+[15:06:44] TRACE |   MISSED[1] API keys
+[15:06:44] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] JWT tokens
+[15:06:44] TRACE |     -> Found in chunk_id=api_reference_fix_0 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What is PgBouncer and why is it used in CloudFlow?
+[15:06:44] TRACE | Total key facts: 5
+[15:06:44] TRACE | Found facts: 5/5
+[15:06:44] TRACE |   FOUND[1] PgBouncer
+[15:06:44] TRACE |   FOUND[2] connection pooling
+[15:06:44] TRACE |   FOUND[3] max_db_connections = 100
+[15:06:44] TRACE |   FOUND[4] default_pool_size = 25
+[15:06:44] TRACE |   FOUND[5] pool_mode = transaction
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What's the purpose of the connection pooler?
+[15:06:44] TRACE | Total key facts: 5
+[15:06:44] TRACE | Found facts: 2/5
+[15:06:44] TRACE |   FOUND[1] PgBouncer
+[15:06:44] TRACE |   FOUND[2] connection pooling
+[15:06:44] TRACE | Missed facts: 3/5
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] default_pool_size = 25
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[3] pool_mode = transaction
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Should I connect directly to PostgreSQL or through PgBouncer?
+[15:06:44] TRACE | Total key facts: 5
+[15:06:44] TRACE | Found facts: 2/5
+[15:06:44] TRACE |   FOUND[1] PgBouncer
+[15:06:44] TRACE |   FOUND[2] connection pooling
+[15:06:44] TRACE | Missed facts: 3/5
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] default_pool_size = 25
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[3] pool_mode = transaction
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: pgbouncer purpose
+[15:06:44] TRACE | Total key facts: 5
+[15:06:44] TRACE | Found facts: 5/5
+[15:06:44] TRACE |   FOUND[1] PgBouncer
+[15:06:44] TRACE |   FOUND[2] connection pooling
+[15:06:44] TRACE |   FOUND[3] max_db_connections = 100
+[15:06:44] TRACE |   FOUND[4] default_pool_size = 25
+[15:06:44] TRACE |   FOUND[5] pool_mode = transaction
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Optimizing database connections, what role does PgBouncer play?
+[15:06:44] TRACE | Total key facts: 5
+[15:06:44] TRACE | Found facts: 5/5
+[15:06:44] TRACE |   FOUND[1] PgBouncer
+[15:06:44] TRACE |   FOUND[2] connection pooling
+[15:06:44] TRACE |   FOUND[3] max_db_connections = 100
+[15:06:44] TRACE |   FOUND[4] default_pool_size = 25
+[15:06:44] TRACE |   FOUND[5] pool_mode = transaction
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why can't I connect directly to the database?
+[15:06:44] TRACE | Total key facts: 5
+[15:06:44] TRACE | Found facts: 2/5
+[15:06:44] TRACE |   FOUND[1] PgBouncer
+[15:06:44] TRACE |   FOUND[2] connection pooling
+[15:06:44] TRACE | Missed facts: 3/5
+[15:06:44] TRACE |   MISSED[1] max_db_connections = 100
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] default_pool_size = 25
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[3] pool_mode = transaction
+[15:06:44] TRACE |     -> Found in chunk_id=deployment_guide_fix_3 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How do I implement retry logic for failed workflow steps?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 4/4
+[15:06:44] TRACE |   FOUND[1] max_attempts: 3
+[15:06:44] TRACE |   FOUND[2] backoff_type: exponential
+[15:06:44] TRACE |   FOUND[3] initial_interval: 1000
+[15:06:44] TRACE |   FOUND[4] max retries: 3
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What's the retry strategy for transient failures?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 4/4
+[15:06:44] TRACE |   FOUND[1] max_attempts: 3
+[15:06:44] TRACE |   FOUND[2] backoff_type: exponential
+[15:06:44] TRACE |   FOUND[3] initial_interval: 1000
+[15:06:44] TRACE |   FOUND[4] max retries: 3
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My workflow fails on temporary network errors
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 0/4
+[15:06:44] TRACE | Missed facts: 4/4
+[15:06:44] TRACE |   MISSED[1] max_attempts: 3
+[15:06:44] TRACE |     -> Found in chunk_id=user_guide_fix_5 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[2] backoff_type: exponential
+[15:06:44] TRACE |     -> Found in chunk_id=user_guide_fix_7 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[3] initial_interval: 1000
+[15:06:44] TRACE |     -> Found in chunk_id=user_guide_fix_5 (rank not in top-5)
+[15:06:44] TRACE |   MISSED[4] max retries: 3
+[15:06:44] TRACE |     -> Found in chunk_id=troubleshooting_guide_fix_5 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: retry config
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] max_attempts: 3
+[15:06:44] TRACE |   FOUND[2] initial_interval: 1000
+[15:06:44] TRACE |   FOUND[3] max retries: 3
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] backoff_type: exponential
+[15:06:44] TRACE |     -> Found in chunk_id=user_guide_fix_7 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: I want workflows to automatically retry on errors, what are the options?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] max_attempts: 3
+[15:06:44] TRACE |   FOUND[2] initial_interval: 1000
+[15:06:44] TRACE |   FOUND[3] max retries: 3
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] backoff_type: exponential
+[15:06:44] TRACE |     -> Found in chunk_id=user_guide_fix_7 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why doesn't my workflow retry after failing?
+[15:06:44] TRACE | Total key facts: 4
+[15:06:44] TRACE | Found facts: 3/4
+[15:06:44] TRACE |   FOUND[1] max_attempts: 3
+[15:06:44] TRACE |   FOUND[2] initial_interval: 1000
+[15:06:44] TRACE |   FOUND[3] max retries: 3
+[15:06:44] TRACE | Missed facts: 1/4
+[15:06:44] TRACE |   MISSED[1] backoff_type: exponential
+[15:06:44] TRACE |     -> Found in chunk_id=user_guide_fix_7 (rank not in top-5)
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What Helm chart repository should I use for deployment?
+[15:06:44] TRACE | Total key facts: 1
+[15:06:44] TRACE | Found facts: 1/1
+[15:06:44] TRACE |   FOUND[1] helm repo add cloudflow https://charts.cloudflow.io
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Where is the CloudFlow Helm chart hosted?
+[15:06:44] TRACE | Total key facts: 1
+[15:06:44] TRACE | Found facts: 1/1
+[15:06:44] TRACE |   FOUND[1] helm repo add cloudflow https://charts.cloudflow.io
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: helm repo add is failing, what's the correct URL?
+[15:06:44] TRACE | Total key facts: 1
+[15:06:44] TRACE | Found facts: 1/1
+[15:06:44] TRACE |   FOUND[1] helm repo add cloudflow https://charts.cloudflow.io
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: helm repo
+[15:06:44] TRACE | Total key facts: 1
+[15:06:44] TRACE | Found facts: 1/1
+[15:06:44] TRACE |   FOUND[1] helm repo add cloudflow https://charts.cloudflow.io
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Setting up deployment pipeline, which Helm repository has CloudFlow charts?
+[15:06:44] TRACE | Total key facts: 1
+[15:06:44] TRACE | Found facts: 1/1
+[15:06:44] TRACE |   FOUND[1] helm repo add cloudflow https://charts.cloudflow.io
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why can't I find CloudFlow in the official Helm hub?
+[15:06:44] TRACE | Total key facts: 1
+[15:06:44] TRACE | Found facts: 1/1
+[15:06:44] TRACE |   FOUND[1] helm repo add cloudflow https://charts.cloudflow.io
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: What is the minimum scheduling interval for workflows?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] The minimum scheduling interval is **1 minute**
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] minimum scheduling interval is 1 minute
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: How frequently can I schedule a workflow?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] The minimum scheduling interval is **1 minute**
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] minimum scheduling interval is 1 minute
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: My every-30-seconds schedule is being rejected
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] The minimum scheduling interval is **1 minute**
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] minimum scheduling interval is 1 minute
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: min schedule interval
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] The minimum scheduling interval is **1 minute**
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] minimum scheduling interval is 1 minute
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: I need near real-time execution, what's the fastest schedule I can set?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] The minimum scheduling interval is **1 minute**
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] minimum scheduling interval is 1 minute
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] TRACE | === FACT COVERAGE ANALYSIS ===
+[15:06:44] TRACE | Query: Why can't I schedule workflows every 30 seconds?
+[15:06:44] TRACE | Total key facts: 2
+[15:06:44] TRACE | Found facts: 1/2
+[15:06:44] TRACE |   FOUND[1] The minimum scheduling interval is **1 minute**
+[15:06:44] TRACE | Missed facts: 1/2
+[15:06:44] TRACE |   MISSED[1] minimum scheduling interval is 1 minute
+[15:06:44] TRACE | === END FACT COVERAGE ===
+[15:06:44] INFO  |   k=5 exact_match: 75.5% (40/53)
+[15:06:44] INFO  |     synonym: 69.8%
+[15:06:44] INFO  |     problem: 54.7%
+[15:06:44] INFO  |     casual: 66.0%
+[15:06:44] INFO  |     contextual: 60.4%
+[15:06:44] INFO  |     negation: 50.9%
+
+================================================================================
+[15:06:44] INFO  | RETRIEVAL STRATEGY: enriched_hybrid_llm
+================================================================================
+[15:06:44] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[15:06:47] INFO  | Skipping enriched_hybrid_llm with fast (Ollama unavailable)
+[15:06:47] METRIC | total_benchmark_time=7.646s
+
+================================================================================
+[15:06:47] INFO  | SAVING RESULTS
+================================================================================
+[15:06:47] INFO  | Saved full results to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-25_150639/benchmark_results.json
+[15:06:47] INFO  | Saved summary to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-25_150639/summary.json
+
+================================================================================
+[15:06:47] INFO  | BENCHMARK COMPLETE
+================================================================================
+[15:06:47] INFO  | Total evaluations: 1
+
+Coverage by Query Dimension
+Dimension  | Coverage | Delta 
+-----------+----------+-------
+casual     | 66.0%    | -9.4% 
+contextual | 60.4%    | -15.1%
+negation   | 50.9%    | -24.5%
+original   | 75.5%    | -     
+problem    | 54.7%    | -20.8%
+synonym    | 69.8%    | -5.7% 
+
+================================================================================
+[15:06:47] INFO  | RUN SUMMARY
+================================================================================
+[15:06:47] INFO  | Total runtime: 7.66s
+
+------------------------------------------------------------
+[15:06:47] INFO  | Timing Breakdown
+------------------------------------------------------------
+Phase           | Duration
+----------------+---------
+total_benchmark | 7.65s   
+[15:06:47] INFO  | Log saved to: /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-25_150639/benchmark.log

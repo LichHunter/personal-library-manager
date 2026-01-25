@@ -1,0 +1,414 @@
+================================================================================
+Benchmark Log - 2026-01-25 15:50:43
+================================================================================
+
+[15:50:43] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_sanity_check.yaml
+
+================================================================================
+[15:50:43] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+[15:50:43] DEBUG | Timer 'total_benchmark' started
+
+================================================================================
+[15:50:43] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[15:50:43] METRIC | device=cuda
+[15:50:43] METRIC | ollama_available=False
+[15:50:43] METRIC | claude_available=True
+[15:50:43] METRIC | llm_available=True
+[15:50:43] INFO  | Device: cuda
+[15:50:43] INFO  | Ollama available: False
+[15:50:43] INFO  | Claude available: True
+[15:50:43] INFO  | LLM available: True
+[15:50:43] INFO  | Loading corpus...
+[15:50:43] METRIC | documents=5
+[15:50:43] METRIC | queries=5
+[15:50:43] METRIC | total_facts=14
+[15:50:43] METRIC | has_human_queries=True
+[15:50:43] INFO  | Loaded 5 documents
+[15:50:43] INFO  | Loaded 5 queries
+[15:50:43] INFO  | Total key facts: 14
+[15:50:43] INFO  | Human query variations: True
+[15:50:43] INFO  | Enabled embedders: 1
+[15:50:43] INFO  | Enabled rerankers: 0
+[15:50:43] INFO  | Enabled LLMs: 1
+[15:50:43] INFO  | Enabled chunking strategies: 1
+[15:50:43] INFO  | Enabled retrieval strategies: 3
+[15:50:43] METRIC | total_combinations=3
+[15:50:43] METRIC | total_evaluations=3
+[15:50:43] INFO  | Total strategy combinations: 3
+[15:50:43] INFO  | Total evaluations (with k and metrics): 3
+
+================================================================================
+[15:50:43] INFO  | RETRIEVAL STRATEGY: bmx_pure
+================================================================================
+[15:50:43] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[15:50:46] PROG  | [  1/  3] ██████░░░░░░░░░░░░░░  33.3% | bmx_pure_bge-base-en-v1.5_fixed_512_0pct
+[15:50:46] DEBUG | Chunking document 'api_reference': 1792 words, 16663 chars
+[15:50:46] DEBUG |   Chunk 0: chars [0-3160] words=376 tokens≈500 preview='# CloudFlow API Reference Version 2.1.0 | Last Updated: January 2026 ## Overview The CloudFlow API i...'
+[15:50:46] DEBUG |   Chunk 1: chars [3161-6111] words=379 tokens≈504 preview='## Rate Limiting To ensure fair usage and system stability, CloudFlow enforces rate limits on all AP...'
+[15:50:46] DEBUG |   Chunk 2: chars [6112-8827] words=296 tokens≈393 preview='**Endpoint:** `POST /workflows` **Request Body:** ```json { "name": "Email Campaign Automation", "de...'
+[15:50:46] DEBUG |   Chunk 3: chars [8828-11402] words=269 tokens≈357 preview='**Endpoint:** `GET /pipelines/{pipeline_id}/executions` **Query Parameters:** - `status` (optional):...'
+[15:50:46] DEBUG |   Chunk 4: chars [11403-14151] words=365 tokens≈485 preview='### Error Response Format ```json { "error": { "code": "invalid_parameter", "message": "The 'limit' ...'
+[15:50:46] DEBUG |   Chunk 5: chars [14152-15213] words=107 tokens≈142 preview='**Supported Events:** - `workflow.started` - `workflow.completed` - `workflow.failed` - `pipeline.co...'
+[15:50:46] DEBUG | Created 6 chunks for document 'api_reference'
+[15:50:46] DEBUG | Chunking document 'architecture_overview': 4607 words, 36722 chars
+[15:50:46] DEBUG |   Chunk 0: chars [0-3230] words=370 tokens≈492 preview='# CloudFlow Platform - System Architecture Overview **Document Version:** 2.3.1 **Last Updated:** Ja...'
+[15:50:46] DEBUG |   Chunk 1: chars [3231-5982] words=380 tokens≈505 preview='**Technology**: Node.js with Express.js framework **Replicas**: 12 pods (production), auto-scaling 8...'
+[15:50:46] DEBUG |   Chunk 2: chars [5983-7875] words=248 tokens≈329 preview='**Technology**: Node.js with TypeScript, Bull queue library **Replicas**: 16 pods (production), auto...'
+[15:50:46] DEBUG |   Chunk 3: chars [7876-9478] words=219 tokens≈291 preview='**Technology**: Go with distributed locking via Redis **Replicas**: 4 pods (production), active-pass...'
+[15:50:46] DEBUG |   Chunk 4: chars [9479-11878] words=354 tokens≈470 preview='**Technology**: Node.js with worker pool pattern **Replicas**: 8 pods (production), auto-scaling 6-1...'
+[15:50:46] DEBUG |   Chunk 5: chars [11879-14634] words=368 tokens≈489 preview='Success/failure events published back to Kafka ``` **Event Schema**: ```json { "event_id": "uuid-v4"...'
+[15:50:46] DEBUG |   Chunk 6: chars [14635-17394] words=384 tokens≈510 preview='**Session Storage**: - Key pattern: `session:{user_id}` - TTL: 15 minutes (aligned with JWT expiry) ...'
+[15:50:46] DEBUG |   Chunk 7: chars [17395-20141] words=381 tokens≈506 preview='records: 500 - Session timeout: 30 seconds --- ## Message Queue Patterns ### Pub/Sub Pattern Used fo...'
+[15:50:46] DEBUG |   Chunk 8: chars [20142-22843] words=384 tokens≈510 preview='### Cache Invalidation Strategies **Time-Based Expiration (TTL)**: - Short-lived data: 5-15 minutes ...'
+[15:50:46] DEBUG |   Chunk 9: chars [22844-25362] words=384 tokens≈510 preview='per API key (default: 1000 RPM) ### Secrets Management **HashiCorp Vault Integration**: - Dynamic da...'
+[15:50:46] DEBUG |   Chunk 10: chars [25363-27842] words=384 tokens≈510 preview='- Execution start rate: 500 per second - Completion rate: 450 per second (average 2-second execution...'
+[15:50:46] DEBUG |   Chunk 11: chars [27843-30286] words=375 tokens≈498 preview='Service (2) - PostgreSQL Primary - PostgreSQL Replica - PostgreSQL Replica - Redis Primary (2) - Red...'
+[15:50:46] DEBUG |   Chunk 12: chars [30287-32834] words=376 tokens≈500 preview='Resume normal operations - Recovery time: 1-3 hours depending on data volume - Data loss: None if co...'
+[15:50:46] DEBUG | Created 13 chunks for document 'architecture_overview'
+[15:50:46] DEBUG | Chunking document 'deployment_guide': 2777 words, 25837 chars
+[15:50:46] DEBUG |   Chunk 0: chars [0-3165] words=384 tokens≈510 preview='# CloudFlow Platform - Deployment and Operations Guide **Version:** 2.4.0 **Last Updated:** January ...'
+[15:50:46] DEBUG |   Chunk 1: chars [3166-6560] words=384 tokens≈510 preview='create cluster -f cluster-config.yaml ``` ### Storage Configuration Install the EBS CSI driver for p...'
+[15:50:46] DEBUG |   Chunk 2: chars [6561-8755] words=251 tokens≈333 preview='- secretName: cloudflow-tls hosts: - api.cloudflow.io healthCheck: enabled: true livenessProbe: path...'
+[15:50:46] DEBUG |   Chunk 3: chars [8756-12138] words=384 tokens≈510 preview='Deploy PostgreSQL using the Bitnami Helm chart: ```yaml # postgres-values.yaml global: postgresql: a...'
+[15:50:46] DEBUG |   Chunk 4: chars [12139-14139] words=204 tokens≈271 preview='--set prometheus.prometheusSpec.retention=30d \ --set prometheus.prometheusSpec.storageSpec.volumeCl...'
+[15:50:46] DEBUG |   Chunk 5: chars [14140-17194] words=372 tokens≈494 preview='Configure log aggregation: ```bash # Install Fluent Bit for log forwarding helm install fluent-bit f...'
+[15:50:46] DEBUG |   Chunk 6: chars [17195-20069] words=384 tokens≈510 preview='**Verify Service Health**: ```bash kubectl get pods -n cloudflow-prod curl https://api.cloudflow.io/...'
+[15:50:46] DEBUG |   Chunk 7: chars [20070-23221] words=384 tokens≈510 preview='podSelector: matchLabels: app: cloudflow policyTypes: - Ingress - Egress ingress: - from: - namespac...'
+[15:50:46] DEBUG |   Chunk 8: chars [23222-23448] words=30 tokens≈39 preview='UTC - **Secondary**: Wednesday 10:00-12:00 UTC All deployments should target these windows to minimi...'
+[15:50:46] DEBUG | Created 9 chunks for document 'deployment_guide'
+[15:50:46] DEBUG | Chunking document 'troubleshooting_guide': 4032 words, 32183 chars
+[15:50:46] DEBUG |   Chunk 0: chars [0-2666] words=320 tokens≈425 preview='# CloudFlow Platform Troubleshooting Guide **Version:** 3.2.1 **Last Updated:** January 2026 **Audie...'
+[15:50:46] DEBUG |   Chunk 1: chars [2667-5007] words=321 tokens≈426 preview='**Diagnosis:** ```bash # Check system time timedatectl status # Compare with NTP server ntpdate -q p...'
+[15:50:46] DEBUG |   Chunk 2: chars [5008-8037] words=376 tokens≈500 preview='Review Query Execution Plans** ```sql -- Connect to CloudFlow database cloudflow db connect --readon...'
+[15:50:46] DEBUG |   Chunk 3: chars [8038-10862] words=356 tokens≈473 preview='Workflow Context Accumulation** Large workflow executions may accumulate state in memory. **Solution...'
+[15:50:46] DEBUG |   Chunk 4: chars [10863-13827] words=384 tokens≈510 preview='**Implement connection pooling optimization:** ```bash # Use PgBouncer for connection pooling kubect...'
+[15:50:46] DEBUG |   Chunk 5: chars [13828-16401] words=334 tokens≈444 preview='exec_7h3j6k9m2n --show-bottlenecks ``` #### Solutions **1. Increase workflow timeout (if justified):...'
+[15:50:46] DEBUG |   Chunk 6: chars [16402-19022] words=329 tokens≈437 preview='Data Validation Errors** ``` ValidationError: Field 'customer_id' is required but missing in 234 rec...'
+[15:50:46] DEBUG |   Chunk 7: chars [19023-20595] words=194 tokens≈258 preview='Waiting {retry_after} seconds...") time.sleep(retry_after) continue remaining = int(response.headers...'
+[15:50:46] DEBUG |   Chunk 8: chars [20596-23454] words=384 tokens≈510 preview='Leverage caching:** ```bash # Enable client-side caching export CLOUDFLOW_CACHE_ENABLED=true export ...'
+[15:50:46] DEBUG |   Chunk 9: chars [23455-26239] words=384 tokens≈510 preview='in" # Find workflow failures by ID kubectl logs -n cloudflow deployment/cloudflow-workflow-engine | ...'
+[15:50:46] DEBUG |   Chunk 10: chars [26240-29039] words=384 tokens≈510 preview='database nc -zv cloudflow-db.internal.company.com 5432 # Trace route traceroute api.cloudflow.io # C...'
+[15:50:46] DEBUG |   Chunk 11: chars [29040-31206] words=266 tokens≈353 preview='outage" # Create war room cloudflow incident war-room create incident-2024012401 ``` **For SEV-2 (Hi...'
+[15:50:46] DEBUG | Created 12 chunks for document 'troubleshooting_guide'
+[15:50:46] DEBUG | Chunking document 'user_guide': 3735 words, 31582 chars
+[15:50:46] DEBUG |   Chunk 0: chars [0-2617] words=375 tokens≈498 preview='# CloudFlow User Guide Welcome to CloudFlow, the modern workflow automation platform that helps you ...'
+[15:50:46] DEBUG |   Chunk 1: chars [2618-5224] words=348 tokens≈462 preview='Open the Visual Editor by clicking **"Create Workflow"** or editing an existing workflow 2. Add a tr...'
+[15:50:46] DEBUG |   Chunk 2: chars [5225-8372] words=381 tokens≈506 preview='### HTTP Requests Make HTTP requests to any API endpoint: **Configuration:** - **Method**: GET, POST...'
+[15:50:46] DEBUG |   Chunk 3: chars [8373-11268] words=336 tokens≈446 preview='``` **Slack App Integration:** - Install the CloudFlow Slack app in your workspace - Authenticate on...'
+[15:50:46] DEBUG |   Chunk 4: chars [11269-13371] words=375 tokens≈498 preview='### Cron Syntax Use standard cron expressions to define schedules: ``` * * * * * ┬ ┬ ┬ ┬ ┬ │ │ │ │ │...'
+[15:50:46] DEBUG |   Chunk 5: chars [13372-16105] words=383 tokens≈509 preview='Save and activate **Testing Schedules:** Use the built-in schedule calculator to preview upcoming ex...'
+[15:50:46] DEBUG |   Chunk 6: chars [16106-18686] words=363 tokens≈482 preview='Filter by error type, date range, or execution ID 3. Click an execution to view full details 4. Clic...'
+[15:50:46] DEBUG |   Chunk 7: chars [18687-21448] words=364 tokens≈484 preview='Handle Errors Gracefully Always implement error handling for external API calls and database operati...'
+[15:50:46] DEBUG |   Chunk 8: chars [21449-24677] words=384 tokens≈510 preview='Version Control For critical workflows: - Export YAML definitions regularly - Store in version contr...'
+[15:50:46] DEBUG |   Chunk 9: chars [24678-27975] words=371 tokens≈493 preview='Requester: {{trigger.body.requester}} Description: {{trigger.body.description}} Approve: https://app...'
+[15:50:46] DEBUG |   Chunk 10: chars [27976-28481] words=55 tokens≈73 preview='- **Documentation**: https://docs.cloudflow.io - **Community Forum**: https://community.cloudflow.io...'
+[15:50:46] DEBUG | Created 11 chunks for document 'user_guide'
+[15:50:46] INFO  |   Created 51 chunks
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 1 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 2 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 3 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 4 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 5 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 6 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 7 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 8 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 9 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 10 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 11 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 12 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 13 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 14 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 15 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 16 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 17 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 18 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 19 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 20 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 21 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 22 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 23 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 24 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 25 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 26 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 27 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 28 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 29 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 30 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 31 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 32 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 33 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 34 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 35 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 36 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 37 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 38 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 39 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 40 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 41 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 42 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 43 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 44 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 45 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 46 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 47 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 48 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 49 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 50 hits so far
+[15:50:46] TRACE | [bmx-pure] CACHE HIT: 51 hits so far
+[15:50:47] ERROR |   ERROR: 'NoneType' object is not callable
+
+================================================================================
+[15:50:47] INFO  | RETRIEVAL STRATEGY: bmx_wqa
+================================================================================
+[15:50:47] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[15:50:49] PROG  | [  2/  3] █████████████░░░░░░░  66.7% | bmx_wqa_bge-base-en-v1.5_fast_fixed_512_0pct
+[15:50:49] DEBUG | Chunking document 'api_reference': 1792 words, 16663 chars
+[15:50:49] DEBUG |   Chunk 0: chars [0-3160] words=376 tokens≈500 preview='# CloudFlow API Reference Version 2.1.0 | Last Updated: January 2026 ## Overview The CloudFlow API i...'
+[15:50:49] DEBUG |   Chunk 1: chars [3161-6111] words=379 tokens≈504 preview='## Rate Limiting To ensure fair usage and system stability, CloudFlow enforces rate limits on all AP...'
+[15:50:49] DEBUG |   Chunk 2: chars [6112-8827] words=296 tokens≈393 preview='**Endpoint:** `POST /workflows` **Request Body:** ```json { "name": "Email Campaign Automation", "de...'
+[15:50:49] DEBUG |   Chunk 3: chars [8828-11402] words=269 tokens≈357 preview='**Endpoint:** `GET /pipelines/{pipeline_id}/executions` **Query Parameters:** - `status` (optional):...'
+[15:50:49] DEBUG |   Chunk 4: chars [11403-14151] words=365 tokens≈485 preview='### Error Response Format ```json { "error": { "code": "invalid_parameter", "message": "The 'limit' ...'
+[15:50:49] DEBUG |   Chunk 5: chars [14152-15213] words=107 tokens≈142 preview='**Supported Events:** - `workflow.started` - `workflow.completed` - `workflow.failed` - `pipeline.co...'
+[15:50:49] DEBUG | Created 6 chunks for document 'api_reference'
+[15:50:49] DEBUG | Chunking document 'architecture_overview': 4607 words, 36722 chars
+[15:50:49] DEBUG |   Chunk 0: chars [0-3230] words=370 tokens≈492 preview='# CloudFlow Platform - System Architecture Overview **Document Version:** 2.3.1 **Last Updated:** Ja...'
+[15:50:49] DEBUG |   Chunk 1: chars [3231-5982] words=380 tokens≈505 preview='**Technology**: Node.js with Express.js framework **Replicas**: 12 pods (production), auto-scaling 8...'
+[15:50:49] DEBUG |   Chunk 2: chars [5983-7875] words=248 tokens≈329 preview='**Technology**: Node.js with TypeScript, Bull queue library **Replicas**: 16 pods (production), auto...'
+[15:50:49] DEBUG |   Chunk 3: chars [7876-9478] words=219 tokens≈291 preview='**Technology**: Go with distributed locking via Redis **Replicas**: 4 pods (production), active-pass...'
+[15:50:49] DEBUG |   Chunk 4: chars [9479-11878] words=354 tokens≈470 preview='**Technology**: Node.js with worker pool pattern **Replicas**: 8 pods (production), auto-scaling 6-1...'
+[15:50:49] DEBUG |   Chunk 5: chars [11879-14634] words=368 tokens≈489 preview='Success/failure events published back to Kafka ``` **Event Schema**: ```json { "event_id": "uuid-v4"...'
+[15:50:49] DEBUG |   Chunk 6: chars [14635-17394] words=384 tokens≈510 preview='**Session Storage**: - Key pattern: `session:{user_id}` - TTL: 15 minutes (aligned with JWT expiry) ...'
+[15:50:49] DEBUG |   Chunk 7: chars [17395-20141] words=381 tokens≈506 preview='records: 500 - Session timeout: 30 seconds --- ## Message Queue Patterns ### Pub/Sub Pattern Used fo...'
+[15:50:49] DEBUG |   Chunk 8: chars [20142-22843] words=384 tokens≈510 preview='### Cache Invalidation Strategies **Time-Based Expiration (TTL)**: - Short-lived data: 5-15 minutes ...'
+[15:50:49] DEBUG |   Chunk 9: chars [22844-25362] words=384 tokens≈510 preview='per API key (default: 1000 RPM) ### Secrets Management **HashiCorp Vault Integration**: - Dynamic da...'
+[15:50:49] DEBUG |   Chunk 10: chars [25363-27842] words=384 tokens≈510 preview='- Execution start rate: 500 per second - Completion rate: 450 per second (average 2-second execution...'
+[15:50:49] DEBUG |   Chunk 11: chars [27843-30286] words=375 tokens≈498 preview='Service (2) - PostgreSQL Primary - PostgreSQL Replica - PostgreSQL Replica - Redis Primary (2) - Red...'
+[15:50:49] DEBUG |   Chunk 12: chars [30287-32834] words=376 tokens≈500 preview='Resume normal operations - Recovery time: 1-3 hours depending on data volume - Data loss: None if co...'
+[15:50:49] DEBUG | Created 13 chunks for document 'architecture_overview'
+[15:50:49] DEBUG | Chunking document 'deployment_guide': 2777 words, 25837 chars
+[15:50:49] DEBUG |   Chunk 0: chars [0-3165] words=384 tokens≈510 preview='# CloudFlow Platform - Deployment and Operations Guide **Version:** 2.4.0 **Last Updated:** January ...'
+[15:50:49] DEBUG |   Chunk 1: chars [3166-6560] words=384 tokens≈510 preview='create cluster -f cluster-config.yaml ``` ### Storage Configuration Install the EBS CSI driver for p...'
+[15:50:49] DEBUG |   Chunk 2: chars [6561-8755] words=251 tokens≈333 preview='- secretName: cloudflow-tls hosts: - api.cloudflow.io healthCheck: enabled: true livenessProbe: path...'
+[15:50:49] DEBUG |   Chunk 3: chars [8756-12138] words=384 tokens≈510 preview='Deploy PostgreSQL using the Bitnami Helm chart: ```yaml # postgres-values.yaml global: postgresql: a...'
+[15:50:49] DEBUG |   Chunk 4: chars [12139-14139] words=204 tokens≈271 preview='--set prometheus.prometheusSpec.retention=30d \ --set prometheus.prometheusSpec.storageSpec.volumeCl...'
+[15:50:49] DEBUG |   Chunk 5: chars [14140-17194] words=372 tokens≈494 preview='Configure log aggregation: ```bash # Install Fluent Bit for log forwarding helm install fluent-bit f...'
+[15:50:49] DEBUG |   Chunk 6: chars [17195-20069] words=384 tokens≈510 preview='**Verify Service Health**: ```bash kubectl get pods -n cloudflow-prod curl https://api.cloudflow.io/...'
+[15:50:49] DEBUG |   Chunk 7: chars [20070-23221] words=384 tokens≈510 preview='podSelector: matchLabels: app: cloudflow policyTypes: - Ingress - Egress ingress: - from: - namespac...'
+[15:50:49] DEBUG |   Chunk 8: chars [23222-23448] words=30 tokens≈39 preview='UTC - **Secondary**: Wednesday 10:00-12:00 UTC All deployments should target these windows to minimi...'
+[15:50:49] DEBUG | Created 9 chunks for document 'deployment_guide'
+[15:50:49] DEBUG | Chunking document 'troubleshooting_guide': 4032 words, 32183 chars
+[15:50:49] DEBUG |   Chunk 0: chars [0-2666] words=320 tokens≈425 preview='# CloudFlow Platform Troubleshooting Guide **Version:** 3.2.1 **Last Updated:** January 2026 **Audie...'
+[15:50:49] DEBUG |   Chunk 1: chars [2667-5007] words=321 tokens≈426 preview='**Diagnosis:** ```bash # Check system time timedatectl status # Compare with NTP server ntpdate -q p...'
+[15:50:49] DEBUG |   Chunk 2: chars [5008-8037] words=376 tokens≈500 preview='Review Query Execution Plans** ```sql -- Connect to CloudFlow database cloudflow db connect --readon...'
+[15:50:49] DEBUG |   Chunk 3: chars [8038-10862] words=356 tokens≈473 preview='Workflow Context Accumulation** Large workflow executions may accumulate state in memory. **Solution...'
+[15:50:49] DEBUG |   Chunk 4: chars [10863-13827] words=384 tokens≈510 preview='**Implement connection pooling optimization:** ```bash # Use PgBouncer for connection pooling kubect...'
+[15:50:49] DEBUG |   Chunk 5: chars [13828-16401] words=334 tokens≈444 preview='exec_7h3j6k9m2n --show-bottlenecks ``` #### Solutions **1. Increase workflow timeout (if justified):...'
+[15:50:49] DEBUG |   Chunk 6: chars [16402-19022] words=329 tokens≈437 preview='Data Validation Errors** ``` ValidationError: Field 'customer_id' is required but missing in 234 rec...'
+[15:50:49] DEBUG |   Chunk 7: chars [19023-20595] words=194 tokens≈258 preview='Waiting {retry_after} seconds...") time.sleep(retry_after) continue remaining = int(response.headers...'
+[15:50:49] DEBUG |   Chunk 8: chars [20596-23454] words=384 tokens≈510 preview='Leverage caching:** ```bash # Enable client-side caching export CLOUDFLOW_CACHE_ENABLED=true export ...'
+[15:50:49] DEBUG |   Chunk 9: chars [23455-26239] words=384 tokens≈510 preview='in" # Find workflow failures by ID kubectl logs -n cloudflow deployment/cloudflow-workflow-engine | ...'
+[15:50:49] DEBUG |   Chunk 10: chars [26240-29039] words=384 tokens≈510 preview='database nc -zv cloudflow-db.internal.company.com 5432 # Trace route traceroute api.cloudflow.io # C...'
+[15:50:49] DEBUG |   Chunk 11: chars [29040-31206] words=266 tokens≈353 preview='outage" # Create war room cloudflow incident war-room create incident-2024012401 ``` **For SEV-2 (Hi...'
+[15:50:49] DEBUG | Created 12 chunks for document 'troubleshooting_guide'
+[15:50:49] DEBUG | Chunking document 'user_guide': 3735 words, 31582 chars
+[15:50:49] DEBUG |   Chunk 0: chars [0-2617] words=375 tokens≈498 preview='# CloudFlow User Guide Welcome to CloudFlow, the modern workflow automation platform that helps you ...'
+[15:50:49] DEBUG |   Chunk 1: chars [2618-5224] words=348 tokens≈462 preview='Open the Visual Editor by clicking **"Create Workflow"** or editing an existing workflow 2. Add a tr...'
+[15:50:49] DEBUG |   Chunk 2: chars [5225-8372] words=381 tokens≈506 preview='### HTTP Requests Make HTTP requests to any API endpoint: **Configuration:** - **Method**: GET, POST...'
+[15:50:49] DEBUG |   Chunk 3: chars [8373-11268] words=336 tokens≈446 preview='``` **Slack App Integration:** - Install the CloudFlow Slack app in your workspace - Authenticate on...'
+[15:50:49] DEBUG |   Chunk 4: chars [11269-13371] words=375 tokens≈498 preview='### Cron Syntax Use standard cron expressions to define schedules: ``` * * * * * ┬ ┬ ┬ ┬ ┬ │ │ │ │ │...'
+[15:50:49] DEBUG |   Chunk 5: chars [13372-16105] words=383 tokens≈509 preview='Save and activate **Testing Schedules:** Use the built-in schedule calculator to preview upcoming ex...'
+[15:50:49] DEBUG |   Chunk 6: chars [16106-18686] words=363 tokens≈482 preview='Filter by error type, date range, or execution ID 3. Click an execution to view full details 4. Clic...'
+[15:50:49] DEBUG |   Chunk 7: chars [18687-21448] words=364 tokens≈484 preview='Handle Errors Gracefully Always implement error handling for external API calls and database operati...'
+[15:50:49] DEBUG |   Chunk 8: chars [21449-24677] words=384 tokens≈510 preview='Version Control For critical workflows: - Export YAML definitions regularly - Store in version contr...'
+[15:50:49] DEBUG |   Chunk 9: chars [24678-27975] words=371 tokens≈493 preview='Requester: {{trigger.body.requester}} Description: {{trigger.body.description}} Approve: https://app...'
+[15:50:49] DEBUG |   Chunk 10: chars [27976-28481] words=55 tokens≈73 preview='- **Documentation**: https://docs.cloudflow.io - **Community Forum**: https://community.cloudflow.io...'
+[15:50:49] DEBUG | Created 11 chunks for document 'user_guide'
+[15:50:49] INFO  |   Created 51 chunks
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 1 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 2 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 3 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 4 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 5 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 6 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 7 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 8 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 9 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 10 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 11 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 12 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 13 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 14 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 15 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 16 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 17 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 18 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 19 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 20 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 21 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 22 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 23 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 24 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 25 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 26 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 27 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 28 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 29 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 30 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 31 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 32 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 33 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 34 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 35 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 36 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 37 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 38 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 39 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 40 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 41 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 42 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 43 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 44 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 45 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 46 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 47 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 48 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 49 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 50 hits so far
+[15:50:49] TRACE | [bmx-wqa] CACHE HIT: 51 hits so far
+[15:50:50] ERROR |   ERROR: 'NoneType' object is not callable
+
+================================================================================
+[15:50:50] INFO  | RETRIEVAL STRATEGY: bmx_semantic
+================================================================================
+[15:50:50] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[15:50:52] PROG  | [  3/  3] ████████████████████ 100.0% | bmx_semantic_bge-base-en-v1.5_fixed_512_0pct
+[15:50:52] DEBUG | Chunking document 'api_reference': 1792 words, 16663 chars
+[15:50:52] DEBUG |   Chunk 0: chars [0-3160] words=376 tokens≈500 preview='# CloudFlow API Reference Version 2.1.0 | Last Updated: January 2026 ## Overview The CloudFlow API i...'
+[15:50:52] DEBUG |   Chunk 1: chars [3161-6111] words=379 tokens≈504 preview='## Rate Limiting To ensure fair usage and system stability, CloudFlow enforces rate limits on all AP...'
+[15:50:52] DEBUG |   Chunk 2: chars [6112-8827] words=296 tokens≈393 preview='**Endpoint:** `POST /workflows` **Request Body:** ```json { "name": "Email Campaign Automation", "de...'
+[15:50:52] DEBUG |   Chunk 3: chars [8828-11402] words=269 tokens≈357 preview='**Endpoint:** `GET /pipelines/{pipeline_id}/executions` **Query Parameters:** - `status` (optional):...'
+[15:50:52] DEBUG |   Chunk 4: chars [11403-14151] words=365 tokens≈485 preview='### Error Response Format ```json { "error": { "code": "invalid_parameter", "message": "The 'limit' ...'
+[15:50:52] DEBUG |   Chunk 5: chars [14152-15213] words=107 tokens≈142 preview='**Supported Events:** - `workflow.started` - `workflow.completed` - `workflow.failed` - `pipeline.co...'
+[15:50:52] DEBUG | Created 6 chunks for document 'api_reference'
+[15:50:52] DEBUG | Chunking document 'architecture_overview': 4607 words, 36722 chars
+[15:50:52] DEBUG |   Chunk 0: chars [0-3230] words=370 tokens≈492 preview='# CloudFlow Platform - System Architecture Overview **Document Version:** 2.3.1 **Last Updated:** Ja...'
+[15:50:52] DEBUG |   Chunk 1: chars [3231-5982] words=380 tokens≈505 preview='**Technology**: Node.js with Express.js framework **Replicas**: 12 pods (production), auto-scaling 8...'
+[15:50:52] DEBUG |   Chunk 2: chars [5983-7875] words=248 tokens≈329 preview='**Technology**: Node.js with TypeScript, Bull queue library **Replicas**: 16 pods (production), auto...'
+[15:50:52] DEBUG |   Chunk 3: chars [7876-9478] words=219 tokens≈291 preview='**Technology**: Go with distributed locking via Redis **Replicas**: 4 pods (production), active-pass...'
+[15:50:52] DEBUG |   Chunk 4: chars [9479-11878] words=354 tokens≈470 preview='**Technology**: Node.js with worker pool pattern **Replicas**: 8 pods (production), auto-scaling 6-1...'
+[15:50:52] DEBUG |   Chunk 5: chars [11879-14634] words=368 tokens≈489 preview='Success/failure events published back to Kafka ``` **Event Schema**: ```json { "event_id": "uuid-v4"...'
+[15:50:52] DEBUG |   Chunk 6: chars [14635-17394] words=384 tokens≈510 preview='**Session Storage**: - Key pattern: `session:{user_id}` - TTL: 15 minutes (aligned with JWT expiry) ...'
+[15:50:52] DEBUG |   Chunk 7: chars [17395-20141] words=381 tokens≈506 preview='records: 500 - Session timeout: 30 seconds --- ## Message Queue Patterns ### Pub/Sub Pattern Used fo...'
+[15:50:52] DEBUG |   Chunk 8: chars [20142-22843] words=384 tokens≈510 preview='### Cache Invalidation Strategies **Time-Based Expiration (TTL)**: - Short-lived data: 5-15 minutes ...'
+[15:50:52] DEBUG |   Chunk 9: chars [22844-25362] words=384 tokens≈510 preview='per API key (default: 1000 RPM) ### Secrets Management **HashiCorp Vault Integration**: - Dynamic da...'
+[15:50:52] DEBUG |   Chunk 10: chars [25363-27842] words=384 tokens≈510 preview='- Execution start rate: 500 per second - Completion rate: 450 per second (average 2-second execution...'
+[15:50:52] DEBUG |   Chunk 11: chars [27843-30286] words=375 tokens≈498 preview='Service (2) - PostgreSQL Primary - PostgreSQL Replica - PostgreSQL Replica - Redis Primary (2) - Red...'
+[15:50:52] DEBUG |   Chunk 12: chars [30287-32834] words=376 tokens≈500 preview='Resume normal operations - Recovery time: 1-3 hours depending on data volume - Data loss: None if co...'
+[15:50:52] DEBUG | Created 13 chunks for document 'architecture_overview'
+[15:50:52] DEBUG | Chunking document 'deployment_guide': 2777 words, 25837 chars
+[15:50:52] DEBUG |   Chunk 0: chars [0-3165] words=384 tokens≈510 preview='# CloudFlow Platform - Deployment and Operations Guide **Version:** 2.4.0 **Last Updated:** January ...'
+[15:50:52] DEBUG |   Chunk 1: chars [3166-6560] words=384 tokens≈510 preview='create cluster -f cluster-config.yaml ``` ### Storage Configuration Install the EBS CSI driver for p...'
+[15:50:52] DEBUG |   Chunk 2: chars [6561-8755] words=251 tokens≈333 preview='- secretName: cloudflow-tls hosts: - api.cloudflow.io healthCheck: enabled: true livenessProbe: path...'
+[15:50:52] DEBUG |   Chunk 3: chars [8756-12138] words=384 tokens≈510 preview='Deploy PostgreSQL using the Bitnami Helm chart: ```yaml # postgres-values.yaml global: postgresql: a...'
+[15:50:52] DEBUG |   Chunk 4: chars [12139-14139] words=204 tokens≈271 preview='--set prometheus.prometheusSpec.retention=30d \ --set prometheus.prometheusSpec.storageSpec.volumeCl...'
+[15:50:52] DEBUG |   Chunk 5: chars [14140-17194] words=372 tokens≈494 preview='Configure log aggregation: ```bash # Install Fluent Bit for log forwarding helm install fluent-bit f...'
+[15:50:52] DEBUG |   Chunk 6: chars [17195-20069] words=384 tokens≈510 preview='**Verify Service Health**: ```bash kubectl get pods -n cloudflow-prod curl https://api.cloudflow.io/...'
+[15:50:52] DEBUG |   Chunk 7: chars [20070-23221] words=384 tokens≈510 preview='podSelector: matchLabels: app: cloudflow policyTypes: - Ingress - Egress ingress: - from: - namespac...'
+[15:50:52] DEBUG |   Chunk 8: chars [23222-23448] words=30 tokens≈39 preview='UTC - **Secondary**: Wednesday 10:00-12:00 UTC All deployments should target these windows to minimi...'
+[15:50:52] DEBUG | Created 9 chunks for document 'deployment_guide'
+[15:50:52] DEBUG | Chunking document 'troubleshooting_guide': 4032 words, 32183 chars
+[15:50:52] DEBUG |   Chunk 0: chars [0-2666] words=320 tokens≈425 preview='# CloudFlow Platform Troubleshooting Guide **Version:** 3.2.1 **Last Updated:** January 2026 **Audie...'
+[15:50:52] DEBUG |   Chunk 1: chars [2667-5007] words=321 tokens≈426 preview='**Diagnosis:** ```bash # Check system time timedatectl status # Compare with NTP server ntpdate -q p...'
+[15:50:52] DEBUG |   Chunk 2: chars [5008-8037] words=376 tokens≈500 preview='Review Query Execution Plans** ```sql -- Connect to CloudFlow database cloudflow db connect --readon...'
+[15:50:52] DEBUG |   Chunk 3: chars [8038-10862] words=356 tokens≈473 preview='Workflow Context Accumulation** Large workflow executions may accumulate state in memory. **Solution...'
+[15:50:52] DEBUG |   Chunk 4: chars [10863-13827] words=384 tokens≈510 preview='**Implement connection pooling optimization:** ```bash # Use PgBouncer for connection pooling kubect...'
+[15:50:52] DEBUG |   Chunk 5: chars [13828-16401] words=334 tokens≈444 preview='exec_7h3j6k9m2n --show-bottlenecks ``` #### Solutions **1. Increase workflow timeout (if justified):...'
+[15:50:52] DEBUG |   Chunk 6: chars [16402-19022] words=329 tokens≈437 preview='Data Validation Errors** ``` ValidationError: Field 'customer_id' is required but missing in 234 rec...'
+[15:50:52] DEBUG |   Chunk 7: chars [19023-20595] words=194 tokens≈258 preview='Waiting {retry_after} seconds...") time.sleep(retry_after) continue remaining = int(response.headers...'
+[15:50:52] DEBUG |   Chunk 8: chars [20596-23454] words=384 tokens≈510 preview='Leverage caching:** ```bash # Enable client-side caching export CLOUDFLOW_CACHE_ENABLED=true export ...'
+[15:50:52] DEBUG |   Chunk 9: chars [23455-26239] words=384 tokens≈510 preview='in" # Find workflow failures by ID kubectl logs -n cloudflow deployment/cloudflow-workflow-engine | ...'
+[15:50:52] DEBUG |   Chunk 10: chars [26240-29039] words=384 tokens≈510 preview='database nc -zv cloudflow-db.internal.company.com 5432 # Trace route traceroute api.cloudflow.io # C...'
+[15:50:52] DEBUG |   Chunk 11: chars [29040-31206] words=266 tokens≈353 preview='outage" # Create war room cloudflow incident war-room create incident-2024012401 ``` **For SEV-2 (Hi...'
+[15:50:52] DEBUG | Created 12 chunks for document 'troubleshooting_guide'
+[15:50:52] DEBUG | Chunking document 'user_guide': 3735 words, 31582 chars
+[15:50:52] DEBUG |   Chunk 0: chars [0-2617] words=375 tokens≈498 preview='# CloudFlow User Guide Welcome to CloudFlow, the modern workflow automation platform that helps you ...'
+[15:50:52] DEBUG |   Chunk 1: chars [2618-5224] words=348 tokens≈462 preview='Open the Visual Editor by clicking **"Create Workflow"** or editing an existing workflow 2. Add a tr...'
+[15:50:52] DEBUG |   Chunk 2: chars [5225-8372] words=381 tokens≈506 preview='### HTTP Requests Make HTTP requests to any API endpoint: **Configuration:** - **Method**: GET, POST...'
+[15:50:52] DEBUG |   Chunk 3: chars [8373-11268] words=336 tokens≈446 preview='``` **Slack App Integration:** - Install the CloudFlow Slack app in your workspace - Authenticate on...'
+[15:50:52] DEBUG |   Chunk 4: chars [11269-13371] words=375 tokens≈498 preview='### Cron Syntax Use standard cron expressions to define schedules: ``` * * * * * ┬ ┬ ┬ ┬ ┬ │ │ │ │ │...'
+[15:50:52] DEBUG |   Chunk 5: chars [13372-16105] words=383 tokens≈509 preview='Save and activate **Testing Schedules:** Use the built-in schedule calculator to preview upcoming ex...'
+[15:50:52] DEBUG |   Chunk 6: chars [16106-18686] words=363 tokens≈482 preview='Filter by error type, date range, or execution ID 3. Click an execution to view full details 4. Clic...'
+[15:50:52] DEBUG |   Chunk 7: chars [18687-21448] words=364 tokens≈484 preview='Handle Errors Gracefully Always implement error handling for external API calls and database operati...'
+[15:50:52] DEBUG |   Chunk 8: chars [21449-24677] words=384 tokens≈510 preview='Version Control For critical workflows: - Export YAML definitions regularly - Store in version contr...'
+[15:50:52] DEBUG |   Chunk 9: chars [24678-27975] words=371 tokens≈493 preview='Requester: {{trigger.body.requester}} Description: {{trigger.body.description}} Approve: https://app...'
+[15:50:52] DEBUG |   Chunk 10: chars [27976-28481] words=55 tokens≈73 preview='- **Documentation**: https://docs.cloudflow.io - **Community Forum**: https://community.cloudflow.io...'
+[15:50:52] DEBUG | Created 11 chunks for document 'user_guide'
+[15:50:52] INFO  |   Created 51 chunks
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 1 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 2 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 3 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 4 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 5 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 6 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 7 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 8 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 9 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 10 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 11 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 12 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 13 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 14 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 15 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 16 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 17 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 18 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 19 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 20 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 21 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 22 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 23 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 24 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 25 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 26 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 27 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 28 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 29 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 30 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 31 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 32 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 33 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 34 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 35 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 36 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 37 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 38 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 39 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 40 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 41 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 42 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 43 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 44 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 45 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 46 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 47 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 48 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 49 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 50 hits so far
+[15:50:52] TRACE | [bmx-semantic] CACHE HIT: 51 hits so far
+[15:50:53] ERROR |   ERROR: 'NoneType' object is not callable
+[15:50:53] METRIC | total_benchmark_time=9.989s
+
+================================================================================
+[15:50:53] INFO  | RUN SUMMARY
+================================================================================
+[15:50:53] INFO  | Total runtime: 9.99s
+
+------------------------------------------------------------
+[15:50:53] INFO  | Timing Breakdown
+------------------------------------------------------------
+Phase           | Duration
+----------------+---------
+total_benchmark | 9.99s   
+[15:50:53] INFO  | Log saved to: /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-25_155043/benchmark.log

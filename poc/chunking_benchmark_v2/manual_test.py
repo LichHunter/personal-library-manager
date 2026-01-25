@@ -390,9 +390,9 @@ def run_retrieval(strategy, query: str, k: int = 5) -> dict:
 
 
 def grade_result(question: dict, retrieval_result: dict) -> dict:
-    """Grade a retrieval result using Claude Sonnet with deterministic scoring.
+    """Grade a retrieval result using Claude Haiku with deterministic scoring.
 
-    Uses Claude Sonnet to evaluate whether retrieved chunks adequately answer
+    Uses Claude Haiku to evaluate whether retrieved chunks adequately answer
     the question. Produces a 1-10 score with explanation and verdict mapping.
 
     The grading is deterministic (temperature=0) to ensure consistent results
@@ -480,7 +480,7 @@ Rules:
 Output ONLY valid JSON, no markdown formatting."""
 
         # Call LLM with temperature=0 for deterministic grading
-        response = call_llm(prompt, model="claude-sonnet", timeout=120)
+        response = call_llm(prompt, model="claude-haiku", timeout=120)
 
         # Parse JSON response
         response_text = response.strip()

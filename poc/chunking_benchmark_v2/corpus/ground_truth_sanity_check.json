@@ -1,0 +1,184 @@
+{
+  "queries": [
+    {
+      "id": "realistic_001",
+      "category": "api_reference",
+      "original_query": "What is the API rate limit per minute?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How many requests can I make per minute to the API?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My API calls are getting blocked, what's the limit?"
+        },
+        {
+          "dimension": "casual",
+          "query": "api rate limit"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm building a batch job that calls CloudFlow API repeatedly, what rate limit should I expect?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why is the API rejecting my requests after 100 calls?"
+        }
+      ],
+      "key_facts": [
+        "100 requests per minute per authenticated user",
+        "20 requests per minute for unauthenticated requests"
+      ],
+      "expected_docs": [
+        "api_reference"
+      ],
+      "ground_truth_answer": "CloudFlow enforces a rate limit of 100 requests per minute per authenticated user. Unauthenticated requests are limited to 20 requests per minute. There is also a burst allowance of 150 requests in a 10-second window."
+    },
+    {
+      "id": "realistic_002",
+      "category": "troubleshooting",
+      "original_query": "How do I fix 429 Too Many Requests errors?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "What should I do when I get rate limited?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My requests keep failing with 429 status code"
+        },
+        {
+          "dimension": "casual",
+          "query": "429 error fix"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I'm getting throttled by CloudFlow API, how can I handle this in my application?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why am I being blocked with rate limit errors?"
+        }
+      ],
+      "key_facts": [
+        "429 Too Many Requests",
+        "X-RateLimit-Remaining",
+        "Retry-After",
+        "Monitor X-RateLimit-Remaining header values",
+        "Implement exponential backoff when receiving 429 responses"
+      ],
+      "expected_docs": [
+        "api_reference",
+        "troubleshooting_guide"
+      ],
+      "ground_truth_answer": "When you receive a 429 Too Many Requests error, check the Retry-After header to see how long to wait. Monitor the X-RateLimit-Remaining header to track your remaining quota. Implement exponential backoff when receiving 429 responses, cache responses when appropriate, and consider upgrading to Enterprise tier for higher limits (1000 req/min)."
+    },
+    {
+      "id": "realistic_003",
+      "category": "api_reference",
+      "original_query": "What is the JWT token expiration time?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "How long do access tokens last?"
+        },
+        {
+          "dimension": "problem",
+          "query": "My authentication keeps expiring after an hour"
+        },
+        {
+          "dimension": "casual",
+          "query": "token expiry time"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need to implement token refresh logic, when do JWT tokens expire?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why does my token stop working after 3600 seconds?"
+        }
+      ],
+      "key_facts": [
+        "3600 seconds",
+        "max 3600 seconds from iat",
+        "All tokens expire after 3600 seconds"
+      ],
+      "expected_docs": [
+        "api_reference"
+      ],
+      "ground_truth_answer": "JWT tokens in CloudFlow expire after 3600 seconds (1 hour). The exp (expiration) claim must have a maximum of 3600 seconds from the iat (issued at) timestamp. All tokens expire after 3600 seconds, so you need to implement token refresh logic in your application."
+    },
+    {
+      "id": "realistic_004",
+      "category": "architecture",
+      "original_query": "What database technology does CloudFlow use?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which database system powers CloudFlow?"
+        },
+        {
+          "dimension": "problem",
+          "query": "I need to understand the data storage architecture"
+        },
+        {
+          "dimension": "casual",
+          "query": "database stack"
+        },
+        {
+          "dimension": "contextual",
+          "query": "For capacity planning, what databases does CloudFlow rely on?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Is CloudFlow using MySQL or something else?"
+        }
+      ],
+      "key_facts": [
+        "PostgreSQL 15.4",
+        "Redis 7.2",
+        "Apache Kafka 3.6"
+      ],
+      "expected_docs": [
+        "architecture_overview"
+      ],
+      "ground_truth_answer": "CloudFlow uses PostgreSQL 15.4 as the primary database, Redis 7.2 for caching and session storage, and Apache Kafka 3.6 as the message broker for event streaming and inter-service communication."
+    },
+    {
+      "id": "realistic_005",
+      "category": "simple_lookup",
+      "original_query": "What is the Kubernetes namespace for production deployment?",
+      "human_queries": [
+        {
+          "dimension": "synonym",
+          "query": "Which namespace is used for CloudFlow production?"
+        },
+        {
+          "dimension": "problem",
+          "query": "I can't find the production pods"
+        },
+        {
+          "dimension": "casual",
+          "query": "prod namespace"
+        },
+        {
+          "dimension": "contextual",
+          "query": "I need to deploy to production, what namespace should I use?"
+        },
+        {
+          "dimension": "negation",
+          "query": "Why can't I see resources in the default namespace?"
+        }
+      ],
+      "key_facts": [
+        "cloudflow-prod"
+      ],
+      "expected_docs": [
+        "deployment_guide"
+      ],
+      "ground_truth_answer": "CloudFlow production deployments use the cloudflow-prod namespace in Kubernetes."
+    }
+  ]
+}

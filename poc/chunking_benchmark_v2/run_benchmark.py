@@ -354,6 +354,25 @@ def check_ollama_available() -> bool:
         return False
 
 
+def check_claude_available() -> bool:
+    """Check if Claude is available via OpenCode auth."""
+    import os
+    from pathlib import Path
+
+    auth_path = Path(os.path.expanduser("~/.local/share/opencode/auth.json"))
+    if not auth_path.exists():
+        return False
+
+    try:
+        import json
+
+        with open(auth_path) as f:
+            data = json.load(f)
+        return "anthropic" in data
+    except Exception:
+        return False
+
+
 def run_benchmark(
     config: dict,
     base_dir: Path,
@@ -363,13 +382,19 @@ def run_benchmark(
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     ollama_available = check_ollama_available()
+    claude_available = check_claude_available()
+    llm_available = ollama_available or claude_available
 
     if logger:
         logger.metric("device", device)
         logger.metric("ollama_available", ollama_available)
+        logger.metric("claude_available", claude_available)
+        logger.metric("llm_available", llm_available)
 
     log(f"Device: {device}")
     log(f"Ollama available: {ollama_available}")
+    log(f"Claude available: {claude_available}")
+    log(f"LLM available: {llm_available}")
 
     log("Loading corpus...")
     flat_docs, structured_docs = load_corpus(config, base_dir)
@@ -473,9 +498,9 @@ def run_benchmark(
                 for llm_cfg in llm_configs:
                     llm_name = llm_cfg["name"] if llm_cfg else None
 
-                    if llm_name and not ollama_available:
+                    if llm_name and not llm_available:
                         log(
-                            f"Skipping {retrieval_name} with {llm_name} (Ollama unavailable)"
+                            f"Skipping {retrieval_name} with {llm_name} (No LLM available)"
                         )
                         continue
 

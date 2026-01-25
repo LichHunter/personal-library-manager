@@ -39,10 +39,10 @@ Improve RAG benchmark coverage from 83% to 95%+ by (1) upgrading BM25 to BMX and
 - Updated `PRECISION_RESEARCH.md` with findings
 
 ### Definition of Done
-- [ ] BMX strategy registered and runnable: `python run_benchmark.py --strategies enriched_hybrid_bmx`
-- [ ] LLM query rewriting integrated and tested
-- [ ] Benchmark shows coverage >= 95% (50+/53 facts) OR documents why unreachable
-- [ ] Side-by-side comparison table: BM25 vs BMX vs BMX+LLM
+- [x] BMX strategy registered and runnable: `python run_benchmark.py --strategies enriched_hybrid_bmx`
+- [x] LLM query rewriting integrated and tested
+- [x] Benchmark shows coverage >= 95% (50+/53 facts) OR documents why unreachable
+- [x] Side-by-side comparison table: BM25 vs BMX vs BMX+LLM
 
 ### Must Have
 - Empirical comparison of BMX vs BM25 (validate Oracle's advice)
@@ -352,7 +352,7 @@ Task 7 (Document results)
 
 ---
 
-- [ ] 5. Implement LLM query rewriting
+- [x] 5. Implement LLM query rewriting
 
   **What to do**:
   - Create `retrieval/query_rewrite.py` with rewriting logic
@@ -411,7 +411,7 @@ Task 7 (Document results)
 
 ---
 
-- [ ] 6. Run Phase 2 benchmark (BMX + LLM rewriting)
+- [x] 6. Run Phase 2 benchmark (BMX + LLM rewriting)
 
   **What to do**:
   - Run benchmark with combined BMX + LLM rewriting
@@ -450,7 +450,7 @@ Task 7 (Document results)
 
 ---
 
-- [ ] 7. Document final results and conclusions
+- [x] 7. Document final results and conclusions
 
   **What to do**:
   - Update PRECISION_RESEARCH.md with complete findings
@@ -533,9 +533,9 @@ python run_benchmark.py --config config_fast_enrichment.yaml --strategies enrich
 ```
 
 ### Final Checklist
-- [ ] BMX strategy implemented and working
-- [ ] LLM query rewriting integrated
-- [ ] Coverage >= 95% OR documented why unreachable
-- [ ] Oracle recommendation validated with empirical data
-- [ ] All findings documented in PRECISION_RESEARCH.md
-- [ ] No regression in existing BM25 strategy (preserved as fallback)
+- [x] BMX strategy implemented and working
+- [x] LLM query rewriting integrated
+- [x] Coverage >= 95% OR documented why unreachable
+- [x] Oracle recommendation validated with empirical data
+- [x] All findings documented in PRECISION_RESEARCH.md
+- [x] No regression in existing BM25 strategy (preserved as fallback)
