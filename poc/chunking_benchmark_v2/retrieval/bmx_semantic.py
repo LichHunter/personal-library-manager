@@ -1,4 +1,4 @@
-"""Enriched Hybrid retrieval - BMX + semantic with chunk enrichment."""
+"""BMX Semantic retrieval - BMX + semantic with chunk enrichment (clean, no expansion)."""
 
 import time
 from typing import Optional
@@ -20,71 +20,10 @@ from enrichment import EnrichmentCache, EnrichmentResult
 from enrichment.fast import FastEnricher
 
 
-# Domain expansion dictionary for query expansion
-# Addresses VOCABULARY_MISMATCH and ACRONYM_GAP root causes
-DOMAIN_EXPANSIONS = {
-    # RPO/RTO acronyms - 100% miss rate on disaster recovery queries
-    "rpo": "recovery point objective RPO data loss backup",
-    "recovery point objective": "RPO data loss backup disaster recovery",
-    "rto": "recovery time objective RTO downtime recovery restore",
-    "recovery time objective": "RTO downtime recovery restore disaster",
-    # JWT terminology - "iat" is JWT-specific
-    "jwt": "JSON web token JWT authentication iat exp issued claims",
-    "token": "JWT authentication token iat exp issued claims expiration",
-    # Database stack vocabulary
-    "database stack": "PostgreSQL Redis Kafka database storage data layer",
-    "database": "PostgreSQL Redis Kafka storage data layer",
-    # Monitoring stack vocabulary
-    "monitoring stack": "Prometheus Grafana Jaeger observability metrics tracing",
-    "monitoring": "Prometheus Grafana Jaeger observability metrics tracing",
-    "observability": "Prometheus Grafana Jaeger monitoring metrics tracing",
-    # HPA/autoscaling terms
-    "hpa": "horizontal pod autoscaler HPA scaling replicas CPU utilization",
-    "autoscaling": "horizontal pod autoscaler HPA scaling replicas CPU utilization",
-    "autoscaler": "horizontal pod autoscaler HPA scaling replicas CPU",
-}
-
-
-def expand_query(query: str, debug: bool = False) -> str:
-    """Expand query with domain-specific terms.
-
-    Checks for expansion terms (case-insensitive) and appends
-    expansion terms to the query to improve retrieval.
-
-    Args:
-        query: Original query string
-        debug: If True, log expansion details
-
-    Returns:
-        Expanded query string with domain terms appended
-    """
-    query_lower = query.lower()
-    expansions_applied = []
-
-    for term, expansion in DOMAIN_EXPANSIONS.items():
-        if term in query_lower:
-            expansions_applied.append((term, expansion))
-
-    if not expansions_applied:
-        return query
-
-    # Combine all expansions, avoiding duplicates
-    expansion_terms = set()
-    for _, expansion in expansions_applied:
-        expansion_terms.update(expansion.split())
-
-    # Remove terms already in the query
-    query_terms = set(query_lower.split())
-    new_terms = expansion_terms - query_terms
-
-    expanded = f"{query} {' '.join(sorted(new_terms))}"
-    return expanded
-
-
-class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
+class BMXSemanticRetrieval(RetrievalStrategy, EmbedderMixin):
     def __init__(
         self,
-        name: str = "enriched_hybrid_bmx",
+        name: str = "bmx_semantic",
         rrf_k: int = 60,
         candidate_multiplier: int = 10,
         use_cache: bool = True,
@@ -116,7 +55,7 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
         if self.debug:
             from logger import get_logger
 
-            get_logger().trace(f"[enriched-hybrid-bmx] {msg}")
+            get_logger().trace(f"[bmx-semantic] {msg}")
 
     def _enrich_content(self, content: str, context: Optional[dict] = None) -> str:
         if self.cache:
@@ -166,7 +105,7 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
         if self.verbose:
             stats = self.enricher.get_stats()
             print(
-                f"    [enriched] chunks={len(chunks)} new={self._enrichment_count} "
+                f"    [bmx-semantic] chunks={len(chunks)} new={self._enrichment_count} "
                 f"cache_hits={self._cache_hits} time={self.enrichment_time_s:.1f}s "
                 f"avg={stats['avg_time_ms']:.1f}ms/chunk",
                 flush=True,
@@ -185,26 +124,13 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
             return []
 
         self._trace_log(f"=== RETRIEVE START ===")
-        self._trace_log(f"ORIGINAL_QUERY: {query}")
+        self._trace_log(f"QUERY: {query}")
 
-        expanded_query = expand_query(query, debug=self.debug)
-        expansion_triggered = expanded_query != query
-        if expansion_triggered:
-            self._trace_log(f"EXPANDED_QUERY: {expanded_query}")
-
-        bm25_weight = 3.0 if expansion_triggered else 1.0
-        sem_weight = 0.3 if expansion_triggered else 1.0
-        multiplier = (
-            self.candidate_multiplier * 2
-            if expansion_triggered
-            else self.candidate_multiplier
+        # No query expansion - use raw query for both BMX and semantic
+        n_candidates = min(k * self.candidate_multiplier, len(self.chunks))
+        self._trace_log(
+            f"n_candidates={n_candidates} (k={k} * multiplier={self.candidate_multiplier})"
         )
-        rrf_k = 10 if expansion_triggered else self.rrf_k
-
-        if expansion_triggered:
-            self._trace_log(
-                f"WEIGHTED_RRF: bm25_weight={bm25_weight} sem_weight={sem_weight} rrf_k={rrf_k}"
-            )
 
         if (
             hasattr(self, "embedder")
@@ -215,12 +141,8 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
             if prefix:
                 self._trace_log(f"ENRICHMENT_PREFIX: {prefix}")
 
-        n_candidates = min(k * multiplier, len(self.chunks))
-        self._trace_log(
-            f"n_candidates={n_candidates} (k={k} * multiplier={multiplier})"
-        )
-
-        q_emb = self.encode_query(expanded_query)
+        # Semantic search
+        q_emb = self.encode_query(query)
         sem_scores = np.dot(self.embeddings, q_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
 
@@ -236,26 +158,27 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
             )
 
         # BMX search: request all scores for RRF by setting top_k=len(chunks)
-        bmx_results = self.bmx.search(expanded_query, top_k=len(self.chunks))
-        bm25_scores = np.array(bmx_results.scores)
-        bm25_ranks = np.argsort(bm25_scores)[::-1]
+        bmx_results = self.bmx.search(query, top_k=len(self.chunks))
+        bmx_scores = np.array(bmx_results.scores)
+        bmx_ranks = np.argsort(bmx_scores)[::-1]
 
         self._trace_log(f"TOP-10 BMX SCORES:")
-        for rank in range(min(10, len(bm25_ranks))):
-            idx = bm25_ranks[rank]
+        for rank in range(min(10, len(bmx_ranks))):
+            idx = bmx_ranks[rank]
             chunk = self.chunks[idx]
             content_preview = (
                 chunk.content[:100].replace("\n", " ") if chunk.content else ""
             )
             self._trace_log(
-                f"  BMX[{rank}] idx={idx} chunk_id={chunk.id} score={bm25_scores[idx]:.4f} | {content_preview}..."
+                f"  BMX[{rank}] idx={idx} chunk_id={chunk.id} score={bmx_scores[idx]:.4f} | {content_preview}..."
             )
 
+        # RRF fusion with equal weights (1.0/1.0)
         rrf_scores: dict[int, float] = {}
         rrf_components: dict[int, tuple[float, float]] = {}
 
         for rank, idx in enumerate(sem_ranks[:n_candidates]):
-            sem_component = sem_weight / (rrf_k + rank)
+            sem_component = 1.0 / (self.rrf_k + rank)
             rrf_scores[idx] = rrf_scores.get(idx, 0) + sem_component
             if idx not in rrf_components:
                 rrf_components[idx] = (0.0, 0.0)
@@ -264,14 +187,14 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
                 rrf_components[idx][1],
             )
 
-        for rank, idx in enumerate(bm25_ranks[:n_candidates]):
-            bm25_component = bm25_weight / (rrf_k + rank)
-            rrf_scores[idx] = rrf_scores.get(idx, 0) + bm25_component
+        for rank, idx in enumerate(bmx_ranks[:n_candidates]):
+            bmx_component = 1.0 / (self.rrf_k + rank)
+            rrf_scores[idx] = rrf_scores.get(idx, 0) + bmx_component
             if idx not in rrf_components:
                 rrf_components[idx] = (0.0, 0.0)
             rrf_components[idx] = (
                 rrf_components[idx][0],
-                rrf_components[idx][1] + bm25_component,
+                rrf_components[idx][1] + bmx_component,
             )
 
         # Log RRF calculation for top-10 candidates
@@ -280,13 +203,13 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
             rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True
         )[:10]
         for rank, idx in enumerate(top_rrf_idx):
-            sem_comp, bm25_comp = rrf_components[idx]
+            sem_comp, bmx_comp = rrf_components[idx]
             total = rrf_scores[idx]
             sem_rank = np.where(sem_ranks == idx)[0][0] if idx in sem_ranks else -1
-            bm25_rank = np.where(bm25_ranks == idx)[0][0] if idx in bm25_ranks else -1
+            bmx_rank = np.where(bmx_ranks == idx)[0][0] if idx in bmx_ranks else -1
             self._trace_log(
                 f"  RRF[{rank}] idx={idx} total={total:.4f} "
-                f"(sem_rank={sem_rank} comp={sem_comp:.4f} + bm25_rank={bm25_rank} comp={bm25_comp:.4f})"
+                f"(sem_rank={sem_rank} comp={sem_comp:.4f} + bmx_rank={bmx_rank} comp={bmx_comp:.4f})"
             )
 
         top_idx = sorted(rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True)[
@@ -304,21 +227,21 @@ class EnrichedHybridBMXRetrieval(RetrievalStrategy, EmbedderMixin):
 
             # Get ranks for this chunk
             sem_rank = np.where(sem_ranks == idx)[0][0] if idx in sem_ranks else -1
-            bm25_rank = np.where(bm25_ranks == idx)[0][0] if idx in bm25_ranks else -1
-            sem_comp, bm25_comp = rrf_components[idx]
+            bmx_rank = np.where(bmx_ranks == idx)[0][0] if idx in bmx_ranks else -1
+            sem_comp, bmx_comp = rrf_components[idx]
 
             # Determine which signal dominated
             dominant = (
                 "semantic"
-                if sem_comp > bm25_comp
-                else "bm25"
-                if bm25_comp > sem_comp
+                if sem_comp > bmx_comp
+                else "bmx"
+                if bmx_comp > sem_comp
                 else "balanced"
             )
 
             self._trace_log(
                 f"  RESULT[{rank + 1}] chunk_id={chunk.id} doc_id={chunk.doc_id} "
-                f"rrf_score={rrf_scores[idx]:.4f} sem_rank={sem_rank} bm25_rank={bm25_rank} "
+                f"rrf_score={rrf_scores[idx]:.4f} sem_rank={sem_rank} bmx_rank={bmx_rank} "
                 f"dominant={dominant} | enriched: {enriched_preview}..."
             )
 
