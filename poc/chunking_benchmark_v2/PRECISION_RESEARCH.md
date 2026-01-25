@@ -1157,3 +1157,104 @@ For each hypothesis test, measure:
 
 ---
 
+## Hypothesis 1 Test Results (2026-01-25)
+
+### Implementation Summary
+
+**File Modified**: `retrieval/enriched_hybrid.py`
+
+**Changes Made**:
+1. Added `DOMAIN_EXPANSIONS` dictionary with mappings for:
+   - RPO/RTO acronyms → full expansion with related terms
+   - JWT terminology → JSON web token, iat, exp, claims
+   - Database stack → PostgreSQL, Redis, Kafka
+   - Monitoring stack → Prometheus, Grafana, Jaeger
+   - HPA/autoscaling → horizontal pod autoscaler, replicas, CPU
+
+2. Implemented `expand_query()` function that:
+   - Takes query string as input
+   - Checks for expansion terms (case-insensitive)
+   - Appends expansion terms to query (avoiding duplicates)
+   - Returns expanded query
+
+3. Modified `EnrichedHybridRetrieval.retrieve()` to:
+   - Call `expand_query()` before retrieval
+   - Use original query for semantic search (preserves embedding quality)
+   - Use expanded query for BM25 search (improves keyword matching)
+   - Log expanded query in trace mode
+
+### Benchmark Results
+
+**Benchmark Run**: 2026-01-25_110843
+**Configuration**: config_fast_enrichment.yaml with --trace
+
+| Dimension | Baseline | With Expansion | Delta |
+|-----------|----------|----------------|-------|
+| **original** | 77.4% | **79.2%** | **+1.9%** |
+| synonym | 71.7% | 69.8% | -1.9% |
+| problem | 62.3% | 62.3% | +0.0% |
+| casual | 64.2% | **69.8%** | **+5.7%** |
+| contextual | 67.9% | **71.7%** | **+3.8%** |
+| negation | 54.7% | 54.7% | +0.0% |
+
+**Coverage Achieved**: 79.2% (42/53 facts found)
+**Target**: 86.8%
+**Status**: BELOW TARGET
+
+### Analysis
+
+**What Worked**:
+- Query expansion improved casual queries significantly (+5.7%)
+- Contextual queries also improved (+3.8%)
+- BM25 scores for expanded queries are much higher for relevant chunks
+- Example: "RPO RTO" query → BM25 rank 1 for architecture_overview_fix_10 (score 18.6)
+
+**What Didn't Work**:
+- RPO/RTO queries still miss facts (0/6 queries find RPO/RTO values)
+- Root cause: Semantic component drags down RRF ranking
+- Example: architecture_overview_fix_10 has BM25 rank 1 but semantic rank 32
+- RRF fusion gives equal weight to both, resulting in rank 9 (outside top-5)
+
+**Specific Facts Still Missed**:
+1. RPO (Recovery Point Objective): 1 hour - 0% coverage
+2. RTO (Recovery Time Objective): 4 hours - 0% coverage
+3. targetCPUUtilizationPercentage: 70 - partial coverage
+4. P99 latency: < 200ms - partial coverage
+5. max 3600 seconds from iat - 0% coverage
+
+### Root Cause Analysis
+
+The query expansion is working correctly for BM25:
+- Expanded query: "What are the disaster recovery RPO and RTO values? RPO RTO backup data downtime loss objective point restore time"
+- BM25 correctly ranks architecture_overview_fix_10 at position 1 (score 18.6)
+
+However, the semantic embedding of the original query doesn't match well:
+- Semantic rank for architecture_overview_fix_10: 32 (not in top-10)
+- The chunk contains "RPO (Recovery Point Objective): 1 hour" but the embedding doesn't capture this well
+
+RRF fusion combines both signals equally:
+- BM25 component: 1/(60+1) = 0.0164
+- Semantic component: 1/(60+32) = 0.0109
+- Total RRF: 0.0273 → rank 9 (outside top-5)
+
+### Performance Impact
+
+- Retrieval latency: ~7.3ms average (no significant change)
+- No index size increase
+- Expansion adds negligible overhead
+
+### Recommendations
+
+1. **Increase BM25 weight for expanded queries**: When expansion is applied, give more weight to BM25 in RRF fusion
+2. **Consider multi-query retrieval**: Retrieve for both original and expanded queries, merge results
+3. **Adjust RRF k parameter**: Lower k value would give more weight to top-ranked results
+
+### Next Steps
+
+The current implementation achieves 79.2% coverage, which is below the 85% minimum threshold. Options:
+1. Implement weighted RRF (give more weight to BM25 when expansion is applied)
+2. Proceed to Hypothesis 2 (Negation Rewriting) to see cumulative effect
+3. Consult Oracle for alternative approaches
+
+---
+

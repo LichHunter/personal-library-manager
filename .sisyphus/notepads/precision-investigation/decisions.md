@@ -41,3 +41,13 @@
 - Query expansion: 2h implementation + 1h testing
 - Negation rewriting: 4h implementation + 30m testing
 
+
+## [2026-01-25 11:40] Task 5.1: Oracle Consultation (Skipped - Already Complete)
+
+Oracle consultation was completed in Task 3.1 and already validated the solution strategy:
+- Priority 1: Query Expansion
+- Priority 2: Negation Rewriting
+- Testing strategy: Incremental stacking
+
+No additional consultation needed. Proceeding to implementation.
+

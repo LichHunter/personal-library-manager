@@ -1,0 +1,51 @@
+================================================================================
+Benchmark Log - 2026-01-25 10:44:54
+================================================================================
+
+[10:44:54] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_fast_enrichment.yaml
+
+================================================================================
+[10:44:54] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+[10:44:54] DEBUG | Timer 'total_benchmark' started
+
+================================================================================
+[10:44:54] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[10:44:54] METRIC | device=cuda
+[10:44:54] METRIC | ollama_available=False
+[10:44:54] INFO  | Device: cuda
+[10:44:54] INFO  | Ollama available: False
+[10:44:54] INFO  | Loading corpus...
+[10:44:54] METRIC | documents=5
+[10:44:54] METRIC | queries=20
+[10:44:54] METRIC | total_facts=53
+[10:44:54] METRIC | has_human_queries=True
+[10:44:54] INFO  | Loaded 5 documents
+[10:44:54] INFO  | Loaded 20 queries
+[10:44:54] INFO  | Total key facts: 53
+[10:44:54] INFO  | Human query variations: True
+[10:44:54] INFO  | Enabled embedders: 1
+[10:44:54] INFO  | Enabled rerankers: 0
+[10:44:54] INFO  | Enabled LLMs: 1
+[10:44:54] INFO  | Enabled chunking strategies: 1
+[10:44:54] INFO  | Enabled retrieval strategies: 3
+[10:44:54] METRIC | total_combinations=3
+[10:44:54] METRIC | total_evaluations=3
+[10:44:54] INFO  | Total strategy combinations: 3
+[10:44:54] INFO  | Total evaluations (with k and metrics): 3
+[10:44:54] INFO  | DRY RUN - not executing benchmark
+[10:44:54] METRIC | total_benchmark_time=0.128s
+
+================================================================================
+[10:44:54] INFO  | RUN SUMMARY
+================================================================================
+[10:44:54] INFO  | Total runtime: 0.13s
+
+------------------------------------------------------------
+[10:44:54] INFO  | Timing Breakdown
+------------------------------------------------------------
+Phase           | Duration
+----------------+---------
+total_benchmark | 0.13s   
+[10:44:54] INFO  | Log saved to: /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-25_104454/benchmark.log

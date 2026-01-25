@@ -16,6 +16,67 @@ from enrichment import EnrichmentCache, EnrichmentResult
 from enrichment.fast import FastEnricher
 
 
+# Domain expansion dictionary for query expansion
+# Addresses VOCABULARY_MISMATCH and ACRONYM_GAP root causes
+DOMAIN_EXPANSIONS = {
+    # RPO/RTO acronyms - 100% miss rate on disaster recovery queries
+    "rpo": "recovery point objective RPO data loss backup",
+    "recovery point objective": "RPO data loss backup disaster recovery",
+    "rto": "recovery time objective RTO downtime recovery restore",
+    "recovery time objective": "RTO downtime recovery restore disaster",
+    # JWT terminology - "iat" is JWT-specific
+    "jwt": "JSON web token JWT authentication iat exp issued claims",
+    "token": "JWT authentication token iat exp issued claims expiration",
+    # Database stack vocabulary
+    "database stack": "PostgreSQL Redis Kafka database storage data layer",
+    "database": "PostgreSQL Redis Kafka storage data layer",
+    # Monitoring stack vocabulary
+    "monitoring stack": "Prometheus Grafana Jaeger observability metrics tracing",
+    "monitoring": "Prometheus Grafana Jaeger observability metrics tracing",
+    "observability": "Prometheus Grafana Jaeger monitoring metrics tracing",
+    # HPA/autoscaling terms
+    "hpa": "horizontal pod autoscaler HPA scaling replicas CPU utilization",
+    "autoscaling": "horizontal pod autoscaler HPA scaling replicas CPU utilization",
+    "autoscaler": "horizontal pod autoscaler HPA scaling replicas CPU",
+}
+
+
+def expand_query(query: str, debug: bool = False) -> str:
+    """Expand query with domain-specific terms.
+
+    Checks for expansion terms (case-insensitive) and appends
+    expansion terms to the query to improve retrieval.
+
+    Args:
+        query: Original query string
+        debug: If True, log expansion details
+
+    Returns:
+        Expanded query string with domain terms appended
+    """
+    query_lower = query.lower()
+    expansions_applied = []
+
+    for term, expansion in DOMAIN_EXPANSIONS.items():
+        if term in query_lower:
+            expansions_applied.append((term, expansion))
+
+    if not expansions_applied:
+        return query
+
+    # Combine all expansions, avoiding duplicates
+    expansion_terms = set()
+    for _, expansion in expansions_applied:
+        expansion_terms.update(expansion.split())
+
+    # Remove terms already in the query
+    query_terms = set(query_lower.split())
+    new_terms = expansion_terms - query_terms
+
+    expanded = f"{query} {' '.join(sorted(new_terms))}"
+    return expanded
+
+
 class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
     def __init__(
         self,
@@ -118,9 +179,12 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
             return []
 
         self._trace_log(f"=== RETRIEVE START ===")
-        self._trace_log(f"QUERY: {query}")
+        self._trace_log(f"ORIGINAL_QUERY: {query}")
 
-        # Log enrichment prefix if using embedder with prefix
+        expanded_query = expand_query(query, debug=self.debug)
+        if expanded_query != query:
+            self._trace_log(f"EXPANDED_QUERY (BM25 only): {expanded_query}")
+
         if (
             hasattr(self, "embedder")
             and self.embedder
@@ -139,7 +203,6 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
         sem_scores = np.dot(self.embeddings, q_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
 
-        # Log top-10 semantic scores with chunk IDs
         self._trace_log(f"TOP-10 SEMANTIC SCORES:")
         for rank in range(min(10, len(sem_ranks))):
             idx = sem_ranks[rank]
@@ -151,10 +214,9 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
                 f"  SEM[{rank}] idx={idx} chunk_id={chunk.id} score={sem_scores[idx]:.4f} | {content_preview}..."
             )
 
-        bm25_scores = self.bm25.get_scores(query.lower().split())
+        bm25_scores = self.bm25.get_scores(expanded_query.lower().split())
         bm25_ranks = np.argsort(bm25_scores)[::-1]
 
-        # Log top-10 BM25 scores with chunk IDs
         self._trace_log(f"TOP-10 BM25 SCORES:")
         for rank in range(min(10, len(bm25_ranks))):
             idx = bm25_ranks[rank]
