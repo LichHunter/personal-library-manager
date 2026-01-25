@@ -810,3 +810,350 @@ Consider complex solutions (HyDE, fine-tuned embeddings, LLM query rewriting) on
 
 ---
 
+
+## Solution Research (Task 4)
+
+Based on root cause analysis and Oracle consultation, the following solutions were identified and evaluated:
+
+### Solution 1: Query Expansion with Domain Dictionary ⭐ PRIORITY 1
+
+**Description**: Expand queries with domain-specific terms and acronym definitions before retrieval.
+
+**Root Causes Addressed**:
+- VOCABULARY_MISMATCH (4 facts)
+- ACRONYM_GAP (1 fact)
+
+**Expected Impact**: 5 facts → 86.8% coverage (from 77.4%)
+
+**Implementation Complexity**: Quick (2-4 hours)
+
+**Implementation Approach**:
+```python
+DOMAIN_EXPANSIONS = {
+    "rpo": "recovery point objective RPO data loss",
+    "rto": "recovery time objective RTO downtime recovery",
+    "database stack": "PostgreSQL Redis Kafka database storage",
+    "monitoring": "Prometheus Grafana Jaeger observability metrics",
+}
+
+def expand_query(query: str) -> str:
+    expanded = query.lower()
+    for term, expansion in DOMAIN_EXPANSIONS.items():
+        if term in expanded:
+            expanded = f"{query} {expansion}"
+    return expanded
+```
+
+**ROI**: 5 facts / 3 hours = 1.67 facts/hour ⭐ HIGHEST
+
+---
+
+### Solution 2: Negation-Aware Query Rewriting ⭐ PRIORITY 2
+
+**Description**: Detect and rewrite negation queries ("Why doesn't X work?") into positive queries, then use multi-query retrieval.
+
+**Root Causes Addressed**:
+- INDIRECT_QUERY (2 facts)
+
+**Expected Impact**: 2 facts → 90.6% coverage (from 86.8%)
+
+**Implementation Complexity**: Short (4-8 hours)
+
+**Implementation Approach**:
+```python
+NEGATION_PATTERNS = [
+    (r"why doesn't (.+) work", r"how does \1 work"),
+    (r"is .+ using (.+) or something else", r"what \1 does .+ use"),
+]
+
+def rewrite_negation_query(query: str) -> list[str]:
+    queries = [query]
+    for pattern, replacement in NEGATION_PATTERNS:
+        if re.search(pattern, query.lower()):
+            rewritten = re.sub(pattern, replacement, query.lower())
+            queries.append(rewritten)
+    return queries
+```
+
+**ROI**: 2 facts / 6 hours = 0.33 facts/hour
+
+---
+
+### Solution 3: HyDE (Hypothetical Document Embeddings)
+
+**Description**: Generate hypothetical answer using LLM, embed it, and use for semantic search instead of query embedding.
+
+**Root Causes Addressed**:
+- VOCABULARY_MISMATCH (partial)
+- INDIRECT_QUERY (partial)
+
+**Expected Impact**: 2-3 facts → ~88-89% coverage
+
+**Implementation Complexity**: Medium (8-12 hours)
+
+**Implementation Approach**:
+- Use LLM to generate hypothetical document answering the query
+- Embed hypothetical document instead of query
+- Retrieve chunks similar to hypothetical document
+- Requires LLM integration and prompt engineering
+
+**ROI**: 2.5 facts / 10 hours = 0.25 facts/hour
+
+**Trade-offs**:
+- ➕ Better semantic matching for indirect queries
+- ➖ Adds LLM latency (200-500ms per query)
+- ➖ Requires LLM API costs
+- ➖ More complex to debug
+
+---
+
+### Solution 4: Multi-Query Retrieval
+
+**Description**: Generate multiple query variations (synonyms, paraphrases) and retrieve for all, then merge results.
+
+**Root Causes Addressed**:
+- VOCABULARY_MISMATCH (partial)
+- INDIRECT_QUERY (partial)
+
+**Expected Impact**: 1-2 facts → ~85-86% coverage
+
+**Implementation Complexity**: Short (4-6 hours)
+
+**Implementation Approach**:
+- Already have `multi_query.py` in codebase
+- Generate 3-5 query variations using LLM or templates
+- Retrieve top-k for each variation
+- Merge and deduplicate results
+
+**ROI**: 1.5 facts / 5 hours = 0.30 facts/hour
+
+**Trade-offs**:
+- ➕ Increases recall
+- ➖ Increases retrieval latency (3-5x)
+- ➖ May retrieve more irrelevant chunks
+
+---
+
+### Solution 5: Chunk Overlap Adjustment
+
+**Description**: Increase chunk overlap from 0% to 10-20% to reduce boundary issues.
+
+**Root Causes Addressed**:
+- FACT_BURIED (partial)
+- PHRASING_MISMATCH (partial)
+
+**Expected Impact**: 1 fact → ~85% coverage
+
+**Implementation Complexity**: Quick (1-2 hours)
+
+**Implementation Approach**:
+- Modify `strategies/fixed_size.py` to add overlap parameter
+- Re-chunk corpus with 10% overlap
+- Re-run benchmark
+
+**ROI**: 1 fact / 1.5 hours = 0.67 facts/hour
+
+**Trade-offs**:
+- ➕ Simple to implement
+- ➕ Reduces boundary issues
+- ➖ Increases index size (~10%)
+- ➖ May not address core vocabulary mismatch issues
+
+---
+
+### Solution 6: Fact Extraction Post-Processing
+
+**Description**: After retrieval, use LLM to extract specific facts from retrieved chunks.
+
+**Root Causes Addressed**:
+- FACT_BURIED (1 fact)
+- GRANULARITY (1 fact)
+
+**Expected Impact**: 1-2 facts → ~86-87% coverage
+
+**Implementation Complexity**: Medium (6-10 hours)
+
+**Implementation Approach**:
+- After retrieval, pass chunks + query to LLM
+- Ask LLM to extract specific facts
+- Validate extracted facts against ground truth
+
+**ROI**: 1.5 facts / 8 hours = 0.19 facts/hour
+
+**Trade-offs**:
+- ➕ Can extract buried facts
+- ➖ Adds LLM latency
+- ➖ Moves problem from retrieval to extraction
+- ➖ Not addressing root retrieval issue
+
+---
+
+## Solution Ranking by ROI
+
+| Rank | Solution | Facts | Effort | ROI | Status |
+|------|----------|-------|--------|-----|--------|
+| 1 | Query Expansion | 5 | 3h | 1.67 | ⭐ PRIORITY 1 |
+| 2 | Chunk Overlap | 1 | 1.5h | 0.67 | Consider |
+| 3 | Negation Rewriting | 2 | 6h | 0.33 | ⭐ PRIORITY 2 |
+| 4 | Multi-Query | 1.5 | 5h | 0.30 | Consider |
+| 5 | HyDE | 2.5 | 10h | 0.25 | Defer |
+| 6 | Fact Extraction | 1.5 | 8h | 0.19 | Defer |
+
+---
+
+## Recommended Implementation Order
+
+1. **Query Expansion** (Priority 1) - Highest ROI, addresses most facts
+2. **Negation Rewriting** (Priority 2) - Complements expansion, targets different failure mode
+3. **Evaluate at 90%+** - If target reached, stop; otherwise consider:
+   - Chunk Overlap (quick win)
+   - Multi-Query (if vocabulary gaps remain)
+
+**Estimated Timeline**: 1 day to reach 90%+ coverage with Priorities 1-2.
+
+
+## Testable Hypotheses (Task 5)
+
+### Hypothesis 1: Query Expansion with Domain Dictionary
+
+**Hypothesis**: Expanding queries with domain-specific terms and acronym definitions will improve coverage from 77.4% to 86.8% by addressing vocabulary mismatch between queries and documents.
+
+**Root Causes Addressed**: VOCABULARY_MISMATCH (4 facts), ACRONYM_GAP (1 fact)
+
+**Test Procedure**:
+1. Implement `expand_query()` function in `retrieval/enriched_hybrid.py`
+2. Add domain expansion dictionary with mappings for:
+   - Acronyms: RPO/RTO, JWT, HPA
+   - Vocabulary bridges: "database stack", "monitoring", "auth"
+3. Modify retrieval to expand queries before BM25 and semantic search
+4. Run benchmark: `python run_benchmark.py --config config_query_expansion.yaml --trace`
+5. Compare results to baseline (77.4%)
+
+**Success Criteria**: Coverage >= 85% on original queries (target: 86.8%)
+
+**Expected Results**:
+- RPO/RTO queries: 0% → 100% (all 6 queries should find facts)
+- "database stack" query: 0% → 100% (PostgreSQL/Redis/Kafka facts)
+- "monitoring" queries: improved retrieval of Jaeger/Prometheus facts
+- Overall: +5 facts found = 46/53 = 86.8%
+
+**Implementation File**: `retrieval/enriched_hybrid.py`
+
+**Config File**: `config_query_expansion.yaml` (copy from `config_fast_enrichment.yaml`)
+
+---
+
+### Hypothesis 2: Negation-Aware Query Rewriting
+
+**Hypothesis**: Rewriting negation queries into positive queries and using multi-query retrieval will improve coverage from 86.8% to 90.6% by addressing indirect query patterns.
+
+**Root Causes Addressed**: INDIRECT_QUERY (2 facts)
+
+**Test Procedure**:
+1. Implement `rewrite_negation_query()` function in `retrieval/enriched_hybrid.py`
+2. Add negation pattern detection and rewriting rules
+3. Modify retrieval to generate query variations for negation patterns
+4. Use multi-query retrieval (already exists in `retrieval/multi_query.py`)
+5. Run benchmark: `python run_benchmark.py --config config_negation_rewrite.yaml --trace`
+6. Compare results to Hypothesis 1 results (86.8%)
+
+**Success Criteria**: Coverage >= 89% on original queries (target: 90.6%)
+
+**Expected Results**:
+- "Why doesn't X work?" queries: improved fact retrieval
+- "Is CloudFlow using MySQL or something else?" → finds PostgreSQL facts
+- Negation query dimension: 54.7% → 65%+ improvement
+- Overall: +2 facts found = 48/53 = 90.6%
+
+**Implementation File**: `retrieval/enriched_hybrid.py`
+
+**Config File**: `config_negation_rewrite.yaml`
+
+---
+
+### Hypothesis 3: Stacked Solution (Expansion + Negation)
+
+**Hypothesis**: Combining query expansion and negation rewriting will achieve cumulative improvement to 90.6% coverage.
+
+**Root Causes Addressed**: VOCABULARY_MISMATCH (4), ACRONYM_GAP (1), INDIRECT_QUERY (2) = 7 facts total
+
+**Test Procedure**:
+1. Enable both query expansion and negation rewriting
+2. Run benchmark: `python run_benchmark.py --config config_full.yaml --trace`
+3. Compare to baseline (77.4%) and individual solutions
+
+**Success Criteria**: Coverage >= 90% on original queries
+
+**Expected Results**:
+- Baseline: 77.4% (41/53 facts)
+- After expansion: 86.8% (46/53 facts)
+- After expansion + negation: 90.6% (48/53 facts)
+- Improvement: +7 facts, +13.2 percentage points
+
+**Implementation Files**: `retrieval/enriched_hybrid.py`
+
+**Config File**: `config_full.yaml`
+
+---
+
+## Testing Strategy
+
+### Phase 1: Baseline Validation
+- Confirm current baseline: 77.4% coverage
+- Identify exact 12 missed facts
+- ✅ COMPLETE (Task 2-3)
+
+### Phase 2: Individual Solution Testing
+1. Test Hypothesis 1 (Query Expansion) in isolation
+   - Expected: 77.4% → 86.8%
+   - Validates expansion dictionary effectiveness
+2. Test Hypothesis 2 (Negation Rewriting) on top of Hypothesis 1
+   - Expected: 86.8% → 90.6%
+   - Validates negation handling effectiveness
+
+### Phase 3: Stacked Solution Validation
+- Test Hypothesis 3 (both solutions enabled)
+- Confirm cumulative improvement
+- Analyze any remaining missed facts
+
+### Phase 4: Iteration (if needed)
+- If coverage < 90%, analyze remaining misses
+- Consider additional solutions (chunk overlap, multi-query)
+- Consult Oracle for guidance
+
+---
+
+## Measurement Criteria
+
+For each hypothesis test, measure:
+
+1. **Coverage by Query Dimension**:
+   - Original queries (primary metric)
+   - Synonym, problem, casual, contextual, negation (secondary)
+
+2. **Fact-Level Analysis**:
+   - Which specific facts were found/missed
+   - Comparison to baseline missed facts
+   - New misses introduced (if any)
+
+3. **Performance Metrics**:
+   - Retrieval latency (should remain < 500ms)
+   - Index size (should not increase significantly)
+
+4. **Failure Analysis**:
+   - For any remaining missed facts, categorize root cause
+   - Determine if addressable by current solutions or requires new approach
+
+---
+
+## Success Thresholds
+
+| Coverage | Assessment | Action |
+|----------|------------|--------|
+| **90%+** | SUCCESS | Document and finalize |
+| **85-90%** | GOOD | Analyze remaining gaps, decide if worth pursuing |
+| **80-85%** | ACCEPTABLE | Consider additional solutions |
+| **< 80%** | FAILURE | Re-evaluate approach, consult Oracle |
+
+---
+
