@@ -37,6 +37,8 @@
 
             LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
               "/run/opengl-driver"
+              pkgs.zlib
+              pkgs.stdenv.cc.cc.lib
             ];
 
             shellHook = ''
@@ -49,7 +51,14 @@
               fi
 
               source .venv/bin/activate
-              export LD_LIBRARY_PATH="/run/opengl-driver/lib:$LD_LIBRARY_PATH"
+
+              # Ensure LD_LIBRARY_PATH is set for Python packages with C extensions
+              export LD_LIBRARY_PATH="${
+                pkgs.lib.makeLibraryPath [
+                  pkgs.zlib
+                  pkgs.stdenv.cc.cc.lib
+                ]
+              }/run/opengl-driver/lib:$LD_LIBRARY_PATH"
             '';
           };
         }
