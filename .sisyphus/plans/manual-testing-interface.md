@@ -40,11 +40,11 @@ Build a CLI tool that uses Claude agents to generate human-like questions, execu
 - `poc/chunking_benchmark_v2/results/manual_test_<timestamp>.md` - Output report
 
 ### Definition of Done
-- [ ] `python manual_test.py` runs without errors
-- [ ] Generates questions covering all 5 documents
-- [ ] Each question graded 1-10 with grounded explanation
-- [ ] Report contains aggregate score and validation verdict
-- [ ] Runtime < 5 minutes for default run
+- [x] `python manual_test.py` runs without errors
+- [x] Generates questions covering all 5 documents
+- [x] Each question graded 1-10 with grounded explanation
+- [x] Report contains aggregate score and validation verdict
+- [x] Runtime < 5 minutes for default run
 
 ### Must Have
 - Agent reads corpus to establish ground truth before generating questions
@@ -150,9 +150,9 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - `poc/chunking_benchmark_v2/README.md` - Benchmark results (88.7% target)
 
   **Acceptance Criteria**:
-  - [ ] Rubric documented as Python constant/docstring
-  - [ ] Thresholds defined as constants
-  - [ ] Run: `grep -c "Score.*:" manual_test.py` → Shows 10 (one per score level)
+  - [x] Rubric documented as Python constant/docstring
+  - [x] Thresholds defined as constants
+  - [x] Run: `grep -c "Score.*:" manual_test.py` → Shows 10 (one per score level)
 
   **Commit**: NO (groups with 2)
 
@@ -186,9 +186,9 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - `poc/chunking_benchmark_v2/config_realistic.yaml` - Embedder config (BAAI/bge-base-en-v1.5)
 
   **Acceptance Criteria**:
-  - [ ] Run: `python manual_test.py --help` → Shows usage
-  - [ ] Run: `python manual_test.py --questions 1 2>&1 | head -5` → Shows "Loading corpus..."
-  - [ ] Script exits cleanly (no hanging)
+  - [x] Run: `python manual_test.py --help` → Shows usage
+  - [x] Run: `python manual_test.py --questions 1 2>&1 | head -5` → Shows "Loading corpus..."
+  - [x] Script exits cleanly (no hanging)
 
   **Commit**: YES
   - Message: `feat(benchmark): add manual testing script scaffold`
@@ -239,9 +239,9 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - `poc/chunking_benchmark_v2/corpus/realistic_documents/*.md` - Document content
 
   **Acceptance Criteria**:
-  - [ ] Run: `python -c "from manual_test import generate_questions; print(generate_questions.__doc__)"` → Shows docstring
-  - [ ] Run snippet that generates 2 questions → Returns list of dicts with required fields
-  - [ ] Each question's `expected_answer` can be found in source document
+  - [x] Run: `python -c "from manual_test import generate_questions; print(generate_questions.__doc__)"` → Shows docstring
+  - [x] Run snippet that generates 2 questions → Returns list of dicts with required fields
+  - [x] Each question's `expected_answer` can be found in source document
 
   **Commit**: NO (groups with 4)
 
@@ -284,9 +284,9 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - `poc/chunking_benchmark_v2/retrieval/base.py:130-133` - retrieve() interface
 
   **Acceptance Criteria**:
-  - [ ] Run retrieval on test query → Returns dict with chunks, latency
-  - [ ] `len(result["chunks"]) == 5` (k=5 default)
-  - [ ] Each chunk has content, score, doc_id fields
+  - [x] Run retrieval on test query → Returns dict with chunks, latency
+  - [x] `len(result["chunks"]) == 5` (k=5 default)
+  - [x] Each chunk has content, score, doc_id fields
 
   **Commit**: YES
   - Message: `feat(benchmark): add question generation and retrieval for manual testing`
@@ -338,10 +338,10 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - `poc/chunking_benchmark_v2/retrieval/query_rewrite.py` - Prompt structure with fallback
 
   **Acceptance Criteria**:
-  - [ ] Grade a known-good retrieval → Score 8-10
-  - [ ] Grade a known-bad retrieval (wrong topic) → Score 1-3
-  - [ ] Output includes explanation string
-  - [ ] Deterministic: same input → same score (run 3x, check consistency)
+  - [x] Grade a known-good retrieval → Score 8-10
+  - [x] Grade a known-bad retrieval (wrong topic) → Score 1-3
+  - [x] Output includes explanation string
+  - [x] Deterministic: same input → same score (run 3x, check consistency)
 
   **Commit**: NO (groups with 6)
 
@@ -400,10 +400,10 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - `poc/chunking_benchmark_v2/README.md` - Table formatting style
 
   **Acceptance Criteria**:
-  - [ ] Run: `python manual_test.py --questions 3` → Creates .md file
-  - [ ] Report contains all sections (Summary, Results, Detailed, Conclusion)
-  - [ ] Report is valid markdown (no broken tables)
-  - [ ] Conclusion contains one of: VALIDATED, INCONCLUSIVE, INVALIDATED
+  - [x] Run: `python manual_test.py --questions 3` → Creates .md file
+  - [x] Report contains all sections (Summary, Results, Detailed, Conclusion)
+  - [x] Report is valid markdown (no broken tables)
+  - [x] Conclusion contains one of: VALIDATED, INCONCLUSIVE, INVALIDATED
 
   **Commit**: YES
   - Message: `feat(benchmark): complete manual testing tool with grading and report`
@@ -412,7 +412,7 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
 
 ---
 
-- [ ] 7. End-to-End Validation Run
+- [x] 7. End-to-End Validation Run
 
   **What to do**:
   - Run full manual test with agent-decided question count
@@ -430,19 +430,19 @@ Task 1 (Grading Rubric) → Task 2 (Core Script) → Task 3 (Question Generation
   - Generated report from Task 6
 
   **Acceptance Criteria**:
-  - [ ] Run: `python manual_test.py` (no args) → Completes successfully
-  - [ ] Runtime < 5 minutes
-  - [ ] Report saved to `results/manual_test_<timestamp>.md`
-  - [ ] Report conclusion is one of: VALIDATED, INCONCLUSIVE, INVALIDATED
-  - [ ] No crashes or unhandled errors
+  - [x] Run: `python manual_test.py` (no args) → Completes successfully
+  - [x] Runtime < 5 minutes
+  - [x] Report saved to `results/manual_test_<timestamp>.md`
+  - [x] Report conclusion is one of: VALIDATED, INCONCLUSIVE, INVALIDATED
+  - [x] No crashes or unhandled errors
 
   **Manual Execution Verification**:
-  - [ ] Using terminal:
+  - [x] Using terminal:
     - Command: `cd poc/chunking_benchmark_v2 && source .venv/bin/activate && python manual_test.py`
     - Expected output contains: "Manual Testing Report"
     - Expected output contains: "Average Score:"
     - Expected output contains: "Validation:"
-  - [ ] Open generated report in editor, verify:
+  - [x] Open generated report in editor, verify:
     - Tables render correctly
     - No empty sections
     - Scores are within 1-10 range
@@ -481,8 +481,8 @@ grep -E "(VALIDATED|INCONCLUSIVE|INVALIDATED)" results/manual_test_*.md
 ```
 
 ### Final Checklist
-- [ ] All "Must Have" present
-- [ ] All "Must NOT Have" absent
-- [ ] Report contains validation verdict
-- [ ] Runtime under 5 minutes for default run
-- [ ] No new dependencies added
+- [x] All "Must Have" present
+- [x] All "Must NOT Have" absent
+- [x] Report contains validation verdict
+- [x] Runtime under 5 minutes for default run
+- [x] No new dependencies added
