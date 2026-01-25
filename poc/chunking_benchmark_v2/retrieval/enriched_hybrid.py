@@ -117,7 +117,18 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
         if self.chunks is None or self.embeddings is None or self.bm25 is None:
             return []
 
+        self._trace_log(f"=== RETRIEVE START ===")
         self._trace_log(f"QUERY: {query}")
+
+        # Log enrichment prefix if using embedder with prefix
+        if (
+            hasattr(self, "embedder")
+            and self.embedder
+            and hasattr(self.embedder, "prefix")
+        ):
+            prefix = getattr(self.embedder, "prefix", "")
+            if prefix:
+                self._trace_log(f"ENRICHMENT_PREFIX: {prefix}")
 
         n_candidates = min(k * self.candidate_multiplier, len(self.chunks))
         self._trace_log(
@@ -128,21 +139,31 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
         sem_scores = np.dot(self.embeddings, q_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
 
-        # Log top semantic scores
-        self._trace_log(f"TOP SEMANTIC SCORES (top 5):")
-        for rank in range(min(5, len(sem_ranks))):
+        # Log top-10 semantic scores with chunk IDs
+        self._trace_log(f"TOP-10 SEMANTIC SCORES:")
+        for rank in range(min(10, len(sem_ranks))):
             idx = sem_ranks[rank]
-            self._trace_log(f"  sem_rank[{rank}] idx={idx} score={sem_scores[idx]:.4f}")
+            chunk = self.chunks[idx]
+            content_preview = (
+                chunk.content[:100].replace("\n", " ") if chunk.content else ""
+            )
+            self._trace_log(
+                f"  SEM[{rank}] idx={idx} chunk_id={chunk.id} score={sem_scores[idx]:.4f} | {content_preview}..."
+            )
 
         bm25_scores = self.bm25.get_scores(query.lower().split())
         bm25_ranks = np.argsort(bm25_scores)[::-1]
 
-        # Log top BM25 scores
-        self._trace_log(f"TOP BM25 SCORES (top 5):")
-        for rank in range(min(5, len(bm25_ranks))):
+        # Log top-10 BM25 scores with chunk IDs
+        self._trace_log(f"TOP-10 BM25 SCORES:")
+        for rank in range(min(10, len(bm25_ranks))):
             idx = bm25_ranks[rank]
+            chunk = self.chunks[idx]
+            content_preview = (
+                chunk.content[:100].replace("\n", " ") if chunk.content else ""
+            )
             self._trace_log(
-                f"  bm25_rank[{rank}] idx={idx} score={bm25_scores[idx]:.4f}"
+                f"  BM25[{rank}] idx={idx} chunk_id={chunk.id} score={bm25_scores[idx]:.4f} | {content_preview}..."
             )
 
         # Calculate RRF scores with detailed logging
@@ -171,18 +192,18 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
                 rrf_components[idx][1] + bm25_component,
             )
 
-        # Log RRF calculation for top candidates
-        self._trace_log(f"RRF SCORE CALCULATION (top 5):")
+        # Log RRF calculation for top-10 candidates
+        self._trace_log(f"RRF SCORE CALCULATION (top 10):")
         top_rrf_idx = sorted(
             rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True
-        )[:5]
+        )[:10]
         for rank, idx in enumerate(top_rrf_idx):
             sem_comp, bm25_comp = rrf_components[idx]
             total = rrf_scores[idx]
             sem_rank = np.where(sem_ranks == idx)[0][0] if idx in sem_ranks else -1
             bm25_rank = np.where(bm25_ranks == idx)[0][0] if idx in bm25_ranks else -1
             self._trace_log(
-                f"  rrf[{rank}] idx={idx} total={total:.4f} "
+                f"  RRF[{rank}] idx={idx} total={total:.4f} "
                 f"(sem_rank={sem_rank} comp={sem_comp:.4f} + bm25_rank={bm25_rank} comp={bm25_comp:.4f})"
             )
 
@@ -192,10 +213,12 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
 
         results = [self.chunks[i] for i in top_idx]
 
+        # Log final top-k results with dominant signal
+        self._trace_log(f"FINAL TOP-{k} RESULTS:")
         for rank, idx in enumerate(top_idx):
             chunk = self.chunks[idx]
             enriched = self._enriched_contents[idx] if self._enriched_contents else ""
-            enriched_preview = enriched[:300].replace("\n", " ") if enriched else ""
+            enriched_preview = enriched[:200].replace("\n", " ") if enriched else ""
 
             # Get ranks for this chunk
             sem_rank = np.where(sem_ranks == idx)[0][0] if idx in sem_ranks else -1
@@ -212,11 +235,12 @@ class EnrichedHybridRetrieval(RetrievalStrategy, EmbedderMixin):
             )
 
             self._trace_log(
-                f"RESULT[{rank + 1}] doc={chunk.doc_id} rrf_score={rrf_scores[idx]:.4f} "
-                f"sem_rank={sem_rank} bm25_rank={bm25_rank} dominant={dominant} | "
-                f"enriched: {enriched_preview}..."
+                f"  RESULT[{rank + 1}] chunk_id={chunk.id} doc_id={chunk.doc_id} "
+                f"rrf_score={rrf_scores[idx]:.4f} sem_rank={sem_rank} bm25_rank={bm25_rank} "
+                f"dominant={dominant} | enriched: {enriched_preview}..."
             )
 
+        self._trace_log(f"=== RETRIEVE END ===")
         return results
 
     def get_index_stats(self) -> dict:

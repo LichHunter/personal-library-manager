@@ -210,6 +210,30 @@ def evaluate_single_query(
             }
         )
 
+    if logger and logger.min_level <= logger.LEVELS.get("TRACE", -1):
+        logger.trace(f"=== FACT COVERAGE ANALYSIS ===")
+        logger.trace(f"Query: {query_text}")
+        logger.trace(f"Total key facts: {len(key_facts)}")
+        logger.trace(f"Found facts: {len(found_facts)}/{len(key_facts)}")
+
+        for i, fact in enumerate(found_facts, 1):
+            logger.trace(f"  FOUND[{i}] {fact}")
+
+        if missed_facts:
+            logger.trace(f"Missed facts: {len(missed_facts)}/{len(key_facts)}")
+            for i, fact in enumerate(missed_facts, 1):
+                logger.trace(f"  MISSED[{i}] {fact}")
+
+                if hasattr(strategy, "chunks") and strategy.chunks:  # type: ignore
+                    for chunk in strategy.chunks:  # type: ignore
+                        if match_fn(fact, chunk.content):
+                            logger.trace(
+                                f"    -> Found in chunk_id={chunk.id} (rank not in top-{k})"
+                            )
+                            break
+
+        logger.trace(f"=== END FACT COVERAGE ===")
+
     return {
         "key_facts": key_facts,
         "found_facts": found_facts,
