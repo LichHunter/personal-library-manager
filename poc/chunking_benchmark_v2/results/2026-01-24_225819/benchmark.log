@@ -1,0 +1,83 @@
+================================================================================
+Benchmark Log - 2026-01-24 22:58:19
+================================================================================
+
+[22:58:19] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_haiku.yaml
+
+================================================================================
+[22:58:19] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+[22:58:19] DEBUG | Timer 'total_benchmark' started
+
+================================================================================
+[22:58:19] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[22:58:19] METRIC | device=cuda
+[22:58:19] METRIC | ollama_available=True
+[22:58:19] INFO  | Device: cuda
+[22:58:19] INFO  | Ollama available: True
+[22:58:19] INFO  | Loading corpus...
+[22:58:19] METRIC | documents=5
+[22:58:19] METRIC | queries=20
+[22:58:19] METRIC | total_facts=53
+[22:58:19] METRIC | has_human_queries=True
+[22:58:19] INFO  | Loaded 5 documents
+[22:58:19] INFO  | Loaded 20 queries
+[22:58:19] INFO  | Total key facts: 53
+[22:58:19] INFO  | Human query variations: True
+[22:58:19] INFO  | Enabled embedders: 1
+[22:58:19] INFO  | Enabled rerankers: 0
+[22:58:19] INFO  | Enabled LLMs: 1
+[22:58:19] INFO  | Enabled chunking strategies: 1
+[22:58:19] INFO  | Enabled retrieval strategies: 8
+[22:58:19] METRIC | total_combinations=8
+[22:58:19] METRIC | total_evaluations=8
+[22:58:19] INFO  | Total strategy combinations: 8
+[22:58:19] INFO  | Total evaluations (with k and metrics): 8
+
+================================================================================
+[22:58:19] INFO  | RETRIEVAL STRATEGY: semantic
+================================================================================
+[22:58:19] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:58:22] PROG  | [  1/  8] ██░░░░░░░░░░░░░░░░░░  12.5% | semantic_bge-base-en-v1.5_fixed_512_0pct
+[22:58:22] INFO  |   Created 51 chunks
+[22:58:23] INFO  |   Indexed in 1.29s
+[22:58:24] INFO  |   k=5 exact_match: 67.9% (36/53)
+[22:58:24] INFO  |     synonym: 60.4%
+[22:58:24] INFO  |     problem: 54.7%
+[22:58:24] INFO  |     casual: 54.7%
+[22:58:24] INFO  |     contextual: 62.3%
+[22:58:24] INFO  |     negation: 54.7%
+
+================================================================================
+[22:58:24] INFO  | RETRIEVAL STRATEGY: hybrid
+================================================================================
+[22:58:24] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:58:26] PROG  | [  2/  8] █████░░░░░░░░░░░░░░░  25.0% | hybrid_bge-base-en-v1.5_fixed_512_0pct
+[22:58:26] INFO  |   Created 51 chunks
+[22:58:27] INFO  |   Indexed in 1.01s
+[22:58:30] INFO  |   k=5 exact_match: 75.5% (40/53)
+[22:58:30] INFO  |     synonym: 69.8%
+[22:58:30] INFO  |     problem: 54.7%
+[22:58:30] INFO  |     casual: 64.2%
+[22:58:30] INFO  |     contextual: 60.4%
+[22:58:30] INFO  |     negation: 52.8%
+
+================================================================================
+[22:58:30] INFO  | RETRIEVAL STRATEGY: lod
+================================================================================
+[22:58:30] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:58:32] PROG  | [  3/  8] ███████░░░░░░░░░░░░░  37.5% | lod_bge-base-en-v1.5
+[22:58:36] INFO  |   Indexed in 3.43s
+[22:58:37] INFO  |   k=5 exact_match: 43.4% (23/53)
+[22:58:37] INFO  |     synonym: 54.7%
+[22:58:37] INFO  |     problem: 39.6%
+[22:58:37] INFO  |     casual: 50.9%
+[22:58:37] INFO  |     contextual: 49.1%
+[22:58:37] INFO  |     negation: 26.4%
+
+================================================================================
+[22:58:37] INFO  | RETRIEVAL STRATEGY: enriched_keywords_haiku
+================================================================================
+[22:58:37] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:58:39] PROG  | [  4/  8] ██████████░░░░░░░░░░  50.0% | enriched_keywords_haiku_bge-base-en-v1.5_claude-haiku

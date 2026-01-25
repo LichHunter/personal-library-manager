@@ -1,0 +1,82 @@
+================================================================================
+Benchmark Log - 2026-01-24 22:54:59
+================================================================================
+
+[22:54:59] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_haiku.yaml
+
+================================================================================
+[22:54:59] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+
+================================================================================
+[22:54:59] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[22:54:59] METRIC | device=cuda
+[22:54:59] METRIC | ollama_available=True
+[22:54:59] INFO  | Device: cuda
+[22:54:59] INFO  | Ollama available: True
+[22:54:59] INFO  | Loading corpus...
+[22:54:59] METRIC | documents=5
+[22:54:59] METRIC | queries=20
+[22:54:59] METRIC | total_facts=53
+[22:54:59] METRIC | has_human_queries=True
+[22:54:59] INFO  | Loaded 5 documents
+[22:54:59] INFO  | Loaded 20 queries
+[22:54:59] INFO  | Total key facts: 53
+[22:54:59] INFO  | Human query variations: True
+[22:54:59] INFO  | Enabled embedders: 1
+[22:54:59] INFO  | Enabled rerankers: 0
+[22:54:59] INFO  | Enabled LLMs: 1
+[22:54:59] INFO  | Enabled chunking strategies: 1
+[22:54:59] INFO  | Enabled retrieval strategies: 8
+[22:54:59] METRIC | total_combinations=8
+[22:54:59] METRIC | total_evaluations=8
+[22:54:59] INFO  | Total strategy combinations: 8
+[22:54:59] INFO  | Total evaluations (with k and metrics): 8
+
+================================================================================
+[22:54:59] INFO  | RETRIEVAL STRATEGY: semantic
+================================================================================
+[22:54:59] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:55:01] PROG  | [  1/  8] ██░░░░░░░░░░░░░░░░░░  12.5% | semantic_bge-base-en-v1.5_fixed_512_0pct
+[22:55:01] INFO  |   Created 51 chunks
+[22:55:03] INFO  |   Indexed in 1.37s
+[22:55:04] INFO  |   k=5 exact_match: 67.9% (36/53)
+[22:55:04] INFO  |     synonym: 60.4%
+[22:55:04] INFO  |     problem: 54.7%
+[22:55:04] INFO  |     casual: 54.7%
+[22:55:04] INFO  |     contextual: 62.3%
+[22:55:04] INFO  |     negation: 54.7%
+
+================================================================================
+[22:55:04] INFO  | RETRIEVAL STRATEGY: hybrid
+================================================================================
+[22:55:04] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:55:07] PROG  | [  2/  8] █████░░░░░░░░░░░░░░░  25.0% | hybrid_bge-base-en-v1.5_fixed_512_0pct
+[22:55:07] INFO  |   Created 51 chunks
+[22:55:08] INFO  |   Indexed in 1.00s
+[22:55:10] INFO  |   k=5 exact_match: 75.5% (40/53)
+[22:55:10] INFO  |     synonym: 69.8%
+[22:55:10] INFO  |     problem: 54.7%
+[22:55:10] INFO  |     casual: 64.2%
+[22:55:10] INFO  |     contextual: 60.4%
+[22:55:10] INFO  |     negation: 52.8%
+
+================================================================================
+[22:55:10] INFO  | RETRIEVAL STRATEGY: lod
+================================================================================
+[22:55:10] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:55:12] PROG  | [  3/  8] ███████░░░░░░░░░░░░░  37.5% | lod_bge-base-en-v1.5
+[22:55:16] INFO  |   Indexed in 3.43s
+[22:55:17] INFO  |   k=5 exact_match: 43.4% (23/53)
+[22:55:17] INFO  |     synonym: 54.7%
+[22:55:17] INFO  |     problem: 39.6%
+[22:55:17] INFO  |     casual: 50.9%
+[22:55:17] INFO  |     contextual: 49.1%
+[22:55:17] INFO  |     negation: 26.4%
+
+================================================================================
+[22:55:17] INFO  | RETRIEVAL STRATEGY: enriched_keywords_haiku
+================================================================================
+[22:55:17] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:55:20] PROG  | [  4/  8] ██████████░░░░░░░░░░  50.0% | enriched_keywords_haiku_bge-base-en-v1.5_claude-haiku

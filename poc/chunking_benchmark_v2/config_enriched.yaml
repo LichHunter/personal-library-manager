@@ -1,0 +1,187 @@
+corpus:
+  documents_dir: "corpus/realistic_documents"
+  metadata_file: "corpus/corpus_metadata_realistic.json"
+  ground_truth_file: "corpus/ground_truth_realistic.json"
+
+evaluation:
+  k_values: [5]
+  metrics:
+    - exact_match
+
+embedding_models:
+  - name: "BAAI/bge-base-en-v1.5"
+    enabled: true
+    use_prefix: true
+
+reranker_models:
+  - name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    enabled: false
+
+llm_models:
+  - name: "llama3.2:3b"
+    enabled: true
+
+chunking_strategies:
+  - name: "fixed_512_0pct"
+    type: "fixed_size"
+    enabled: true
+    params:
+      chunk_size: 512
+      overlap: 0
+
+retrieval_strategies:
+  # Baselines
+  - name: "semantic"
+    type: "semantic"
+    enabled: true
+    params: {}
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: false
+
+  - name: "hybrid"
+    type: "hybrid"
+    enabled: true
+    params:
+      rrf_k: 60
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: false
+
+  - name: "lod"
+    type: "lod"
+    enabled: true
+    params:
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: false
+    requires_structured_docs: true
+
+  # Enriched LOD variants - Phase 1: Test enrichment types with llama3.2:3b
+  - name: "enriched_keywords_3b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["keywords"]
+      llm_model: "llama3.2:3b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_contextual_3b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["contextual"]
+      llm_model: "llama3.2:3b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_questions_3b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["questions"]
+      llm_model: "llama3.2:3b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_summary_3b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["summary"]
+      llm_model: "llama3.2:3b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_entities_3b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["entities"]
+      llm_model: "llama3.2:3b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  # Phase 2: Test different model sizes with keywords enrichment
+  - name: "enriched_keywords_1b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["keywords"]
+      llm_model: "llama3.2:1b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_keywords_8b"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["keywords"]
+      llm_model: "llama3.1:8b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_keywords_mistral"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["keywords"]
+      llm_model: "mistral:7b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+  - name: "enriched_keywords_qwen"
+    type: "enriched_lod"
+    enabled: true
+    params:
+      enrichment_types: ["keywords"]
+      llm_model: "qwen2.5:7b"
+      doc_top_k: 3
+      section_top_k: 5
+    requires_embedder: true
+    requires_reranker: false
+    requires_llm: true
+    requires_structured_docs: true
+
+output:
+  results_dir: "results"
+  save_detailed_results: true
+  save_summary: true
+  format: "json"

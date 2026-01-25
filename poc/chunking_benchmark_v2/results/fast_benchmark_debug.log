@@ -1,0 +1,264 @@
+[23:38:51] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_fast_enrichment.yaml
+
+================================================================================
+[23:38:51] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+[23:38:51] DEBUG | Timer 'total_benchmark' started
+
+================================================================================
+[23:38:51] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[23:38:51] METRIC | device=cuda
+[23:38:51] METRIC | ollama_available=True
+[23:38:51] INFO  | Device: cuda
+[23:38:51] INFO  | Ollama available: True
+[23:38:51] INFO  | Loading corpus...
+[23:38:51] METRIC | documents=5
+[23:38:51] METRIC | queries=20
+[23:38:51] METRIC | total_facts=53
+[23:38:51] METRIC | has_human_queries=True
+[23:38:51] INFO  | Loaded 5 documents
+[23:38:51] INFO  | Loaded 20 queries
+[23:38:51] INFO  | Total key facts: 53
+[23:38:51] INFO  | Human query variations: True
+[23:38:51] INFO  | Enabled embedders: 1
+[23:38:51] INFO  | Enabled rerankers: 0
+[23:38:51] INFO  | Enabled LLMs: 1
+[23:38:51] INFO  | Enabled chunking strategies: 1
+[23:38:51] INFO  | Enabled retrieval strategies: 3
+[23:38:51] METRIC | total_combinations=3
+[23:38:51] METRIC | total_evaluations=3
+[23:38:51] INFO  | Total strategy combinations: 3
+[23:38:51] INFO  | Total evaluations (with k and metrics): 3
+
+================================================================================
+[23:38:51] INFO  | RETRIEVAL STRATEGY: semantic
+================================================================================
+[23:38:51] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[23:38:54] PROG  | [  1/  3] ██████░░░░░░░░░░░░░░  33.3% | semantic_bge-base-en-v1.5_fixed_512_0pct
+[23:38:54] INFO  |   Created 51 chunks
+[23:38:55] INFO  |   Indexed in 1.32s
+[23:38:57] INFO  |   k=5 exact_match: 67.9% (36/53)
+[23:38:57] INFO  |     synonym: 60.4%
+[23:38:57] INFO  |     problem: 54.7%
+[23:38:57] INFO  |     casual: 54.7%
+[23:38:57] INFO  |     contextual: 62.3%
+[23:38:57] INFO  |     negation: 54.7%
+
+================================================================================
+[23:38:57] INFO  | RETRIEVAL STRATEGY: hybrid
+================================================================================
+[23:38:57] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[23:39:00] PROG  | [  2/  3] █████████████░░░░░░░  66.7% | hybrid_bge-base-en-v1.5_fixed_512_0pct
+[23:39:00] INFO  |   Created 51 chunks
+[23:39:01] INFO  |   Indexed in 1.00s
+[23:39:02] INFO  |   k=5 exact_match: 75.5% (40/53)
+[23:39:02] INFO  |     synonym: 69.8%
+[23:39:02] INFO  |     problem: 54.7%
+[23:39:02] INFO  |     casual: 64.2%
+[23:39:02] INFO  |     contextual: 60.4%
+[23:39:02] INFO  |     negation: 52.8%
+
+================================================================================
+[23:39:02] INFO  | RETRIEVAL STRATEGY: enriched_hybrid_fast
+================================================================================
+[23:39:02] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[23:39:05] PROG  | [  3/  3] ████████████████████ 100.0% | enriched_hybrid_fast_bge-base-en-v1.5_fixed_512_0pct
+[23:39:05] INFO  |   Created 51 chunks
+[23:39:05] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Reference Version', 'API Reference', 'API', 'API Keys', 'automation tasks']...
+[23:39:06] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'ORG': ['API', 'CloudFlow', 'PKCE', 'JWT'], 'PERSON': ['API Keys API', 'JWT Tokens', 'JSON', 'JWTs', 'Example JWT'], 'LAW': ['the Authorization Code'], 'PRODUCT': ['RS256']}
+[23:39:06] DEBUG | [fast-enricher] Enriched in 1465.8ms | keywords=10 entities=11 | prefix_len=161
+[23:39:06] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Rate Limiting', 'Rate Limit', 'Rate', 'system stability', 'CloudFlow enforces']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 4 entities: {'ORG': ['CloudFlow', 'API'], 'PERSON': ['max'], 'LAW': ['ISO 8601']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 86.5ms | keywords=10 entities=4 | prefix_len=121
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Request Body', 'Details Retrieve', 'Workflow Details', 'Endpoint', 'Response']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'PERSON': ['Workflow Modify'], 'ORG': ['Delete Workflow']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 46.3ms | keywords=10 entities=2 | prefix_len=134
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Query Parameters', 'Pagination offset', 'optional', 'Retrieve performance', 'Metrics Retrieve']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'LAW': ['ISO 8601'], 'GPE': ['JSON']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 61.7ms | keywords=10 entities=2 | prefix_len=125
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['malformed JSON', 'requested resource', 'Bad Gateway', 'Error Codes', 'HTTP Status']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'ORG': ['Status Codes', 'Invalid', 'Insufficient', 'Resource', 'Temporary'], 'PERSON': ['Description', 'Common Causes', 'JSON', 'Rate', 'Invalid API'], 'GPE': ['Forbidden']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 58.1ms | keywords=10 entities=11 | prefix_len=167
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Supported Events', 'Community Forum', 'Slack channels', 'Configure webhooks', 'Enterprise customers']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'ORG': ['API', 'Slack']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 27.7ms | keywords=10 entities=2 | prefix_len=138
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Executive Summary', 'Architecture Team', 'Document Version', 'Architecture', 'System Architecture']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 14 entities: {'ORG': ['Platform - System Architecture Overview **Document Version:**', 'P99', 'API', 'Data Flow Architecture](#data-flow', 'AWS'], 'LAW': ['Contents 1'], 'GPE': ['mTLS'], 'PERSON': ['Load Balancer', 'API Gateway Layer', '│', '└─┬───────', 'Workflow'], 'PRODUCT': ['Termination - 443', '┘ ```']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 171.7ms | keywords=10 entities=14 | prefix_len=237
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Critical Endpoints', 'Auth Service', 'JSON Schema', 'Resource Allocation', 'Performance Targets']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 10 entities: {'ORG': ['Express.js', 'CPU', 'Auth Service', 'API', 'POST'], 'PERSON': ['JSON Schema - Routing', 'Generate'], 'PRODUCT': ['RS256'], 'GPE': ['Redis', 'PostgreSQL']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 128.7ms | keywords=10 entities=10 | prefix_len=182
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Resource Allocation', 'Key Responsibilities', 'Performance Targets', 'Scheduler Service', 'State Management']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 6 entities: {'ORG': ['TypeScript', 'Bull', 'DSL', 'RUNNING', 'COMPLETED'], 'GPE': ['PostgreSQL']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 68.1ms | keywords=10 entities=6 | prefix_len=163
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['leader election', 'Missed execution', 'Resource Allocation', 'Key Responsibilities', 'Reliability Features']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 6 entities: {'GPE': ['PostgreSQL'], 'PERSON': ['Leader Scheduler', 'Kafka'], 'ORG': ['Redis', 'SMS'], 'NORP': ['Scan']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 87.7ms | keywords=10 entities=6 | prefix_len=194
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['SMS Queue', 'Webhook Queue', 'Email Queue', 'Resource Allocation', 'Key Responsibilities']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 15 entities: {'PERSON': ['Consume', 'Handlebars', 'Email', 'Kafka', 'Email Queue'], 'ORG': ['Kafka - Template', 'SMS', 'Twilio,', 'Webhooks) -', '┌───────────────┼───────────────'], 'GPE': ['Redis', 'PostgreSQL', 'SendGrid'], 'FAC': ['Socket.io *', 'the API Gateway']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 129.6ms | keywords=10 entities=15 | prefix_len=161
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Monthly partitions', 'Indexing Strategy', 'Core Tables', 'Performance Characteristics', 'Partitioning Strategy']...
+[23:39:07] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'ORG': ['Success', 'created_at - Automatic', 'P99', 'TPS - Replication', 'RAM'], 'PERSON': ['Kafka', 'Drop', 'Redis Caching Layer'], 'GPE': ['correlation_id', 'GB'], 'WORK_OF_ART': ['workflow_id']}
+[23:39:07] DEBUG | [fast-enricher] Enriched in 125.0ms | keywords=10 entities=11 | prefix_len=195
+[23:39:07] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Key pattern', 'JWT expiry', 'TTL', 'Data', 'Key']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 6 entities: {'ORG': ['JWT', 'Redis', 'Production Metrics', 'P99', 'AZ'], 'PERSON': ['Kafka Event Streaming']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 111.1ms | keywords=10 entities=6 | prefix_len=98
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['multiple interested', 'Pattern', 'Pub', 'interested consumers', 'consumer group']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 4 entities: {'ORG': ['Pub/Sub Pattern', 'Request-Reply Pattern Synchronous', 'DLQ', 'Cache-Aside Pattern (Lazy Loading']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 71.0ms | keywords=10 entities=4 | prefix_len=157
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Node.js Map', 'Invalidation Strategies', 'Cache Warming', 'Cache Invalidation', 'Short-lived data']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 15 entities: {'ORG': ['TTL', '`user:*:{user_id}` **', 'Multi-Level Caching Application', 'LRU', 'PKI'], 'PERSON': ['Kafka', 'Redis DEL', 'L2 Cache', 'Database', 'Redis'], 'GPE': ['mTLS', 'Redis', 'PostgreSQL'], 'PRODUCT': ['API Gateway', 'RS256']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 169.0ms | keywords=10 entities=15 | prefix_len=178
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['API Operations', 'API key', 'Redis SET', 'Redis DEL', 'API Gateway']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 14 entities: {'ORG': ['API', 'TTL - Encryption', 'Vault', 'Kubernetes', 'KMS'], 'PERSON': ['Request', 'TTL', 'Renew', '150ms', '200ms'], 'GPE': ['PostgreSQL'], 'WORK_OF_ART': ['GET /workflows/{id', 'POST', 'GET']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 145.4ms | keywords=10 entities=14 | prefix_len=152
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Workflow Engine', 'API Gateway', 'Resource Utilization', 'Gbps average', 'Auth Service']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 10 entities: {'PERSON': ['Kafka', 'GB', 'Continuous'], 'ORG': ['Target', '- Auth Service', 'Monitoring & Alerting', 'P95', 'P99'], 'PRODUCT': ['P50'], 'GPE': ['Failover']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 143.1ms | keywords=10 entities=10 | prefix_len=141
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Kafka Broker', 'Redis Replica', 'Backup Strategy', 'Backup Schedule', 'Kubernetes health']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 9 entities: {'PERSON': ['Redis Replica', 'Kafka Broker'], 'ORG': ['Sentinel', 'S3', 'WAL', 'AZ', 'ALB - Recovery'], 'NORP': ['Glacier'], 'GPE': ['DR']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 127.5ms | keywords=10 entities=9 | prefix_len=172
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Database size', 'Active users', 'Auth Service', 'Daily workflow', 'API requests']...
+[23:39:08] DEBUG | [fast-enricher] spaCy extracted 16 entities: {'ORG': ['AZ', 'DNS', 'Auth Service', 'Vault', 'Twilio'], 'PRODUCT': ['P1'], 'PERSON': ['Critical Path', 'API Gateway', 'Redis', 'Kafka', 'Scheduler'], 'GPE': ['PostgreSQL', 'Redis', 'Kafka', 'SendGrid'], 'LAW': ['Sep 1, 2025']}
+[23:39:08] DEBUG | [fast-enricher] Enriched in 134.6ms | keywords=10 entities=16 | prefix_len=140
+[23:39:08] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Target Environment', 'Operations Guide', 'AWS EKS', 'EKS', 'EKS cluster']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'ORG': ['Platform - Deployment and Operations Guide **', 'CloudFlow', 'Amazon EKS (Elastic Kubernetes Service', 'us-west-2', 'IAM'], 'LAW': ['Contents 1'], 'PERSON': ['Backup', 'Disaster Recovery](#backup-and-disaster', 'Required Tools', 'Redis', 'Grafana']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 178.7ms | keywords=10 entities=11 | prefix_len=197
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['openssl rand', 'Prefix tls', 'from-literal', 'IfNotPresent resources', 'ClusterIP port']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 10 entities: {'GPE': ['addon'], 'PERSON': ['Namespace', 'metadata', 'helm repo'], 'ORG': ['ResourceQuota', 'bash helm repo', 'minReplicas', 'api.cloudflow.io'], 'NORP': ['ClusterIP'], 'WORK_OF_ART': ['letsencrypt-prod']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 99.2ms | keywords=10 entities=10 | prefix_len=161
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Test health', 'RESTARTS AGE', 'curl http', 'Database Configuration', 'Verification Verify']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 5 entities: {'NORP': ['Helm'], 'PERSON': ['NAME', '1/1 Running', 'Port'], 'ORG': ['CloudFlow']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 121.3ms | keywords=10 entities=5 | prefix_len=151
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Database Migrations', 'Install Prometheus', 'Migrations Run', 'Run database', 'Prometheus Setup']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 3 entities: {'ORG': ['Deploy PostgreSQL'], 'FAC': ['the Bitnami Helm'], 'PERSON': ['PgBouncer']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 48.8ms | keywords=10 entities=3 | prefix_len=165
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['TYPE cloudflow', 'Prometheus metrics', 'CloudFlow', 'exposes Prometheus', 'metrics']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'ORG': ['CPU', 'HELP cloudflow_worker_jobs_processed_total Total', 'CloudFlow', 'P95/P99', 'CloudWatch CloudFlow'], 'LAW': ['HELP cloudflow_http_request_duration_seconds'], 'PERSON': ['histogram cloudflow_http_request_duration_seconds_bucket{method="POST",route="/api', 'Grafana Dashboards', 'Access Grafana', 'JSON', 'Queue']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 105.7ms | keywords=10 entities=11 | prefix_len=300
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Disaster Recovery', 'Recovery Procedure', 'Backup Strategy', 'Query logs', 'CloudWatch Insights']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 5 entities: {'ORG': ['CloudWatch Insights', 'WAL'], 'PERSON': ['Backup', 'Automated Backup', 'Velero Install Velero']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 55.1ms | keywords=10 entities=5 | prefix_len=172
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['API latency', 'Horizontal Pod', 'Redis Caching', 'Pod Autoscaler', 'Verify Service']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 7 entities: {'ORG': ['RTO', 'RPO', 'Horizontal Pod Autoscaling', 'Horizontal Pod Autoscaler', 'HPA'], 'GPE': ['PgBouncer'], 'PERSON': ['Redis Caching']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 85.6ms | keywords=10 entities=7 | prefix_len=142
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['TCP port', 'SHOW POOLS', 'External Secrets', 'Secrets Operator', 'kubectl top']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 7 entities: {'ORG': ['Install External Secrets Operator', 'EOF'], 'PERSON': ['Create SecretStore', 'external-secrets.io/v1beta1', 'jwt', 'Check PgBouncer', 'View']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 102.0ms | keywords=10 entities=7 | prefix_len=189
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['user impact', 'UTC', 'Secondary', 'Wednesday', 'Document Version']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'ORG': ['UTC', 'Platform Engineering Team *']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 25.5ms | keywords=10 entities=2 | prefix_len=128
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Support Teams', 'Platform Engineers', 'Version', 'January', 'Audience']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 8 entities: {'ORG': ['DevOps', 'Support Teams', 'Authentication & Authorization Issues](#authentication', 'Rate Limiting & Throttling](#rate', 'Log Analysis &'], 'LAW': ['Contents 1'], 'PERSON': ['Quick Diagnostic', 'Invalid JWT Signature']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 90.6ms | keywords=10 entities=8 | prefix_len=158
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Diagnosis Steps', 'Resolution', 'Forbidden Errors', 'Timeout errors', 'RBAC Policy']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 3 entities: {'ORG': ['RBAC', 'UI'], 'PERSON': ['Identify Slow Queries']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 54.7ms | keywords=10 entities=3 | prefix_len=141
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Execution Plans', 'Query Execution', 'Review Query', 'Memory Leaks', 'High API']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 1 entities: {'ORG': ['API']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 35.2ms | keywords=10 entities=1 | prefix_len=103
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Context Accumulation', 'Large workflow', 'Workflow Context', 'accumulate state', 'workflow executions']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 0 entities: {}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 42.0ms | keywords=10 entities=0 | prefix_len=114
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Timeout Errors', 'Error Messages', 'pooling optimization', 'Duration', 'Status']...
+[23:39:09] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'ORG': ['CloudFlow'], 'PERSON': ['Sample']}
+[23:39:09] DEBUG | [fast-enricher] Enriched in 57.5ms | keywords=10 entities=2 | prefix_len=133
+[23:39:09] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['cloudflow workflows', 'workflows update', 'Connection timeout', 'workflows', 'Attempt']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'PERSON': ['Add', 'Max', 'View', 'NETWORK_ERROR', 'List'], 'ORG': ['Exponential Backoff'], 'LAW': ['Attempt 1:', 'Attempt 1: FAILED - NetworkError:', 'Attempt 2: FAILED - NetworkError:', 'Attempt 3: FAILED - NetworkError:', 'Attempt 4:']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 124.2ms | keywords=10 entities=11 | prefix_len=176
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Data Validation', 'Validation Errors', 'Rate Limit', 'Error Response', 'Concurrent Workflows']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 9 entities: {'ORG': ['Data Validation Errors', 'Rate Limiting & Throttling', 'Premium', 'Unlimited'], 'PERSON': ['API Failures', 'Tier', 'Concurrent Workflows', 'Handling Rate Limits'], 'GPE': ['Custom']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 61.8ms | keywords=10 entities=9 | prefix_len=183
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Optimization Strategies', 'awk print', 'rate limit', 'raise Exception', 'Max retries']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 3 entities: {'PERSON': ['time.sleep(retry_after', 'Batch'], 'ORG': ['API']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 83.2ms | keywords=10 entities=3 | prefix_len=137
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Find workflow', 'Log Levels', 'Authentication Failures', 'debugging information', 'detailed debugging']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 3 entities: {'ORG': ['CloudFlow Logs', 'Log Levels'], 'PERSON': ['Find']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 56.9ms | keywords=10 entities=3 | prefix_len=167
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['cloudflow deployment', 'kubectl logs', 'Parse JSON', 'JSON Logs', 'Find rate']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 8 entities: {'PERSON': ['Find', 'Parse JSON', 'Filter', 'Trace', 'CORRELATION_ID'], 'ORG': ['CloudFlow', 'TRACE', 'DNS']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 141.5ms | keywords=10 entities=8 | prefix_len=129
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['health check', 'Run health', 'Capture packets', 'Capture system', 'metrics dashboard']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 7 entities: {'PERSON': ['database nc -zv cloudflow-db.internal.company.com 5432 #', 'Run', 'Generate', 'Page'], 'ORG': ['Trace', 'API', 'Notify']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 59.7ms | keywords=10 entities=7 | prefix_len=180
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['priority MEDIUM', 'Required sections', 'High rate', 'Generate postmortem', 'Intermittent timeout']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'PERSON': ['Generate', 'incident-2024012401 \\']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 106.6ms | keywords=10 entities=2 | prefix_len=136
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Google Drive', 'workflow', 'User Guide', 'Visual Editor', 'Google']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 10 entities: {'ORG': ['CloudFlow', 'Slack'], 'LAW': ['Contents 1'], 'PERSON': ['Workflow Creation](#workflow-creation', 'Common Workflow Patterns](#common-workflow'], 'FAC': ['Google Drive', 'Google Drive - New File'], 'WORK_OF_ART': ['Google Drive to', 'Slack - Send Message'], 'PRODUCT': ['Google Drive']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 137.1ms | keywords=10 entities=10 | prefix_len=210
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Visual Editor', 'Create Workflow', 'Triggers', 'Workflow', 'Create']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 10 entities: {'ORG': ['CloudFlow', 'YAML', 'POST', 'PUT', 'Gmail, Outlook) -'], 'PERSON': ['Git', 'JSON', '[Scheduling](#scheduling'], 'FAC': ['Google Drive'], 'GPE': ['Dropbox']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 89.2ms | keywords=10 entities=10 | prefix_len=117
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Basic Auth', 'Bearer Token', 'Important Notes', 'HTTP Requests', 'Query Parameters']...
+[23:39:10] DEBUG | [fast-enricher] spaCy extracted 9 entities: {'ORG': ['API', 'POST', 'PUT', 'SQL', 'SMTP'], 'PERSON': ['Bearer Token', 'API Key', 'Redis', 'Email Notifications Send']}
+[23:39:10] DEBUG | [fast-enricher] Enriched in 98.0ms | keywords=10 entities=9 | prefix_len=129
+[23:39:10] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Current execution', 'Current timestamp', 'Due Date', 'Current workflow', 'Order Status']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 11 entities: {'PERSON': ['Workflow', 'Convert', 'Remove', 'Split', 'Format'], 'ORG': ['substring(text', 'num2'], 'LAW': ['ISO 8601'], 'GPE': ['MM', 'YYYY'], 'PRODUCT': ['Round']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 127.7ms | keywords=10 entities=11 | prefix_len=162
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Cron Patterns', 'Day', 'business hours', 'Common Cron', 'Month']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 12 entities: {'PERSON': ['Cron Syntax', '┬ ┬ ┬ ┬ ┬', 'Convert', 'IANA'], 'ORG': ['UTC', 'GMT/BST', 'CloudFlow', 'DST'], 'EVENT': ['America/New_York'], 'GPE': ['Australia'], 'NORP': ['Australian'], 'WORK_OF_ART': ['Trigger']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 150.4ms | keywords=10 entities=12 | prefix_len=130
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Testing Schedules', 'Handling Robust', 'Attempt', 'Error Handling', 'Dead Letter']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 5 entities: {'ORG': ['Fallback Actions Execute', 'CloudFlow', 'Dead Letter Queue', 'DLQ'], 'PERSON': ['Queue']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 93.2ms | keywords=10 entities=5 | prefix_len=145
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['workflow', 'date range', 'type', 'workflows', 'error type']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 2 entities: {'ORG': ['MB'], 'WORK_OF_ART': ['Sync Customer Data']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 145.3ms | keywords=10 entities=2 | prefix_len=104
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['external API', 'API calls', 'Errors Gracefully', 'Store secrets', 'API keys']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 5 entities: {'ORG': ['API', 'Validate Input Data Always', 'Keep Workflows Modular Break'], 'PERSON': ['Log Add', 'Trigger']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 76.3ms | keywords=10 entities=5 | prefix_len=136
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Polling Periodically', 'API Polling', 'Version Control', 'Expense Approval', 'Export YAML']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 6 entities: {'PERSON': ['Git'], 'ORG': ['API', 'Multi-Step Approval Implement', 'expense_id'], 'WORK_OF_ART': ['Expense Approval Workflow', 'Expense Approval Required:']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 83.5ms | keywords=10 entities=6 | prefix_len=209
+    [enriching 50] fast (YAKE+spaCy)...
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Expense rejected', 'query config', 'approval action', 'request config', 'config']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 9 entities: {'PERSON': ['Requester', 'Bearer', 'Getting Help'], 'WORK_OF_ART': ['Sync Customers: CRM'], 'ORG': ['UTC', 'INTERVAL', 'GROUP BY error_type', 'SET', 'CloudFlow']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 159.2ms | keywords=10 entities=9 | prefix_len=152
+[23:39:11] DEBUG | [fast-enricher] YAKE extracted 10 keywords: ['Status Page', 'Documentation', 'Status', 'Page', 'CloudFlow Technologies']...
+[23:39:11] DEBUG | [fast-enricher] spaCy extracted 1 entities: {'ORG': ['CloudFlow Technologies Inc.']}
+[23:39:11] DEBUG | [fast-enricher] Enriched in 30.1ms | keywords=10 entities=1 | prefix_len=112
+    [enriched] chunks=51 new=51 cache_hits=0 time=6.3s avg=123.2ms/chunk
+[23:39:12] INFO  |   Indexed in 7.32s
+[23:39:14] INFO  |   k=5 exact_match: 77.4% (41/53)
+[23:39:14] INFO  |     synonym: 71.7%
+[23:39:14] INFO  |     problem: 62.3%
+[23:39:14] INFO  |     casual: 64.2%
+[23:39:14] INFO  |     contextual: 67.9%
+[23:39:14] INFO  |     negation: 54.7%
+[23:39:14] METRIC | total_benchmark_time=23.687s
+
+================================================================================
+[23:39:14] INFO  | SAVING RESULTS
+================================================================================
+[23:39:14] INFO  | Saved full results to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-24_233851/benchmark_results.json
+[23:39:14] INFO  | Saved summary to /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-24_233851/summary.json
+
+================================================================================
+[23:39:14] INFO  | BENCHMARK COMPLETE
+================================================================================
+[23:39:14] INFO  | Total evaluations: 3
+
+Coverage by Query Dimension
+Dimension  | Coverage | Delta 
+-----------+----------+-------
+casual     | 61.0%    | -12.6%
+contextual | 63.5%    | -10.1%
+negation   | 54.1%    | -19.5%
+original   | 73.6%    | -     
+problem    | 57.2%    | -16.4%
+synonym    | 67.3%    | -6.3% 
+
+================================================================================
+[23:39:14] INFO  | RUN SUMMARY
+================================================================================
+[23:39:14] INFO  | Total runtime: 23.74s
+
+------------------------------------------------------------
+[23:39:14] INFO  | Timing Breakdown
+------------------------------------------------------------
+Phase           | Duration
+----------------+---------
+total_benchmark | 23.69s  
+[23:39:14] INFO  | Log saved to: /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/results/2026-01-24_233851/benchmark.log

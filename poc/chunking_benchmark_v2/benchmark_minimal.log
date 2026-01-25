@@ -1,0 +1,91 @@
+[21:36:12] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_enriched_minimal.yaml
+
+================================================================================
+[21:36:12] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+
+================================================================================
+[21:36:12] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[21:36:12] METRIC | device=cuda
+[21:36:12] METRIC | ollama_available=True
+[21:36:12] INFO  | Device: cuda
+[21:36:12] INFO  | Ollama available: True
+[21:36:12] INFO  | Loading corpus...
+[21:36:12] METRIC | documents=1
+[21:36:12] METRIC | queries=20
+[21:36:12] METRIC | total_facts=53
+[21:36:12] METRIC | has_human_queries=True
+[21:36:12] INFO  | Loaded 1 documents
+[21:36:12] INFO  | Loaded 20 queries
+[21:36:12] INFO  | Total key facts: 53
+[21:36:12] INFO  | Human query variations: True
+[21:36:12] INFO  | Enabled embedders: 1
+[21:36:12] INFO  | Enabled rerankers: 0
+[21:36:12] INFO  | Enabled LLMs: 1
+[21:36:12] INFO  | Enabled chunking strategies: 1
+[21:36:12] INFO  | Enabled retrieval strategies: 6
+[21:36:12] METRIC | total_combinations=6
+[21:36:12] METRIC | total_evaluations=6
+[21:36:12] INFO  | Total strategy combinations: 6
+[21:36:12] INFO  | Total evaluations (with k and metrics): 6
+
+================================================================================
+[21:36:12] INFO  | RETRIEVAL STRATEGY: semantic
+================================================================================
+[21:36:12] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:36:15] PROG  | [  1/  6] ███░░░░░░░░░░░░░░░░░  16.7% | semantic_bge-base-en-v1.5_fixed_512_0pct
+[21:36:15] INFO  |   Created 6 chunks
+[21:36:15] INFO  |   Indexed in 0.33s
+[21:36:16] INFO  |   k=5 exact_match: 18.9% (10/53)
+[21:36:16] INFO  |     synonym: 22.6%
+[21:36:16] INFO  |     problem: 22.6%
+[21:36:16] INFO  |     casual: 20.8%
+[21:36:16] INFO  |     contextual: 24.5%
+[21:36:16] INFO  |     negation: 18.9%
+
+================================================================================
+[21:36:16] INFO  | RETRIEVAL STRATEGY: hybrid
+================================================================================
+[21:36:16] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:36:18] PROG  | [  2/  6] ██████░░░░░░░░░░░░░░  33.3% | hybrid_bge-base-en-v1.5_fixed_512_0pct
+[21:36:18] INFO  |   Created 6 chunks
+[21:36:18] INFO  |   Indexed in 0.11s
+[21:36:19] INFO  |   k=5 exact_match: 24.5% (13/53)
+[21:36:19] INFO  |     synonym: 22.6%
+[21:36:19] INFO  |     problem: 22.6%
+[21:36:19] INFO  |     casual: 22.6%
+[21:36:19] INFO  |     contextual: 22.6%
+[21:36:19] INFO  |     negation: 24.5%
+
+================================================================================
+[21:36:19] INFO  | RETRIEVAL STRATEGY: enriched_keywords_3b
+================================================================================
+[21:36:19] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:36:21] PROG  | [  3/  6] ██████████░░░░░░░░░░  50.0% | enriched_keywords_3b_bge-base-en-v1.5_llama3.2_3b
+[21:39:40] INFO  |   Indexed in 198.63s
+[21:39:41] INFO  |   k=5 exact_match: 18.9% (10/53)
+[21:39:41] INFO  |     synonym: 18.9%
+[21:39:41] INFO  |     problem: 17.0%
+[21:39:41] INFO  |     casual: 18.9%
+[21:39:41] INFO  |     contextual: 13.2%
+[21:39:41] INFO  |     negation: 15.1%
+
+================================================================================
+[21:39:41] INFO  | RETRIEVAL STRATEGY: enriched_contextual_3b
+================================================================================
+[21:39:41] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:39:43] PROG  | [  4/  6] █████████████░░░░░░░  66.7% | enriched_contextual_3b_bge-base-en-v1.5_llama3.2_3b
+[21:45:46] INFO  |   Indexed in 362.80s
+[21:45:47] INFO  |   k=5 exact_match: 18.9% (10/53)
+[21:45:47] INFO  |     synonym: 18.9%
+[21:45:47] INFO  |     problem: 17.0%
+[21:45:47] INFO  |     casual: 13.2%
+[21:45:47] INFO  |     contextual: 18.9%
+[21:45:47] INFO  |     negation: 15.1%
+
+================================================================================
+[21:45:47] INFO  | RETRIEVAL STRATEGY: enriched_questions_3b
+================================================================================
+[21:45:47] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:45:49] PROG  | [  5/  6] ████████████████░░░░  83.3% | enriched_questions_3b_bge-base-en-v1.5_llama3.2_3b

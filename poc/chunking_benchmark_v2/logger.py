@@ -48,7 +48,7 @@ class BenchmarkLogger:
         logger.close()
     """
 
-    LEVELS = {"DEBUG": 0, "INFO": 1, "WARN": 2, "ERROR": 3}
+    LEVELS = {"TRACE": -1, "DEBUG": 0, "INFO": 1, "WARN": 2, "ERROR": 3}
 
     def __init__(
         self,
@@ -116,8 +116,10 @@ class BenchmarkLogger:
             self.file_handle.write(formatted + "\n")
             self.file_handle.flush()
 
+    def trace(self, msg: str):
+        self._log("TRACE", msg)
+
     def debug(self, msg: str):
-        """Log debug message."""
         self._log("DEBUG", msg)
 
     def info(self, msg: str):

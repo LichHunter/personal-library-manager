@@ -20,6 +20,8 @@ from .raptor import RAPTORRetrieval
 from .hyde import HyDERetrieval
 from .multi_query import MultiQueryRetrieval
 from .reverse_hyde import ReverseHyDERetrieval
+from .enriched_lod import EnrichedLODRetrieval
+from .enriched_hybrid import EnrichedHybridRetrieval
 
 RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "semantic": SemanticRetrieval,
@@ -31,6 +33,13 @@ RETRIEVAL_STRATEGIES: dict[str, type[RetrievalStrategy]] = {
     "hyde": HyDERetrieval,
     "multi_query": MultiQueryRetrieval,
     "reverse_hyde": ReverseHyDERetrieval,
+    "enriched_lod": EnrichedLODRetrieval,
+    "enriched_lod_keywords": EnrichedLODRetrieval,
+    "enriched_lod_contextual": EnrichedLODRetrieval,
+    "enriched_lod_questions": EnrichedLODRetrieval,
+    "enriched_lod_summary": EnrichedLODRetrieval,
+    "enriched_lod_entities": EnrichedLODRetrieval,
+    "enriched_hybrid": EnrichedHybridRetrieval,
 }
 
 COLBERT_AVAILABLE = False
@@ -92,6 +101,8 @@ __all__ = [
     "HyDERetrieval",
     "MultiQueryRetrieval",
     "ReverseHyDERetrieval",
+    "EnrichedLODRetrieval",
+    "EnrichedHybridRetrieval",
     "RETRIEVAL_STRATEGIES",
     "create_retrieval_strategy",
     "list_retrieval_strategies",

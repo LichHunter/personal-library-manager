@@ -48,7 +48,7 @@ from retrieval import (
     StructuredDocument,
     RetrievalStrategy,
 )
-from logger import BenchmarkLogger
+from logger import BenchmarkLogger, set_logger
 
 
 # =============================================================================
@@ -494,8 +494,14 @@ def run_benchmark(
 
                             if hasattr(strategy, "set_reranker") and reranker:
                                 strategy.set_reranker(reranker)
-                            if hasattr(strategy, "set_llm_model") and llm_name:
-                                strategy.set_llm_model(llm_name)
+                            strategy_llm = retrieval_cfg.get("params", {}).get(
+                                "llm_model"
+                            )
+                            effective_llm = (
+                                strategy_llm or llm_name
+                            )  # prefer strategy-specific over global
+                            if hasattr(strategy, "set_llm_model") and effective_llm:
+                                strategy.set_llm_model(effective_llm)
 
                             index_start = time.perf_counter()
                             strategy.index(
@@ -673,6 +679,18 @@ def main():
         action="store_true",
         help="Show what would be run without executing",
     )
+    parser.add_argument(
+        "--debug",
+        "-d",
+        action="store_true",
+        help="Enable DEBUG level logging for detailed provider output",
+    )
+    parser.add_argument(
+        "--trace",
+        "-t",
+        action="store_true",
+        help="Enable TRACE level logging (shows full input/output text)",
+    )
     args = parser.parse_args()
 
     base_dir = Path(__file__).parent
@@ -682,12 +700,14 @@ def main():
     results_dir = base_dir / "results" / timestamp
     results_dir.mkdir(parents=True, exist_ok=True)
 
+    log_level = "TRACE" if args.trace else ("DEBUG" if args.debug else "INFO")
     logger = BenchmarkLogger(
         log_dir=results_dir,
         log_file="benchmark.log",
         console=True,
-        min_level="INFO",
+        min_level=log_level,
     )
+    set_logger(logger)
 
     if not config_path.exists():
         log(f"Config file not found: {config_path}", level="ERROR")

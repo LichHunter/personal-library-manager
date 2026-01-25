@@ -1,0 +1,115 @@
+================================================================================
+Benchmark Log - 2026-01-24 21:51:29
+================================================================================
+
+[21:51:29] INFO  | Loading config from /home/fujin/Code/personal-library-manager/poc/chunking_benchmark_v2/config_enriched.yaml
+
+================================================================================
+[21:51:29] INFO  | COMPREHENSIVE RETRIEVAL BENCHMARK
+================================================================================
+
+================================================================================
+[21:51:29] INFO  | BENCHMARK CONFIGURATION
+================================================================================
+[21:51:29] METRIC | device=cuda
+[21:51:29] METRIC | ollama_available=True
+[21:51:29] INFO  | Device: cuda
+[21:51:29] INFO  | Ollama available: True
+[21:51:29] INFO  | Loading corpus...
+[21:51:29] METRIC | documents=5
+[21:51:29] METRIC | queries=20
+[21:51:29] METRIC | total_facts=53
+[21:51:29] METRIC | has_human_queries=True
+[21:51:29] INFO  | Loaded 5 documents
+[21:51:29] INFO  | Loaded 20 queries
+[21:51:29] INFO  | Total key facts: 53
+[21:51:29] INFO  | Human query variations: True
+[21:51:29] INFO  | Enabled embedders: 1
+[21:51:29] INFO  | Enabled rerankers: 0
+[21:51:29] INFO  | Enabled LLMs: 1
+[21:51:29] INFO  | Enabled chunking strategies: 1
+[21:51:29] INFO  | Enabled retrieval strategies: 12
+[21:51:29] METRIC | total_combinations=12
+[21:51:29] METRIC | total_evaluations=12
+[21:51:29] INFO  | Total strategy combinations: 12
+[21:51:29] INFO  | Total evaluations (with k and metrics): 12
+
+================================================================================
+[21:51:29] INFO  | RETRIEVAL STRATEGY: semantic
+================================================================================
+[21:51:29] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:51:32] PROG  | [  1/ 12] █░░░░░░░░░░░░░░░░░░░   8.3% | semantic_bge-base-en-v1.5_fixed_512_0pct
+[21:51:32] INFO  |   Created 51 chunks
+[21:51:33] INFO  |   Indexed in 1.13s
+[21:51:34] INFO  |   k=5 exact_match: 67.9% (36/53)
+[21:51:34] INFO  |     synonym: 60.4%
+[21:51:34] INFO  |     problem: 54.7%
+[21:51:34] INFO  |     casual: 54.7%
+[21:51:34] INFO  |     contextual: 62.3%
+[21:51:34] INFO  |     negation: 54.7%
+
+================================================================================
+[21:51:34] INFO  | RETRIEVAL STRATEGY: hybrid
+================================================================================
+[21:51:34] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:51:36] PROG  | [  2/ 12] ███░░░░░░░░░░░░░░░░░  16.7% | hybrid_bge-base-en-v1.5_fixed_512_0pct
+[21:51:36] INFO  |   Created 51 chunks
+[21:51:37] INFO  |   Indexed in 0.97s
+[21:51:38] INFO  |   k=5 exact_match: 75.5% (40/53)
+[21:51:38] INFO  |     synonym: 69.8%
+[21:51:38] INFO  |     problem: 54.7%
+[21:51:38] INFO  |     casual: 64.2%
+[21:51:38] INFO  |     contextual: 60.4%
+[21:51:38] INFO  |     negation: 52.8%
+
+================================================================================
+[21:51:38] INFO  | RETRIEVAL STRATEGY: lod
+================================================================================
+[21:51:38] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:51:40] PROG  | [  3/ 12] █████░░░░░░░░░░░░░░░  25.0% | lod_bge-base-en-v1.5
+[21:51:44] INFO  |   Indexed in 3.24s
+[21:51:44] INFO  |   k=5 exact_match: 43.4% (23/53)
+[21:51:44] INFO  |     synonym: 54.7%
+[21:51:44] INFO  |     problem: 39.6%
+[21:51:44] INFO  |     casual: 50.9%
+[21:51:44] INFO  |     contextual: 49.1%
+[21:51:44] INFO  |     negation: 26.4%
+
+================================================================================
+[21:51:44] INFO  | RETRIEVAL STRATEGY: enriched_keywords_3b
+================================================================================
+[21:51:44] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[21:51:47] PROG  | [  4/ 12] ██████░░░░░░░░░░░░░░  33.3% | enriched_keywords_3b_bge-base-en-v1.5_llama3.2_3b
+[22:28:20] INFO  |   Indexed in 2193.08s
+[22:28:20] INFO  |   k=5 exact_match: 45.3% (24/53)
+[22:28:20] INFO  |     synonym: 58.5%
+[22:28:20] INFO  |     problem: 43.4%
+[22:28:20] INFO  |     casual: 50.9%
+[22:28:20] INFO  |     contextual: 52.8%
+[22:28:20] INFO  |     negation: 28.3%
+
+================================================================================
+[22:28:20] INFO  | RETRIEVAL STRATEGY: enriched_contextual_3b
+================================================================================
+[22:28:20] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[22:28:23] PROG  | [  5/ 12] ████████░░░░░░░░░░░░  41.7% | enriched_contextual_3b_bge-base-en-v1.5_llama3.2_3b
+[23:28:00] INFO  |   Indexed in 3576.98s
+[23:28:01] INFO  |   k=5 exact_match: 66.0% (35/53)
+[23:28:01] INFO  |     synonym: 52.8%
+[23:28:01] INFO  |     problem: 45.3%
+[23:28:01] INFO  |     casual: 52.8%
+[23:28:01] INFO  |     contextual: 50.9%
+[23:28:01] INFO  |     negation: 32.1%
+
+================================================================================
+[23:28:01] INFO  | RETRIEVAL STRATEGY: enriched_questions_3b
+================================================================================
+[23:28:01] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[23:28:03] PROG  | [  6/ 12] ██████████░░░░░░░░░░  50.0% | enriched_questions_3b_bge-base-en-v1.5_llama3.2_3b
+[23:48:38] ERROR |   ERROR: [Errno 2] No such file or directory: 'enrichment_cache/2b06a3400e16a3d9.json'
+
+================================================================================
+[23:48:38] INFO  | RETRIEVAL STRATEGY: enriched_summary_3b
+================================================================================
+[23:48:38] INFO  | Loading embedder: BAAI/bge-base-en-v1.5
+[23:48:41] PROG  | [  7/ 12] ███████████░░░░░░░░░  58.3% | enriched_summary_3b_bge-base-en-v1.5_llama3.2_3b

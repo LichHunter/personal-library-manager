@@ -10,6 +10,11 @@ from .recursive_splitter import RecursiveSplitterStrategy
 from .cluster_semantic import ClusterSemanticStrategy
 from .paragraph_heading import ParagraphHeadingStrategy
 from .fixed_size import FixedSizeStrategy
+from .markdown_semantic import (
+    MarkdownSemanticStrategy,
+    is_mostly_code,
+    calculate_code_ratio,
+)
 
 # V1 Strategies (copied for comprehensive testing)
 from .heading_based import HeadingBasedStrategy
@@ -19,16 +24,16 @@ from .heading_paragraph import HeadingParagraphStrategy
 from .paragraphs import ParagraphStrategy
 
 __all__ = [
-    # Base classes
     "ChunkingStrategy",
     "Chunk",
     "Document",
-    # V2 strategies
     "RecursiveSplitterStrategy",
     "ClusterSemanticStrategy",
     "ParagraphHeadingStrategy",
     "FixedSizeStrategy",
-    # V1 strategies
+    "MarkdownSemanticStrategy",
+    "is_mostly_code",
+    "calculate_code_ratio",
     "HeadingBasedStrategy",
     "HeadingLimitedStrategy",
     "HierarchicalStrategy",
