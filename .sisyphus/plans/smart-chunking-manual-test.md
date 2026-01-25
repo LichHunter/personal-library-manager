@@ -39,10 +39,10 @@ Replace fixed-size chunking with MarkdownSemanticStrategy in the manual test too
 - Comparison analysis: Fixed vs Smart chunking results
 
 ### Definition of Done
-- [ ] `manual_test.py` uses `MarkdownSemanticStrategy`
-- [ ] Script runs without errors
-- [ ] Report generated with 10 questions
-- [ ] Chunking info shown in output (strategy name, chunk count)
+- [x] `manual_test.py` uses `MarkdownSemanticStrategy`
+- [x] Script runs without errors
+- [x] Report generated with 10 questions
+- [x] Chunking info shown in output (strategy name, chunk count)
 
 ### Must Have
 - Use `MarkdownSemanticStrategy` with sensible defaults
