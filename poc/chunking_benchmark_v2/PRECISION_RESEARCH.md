@@ -289,3 +289,436 @@ From summary.json degradation_analysis:
 - **BM25**: Statistical ranking function for keyword matching
 - **YAKE**: Yet Another Keyword Extractor - unsupervised keyword extraction
 - **spaCy NER**: Named Entity Recognition using spaCy library
+
+---
+
+## Detailed Missed Facts Analysis (2026-01-25 Baseline Investigation)
+
+**Source**: `baseline_investigation.log` (semantic strategy section, lines 102-1213)
+**Baseline Strategy**: semantic (BAAI/bge-base-en-v1.5, fixed_512_0pct, k=5)
+**Coverage**: 67.9% (36/53 facts found)
+**Missed Facts**: 17 unique facts (across 120 query variations)
+
+### Complete Missed Facts Inventory
+
+#### Fact 1: Monitor X-RateLimit-Remaining header values
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | Not in top-5 (fact exists in corpus but not retrieved) |
+| **BM25 Rank** | N/A (semantic-only baseline) |
+| **Semantic Rank** | >5 (outside retrieval window) |
+| **Root Cause** | SEMANTIC_GAP - Monitoring advice lacks semantic similarity to rate limit queries |
+| **Queries Affected** | 429 error queries, rate limit handling queries |
+
+#### Fact 2: Implement exponential backoff when receiving 429 responses
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_1 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | CHUNK_BOUNDARY - Best practice buried in chunk with rate limit info |
+| **Queries Affected** | "My requests keep failing with 429 status code" |
+
+#### Fact 3: Retry-After
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | troubleshooting_guide_fix_6 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | CROSS_DOCUMENT - Header info in troubleshooting, not API reference |
+| **Queries Affected** | Rate limit handling queries |
+
+#### Fact 4: max 3600 seconds from iat
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_0 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | TECHNICAL_JARGON - "iat" (issued-at) is JWT-specific terminology |
+| **Queries Affected** | All 6 JWT token expiration queries |
+
+#### Fact 5: All tokens expire after 3600 seconds
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_0 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | REDUNDANT_FACT - Same info as "3600 seconds" but phrased differently |
+| **Queries Affected** | Token expiration queries |
+
+#### Fact 6: PostgreSQL 15.4 / Redis 7.2 / Apache Kafka 3.6
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_0 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - Query "database stack" doesn't match "PostgreSQL" semantically |
+| **Queries Affected** | "database stack" (casual query) |
+
+#### Fact 7: 2 vCPU, 4GB RAM per pod
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_1 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "api gateway resources" doesn't embed close to resource specs |
+| **Queries Affected** | "api gateway resources" (casual query) |
+
+#### Fact 8: /ready
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | deployment_guide_fix_2 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | PARTIAL_RETRIEVAL - /health found but /ready in different chunk section |
+| **Queries Affected** | 6 health endpoint queries |
+
+#### Fact 9: targetCPUUtilizationPercentage: 70
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | deployment_guide_fix_1 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | GRANULARITY - Specific config value not semantically linked to HPA queries |
+| **Queries Affected** | 6 HPA/autoscaling queries |
+
+#### Fact 10: minReplicas: 3 / maxReplicas: 10
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | deployment_guide_fix_1 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | INDIRECT_QUERY - "Why do we have 3 replicas even with low traffic?" |
+| **Queries Affected** | Negation-style query about replicas |
+
+#### Fact 11: P99 latency: < 200ms / average P99 latency of 180ms
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_0, architecture_overview_fix_1 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "api latency target" doesn't match P99 terminology |
+| **Queries Affected** | 4-6 latency target queries |
+
+#### Fact 12: RPO (Recovery Point Objective): 1 hour / RTO: 4 hours
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_10 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | ACRONYM_GAP - RPO/RTO acronyms don't embed well with disaster recovery queries |
+| **Queries Affected** | All 6 disaster recovery queries (100% miss rate) |
+
+#### Fact 13: exceeded maximum execution time of 3600 seconds
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | troubleshooting_guide_fix_4 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | CROSS_DOCUMENT - Error message in troubleshooting, timeout value in user guide |
+| **Queries Affected** | 6 workflow timeout queries |
+
+#### Fact 14: RS256 signing algorithm
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_0 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | REDUNDANT_FACT - "RS256" found but "RS256 signing algorithm" phrasing missed |
+| **Queries Affected** | JWT algorithm queries |
+
+#### Fact 15: Workflow Definitions: TTL: 1 hour
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_6 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | INDIRECT_QUERY - "My workflow updates aren't reflecting immediately" |
+| **Queries Affected** | 3 cache TTL queries (problem/contextual variations) |
+
+#### Fact 16: Jaeger for distributed tracing
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_0 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "monitoring stack" doesn't match Jaeger semantically |
+| **Queries Affected** | "monitoring stack" (casual), some monitoring queries |
+
+#### Fact 17: helm repo add cloudflow https://charts.cloudflow.io
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | deployment_guide_fix_1 |
+| **BM25 Rank** | N/A |
+| **Semantic Rank** | >5 |
+| **Root Cause** | COMMAND_SYNTAX - Helm command syntax doesn't embed well with natural language |
+| **Queries Affected** | 5/6 Helm repo queries (83% miss rate) |
+
+---
+
+### Root Cause Category Summary
+
+| Category | Count | Description | Example |
+|----------|-------|-------------|---------|
+| **VOCABULARY_MISMATCH** | 5 | Query terms don't semantically match document terms | "database stack" vs "PostgreSQL 15.4" |
+| **ACRONYM_GAP** | 1 | Technical acronyms poorly embedded | "RPO RTO" query misses disaster recovery content |
+| **CROSS_DOCUMENT** | 2 | Related info split across documents | Retry-After in troubleshooting, not API ref |
+| **INDIRECT_QUERY** | 2 | Problem-style queries don't match factual content | "Why do we have 3 replicas..." |
+| **CHUNK_BOUNDARY** | 1 | Fact buried in chunk with other dominant content | Exponential backoff in rate limit chunk |
+| **PARTIAL_RETRIEVAL** | 1 | Related fact found, sibling fact missed | /health found, /ready missed |
+| **TECHNICAL_JARGON** | 1 | Domain-specific terms poorly embedded | "iat" (JWT issued-at claim) |
+| **REDUNDANT_FACT** | 2 | Same info phrased differently counted as miss | "3600 seconds" vs "All tokens expire after 3600 seconds" |
+| **GRANULARITY** | 1 | Specific config values not linked to concept queries | targetCPUUtilizationPercentage: 70 |
+| **COMMAND_SYNTAX** | 1 | CLI commands don't embed well | helm repo add command |
+
+---
+
+### Query Type Performance Analysis
+
+| Query Type | Coverage | Missed Facts Pattern |
+|------------|----------|---------------------|
+| **original** | 67.9% | Baseline - direct questions |
+| **synonym** | 60.4% | Vocabulary mismatch amplified |
+| **problem** | 54.7% | Indirect queries fail most |
+| **casual** | 54.7% | Short queries lack context |
+| **contextual** | 62.3% | Better than problem/casual |
+| **negation** | 54.7% | "Why doesn't X work" pattern fails |
+
+---
+
+### Improvement Recommendations
+
+#### High Impact (Address 5+ missed facts)
+1. **Hybrid Retrieval (BM25 + Semantic)** - Addresses VOCABULARY_MISMATCH, ACRONYM_GAP
+2. **Query Expansion** - Addresses INDIRECT_QUERY, VOCABULARY_MISMATCH
+3. **Chunk Overlap** - Addresses CHUNK_BOUNDARY, PARTIAL_RETRIEVAL
+
+#### Medium Impact (Address 2-4 missed facts)
+4. **Acronym Expansion** - Pre-process queries to expand RPO/RTO, JWT, etc.
+5. **Cross-Document Linking** - Metadata linking related chunks across docs
+
+#### Low Impact (Address 1 missed fact each)
+6. **Command Indexing** - Special handling for CLI command syntax
+7. **Fact Deduplication** - Consolidate redundant fact variations
+
+---
+
+### Chunk Location Summary
+
+| Chunk ID | Document | Missed Facts |
+|----------|----------|--------------|
+| api_reference_fix_0 | api_reference | max 3600 seconds from iat, All tokens expire, RS256 signing |
+| api_reference_fix_1 | api_reference | Implement exponential backoff |
+| architecture_overview_fix_0 | architecture_overview | PostgreSQL/Redis/Kafka, P99 180ms, Jaeger |
+| architecture_overview_fix_1 | architecture_overview | 2 vCPU 4GB RAM, P99 < 200ms |
+| architecture_overview_fix_6 | architecture_overview | Workflow Definitions TTL |
+| architecture_overview_fix_10 | architecture_overview | RPO 1 hour, RTO 4 hours |
+| deployment_guide_fix_1 | deployment_guide | targetCPUUtilization, min/maxReplicas, helm repo |
+| deployment_guide_fix_2 | deployment_guide | /ready endpoint |
+| troubleshooting_guide_fix_4 | troubleshooting_guide | exceeded maximum execution time |
+| troubleshooting_guide_fix_6 | troubleshooting_guide | Retry-After header |
+
+---
+
+### Finding 3: Root Cause Analysis - Enriched Hybrid Fast (2026-01-25)
+
+## Enriched Hybrid Fast Analysis (2026-01-25 - PRIMARY BASELINE)
+
+**Source**: `baseline_investigation.log` (enriched_hybrid_fast section, lines 2382-9291)
+**Strategy**: enriched_hybrid_fast (BAAI/bge-base-en-v1.5, fixed_512_0pct, k=5, RRF fusion)
+**Coverage**: 77.4% (41/53 facts found)
+**Missed Facts**: 12 unique facts (across 120 query variations)
+
+### Enriched Hybrid Fast - Missed Facts Inventory
+
+The enriched_hybrid_fast strategy uses BM25 + Semantic with RRF (Reciprocal Rank Fusion) and YAKE/spaCy enrichment. Below are the 12 unique facts that remain missed even with this improved strategy.
+
+#### Fact 1: Monitor X-RateLimit-Remaining header values
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_1 (contains fact but not surfaced) |
+| **BM25 Rank** | Varies by query (2-4 typically) |
+| **Semantic Rank** | Varies by query (0-9 typically) |
+| **RRF Final Rank** | >5 (outside top-5 window) |
+| **Root Cause** | FACT_BURIED - Monitoring advice buried in rate limit chunk; RRF doesn't boost it enough |
+| **Queries Affected** | All 6 rate limit queries (100% miss rate for this specific fact) |
+
+#### Fact 2: max 3600 seconds from iat
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_0 |
+| **BM25 Rank** | 1-3 (good BM25 match on "JWT", "token") |
+| **Semantic Rank** | 9+ (poor semantic match) |
+| **RRF Final Rank** | 4-5 (borderline) |
+| **Root Cause** | TECHNICAL_JARGON - "iat" (issued-at) is JWT-specific; semantic embedding doesn't capture it |
+| **Queries Affected** | 4-6 JWT token expiration queries |
+
+#### Fact 3: All tokens expire after 3600 seconds
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | api_reference_fix_0 |
+| **BM25 Rank** | 1-3 |
+| **Semantic Rank** | 9+ |
+| **RRF Final Rank** | 4-5 |
+| **Root Cause** | REDUNDANT_PHRASING - "3600 seconds" found but this exact phrasing missed |
+| **Queries Affected** | Token expiration queries (problem/contextual variations) |
+
+#### Fact 4: PostgreSQL 15.4 / Redis 7.2 / Apache Kafka 3.6
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_0 |
+| **BM25 Rank** | >10 (no keyword match for "database stack") |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "database stack" doesn't match specific technology names |
+| **Queries Affected** | "database stack" (casual), "Is CloudFlow using MySQL" (negation) |
+
+#### Fact 5: 2 vCPU, 4GB RAM per pod
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_1 |
+| **BM25 Rank** | >10 for casual queries |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "api gateway resources" doesn't match resource specifications |
+| **Queries Affected** | "api gateway resources" (casual), 1-2 resource queries |
+
+#### Fact 6: targetCPUUtilizationPercentage: 70
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | deployment_guide_fix_1 |
+| **BM25 Rank** | 5-10 |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | GRANULARITY - Specific YAML config value not semantically linked to HPA concept |
+| **Queries Affected** | 5-6 HPA/autoscaling queries |
+
+#### Fact 7: minReplicas: 3 / maxReplicas: 10
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | deployment_guide_fix_1 |
+| **BM25 Rank** | >10 for negation query |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | INDIRECT_QUERY - "Why do we have 3 replicas even with low traffic?" doesn't match config |
+| **Queries Affected** | Negation-style autoscaling queries |
+
+#### Fact 8: P99 latency: < 200ms / average P99 latency of 180ms
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_0, architecture_overview_fix_1 |
+| **BM25 Rank** | >10 for "api latency target" |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "api latency target" doesn't match P99/percentile terminology |
+| **Queries Affected** | 4-6 latency target queries |
+
+#### Fact 9: RPO (Recovery Point Objective): 1 hour / RTO: 4 hours
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_10 |
+| **BM25 Rank** | >10 (acronyms don't match well) |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | ACRONYM_GAP - RPO/RTO acronyms poorly embedded; disaster recovery queries miss this chunk |
+| **Queries Affected** | All 6 disaster recovery queries (100% miss rate) |
+
+#### Fact 10: TTL: 1 hour / Workflow Definitions: TTL: 1 hour
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_6 |
+| **BM25 Rank** | 4-10 |
+| **Semantic Rank** | 0-5 (good for direct queries) |
+| **RRF Final Rank** | Varies (found in some, missed in others) |
+| **Root Cause** | INDIRECT_QUERY - "My workflow updates aren't reflecting immediately" doesn't match TTL |
+| **Queries Affected** | Problem/contextual cache queries |
+
+#### Fact 11: Jaeger for distributed tracing
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | architecture_overview_fix_0 |
+| **BM25 Rank** | >10 for "monitoring stack" |
+| **Semantic Rank** | >10 |
+| **RRF Final Rank** | >5 |
+| **Root Cause** | VOCABULARY_MISMATCH - "monitoring stack" doesn't match "Jaeger" or "distributed tracing" |
+| **Queries Affected** | "monitoring stack" (casual), some monitoring queries |
+
+#### Fact 12: minimum scheduling interval is 1 minute
+| Attribute | Value |
+|-----------|-------|
+| **Chunk ID** | user_guide_fix_4 |
+| **BM25 Rank** | Varies |
+| **Semantic Rank** | Varies |
+| **RRF Final Rank** | >5 for original query |
+| **Root Cause** | PHRASING_MISMATCH - "minimum scheduling interval is 1 minute" vs "The minimum scheduling interval is **1 minute**" |
+| **Queries Affected** | Original scheduling interval query |
+
+---
+
+### Enriched Hybrid Fast - Root Cause Summary
+
+| Category | Count | Description | Improvement from Semantic Baseline |
+|----------|-------|-------------|-----------------------------------|
+| **VOCABULARY_MISMATCH** | 4 | Query terms don't match document terms | Reduced from 5 (hybrid helps some) |
+| **ACRONYM_GAP** | 1 | RPO/RTO acronyms poorly embedded | No improvement |
+| **INDIRECT_QUERY** | 2 | Problem-style queries don't match facts | No improvement |
+| **TECHNICAL_JARGON** | 1 | "iat" JWT terminology | No improvement |
+| **GRANULARITY** | 1 | Specific config values not linked | No improvement |
+| **FACT_BURIED** | 1 | Fact in retrieved chunk but not surfaced | New category for hybrid |
+| **REDUNDANT_PHRASING** | 1 | Same info, different phrasing | Reduced from 2 |
+| **PHRASING_MISMATCH** | 1 | Markdown formatting differences | New category |
+
+---
+
+### Enriched Hybrid Fast - Query Type Performance
+
+| Query Type | Coverage | Delta from Original | Improvement over Semantic |
+|------------|----------|---------------------|---------------------------|
+| **original** | 77.4% | - | +9.5% |
+| **synonym** | 71.7% | -5.7% | +11.3% |
+| **problem** | 62.3% | -15.1% | +7.6% |
+| **casual** | 64.2% | -13.2% | +9.5% |
+| **contextual** | 67.9% | -9.5% | +5.6% |
+| **negation** | 54.7% | -22.7% | +0% (no improvement) |
+
+**Key Insight**: Negation queries show NO improvement with enriched hybrid. These queries like "Why doesn't X work?" or "Is CloudFlow using MySQL or something else?" require understanding of negation semantics that neither BM25 nor semantic embeddings capture well.
+
+---
+
+### Enriched Hybrid Fast - RRF Fusion Analysis
+
+From the log traces, we can see how RRF combines BM25 and semantic rankings:
+
+**Example: Query "How do I fix 429 Too Many Requests errors?"**
+```
+RRF[0] idx=4  total=0.0333 (sem_rank=0 + bm25_rank=0) -> api_reference_fix_4 (FOUND)
+RRF[1] idx=34 total=0.0328 (sem_rank=1 + bm25_rank=1) -> troubleshooting_guide_fix_6 (FOUND)
+RRF[2] idx=1  total=0.0323 (sem_rank=2 + bm25_rank=2) -> api_reference_fix_1 (FOUND)
+RRF[3] idx=35 total=0.0308 (sem_rank=3 + bm25_rank=7) -> troubleshooting_guide_fix_7 (FOUND)
+RRF[4] idx=46 total=0.0302 (sem_rank=10 + bm25_rank=3) -> user_guide_fix_6 (FOUND)
+```
+Result: 4/5 facts found. Missed: "Monitor X-RateLimit-Remaining header values" (in api_reference_fix_1 but not extracted)
+
+**Example: Query "database stack" (casual)**
+```
+BM25 Top-10: No architecture_overview_fix_0 (contains PostgreSQL/Redis/Kafka)
+Semantic Top-10: No architecture_overview_fix_0
+RRF Result: Misses all 3 database technology facts
+```
+Result: 0/3 facts found. Root cause: VOCABULARY_MISMATCH
+
+---
+
+### Recommendations for Remaining 12 Missed Facts
+
+#### High Priority (Address 4+ facts)
+1. **Query Expansion/Rewriting** - Expand "database stack" -> "PostgreSQL Redis Kafka database"
+2. **Acronym Dictionary** - Expand RPO/RTO, JWT, HPA before retrieval
+
+#### Medium Priority (Address 2-3 facts)
+3. **Negation-Aware Retrieval** - Special handling for "Why doesn't X" patterns
+4. **Fact Extraction Post-Processing** - Extract specific facts from retrieved chunks
+
+#### Low Priority (Address 1 fact each)
+5. **Markdown Normalization** - Strip formatting before fact matching
+6. **Synonym Injection** - Add "monitoring" -> "Prometheus Grafana Jaeger" mappings
