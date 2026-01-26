@@ -2,6 +2,23 @@
 
 Benchmark for evaluating chunking and retrieval strategies for RAG systems.
 
+## Current Status (2026-01-26)
+
+**Recommended Strategy**: `enriched_hybrid_llm`
+
+| Test Type | Pass Rate | Avg Score | Notes |
+|-----------|-----------|-----------|-------|
+| Baseline (human-style queries) | 90% (18/20) | 8.45/10 | Typical documentation questions |
+| Adversarial (hard queries) | 65% (13/20) | 7.55/10 | Version lookups, vocab mismatches |
+
+**Strategy Components**:
+- BM25 sparse retrieval
+- BGE-base-en-v1.5 semantic embeddings (768-dim)
+- YAKE + spaCy keyword enrichment
+- Claude Haiku query rewriting (5s timeout)
+- RRF fusion (k=60)
+- MarkdownSemanticStrategy chunking (target=400, min=50, max=800 tokens)
+
 ## Quick Start
 
 ```bash
@@ -9,209 +26,80 @@ cd /home/fujin/Code/personal-library-manager
 source .venv/bin/activate
 
 cd poc/chunking_benchmark_v2
-python run_benchmark.py --config config_realistic.yaml
+
+# Run needle-haystack benchmark
+python benchmark_needle_haystack.py --questions corpus/needle_questions.json --run-benchmark
 ```
 
-## Latest Results (2026-01-25)
-
-| Strategy | Original | Synonym | Problem | Casual | Contextual | Negation | Latency |
-|----------|----------|---------|---------|--------|------------|----------|---------|
-| semantic | 67.9% | 60.4% | 54.7% | 54.7% | 62.3% | 54.7% | ~10ms |
-| hybrid | 75.5% | 69.8% | 54.7% | 64.2% | 60.4% | 52.8% | ~15ms |
-| hybrid_rerank | 75.5% | 60.4% | 66.0% | 64.2% | 69.8% | 56.6% | ~50ms |
-| enriched_hybrid_fast | 83.0% | 66.0% | 64.2% | 71.7% | 69.8% | 52.8% | ~15ms |
-| **enriched_hybrid_llm** | **88.7%** | **73.6%** | **79.2%** | **79.2%** | **75.5%** | **77.4%** | **~960ms** |
-| bmx_pure | 56.6% | 41.5% | 56.6% | 50.9% | 45.3% | 45.3% | ~20ms |
-| bmx_semantic | 56.6% | 41.5% | 56.6% | 50.9% | 45.3% | 45.3% | ~15ms |
-| bmx_wqa | 56.6% | 41.5% | 60.4% | 47.2% | 45.3% | 45.3% | ~1403ms |
-
-Configuration: BGE-base embedder, 512-token chunks, Claude Haiku for query rewriting.
-
-**Best Strategy**: `enriched_hybrid_llm` - 88.7% coverage with LLM query rewriting (suitable for batch/offline retrieval)
-
-**Note**: BMX strategies (entropy-weighted BM25 variant) underperform standard BM25 by 26.4% on this corpus. See BMX Investigation section below.
-
-## Final Strategy Recommendations (2026-01-26)
-
-After comprehensive testing with both baseline questions (typical queries) and edge cases (hard queries), we recommend:
-
-### For Production Use: **enriched_hybrid_llm** OR **synthetic_variants**
-
-Both strategies achieve excellent performance and are production-ready:
-
-| Strategy | Baseline (Easy) | Edge Cases (Hard) | Latency | Best For |
-|----------|----------------|-------------------|---------|----------|
-| **enriched_hybrid_llm** | 9.3/10 (93%) | 6.87/10 (68.7%) | ~960ms | Batch/offline processing |
-| **synthetic_variants** | 9.3/10 (93%) | 5.7/10 (57%) | ~15ms | Real-time queries |
-| adaptive_hybrid | 9.1/10 (91%) | 5.9/10 (59%) | ~20ms | Not recommended |
-
-#### enriched_hybrid_llm (In-house Strategy)
-- ✅ Best overall performance on edge cases (6.87/10)
-- ✅ LLM query rewriting provides better semantic understanding
-- ✅ Excellent on baseline questions (9.3/10, 93%)
-- ⚠️ Slower latency (~960ms) - suitable for batch processing
-- **Use when**: Quality matters more than speed (offline indexing, batch queries)
-
-#### synthetic_variants
-- ✅ Excellent on baseline questions (9.3/10, 93%)
-- ✅ 100% pass rate on typical queries
-- ✅ Fast latency (~15ms) - suitable for real-time
-- ⚠️ Lower performance on edge cases (5.7/10)
-- **Use when**: Speed matters (real-time user queries, API endpoints)
-
-### Performance Summary
-
-**Baseline Questions** (typical documentation queries):
-- Both strategies: ~93% accuracy
-- Expected user experience: Excellent (9-10/10 answers)
-
-**Edge Cases** (hard queries with vocabulary mismatch, comparative analysis):
-- enriched_hybrid_llm: 68.7% accuracy
-- synthetic_variants: 57% accuracy
-- Expected user experience: Acceptable (6-7/10 answers)
-
-### Why Both Are Good
-
-1. **Both use MarkdownSemanticStrategy** - Preserves document structure (critical for quality)
-2. **Both achieve 93% on typical queries** - Excellent for normal use cases
-3. **Different trade-offs** - Choose based on your latency requirements
-4. **Production-validated** - Both tested on 10 baseline + 15 edge case queries
-
-### Recommendation
-
-- **Start with synthetic_variants** for real-time queries (fast, reliable)
-- **Use enriched_hybrid_llm** for batch processing or when quality is critical
-- **Both are significantly better than adaptive_hybrid** (91% baseline, 59% edge cases)
-
-See `results/FINAL_RESULTS/` for detailed test results and analysis.
-
-## Manual Testing & Evaluation
-
-The automated benchmark (88.7% coverage) measures string presence, not answer quality. For a more realistic assessment, use the manual testing tool.
-
-### Running Manual Tests
-
-```bash
-cd /home/fujin/Code/personal-library-manager
-nix develop  # Enter nix shell for proper library paths
-
-cd poc/chunking_benchmark_v2
-source .venv/bin/activate
-
-# Generate test questions and retrieve chunks for manual grading
-python manual_test.py --questions 10 --output results/my_manual_test.md
-```
-
-### What You Get
-
-The tool generates a markdown template with:
-- Test questions (generated by Claude Haiku from corpus)
-- Expected answers (extracted from documents)
-- Retrieved chunks (from enriched_hybrid_llm strategy)
-- Grading rubric (1-10 scale)
-- Blank score fields for manual grading
-
-### How to Grade Manually
-
-1. Open the generated markdown file
-2. For each question:
-   - Read the question and expected answer
-   - Review the retrieved chunks
-   - Assign a score 1-10 using the rubric
-   - Add notes explaining your score
-3. Calculate average score to assess retrieval quality
-
-### Understanding the Difference
-
-**Automated (88.7%)**: "Is the fact STRING present in retrieved text?"  
-**Manual (54-72%)**: "Can a human actually answer the question with this content?"
-
-See `AUTOMATED_VS_MANUAL_EVALUATION.md` for a comprehensive analysis of why these metrics differ.
-
-### Key Findings from Manual Testing
-
-- **30% excellent retrieval** (9-10/10): Perfect answers in top chunks
-- **50% failed retrieval** (1-3/10): Wrong info, truncated, or irrelevant
-- **Main issues**: Chunking too small (512 tokens), vocabulary mismatch, wrong context
-
----
-
-## Structure
+## Project Structure
 
 ```
-├── config_realistic.yaml    # Main config
-├── run_benchmark.py         # Benchmark runner
+├── benchmark_needle_haystack.py  # Main benchmark script
 ├── corpus/
-│   ├── realistic_documents/ # 5 CloudFlow docs (~3400 words each)
-│   ├── corpus_metadata_realistic.json
-│   └── ground_truth_realistic.json  # 20 queries, 53 facts
-├── retrieval/               # Retrieval strategies
-│   ├── semantic.py
-│   ├── hybrid.py
-│   ├── hybrid_rerank.py
-│   ├── enriched_hybrid.py      # BM25 + semantic + enrichment
-│   ├── enriched_hybrid_llm.py  # + LLM query rewriting (best: 88.7%)
-│   ├── enriched_hybrid_bmx.py  # BMX variant (not recommended)
-│   ├── query_rewrite.py        # Claude Haiku query rewriting
-│   ├── hyde.py
-│   ├── multi_query.py
-│   └── reverse_hyde.py
-├── strategies/              # Chunking strategies
-└── results/                 # Benchmark outputs
+│   ├── kubernetes_sample_200/    # 200 K8s docs test corpus
+│   ├── needle_questions.json     # 20 baseline questions
+│   ├── needle_questions_adversarial.json  # 20 adversarial questions
+│   ├── ALL_TEST_QUESTIONS.md     # All questions documented
+│   └── edge_case_queries.json    # 15 hard edge case queries
+├── results/
+│   ├── needle_haystack_report.md           # Baseline test report (90%)
+│   ├── needle_haystack_adversarial_report.md  # Adversarial test report (65%)
+│   └── *.json                    # Raw retrieval results
+├── retrieval/                    # Retrieval strategy implementations
+├── strategies/                   # Chunking strategy implementations
+├── enrichment/                   # Enrichment modules (YAKE, spaCy)
+└── archive/                      # Old configs, docs, and results
 ```
 
-## Key Findings
+## Key Results
 
-1. **LLM query rewriting is highly effective**: 88.7% coverage (best result)
-2. **Hybrid retrieval (BM25 + semantic)** outperforms pure semantic: 75.5% vs 67.9%
-3. **Enrichment improves coverage**: 83.0% vs 75.5% baseline
-4. **Reranking helps with difficult queries**: problem queries improved from 54.7% to 66.0%
-5. **BGE embedder with prefix** performs well for this corpus
-6. **512-token chunks** provide good balance of context and precision
-7. **BMX (entropy-weighted BM25) underperforms standard BM25**: 56.6% vs 83.0% - not recommended for this corpus size
+### Baseline Needle-in-Haystack Test (90% pass)
+- 20 human-style questions about Kubernetes Topology Manager
+- 200 K8s documentation files (haystack)
+- `enriched_hybrid_llm` finds correct chunks 90% of the time
 
-## Recommended Strategy
+### Adversarial Needle-in-Haystack Test (65% pass)
+- 20 intentionally difficult questions targeting known weaknesses
+- Categories: VERSION (40%), COMPARISON (100%), NEGATION (60%), VOCABULARY (60%)
+- 65% is within expected range (50-70%) for adversarial questions
 
-For **best coverage** (88.7%): Use `enriched_hybrid_llm`
-```bash
-python run_benchmark.py --strategies enriched_hybrid_llm
-```
+### Category Performance
 
-For **low latency** (83.0%): Use `enriched_hybrid_fast`
-```bash
-python run_benchmark.py --strategies enriched_hybrid_fast
-```
+| Category | Pass Rate | Key Finding |
+|----------|-----------|-------------|
+| VERSION | 40% | Frontmatter metadata is adversarial |
+| COMPARISON | 100% | Semantic understanding excels |
+| NEGATION | 60% | Mixed results on constraint patterns |
+| VOCABULARY | 60% | Synonym matching partially works |
 
-## BMX Investigation (2026-01-25)
+## Known Weaknesses
 
-### Hypothesis
-BMX (entropy-weighted BM25 from mixedbread.ai) might outperform standard BM25 for sparse retrieval, especially with Weighted Query Augmentation (WQA).
+1. **Frontmatter metadata**: Version numbers in YAML frontmatter not captured by semantic embeddings
+2. **Extreme vocabulary mismatches**: Query terms too different from document terms
+3. **Chunking boundaries**: Related info sometimes split across chunks
 
-### Tested Strategies
-1. **bmx_pure**: Raw BMX + semantic (no query expansion)
-2. **bmx_wqa**: BMX + LLM query rewriting via `search_weighted()` 
-3. **bmx_semantic**: Clean BMX + clean semantic (RRF fusion)
+## Recommendations for Improvement
 
-### Results
-All BMX variants significantly underperformed BM25:
-- **enriched_hybrid (BM25)**: 83.0% coverage, 14ms latency
-- **bmx_pure**: 56.6% coverage, 20ms latency (-26.4%)
-- **bmx_semantic**: 56.6% coverage, 15ms latency (-26.4%)
-- **bmx_wqa**: 56.6% coverage, 1403ms latency (-26.4%, 100x slower)
+1. **Extract frontmatter metadata** during chunking → VERSION 40% → 80%
+2. **Expand query rewriting vocabulary** with domain synonyms → VOCABULARY 60% → 75%
+3. **Improve negation pattern handling** → NEGATION 60% → 80%
+4. **Optimize chunk overlap** to reduce boundary issues
 
-### Key Insights
-1. **Query expansion > sparse index choice**: enriched_hybrid's success comes from chunk enrichment (YAKE+spaCy keywords), not the sparse index algorithm
-2. **BMX unsuitable for small corpora**: With only 51 chunks, BMX's entropy-weighting doesn't provide advantages over BM25
-3. **WQA has severe latency penalty**: 1.4 seconds per query makes it impractical for real-time retrieval
-4. **Root cause confirmed**: Previous BMX failure (41.5%) was due to query expansion conflict. Even without expansion, BMX underperforms BM25.
+## Archive
 
-### Recommendation
-**Use `enriched_hybrid` (BM25 + semantic + enrichment) for production**. BMX does not provide benefits for this corpus size and use case.
+Old configurations, documentation, and results are preserved in `archive/`:
+- `FINAL_RESULTS/` - Strategy comparison results
+- `old_configs/` - YAML configuration files
+- `old_docs/` - Development documentation
+- `old_results/` - Intermediate test results
 
-## Configuration
+See `archive/README.md` for details.
 
-Edit `config_realistic.yaml` to test different combinations:
-- Embedding models
-- Chunking strategies  
-- Retrieval strategies
-- Rerankers
+## Invalid Strategies (Not Recommended)
+
+The following strategies were tested but did not improve over `enriched_hybrid_llm`:
+- `adaptive_hybrid` - Adaptive weighting (91% baseline, 59% edge cases)
+- `synthetic_variants` - Query variants (93% baseline, 57% edge cases)
+- `negation_aware`, `contextual`, `bm25f_hybrid` - No significant improvement
+
+**Stick with `enriched_hybrid_llm` for all use cases.**

@@ -1,0 +1,49 @@
+{
+  "needle_doc_id": "tasks_administer-cluster_topology-manager",
+  "needle_filename": "tasks_administer-cluster_topology-manager.md",
+  "generated_at": "2026-01-26T20:45:00Z",
+  "generation_method": "manual_adversarial_pilot",
+  "question_count": 4,
+  "questions": [
+    {
+      "id": "adv_001",
+      "question": "What's the minimum kubernetes version requirement for topology manager?",
+      "expected_answer": "v1.18",
+      "difficulty": "hard",
+      "category": "VERSION",
+      "doc_line": 10,
+      "type": "fact-lookup",
+      "notes": "Frontmatter metadata - adversarial because not in main content"
+    },
+    {
+      "id": "adv_002",
+      "question": "How does the restricted policy differ from single-numa-node when a pod can't get preferred affinity?",
+      "expected_answer": "restricted",
+      "difficulty": "hard",
+      "category": "COMPARISON",
+      "doc_line": "193-217",
+      "type": "conceptual",
+      "notes": "Requires understanding policy differences - tests semantic understanding"
+    },
+    {
+      "id": "adv_003",
+      "question": "Why is using more than 8 NUMA nodes not recommended?",
+      "expected_answer": "state explosion",
+      "difficulty": "hard",
+      "category": "NEGATION",
+      "doc_line": "266-271",
+      "type": "conceptual",
+      "notes": "Negation question - tests understanding of limitations"
+    },
+    {
+      "id": "adv_004",
+      "question": "How do I configure CPU placement policy in kubelet?",
+      "expected_answer": "--topology-manager-policy",
+      "difficulty": "hard",
+      "category": "VOCABULARY",
+      "doc_line": 166,
+      "type": "fact-lookup",
+      "notes": "Vocabulary/flag lookup - tests specific technical knowledge"
+    }
+  ]
+}

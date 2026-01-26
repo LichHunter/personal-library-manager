@@ -1,8 +1,8 @@
 {
-  "active_plan": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/retrieval-gems-implementation-v2.md",
-  "started_at": "2026-01-26T16:23:10.605Z",
-  "session_ids": [
-    "ses_409134389ffejIS2rFWN7l7n4m"
-  ],
-  "plan_name": "retrieval-gems-implementation-v2"
+  "active_plan": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/adversarial-needle-haystack.md",
+  "started_at": "2026-01-26T19:42:24.744Z",
+  "session_ids": ["ses_409134389ffejIS2rFWN7l7n4m"],
+  "plan_name": "adversarial-needle-haystack",
+  "status": "completed",
+  "completed_at": "2026-01-26T21:10:00.000Z"
 }
