@@ -1,0 +1,209 @@
+{
+  "needle_doc_id": "tasks_administer-cluster_topology-manager",
+  "needle_filename": "tasks_administer-cluster_topology-manager.md",
+  "generated_at": "2026-01-26T21:00:00Z",
+  "generation_method": "manual_adversarial_full_set",
+  "question_count": 20,
+  "questions": [
+    {
+      "id": "adv_v01",
+      "question": "What's the minimum kubernetes version requirement for topology manager?",
+      "expected_answer": "v1.18",
+      "difficulty": "medium",
+      "category": "VERSION",
+      "doc_line": 10,
+      "type": "fact-lookup",
+      "notes": "Frontmatter metadata - adversarial because not in main content"
+    },
+    {
+      "id": "adv_v02",
+      "question": "Which Kubernetes release made Topology Manager GA/stable?",
+      "expected_answer": "v1.27",
+      "difficulty": "hard",
+      "category": "VERSION",
+      "doc_line": 16,
+      "type": "fact-lookup",
+      "notes": "Feature state metadata - requires finding feature-state tag"
+    },
+    {
+      "id": "adv_v03",
+      "question": "When did the prefer-closest-numa-nodes option become generally available?",
+      "expected_answer": "Kubernetes 1.32",
+      "difficulty": "hard",
+      "category": "VERSION",
+      "doc_line": 239,
+      "type": "fact-lookup",
+      "notes": "Specific version number in policy option section"
+    },
+    {
+      "id": "adv_v04",
+      "question": "In what k8s version did max-allowable-numa-nodes become GA?",
+      "expected_answer": "Kubernetes 1.35",
+      "difficulty": "hard",
+      "category": "VERSION",
+      "doc_line": 258,
+      "type": "fact-lookup",
+      "notes": "Version number for policy option"
+    },
+    {
+      "id": "adv_v05",
+      "question": "What's the default limit on NUMA nodes before kubelet refuses to start with topology manager?",
+      "expected_answer": "8",
+      "difficulty": "medium",
+      "category": "VERSION",
+      "doc_line": "264, 391",
+      "type": "fact-lookup",
+      "notes": "Numeric limit mentioned in multiple places"
+    },
+    {
+      "id": "adv_c01",
+      "question": "How does restricted policy differ from single-numa-node when pod can't get preferred affinity?",
+      "expected_answer": "restricted rejects any non-preferred; single-numa-node only rejects if >1 NUMA needed",
+      "difficulty": "hard",
+      "category": "COMPARISON",
+      "doc_line": "193-217",
+      "type": "conceptual",
+      "notes": "Requires understanding policy differences - tests semantic understanding"
+    },
+    {
+      "id": "adv_c02",
+      "question": "What's the key difference between container scope and pod scope for topology alignment?",
+      "expected_answer": "container=individual alignment per container, no grouping; pod=groups all containers to common NUMA set",
+      "difficulty": "medium",
+      "category": "COMPARISON",
+      "doc_line": "118-151",
+      "type": "conceptual",
+      "notes": "Requires comparing two scope types"
+    },
+    {
+      "id": "adv_c03",
+      "question": "Compare what happens with none policy vs best-effort policy when NUMA affinity can't be satisfied",
+      "expected_answer": "none=no alignment attempted; best-effort=stores non-preferred hint, admits pod anyway",
+      "difficulty": "medium",
+      "category": "COMPARISON",
+      "doc_line": "179-191",
+      "type": "conceptual",
+      "notes": "Requires comparing policy behaviors"
+    },
+    {
+      "id": "adv_c04",
+      "question": "How does topology manager behavior differ for Guaranteed QoS pods with integer CPU vs fractional CPU?",
+      "expected_answer": "integer CPU gets topology hints from CPU Manager; fractional CPU gets default hint only",
+      "difficulty": "hard",
+      "category": "COMPARISON",
+      "doc_line": "329-376",
+      "type": "conceptual",
+      "notes": "Requires understanding QoS class interactions"
+    },
+    {
+      "id": "adv_c05",
+      "question": "What's the difference between TopologyManagerPolicyBetaOptions and TopologyManagerPolicyAlphaOptions feature gates?",
+      "expected_answer": "Beta=enabled by default, Alpha=disabled by default; both control policy option visibility",
+      "difficulty": "medium",
+      "category": "COMPARISON",
+      "doc_line": "232-234",
+      "type": "conceptual",
+      "notes": "Requires comparing feature gate maturity levels"
+    },
+    {
+      "id": "adv_n01",
+      "question": "Why is using more than 8 NUMA nodes not recommended with topology manager?",
+      "expected_answer": "State explosion when enumerating NUMA affinities; use max-allowable-numa-nodes at own risk",
+      "difficulty": "medium",
+      "category": "NEGATION",
+      "doc_line": "266-271",
+      "type": "conceptual",
+      "notes": "Negation question - tests understanding of limitations"
+    },
+    {
+      "id": "adv_n02",
+      "question": "What happens to a pod that fails topology affinity check with restricted policy? Can it be rescheduled?",
+      "expected_answer": "Pod enters Terminated state; scheduler will NOT reschedule; need ReplicaSet/Deployment",
+      "difficulty": "medium",
+      "category": "NEGATION",
+      "doc_line": "198-204",
+      "type": "conceptual",
+      "notes": "Negation question - tests understanding of pod rejection behavior"
+    },
+    {
+      "id": "adv_n03",
+      "question": "Why can't the Kubernetes scheduler prevent pods from failing on nodes due to topology?",
+      "expected_answer": "Scheduler is not topology-aware; this is a known limitation",
+      "difficulty": "hard",
+      "category": "NEGATION",
+      "doc_line": "396-397",
+      "type": "conceptual",
+      "notes": "Negation question - tests understanding of scheduler limitations"
+    },
+    {
+      "id": "adv_n04",
+      "question": "What's wrong with using container scope for latency-sensitive applications?",
+      "expected_answer": "Containers may end up on different NUMA nodes since there's no grouping",
+      "difficulty": "hard",
+      "category": "NEGATION",
+      "doc_line": "119-121",
+      "type": "conceptual",
+      "notes": "Negation question - tests understanding of scope limitations"
+    },
+    {
+      "id": "adv_n05",
+      "question": "When does single-numa-node policy reject a pod that would be admitted by restricted?",
+      "expected_answer": "When pod needs resources from exactly 2+ NUMA nodes; restricted accepts any preferred, single-numa-node requires exactly 1",
+      "difficulty": "hard",
+      "category": "NEGATION",
+      "doc_line": "153-158, 209-217",
+      "type": "conceptual",
+      "notes": "Negation question - tests understanding of policy rejection conditions"
+    },
+    {
+      "id": "adv_m01",
+      "question": "How do I configure CPU placement policy in kubelet?",
+      "expected_answer": "--topology-manager-policy flag",
+      "difficulty": "medium",
+      "category": "VOCABULARY",
+      "doc_line": 166,
+      "type": "fact-lookup",
+      "notes": "Vocabulary mismatch: 'CPU placement policy' vs 'topology manager policy'"
+    },
+    {
+      "id": "adv_m02",
+      "question": "How do I enable NUMA awareness on Windows k8s nodes?",
+      "expected_answer": "Enable WindowsCPUAndMemoryAffinity feature gate",
+      "difficulty": "hard",
+      "category": "VOCABULARY",
+      "doc_line": "67-70",
+      "type": "fact-lookup",
+      "notes": "Vocabulary mismatch: 'NUMA awareness' vs 'Topology Manager support'"
+    },
+    {
+      "id": "adv_m03",
+      "question": "How does k8s coordinate resource co-location across multi-socket servers?",
+      "expected_answer": "Topology Manager acts as source of truth for CPU Manager and Device Manager",
+      "difficulty": "hard",
+      "category": "VOCABULARY",
+      "doc_line": "44-45",
+      "type": "conceptual",
+      "notes": "Vocabulary mismatch: 'resource co-location' vs 'topology aligned resource allocation'"
+    },
+    {
+      "id": "adv_m04",
+      "question": "What kubelet setting controls the granularity of resource alignment?",
+      "expected_answer": "topologyManagerScope (container or pod)",
+      "difficulty": "hard",
+      "category": "VOCABULARY",
+      "doc_line": "108-110",
+      "type": "fact-lookup",
+      "notes": "Vocabulary mismatch: 'granularity of resource alignment' vs 'scope'"
+    },
+    {
+      "id": "adv_m05",
+      "question": "How do I optimize inter-process communication latency for pods?",
+      "expected_answer": "Use pod scope with single-numa-node policy to eliminate inter-NUMA overhead",
+      "difficulty": "hard",
+      "category": "VOCABULARY",
+      "doc_line": "148-151",
+      "type": "conceptual",
+      "notes": "Vocabulary mismatch: 'inter-process communication latency' vs 'inter-NUMA communication overhead'"
+    }
+  ]
+}
