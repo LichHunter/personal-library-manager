@@ -517,6 +517,170 @@ def run_prompt_iteration_test() -> dict:
     }
 
 
+def generate_realistic_questions(
+    n: int = 200, output_path: Optional[str] = None
+) -> dict:
+    """
+    Generate realistic questions from kubefix dataset.
+
+    Samples n questions randomly from valid kubefix entries (seed=42),
+    transforms each with progress logging, and saves to JSON file.
+
+    Args:
+        n: Number of questions to generate (default: 200)
+        output_path: Path to save output JSON (default: corpus/realistic_questions.json)
+
+    Returns:
+        Dict with keys: total, high_quality, output_path, questions_list
+
+    Example:
+        >>> result = generate_realistic_questions(n=200)
+        >>> result["high_quality"]
+        180
+    """
+    # Set random seed for reproducibility
+    random.seed(42)
+
+    # Default output path
+    if output_path is None:
+        output_path = str(CORPUS_DIR / "realistic_questions.json")
+
+    print(f"Generating {n} realistic questions...")
+    print(f"Output: {output_path}\n")
+
+    # Load kubefix dataset
+    print("Loading kubefix dataset...")
+    ds = load_dataset("andyburgin/kubefix", split="train")
+
+    # Filter to questions with matching corpus docs
+    print("Filtering to questions with matching docs...")
+    valid_questions = []
+    for example in ds:
+        source = example["source"]
+        our_path = kubefix_to_our_path(source)
+        doc_file = CORPUS_DIR / our_path
+
+        if doc_file.exists():
+            valid_questions.append(
+                {
+                    "instruction": example["instruction"],
+                    "source": source,
+                    "our_doc_path": our_path,
+                }
+            )
+
+    print(f"Found {len(valid_questions)} questions with matching docs\n")
+
+    # Sample n questions randomly
+    if len(valid_questions) < n:
+        print(
+            f"Warning: Only {len(valid_questions)} valid questions available, using all"
+        )
+        sampled = valid_questions
+    else:
+        sampled = random.sample(valid_questions, n)
+
+    # Transform and evaluate each question
+    questions = []
+    high_quality_count = 0
+
+    print(f"Transforming {len(sampled)} questions...\n")
+
+    for i, sample in enumerate(sampled, 1):
+        original = sample["instruction"]
+        source = sample["source"]
+        our_path = sample["our_doc_path"]
+        doc_id = doc_path_to_doc_id(our_path)
+
+        # Progress logging every 20
+        if i % 20 == 0:
+            print(f"  Progress: {i}/{len(sampled)} questions processed...")
+
+        # Transform question
+        result = transform_question(original)
+
+        if result is None:
+            # Skip failed transformations
+            continue
+
+        q1 = result["q1"]
+        q2 = result["q2"]
+
+        # Evaluate quality
+        quality = evaluate_transformation_quality(q1, q2, original)
+
+        # Build question dict
+        question_dict = {
+            "original_instruction": original,
+            "original_source": source,
+            "our_doc_path": our_path,
+            "doc_id": doc_id,
+            "realistic_q1": q1,
+            "realistic_q2": q2,
+            "quality_score": quality["scores"]["overall"],
+            "quality_pass": quality["pass"],
+        }
+
+        questions.append(question_dict)
+
+        if quality["pass"]:
+            high_quality_count += 1
+
+    # Build metadata
+    metadata = {
+        "source": "kubefix",
+        "model": "claude-3-5-haiku-latest",
+        "prompt_version": "v2",
+        "total": len(questions),
+        "high_quality": high_quality_count,
+    }
+
+    # Build output
+    output = {
+        "metadata": metadata,
+        "questions": questions,
+    }
+
+    # Save to JSON file
+    output_dir = Path(output_path).parent
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    with open(output_path, "w") as f:
+        json.dump(output, f, indent=2)
+
+    # Print summary
+    print("\n" + "=" * 60)
+    print("GENERATION SUMMARY")
+    print("=" * 60)
+    print(f"Total generated: {len(questions)}")
+    print(
+        f"High quality: {high_quality_count} ({100 * high_quality_count / len(questions):.1f}%)"
+    )
+    print(f"Output: {output_path}")
+
+    # Append to notepad
+    notepad_path = (
+        Path(__file__).parent.parent.parent
+        / ".sisyphus/notepads/realistic-questions-benchmark/learnings.md"
+    )
+    with open(notepad_path, "a") as f:
+        f.write(
+            f"\n## [{datetime.now().strftime('%Y-%m-%d')}] Task 4: Generate Questions\n"
+        )
+        f.write(f"- Generated {len(questions)} questions\n")
+        f.write(
+            f"- High quality: {high_quality_count} ({100 * high_quality_count / len(questions):.1f}%)\n"
+        )
+        f.write(f"- Output: {output_path}\n")
+
+    return {
+        "total": len(questions),
+        "high_quality": high_quality_count,
+        "output_path": output_path,
+        "questions_list": questions,
+    }
+
+
 def validate_mapping():
     """Validate path mapping coverage against kubefix dataset."""
     print("Loading kubefix dataset...")
@@ -577,6 +741,9 @@ def main():
     parser.add_argument(
         "--test-prompt", action="store_true", help="Run automated prompt iteration test"
     )
+    parser.add_argument(
+        "--generate", type=int, metavar="N", help="Generate N realistic questions"
+    )
 
     args = parser.parse_args()
 
@@ -584,6 +751,8 @@ def main():
         validate_mapping()
     elif args.test_prompt:
         run_prompt_iteration_test()
+    elif args.generate:
+        generate_realistic_questions(n=args.generate)
     else:
         parser.print_help()
 
