@@ -681,6 +681,210 @@ def generate_realistic_questions(
     }
 
 
+def run_retrieval_benchmark(questions_file: Optional[str] = None) -> dict:
+    """
+    Run retrieval benchmark against full K8s corpus using realistic questions.
+
+    Loads the full corpus (1,569 docs), chunks with MarkdownSemanticStrategy,
+    indexes with enriched_hybrid_llm strategy, and evaluates retrieval for
+    each question.
+
+    Args:
+        questions_file: Path to questions JSON file (default: corpus/realistic_questions.json)
+
+    Returns:
+        Dict with metadata, summary metrics, and per-question results
+    """
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).parent))
+
+    from sentence_transformers import SentenceTransformer
+
+    from retrieval import create_retrieval_strategy
+    from strategies import Chunk, Document, MarkdownSemanticStrategy
+
+    print("=" * 60)
+    print("RETRIEVAL BENCHMARK - Realistic Questions")
+    print("=" * 60)
+
+    # Load questions
+    if questions_file is None:
+        questions_path = Path(__file__).parent / "corpus" / "realistic_questions.json"
+    else:
+        questions_path = Path(questions_file)
+
+    if not questions_path.exists():
+        raise FileNotFoundError(
+            f"Questions file not found: {questions_path}\n"
+            "Run --generate N first to generate realistic questions."
+        )
+
+    with open(questions_path) as f:
+        data = json.load(f)
+        questions = data["questions"]
+
+    print(f"Loaded {len(questions)} questions from {questions_path}")
+
+    # Load full corpus
+    corpus_dir = Path(__file__).parent / "corpus" / "kubernetes"
+    print(f"\nLoading corpus from {corpus_dir}...")
+
+    documents = []
+    for doc_file in sorted(corpus_dir.glob("*.md")):
+        with open(doc_file) as f:
+            content = f.read()
+        doc_id = doc_file.stem  # filename without .md
+        documents.append(Document(id=doc_id, content=content, metadata={}))
+
+    print(f"Loaded {len(documents)} documents")
+
+    # Chunk documents
+    print("\nChunking documents with MarkdownSemanticStrategy (target=400)...")
+    chunker = MarkdownSemanticStrategy(
+        target_chunk_size=400, min_chunk_size=50, max_chunk_size=800
+    )
+
+    all_chunks = []
+    for doc in documents:
+        chunks = chunker.chunk(doc.content, doc.id)
+        all_chunks.extend(chunks)
+
+    print(f"Created {len(all_chunks)} chunks")
+
+    # Initialize retrieval strategy
+    print("\nInitializing enriched_hybrid_llm strategy...")
+    strategy = create_retrieval_strategy("enriched_hybrid_llm")
+
+    print("Loading BGE embedder...")
+    embedder = SentenceTransformer("BAAI/bge-base-en-v1.5")
+    strategy.set_embedder(embedder)
+
+    # Index chunks
+    print("\nIndexing chunks (this may take several minutes)...")
+    index_start = time.time()
+    strategy.index(all_chunks, documents)
+    index_time = time.time() - index_start
+    print(f"Indexing complete in {index_time:.1f}s")
+
+    # Run retrieval for each question
+    print(f"\nRunning retrieval for {len(questions)} questions (2 variants each)...")
+    results = []
+
+    for i, q_data in enumerate(questions):
+        expected_doc = q_data["doc_id"]
+
+        for variant in ["realistic_q1", "realistic_q2"]:
+            query = q_data[variant]
+
+            # Retrieve top-5
+            start_time = time.time()
+            retrieved = strategy.retrieve(query, k=5)
+            latency_ms = (time.time() - start_time) * 1000
+
+            # Check if expected doc appears
+            retrieved_doc_ids = [chunk.doc_id for chunk in retrieved]
+            hit_at_5 = expected_doc in retrieved_doc_ids
+            hit_at_1 = (
+                retrieved_doc_ids[0] == expected_doc if retrieved_doc_ids else False
+            )
+            rank = retrieved_doc_ids.index(expected_doc) + 1 if hit_at_5 else None
+
+            results.append(
+                {
+                    "question": query,
+                    "variant": variant,
+                    "expected_doc": expected_doc,
+                    "retrieved_docs": retrieved_doc_ids,
+                    "hit_at_1": hit_at_1,
+                    "hit_at_5": hit_at_5,
+                    "rank": rank,
+                    "latency_ms": round(latency_ms, 1),
+                }
+            )
+
+        if (i + 1) % 20 == 0:
+            print(f"  Progress: {i + 1}/{len(questions)} questions processed...")
+
+    # Calculate summary metrics
+    hit_at_1_count = sum(1 for r in results if r["hit_at_1"])
+    hit_at_5_count = sum(1 for r in results if r["hit_at_5"])
+    hit_at_1_rate = hit_at_1_count / len(results)
+    hit_at_5_rate = hit_at_5_count / len(results)
+
+    # MRR (Mean Reciprocal Rank)
+    reciprocal_ranks = [1 / r["rank"] if r["rank"] else 0 for r in results]
+    mrr = sum(reciprocal_ranks) / len(reciprocal_ranks)
+
+    avg_latency = sum(r["latency_ms"] for r in results) / len(results)
+
+    # Create timestamped results folder
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    results_dir = Path(__file__).parent / "results" / f"realistic_{timestamp}"
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    # Build output
+    output = {
+        "metadata": {
+            "corpus_size": len(documents),
+            "chunk_count": len(all_chunks),
+            "timestamp": timestamp,
+            "strategy": "enriched_hybrid_llm",
+            "chunking": "MarkdownSemanticStrategy",
+            "chunking_params": {"target": 400, "min": 50, "max": 800},
+            "questions_file": str(questions_path),
+            "total_queries": len(results),
+            "index_time_s": round(index_time, 1),
+        },
+        "summary": {
+            "hit_at_1": round(hit_at_1_rate, 4),
+            "hit_at_5": round(hit_at_5_rate, 4),
+            "mrr": round(mrr, 4),
+            "avg_latency_ms": round(avg_latency, 1),
+        },
+        "results": results,
+    }
+
+    # Save results
+    output_file = results_dir / "retrieval_results.json"
+    with open(output_file, "w") as f:
+        json.dump(output, f, indent=2)
+
+    # Print summary
+    print("\n" + "=" * 60)
+    print("BENCHMARK COMPLETE")
+    print("=" * 60)
+    print(f"Corpus: {len(documents)} documents, {len(all_chunks)} chunks")
+    print(f"Questions: {len(questions)} ({len(results)} queries total)")
+    print(f"Index time: {index_time:.1f}s")
+    print(f"\nResults:")
+    print(f"  Hit@1: {hit_at_1_count}/{len(results)} ({hit_at_1_rate:.2%})")
+    print(f"  Hit@5: {hit_at_5_count}/{len(results)} ({hit_at_5_rate:.2%})")
+    print(f"  MRR:   {mrr:.4f}")
+    print(f"  Avg latency: {avg_latency:.1f}ms")
+    print(f"\n✅ Results saved to: {output_file}")
+
+    # Append to notepad
+    notepad_path = (
+        Path(__file__).parent.parent.parent
+        / ".sisyphus/notepads/realistic-questions-benchmark/learnings.md"
+    )
+    try:
+        with open(notepad_path, "a") as f:
+            f.write(
+                f"\n## [{datetime.now().strftime('%Y-%m-%d')}] Task 5: Retrieval Benchmark\n"
+            )
+            f.write(f"- Corpus: {len(documents)} docs, {len(all_chunks)} chunks\n")
+            f.write(
+                f"- Hit@1: {hit_at_1_rate:.2%}, Hit@5: {hit_at_5_rate:.2%}, MRR: {mrr:.4f}\n"
+            )
+            f.write(f"- Results: {output_file}\n")
+    except Exception as e:
+        print(f"Warning: Could not append to notepad: {e}")
+
+    return output
+
+
 def validate_mapping():
     """Validate path mapping coverage against kubefix dataset."""
     print("Loading kubefix dataset...")
@@ -744,6 +948,17 @@ def main():
     parser.add_argument(
         "--generate", type=int, metavar="N", help="Generate N realistic questions"
     )
+    parser.add_argument(
+        "--run-benchmark",
+        action="store_true",
+        help="Run retrieval benchmark against full corpus",
+    )
+    parser.add_argument(
+        "--questions-file",
+        type=str,
+        metavar="PATH",
+        help="Path to questions JSON file (for --run-benchmark)",
+    )
 
     args = parser.parse_args()
 
@@ -753,6 +968,8 @@ def main():
         run_prompt_iteration_test()
     elif args.generate:
         generate_realistic_questions(n=args.generate)
+    elif args.run_benchmark:
+        run_retrieval_benchmark(questions_file=args.questions_file)
     else:
         parser.print_help()
 
