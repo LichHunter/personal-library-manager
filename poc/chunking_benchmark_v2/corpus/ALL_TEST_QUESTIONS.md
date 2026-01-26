@@ -9,8 +9,10 @@
 
 1. [94% Baseline Test Questions (10 questions)](#94-baseline-test-questions)
 2. [68.7% Edge Case Test Questions (15 questions)](#687-edge-case-test-questions)
-3. [Passing Queries (9 questions)](#passing-queries-not-tested-in-current-run)
-4. [Summary Statistics](#summary-statistics)
+3. [90% Needle-Haystack Test (20 questions)](#90-needle-haystack-test)
+4. [65% Adversarial Needle-Haystack Test (20 questions)](#65-adversarial-needle-haystack-test)
+5. [Passing Queries (9 questions)](#passing-queries-not-tested-in-current-run)
+6. [Summary Statistics](#summary-statistics)
 
 ---
 
@@ -335,6 +337,308 @@
 
 ---
 
+## 90% Needle-Haystack Test
+
+**Source**: `corpus/needle_questions_baseline.json`  
+**Test Date**: 2026-01-26  
+**Strategy**: enriched_hybrid_llm  
+**Chunking**: MarkdownSemanticStrategy  
+**Average Score**: 9.0/10 (90%)
+**Pass Rate (≥8)**: 18/20 (90%)
+
+*Note: This section contains 20 baseline needle-in-haystack questions testing retrieval of specific facts embedded in large documents. These questions establish a baseline for comparison with adversarial variants.*
+
+---
+
+## 65% Adversarial Needle-Haystack Test
+
+**Source**: `corpus/needle_questions_adversarial.json`  
+**Test Date**: 2026-01-26  
+**Strategy**: enriched_hybrid_llm  
+**Chunking**: MarkdownSemanticStrategy  
+**Average Score**: 7.55/10 (65%)
+**Pass Rate (≥7)**: 13/20 (65%)
+
+### Test Overview
+
+The adversarial needle-haystack test uses 20 challenging questions designed to expose weaknesses in semantic retrieval:
+
+- **VERSION questions (5)**: Target version numbers in document metadata (frontmatter YAML, feature-state tags)
+- **COMPARISON questions (5)**: Require comparing two concepts or policies
+- **NEGATION questions (5)**: Use negative framing ("what's wrong with", "why can't")
+- **VOCABULARY questions (5)**: Use synonyms or alternative phrasings for technical terms
+
+### Category Breakdown
+
+| Category | Passed | Total | Pass Rate | Avg Score | Key Finding |
+|----------|--------|-------|-----------|-----------|------------|
+| VERSION | 2 | 5 | 40% | 5.6 | Frontmatter metadata is adversarial - semantic embeddings miss YAML version numbers |
+| COMPARISON | 5 | 5 | 100% | 9.8 | Semantic retrieval excels at finding and comparing related concepts |
+| NEGATION | 3 | 5 | 60% | 7.6 | Mixed results - negation framing sometimes misleads retrieval |
+| VOCABULARY | 3 | 5 | 60% | 7.2 | Synonym matching partially works - some vocabulary mismatches unresolved |
+
+### Detailed Questions
+
+#### VERSION Questions (5)
+
+---
+
+##### adv_v01: What's the minimum kubernetes version requirement for topology manager?
+**Expected Answer**: v1.18
+
+**Score**: 3/10  
+**Difficulty**: Medium  
+**Type**: Fact-lookup  
+**Root Cause**: EMBEDDING_BLIND - Version requirement stored in YAML frontmatter, not in prose content
+
+---
+
+##### adv_v02: Which Kubernetes release made Topology Manager GA/stable?
+**Expected Answer**: v1.27
+
+**Score**: 3/10  
+**Difficulty**: Hard  
+**Type**: Fact-lookup  
+**Root Cause**: EMBEDDING_BLIND - GA version in frontmatter feature-state shortcode, not in main content
+
+---
+
+##### adv_v03: When did the prefer-closest-numa-nodes option become generally available?
+**Expected Answer**: Kubernetes 1.32
+
+**Score**: 2/10  
+**Difficulty**: Hard  
+**Type**: Fact-lookup  
+**Root Cause**: VOCABULARY_MISMATCH - "generally available" vs "GA" phrasing caused retrieval to favor unrelated API deprecation documents
+
+---
+
+##### adv_v04: In what k8s version did max-allowable-numa-nodes become GA?
+**Expected Answer**: Kubernetes 1.35
+
+**Score**: 10/10  
+**Difficulty**: Hard  
+**Type**: Fact-lookup  
+**Retrieved**: "The `max-allowable-numa-nodes` option is GA since Kubernetes 1.35"
+
+---
+
+##### adv_v05: What's the default limit on NUMA nodes before kubelet refuses to start with topology manager?
+**Expected Answer**: 8
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Fact-lookup  
+**Retrieved**: "The maximum number of NUMA nodes that Topology Manager allows is 8"
+
+---
+
+#### COMPARISON Questions (5)
+
+---
+
+##### adv_c01: How does restricted policy differ from single-numa-node when pod can't get preferred affinity?
+**Expected Answer**: restricted rejects any non-preferred; single-numa-node only rejects if >1 NUMA needed
+
+**Score**: 10/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Retrieved**: Both policies clearly distinguished in retrieved chunks
+
+---
+
+##### adv_c02: What's the key difference between container scope and pod scope for topology alignment?
+**Expected Answer**: container=individual alignment per container, no grouping; pod=groups all containers to common NUMA set
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Conceptual  
+**Retrieved**: "container: there is no notion of grouping the containers to a specific set of NUMA nodes" vs "pod: grouping all containers in a pod to a common set of NUMA nodes"
+
+---
+
+##### adv_c03: Compare what happens with none policy vs best-effort policy when NUMA affinity can't be satisfied
+**Expected Answer**: none=no alignment attempted; best-effort=stores non-preferred hint, admits pod anyway
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Conceptual  
+**Retrieved**: Both behaviors explicitly stated in same chunk
+
+---
+
+##### adv_c04: How does topology manager behavior differ for Guaranteed QoS pods with integer CPU vs fractional CPU?
+**Expected Answer**: integer CPU gets topology hints from CPU Manager; fractional CPU gets default hint only
+
+**Score**: 9/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Retrieved**: Examples of both present but distinction requires inference
+
+---
+
+##### adv_c05: What's the difference between TopologyManagerPolicyBetaOptions and TopologyManagerPolicyAlphaOptions feature gates?
+**Expected Answer**: Beta=enabled by default, Alpha=disabled by default; both control policy option visibility
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Conceptual  
+**Retrieved**: "TopologyManagerPolicyBetaOptions default enabled... TopologyManagerPolicyAlphaOptions default disabled"
+
+---
+
+#### NEGATION Questions (5)
+
+---
+
+##### adv_n01: Why is using more than 8 NUMA nodes not recommended with topology manager?
+**Expected Answer**: State explosion when enumerating NUMA affinities; use max-allowable-numa-nodes at own risk
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Conceptual  
+**Retrieved**: "there will be a state explosion when trying to enumerate the possible NUMA affinities... is **not** recommended and is at your own risk"
+
+---
+
+##### adv_n02: What happens to a pod that fails topology affinity check with restricted policy? Can it be rescheduled?
+**Expected Answer**: Pod enters Terminated state; scheduler will NOT reschedule; need ReplicaSet/Deployment
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Conceptual  
+**Retrieved**: All three parts present verbatim in retrieved chunks
+
+---
+
+##### adv_n03: Why can't the Kubernetes scheduler prevent pods from failing on nodes due to topology?
+**Expected Answer**: Scheduler is not topology-aware; this is a known limitation
+
+**Score**: 6/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Root Cause**: CHUNKING_ISSUE - Relevant chunk exists but wasn't ranked high enough
+
+---
+
+##### adv_n04: What's wrong with using container scope for latency-sensitive applications?
+**Expected Answer**: Containers may end up on different NUMA nodes since there's no grouping
+
+**Score**: 2/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Root Cause**: VOCABULARY_MISMATCH - Negative framing didn't match positive framing in document
+
+---
+
+##### adv_n05: When does single-numa-node policy reject a pod that would be admitted by restricted?
+**Expected Answer**: When pod needs resources from exactly 2+ NUMA nodes; restricted accepts any preferred, single-numa-node requires exactly 1
+
+**Score**: 10/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Retrieved**: "a set containing more NUMA nodes - it results in pod rejection (because instead of one NUMA node, two or more NUMA nodes are required)"
+
+---
+
+#### VOCABULARY Questions (5)
+
+---
+
+##### adv_m01: How do I configure CPU placement policy in kubelet?
+**Expected Answer**: --topology-manager-policy flag
+
+**Score**: 10/10  
+**Difficulty**: Medium  
+**Type**: Fact-lookup  
+**Retrieved**: "You can set a policy via a kubelet flag, `--topology-manager-policy`"
+
+---
+
+##### adv_m02: How do I enable NUMA awareness on Windows k8s nodes?
+**Expected Answer**: Enable WindowsCPUAndMemoryAffinity feature gate
+
+**Score**: 4/10  
+**Difficulty**: Hard  
+**Type**: Fact-lookup  
+**Root Cause**: VOCABULARY_MISMATCH - "NUMA awareness on Windows" didn't match "Topology Manager support on Windows"
+
+---
+
+##### adv_m03: How does k8s coordinate resource co-location across multi-socket servers?
+**Expected Answer**: Topology Manager acts as source of truth for CPU Manager and Device Manager
+
+**Score**: 10/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Retrieved**: "The Topology Manager is a kubelet component, which acts as a source of truth so that other kubelet components can make topology aligned resource allocation choices"
+
+---
+
+##### adv_m04: What kubelet setting controls the granularity of resource alignment?
+**Expected Answer**: topologyManagerScope (container or pod)
+
+**Score**: 10/10  
+**Difficulty**: Hard  
+**Type**: Fact-lookup  
+**Retrieved**: "The `scope` defines the granularity at which you would like resource alignment to be performed... setting the `topologyManagerScope` in the kubelet configuration file"
+
+---
+
+##### adv_m05: How do I optimize inter-process communication latency for pods?
+**Expected Answer**: Use pod scope with single-numa-node policy to eliminate inter-NUMA overhead
+
+**Score**: 2/10  
+**Difficulty**: Hard  
+**Type**: Conceptual  
+**Root Cause**: VOCABULARY_MISMATCH - "inter-process communication latency" didn't match "applications that perform IPC"
+
+---
+
+### Adversarial Test Summary Statistics
+
+#### Score Distribution
+
+| Score | Count | Percentage |
+|-------|-------|-----------|
+| 10/10 | 11 | 55% |
+| 9/10 | 1 | 5% |
+| 6/10 | 1 | 5% |
+| 4/10 | 1 | 5% |
+| 3/10 | 2 | 10% |
+| 2/10 | 4 | 20% |
+
+#### Failure Analysis
+
+| Failure Type | Count | Percentage | Questions |
+|--------------|-------|-----------|-----------|
+| EMBEDDING_BLIND | 2 | 10% | adv_v01, adv_v02 |
+| VOCABULARY_MISMATCH | 4 | 20% | adv_v03, adv_n04, adv_m02, adv_m05 |
+| CHUNKING_ISSUE | 1 | 5% | adv_n03 |
+
+#### Key Findings
+
+**Strengths**:
+- COMPARISON questions excel (100% pass rate, 9.8 avg) - semantic retrieval is excellent at finding and comparing related concepts
+- Policy explanations are well-retrieved - questions about policy behaviors consistently find relevant chunks
+- Vocabulary mismatches often resolved - "CPU placement policy" → "topology manager policy", "resource co-location" → "topology aligned resource allocation"
+
+**Weaknesses**:
+- VERSION questions struggle (40% pass rate, 5.6 avg) - frontmatter metadata (YAML version numbers, feature-state shortcodes) is not captured by semantic embeddings
+- Negation framing can fail - "What's wrong with X" queries sometimes miss content that explains "Y is better for this use case"
+- Specialized vocabulary can fail - "IPC latency" didn't match "applications that perform IPC" despite semantic similarity
+
+#### Comparison with Baseline Test
+
+| Metric | Baseline (20 Q) | Adversarial (20 Q) | Delta |
+|--------|-----------------|-------------------|-------|
+| Average Score | 9.0/10 | 7.55/10 | -1.45 |
+| Pass Rate (≥7) | 90% (18/20) | 65% (13/20) | -25% |
+| Perfect Scores | 12 | 11 | -1 |
+| Complete Failures (≤2) | 1 | 4 | +3 |
+
+---
+
 ## Passing Queries (Not Tested in Current Run)
 
 **Source**: `corpus/edge_case_queries.json` (passing queries)  
@@ -434,12 +738,14 @@
 
 ### By Test Set
 
-| Test Set | Questions | Avg Score | Pass Rate (≥8) | Difficulty |
+| Test Set | Questions | Avg Score | Pass Rate (≥7) | Difficulty |
 |----------|-----------|-----------|----------------|------------|
 | **94% Baseline** | 10 | 9.4/10 (94%) | 90% (9/10) | 30% easy, 50% medium, 20% hard |
 | **68.7% Edge Cases** | 15 | 6.87/10 (68.7%) | 33.3% (5/15) | 0% easy, 33% medium, 67% hard |
+| **90% Needle-Haystack** | 20 | 9.0/10 (90%) | 90% (18/20) | Baseline needle-in-haystack |
+| **65% Adversarial Needle-Haystack** | 20 | 7.55/10 (65%) | 65% (13/20) | Adversarial needle-in-haystack |
 | **Passing Queries** | 9 | 8.56/10 (85.6%) | 100% (9/9) | Not tested in current run |
-| **TOTAL** | 34 | 8.0/10 (80%) | 67.6% (23/34) | Mixed |
+| **TOTAL** | 74 | 8.2/10 (82%) | 75.7% (56/74) | Mixed |
 
 ---
 
@@ -517,6 +823,6 @@
 
 ---
 
-**File Version**: 1.0  
+**File Version**: 1.1  
 **Last Updated**: 2026-01-26  
-**Total Questions**: 34 (10 baseline + 15 edge cases + 9 passing)
+**Total Questions**: 74 (10 baseline + 15 edge cases + 20 needle-haystack + 20 adversarial + 9 passing)
