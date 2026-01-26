@@ -885,6 +885,142 @@ def run_retrieval_benchmark(questions_file: Optional[str] = None) -> dict:
     return output
 
 
+def generate_report(results_folder: str):
+    """
+    Generate failure analysis report from retrieval benchmark results.
+
+    Args:
+        results_folder: Path to results folder containing retrieval_results.json
+    """
+    results_path = Path(results_folder) / "retrieval_results.json"
+
+    if not results_path.exists():
+        print(f"❌ Error: Results file not found: {results_path}")
+        return
+
+    print(f"Loading results from {results_path}...")
+    with open(results_path) as f:
+        data = json.load(f)
+
+    metadata = data["metadata"]
+    summary = data["summary"]
+    results = data["results"]
+
+    # Analyze Q1 vs Q2 performance
+    # Assume alternating: even indices = Q1, odd indices = Q2
+    q1_results = [r for i, r in enumerate(results) if i % 2 == 0]
+    q2_results = [r for i, r in enumerate(results) if i % 2 == 1]
+
+    q1_hit5 = (
+        sum(1 for r in q1_results if r["hit_at_5"]) / len(q1_results)
+        if q1_results
+        else 0
+    )
+    q2_hit5 = (
+        sum(1 for r in q2_results if r["hit_at_5"]) / len(q2_results)
+        if q2_results
+        else 0
+    )
+
+    # Categorize failures
+    failures = [r for r in results if not r["hit_at_5"]]
+
+    failure_categories = {
+        "VOCABULARY_MISMATCH": [],
+        "RANKING_ERROR": [],
+        "CHUNKING_ISSUE": [],
+        "EMBEDDING_BLIND": [],
+    }
+
+    for failure in failures:
+        rank = failure.get("rank")
+        if rank is None:
+            # Not found at all - likely vocabulary mismatch
+            failure_categories["VOCABULARY_MISMATCH"].append(failure)
+        elif rank > 5:
+            # Found but ranked too low
+            failure_categories["RANKING_ERROR"].append(failure)
+        else:
+            # Other issues (chunking, embedding)
+            failure_categories["CHUNKING_ISSUE"].append(failure)
+
+    # Find worst failures (top 10)
+    worst_failures = sorted(failures, key=lambda r: r.get("rank", 999))[:10]
+
+    # Generate markdown report
+    report_lines = []
+    report_lines.append("# Realistic Questions Benchmark Report\n\n")
+    report_lines.append(
+        f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+    )
+    report_lines.append(f"Results folder: `{results_folder}`\n\n")
+    report_lines.append("---\n\n")
+
+    report_lines.append("## Summary\n\n")
+    report_lines.append(f"- **Corpus size**: {metadata['corpus_size']} documents\n")
+    report_lines.append(f"- **Chunk count**: {metadata['chunk_count']} chunks\n")
+    report_lines.append(f"- **Total queries**: {len(results)}\n")
+    report_lines.append(f"- **Strategy**: {metadata['strategy']}\n")
+    report_lines.append(f"- **Chunking**: {metadata['chunking']}\n")
+    report_lines.append(f"- **Hit@1**: {summary['hit_at_1']:.1%}\n")
+    report_lines.append(f"- **Hit@5**: {summary['hit_at_5']:.1%}\n")
+    report_lines.append(f"- **MRR**: {summary['mrr']:.3f}\n\n")
+
+    report_lines.append("---\n\n")
+    report_lines.append("## Q1 vs Q2 Performance\n\n")
+    report_lines.append(f"- **Q1 (realistic variant 1) Hit@5**: {q1_hit5:.1%}\n")
+    report_lines.append(f"- **Q2 (realistic variant 2) Hit@5**: {q2_hit5:.1%}\n\n")
+
+    report_lines.append("---\n\n")
+    report_lines.append("## Failure Analysis\n\n")
+    report_lines.append("| Category | Count | % |\n")
+    report_lines.append("|----------|-------|---|\n")
+    for category, items in failure_categories.items():
+        pct = len(items) / len(failures) * 100 if failures else 0
+        report_lines.append(f"| {category} | {len(items)} | {pct:.1f}% |\n")
+    report_lines.append("\n")
+
+    report_lines.append("---\n\n")
+    report_lines.append("## Worst Failures\n\n")
+    for i, failure in enumerate(worst_failures, 1):
+        report_lines.append(f'### {i}. Question: "{failure["question"]}"\n\n')
+        report_lines.append(f"- **Expected**: `{failure['expected_doc']}`\n")
+        retrieved_docs = failure["retrieved_docs"][:3]
+        report_lines.append(
+            f"- **Retrieved**: {', '.join(f'`{d}`' for d in retrieved_docs)}\n"
+        )
+        rank = failure.get("rank")
+        rank_str = str(rank) if rank else "Not found"
+        report_lines.append(f"- **Rank**: {rank_str}\n\n")
+
+    report_content = "".join(report_lines)
+
+    # Save report
+    report_path = Path(results_folder) / "benchmark_report.md"
+    with open(report_path, "w") as f:
+        f.write(report_content)
+
+    print(f"\n✅ Report saved to: {report_path}")
+
+    # Append to notepad
+    try:
+        notepad_path = (
+            Path(__file__).parent.parent.parent
+            / ".sisyphus/notepads/realistic-questions-benchmark/learnings.md"
+        )
+        with open(notepad_path, "a") as f:
+            f.write(
+                f"\n## [{datetime.now().strftime('%Y-%m-%d')}] Task 6: Failure Analysis Report\n"
+            )
+            f.write(f"- Report generated for: {results_folder}\n")
+            f.write(f"- Total failures: {len(failures)}\n")
+            f.write(
+                f"- Categories: {', '.join(f'{k}={len(v)}' for k, v in failure_categories.items())}\n"
+            )
+    except Exception as e:
+        print(f"Warning: Could not append to notepad: {e}")
+
+
 def validate_mapping():
     """Validate path mapping coverage against kubefix dataset."""
     print("Loading kubefix dataset...")
@@ -959,6 +1095,12 @@ def main():
         metavar="PATH",
         help="Path to questions JSON file (for --run-benchmark)",
     )
+    parser.add_argument(
+        "--report",
+        type=str,
+        metavar="PATH",
+        help="Generate failure analysis report from results folder",
+    )
 
     args = parser.parse_args()
 
@@ -970,6 +1112,8 @@ def main():
         generate_realistic_questions(n=args.generate)
     elif args.run_benchmark:
         run_retrieval_benchmark(questions_file=args.questions_file)
+    elif args.report:
+        generate_report(args.report)
     else:
         parser.print_help()
 
