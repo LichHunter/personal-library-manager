@@ -1,0 +1,169 @@
+{
+  "needle_doc_id": "tasks_administer-cluster_topology-manager",
+  "needle_filename": "tasks_administer-cluster_topology-manager.md",
+  "generated_at": "2026-01-26T19:15:00Z",
+  "generation_method": "manual_by_agent_human_style",
+  "question_count": 20,
+  "questions": [
+    {
+      "id": "q_001",
+      "question": "My pod keeps getting rejected with a topology affinity error, what's going on?",
+      "expected_answer": "This happens with restricted or single-numa-node policies when the Topology Manager cannot find a suitable NUMA node affinity. The pod enters a Terminated state. Use a Deployment or ReplicaSet to trigger redeployment.",
+      "difficulty": "medium",
+      "type": "problem-based",
+      "section": "restricted policy"
+    },
+    {
+      "id": "q_002",
+      "question": "How do I force all my containers to run on the same NUMA node in k8s?",
+      "expected_answer": "Use the pod scope with single-numa-node policy. Set topologyManagerScope to pod in kubelet config and use --topology-manager-policy=single-numa-node",
+      "difficulty": "medium",
+      "type": "how-to",
+      "section": "pod scope"
+    },
+    {
+      "id": "q_003",
+      "question": "What's the difference between restricted and best-effort topology policies?",
+      "expected_answer": "best-effort admits pods even if preferred NUMA affinity isn't available, while restricted rejects pods that can't get preferred affinity, putting them in Terminated state",
+      "difficulty": "medium",
+      "type": "conceptual",
+      "section": "Topology manager policies"
+    },
+    {
+      "id": "q_004",
+      "question": "Getting error about too many NUMA nodes on my server, what's the limit?",
+      "expected_answer": "8 NUMA nodes by default. Use max-allowable-numa-nodes policy option to allow more, but it's not recommended",
+      "difficulty": "easy",
+      "type": "problem-based",
+      "section": "Known limitations"
+    },
+    {
+      "id": "q_005",
+      "question": "How to enable topology manager on Windows nodes?",
+      "expected_answer": "Enable the WindowsCPUAndMemoryAffinity feature gate and ensure the container runtime supports it",
+      "difficulty": "easy",
+      "type": "how-to",
+      "section": "Windows Support"
+    },
+    {
+      "id": "q_006",
+      "question": "Which k8s version made topology manager GA/stable?",
+      "expected_answer": "v1.27",
+      "difficulty": "easy",
+      "type": "fact-lookup",
+      "section": "overview"
+    },
+    {
+      "id": "q_007",
+      "question": "What flag do I pass to kubelet for setting topology policy?",
+      "expected_answer": "--topology-manager-policy",
+      "difficulty": "easy",
+      "type": "fact-lookup",
+      "section": "Topology manager policies"
+    },
+    {
+      "id": "q_008",
+      "question": "My latency-sensitive app is slow, containers seem to be on different NUMA nodes. How to fix?",
+      "expected_answer": "Use pod scope with single-numa-node policy to place all containers on a single NUMA node, eliminating inter-NUMA communication overhead",
+      "difficulty": "hard",
+      "type": "problem-based",
+      "section": "pod scope"
+    },
+    {
+      "id": "q_009",
+      "question": "Why would I use pod scope instead of container scope for topology?",
+      "expected_answer": "Pod scope groups all containers to a common set of NUMA nodes, treating the pod as a whole. Container scope does separate alignment per container with no grouping, which can result in containers on different NUMA nodes",
+      "difficulty": "hard",
+      "type": "conceptual",
+      "section": "Topology manager scopes"
+    },
+    {
+      "id": "q_010",
+      "question": "What are hint providers in topology manager?",
+      "expected_answer": "Components like CPU Manager and Device Manager that send and receive topology information through the Topology Manager interface",
+      "difficulty": "medium",
+      "type": "conceptual",
+      "section": "How topology manager works"
+    },
+    {
+      "id": "q_011",
+      "question": "How do I configure kubelet to prefer NUMA nodes that are closer together?",
+      "expected_answer": "Add prefer-closest-numa-nodes=true to Topology Manager policy options. This makes best-effort and restricted policies favor NUMA nodes with shorter distance",
+      "difficulty": "hard",
+      "type": "how-to",
+      "section": "prefer-closest-numa-nodes"
+    },
+    {
+      "id": "q_012",
+      "question": "When did prefer-closest-numa-nodes become generally available?",
+      "expected_answer": "Kubernetes 1.32",
+      "difficulty": "medium",
+      "type": "fact-lookup",
+      "section": "prefer-closest-numa-nodes"
+    },
+    {
+      "id": "q_013",
+      "question": "What's the default topology manager policy if I don't set anything?",
+      "expected_answer": "none - which does not perform any topology alignment",
+      "difficulty": "easy",
+      "type": "fact-lookup",
+      "section": "none policy"
+    },
+    {
+      "id": "q_014",
+      "question": "Pod was scheduled but then failed on the node, says something about topology. Is that a bug?",
+      "expected_answer": "No, this is a known limitation. The scheduler is not topology-aware, so it's possible to be scheduled on a node and then fail due to the Topology Manager",
+      "difficulty": "hard",
+      "type": "problem-based",
+      "section": "Known limitations"
+    },
+    {
+      "id": "q_015",
+      "question": "What QoS class does my pod need to be for topology hints to work?",
+      "expected_answer": "Topology Manager aligns Pods of all QoS classes (BestEffort, Burstable, Guaranteed)",
+      "difficulty": "medium",
+      "type": "conceptual",
+      "section": "Topology manager scopes and policies"
+    },
+    {
+      "id": "q_016",
+      "question": "How to set topology scope to pod level in kubelet?",
+      "expected_answer": "Set topologyManagerScope to pod in the kubelet configuration file",
+      "difficulty": "easy",
+      "type": "how-to",
+      "section": "pod scope"
+    },
+    {
+      "id": "q_017",
+      "question": "What feature gate do I need for topology manager policy options?",
+      "expected_answer": "TopologyManagerPolicyOptions (enabled by default)",
+      "difficulty": "medium",
+      "type": "fact-lookup",
+      "section": "Topology manager policy options"
+    },
+    {
+      "id": "q_018",
+      "question": "My multi-socket server has GPUs and CPUs, how does k8s coordinate their placement?",
+      "expected_answer": "Topology Manager coordinates CPU Manager and Device Manager to make topology-aligned resource allocation decisions, avoiding CPUs and devices being allocated from different NUMA nodes",
+      "difficulty": "hard",
+      "type": "conceptual",
+      "section": "How topology manager works"
+    },
+    {
+      "id": "q_019",
+      "question": "With single-numa-node policy, when exactly does a pod get rejected?",
+      "expected_answer": "When a single NUMA Node affinity is not possible - if more than one NUMA node is required to satisfy the allocation, the pod is rejected",
+      "difficulty": "hard",
+      "type": "conceptual",
+      "section": "single-numa-node policy"
+    },
+    {
+      "id": "q_020",
+      "question": "What happens if topology manager can't find preferred NUMA affinity with best-effort policy?",
+      "expected_answer": "The pod is admitted to the node anyway - best-effort stores the non-preferred hint and allows the pod",
+      "difficulty": "medium",
+      "type": "conceptual",
+      "section": "best-effort policy"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "doc_id": "tasks_administer-cluster_topology-manager",
+  "filename": "tasks_administer-cluster_topology-manager.md",
+  "title": "Control Topology Management Policies on a node",
+  "word_count": 2556,
+  "char_count": 17759,
+  "line_count": 397,
+  "sections": [
+    "How topology manager works",
+    "Windows Support",
+    "Topology manager scopes and policies",
+    "Topology manager scopes (container, pod)",
+    "Topology manager policies (none, best-effort, restricted, single-numa-node)",
+    "Topology manager policy options",
+    "Pod interactions with topology manager policies",
+    "Known limitations"
+  ],
+  "reason": "Selected for medium complexity (17.4KB, 2556 words), good semantic variety with 8 major sections covering NUMA topology, CPU management, multiple policies and scopes. Technical depth suitable for generating 20 diverse questions.",
+  "selected_at": "2026-01-26T19:00:00Z"
+}
