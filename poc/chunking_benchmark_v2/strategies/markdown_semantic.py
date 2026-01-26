@@ -113,23 +113,42 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
         if not content.strip():
             return []
 
+        # Extract document metadata
+        doc_title = document.title
+        doc_type = document.metadata.get("category", "unknown")
+
         sections = self._extract_sections(content)
 
         if not sections:
-            return self._create_single_chunk(document, content)
+            return self._create_single_chunk(document, content, doc_title, doc_type)
 
         sections = self._merge_tiny_sections(sections)
 
         chunks = []
         for section in sections:
-            section_chunks = self._chunk_section(document.id, section)
+            section_chunks = self._chunk_section(
+                document.id, section, doc_title, doc_type
+            )
             chunks.extend(section_chunks)
 
         chunks = self._merge_tiny_chunks(chunks)
 
+        # Add position tracking metadata
         for i, chunk in enumerate(chunks):
             chunk.id = f"{document.id}_mdsem_{i}"
             chunk.metadata["chunk_idx"] = i
+            chunk.metadata["chunk_index"] = i
+            chunk.metadata["total_chunks"] = len(chunks)
+
+            # Determine position
+            if len(chunks) == 1:
+                chunk.metadata["chunk_position"] = "only"
+            elif i == 0:
+                chunk.metadata["chunk_position"] = "first"
+            elif i == len(chunks) - 1:
+                chunk.metadata["chunk_position"] = "last"
+            else:
+                chunk.metadata["chunk_position"] = "middle"
 
         return chunks
 
@@ -229,17 +248,39 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
 
         return merged
 
-    def _chunk_section(self, doc_id: str, section: Section) -> list[Chunk]:
+    def _chunk_section(
+        self,
+        doc_id: str,
+        section: Section,
+        doc_title: str = "",
+        doc_type: str = "unknown",
+    ) -> list[Chunk]:
         """Chunk a single section, respecting code blocks and size limits."""
         content = section.content
         wc = word_count(content)
 
         if wc <= self.max_chunk_size:
-            return [self._create_chunk(doc_id, section, content, 0, is_split=False)]
+            return [
+                self._create_chunk(
+                    doc_id,
+                    section,
+                    content,
+                    0,
+                    is_split=False,
+                    doc_title=doc_title,
+                    doc_type=doc_type,
+                )
+            ]
 
-        return self._split_large_section(doc_id, section)
+        return self._split_large_section(doc_id, section, doc_title, doc_type)
 
-    def _split_large_section(self, doc_id: str, section: Section) -> list[Chunk]:
+    def _split_large_section(
+        self,
+        doc_id: str,
+        section: Section,
+        doc_title: str = "",
+        doc_type: str = "unknown",
+    ) -> list[Chunk]:
         """Split a large section at natural boundaries, preserving code blocks."""
         content = section.content
         code_blocks = extract_code_blocks(content)
@@ -267,7 +308,13 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
 
                 chunks.append(
                     self._create_chunk(
-                        doc_id, section, chunk_content, chunk_idx, is_split=True
+                        doc_id,
+                        section,
+                        chunk_content,
+                        chunk_idx,
+                        is_split=True,
+                        doc_title=doc_title,
+                        doc_type=doc_type,
                     )
                 )
                 chunk_idx += 1
@@ -295,7 +342,13 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
                 chunk_content = f"{'#' * section.heading_level} {section.heading} (continued)\n\n{chunk_content}"
             chunks.append(
                 self._create_chunk(
-                    doc_id, section, chunk_content, chunk_idx, is_split=True
+                    doc_id,
+                    section,
+                    chunk_content,
+                    chunk_idx,
+                    is_split=True,
+                    doc_title=doc_title,
+                    doc_type=doc_type,
                 )
             )
 
@@ -330,7 +383,14 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
         return paragraphs
 
     def _create_chunk(
-        self, doc_id: str, section: Section, content: str, part_idx: int, is_split: bool
+        self,
+        doc_id: str,
+        section: Section,
+        content: str,
+        part_idx: int,
+        is_split: bool,
+        doc_title: str = "",
+        doc_type: str = "unknown",
     ) -> Chunk:
         """Create a Chunk object with metadata."""
         code_ratio = calculate_code_ratio(content)
@@ -343,6 +403,8 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
             "code_ratio": round(code_ratio, 2),
             "is_mostly_code": code_ratio > 0.5,
             "word_count": word_count(content),
+            "doc_title": doc_title,
+            "doc_type": doc_type,
         }
 
         if section.heading_path:
@@ -360,7 +422,13 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
             metadata=metadata,
         )
 
-    def _create_single_chunk(self, document: Document, content: str) -> list[Chunk]:
+    def _create_single_chunk(
+        self,
+        document: Document,
+        content: str,
+        doc_title: str = "",
+        doc_type: str = "unknown",
+    ) -> list[Chunk]:
         """Create a single chunk for documents without headings."""
         code_ratio = calculate_code_ratio(content)
 
@@ -382,6 +450,8 @@ class MarkdownSemanticStrategy(ChunkingStrategy):
                     "code_ratio": round(code_ratio, 2),
                     "is_mostly_code": code_ratio > 0.5,
                     "word_count": word_count(content),
+                    "doc_title": doc_title,
+                    "doc_type": doc_type,
                 },
             )
         ]

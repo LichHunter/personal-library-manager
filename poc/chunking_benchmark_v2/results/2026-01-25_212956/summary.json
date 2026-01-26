@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-25_212956",
+    "num_documents": 5,
+    "num_queries": 20,
+    "total_facts": 53,
+    "has_human_queries": true
+  },
+  "dimension_comparison": {
+    "casual": {
+      "avg_coverage": 0.6226415094339622,
+      "min_coverage": 0.5471698113207547,
+      "max_coverage": 0.660377358490566
+    },
+    "contextual": {
+      "avg_coverage": 0.6415094339622641,
+      "min_coverage": 0.6037735849056604,
+      "max_coverage": 0.6981132075471698
+    },
+    "negation": {
+      "avg_coverage": 0.5345911949685535,
+      "min_coverage": 0.5094339622641509,
+      "max_coverage": 0.5471698113207547
+    },
+    "original": {
+      "avg_coverage": 0.7295597484276731,
+      "min_coverage": 0.6792452830188679,
+      "max_coverage": 0.7547169811320755
+    },
+    "problem": {
+      "avg_coverage": 0.5849056603773585,
+      "min_coverage": 0.5471698113207547,
+      "max_coverage": 0.660377358490566
+    },
+    "synonym": {
+      "avg_coverage": 0.6352201257861635,
+      "min_coverage": 0.6037735849056604,
+      "max_coverage": 0.6981132075471698
+    }
+  },
+  "best_configurations": {
+    "semantic_fixed_512_0pct_BAAI/bge-base-en-v1.5": {
+      "coverage": 0.6792452830188679,
+      "k": 5,
+      "metric": "exact_match"
+    },
+    "hybrid_fixed_512_0pct_BAAI/bge-base-en-v1.5": {
+      "coverage": 0.7547169811320755,
+      "k": 5,
+      "metric": "exact_match"
+    },
+    "hybrid_rerank_fixed_512_0pct_BAAI/bge-base-en-v1.5": {
+      "coverage": 0.7547169811320755,
+      "k": 5,
+      "metric": "exact_match"
+    }
+  },
+  "degradation_analysis": [
+    {
+      "dimension": "negation",
+      "avg_coverage": 0.5345911949685535,
+      "delta_from_original": -0.19496855345911968,
+      "percent_degradation": -26.7241379310345
+    },
+    {
+      "dimension": "problem",
+      "avg_coverage": 0.5849056603773585,
+      "delta_from_original": -0.14465408805031466,
+      "percent_degradation": -19.827586206896573
+    },
+    {
+      "dimension": "casual",
+      "avg_coverage": 0.6226415094339622,
+      "delta_from_original": -0.10691823899371089,
+      "percent_degradation": -14.655172413793128
+    },
+    {
+      "dimension": "synonym",
+      "avg_coverage": 0.6352201257861635,
+      "delta_from_original": -0.09433962264150964,
+      "percent_degradation": -12.931034482758646
+    },
+    {
+      "dimension": "contextual",
+      "avg_coverage": 0.6415094339622641,
+      "delta_from_original": -0.08805031446540901,
+      "percent_degradation": -12.068965517241406
+    }
+  ]
+}

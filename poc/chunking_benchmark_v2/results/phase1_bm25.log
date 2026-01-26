@@ -1,2 +1,0 @@
-usage: run_benchmark.py [-h] [--config CONFIG] [--dry-run] [--debug] [--trace]
-run_benchmark.py: error: unrecognized arguments: --strategies enriched_hybrid_fast

@@ -1,0 +1,1053 @@
+{
+  "generated": "2026-01-25T22:17:43.134653",
+  "total_queries": 24,
+  "results": [
+    {
+      "query_obj": {
+        "id": "mh_001",
+        "type": "multi-hop",
+        "query": "Compare JWT expiration in Auth Service vs the API documentation - are they consistent?",
+        "expected_answer": "Auth Service: 15-minute access token expiry. API docs: 3600 seconds (1 hour) max. These are different contexts - Auth Service internal tokens vs API JWT claims.",
+        "expected_docs": [
+          "architecture_overview",
+          "api_reference"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "Compare JWT expiration in Auth Service vs the API documentation - are they consistent?",
+        "chunks": [
+          {
+            "content": "### JWT Tokens\n\nFor advanced use cases, CloudFlow supports JSON Web Tokens (JWT) with RS256 signing algorithm. JWTs must include the following claims:\n\n- `iss` (issuer): Your application identifier\n- `sub` (subject): User or service account ID\n- `aud` (audience): `https://api.cloudflow.io`\n- `exp` (expiration): Unix timestamp (max 3600 seconds from `iat`)\n- `iat` (issued at): Unix timestamp\n- `scope`: Space-separated list of requested scopes\n\nExample JWT header:\n\n```python\nimport jwt\nimport time...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "## Microservices Breakdown\n\n\n\n### API Gateway\n\n**Purpose**: Single entry point for all client requests, providing authentication, rate limiting, request routing, and protocol translation.\n\n**Technology**: Node.js with Express.js framework  \n**Replicas**: 12 pods (production), auto-scaling 8-20 based on CPU  \n**Resource Allocation**: 2 vCPU, 4GB RAM per pod\n\n**Key Responsibilities**:\n- JWT token validation (delegated to Auth Service for initial validation)\n- Rate limiting: 1000 requests per minut...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Overview\n\nThis guide provides comprehensive troubleshooting steps for common CloudFlow platform issues encountered in production environments. Each section includes error symptoms, root cause analysis, resolution steps, and preventive measures.\n\n### Quick Diagnostic Checklist\n\nBefore diving into specific issues, perform these initial checks:\n\n- Verify service health: `cloudflow status --all`\n- Check API connectivity: `curl -I https://api.cloudflow.io/health`\n- Review recent deployments: `kube...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Authentication & Authorization\n\n**JWT Token Validation**:\n- Algorithm: RS256 (asymmetric signing)\n- Key rotation: Every 30 days with 7-day overlap period\n- Public key distribution: JWKS endpoint cached in Redis\n- Validation: Signature, expiry, issuer, audience claims\n- Token revocation: Blacklist in Redis for compromised tokens\n\n**Permission Model**:\n```\nUser \u2192 Roles \u2192 Permissions\n     \u2198       \u2197\n      Tenants (Multi-tenancy isolation)\n```\n\nExample permissions:\n- `workflow:read` - View workfl...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Auth Service\n\n**Purpose**: Centralized authentication and authorization service handling user identity, token generation, and permission validation.\n\n**Technology**: Go with gRPC for internal communication, REST for external  \n**Replicas**: 8 pods (production), auto-scaling 6-12  \n**Resource Allocation**: 1 vCPU, 2GB RAM per pod\n\n**Key Responsibilities**:\n- User authentication via multiple providers (OAuth2, SAML, local credentials)\n- JWT token generation and validation (RS256 algorithm)\n- R...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1521.596842998406
+      }
+    },
+    {
+      "query_obj": {
+        "id": "mh_002",
+        "type": "multi-hop",
+        "query": "If I'm hitting connection pool exhaustion, should I use PgBouncer or add read replicas?",
+        "expected_answer": "Both are valid. PgBouncer for connection pooling (max_db_connections=100, pool_mode=transaction). Read replicas for read-heavy workloads. Troubleshooting guide recommends PgBouncer first.",
+        "expected_docs": [
+          "deployment_guide",
+          "troubleshooting_guide",
+          "architecture_overview"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "If I'm hitting connection pool exhaustion, should I use PgBouncer or add read replicas?",
+        "chunks": [
+          {
+            "content": "#### Pods in CrashLoopBackOff\n\n**Symptoms**: Pods continuously restart\n**Diagnosis**:\n```bash\nkubectl logs -n cloudflow-prod <pod-name> --previous\nkubectl describe pod -n cloudflow-prod <pod-name>\n```\n\n**Common Causes**:\n- Database connection failure\n- Invalid environment variables\n- Insufficient resources\n\n#### High Memory Usage\n\n**Symptoms**: Pods being OOMKilled\n**Diagnosis**:\n```bash\nkubectl top pods -n cloudflow-prod\n```\n\n**Resolution**:\n- Increase memory limits in deployment\n- Check for me...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "## Database Architecture\n\n\n\n### PostgreSQL Primary Database\n\n**Cluster Configuration**:\n- Primary-replica setup with 1 primary + 2 read replicas\n- Instance type: db.r6g.2xlarge (8 vCPU, 64GB RAM)\n- Storage: 2TB gp3 SSD with 12,000 IOPS\n- Multi-AZ deployment for high availability\n- Automated backups: Daily snapshots, 30-day retention\n- Point-in-time recovery: 5-minute granularity\n\n**Database Schema Design**:\n\n```\nCore Tables:\n- users (5M rows): User accounts and profiles\n- workflows (2M rows): Wo...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "# postgres-values.yaml\n\nglobal:\n  postgresql:\n    auth:\n      username: cloudflow\n      database: cloudflow\n      existingSecret: postgres-credentials\n\nimage:\n  tag: \"14.10.0\"\n\nprimary:\n  resources:\n    limits:\n      cpu: 4000m\n      memory: 8Gi\n    requests:\n      cpu: 2000m\n      memory: 4Gi\n  \n  persistence:\n    enabled: true\n    size: 100Gi\n    storageClass: gp3\n  \n  extendedConfiguration: |\n    max_connections = 100\n    shared_buffers = 2GB\n    effective_cache_size = 6GB\n    maintenance_wor...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### High Availability Architecture\n\n**Multi-AZ Deployment**:\n```\nRegion: us-east-1\n\nAZ-1a:                   AZ-1b:                   AZ-1c:\n- API Gateway (4)        - API Gateway (4)        - API Gateway (4)\n- Workflow Engine (6)    - Workflow Engine (5)    - Workflow Engine (5)\n- Auth Service (3)       - Auth Service (3)       - Auth Service (2)\n- PostgreSQL Primary     - PostgreSQL Replica     - PostgreSQL Replica\n- Redis Primary (2)      - Redis Replica (2)      - Redis Replica (2)\n- Kafka B...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Monitoring & Alerting\n\n**Key Metrics** (Monitored via Prometheus):\n- Request rate (per service, per endpoint)\n- Error rate (4xx, 5xx responses)\n- Latency percentiles (P50, P95, P99)\n- Resource utilization (CPU, memory, disk)\n- Cache hit/miss ratios\n- Database connection pool saturation\n- Kafka consumer lag\n\n**Alerts** (via PagerDuty):\n- P1 (Immediate): API error rate > 1%, database connection failure\n- P2 (< 15 min): P99 latency > 500ms, cache hit rate < 80%\n- P3 (< 1 hour): Resource utiliza...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 989.5399300003191
+      }
+    },
+    {
+      "query_obj": {
+        "id": "mh_003",
+        "type": "multi-hop",
+        "query": "What's the relationship between workflow timeout (3600s) and the retry backoff strategy?",
+        "expected_answer": "Workflow timeout is 3600s max. Retry uses exponential backoff: 1s, 2s, 4s (max 3 retries). Total retry time ~7s, well within timeout. But long-running steps can still timeout.",
+        "expected_docs": [
+          "user_guide",
+          "troubleshooting_guide"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "What's the relationship between workflow timeout (3600s) and the retry backoff strategy?",
+        "chunks": [
+          {
+            "content": "# Create sub-workflows\n\ncloudflow workflows create data-pipeline-part1 \\\n  --steps \"data_ingestion,data_validation\" \\\n  --timeout 1800\n\ncloudflow workflows create data-pipeline-part2 \\\n  --steps \"data_transformation,data_export\" \\\n  --timeout 3600 \\\n  --trigger workflow_completed \\\n  --trigger-workflow data-pipeline-part1\n```\n\n### Retry Logic and Exponential Backoff\n\nCloudFlow implements automatic retry with exponential backoff for transient failures:\n- Max retries: 3\n- Initial delay: 1 second\n-...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Error Handling\n\nRobust error handling ensures your workflows are resilient and reliable.\n\n### Retry Policies\n\nConfigure automatic retries for failed actions:\n\n```yaml\n- id: api_call\n  action: http_request\n  config:\n    url: \"https://api.example.com/data\"\n  retry:\n    max_attempts: 3\n    backoff_type: \"exponential\"  # or \"fixed\", \"linear\"\n    initial_interval: 1000       # milliseconds\n    max_interval: 30000\n    multiplier: 2.0\n    retry_on:\n      - timeout\n      - network_error\n      - statu...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "### Steps Per Workflow\n\n- **Maximum**: 50 steps per workflow\n- **Recommendation**: Keep workflows focused and modular. If you need more steps, consider splitting into multiple workflows connected via webhooks.\n\n### Execution Timeout\n\n- **Default**: 3600 seconds (60 minutes)\n- **Behavior**: Workflows exceeding this timeout are automatically terminated\n- **Custom Timeouts**: Enterprise plans can request custom timeout limits\n\n**Setting Step-Level Timeouts:**\n```yaml\n- id: long_running_task\n  actio...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "# Check database slow query log\n\nkubectl logs -n cloudflow deploy/cloudflow-db-primary | \\\n  grep \"slow query\" | \\\n  tail -n 50\n\n# Analyze query patterns\n\ncloudflow db analyze-queries --min-duration 5000 --limit 20\n```\n\n**2. Review Query Execution Plans**\n\n```sql\n-- Connect to CloudFlow database\ncloudflow db connect --readonly\n\n-- Explain slow query\nEXPLAIN ANALYZE\nSELECT w.*, e.status, e.error_message\nFROM workflows w\nLEFT JOIN executions e ON w.id = e.workflow_id\nWHERE w.workspace_id = 'ws_abc...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### Handling Rate Limits in Code\n\n**Python example with retry logic:**\n```python\nimport time\nimport requests\n\ndef cloudflow_api_call_with_retry(url, headers, max_retries=3):\n    for attempt in range(max_retries):\n        response = requests.get(url, headers=headers)\n        \n        if response.status_code == 429:\n            retry_after = int(response.headers.get('Retry-After', 60))\n            print(f\"Rate limited. Waiting {retry_after} seconds...\")\n            time.sleep(retry_after)\n       ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          }
+        ],
+        "latency_ms": 855.6576100017992
+      }
+    },
+    {
+      "query_obj": {
+        "id": "mh_004",
+        "type": "multi-hop",
+        "query": "How do the HPA scaling parameters relate to the API Gateway resource requirements?",
+        "expected_answer": "HPA: minReplicas=3, maxReplicas=10, targetCPU=70%. API Gateway: 2 vCPU, 4GB RAM per pod. Scales when CPU exceeds 70% of 2 vCPU.",
+        "expected_docs": [
+          "deployment_guide",
+          "architecture_overview"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "How do the HPA scaling parameters relate to the API Gateway resource requirements?",
+        "chunks": [
+          {
+            "content": "### Grafana Dashboards\n\nAccess Grafana to view CloudFlow dashboards:\n\n```bash\nkubectl port-forward -n monitoring svc/prometheus-grafana 3000:80\n```\n\nImport the CloudFlow dashboard (ID: 15847) or use the provided JSON template. Key dashboard panels include:\n\n1. **API Performance**: Request rate, P95/P99 latency, error rate\n2. **Resource Usage**: CPU, memory, disk I/O per pod\n3. **Database Health**: Connection pool utilization, query performance\n4. **Worker Status**: Queue depth, processing rate, ...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### Resource Utilization\n\n**CPU Utilization** (Target: 60-70% average):\n- API Gateway: 55% average, 80% peak\n- Workflow Engine: 65% average, 85% peak\n- Auth Service: 40% average, 60% peak\n\n**Memory Utilization** (Target: < 80%):\n- API Gateway: 2.5GB average per pod (4GB allocated)\n- Workflow Engine: 6GB average per pod (8GB allocated)\n- Notification Service: 2.8GB average per pod (4GB allocated)\n\n**Network Throughput**:\n- Ingress: 2 Gbps average, 5 Gbps peak\n- Egress: 1.5 Gbps average, 4 Gbps pe...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Table of Contents\n\n1. [High-Level Architecture](#high-level-architecture)\n2. [Microservices Breakdown](#microservices-breakdown)\n3. [Data Flow Architecture](#data-flow-architecture)\n4. [Database Architecture](#database-architecture)\n5. [Message Queue Patterns](#message-queue-patterns)\n6. [Caching Strategy](#caching-strategy)\n7. [Security Architecture](#security-architecture)\n8. [Performance Characteristics](#performance-characteristics)\n9. [Disaster Recovery](#disaster-recovery)\n\n---\n\n## High...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Microservices Breakdown\n\n\n\n### API Gateway\n\n**Purpose**: Single entry point for all client requests, providing authentication, rate limiting, request routing, and protocol translation.\n\n**Technology**: Node.js with Express.js framework  \n**Replicas**: 12 pods (production), auto-scaling 8-20 based on CPU  \n**Resource Allocation**: 2 vCPU, 4GB RAM per pod\n\n**Key Responsibilities**:\n- JWT token validation (delegated to Auth Service for initial validation)\n- Rate limiting: 1000 requests per minut...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "#### Pods in CrashLoopBackOff\n\n**Symptoms**: Pods continuously restart\n**Diagnosis**:\n```bash\nkubectl logs -n cloudflow-prod <pod-name> --previous\nkubectl describe pod -n cloudflow-prod <pod-name>\n```\n\n**Common Causes**:\n- Database connection failure\n- Invalid environment variables\n- Insufficient resources\n\n#### High Memory Usage\n\n**Symptoms**: Pods being OOMKilled\n**Diagnosis**:\n```bash\nkubectl top pods -n cloudflow-prod\n```\n\n**Resolution**:\n- Increase memory limits in deployment\n- Check for me...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          }
+        ],
+        "latency_ms": 935.4777510015992
+      }
+    },
+    {
+      "query_obj": {
+        "id": "mh_005",
+        "type": "multi-hop",
+        "query": "What happens to scheduled workflows during a disaster recovery failover?",
+        "expected_answer": "RPO is 1 hour, RTO is 4 hours. Scheduler uses leader election with Redis. During failover, scheduled executions may be skipped (logged in audit trail). Kafka retention allows event replay.",
+        "expected_docs": [
+          "architecture_overview",
+          "deployment_guide",
+          "user_guide"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "What happens to scheduled workflows during a disaster recovery failover?",
+        "chunks": [
+          {
+            "content": "### Testing & Validation\n\n**DR Drill Schedule**:\n- Monthly: Automated failover test (single AZ failure simulation)\n- Quarterly: Full DR region failover (non-production hours)\n- Annually: Complete disaster simulation with all stakeholders\n\n**Last DR Test Results** (Dec 15, 2025):\n- Scenario: Full region failover\n- Actual RTO: 2 hours 23 minutes (target: 4 hours)\n- Actual RPO: 42 minutes (target: 1 hour)\n- Issues identified: DNS propagation slower than expected (resolved)\n- Success criteria: Met a...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Disaster Recovery\n\n\n\n### Recovery Objectives\n\n**RPO (Recovery Point Objective): 1 hour**\n- Maximum acceptable data loss: 1 hour of transactions\n- Achieved through: Continuous database replication + hourly snapshots\n- Kafka retention: 7 days allows event replay\n\n**RTO (Recovery Time Objective): 4 hours**\n- Maximum acceptable downtime: 4 hours for full system recovery\n- Includes: Failover, data verification, and service restoration\n- Automated runbooks reduce RTO to < 2 hours for common scenari...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Scheduler Service\n\n**Purpose**: Time-based workflow triggering system supporting cron-like schedules and one-time delayed executions.\n\n**Technology**: Go with distributed locking via Redis  \n**Replicas**: 4 pods (production), active-passive with leader election  \n**Resource Allocation**: 2 vCPU, 4GB RAM per pod\n\n**Key Responsibilities**:\n- Parse and validate cron expressions (extended format supporting seconds)\n- Maintain schedule registry in PostgreSQL\n- Distributed scheduling with leader e...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Disaster Recovery Procedures\n\n**Scenario 1: Single AZ Failure**\n- Detection: Health checks fail for entire AZ (< 30 seconds)\n- Action: Traffic automatically routed to healthy AZs by ALB\n- Recovery time: < 5 minutes (no manual intervention)\n- Data loss: None (multi-AZ replication)\n\n**Scenario 2: Database Primary Failure**\n- Detection: Health check fails for primary database (< 30 seconds)\n- Action: Automatic promotion of read replica to primary\n- Recovery time: 30-60 seconds\n- Data loss: Mini...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Workflow Engine\n\n**Purpose**: Core orchestration service that executes workflow definitions, manages state transitions, and coordinates task execution across distributed systems.\n\n**Technology**: Node.js with TypeScript, Bull queue library  \n**Replicas**: 16 pods (production), auto-scaling 12-24  \n**Resource Allocation**: 4 vCPU, 8GB RAM per pod\n\n**Key Responsibilities**:\n- Parse and validate workflow definitions (JSON-based DSL)\n- Execute workflow steps with state machine pattern\n- Handle r...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 966.4517909986898
+      }
+    },
+    {
+      "query_obj": {
+        "id": "tmp_001",
+        "type": "temporal",
+        "query": "What changed between the last DR test and the current DR objectives?",
+        "expected_answer": "Last DR test (Dec 15, 2025): Actual RTO was 2h 23m (target 4h), RPO was 42m (target 1h). Both met objectives. DNS propagation issue was resolved.",
+        "expected_docs": [
+          "architecture_overview"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What changed between the last DR test and the current DR objectives?",
+        "chunks": [
+          {
+            "content": "### Testing & Validation\n\n**DR Drill Schedule**:\n- Monthly: Automated failover test (single AZ failure simulation)\n- Quarterly: Full DR region failover (non-production hours)\n- Annually: Complete disaster simulation with all stakeholders\n\n**Last DR Test Results** (Dec 15, 2025):\n- Scenario: Full region failover\n- Actual RTO: 2 hours 23 minutes (target: 4 hours)\n- Actual RPO: 42 minutes (target: 1 hour)\n- Issues identified: DNS propagation slower than expected (resolved)\n- Success criteria: Met a...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Disaster Recovery\n\n\n\n### Recovery Objectives\n\n**RPO (Recovery Point Objective): 1 hour**\n- Maximum acceptable data loss: 1 hour of transactions\n- Achieved through: Continuous database replication + hourly snapshots\n- Kafka retention: 7 days allows event replay\n\n**RTO (Recovery Time Objective): 4 hours**\n- Maximum acceptable downtime: 4 hours for full system recovery\n- Includes: Failover, data verification, and service restoration\n- Automated runbooks reduce RTO to < 2 hours for common scenari...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Disaster Recovery Procedures\n\n**Scenario 1: Single AZ Failure**\n- Detection: Health checks fail for entire AZ (< 30 seconds)\n- Action: Traffic automatically routed to healthy AZs by ALB\n- Recovery time: < 5 minutes (no manual intervention)\n- Data loss: None (multi-AZ replication)\n\n**Scenario 2: Database Primary Failure**\n- Detection: Health check fails for primary database (< 30 seconds)\n- Action: Automatic promotion of read replica to primary\n- Recovery time: 30-60 seconds\n- Data loss: Mini...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "# CloudFlow Platform - Deployment and Operations Guide\n\n**Version:** 2.4.0  \n**Last Updated:** January 2026  \n**Target Environment:** Production (AWS EKS)\n\n## Table of Contents\n\n1. [Overview](#overview)\n2. [Prerequisites](#prerequisites)\n3. [Infrastructure Setup](#infrastructure-setup)\n4. [Kubernetes Deployment](#kubernetes-deployment)\n5. [Database Configuration](#database-configuration)\n6. [Monitoring and Observability](#monitoring-and-observability)\n7. [Backup and Disaster Recovery](#backup-an...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "#### SEV-3: Medium (P3)\n\n- **Definition:** Partial functionality degraded affecting some users\n- **Examples:**\n  - Intermittent failures for specific workflow types\n  - Minor performance issues\n  - Non-critical feature unavailable\n- **Response Time:** < 4 hours\n- **Escalation:** Create ticket, normal business hours support\n\n#### SEV-4: Low (P4)\n\n- **Definition:** Minor issues with minimal user impact\n- **Examples:**\n  - Cosmetic issues\n  - Documentation errors\n  - Feature requests\n- **Response T...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          }
+        ],
+        "latency_ms": 1010.4031110022333
+      }
+    },
+    {
+      "query_obj": {
+        "id": "tmp_002",
+        "type": "temporal",
+        "query": "How often should API keys be rotated and what's the certificate rotation schedule?",
+        "expected_answer": "API keys: rotate every 90 days. Certificates: rotate every 90 days (automated via cert-manager). Secrets in Vault also rotated every 90 days.",
+        "expected_docs": [
+          "api_reference",
+          "architecture_overview"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "How often should API keys be rotated and what's the certificate rotation schedule?",
+        "chunks": [
+          {
+            "content": "### Network Security\n\n**Zero-Trust Network Model**:\n- All service-to-service communication encrypted with mTLS\n- Certificate rotation: Every 90 days (automated via cert-manager)\n- Certificate authority: Internal PKI with HashiCorp Vault\n- Network segmentation: Private subnets for services, public subnet for ALB only\n\n**Service Mesh (Istio)**:\n```\nService A \u2192 Envoy Sidecar (mTLS client cert) \n                  \u2502\n            Encrypted channel\n                  \u2502\n            Envoy Sidecar (mTLS ser...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Authentication\n\nCloudFlow supports three authentication methods to suit different use cases and security requirements.\n\n### API Keys\n\nAPI keys provide simple authentication for server-to-server communication. Include your API key in the request header:\n\n```bash\ncurl -H \"X-API-Key: cf_live_a1b2c3d4e5f6g7h8i9j0\" \\\n  https://api.cloudflow.io/v2/workflows\n```\n\n**Security Notes:**\n- Never expose API keys in client-side code\n- Rotate keys every 90 days\n- Use separate keys for development and produc...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "### Data Limits\n\n- **Maximum request/response size**: 10MB per action\n- **Maximum execution payload**: 50MB total\n- **Variable value size**: 1MB per variable\n\n### Enterprise Plan Limits\n\nEnterprise customers can request increased limits:\n- Up to 100 steps per workflow\n- Up to 10,000 executions per day\n- Up to 7200 second timeout (2 hours)\n- Priority execution queue\n- Dedicated capacity allocation\n\nContact sales@cloudflow.io for Enterprise pricing and custom limits.\n\n## Best Practices\n\nFollow the...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "### Secrets Management\n\n**HashiCorp Vault Integration**:\n- Dynamic database credentials: Generated on-demand, 1-hour TTL\n- Encryption keys: Transit secrets engine for encryption-as-a-service\n- API keys for external services: Stored with versioning\n- Rotation policy: Automated rotation every 90 days with notification\n\n**Secret Access Pattern**:\n```\nService starts \u2192 Vault authentication (Kubernetes service account)\n                        \u2502\n                        \u25bc\n              Request secret le...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Authentication & Authorization\n\n**JWT Token Validation**:\n- Algorithm: RS256 (asymmetric signing)\n- Key rotation: Every 30 days with 7-day overlap period\n- Public key distribution: JWKS endpoint cached in Redis\n- Validation: Signature, expiry, issuer, audience claims\n- Token revocation: Blacklist in Redis for compromised tokens\n\n**Permission Model**:\n```\nUser \u2192 Roles \u2192 Permissions\n     \u2198       \u2197\n      Tenants (Multi-tenancy isolation)\n```\n\nExample permissions:\n- `workflow:read` - View workfl...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1174.5750280024367
+      }
+    },
+    {
+      "query_obj": {
+        "id": "tmp_003",
+        "type": "temporal",
+        "query": "What's the sequence of events when a workflow execution times out?",
+        "expected_answer": "Workflow runs up to 3600s. If exceeded, automatically terminated. Error: 'exceeded maximum execution time of 3600 seconds'. Status: TIMEOUT. Can request custom timeout up to 7200s on Enterprise.",
+        "expected_docs": [
+          "troubleshooting_guide",
+          "user_guide"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What's the sequence of events when a workflow execution times out?",
+        "chunks": [
+          {
+            "content": "### Steps Per Workflow\n\n- **Maximum**: 50 steps per workflow\n- **Recommendation**: Keep workflows focused and modular. If you need more steps, consider splitting into multiple workflows connected via webhooks.\n\n### Execution Timeout\n\n- **Default**: 3600 seconds (60 minutes)\n- **Behavior**: Workflows exceeding this timeout are automatically terminated\n- **Custom Timeouts**: Enterprise plans can request custom timeout limits\n\n**Setting Step-Level Timeouts:**\n```yaml\n- id: long_running_task\n  actio...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "# Create sub-workflows\n\ncloudflow workflows create data-pipeline-part1 \\\n  --steps \"data_ingestion,data_validation\" \\\n  --timeout 1800\n\ncloudflow workflows create data-pipeline-part2 \\\n  --steps \"data_transformation,data_export\" \\\n  --timeout 3600 \\\n  --trigger workflow_completed \\\n  --trigger-workflow data-pipeline-part1\n```\n\n### Retry Logic and Exponential Backoff\n\nCloudFlow implements automatic retry with exponential backoff for transient failures:\n- Max retries: 3\n- Initial delay: 1 second\n-...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Error Handling\n\nRobust error handling ensures your workflows are resilient and reliable.\n\n### Retry Policies\n\nConfigure automatic retries for failed actions:\n\n```yaml\n- id: api_call\n  action: http_request\n  config:\n    url: \"https://api.example.com/data\"\n  retry:\n    max_attempts: 3\n    backoff_type: \"exponential\"  # or \"fixed\", \"linear\"\n    initial_interval: 1000       # milliseconds\n    max_interval: 30000\n    multiplier: 2.0\n    retry_on:\n      - timeout\n      - network_error\n      - statu...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "#### RBAC Policy Violations\n\nCloudFlow uses role-based access control (RBAC) with the following hierarchy:\n- `viewer` - Read-only access\n- `developer` - Create and modify workflows (non-production)\n- `operator` - Execute workflows, view logs\n- `admin` - Full access to workspace\n- `platform-admin` - Cross-workspace administration\n\n**Verify resource permissions:**\n```bash\n\n# Check effective permissions\n\ncloudflow rbac check \\\n  --user john.doe@company.com \\\n  --resource workflow:prod-pipeline \\\n  ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "# Configure error handling\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step data_validation \\\n  --on-error continue \\\n  --error-threshold 5%  # Fail if > 5% of records invalid\n```\n\n**2. External API Failures**\n```\nExternalAPIError: API request to https://partner-api.example.com failed with status 502\n```\n\n**Resolution:**\n```bash\n\n# Add circuit breaker\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step external_api_call \\\n  --circuit-breaker-enabled true \\\n  --circuit-breaker-threshold 5 \\\n...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          }
+        ],
+        "latency_ms": 962.2514560032869
+      }
+    },
+    {
+      "query_obj": {
+        "id": "tmp_004",
+        "type": "temporal",
+        "query": "How long does it take for workflow definition cache changes to propagate?",
+        "expected_answer": "Workflow definitions cached in Redis with TTL of 1 hour. Cache invalidated on workflow update or manual flush. Cache hit rate is 94.2%.",
+        "expected_docs": [
+          "architecture_overview"
+        ],
+        "difficulty": "easy"
+      },
+      "retrieval": {
+        "query": "How long does it take for workflow definition cache changes to propagate?",
+        "chunks": [
+          {
+            "content": "## Performance Characteristics\n\n\n\n### Latency Targets\n\n**API Operations** (P99 latency):\n- `GET /workflows/{id}`: < 50ms (cache hit), < 150ms (cache miss)\n- `POST /workflows`: < 200ms (includes validation and database write)\n- `POST /workflows/{id}/execute`: < 100ms (async, returns execution ID)\n- `GET /workflows/{id}/history`: < 300ms (paginated, 50 records per page)\n\n**Workflow Execution** (P99 latency):\n- Simple workflow (< 5 steps): < 2 seconds\n- Medium workflow (5-15 steps): < 5 seconds\n- C...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Asynchronous Event Flow\n\nLong-running operations and inter-service communication use event-driven patterns:\n\n```\n1. Service publishes event \u2192 Kafka topic\n2. Kafka persists event (replication factor: 3)\n3. Consumer groups subscribe to topics\n4. Consumers process events with at-least-once delivery\n5. State updates written to PostgreSQL\n6. Success/failure events published back to Kafka\n```\n\n**Event Schema**:\n```json\n{\n  \"event_id\": \"uuid-v4\",\n  \"event_type\": \"workflow.execution.completed\",\n  \"t...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "# Check database slow query log\n\nkubectl logs -n cloudflow deploy/cloudflow-db-primary | \\\n  grep \"slow query\" | \\\n  tail -n 50\n\n# Analyze query patterns\n\ncloudflow db analyze-queries --min-duration 5000 --limit 20\n```\n\n**2. Review Query Execution Plans**\n\n```sql\n-- Connect to CloudFlow database\ncloudflow db connect --readonly\n\n-- Explain slow query\nEXPLAIN ANALYZE\nSELECT w.*, e.status, e.error_message\nFROM workflows w\nLEFT JOIN executions e ON w.id = e.workflow_id\nWHERE w.workspace_id = 'ws_abc...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Monitoring & Alerting\n\n**Key Metrics** (Monitored via Prometheus):\n- Request rate (per service, per endpoint)\n- Error rate (4xx, 5xx responses)\n- Latency percentiles (P50, P95, P99)\n- Resource utilization (CPU, memory, disk)\n- Cache hit/miss ratios\n- Database connection pool saturation\n- Kafka consumer lag\n\n**Alerts** (via PagerDuty):\n- P1 (Immediate): API error rate > 1%, database connection failure\n- P2 (< 15 min): P99 latency > 500ms, cache hit rate < 80%\n- P3 (< 1 hour): Resource utiliza...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### 8. Test Thoroughly\n\nBefore activating a workflow:\n1. Use test mode with sample data\n2. Verify all actions execute correctly\n3. Test error handling paths\n4. Review execution logs\n5. Start with a limited scope (e.g., test channel, small dataset)\n\n### 9. Document Your Workflows\n\nAdd descriptions to workflows and steps:\n\n```yaml\nworkflow:\n  name: \"Daily Sales Report\"\n  description: |\n    Generates a daily sales report and distributes it to the sales team.\n    Runs at 8:00 AM EST Monday-Friday.\n ...",
+            "score": null,
+            "doc_id": "user_guide"
+          }
+        ],
+        "latency_ms": 987.0046470023226
+      }
+    },
+    {
+      "query_obj": {
+        "id": "tmp_005",
+        "type": "temporal",
+        "query": "What's the timeline for automatic failover when the database primary fails?",
+        "expected_answer": "Database primary failure: 30-60 seconds for automatic promotion of replica. Redis failover: <10 seconds. Kafka controller election: <30 seconds.",
+        "expected_docs": [
+          "architecture_overview"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What's the timeline for automatic failover when the database primary fails?",
+        "chunks": [
+          {
+            "content": "### Disaster Recovery Procedures\n\n**Scenario 1: Single AZ Failure**\n- Detection: Health checks fail for entire AZ (< 30 seconds)\n- Action: Traffic automatically routed to healthy AZs by ALB\n- Recovery time: < 5 minutes (no manual intervention)\n- Data loss: None (multi-AZ replication)\n\n**Scenario 2: Database Primary Failure**\n- Detection: Health check fails for primary database (< 30 seconds)\n- Action: Automatic promotion of read replica to primary\n- Recovery time: 30-60 seconds\n- Data loss: Mini...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Disaster Recovery\n\n\n\n### Recovery Objectives\n\n**RPO (Recovery Point Objective): 1 hour**\n- Maximum acceptable data loss: 1 hour of transactions\n- Achieved through: Continuous database replication + hourly snapshots\n- Kafka retention: 7 days allows event replay\n\n**RTO (Recovery Time Objective): 4 hours**\n- Maximum acceptable downtime: 4 hours for full system recovery\n- Includes: Failover, data verification, and service restoration\n- Automated runbooks reduce RTO to < 2 hours for common scenari...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Scheduler Service\n\n**Purpose**: Time-based workflow triggering system supporting cron-like schedules and one-time delayed executions.\n\n**Technology**: Go with distributed locking via Redis  \n**Replicas**: 4 pods (production), active-passive with leader election  \n**Resource Allocation**: 2 vCPU, 4GB RAM per pod\n\n**Key Responsibilities**:\n- Parse and validate cron expressions (extended format supporting seconds)\n- Maintain schedule registry in PostgreSQL\n- Distributed scheduling with leader e...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### High Availability Architecture\n\n**Multi-AZ Deployment**:\n```\nRegion: us-east-1\n\nAZ-1a:                   AZ-1b:                   AZ-1c:\n- API Gateway (4)        - API Gateway (4)        - API Gateway (4)\n- Workflow Engine (6)    - Workflow Engine (5)    - Workflow Engine (5)\n- Auth Service (3)       - Auth Service (3)       - Auth Service (2)\n- PostgreSQL Primary     - PostgreSQL Replica     - PostgreSQL Replica\n- Redis Primary (2)      - Redis Replica (2)      - Redis Replica (2)\n- Kafka B...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Architecture Diagram (Conceptual)\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        Load Balancer (ALB)                       \u2502\n\u2502                     (TLS Termination - 443)                      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                             \u2502\n                             \u25bc\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        API Gateway Layer           ...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1106.5512869972736
+      }
+    },
+    {
+      "query_obj": {
+        "id": "cmp_001",
+        "type": "comparative",
+        "query": "What's the difference between PgBouncer connection pooling and direct PostgreSQL connections?",
+        "expected_answer": "PgBouncer: pool_mode=transaction, default_pool_size=25, max_db_connections=100. Allows 1000 client connections with only 100 actual DB connections. Direct: limited to max_connections=100.",
+        "expected_docs": [
+          "deployment_guide",
+          "architecture_overview"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What's the difference between PgBouncer connection pooling and direct PostgreSQL connections?",
+        "chunks": [
+          {
+            "content": "### Grafana Dashboards\n\nAccess Grafana to view CloudFlow dashboards:\n\n```bash\nkubectl port-forward -n monitoring svc/prometheus-grafana 3000:80\n```\n\nImport the CloudFlow dashboard (ID: 15847) or use the provided JSON template. Key dashboard panels include:\n\n1. **API Performance**: Request rate, P95/P99 latency, error rate\n2. **Resource Usage**: CPU, memory, disk I/O per pod\n3. **Database Health**: Connection pool utilization, query performance\n4. **Worker Status**: Queue depth, processing rate, ...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### Architecture Diagram (Conceptual)\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        Load Balancer (ALB)                       \u2502\n\u2502                     (TLS Termination - 443)                      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                             \u2502\n                             \u25bc\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        API Gateway Layer           ...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Environment Configuration\n\nCloudFlow requires the following environment variables:\n\n| Variable | Description | Example | Required |\n|----------|-------------|---------|----------|\n| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host:5432/cloudflow` | Yes |\n| `REDIS_URL` | Redis connection string | `redis://redis-master.cloudflow-prod.svc.cluster.local:6379` | Yes |\n| `JWT_SECRET` | Secret key for JWT token signing | `<generated-secret-256-bit>` | Yes |\n| `LOG_LEVEL`...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "# Check database slow query log\n\nkubectl logs -n cloudflow deploy/cloudflow-db-primary | \\\n  grep \"slow query\" | \\\n  tail -n 50\n\n# Analyze query patterns\n\ncloudflow db analyze-queries --min-duration 5000 --limit 20\n```\n\n**2. Review Query Execution Plans**\n\n```sql\n-- Connect to CloudFlow database\ncloudflow db connect --readonly\n\n-- Explain slow query\nEXPLAIN ANALYZE\nSELECT w.*, e.status, e.error_message\nFROM workflows w\nLEFT JOIN executions e ON w.id = e.workflow_id\nWHERE w.workspace_id = 'ws_abc...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Authentication & Authorization\n\n**JWT Token Validation**:\n- Algorithm: RS256 (asymmetric signing)\n- Key rotation: Every 30 days with 7-day overlap period\n- Public key distribution: JWKS endpoint cached in Redis\n- Validation: Signature, expiry, issuer, audience claims\n- Token revocation: Blacklist in Redis for compromised tokens\n\n**Permission Model**:\n```\nUser \u2192 Roles \u2192 Permissions\n     \u2198       \u2197\n      Tenants (Multi-tenancy isolation)\n```\n\nExample permissions:\n- `workflow:read` - View workfl...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 983.8855769994552
+      }
+    },
+    {
+      "query_obj": {
+        "id": "cmp_002",
+        "type": "comparative",
+        "query": "How do fixed, linear, and exponential backoff strategies differ for retries?",
+        "expected_answer": "Fixed: same wait time (1s, 1s, 1s). Linear: increase by fixed amount (1s, 2s, 3s). Exponential: double each time (1s, 2s, 4s). Exponential is recommended.",
+        "expected_docs": [
+          "user_guide"
+        ],
+        "difficulty": "easy"
+      },
+      "retrieval": {
+        "query": "How do fixed, linear, and exponential backoff strategies differ for retries?",
+        "chunks": [
+          {
+            "content": "# Create sub-workflows\n\ncloudflow workflows create data-pipeline-part1 \\\n  --steps \"data_ingestion,data_validation\" \\\n  --timeout 1800\n\ncloudflow workflows create data-pipeline-part2 \\\n  --steps \"data_transformation,data_export\" \\\n  --timeout 3600 \\\n  --trigger workflow_completed \\\n  --trigger-workflow data-pipeline-part1\n```\n\n### Retry Logic and Exponential Backoff\n\nCloudFlow implements automatic retry with exponential backoff for transient failures:\n- Max retries: 3\n- Initial delay: 1 second\n-...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Error Handling\n\nRobust error handling ensures your workflows are resilient and reliable.\n\n### Retry Policies\n\nConfigure automatic retries for failed actions:\n\n```yaml\n- id: api_call\n  action: http_request\n  config:\n    url: \"https://api.example.com/data\"\n  retry:\n    max_attempts: 3\n    backoff_type: \"exponential\"  # or \"fixed\", \"linear\"\n    initial_interval: 1000       # milliseconds\n    max_interval: 30000\n    multiplier: 2.0\n    retry_on:\n      - timeout\n      - network_error\n      - statu...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "### Cache Invalidation Strategies\n\n**Time-Based Expiration (TTL)**:\n- Short-lived data: 5-15 minutes (session tokens, rate limit counters)\n- Medium-lived data: 1 hour (workflow definitions, templates)\n- Long-lived data: 24 hours (static configuration)\n\n**Event-Based Invalidation**:\n```\nDatabase Update Event \u2192 Kafka (cache.invalidation topic)\n                              \u2502\n                              \u25bc\n                    All service instances consume event\n                              \u2502\n    ...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "#### Handling Rate Limits in Code\n\n**Python example with retry logic:**\n```python\nimport time\nimport requests\n\ndef cloudflow_api_call_with_retry(url, headers, max_retries=3):\n    for attempt in range(max_retries):\n        response = requests.get(url, headers=headers)\n        \n        if response.status_code == 429:\n            retry_after = int(response.headers.get('Retry-After', 60))\n            print(f\"Rate limited. Waiting {retry_after} seconds...\")\n            time.sleep(retry_after)\n       ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Fallback Actions\n\nExecute alternative actions when the primary action fails:\n\n```yaml\n- id: primary_payment\n  action: http_request\n  config:\n    url: \"https://primary-payment-gateway.com/charge\"\n    method: POST\n    body:\n      amount: \"{{amount}}\"\n  on_error:\n    - id: fallback_payment\n      action: http_request\n      config:\n        url: \"https://backup-payment-gateway.com/charge\"\n        method: POST\n        body:\n          amount: \"{{amount}}\"\n    - id: notify_admin\n      action: email\n ...",
+            "score": null,
+            "doc_id": "user_guide"
+          }
+        ],
+        "latency_ms": 994.6392120036762
+      }
+    },
+    {
+      "query_obj": {
+        "id": "cmp_003",
+        "type": "comparative",
+        "query": "What's the difference between /health and /ready endpoints?",
+        "expected_answer": "/health: liveness check, returns basic status. /ready: readiness check, checks dependencies like database and redis connectivity.",
+        "expected_docs": [
+          "deployment_guide"
+        ],
+        "difficulty": "easy"
+      },
+      "retrieval": {
+        "query": "What's the difference between /health and /ready endpoints?",
+        "chunks": [
+          {
+            "content": "### High Availability Architecture\n\n**Multi-AZ Deployment**:\n```\nRegion: us-east-1\n\nAZ-1a:                   AZ-1b:                   AZ-1c:\n- API Gateway (4)        - API Gateway (4)        - API Gateway (4)\n- Workflow Engine (6)    - Workflow Engine (5)    - Workflow Engine (5)\n- Auth Service (3)       - Auth Service (3)       - Auth Service (2)\n- PostgreSQL Primary     - PostgreSQL Replica     - PostgreSQL Replica\n- Redis Primary (2)      - Redis Replica (2)      - Redis Replica (2)\n- Kafka B...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "#### SEV-3: Medium (P3)\n\n- **Definition:** Partial functionality degraded affecting some users\n- **Examples:**\n  - Intermittent failures for specific workflow types\n  - Minor performance issues\n  - Non-critical feature unavailable\n- **Response Time:** < 4 hours\n- **Escalation:** Create ticket, normal business hours support\n\n#### SEV-4: Low (P4)\n\n- **Definition:** Minor issues with minimal user impact\n- **Examples:**\n  - Cosmetic issues\n  - Documentation errors\n  - Feature requests\n- **Response T...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### Step 2: Gather Information (5-15 minutes)\n\nCreate incident document with:\n- Incident timestamp and duration\n- Affected services and endpoints\n- Error rates and user impact\n- Recent changes or deployments\n- Relevant log excerpts\n- Correlation IDs for failed requests\n\n```bash\n\n# Generate incident report\n\ncloudflow debug incident-report \\\n  --start \"2026-01-24T10:30:00Z\" \\\n  --end \"2026-01-24T11:00:00Z\" \\\n  --output incident-report.md\n\n# Capture system snapshot\n\ncloudflow debug snapshot --outp...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Environment Configuration\n\nCloudFlow requires the following environment variables:\n\n| Variable | Description | Example | Required |\n|----------|-------------|---------|----------|\n| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@host:5432/cloudflow` | Yes |\n| `REDIS_URL` | Redis connection string | `redis://redis-master.cloudflow-prod.svc.cluster.local:6379` | Yes |\n| `JWT_SECRET` | Secret key for JWT token signing | `<generated-secret-256-bit>` | Yes |\n| `LOG_LEVEL`...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### Disaster Recovery Procedures\n\n**Scenario 1: Single AZ Failure**\n- Detection: Health checks fail for entire AZ (< 30 seconds)\n- Action: Traffic automatically routed to healthy AZs by ALB\n- Recovery time: < 5 minutes (no manual intervention)\n- Data loss: None (multi-AZ replication)\n\n**Scenario 2: Database Primary Failure**\n- Detection: Health check fails for primary database (< 30 seconds)\n- Action: Automatic promotion of read replica to primary\n- Recovery time: 30-60 seconds\n- Data loss: Mini...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1091.1580879983376
+      }
+    },
+    {
+      "query_obj": {
+        "id": "cmp_004",
+        "type": "comparative",
+        "query": "Compare the rate limits for authenticated vs unauthenticated API requests",
+        "expected_answer": "Authenticated: 100 requests/minute per user. Unauthenticated: 20 requests/minute. Burst allowance: 150 requests in 10-second window. Enterprise: 1000 req/min.",
+        "expected_docs": [
+          "api_reference"
+        ],
+        "difficulty": "easy"
+      },
+      "retrieval": {
+        "query": "Compare the rate limits for authenticated vs unauthenticated API requests",
+        "chunks": [
+          {
+            "content": "#### Rate Limit Tiers\n\nCloudFlow enforces the following rate limits per workspace:\n\n| Tier | Requests/Minute | Requests/Hour | Concurrent Workflows |\n|------|-----------------|---------------|----------------------|\n| Free | 60 | 1,000 | 5 |\n| Standard | 1,000 | 50,000 | 50 |\n| Premium | 5,000 | 250,000 | 200 |\n| Enterprise | Custom | Custom | Unlimited |\n\n#### Checking Rate Limit Status\n\n```bash\n\n# Check current rate limit status\n\ncurl -I https://api.cloudflow.io/api/v1/workflows \\\n  -H \"Author...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### Handling Rate Limits in Code\n\n**Python example with retry logic:**\n```python\nimport time\nimport requests\n\ndef cloudflow_api_call_with_retry(url, headers, max_retries=3):\n    for attempt in range(max_retries):\n        response = requests.get(url, headers=headers)\n        \n        if response.status_code == 429:\n            retry_after = int(response.headers.get('Retry-After', 60))\n            print(f\"Rate limited. Waiting {retry_after} seconds...\")\n            time.sleep(retry_after)\n       ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Rate Limiting\n\nTo ensure fair usage and system stability, CloudFlow enforces rate limits on all API endpoints.\n\n**Default Limits:**\n- 100 requests per minute per authenticated user\n- 20 requests per minute for unauthenticated requests\n- Burst allowance: 150 requests in a 10-second window\n\n### Rate Limit Headers\n\nEvery API response includes rate limit information:\n\n```\nX-RateLimit-Limit: 100\nX-RateLimit-Remaining: 87\nX-RateLimit-Reset: 1640995200\n```\n\nWhen you exceed the rate limit, you'll rec...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "# Configure error handling\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step data_validation \\\n  --on-error continue \\\n  --error-threshold 5%  # Fail if > 5% of records invalid\n```\n\n**2. External API Failures**\n```\nExternalAPIError: API request to https://partner-api.example.com failed with status 502\n```\n\n**Resolution:**\n```bash\n\n# Add circuit breaker\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step external_api_call \\\n  --circuit-breaker-enabled true \\\n  --circuit-breaker-threshold 5 \\\n...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Authentication\n\nCloudFlow supports three authentication methods to suit different use cases and security requirements.\n\n### API Keys\n\nAPI keys provide simple authentication for server-to-server communication. Include your API key in the request header:\n\n```bash\ncurl -H \"X-API-Key: cf_live_a1b2c3d4e5f6g7h8i9j0\" \\\n  https://api.cloudflow.io/v2/workflows\n```\n\n**Security Notes:**\n- Never expose API keys in client-side code\n- Rotate keys every 90 days\n- Use separate keys for development and produc...",
+            "score": null,
+            "doc_id": "api_reference"
+          }
+        ],
+        "latency_ms": 999.1976770033943
+      }
+    },
+    {
+      "query_obj": {
+        "id": "cmp_005",
+        "type": "comparative",
+        "query": "How do SEV-1 and SEV-2 incidents differ in response time and escalation?",
+        "expected_answer": "SEV-1: Immediate response (<15 min), page on-call immediately, complete outage. SEV-2: <1 hour response, create ticket and notify on-call, major functionality impaired.",
+        "expected_docs": [
+          "troubleshooting_guide"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "How do SEV-1 and SEV-2 incidents differ in response time and escalation?",
+        "chunks": [
+          {
+            "content": "#### Step 2: Gather Information (5-15 minutes)\n\nCreate incident document with:\n- Incident timestamp and duration\n- Affected services and endpoints\n- Error rates and user impact\n- Recent changes or deployments\n- Relevant log excerpts\n- Correlation IDs for failed requests\n\n```bash\n\n# Generate incident report\n\ncloudflow debug incident-report \\\n  --start \"2026-01-24T10:30:00Z\" \\\n  --end \"2026-01-24T11:00:00Z\" \\\n  --output incident-report.md\n\n# Capture system snapshot\n\ncloudflow debug snapshot --outp...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### SEV-3: Medium (P3)\n\n- **Definition:** Partial functionality degraded affecting some users\n- **Examples:**\n  - Intermittent failures for specific workflow types\n  - Minor performance issues\n  - Non-critical feature unavailable\n- **Response Time:** < 4 hours\n- **Escalation:** Create ticket, normal business hours support\n\n#### SEV-4: Low (P4)\n\n- **Definition:** Minor issues with minimal user impact\n- **Examples:**\n  - Cosmetic issues\n  - Documentation errors\n  - Feature requests\n- **Response T...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### SEV-2: High (P2)\n\n- **Definition:** Major functionality impaired affecting multiple users\n- **Examples:**\n  - Workflow execution success rate < 90%\n  - Significant performance degradation (p95 latency > 10s)\n  - Rate limiting affecting large customer segment\n- **Response Time:** < 1 hour\n- **Escalation:** Create incident ticket and notify on-call",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Microservices Breakdown\n\n\n\n### API Gateway\n\n**Purpose**: Single entry point for all client requests, providing authentication, rate limiting, request routing, and protocol translation.\n\n**Technology**: Node.js with Express.js framework  \n**Replicas**: 12 pods (production), auto-scaling 8-20 based on CPU  \n**Resource Allocation**: 2 vCPU, 4GB RAM per pod\n\n**Key Responsibilities**:\n- JWT token validation (delegated to Auth Service for initial validation)\n- Rate limiting: 1000 requests per minut...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Business Continuity\n\n**Communication Plan**:\n- Status page: status.cloudflow.com (updated every 15 minutes during incident)\n- Customer notifications: Email + SMS for all P1 incidents\n- Internal escalation: PagerDuty \u2192 Incident Commander \u2192 Engineering Manager \u2192 CTO\n\n**Data Retention Policy**:\n- Active data: 12 months in hot storage (PostgreSQL)\n- Archived data: 7 years in cold storage (S3 Glacier)\n- Audit logs: 7 years (compliance requirement)\n- Backup retention: 30 days standard, 90 days mon...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1120.5643889989005
+      }
+    },
+    {
+      "query_obj": {
+        "id": "neg_001",
+        "type": "negation",
+        "query": "What should I NOT do when I'm rate limited?",
+        "expected_answer": "Don't keep hammering the API. Instead: check Retry-After header, implement exponential backoff, monitor X-RateLimit-Remaining, cache responses, consider upgrading tier.",
+        "expected_docs": [
+          "api_reference",
+          "troubleshooting_guide"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What should I NOT do when I'm rate limited?",
+        "chunks": [
+          {
+            "content": "# Configure error handling\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step data_validation \\\n  --on-error continue \\\n  --error-threshold 5%  # Fail if > 5% of records invalid\n```\n\n**2. External API Failures**\n```\nExternalAPIError: API request to https://partner-api.example.com failed with status 502\n```\n\n**Resolution:**\n```bash\n\n# Add circuit breaker\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step external_api_call \\\n  --circuit-breaker-enabled true \\\n  --circuit-breaker-threshold 5 \\\n...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### Handling Rate Limits in Code\n\n**Python example with retry logic:**\n```python\nimport time\nimport requests\n\ndef cloudflow_api_call_with_retry(url, headers, max_retries=3):\n    for attempt in range(max_retries):\n        response = requests.get(url, headers=headers)\n        \n        if response.status_code == 429:\n            retry_after = int(response.headers.get('Retry-After', 60))\n            print(f\"Rate limited. Waiting {retry_after} seconds...\")\n            time.sleep(retry_after)\n       ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Data Limits\n\n- **Maximum request/response size**: 10MB per action\n- **Maximum execution payload**: 50MB total\n- **Variable value size**: 1MB per variable\n\n### Enterprise Plan Limits\n\nEnterprise customers can request increased limits:\n- Up to 100 steps per workflow\n- Up to 10,000 executions per day\n- Up to 7200 second timeout (2 hours)\n- Priority execution queue\n- Dedicated capacity allocation\n\nContact sales@cloudflow.io for Enterprise pricing and custom limits.\n\n## Best Practices\n\nFollow the...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "### Fallback Actions\n\nExecute alternative actions when the primary action fails:\n\n```yaml\n- id: primary_payment\n  action: http_request\n  config:\n    url: \"https://primary-payment-gateway.com/charge\"\n    method: POST\n    body:\n      amount: \"{{amount}}\"\n  on_error:\n    - id: fallback_payment\n      action: http_request\n      config:\n        url: \"https://backup-payment-gateway.com/charge\"\n        method: POST\n        body:\n          amount: \"{{amount}}\"\n    - id: notify_admin\n      action: email\n ...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "### Error Codes\n\nCloudFlow returns specific error codes to help you identify and resolve issues:\n\n- `invalid_parameter`: One or more request parameters are invalid\n- `missing_required_field`: Required field is missing from request body\n- `authentication_failed`: Invalid API key or token\n- `insufficient_permissions`: User lacks required scope or permission\n- `resource_not_found`: Requested resource does not exist\n- `rate_limit_exceeded`: Too many requests, see rate limiting section\n- `workflow_ex...",
+            "score": null,
+            "doc_id": "api_reference"
+          }
+        ],
+        "latency_ms": 1023.074775999703
+      }
+    },
+    {
+      "query_obj": {
+        "id": "neg_002",
+        "type": "negation",
+        "query": "Why doesn't HS256 work for JWT token validation in CloudFlow?",
+        "expected_answer": "CloudFlow uses RS256 (asymmetric) not HS256 (symmetric). RS256 requires private key for signing, public key for validation. HS256 would fail with algorithm mismatch error.",
+        "expected_docs": [
+          "api_reference"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "Why doesn't HS256 work for JWT token validation in CloudFlow?",
+        "chunks": [
+          {
+            "content": "### JWT Tokens\n\nFor advanced use cases, CloudFlow supports JSON Web Tokens (JWT) with RS256 signing algorithm. JWTs must include the following claims:\n\n- `iss` (issuer): Your application identifier\n- `sub` (subject): User or service account ID\n- `aud` (audience): `https://api.cloudflow.io`\n- `exp` (expiration): Unix timestamp (max 3600 seconds from `iat`)\n- `iat` (issued at): Unix timestamp\n- `scope`: Space-separated list of requested scopes\n\nExample JWT header:\n\n```python\nimport jwt\nimport time...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "## Overview\n\nThis guide provides comprehensive troubleshooting steps for common CloudFlow platform issues encountered in production environments. Each section includes error symptoms, root cause analysis, resolution steps, and preventive measures.\n\n### Quick Diagnostic Checklist\n\nBefore diving into specific issues, perform these initial checks:\n\n- Verify service health: `cloudflow status --all`\n- Check API connectivity: `curl -I https://api.cloudflow.io/health`\n- Review recent deployments: `kube...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Microservices Breakdown\n\n\n\n### API Gateway\n\n**Purpose**: Single entry point for all client requests, providing authentication, rate limiting, request routing, and protocol translation.\n\n**Technology**: Node.js with Express.js framework  \n**Replicas**: 12 pods (production), auto-scaling 8-20 based on CPU  \n**Resource Allocation**: 2 vCPU, 4GB RAM per pod\n\n**Key Responsibilities**:\n- JWT token validation (delegated to Auth Service for initial validation)\n- Rate limiting: 1000 requests per minut...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Auth Service\n\n**Purpose**: Centralized authentication and authorization service handling user identity, token generation, and permission validation.\n\n**Technology**: Go with gRPC for internal communication, REST for external  \n**Replicas**: 8 pods (production), auto-scaling 6-12  \n**Resource Allocation**: 1 vCPU, 2GB RAM per pod\n\n**Key Responsibilities**:\n- User authentication via multiple providers (OAuth2, SAML, local credentials)\n- JWT token generation and validation (RS256 algorithm)\n- R...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Authentication & Authorization\n\n**JWT Token Validation**:\n- Algorithm: RS256 (asymmetric signing)\n- Key rotation: Every 30 days with 7-day overlap period\n- Public key distribution: JWKS endpoint cached in Redis\n- Validation: Signature, expiry, issuer, audience claims\n- Token revocation: Blacklist in Redis for compromised tokens\n\n**Permission Model**:\n```\nUser \u2192 Roles \u2192 Permissions\n     \u2198       \u2197\n      Tenants (Multi-tenancy isolation)\n```\n\nExample permissions:\n- `workflow:read` - View workfl...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1079.2089749957086
+      }
+    },
+    {
+      "query_obj": {
+        "id": "neg_003",
+        "type": "negation",
+        "query": "Why can't I schedule workflows more frequently than every minute?",
+        "expected_answer": "Minimum scheduling interval is 1 minute. Expressions evaluating to more frequent executions will be rejected. For near real-time, use webhook or event-based triggers instead.",
+        "expected_docs": [
+          "user_guide"
+        ],
+        "difficulty": "easy"
+      },
+      "retrieval": {
+        "query": "Why can't I schedule workflows more frequently than every minute?",
+        "chunks": [
+          {
+            "content": "#### Rate Limit Tiers\n\nCloudFlow enforces the following rate limits per workspace:\n\n| Tier | Requests/Minute | Requests/Hour | Concurrent Workflows |\n|------|-----------------|---------------|----------------------|\n| Free | 60 | 1,000 | 5 |\n| Standard | 1,000 | 50,000 | 50 |\n| Premium | 5,000 | 250,000 | 200 |\n| Enterprise | Custom | Custom | Unlimited |\n\n#### Checking Rate Limit Status\n\n```bash\n\n# Check current rate limit status\n\ncurl -I https://api.cloudflow.io/api/v1/workflows \\\n  -H \"Author...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Scheduling\n\nCloudFlow supports powerful scheduling options for recurring workflows.\n\n### Cron Syntax\n\nUse standard cron expressions to define schedules:\n\n```\n*    *    *    *    *\n\u252c    \u252c    \u252c    \u252c    \u252c\n\u2502    \u2502    \u2502    \u2502    \u2502\n\u2502    \u2502    \u2502    \u2502    \u2514\u2500\u2500\u2500 Day of Week (0-6, Sunday=0)\n\u2502    \u2502    \u2502    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Month (1-12)\n\u2502    \u2502    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Day of Month (1-31)\n\u2502    \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Hour (0-23)\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Minute (0-59)\n```\n\n**Common Cron Patterns:**\n\n| Pattern | Description |\n|--...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "## Rate Limiting\n\nTo ensure fair usage and system stability, CloudFlow enforces rate limits on all API endpoints.\n\n**Default Limits:**\n- 100 requests per minute per authenticated user\n- 20 requests per minute for unauthenticated requests\n- Burst allowance: 150 requests in a 10-second window\n\n### Rate Limit Headers\n\nEvery API response includes rate limit information:\n\n```\nX-RateLimit-Limit: 100\nX-RateLimit-Remaining: 87\nX-RateLimit-Reset: 1640995200\n```\n\nWhen you exceed the rate limit, you'll rec...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "# Configure error handling\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step data_validation \\\n  --on-error continue \\\n  --error-threshold 5%  # Fail if > 5% of records invalid\n```\n\n**2. External API Failures**\n```\nExternalAPIError: API request to https://partner-api.example.com failed with status 502\n```\n\n**Resolution:**\n```bash\n\n# Add circuit breaker\n\ncloudflow workflows update wf_9k2n4m8p1q \\\n  --step external_api_call \\\n  --circuit-breaker-enabled true \\\n  --circuit-breaker-threshold 5 \\\n...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "#### Handling Rate Limits in Code\n\n**Python example with retry logic:**\n```python\nimport time\nimport requests\n\ndef cloudflow_api_call_with_retry(url, headers, max_retries=3):\n    for attempt in range(max_retries):\n        response = requests.get(url, headers=headers)\n        \n        if response.status_code == 429:\n            retry_after = int(response.headers.get('Retry-After', 60))\n            print(f\"Rate limited. Waiting {retry_after} seconds...\")\n            time.sleep(retry_after)\n       ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          }
+        ],
+        "latency_ms": 864.8025410002447
+      }
+    },
+    {
+      "query_obj": {
+        "id": "neg_004",
+        "type": "negation",
+        "query": "What happens if I don't implement token refresh logic?",
+        "expected_answer": "Tokens expire after 3600 seconds (1 hour). Without refresh logic, authentication will fail after expiry. Need to implement refresh using refresh token (valid 7-30 days).",
+        "expected_docs": [
+          "api_reference",
+          "troubleshooting_guide"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What happens if I don't implement token refresh logic?",
+        "chunks": [
+          {
+            "content": "### Auth Service\n\n**Purpose**: Centralized authentication and authorization service handling user identity, token generation, and permission validation.\n\n**Technology**: Go with gRPC for internal communication, REST for external  \n**Replicas**: 8 pods (production), auto-scaling 6-12  \n**Resource Allocation**: 1 vCPU, 2GB RAM per pod\n\n**Key Responsibilities**:\n- User authentication via multiple providers (OAuth2, SAML, local credentials)\n- JWT token generation and validation (RS256 algorithm)\n- R...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Overview\n\nThis guide provides comprehensive troubleshooting steps for common CloudFlow platform issues encountered in production environments. Each section includes error symptoms, root cause analysis, resolution steps, and preventive measures.\n\n### Quick Diagnostic Checklist\n\nBefore diving into specific issues, perform these initial checks:\n\n- Verify service health: `cloudflow status --all`\n- Check API connectivity: `curl -I https://api.cloudflow.io/health`\n- Review recent deployments: `kube...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Authentication & Authorization\n\n**JWT Token Validation**:\n- Algorithm: RS256 (asymmetric signing)\n- Key rotation: Every 30 days with 7-day overlap period\n- Public key distribution: JWKS endpoint cached in Redis\n- Validation: Signature, expiry, issuer, audience claims\n- Token revocation: Blacklist in Redis for compromised tokens\n\n**Permission Model**:\n```\nUser \u2192 Roles \u2192 Permissions\n     \u2198       \u2197\n      Tenants (Multi-tenancy isolation)\n```\n\nExample permissions:\n- `workflow:read` - View workfl...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### JWT Tokens\n\nFor advanced use cases, CloudFlow supports JSON Web Tokens (JWT) with RS256 signing algorithm. JWTs must include the following claims:\n\n- `iss` (issuer): Your application identifier\n- `sub` (subject): User or service account ID\n- `aud` (audience): `https://api.cloudflow.io`\n- `exp` (expiration): Unix timestamp (max 3600 seconds from `iat`)\n- `iat` (issued at): Unix timestamp\n- `scope`: Space-separated list of requested scopes\n\nExample JWT header:\n\n```python\nimport jwt\nimport time...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "### Cache Invalidation Strategies\n\n**Time-Based Expiration (TTL)**:\n- Short-lived data: 5-15 minutes (session tokens, rate limit counters)\n- Medium-lived data: 1 hour (workflow definitions, templates)\n- Long-lived data: 24 hours (static configuration)\n\n**Event-Based Invalidation**:\n```\nDatabase Update Event \u2192 Kafka (cache.invalidation topic)\n                              \u2502\n                              \u25bc\n                    All service instances consume event\n                              \u2502\n    ...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 1140.2022699985537
+      }
+    },
+    {
+      "query_obj": {
+        "id": "neg_005",
+        "type": "negation",
+        "query": "Why shouldn't I hardcode API keys in workflow definitions?",
+        "expected_answer": "Security risk - keys could be exposed. Use secrets instead: {{secrets.API_TOKEN}}. Secrets are encrypted at rest. Store in Settings > Secrets.",
+        "expected_docs": [
+          "user_guide"
+        ],
+        "difficulty": "easy"
+      },
+      "retrieval": {
+        "query": "Why shouldn't I hardcode API keys in workflow definitions?",
+        "chunks": [
+          {
+            "content": "## Authentication\n\nCloudFlow supports three authentication methods to suit different use cases and security requirements.\n\n### API Keys\n\nAPI keys provide simple authentication for server-to-server communication. Include your API key in the request header:\n\n```bash\ncurl -H \"X-API-Key: cf_live_a1b2c3d4e5f6g7h8i9j0\" \\\n  https://api.cloudflow.io/v2/workflows\n```\n\n**Security Notes:**\n- Never expose API keys in client-side code\n- Rotate keys every 90 days\n- Use separate keys for development and produc...",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "### Authentication & Authorization\n\n**JWT Token Validation**:\n- Algorithm: RS256 (asymmetric signing)\n- Key rotation: Every 30 days with 7-day overlap period\n- Public key distribution: JWKS endpoint cached in Redis\n- Validation: Signature, expiry, issuer, audience claims\n- Token revocation: Blacklist in Redis for compromised tokens\n\n**Permission Model**:\n```\nUser \u2192 Roles \u2192 Permissions\n     \u2198       \u2197\n      Tenants (Multi-tenancy isolation)\n```\n\nExample permissions:\n- `workflow:read` - View workfl...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "# CloudFlow API Reference\n\nVersion 2.1.0 | Last Updated: January 2026\n\n## Overview\n\nThe CloudFlow API is a RESTful service that enables developers to programmatically manage cloud workflows, data pipelines, and automation tasks. This documentation provides comprehensive details on authentication, endpoints, request/response formats, error handling, and best practices.\n\n**Base URL:** `https://api.cloudflow.io/v2`\n\n**API Status:** https://status.cloudflow.io",
+            "score": null,
+            "doc_id": "api_reference"
+          },
+          {
+            "content": "# network-policy.yaml\n\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: cloudflow-network-policy\n  namespace: cloudflow-prod\nspec:\n  podSelector:\n    matchLabels:\n      app: cloudflow\n  policyTypes:\n  - Ingress\n  - Egress\n  ingress:\n  - from:\n    - namespaceSelector:\n        matchLabels:\n          name: cloudflow-prod\n    - podSelector:\n        matchLabels:\n          app: nginx-ingress\n    ports:\n    - protocol: TCP\n      port: 3000\n  egress:\n  - to:\n    - podSelector:\n    ...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### Data Limits\n\n- **Maximum request/response size**: 10MB per action\n- **Maximum execution payload**: 50MB total\n- **Variable value size**: 1MB per variable\n\n### Enterprise Plan Limits\n\nEnterprise customers can request increased limits:\n- Up to 100 steps per workflow\n- Up to 10,000 executions per day\n- Up to 7200 second timeout (2 hours)\n- Priority execution queue\n- Dedicated capacity allocation\n\nContact sales@cloudflow.io for Enterprise pricing and custom limits.\n\n## Best Practices\n\nFollow the...",
+            "score": null,
+            "doc_id": "user_guide"
+          }
+        ],
+        "latency_ms": 1012.0652129990049
+      }
+    },
+    {
+      "query_obj": {
+        "id": "imp_001",
+        "type": "implicit",
+        "query": "Best practice for handling long-running data processing that might exceed time limits",
+        "expected_answer": "Workflow timeout is 3600s. Solutions: split into smaller workflows, enable checkpointing (every 300s), use parallel workers, request custom timeout (up to 7200s on Enterprise).",
+        "expected_docs": [
+          "troubleshooting_guide",
+          "user_guide"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "Best practice for handling long-running data processing that might exceed time limits",
+        "chunks": [
+          {
+            "content": "### Steps Per Workflow\n\n- **Maximum**: 50 steps per workflow\n- **Recommendation**: Keep workflows focused and modular. If you need more steps, consider splitting into multiple workflows connected via webhooks.\n\n### Execution Timeout\n\n- **Default**: 3600 seconds (60 minutes)\n- **Behavior**: Workflows exceeding this timeout are automatically terminated\n- **Custom Timeouts**: Enterprise plans can request custom timeout limits\n\n**Setting Step-Level Timeouts:**\n```yaml\n- id: long_running_task\n  actio...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "### Data Limits\n\n- **Maximum request/response size**: 10MB per action\n- **Maximum execution payload**: 50MB total\n- **Variable value size**: 1MB per variable\n\n### Enterprise Plan Limits\n\nEnterprise customers can request increased limits:\n- Up to 100 steps per workflow\n- Up to 10,000 executions per day\n- Up to 7200 second timeout (2 hours)\n- Priority execution queue\n- Dedicated capacity allocation\n\nContact sales@cloudflow.io for Enterprise pricing and custom limits.\n\n## Best Practices\n\nFollow the...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "## Error Handling\n\nRobust error handling ensures your workflows are resilient and reliable.\n\n### Retry Policies\n\nConfigure automatic retries for failed actions:\n\n```yaml\n- id: api_call\n  action: http_request\n  config:\n    url: \"https://api.example.com/data\"\n  retry:\n    max_attempts: 3\n    backoff_type: \"exponential\"  # or \"fixed\", \"linear\"\n    initial_interval: 1000       # milliseconds\n    max_interval: 30000\n    multiplier: 2.0\n    retry_on:\n      - timeout\n      - network_error\n      - statu...",
+            "score": null,
+            "doc_id": "user_guide"
+          },
+          {
+            "content": "# Create sub-workflows\n\ncloudflow workflows create data-pipeline-part1 \\\n  --steps \"data_ingestion,data_validation\" \\\n  --timeout 1800\n\ncloudflow workflows create data-pipeline-part2 \\\n  --steps \"data_transformation,data_export\" \\\n  --timeout 3600 \\\n  --trigger workflow_completed \\\n  --trigger-workflow data-pipeline-part1\n```\n\n### Retry Logic and Exponential Backoff\n\nCloudFlow implements automatic retry with exponential backoff for transient failures:\n- Max retries: 3\n- Initial delay: 1 second\n-...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "### Workflow Engine\n\n**Purpose**: Core orchestration service that executes workflow definitions, manages state transitions, and coordinates task execution across distributed systems.\n\n**Technology**: Node.js with TypeScript, Bull queue library  \n**Replicas**: 16 pods (production), auto-scaling 12-24  \n**Resource Allocation**: 4 vCPU, 8GB RAM per pod\n\n**Key Responsibilities**:\n- Parse and validate workflow definitions (JSON-based DSL)\n- Execute workflow steps with state machine pattern\n- Handle r...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 993.1400019995635
+      }
+    },
+    {
+      "query_obj": {
+        "id": "imp_002",
+        "type": "implicit",
+        "query": "How to ensure my application survives a complete region failure",
+        "expected_answer": "Multi-AZ deployment across 3 AZs. Cross-region replication to us-west-2 (15-min lag). Manual failover procedure: update DNS, promote DR replica, scale up DR services. RTO: 2-4 hours.",
+        "expected_docs": [
+          "architecture_overview",
+          "deployment_guide"
+        ],
+        "difficulty": "hard"
+      },
+      "retrieval": {
+        "query": "How to ensure my application survives a complete region failure",
+        "chunks": [
+          {
+            "content": "### High Availability Architecture\n\n**Multi-AZ Deployment**:\n```\nRegion: us-east-1\n\nAZ-1a:                   AZ-1b:                   AZ-1c:\n- API Gateway (4)        - API Gateway (4)        - API Gateway (4)\n- Workflow Engine (6)    - Workflow Engine (5)    - Workflow Engine (5)\n- Auth Service (3)       - Auth Service (3)       - Auth Service (2)\n- PostgreSQL Primary     - PostgreSQL Replica     - PostgreSQL Replica\n- Redis Primary (2)      - Redis Replica (2)      - Redis Replica (2)\n- Kafka B...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Disaster Recovery Procedures\n\n**Scenario 1: Single AZ Failure**\n- Detection: Health checks fail for entire AZ (< 30 seconds)\n- Action: Traffic automatically routed to healthy AZs by ALB\n- Recovery time: < 5 minutes (no manual intervention)\n- Data loss: None (multi-AZ replication)\n\n**Scenario 2: Database Primary Failure**\n- Detection: Health check fails for primary database (< 30 seconds)\n- Action: Automatic promotion of read replica to primary\n- Recovery time: 30-60 seconds\n- Data loss: Mini...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Testing & Validation\n\n**DR Drill Schedule**:\n- Monthly: Automated failover test (single AZ failure simulation)\n- Quarterly: Full DR region failover (non-production hours)\n- Annually: Complete disaster simulation with all stakeholders\n\n**Last DR Test Results** (Dec 15, 2025):\n- Scenario: Full region failover\n- Actual RTO: 2 hours 23 minutes (target: 4 hours)\n- Actual RPO: 42 minutes (target: 1 hour)\n- Issues identified: DNS propagation slower than expected (resolved)\n- Success criteria: Met a...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Disaster Recovery\n\n\n\n### Recovery Objectives\n\n**RPO (Recovery Point Objective): 1 hour**\n- Maximum acceptable data loss: 1 hour of transactions\n- Achieved through: Continuous database replication + hourly snapshots\n- Kafka retention: 7 days allows event replay\n\n**RTO (Recovery Time Objective): 4 hours**\n- Maximum acceptable downtime: 4 hours for full system recovery\n- Includes: Failover, data verification, and service restoration\n- Automated runbooks reduce RTO to < 2 hours for common scenari...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "## Table of Contents\n\n1. [High-Level Architecture](#high-level-architecture)\n2. [Microservices Breakdown](#microservices-breakdown)\n3. [Data Flow Architecture](#data-flow-architecture)\n4. [Database Architecture](#database-architecture)\n5. [Message Queue Patterns](#message-queue-patterns)\n6. [Caching Strategy](#caching-strategy)\n7. [Security Architecture](#security-architecture)\n8. [Performance Characteristics](#performance-characteristics)\n9. [Disaster Recovery](#disaster-recovery)\n\n---\n\n## High...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          }
+        ],
+        "latency_ms": 883.4654439997394
+      }
+    },
+    {
+      "query_obj": {
+        "id": "imp_003",
+        "type": "implicit",
+        "query": "How to debug why my API calls are slow",
+        "expected_answer": "Check latency breakdown: Auth (18%), DB Query (64%), Business Logic (13%), Serialization (5%). Use cloudflow metrics latency-report. Check slow query log. Review connection pool status.",
+        "expected_docs": [
+          "troubleshooting_guide"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "How to debug why my API calls are slow",
+        "chunks": [
+          {
+            "content": "### Monitoring & Alerting\n\n**Key Metrics** (Monitored via Prometheus):\n- Request rate (per service, per endpoint)\n- Error rate (4xx, 5xx responses)\n- Latency percentiles (P50, P95, P99)\n- Resource utilization (CPU, memory, disk)\n- Cache hit/miss ratios\n- Database connection pool saturation\n- Kafka consumer lag\n\n**Alerts** (via PagerDuty):\n- P1 (Immediate): API error rate > 1%, database connection failure\n- P2 (< 15 min): P99 latency > 500ms, cache hit rate < 80%\n- P3 (< 1 hour): Resource utiliza...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "#### SEV-2: High (P2)\n\n- **Definition:** Major functionality impaired affecting multiple users\n- **Examples:**\n  - Workflow execution success rate < 90%\n  - Significant performance degradation (p95 latency > 10s)\n  - Rate limiting affecting large customer segment\n- **Response Time:** < 1 hour\n- **Escalation:** Create incident ticket and notify on-call",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "## Performance Characteristics\n\n\n\n### Latency Targets\n\n**API Operations** (P99 latency):\n- `GET /workflows/{id}`: < 50ms (cache hit), < 150ms (cache miss)\n- `POST /workflows`: < 200ms (includes validation and database write)\n- `POST /workflows/{id}/execute`: < 100ms (async, returns execution ID)\n- `GET /workflows/{id}/history`: < 300ms (paginated, 50 records per page)\n\n**Workflow Execution** (P99 latency):\n- Simple workflow (< 5 steps): < 2 seconds\n- Medium workflow (5-15 steps): < 5 seconds\n- C...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "#### RBAC Policy Violations\n\nCloudFlow uses role-based access control (RBAC) with the following hierarchy:\n- `viewer` - Read-only access\n- `developer` - Create and modify workflows (non-production)\n- `operator` - Execute workflows, view logs\n- `admin` - Full access to workspace\n- `platform-admin` - Cross-workspace administration\n\n**Verify resource permissions:**\n```bash\n\n# Check effective permissions\n\ncloudflow rbac check \\\n  --user john.doe@company.com \\\n  --resource workflow:prod-pipeline \\\n  ...",
+            "score": null,
+            "doc_id": "troubleshooting_guide"
+          },
+          {
+            "content": "# Install k6 for load testing\n\nkubectl apply -f - <<EOF\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: loadtest-script\n  namespace: cloudflow-prod\ndata:\n  script.js: |\n    import http from 'k6/http';\n    import { check, sleep } from 'k6';\n    \n    export let options = {\n      stages: [\n        { duration: '2m', target: 100 },\n        { duration: '5m', target: 100 },\n        { duration: '2m', target: 200 },\n        { duration: '5m', target: 200 },\n        { duration: '2m', target: 0 },\n      ],...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          }
+        ],
+        "latency_ms": 1069.788865999726
+      }
+    },
+    {
+      "query_obj": {
+        "id": "imp_004",
+        "type": "implicit",
+        "query": "What monitoring should I set up for production workflows?",
+        "expected_answer": "Prometheus for metrics, Grafana for dashboards, Jaeger for distributed tracing. Key metrics: request rate, error rate, latency percentiles, cache hit ratios, Kafka consumer lag. Alerts via PagerDuty.",
+        "expected_docs": [
+          "architecture_overview",
+          "deployment_guide"
+        ],
+        "difficulty": "medium"
+      },
+      "retrieval": {
+        "query": "What monitoring should I set up for production workflows?",
+        "chunks": [
+          {
+            "content": "### Required Tools\n\n- `kubectl` (v1.28 or later)\n- `helm` (v3.12 or later)\n- `aws-cli` (v2.13 or later)\n- `eksctl` (v0.165 or later)\n- `terraform` (v1.6 or later) - for infrastructure provisioning\n\n### Access Requirements\n\n- AWS account with appropriate IAM permissions\n- EKS cluster admin access\n- Container registry access (ECR)\n- Domain name and SSL certificates\n- Secrets management access (AWS Secrets Manager or Vault)\n\n### Network Requirements\n\n- VPC with at least 3 public and 3 private subne...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### Prometheus Setup\n\nInstall Prometheus using the kube-prometheus-stack:\n\n```bash\nhelm install prometheus prometheus-community/kube-prometheus-stack \\\n  --namespace monitoring \\\n  --create-namespace \\\n  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \\\n  --set prometheus.prometheusSpec.retention=30d \\\n  --set prometheus.prometheusSpec.storageSpec.volumeClaimTemplate.spec.resources.requests.storage=100Gi\n```\n\nCloudFlow exposes Prometheus metrics on port 9090 at the ...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          },
+          {
+            "content": "### Architecture Diagram (Conceptual)\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        Load Balancer (ALB)                       \u2502\n\u2502                     (TLS Termination - 443)                      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                             \u2502\n                             \u25bc\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                        API Gateway Layer           ...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Monitoring & Alerting\n\n**Key Metrics** (Monitored via Prometheus):\n- Request rate (per service, per endpoint)\n- Error rate (4xx, 5xx responses)\n- Latency percentiles (P50, P95, P99)\n- Resource utilization (CPU, memory, disk)\n- Cache hit/miss ratios\n- Database connection pool saturation\n- Kafka consumer lag\n\n**Alerts** (via PagerDuty):\n- P1 (Immediate): API error rate > 1%, database connection failure\n- P2 (< 15 min): P99 latency > 500ms, cache hit rate < 80%\n- P3 (< 1 hour): Resource utiliza...",
+            "score": null,
+            "doc_id": "architecture_overview"
+          },
+          {
+            "content": "### Grafana Dashboards\n\nAccess Grafana to view CloudFlow dashboards:\n\n```bash\nkubectl port-forward -n monitoring svc/prometheus-grafana 3000:80\n```\n\nImport the CloudFlow dashboard (ID: 15847) or use the provided JSON template. Key dashboard panels include:\n\n1. **API Performance**: Request rate, P95/P99 latency, error rate\n2. **Resource Usage**: CPU, memory, disk I/O per pod\n3. **Database Health**: Connection pool utilization, query performance\n4. **Worker Status**: Queue depth, processing rate, ...",
+            "score": null,
+            "doc_id": "deployment_guide"
+          }
+        ],
+        "latency_ms": 1015.6558140006382
+      }
+    }
+  ]
+}

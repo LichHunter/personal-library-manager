@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "source": ".sisyphus/notepads/failure-dataset.md",
+    "generated": "2026-01-26",
+    "total_queries": 24,
+    "failed_queries": 15,
+    "passing_queries": 9,
+    "note": "Raw scores table shows 15 failed (≤7) and 9 passing (>7). Summary table header shows 16/8 but raw data is authoritative."
+  },
+  "failed_queries": [
+    {
+      "id": "mh_002",
+      "type": "multi-hop",
+      "query": "If I'm hitting connection pool exhaustion, should I use PgBouncer or add read replicas?",
+      "expected_answer": "Both are valid. PgBouncer for connection pooling (max_db_connections=100, pool_mode=transaction). Read replicas for read-heavy workloads. Troubleshooting guide recommends PgBouncer first.",
+      "baseline_score": 5,
+      "target_score": 8,
+      "root_causes": ["VOCABULARY_MISMATCH", "EMBEDDING_BLIND"],
+      "failure_notes": "MISSING PgBouncer configuration details! Retrieved read replica info but NOT the PgBouncer section from deployment_guide. The troubleshooting guide's connection pool exhaustion section was NOT retrieved. Critical miss - user wouldn't know about PgBouncer as a solution."
+    },
+    {
+      "id": "mh_004",
+      "type": "multi-hop",
+      "query": "How do the HPA scaling parameters relate to the API Gateway resource requirements?",
+      "expected_answer": "HPA: minReplicas=3, maxReplicas=10, targetCPU=70%. API Gateway: 2 vCPU, 4GB RAM per pod. Scales when CPU exceeds 70% of 2 vCPU.",
+      "baseline_score": 6,
+      "target_score": 8,
+      "root_causes": ["YAML_BLIND", "EMBEDDING_BLIND"],
+      "failure_notes": "Got API Gateway resources (2 vCPU, 4GB) but MISSING the HPA configuration (minReplicas=3, maxReplicas=10, targetCPU=70%). The deployment_guide has HPA YAML but it wasn't retrieved. Partial answer only."
+    },
+    {
+      "id": "tmp_003",
+      "type": "temporal",
+      "query": "What's the sequence of events when a workflow execution times out?",
+      "expected_answer": "Workflow runs up to 3600s. If exceeded, automatically terminated. Error: 'exceeded maximum execution time of 3600 seconds'. Status: TIMEOUT. Can request custom timeout up to 7200s on Enterprise.",
+      "baseline_score": 7,
+      "target_score": 8,
+      "root_causes": ["EMBEDDING_BLIND"],
+      "failure_notes": "Got the timeout (3600s) and termination behavior, but MISSING the specific error message 'exceeded maximum execution time of 3600 seconds' and TIMEOUT status from troubleshooting_guide. Partial answer."
+    },
+    {
+      "id": "tmp_004",
+      "type": "temporal",
+      "query": "How long does it take for workflow definition cache changes to propagate?",
+      "expected_answer": "Workflow definitions cached in Redis with TTL of 1 hour. Cache invalidated on workflow update or manual flush. Cache hit rate is 94.2%.",
+      "baseline_score": 4,
+      "target_score": 8,
+      "root_causes": ["EMBEDDING_BLIND"],
+      "failure_notes": "CRITICAL MISS! Did NOT retrieve the Redis Caching Layer section with 'Workflow Definitions: TTL: 1 hour' and 'cache hit rate 94.2%'. Retrieved tangential cache info but not the specific workflow definition cache TTL. User cannot answer the question."
+    },
+    {
+      "id": "tmp_005",
+      "type": "temporal",
+      "query": "What's the timeline for automatic failover when the database primary fails?",
+      "expected_answer": "Database primary failure: 30-60 seconds for automatic promotion of replica. Redis failover: <10 seconds. Kafka controller election: <30 seconds.",
+      "baseline_score": 7,
+      "target_score": 8,
+      "root_causes": ["EMBEDDING_BLIND"],
+      "failure_notes": "Got database failover (30-60s) but MISSING Redis failover (<10s) and Kafka controller election (<30s) from the same section. Partial answer - only 1 of 3 failover timelines retrieved."
+    },
+    {
+      "id": "cmp_001",
+      "type": "comparative",
+      "query": "What's the difference between PgBouncer connection pooling and direct PostgreSQL connections?",
+      "expected_answer": "PgBouncer: pool_mode=transaction, default_pool_size=25, max_db_connections=100. Allows 1000 client connections with only 100 actual DB connections. Direct: limited to max_connections=100.",
+      "baseline_score": 2,
+      "target_score": 8,
+      "root_causes": ["VOCABULARY_MISMATCH", "EMBEDDING_BLIND"],
+      "failure_notes": "COMPLETE FAILURE! Did NOT retrieve the PgBouncer Configuration section from deployment_guide which has pool_mode=transaction, default_pool_size=25, max_db_connections=100. Also missed the architecture_overview Connection Pooling section. User cannot answer the question at all."
+    },
+    {
+      "id": "cmp_002",
+      "type": "comparative",
+      "query": "How do fixed, linear, and exponential backoff strategies differ for retries?",
+      "expected_answer": "Fixed: same wait time (1s, 1s, 1s). Linear: increase by fixed amount (1s, 2s, 3s). Exponential: double each time (1s, 2s, 4s). Exponential is recommended.",
+      "baseline_score": 6,
+      "target_score": 8,
+      "root_causes": ["EMBEDDING_BLIND"],
+      "failure_notes": "Retrieved that fixed/linear/exponential exist and exponential sequence (1s, 2s, 4s). But MISSING the explicit comparison of all three strategies. User_guide has the comparison but the specific section wasn't retrieved. Partial answer."
+    },
+    {
+      "id": "cmp_003",
+      "type": "comparative",
+      "query": "What's the difference between /health and /ready endpoints?",
+      "expected_answer": "/health: liveness check, returns basic status. /ready: readiness check, checks dependencies like database and redis connectivity.",
+      "baseline_score": 5,
+      "target_score": 8,
+      "root_causes": ["EMBEDDING_BLIND"],
+      "failure_notes": "Based on test output, deployment_guide was retrieved but the specific health check section wasn't in top chunks. The deployment_guide has 'healthCheck: livenessProbe: path: /health' and 'readinessProbe: path: /ready' but the explanation of what they check wasn't retrieved. Partial."
+    },
+    {
+      "id": "neg_001",
+      "type": "negation",
+      "query": "What should I NOT do when I'm rate limited?",
+      "expected_answer": "Don't keep hammering the API. Instead: check Retry-After header, implement exponential backoff, monitor X-RateLimit-Remaining, cache responses, consider upgrading tier.",
+      "baseline_score": 6,
+      "target_score": 8,
+      "root_causes": ["NEGATION_BLIND"],
+      "failure_notes": "Retrieved what TO do (check headers, backoff) but not framed as what NOT to do. The api_reference 'Best Practices' section has the guidance but the negation framing is lost. User gets useful info but not in the expected format."
+    },
+    {
+      "id": "neg_002",
+      "type": "negation",
+      "query": "Why doesn't HS256 work for JWT token validation in CloudFlow?",
+      "expected_answer": "CloudFlow uses RS256 (asymmetric) not HS256 (symmetric). RS256 requires private key for signing, public key for validation. HS256 would fail with algorithm mismatch error.",
+      "baseline_score": 7,
+      "target_score": 8,
+      "root_causes": ["NEGATION_BLIND"],
+      "failure_notes": "Retrieved that RS256 is used (multiple times), but MISSING explicit statement that HS256 doesn't work or why. User can infer 'RS256 only' but the negation aspect isn't directly addressed."
+    },
+    {
+      "id": "neg_003",
+      "type": "negation",
+      "query": "Why can't I schedule workflows more frequently than every minute?",
+      "expected_answer": "Minimum scheduling interval is 1 minute. Expressions evaluating to more frequent executions will be rejected. For near real-time, use webhook or event-based triggers instead.",
+      "baseline_score": 7,
+      "target_score": 8,
+      "root_causes": ["NEGATION_BLIND"],
+      "failure_notes": "user_guide has 'minimum scheduling interval is 1 minute' and 'Expressions that evaluate to more frequent executions will be rejected' but need to verify if this specific text was in retrieved chunk. Likely partial retrieval."
+    },
+    {
+      "id": "neg_004",
+      "type": "negation",
+      "query": "What happens if I don't implement token refresh logic?",
+      "expected_answer": "Tokens expire after 3600 seconds (1 hour). Without refresh logic, authentication will fail after expiry. Need to implement refresh using refresh token (valid 7-30 days).",
+      "baseline_score": 6,
+      "target_score": 8,
+      "root_causes": ["NEGATION_BLIND"],
+      "failure_notes": "Retrieved token expiration info (3600s) but the consequence of NOT implementing refresh isn't explicitly stated. User can infer but the negation framing is weak."
+    },
+    {
+      "id": "neg_005",
+      "type": "negation",
+      "query": "Why shouldn't I hardcode API keys in workflow definitions?",
+      "expected_answer": "Security risk - keys could be exposed. Use secrets instead: {{secrets.API_TOKEN}}. Secrets are encrypted at rest. Store in Settings > Secrets.",
+      "baseline_score": 5,
+      "target_score": 8,
+      "root_causes": ["NEGATION_BLIND"],
+      "failure_notes": "api_reference has 'Never expose API keys in client-side code' but the user_guide Best Practices section with 'Never hardcode API keys' and secrets usage wasn't prominently retrieved. Partial answer."
+    },
+    {
+      "id": "imp_001",
+      "type": "implicit",
+      "query": "Best practice for handling long-running data processing that might exceed time limits",
+      "expected_answer": "Workflow timeout is 3600s. Solutions: split into smaller workflows, enable checkpointing (every 300s), use parallel workers, request custom timeout (up to 7200s on Enterprise).",
+      "baseline_score": 6,
+      "target_score": 8,
+      "root_causes": ["VOCABULARY_MISMATCH", "EMBEDDING_BLIND"],
+      "failure_notes": "Retrieved timeout info (3600s) and Enterprise limits (7200s). But MISSING the troubleshooting_guide solutions: split workflows, checkpointing, parallel workers. Partial answer - knows the problem but not all solutions."
+    },
+    {
+      "id": "imp_003",
+      "type": "implicit",
+      "query": "How to debug why my API calls are slow",
+      "expected_answer": "Check latency breakdown: Auth (18%), DB Query (64%), Business Logic (13%), Serialization (5%). Use cloudflow metrics latency-report. Check slow query log. Review connection pool status.",
+      "baseline_score": 7,
+      "target_score": 8,
+      "root_causes": ["VOCABULARY_MISMATCH", "EMBEDDING_BLIND"],
+      "failure_notes": "Retrieved latency breakdown and slow query analysis. But the specific percentages (Auth 18%, DB 64%, etc.) from troubleshooting_guide may not be in top chunks. Partial answer."
+    }
+  ],
+  "passing_queries": [
+    {
+      "id": "mh_001",
+      "type": "multi-hop",
+      "query": "Compare JWT expiration in Auth Service vs the API documentation - are they consistent?",
+      "expected_answer": "Auth Service: 15-minute access token expiry. API docs: 3600 seconds (1 hour) max. These are different contexts - Auth Service internal tokens vs API JWT claims.",
+      "baseline_score": 8,
+      "must_not_regress": true
+    },
+    {
+      "id": "mh_003",
+      "type": "multi-hop",
+      "query": "What's the relationship between workflow timeout (3600s) and the retry backoff strategy?",
+      "expected_answer": "Workflow timeout is 3600s max. Retry uses exponential backoff: 1s, 2s, 4s (max 3 retries). Total retry time ~7s, well within timeout. But long-running steps can still timeout.",
+      "baseline_score": 9,
+      "must_not_regress": true
+    },
+    {
+      "id": "mh_005",
+      "type": "multi-hop",
+      "query": "What happens to scheduled workflows during a disaster recovery failover?",
+      "expected_answer": "RPO is 1 hour, RTO is 4 hours. Scheduler uses leader election with Redis. During failover, scheduled executions may be skipped (logged in audit trail). Kafka retention allows event replay.",
+      "baseline_score": 8,
+      "must_not_regress": true
+    },
+    {
+      "id": "tmp_001",
+      "type": "temporal",
+      "query": "What changed between the last DR test and the current DR objectives?",
+      "expected_answer": "Last DR test (Dec 15, 2025): Actual RTO was 2h 23m (target 4h), RPO was 42m (target 1h). Both met objectives. DNS propagation issue was resolved.",
+      "baseline_score": 9,
+      "must_not_regress": true
+    },
+    {
+      "id": "tmp_002",
+      "type": "temporal",
+      "query": "How often should API keys be rotated and what's the certificate rotation schedule?",
+      "expected_answer": "API keys: rotate every 90 days. Certificates: rotate every 90 days (automated via cert-manager). Secrets in Vault also rotated every 90 days.",
+      "baseline_score": 10,
+      "must_not_regress": true
+    },
+    {
+      "id": "cmp_004",
+      "type": "comparative",
+      "query": "Compare the rate limits for authenticated vs unauthenticated API requests",
+      "expected_answer": "Authenticated: 100 requests/minute per user. Unauthenticated: 20 requests/minute. Burst allowance: 150 requests in 10-second window. Enterprise: 1000 req/min.",
+      "baseline_score": 8,
+      "must_not_regress": true
+    },
+    {
+      "id": "cmp_005",
+      "type": "comparative",
+      "query": "How do SEV-1 and SEV-2 incidents differ in response time and escalation?",
+      "expected_answer": "SEV-1: Immediate response (<15 min), page on-call immediately, complete outage. SEV-2: <1 hour response, create ticket and notify on-call, major functionality impaired.",
+      "baseline_score": 9,
+      "must_not_regress": true
+    },
+    {
+      "id": "imp_002",
+      "type": "implicit",
+      "query": "How to ensure my application survives a complete region failure",
+      "expected_answer": "Multi-AZ deployment across 3 AZs. Cross-region replication to us-west-2 (15-min lag). Manual failover procedure: update DNS, promote DR replica, scale up DR services. RTO: 2-4 hours.",
+      "baseline_score": 8,
+      "must_not_regress": true
+    },
+    {
+      "id": "imp_004",
+      "type": "implicit",
+      "query": "What monitoring should I set up for production workflows?",
+      "expected_answer": "Prometheus for metrics, Grafana for dashboards, Jaeger for distributed tracing. Key metrics: request rate, error rate, latency percentiles, cache hit ratios, Kafka consumer lag. Alerts via PagerDuty.",
+      "baseline_score": 8,
+      "must_not_regress": true
+    }
+  ]
+}
