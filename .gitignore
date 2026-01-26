@@ -18,3 +18,13 @@ uv.lock
 .idea/
 .vscode/
 *.swp
+
+# Cache directories
+enrichment_cache/
+contextual_index/
+
+# Logs
+*.log
+
+# Invalid results (marked for reference only)
+results/gems_*.md
