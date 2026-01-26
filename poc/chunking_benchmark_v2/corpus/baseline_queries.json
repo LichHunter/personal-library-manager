@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "source": "SMART_CHUNKING_VALIDATION_REPORT.md",
+    "generated": "2026-01-26",
+    "total_queries": 10,
+    "description": "94% baseline test questions - typical documentation queries",
+    "expected_performance": "90-95% with enriched_hybrid_llm + MarkdownSemanticStrategy"
+  },
+  "queries": [
+    {
+      "id": "base_001",
+      "type": "factual",
+      "query": "How many requests per minute are allowed in the CloudFlow API?",
+      "expected_answer": "100 requests per minute per authenticated user, 20 requests per minute for unauthenticated requests, with a burst allowance of 150 requests in a 10-second window",
+      "baseline_score": 10,
+      "difficulty": "easy"
+    },
+    {
+      "id": "base_002",
+      "type": "factual",
+      "query": "What happens when I exceed the CloudFlow API rate limit?",
+      "expected_answer": "When you exceed the rate limit, you'll receive a `429 Too Many Requests` response with an error message indicating how long to wait before retrying",
+      "baseline_score": 10,
+      "difficulty": "easy"
+    },
+    {
+      "id": "base_003",
+      "type": "procedural",
+      "query": "How do I handle rate limit errors in my code?",
+      "expected_answer": "Implement exponential backoff, monitor `X-RateLimit-Remaining` header values, cache responses when appropriate, and consider upgrading to Enterprise tier for higher limits",
+      "baseline_score": 10,
+      "difficulty": "easy"
+    },
+    {
+      "id": "base_004",
+      "type": "factual",
+      "query": "What are the CloudFlow API authentication methods?",
+      "expected_answer": "CloudFlow supports three authentication methods: API Keys, OAuth 2.0, and JWT Tokens",
+      "baseline_score": 10,
+      "difficulty": "medium"
+    },
+    {
+      "id": "base_005",
+      "type": "factual",
+      "query": "How long do JWT tokens last in CloudFlow?",
+      "expected_answer": "All tokens expire after 3600 seconds (1 hour). Implement token refresh logic in your application.",
+      "baseline_score": 10,
+      "difficulty": "medium"
+    },
+    {
+      "id": "base_006",
+      "type": "procedural",
+      "query": "What should I do if my workflow exceeds the maximum execution timeout?",
+      "expected_answer": "Workflows have a default timeout of 3600 seconds (60 minutes). You can increase the timeout, optimize workflow steps, or split the workflow into smaller workflows",
+      "baseline_score": 9,
+      "difficulty": "medium"
+    },
+    {
+      "id": "base_007",
+      "type": "procedural",
+      "query": "How do I restart a failed workflow execution?",
+      "expected_answer": "View failed executions in the Dead Letter Queue, inspect the execution context and error details, and use the 'Retry' button to reprocess with the same input data",
+      "baseline_score": 7,
+      "difficulty": "hard"
+    },
+    {
+      "id": "base_008",
+      "type": "procedural",
+      "query": "What are the recommended steps for troubleshooting a workflow failure?",
+      "expected_answer": "Verify service health, check API connectivity, review recent deployments, inspect platform metrics, check logs, and follow the escalation procedure based on the severity level",
+      "baseline_score": 10,
+      "difficulty": "medium"
+    },
+    {
+      "id": "base_009",
+      "type": "procedural",
+      "query": "How do I set up database connection pooling in CloudFlow?",
+      "expected_answer": "Use PgBouncer for connection pooling, configure CloudFlow to use PgBouncer, set connection pool modes, and add read replicas to optimize database performance",
+      "baseline_score": 8,
+      "difficulty": "hard"
+    },
+    {
+      "id": "base_010",
+      "type": "procedural",
+      "query": "What Kubernetes resources are needed to deploy CloudFlow?",
+      "expected_answer": "Deploy an EKS cluster with managed node groups, configure storage with EBS CSI driver, set up a namespace with resource quotas, and use Helm charts for deployment",
+      "baseline_score": 10,
+      "difficulty": "medium"
+    }
+  ]
+}

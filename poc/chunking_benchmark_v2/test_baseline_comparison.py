@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
-"""Test runner for gem retrieval strategies.
+"""Test runner for baseline comparison across 3 retrieval strategies.
 
-Loads edge case queries and runs retrieval strategies for manual grading.
-Outputs markdown suitable for manual evaluation of retrieval quality.
+Runs adaptive_hybrid, synthetic_variants, and enriched_hybrid_llm strategies
+against 10 baseline questions and generates individual result files plus a
+side-by-side comparison report.
 
 Usage:
-    python test_gems.py --strategy adaptive_hybrid
-    python test_gems.py --strategy negation_aware --queries neg_001,neg_002
-    python test_gems.py --strategy adaptive_hybrid --regression
-    python test_gems.py --compare adaptive_hybrid,enriched_hybrid_llm
+    python test_baseline_comparison.py
 """
 
-import argparse
 import json
 import sys
 from datetime import datetime
@@ -24,14 +21,14 @@ from strategies import Document, Chunk, MarkdownSemanticStrategy
 from retrieval import create_retrieval_strategy, RETRIEVAL_STRATEGIES
 
 
-def load_queries(queries_file: str = "corpus/edge_case_queries.json") -> dict:
-    """Load edge case queries from JSON file.
+def load_baseline_queries(queries_file: str = "corpus/baseline_queries.json") -> dict:
+    """Load baseline queries from JSON file.
 
     Args:
-        queries_file: Path to edge_case_queries.json
+        queries_file: Path to baseline_queries.json
 
     Returns:
-        Dictionary with 'failed_queries' and 'passing_queries' lists
+        Dictionary with 'queries' list
 
     Raises:
         FileNotFoundError: If queries file doesn't exist
@@ -42,13 +39,15 @@ def load_queries(queries_file: str = "corpus/edge_case_queries.json") -> dict:
         raise FileNotFoundError(f"Queries file not found: {queries_file}")
 
     with open(queries_path) as f:
-        return json.load(f)
+        data = json.load(f)
+        return data.get("queries", [])
 
 
 def load_corpus(
     corpus_dir: str = "corpus/realistic_documents",
     metadata_file: str = "corpus/corpus_metadata_realistic.json",
 ) -> list[Document]:
+    """Load documents from corpus."""
     docs_dir = Path(corpus_dir)
     metadata_path = Path(metadata_file)
 
@@ -76,6 +75,7 @@ def load_corpus(
 
 
 def chunk_documents(documents: list[Document]) -> list[Chunk]:
+    """Chunk documents using MarkdownSemanticStrategy."""
     strategy = MarkdownSemanticStrategy(
         max_heading_level=4,
         target_chunk_size=400,
@@ -89,6 +89,7 @@ def chunk_documents(documents: list[Document]) -> list[Chunk]:
 def run_retrieval(
     strategy_name: str, queries: list[dict], top_k: int = 5
 ) -> dict[str, list[tuple[Chunk, float]]]:
+    """Run retrieval for a strategy on all queries."""
     print(f"Loading corpus...", file=sys.stderr)
     documents = load_corpus()
     print(f"  Loaded {len(documents)} documents", file=sys.stderr)
@@ -134,21 +135,7 @@ def run_retrieval(
 
 
 def import_strategy(strategy_name: str):
-    """Dynamically import a retrieval strategy class.
-
-    Converts snake_case strategy name to CamelCase class name.
-    Example: 'adaptive_hybrid' -> 'AdaptiveHybridRetrieval'
-
-    Args:
-        strategy_name: Strategy name in snake_case (e.g., 'adaptive_hybrid')
-
-    Returns:
-        The strategy class
-
-    Raises:
-        ImportError: If module or class not found
-        AttributeError: If class doesn't exist in module
-    """
+    """Dynamically import a retrieval strategy class."""
     SPECIAL_CASES = {
         "bm25f_hybrid": "BM25FHybridRetrieval",
     }
@@ -173,11 +160,12 @@ def import_strategy(strategy_name: str):
         )
 
 
-def generate_markdown(
+def generate_individual_markdown(
     strategy_name: str,
     queries: list[dict],
     retrieved_results: Optional[dict[str, list[tuple[Chunk, float]]]] = None,
 ) -> str:
+    """Generate markdown for individual strategy results."""
     timestamp = datetime.now().isoformat()
 
     lines = [
@@ -197,10 +185,6 @@ def generate_markdown(
                 f"**Type**: {query['type']}",
             ]
         )
-
-        if "root_causes" in query and query["root_causes"]:
-            causes = ", ".join(query["root_causes"])
-            lines.append(f"**Root Causes**: {causes}")
 
         lines.extend(
             [
@@ -263,24 +247,79 @@ def generate_markdown(
     return "\n".join(lines)
 
 
-def save_results(strategy_name: str, content: str) -> Path:
-    """Save results to timestamped markdown file.
+def generate_comparison_markdown(
+    queries: list[dict],
+    all_results: dict[str, dict[str, list[tuple[Chunk, float]]]],
+) -> str:
+    """Generate side-by-side comparison markdown for all strategies."""
+    timestamp = datetime.now().isoformat()
+    strategies = list(all_results.keys())
 
-    Creates results/ directory if it doesn't exist.
-    Filename format: gems_[strategy]_[YYYY-MM-DD-HHMMSS].md
+    lines = [
+        "# Baseline Questions - Strategy Comparison",
+        "",
+        f"**Date**: {timestamp}",
+        f"**Strategies**: {', '.join(strategies)}",
+        f"**Questions**: {len(queries)}",
+        "",
+    ]
 
-    Args:
-        strategy_name: Name of the strategy
-        content: Markdown content to save
+    for query in queries:
+        query_id = query["id"]
+        lines.extend(
+            [
+                f"## Question {query_id}: {query['query'][:80]}...",
+                "",
+            ]
+        )
 
-    Returns:
-        Path to the saved file
-    """
+        if "expected_answer" in query and query["expected_answer"]:
+            lines.extend(
+                [
+                    f"**Expected Answer**: {query['expected_answer']}",
+                    "",
+                ]
+            )
+
+        for strategy_name in strategies:
+            lines.append(f"### {strategy_name}")
+
+            if strategy_name in all_results and query_id in all_results[strategy_name]:
+                chunks_with_scores = all_results[strategy_name][query_id]
+                if chunks_with_scores:
+                    chunk, score = chunks_with_scores[0]  # Top chunk only
+                    lines.append(
+                        f"**Top Chunk**: [doc_id: {chunk.doc_id}, chunk_id: {chunk.id}, score: {score:.3f}]"
+                    )
+                    # Preview first 200 chars
+                    preview = chunk.content[:200].replace("\n", " ")
+                    if len(chunk.content) > 200:
+                        preview += "..."
+                    lines.append(f"> {preview}")
+                else:
+                    lines.append("**Top Chunk**: (No chunks retrieved)")
+            else:
+                lines.append("**Top Chunk**: (No results)")
+
+            lines.append("")
+
+        lines.extend(
+            [
+                "---",
+                "",
+            ]
+        )
+
+    return "\n".join(lines)
+
+
+def save_results(strategy_name: str, content: str, prefix: str = "baseline") -> Path:
+    """Save results to timestamped markdown file."""
     results_dir = Path("results")
     results_dir.mkdir(exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
-    filename = results_dir / f"gems_{strategy_name}_{timestamp}.md"
+    filename = results_dir / f"{prefix}_{strategy_name}_{timestamp}.md"
 
     with open(filename, "w") as f:
         f.write(content)
@@ -288,116 +327,63 @@ def save_results(strategy_name: str, content: str) -> Path:
     return filename
 
 
-def run_test(
-    strategy_name: str, query_ids: Optional[list[str]] = None, regression: bool = False
-) -> None:
-    queries_data = load_queries()
-
-    if regression:
-        queries = queries_data.get("passing_queries", [])
-        test_type = "regression"
-    elif query_ids:
-        all_queries = queries_data.get("failed_queries", []) + queries_data.get(
-            "passing_queries", []
-        )
-        queries = [q for q in all_queries if q["id"] in query_ids]
-        test_type = f"specific ({len(query_ids)} queries)"
-    else:
-        queries = queries_data.get("failed_queries", [])
-        test_type = "failed queries"
-
-    if not queries:
-        print(f"No queries found for {test_type}", file=sys.stderr)
-        sys.exit(1)
-
-    print(f"\n{'=' * 60}", file=sys.stderr)
-    print(f"Testing strategy: {strategy_name}", file=sys.stderr)
-    print(f"Queries: {len(queries)} ({test_type})", file=sys.stderr)
-    print(f"{'=' * 60}\n", file=sys.stderr)
-
-    try:
-        retrieved_results = run_retrieval(strategy_name, queries, top_k=5)
-    except (FileNotFoundError, ImportError, ValueError) as e:
-        print(f"Error running retrieval: {e}", file=sys.stderr)
-        print("Falling back to template-only mode...", file=sys.stderr)
-        retrieved_results = None
-
-    markdown = generate_markdown(strategy_name, queries, retrieved_results)
-    output_file = save_results(strategy_name, markdown)
-
-    print(f"\n{'=' * 60}", file=sys.stderr)
-    if retrieved_results:
-        print(f"Retrieval complete for {len(queries)} {test_type}")
-    else:
-        print(f"Generated template for {len(queries)} {test_type}")
-    print(f"Saved to: {output_file}")
-    print()
-    print("Next steps:")
-    print("  1. Open the markdown file")
-    print("  2. Grade each query (1-10 scale)")
-    print("  3. Compare baseline vs new scores")
-
-
 def main():
-    """Parse arguments and run tests."""
-    parser = argparse.ArgumentParser(
-        description="Test gem retrieval strategies for manual grading",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  # Test single strategy on all failed queries
-  python test_gems.py --strategy adaptive_hybrid
-  
-  # Test on specific queries
-  python test_gems.py --strategy negation_aware --queries neg_001,neg_002
-  
-  # Regression test on passing queries
-  python test_gems.py --strategy adaptive_hybrid --regression
-  
-  # Compare two strategies
-  python test_gems.py --compare adaptive_hybrid,enriched_hybrid_llm
-        """,
-    )
+    """Run all 3 strategies and generate comparison report."""
+    print("\n" + "=" * 70, file=sys.stderr)
+    print("BASELINE COMPARISON TEST", file=sys.stderr)
+    print("=" * 70 + "\n", file=sys.stderr)
 
-    parser.add_argument(
-        "--strategy", help="Strategy name (e.g., adaptive_hybrid, enriched_hybrid_llm)"
-    )
-    parser.add_argument(
-        "--queries",
-        help="Comma-separated query IDs to test (e.g., neg_001,neg_002,mh_002)",
-    )
-    parser.add_argument(
-        "--regression",
-        action="store_true",
-        help="Test on passing_queries instead of failed_queries",
-    )
-    parser.add_argument(
-        "--compare",
-        help="Compare two strategies (comma-separated, e.g., adaptive_hybrid,enriched_hybrid_llm)",
-    )
+    # Load baseline queries
+    print("Loading baseline queries...", file=sys.stderr)
+    queries = load_baseline_queries()
+    print(f"  Loaded {len(queries)} baseline questions\n", file=sys.stderr)
 
-    args = parser.parse_args()
+    # Strategies to test
+    strategies = ["adaptive_hybrid", "synthetic_variants", "enriched_hybrid_llm"]
 
-    # Validate arguments
-    if not args.strategy and not args.compare:
-        parser.print_help()
-        sys.exit(1)
+    # Run all strategies
+    all_results = {}
+    for strategy_name in strategies:
+        print(f"\n{'=' * 70}", file=sys.stderr)
+        print(f"Testing strategy: {strategy_name}", file=sys.stderr)
+        print(f"{'=' * 70}\n", file=sys.stderr)
 
-    if args.strategy and args.compare:
-        print("Error: Cannot use both --strategy and --compare", file=sys.stderr)
-        sys.exit(1)
+        try:
+            retrieved_results = run_retrieval(strategy_name, queries, top_k=5)
+            all_results[strategy_name] = retrieved_results
 
-    # Run tests
-    if args.strategy:
-        query_ids = args.queries.split(",") if args.queries else None
-        run_test(args.strategy, query_ids, args.regression)
-    elif args.compare:
-        strategies = [s.strip() for s in args.compare.split(",")]
-        for strategy in strategies:
-            print(f"\n{'=' * 60}")
-            print(f"Testing strategy: {strategy}")
-            print(f"{'=' * 60}\n")
-            run_test(strategy)
+            # Generate individual result file
+            markdown = generate_individual_markdown(
+                strategy_name, queries, retrieved_results
+            )
+            output_file = save_results(strategy_name, markdown, prefix="baseline")
+            print(f"\n✓ Saved individual results to: {output_file}", file=sys.stderr)
+
+        except Exception as e:
+            print(f"\n✗ Error testing {strategy_name}: {e}", file=sys.stderr)
+            import traceback
+
+            traceback.print_exc(file=sys.stderr)
+
+    # Generate comparison report
+    print(f"\n{'=' * 70}", file=sys.stderr)
+    print("Generating comparison report...", file=sys.stderr)
+    print(f"{'=' * 70}\n", file=sys.stderr)
+
+    comparison_markdown = generate_comparison_markdown(queries, all_results)
+    comparison_file = save_results("COMPARISON", comparison_markdown, prefix="BASELINE")
+    print(f"✓ Saved comparison report to: {comparison_file}", file=sys.stderr)
+
+    print(f"\n{'=' * 70}", file=sys.stderr)
+    print("BASELINE COMPARISON COMPLETE", file=sys.stderr)
+    print(f"{'=' * 70}\n", file=sys.stderr)
+
+    print("Generated files:", file=sys.stderr)
+    for strategy_name in strategies:
+        if strategy_name in all_results:
+            print(f"  ✓ baseline_{strategy_name}_*.md", file=sys.stderr)
+    print(f"  ✓ BASELINE_COMPARISON_*.md", file=sys.stderr)
+    print()
 
 
 if __name__ == "__main__":
