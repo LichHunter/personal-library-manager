@@ -952,7 +952,7 @@ def generate_report(results_folder: str):
             failure_categories["CHUNKING_ISSUE"].append(failure)
 
     # Find worst failures (top 10)
-    worst_failures = sorted(failures, key=lambda r: r.get("rank", 999))[:10]
+    worst_failures = sorted(failures, key=lambda r: r.get("rank") or 999)[:10]
 
     # Generate markdown report
     report_lines = []
