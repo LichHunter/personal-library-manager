@@ -3,34 +3,16 @@
 ## Context
 
 ### Problem
-The `benchmark_realistic_questions.py` script uses `anthropic.Anthropic()` directly, which requires `ANTHROPIC_API_KEY` environment variable. However, the project has an existing `call_llm()` function in `enrichment/provider.py` that uses OAuth authentication via `~/.local/share/opencode/auth.json`.
+1. The script uses `anthropic.Anthropic()` directly - needs `call_llm()` from `enrichment.provider`
+2. **The prompt was NEVER actually tested** - all previous runs failed with auth errors (0/20 success)
+3. No questions were generated - `corpus/realistic_questions.json` doesn't exist
 
-### Root Cause
-I implemented `transform_question()` using the wrong authentication pattern. Should have followed existing codebase patterns.
-
-### Solution
-Replace `anthropic.Anthropic()` calls with `call_llm()` from `enrichment.provider`.
-
----
-
-## Work Objectives
-
-### Core Objective
-Fix the authentication issue and execute the full benchmark pipeline end-to-end.
-
-### Concrete Deliverables
-1. Fixed `transform_question()` using `call_llm()`
-2. Verified `--validate-mapping` works
-3. Verified `--test-prompt` works (with real LLM calls)
-4. Generated `corpus/realistic_questions.json` (200 questions)
-5. Executed `--run-benchmark` against full corpus
-6. Generated `results/realistic_<timestamp>/benchmark_report.md`
-
-### Definition of Done
-- [ ] All 6 CLI commands execute successfully
-- [ ] 200 realistic questions generated
-- [ ] Retrieval benchmark completed
-- [ ] Failure report generated
+### What Needs to Happen
+1. Fix authentication to use `call_llm()`
+2. **Test the prompt and iterate until quality is acceptable** (≥80% pass rate)
+3. Generate 200 questions
+4. Run retrieval benchmark
+5. Generate failure report
 
 ---
 
@@ -39,23 +21,25 @@ Fix the authentication issue and execute the full benchmark pipeline end-to-end.
 - [ ] 1. Fix transform_question() to use call_llm
 
   **What to do**:
-  - Remove `import anthropic` line
-  - Add `from enrichment.provider import call_llm` import
-  - Replace the `client.messages.create()` call with `call_llm(prompt, model="claude-haiku", timeout=30)`
-  - Parse the response string (call_llm returns string, not object)
+  - Remove `import anthropic` (line 17)
+  - Add `from enrichment.provider import call_llm`
+  - Replace `client.messages.create()` with `call_llm(prompt, model="claude-haiku", timeout=30)`
+  - Handle string response (call_llm returns string, not object)
 
-  **Code change**:
+  **Exact code changes**:
+  
   ```python
-  # OLD (line 17):
+  # Line 17 - REMOVE:
   import anthropic
   
-  # NEW:
+  # Line 17 - ADD:
   from enrichment.provider import call_llm
   
-  # OLD (lines 152-163):
-  client = anthropic.Anthropic()
+  # Lines 152-163 - REPLACE entire block:
+  # OLD:
+  client = anthropic.Anthropic()  # Uses ANTHROPIC_API_KEY env var
   prompt = TRANSFORMATION_PROMPT_V2.format(original_question=original_question)
-  
+
   for attempt in range(max_retries):
       try:
           response = client.messages.create(
@@ -63,148 +47,145 @@ Fix the authentication issue and execute the full benchmark pipeline end-to-end.
               max_tokens=256,
               messages=[{"role": "user", "content": prompt}],
           )
+
           content = response.content[0].text.strip()
   
   # NEW:
   prompt = TRANSFORMATION_PROMPT_V2.format(original_question=original_question)
-  
+
   for attempt in range(max_retries):
       try:
           content = call_llm(prompt, model="claude-haiku", timeout=30)
+          
           if not content:
-              print(f"[transform_question] Attempt {attempt + 1}: Empty response")
+              print(f"[transform_question] Attempt {attempt + 1}: Empty response from LLM")
+              if attempt < max_retries - 1:
+                  time.sleep(1)
               continue
+          
           content = content.strip()
   ```
 
   **References**:
-  - `enrichment/provider.py:319-321` - `call_llm()` function signature
-  - `retrieval/query_rewrite.py:66` - Example usage: `call_llm(prompt, model="claude-haiku", timeout=5)`
-  - `benchmark_needle_haystack.py:106` - Example usage: `call_llm(prompt, model="claude-sonnet", timeout=120)`
+  - `enrichment/provider.py:319-321` - `call_llm(prompt, model, timeout)` signature
+  - `retrieval/query_rewrite.py:66` - Usage example: `call_llm(prompt, model="claude-haiku", timeout=5)`
 
   **Acceptance Criteria**:
-  - [ ] `import anthropic` removed
-  - [ ] `from enrichment.provider import call_llm` added
-  - [ ] `transform_question()` uses `call_llm()`
   - [ ] Script imports without errors: `python -c "from benchmark_realistic_questions import transform_question"`
+  - [ ] No `anthropic` in imports
 
   **Commit**: YES
-  - Message: `fix(benchmark): use call_llm for proper OAuth authentication`
+  - Message: `fix(benchmark): use call_llm for OAuth authentication`
 
 ---
 
-- [ ] 2. Run --validate-mapping
-
-  **What to do**:
-  - Run `python benchmark_realistic_questions.py --validate-mapping`
-  - Verify output shows ~97% coverage
-
-  **Acceptance Criteria**:
-  - [ ] Command executes without errors
-  - [ ] Output shows: "Questions with matching docs: ~2500 (97%+)"
-
-  **Commit**: NO (verification only)
-
----
-
-- [ ] 3. Run --test-prompt
+- [ ] 2. Test prompt quality and iterate (CRITICAL - WAS NEVER DONE)
 
   **What to do**:
   - Run `python benchmark_realistic_questions.py --test-prompt`
-  - Verify transformations work with real LLM calls
-  - Expect ≥80% quality pass rate
+  - Review the 20 transformations
+  - Check quality pass rate (target: ≥80%)
+  - **If quality is low (<80%)**: Analyze common issues and adjust `TRANSFORMATION_PROMPT_V2`
+  - Re-run until ≥80% pass rate achieved
+
+  **Quality heuristics** (already implemented):
+  1. Originality: <70% word overlap with original
+  2. Phrasing: Starts with problem language (how, why, my, can, etc.)
+  3. Conciseness: <120 characters
+  4. Realism: Contains symptoms (error, can't, doesn't, etc.)
+  5. Not "What is" pattern
+
+  **Potential prompt adjustments if quality is low**:
+  - Add more examples for failing patterns
+  - Strengthen instructions for conciseness
+  - Add negative examples ("Don't do this...")
+  - Adjust character limit guidance
 
   **Acceptance Criteria**:
-  - [ ] Command executes without auth errors
-  - [ ] 20 samples transformed
-  - [ ] Quality pass rate shown
-  - [ ] Output format matches expected (Q1, Q2, Quality score)
+  - [ ] `--test-prompt` runs without auth errors
+  - [ ] 20 samples successfully transformed
+  - [ ] Quality pass rate ≥80% (16/20 passing)
+  - [ ] If needed: prompt adjusted and re-tested
 
-  **Commit**: NO (verification only)
+  **Commit**: YES (if prompt was modified)
+  - Message: `feat(benchmark): iterate prompt for ≥80% quality pass rate`
 
 ---
 
-- [ ] 4. Run --generate 200
+- [ ] 3. Generate 200 realistic questions
 
   **What to do**:
   - Run `python benchmark_realistic_questions.py --generate 200`
   - Wait ~10-15 minutes for 200 Haiku calls
-  - Verify `corpus/realistic_questions.json` created
+  - Verify output file created
 
   **Acceptance Criteria**:
-  - [ ] Command executes without errors
   - [ ] `corpus/realistic_questions.json` exists
-  - [ ] JSON contains 200 questions
-  - [ ] Metadata shows total and high_quality counts
+  - [ ] Contains 200 questions
+  - [ ] Metadata shows high_quality count (expect ≥160 at 80% rate)
 
-  **Commit**: YES (include generated JSON)
-  - Message: `data(benchmark): generate 200 realistic questions from kubefix`
+  **Commit**: YES
+  - Message: `data(benchmark): generate 200 realistic questions`
+  - Files: `corpus/realistic_questions.json`
 
 ---
 
-- [ ] 5. Run --run-benchmark
+- [ ] 4. Run retrieval benchmark
 
   **What to do**:
   - Run `python benchmark_realistic_questions.py --run-benchmark`
-  - Wait ~30 minutes for full corpus indexing and 400 queries
-  - Verify results saved to timestamped folder
+  - Wait ~30 minutes for indexing + 400 queries
 
   **Acceptance Criteria**:
   - [ ] Loads 1,569 documents
-  - [ ] Creates ~8000+ chunks
-  - [ ] Runs 400 queries (200 × 2 variants)
-  - [ ] Creates `results/realistic_<timestamp>/retrieval_results.json`
+  - [ ] Creates timestamped results folder
+  - [ ] `results/realistic_<timestamp>/retrieval_results.json` exists
   - [ ] Summary shows Hit@1, Hit@5, MRR
 
-  **Commit**: YES (include results)
-  - Message: `results(benchmark): realistic questions retrieval results`
+  **Commit**: YES
+  - Message: `results(benchmark): realistic questions retrieval benchmark`
 
 ---
 
-- [ ] 6. Run --report
+- [ ] 5. Generate failure report
 
   **What to do**:
   - Run `python benchmark_realistic_questions.py --report results/realistic_<timestamp>`
-  - Verify report generated in same folder
 
   **Acceptance Criteria**:
-  - [ ] Command executes without errors
   - [ ] `results/realistic_<timestamp>/benchmark_report.md` created
   - [ ] Report contains: Summary, Q1 vs Q2, Failure Analysis, Worst Failures
 
-  **Commit**: YES (include report)
-  - Message: `docs(benchmark): realistic questions failure analysis report`
+  **Commit**: YES
+  - Message: `docs(benchmark): failure analysis report`
+
+---
+
+## Post-Completion Cleanup
+
+After all tasks complete successfully:
+- [ ] Remove `--test-prompt` CLI flag (no longer needed after prompt is validated)
+- [ ] Update notepad with final learnings
 
 ---
 
 ## Success Criteria
 
-### Verification Commands
 ```bash
 cd poc/chunking_benchmark_v2
 
-# Task 1: Verify fix
-python -c "from benchmark_realistic_questions import transform_question; print('OK')"
+# Verify files exist
+ls -la corpus/realistic_questions.json
+ls -la results/realistic_*/retrieval_results.json
+ls -la results/realistic_*/benchmark_report.md
 
-# Task 2: Validate mapping
-python benchmark_realistic_questions.py --validate-mapping
-
-# Task 3: Test prompt quality
-python benchmark_realistic_questions.py --test-prompt
-
-# Task 4: Generate questions
-python benchmark_realistic_questions.py --generate 200
-
-# Task 5: Run benchmark
-python benchmark_realistic_questions.py --run-benchmark
-
-# Task 6: Generate report
-python benchmark_realistic_questions.py --report results/realistic_<timestamp>
+# Verify question count
+python -c "import json; d=json.load(open('corpus/realistic_questions.json')); print(f'Questions: {len(d[\"questions\"])}, High quality: {d[\"metadata\"][\"high_quality\"]}')"
 ```
 
 ### Final Checklist
-- [ ] No `anthropic` import in script
-- [ ] Uses `call_llm` from `enrichment.provider`
-- [ ] 200 questions generated with ≥80% quality
-- [ ] Retrieval benchmark completed
-- [ ] Report generated with failure analysis
+- [ ] Auth fixed (uses call_llm, not anthropic.Anthropic)
+- [ ] Prompt tested and validated (≥80% quality)
+- [ ] 200 questions generated
+- [ ] Retrieval benchmark completed  
+- [ ] Failure report generated
