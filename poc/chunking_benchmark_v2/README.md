@@ -2,7 +2,7 @@
 
 Benchmark for evaluating chunking and retrieval strategies for RAG systems.
 
-## Current Status (2026-01-26)
+## Current Status (2026-01-27)
 
 **Recommended Strategy**: `enriched_hybrid_llm`
 
@@ -10,6 +10,7 @@ Benchmark for evaluating chunking and retrieval strategies for RAG systems.
 |-----------|-----------|-----------|-------|
 | Baseline (human-style queries) | 90% (18/20) | 8.45/10 | Typical documentation questions |
 | Adversarial (hard queries) | 65% (13/20) | 7.55/10 | Version lookups, vocab mismatches |
+| **Realistic questions** | **40.75%** (163/400) | N/A | Natural user queries from kubefix |
 
 **Strategy Components**:
 - BM25 sparse retrieval
@@ -72,11 +73,34 @@ python benchmark_needle_haystack.py --questions corpus/needle_questions.json --r
 | NEGATION | 60% | Mixed results on constraint patterns |
 | VOCABULARY | 60% | Synonym matching partially works |
 
+### Realistic Questions Benchmark (2026-01-27)
+
+**Purpose**: Measure retrieval performance on natural user queries that don't use exact documentation terminology.
+
+| Metric | Value |
+|--------|-------|
+| Corpus | 1,569 docs → 7,269 chunks |
+| Questions | 200 (400 queries with 2 variants) |
+| Hit@1 | 20.25% |
+| Hit@5 | 40.75% |
+| MRR | 0.274 |
+
+**Key Finding**: 100% of failures are **VOCABULARY_MISMATCH** - realistic user questions use completely different terminology than documentation. This is the hardest benchmark, confirming vocabulary gap is the primary retrieval challenge.
+
+**Methodology**:
+1. Sourced 200 questions from kubefix dataset (K8s Q&A with ground truth docs)
+2. Transformed bot-like questions to realistic user queries using Claude Haiku
+3. Generated 2 variants per question (q1, q2) for robustness
+4. Evaluated against full 1,569-doc Kubernetes corpus
+
+**Results**: `results/realistic_2026-01-27_110955/`
+
 ## Known Weaknesses
 
-1. **Frontmatter metadata**: Version numbers in YAML frontmatter not captured by semantic embeddings
-2. **Extreme vocabulary mismatches**: Query terms too different from document terms
-3. **Chunking boundaries**: Related info sometimes split across chunks
+1. **Vocabulary mismatch** (CRITICAL): Users describe problems with natural language; docs use technical terms. Realistic benchmark shows 59% failure rate due to this.
+2. **Frontmatter metadata**: Version numbers in YAML frontmatter not captured by semantic embeddings
+3. **Extreme vocabulary mismatches**: Query terms too different from document terms
+4. **Chunking boundaries**: Related info sometimes split across chunks
 
 ## Recommendations for Improvement
 
