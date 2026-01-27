@@ -14,8 +14,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-import anthropic
 from datasets import load_dataset
+
+from enrichment.provider import call_llm
 
 
 # Path to the corpus directory
@@ -149,18 +150,21 @@ def transform_question(original_question: str, max_retries: int = 3) -> Optional
             "q2": "change application settings without redeploying pods"
         }
     """
-    client = anthropic.Anthropic()  # Uses ANTHROPIC_API_KEY env var
     prompt = TRANSFORMATION_PROMPT_V2.format(original_question=original_question)
 
     for attempt in range(max_retries):
         try:
-            response = client.messages.create(
-                model="claude-3-5-haiku-latest",
-                max_tokens=256,
-                messages=[{"role": "user", "content": prompt}],
-            )
+            content = call_llm(prompt, model="claude-haiku", timeout=30)
 
-            content = response.content[0].text.strip()
+            if not content:
+                print(
+                    f"[transform_question] Attempt {attempt + 1}: Empty response from LLM"
+                )
+                if attempt < max_retries - 1:
+                    time.sleep(1)
+                continue
+
+            content = content.strip()
 
             # Handle markdown code blocks
             if content.startswith("```"):
