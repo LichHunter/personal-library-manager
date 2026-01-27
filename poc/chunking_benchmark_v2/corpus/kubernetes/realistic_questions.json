@@ -1,0 +1,2011 @@
+{
+  "metadata": {
+    "source": "kubefix",
+    "model": "claude-3-5-haiku-latest",
+    "prompt_version": "v2",
+    "total": 200,
+    "high_quality": 198
+  },
+  "questions": [
+    {
+      "original_instruction": "What is the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "original_source": "/content/en/docs/concepts/services-networking/gateway.md",
+      "our_doc_path": "concepts_services-networking_gateway.md",
+      "doc_id": "concepts_services-networking_gateway",
+      "realistic_q1": "how do i connect my cluster's load balancers and network configurations with gateway resources",
+      "realistic_q2": "which cloud provider configurations are needed to make my gateway api work correctly",
+      "quality_score": 0.7291666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the Kubernetes approach to dynamic port allocation?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/networking.md",
+      "our_doc_path": "concepts_cluster-administration_networking.md",
+      "doc_id": "concepts_cluster-administration_networking",
+      "realistic_q1": "why do my service ports keep changing between deployments",
+      "realistic_q2": "can't access my microservice because its port is randomly assigned each time",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does a SubjectAccessReview object describe?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/webhook.md",
+      "our_doc_path": "reference_access-authn-authz_webhook.md",
+      "doc_id": "reference_access-authn-authz_webhook",
+      "realistic_q1": "how to check if my service account has permission to do something in kubernetes",
+      "realistic_q2": "why is my pipeline failing with a permission denied error when deploying",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between a mutating webhook and a validating webhook?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/extensible-admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_extensible-admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "realistic_q1": "how to automatically modify incoming pod specs before they're created in my cluster",
+      "realistic_q2": "prevent developers from deploying containers without specific labels or security settings",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does the NamespaceAutoProvision admission controller do?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "realistic_q1": "why can't my team create resources without manually creating namespaces first",
+      "realistic_q2": "how to automatically set up default namespaces for new projects without manual intervention",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "original_source": "/content/en/docs/concepts/storage/persistent-volumes.md",
+      "our_doc_path": "concepts_storage_persistent-volumes.md",
+      "doc_id": "concepts_storage_persistent-volumes",
+      "realistic_q1": "is there a way to increase storage size for my database without losing data",
+      "realistic_q2": "why can't I resize my volume claim after initial provisioning",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the two default user accounts for Windows containers?",
+      "original_source": "/content/en/docs/concepts/security/windows-security.md",
+      "our_doc_path": "concepts_security_windows-security.md",
+      "doc_id": "concepts_security_windows-security",
+      "realistic_q1": "why can't I log into my windows container as administrator",
+      "realistic_q2": "how to manage default user accounts in windows container images",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of using an Indexed Job in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/job/indexed-parallel-processing-static.md",
+      "our_doc_path": "tasks_job_indexed-parallel-processing-static.md",
+      "doc_id": "tasks_job_indexed-parallel-processing-static",
+      "realistic_q1": "how to run a parallel batch job where each pod needs a unique index",
+      "realistic_q2": "restart failed pod in a batch processing job without redoing entire workload",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the etcd API and what risks does it pose to the cluster's security?",
+      "original_source": "/content/en/docs/concepts/security/api-server-bypass-risks.md",
+      "our_doc_path": "concepts_security_api-server-bypass-risks.md",
+      "doc_id": "concepts_security_api-server-bypass-risks",
+      "realistic_q1": "why does my kubernetes cluster hang when multiple nodes go offline simultaneously",
+      "realistic_q2": "how to protect against potential data corruption if etcd nodes lose connection",
+      "quality_score": 0.7307692307692308,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of a signer in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/tls/managing-tls-in-a-cluster.md",
+      "our_doc_path": "tasks_tls_managing-tls-in-a-cluster.md",
+      "doc_id": "tasks_tls_managing-tls-in-a-cluster",
+      "realistic_q1": "why can't my certificate signing requests get automatically approved in kubernetes",
+      "realistic_q2": "how to manage tls certificates for my services without manual intervention",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What tools are required to verify Kubernetes artifacts?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/verify-signed-artifacts.md",
+      "our_doc_path": "tasks_administer-cluster_verify-signed-artifacts.md",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "realistic_q1": "how can I quickly check if my kubernetes yaml files are valid before deploying",
+      "realistic_q2": "getting weird errors in production, want to validate my deployment configs locally",
+      "quality_score": 0.6875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What protocol does Kubernetes components use to emit traces?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/system-traces.md",
+      "our_doc_path": "concepts_cluster-administration_system-traces.md",
+      "doc_id": "concepts_cluster-administration_system-traces",
+      "realistic_q1": "why can't I see my application's logs and traces in the monitoring dashboard",
+      "realistic_q2": "how to collect and track performance metrics from my kubernetes cluster",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the format in which Kubernetes components emit metrics?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/system-metrics.md",
+      "our_doc_path": "concepts_cluster-administration_system-metrics.md",
+      "doc_id": "concepts_cluster-administration_system-metrics",
+      "realistic_q1": "how to collect and monitor resource usage for my kubernetes cluster",
+      "realistic_q2": "my prometheus dashboard is not showing kubernetes component performance metrics",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the different types of isolation in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/security/multi-tenancy.md",
+      "our_doc_path": "concepts_security_multi-tenancy.md",
+      "doc_id": "concepts_security_multi-tenancy",
+      "realistic_q1": "how to prevent one container from consuming all resources of my node",
+      "realistic_q2": "stop my team's pods from interfering with critical system services",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is Attribute-based access control (ABAC) and how does it work?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/abac.md",
+      "our_doc_path": "reference_access-authn-authz_abac.md",
+      "doc_id": "reference_access-authn-authz_abac",
+      "realistic_q1": "why can't I make granular permissions based on user attributes like job title",
+      "realistic_q2": "kubernetes access control too rigid, how to define complex authorization rules",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of the webhook token authenticator in the authentication process?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/authentication.md",
+      "our_doc_path": "reference_access-authn-authz_authentication.md",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "why can't my CI/CD pipeline authenticate with kubernetes cluster after rotating service account tokens",
+      "realistic_q2": "getting authentication errors when trying to call kubernetes api from external tool",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the authentication flow in the aggregation layer?",
+      "original_source": "/content/en/docs/tasks/extend-kubernetes/configure-aggregation-layer.md",
+      "our_doc_path": "tasks_extend-kubernetes_configure-aggregation-layer.md",
+      "doc_id": "tasks_extend-kubernetes_configure-aggregation-layer",
+      "realistic_q1": "why can't my custom API server authenticate requests from kubernetes cluster",
+      "realistic_q2": "my extension API is not showing up in kubectl get api-services",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does sourcing the completion script in your shell enable?",
+      "original_source": "/content/en/docs/tasks/tools/included/optional-kubectl-configs-fish.md",
+      "our_doc_path": "tasks_tools_included_optional-kubectl-configs-fish.md",
+      "doc_id": "tasks_tools_included_optional-kubectl-configs-fish",
+      "realistic_q1": "how to make kubectl commands autocomplete in my terminal",
+      "realistic_q2": "getting tired of typing full kubernetes command names every time",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is kube proxy?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/proxies.md",
+      "our_doc_path": "concepts_cluster-administration_proxies.md",
+      "doc_id": "concepts_cluster-administration_proxies",
+      "realistic_q1": "why can't my services communicate between nodes in my cluster",
+      "realistic_q2": "how kubernetes routes traffic to the right pod when I have multiple replicas",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you use `kubectl` to create an object from a configuration file?",
+      "original_source": "/content/en/docs/tasks/manage-kubernetes-objects/imperative-config.md",
+      "our_doc_path": "tasks_manage-kubernetes-objects_imperative-config.md",
+      "doc_id": "tasks_manage-kubernetes-objects_imperative-config",
+      "realistic_q1": "how do i deploy my yaml file from the command line",
+      "realistic_q2": "getting error when trying to apply kubernetes configuration from file",
+      "quality_score": 0.7115384615384616,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you suspend and resume a Job in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/workloads/controllers/job.md",
+      "our_doc_path": "concepts_workloads_controllers_job.md",
+      "doc_id": "concepts_workloads_controllers_job",
+      "realistic_q1": "my kubernetes batch job is stuck midway and I want to pause it without deleting",
+      "realistic_q2": "how to temporarily stop a long-running job and resume it later without losing progress",
+      "quality_score": 0.95,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "original_source": "/content/en/docs/tasks/job/fine-parallel-processing-work-queue.md",
+      "our_doc_path": "tasks_job_fine-parallel-processing-work-queue.md",
+      "doc_id": "tasks_job_fine-parallel-processing-work-queue",
+      "realistic_q1": "how to see what my job failed and why it's not completing",
+      "realistic_q2": "can't figure out what's happening inside my worker pod during a batch job",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the four supported Topology Manager policies?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/topology-manager.md",
+      "our_doc_path": "tasks_administer-cluster_topology-manager.md",
+      "doc_id": "tasks_administer-cluster_topology-manager",
+      "realistic_q1": "why are my high performance containers not getting scheduled on the right cpu cores",
+      "realistic_q2": "can't control how cpu and memory resources get allocated across my numa nodes",
+      "quality_score": 0.9375,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "Why do we need admission controllers?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "realistic_q1": "how to prevent developers from deploying containers with latest tag in production",
+      "realistic_q2": "why can't I stop someone from using root containers in my cluster",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a ServiceAccount in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/configure-service-account.md",
+      "our_doc_path": "tasks_configure-pod-container_configure-service-account.md",
+      "doc_id": "tasks_configure-pod-container_configure-service-account",
+      "realistic_q1": "why can't my pod access kubernetes api when running inside the cluster",
+      "realistic_q2": "error accessing cloud resources from inside my application container",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What argument does the kube-controller-manager process accept to control certificate issuance duration?",
+      "original_source": "/content/en/docs/tasks/tls/certificate-rotation.md",
+      "our_doc_path": "tasks_tls_certificate-rotation.md",
+      "doc_id": "tasks_tls_certificate-rotation",
+      "realistic_q1": "how long are my kubernetes service account tokens valid before they expire",
+      "realistic_q2": "certificates for my cluster keep getting automatically rotated too frequently",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What happens if Kubernetes is installed with kubeadm?",
+      "original_source": "/content/en/docs/setup/best-practices/certificates.md",
+      "our_doc_path": "setup_best-practices_certificates.md",
+      "doc_id": "setup_best-practices_certificates",
+      "realistic_q1": "how do I set up a kubernetes cluster on my servers without managed cloud services",
+      "realistic_q2": "what steps are needed to get a working kubernetes cluster from scratch",
+      "quality_score": 0.71875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a Lease object in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/architecture/leases.md",
+      "our_doc_path": "concepts_architecture_leases.md",
+      "doc_id": "concepts_architecture_leases",
+      "realistic_q1": "why do some of my pods have weird leader election behavior when scaling",
+      "realistic_q2": "kubernetes controller keeps flapping between instances in my distributed service",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can users convert the volume mode of a Snapshot?",
+      "original_source": "/content/en/docs/concepts/storage/volume-snapshots.md",
+      "our_doc_path": "concepts_storage_volume-snapshots.md",
+      "doc_id": "concepts_storage_volume-snapshots",
+      "realistic_q1": "restore data from a snapshot but my volume mode is different from original",
+      "realistic_q2": "how to change storage type when recovering from a volume backup",
+      "quality_score": 0.425,
+      "quality_pass": false
+    },
+    {
+      "original_instruction": "How do you verify image signatures?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/verify-signed-artifacts.md",
+      "our_doc_path": "tasks_administer-cluster_verify-signed-artifacts.md",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "realistic_q1": "how to prevent unauthorized docker images from running in my kubernetes cluster",
+      "realistic_q2": "error when trying to ensure only trusted container images are deployed",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the default encryption provider in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+      "our_doc_path": "tasks_administer-cluster_encrypt-data.md",
+      "doc_id": "tasks_administer-cluster_encrypt-data",
+      "realistic_q1": "how do I make sure my sensitive data in kubernetes isn't stored as plain text",
+      "realistic_q2": "secrets in my cluster look like they might be readable by someone they shouldn't be",
+      "quality_score": 0.71875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between external CA and internal CA in kubeadm?",
+      "original_source": "/content/en/docs/setup/best-practices/certificates.md",
+      "our_doc_path": "setup_best-practices_certificates.md",
+      "doc_id": "setup_best-practices_certificates",
+      "realistic_q1": "how do i set up custom certificate authority for my kubernetes cluster without using default kubeadm certs",
+      "realistic_q2": "keep getting ssl verification errors when connecting to cluster from external machines",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does the External Health Monitor watch for?",
+      "original_source": "/content/en/docs/concepts/storage/volume-health-monitoring.md",
+      "our_doc_path": "concepts_storage_volume-health-monitoring.md",
+      "doc_id": "concepts_storage_volume-health-monitoring",
+      "realistic_q1": "why are my pods not getting marked unhealthy even when my app stops responding",
+      "realistic_q2": "how can kubernetes automatically detect and replace my failing application containers",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What happens to BestEffort Pods when a Node comes under resource pressure?",
+      "original_source": "/content/en/docs/concepts/workloads/pods/pod-qos.md",
+      "our_doc_path": "concepts_workloads_pods_pod-qos.md",
+      "doc_id": "concepts_workloads_pods_pod-qos",
+      "realistic_q1": "why are my low-priority pods getting killed suddenly when node is running out of memory",
+      "realistic_q2": "kubernetes evicting my background jobs first when server resources are tight",
+      "quality_score": 0.6875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you determine if DNS horizontal autoscaling is already enabled?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/dns-horizontal-autoscaling.md",
+      "our_doc_path": "tasks_administer-cluster_dns-horizontal-autoscaling.md",
+      "doc_id": "tasks_administer-cluster_dns-horizontal-autoscaling",
+      "realistic_q1": "how can I check if dns scaling is working in my cluster",
+      "realistic_q2": "why are my dns pods not automatically scaling with cluster size",
+      "quality_score": 0.6363636363636364,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the equivalent of RunAsUser in Windows Pods or containers?",
+      "original_source": "/content/en/docs/concepts/security/windows-security.md",
+      "our_doc_path": "concepts_security_windows-security.md",
+      "doc_id": "concepts_security_windows-security",
+      "realistic_q1": "how to run kubernetes pods as specific windows user account",
+      "realistic_q2": "my windows container is running with wrong permissions and can't access files",
+      "quality_score": 0.9545454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the different types of isolation in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/security/multi-tenancy.md",
+      "our_doc_path": "concepts_security_multi-tenancy.md",
+      "doc_id": "concepts_security_multi-tenancy",
+      "realistic_q1": "how to prevent my payment service pods from interfering with other microservices",
+      "realistic_q2": "my development team needs separate compute resources from production workloads",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the importance of having a default memory limit in a namespace?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/manage-resources/memory-default-namespace.md",
+      "our_doc_path": "tasks_administer-cluster_manage-resources_memory-default-namespace.md",
+      "doc_id": "tasks_administer-cluster_manage-resources_memory-default-namespace",
+      "realistic_q1": "my pods keep getting killed when memory gets tight and I can't understand why",
+      "realistic_q2": "prevent one team's greedy containers from consuming all cluster resources",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "When was PodSecurityPolicy removed from Kubernetes?",
+      "original_source": "/content/en/docs/concepts/security/pod-security-policy.md",
+      "our_doc_path": "concepts_security_pod-security-policy.md",
+      "doc_id": "concepts_security_pod-security-policy",
+      "realistic_q1": "how to prevent containers from running as root in my cluster",
+      "realistic_q2": "my security team is complaining about pod privilege escalation risks",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you configure the kubelet cgroup driver?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver.md",
+      "our_doc_path": "tasks_administer-cluster_kubeadm_configure-cgroup-driver.md",
+      "doc_id": "tasks_administer-cluster_kubeadm_configure-cgroup-driver",
+      "realistic_q1": "why are my kubernetes nodes constantly restarting and showing cgroup errors",
+      "realistic_q2": "docker and kubernetes using different resource management settings causing pod failures",
+      "quality_score": 0.96875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the process to rotate a decryption key in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/encrypt-data.md",
+      "our_doc_path": "tasks_administer-cluster_encrypt-data.md",
+      "doc_id": "tasks_administer-cluster_encrypt-data",
+      "realistic_q1": "how to replace my cluster's encryption key without breaking existing secrets",
+      "realistic_q2": "kubernetes secrets showing decryption errors after key rotation",
+      "quality_score": 0.9545454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of PowerShell auto-completion?",
+      "original_source": "/content/en/docs/tasks/tools/included/optional-kubectl-configs-pwsh.md",
+      "our_doc_path": "tasks_tools_included_optional-kubectl-configs-pwsh.md",
+      "doc_id": "tasks_tools_included_optional-kubectl-configs-pwsh",
+      "realistic_q1": "how do i quickly type long complex powershell commands without typing everything",
+      "realistic_q2": "why does pressing tab sometimes show me weird suggestions in powershell terminal",
+      "quality_score": 0.7142857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are subjects in Kubernetes RBAC?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "why can't my teammate access the production namespace even after getting credentials",
+      "realistic_q2": "how to give a service account permission to list and create deployments",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the Kubernetes API and what does it do?",
+      "original_source": "/content/en/docs/concepts/overview/kubernetes-api.md",
+      "our_doc_path": "concepts_overview_kubernetes-api.md",
+      "doc_id": "concepts_overview_kubernetes-api",
+      "realistic_q1": "how do I programmatically manage my kubernetes resources without using kubectl",
+      "realistic_q2": "can't update deployment scale from my custom monitoring script",
+      "quality_score": 0.7222222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you clean up after completing the exercise?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/extended-resource.md",
+      "our_doc_path": "tasks_configure-pod-container_extended-resource.md",
+      "doc_id": "tasks_configure-pod-container_extended-resource",
+      "realistic_q1": "how to remove all kubernetes resources i created without deleting everything manually",
+      "realistic_q2": "what's the fastest way to clean up my test environment after running a demo",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the primary mode of communication between containerized applications managed by Kubernetes?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/environment-variable-expose-pod-information.md",
+      "our_doc_path": "tasks_inject-data-application_environment-variable-expose-pod-information.md",
+      "doc_id": "tasks_inject-data-application_environment-variable-expose-pod-information",
+      "realistic_q1": "how do my microservices communicate and discover each other inside the cluster",
+      "realistic_q2": "pods can't seem to talk to each other even though they're in the same namespace",
+      "quality_score": 0.7307692307692308,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the main aim of Services in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/services-networking/service.md",
+      "our_doc_path": "concepts_services-networking_service.md",
+      "doc_id": "concepts_services-networking_service",
+      "realistic_q1": "why can't my containerized web app be accessed from outside the cluster",
+      "realistic_q2": "how to route traffic from multiple pods with same application to a single endpoint",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of a LimitRange in a namespace?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/manage-resources/memory-constraint-namespace.md",
+      "our_doc_path": "tasks_administer-cluster_manage-resources_memory-constraint-namespace.md",
+      "doc_id": "tasks_administer-cluster_manage-resources_memory-constraint-namespace",
+      "realistic_q1": "how to prevent a single container from consuming all resources in my shared namespace",
+      "realistic_q2": "why are my small pods getting killed when larger pods are running fine",
+      "quality_score": 0.9444444444444444,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you add extended resources to the `resources` parameter in the `RequestedToCapacityRatio` strategy?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/resource-bin-packing.md",
+      "our_doc_path": "concepts_scheduling-eviction_resource-bin-packing.md",
+      "doc_id": "concepts_scheduling-eviction_resource-bin-packing",
+      "realistic_q1": "how to allocate custom hardware resources like GPU across my cluster nodes",
+      "realistic_q2": "kubernetes not scheduling pods with special hardware requirements",
+      "quality_score": 0.9423076923076923,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does the `--to-revision` flag do in `kubectl rollout undo daemonset <daemonset-name> --to-revision=<revision>`?",
+      "original_source": "/content/en/docs/tasks/manage-daemon/rollback-daemon-set.md",
+      "our_doc_path": "tasks_manage-daemon_rollback-daemon-set.md",
+      "doc_id": "tasks_manage-daemon_rollback-daemon-set",
+      "realistic_q1": "how to roll back to a specific version of my daemonset without reverting to the last deployed version",
+      "realistic_q2": "accidentally deployed a bad daemonset update and want to go back to an older working revision",
+      "quality_score": 0.9615384615384616,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of running Kubernetes across multiple zones?",
+      "original_source": "/content/en/docs/setup/best-practices/multiple-zones.md",
+      "our_doc_path": "setup_best-practices_multiple-zones.md",
+      "doc_id": "setup_best-practices_multiple-zones",
+      "realistic_q1": "how to keep my application running if an entire data center goes down",
+      "realistic_q2": "prevent service outage when one cloud provider zone fails",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of draining a node during a Kubernetes cluster upgrade?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade.md",
+      "our_doc_path": "tasks_administer-cluster_kubeadm_kubeadm-upgrade.md",
+      "doc_id": "tasks_administer-cluster_kubeadm_kubeadm-upgrade",
+      "realistic_q1": "how to safely remove a node from cluster without killing running workloads",
+      "realistic_q2": "need to replace server hardware without causing application downtime",
+      "quality_score": 0.9375,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you monitor the status of a HorizontalPodAutoscaler?",
+      "original_source": "/content/en/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough.md",
+      "our_doc_path": "tasks_run-application_horizontal-pod-autoscale-walkthrough.md",
+      "doc_id": "tasks_run-application_horizontal-pod-autoscale-walkthrough",
+      "realistic_q1": "why are my pods not scaling up during high traffic",
+      "realistic_q2": "how can I understand if my autoscaling is working correctly",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are some use cases for a Job in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/workloads/controllers/job.md",
+      "our_doc_path": "concepts_workloads_controllers_job.md",
+      "doc_id": "concepts_workloads_controllers_job",
+      "realistic_q1": "how to run a database migration task that completes and then stops",
+      "realistic_q2": "run batch processing script that needs to finish without keeping container running forever",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between `nodeSelector` and `podAffinity`?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+      "our_doc_path": "concepts_scheduling-eviction_assign-pod-node.md",
+      "doc_id": "concepts_scheduling-eviction_assign-pod-node",
+      "realistic_q1": "why are my pods always landing on the same node when i have multiple servers",
+      "realistic_q2": "control which nodes my critical services run on to improve reliability",
+      "quality_score": 0.71875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of ETag in the Kubernetes Discovery API?",
+      "original_source": "/content/en/docs/concepts/overview/kubernetes-api.md",
+      "our_doc_path": "concepts_overview_kubernetes-api.md",
+      "doc_id": "concepts_overview_kubernetes-api",
+      "realistic_q1": "why does my api client keep getting 304 not modified when fetching kubernetes resources",
+      "realistic_q2": "how to handle caching and detect changes in kubernetes api resources efficiently",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are some challenges of using OpenID Connect tokens in Kubernetes?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/authentication.md",
+      "our_doc_path": "reference_access-authn-authz_authentication.md",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "why can't my users log in to kubernetes dashboard after setting up sso",
+      "realistic_q2": "getting authentication errors when external identity provider changes token format",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the VerticalPodAutoscaler used for?",
+      "original_source": "/content/en/docs/setup/best-practices/cluster-large.md",
+      "our_doc_path": "setup_best-practices_cluster-large.md",
+      "doc_id": "setup_best-practices_cluster-large",
+      "realistic_q1": "why are my pods constantly running out of cpu and getting evicted",
+      "realistic_q2": "automatically adjust container resources based on actual usage without manual tuning",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the default value for percentageOfNodesToScore if not specified?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/scheduler-perf-tuning.md",
+      "our_doc_path": "concepts_scheduling-eviction_scheduler-perf-tuning.md",
+      "doc_id": "concepts_scheduling-eviction_scheduler-perf-tuning",
+      "realistic_q1": "why is my kubernetes cluster scheduling pods so slowly across large number of nodes",
+      "realistic_q2": "how does kubernetes decide which nodes to consider when placing new pods",
+      "quality_score": 0.725,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How are relative command paths interpreted in kubectl config files?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/authentication.md",
+      "our_doc_path": "reference_access-authn-authz_authentication.md",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "why can't I run kubectl commands after updating my kubeconfig file",
+      "realistic_q2": "my script is failing to connect to kubernetes cluster when running from different directory",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you assign a ServiceAccount to a Pod in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/security/service-accounts.md",
+      "our_doc_path": "concepts_security_service-accounts.md",
+      "doc_id": "concepts_security_service-accounts",
+      "realistic_q1": "why can't my pod access cloud storage when running in kubernetes",
+      "realistic_q2": "how to give my application permissions to interact with other kubernetes resources",
+      "quality_score": 0.95,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you create a Pod that uses a Volume?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/configure-volume-storage.md",
+      "our_doc_path": "tasks_configure-pod-container_configure-volume-storage.md",
+      "doc_id": "tasks_configure-pod-container_configure-volume-storage",
+      "realistic_q1": "my container can't access external data files it needs at runtime",
+      "realistic_q2": "how to mount a local directory from my host into a kubernetes pod",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you uncordon a node after upgrading?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kubeadm/upgrading-linux-nodes.md",
+      "our_doc_path": "tasks_administer-cluster_kubeadm_upgrading-linux-nodes.md",
+      "doc_id": "tasks_administer-cluster_kubeadm_upgrading-linux-nodes",
+      "realistic_q1": "why can't i schedule new pods on a node after kubernetes cluster upgrade",
+      "realistic_q2": "how to make my node available for workloads after maintenance",
+      "quality_score": 0.90625,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does the Kubernetes abstraction solve for ephemeral files in a container?",
+      "original_source": "/content/en/docs/concepts/storage/volumes.md",
+      "our_doc_path": "concepts_storage_volumes.md",
+      "doc_id": "concepts_storage_volumes",
+      "realistic_q1": "how to keep log files when my container restarts or gets rescheduled",
+      "realistic_q2": "my application needs temporary files that survive container restarts",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the KubeletInUserNamespace feature gate?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kubelet-in-userns.md",
+      "our_doc_path": "tasks_administer-cluster_kubelet-in-userns.md",
+      "doc_id": "tasks_administer-cluster_kubelet-in-userns",
+      "realistic_q1": "why can't i run kubernetes containers as a non-root user on my linux system",
+      "realistic_q2": "getting permission errors when trying to run containers without root privileges",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the use of KMS encryption and per-object encryption keys?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kms-provider.md",
+      "our_doc_path": "tasks_administer-cluster_kms-provider.md",
+      "doc_id": "tasks_administer-cluster_kms-provider",
+      "realistic_q1": "how to prevent other teams from reading my secret data in kubernetes",
+      "realistic_q2": "is my sensitive data really secure when stored in kubernetes secrets",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the available fields in resourceFieldRef?",
+      "original_source": "/content/en/docs/concepts/workloads/pods/downward-api.md",
+      "our_doc_path": "concepts_workloads_pods_downward-api.md",
+      "doc_id": "concepts_workloads_pods_downward-api",
+      "realistic_q1": "how to get actual memory used by container for monitoring and troubleshooting",
+      "realistic_q2": "can't configure resource request dynamically in my container's environment variables",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are some examples of `kubectl` commands for creating roles and clusterroles?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "how to give my frontend team read-only access to only their pods",
+      "realistic_q2": "user can't view deployments in our dev namespace, how to fix permissions",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does scheduling refer to in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/kube-scheduler.md",
+      "our_doc_path": "concepts_scheduling-eviction_kube-scheduler.md",
+      "doc_id": "concepts_scheduling-eviction_kube-scheduler",
+      "realistic_q1": "why are my pods stuck in pending state and not getting placed on any node",
+      "realistic_q2": "control which nodes my containers run on based on server hardware or location",
+      "quality_score": 0.9642857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the kubectl-convert plugin?",
+      "original_source": "/content/en/docs/tasks/tools/install-kubectl-macos.md",
+      "our_doc_path": "tasks_tools_install-kubectl-macos.md",
+      "doc_id": "tasks_tools_install-kubectl-macos",
+      "realistic_q1": "how to update my old kubernetes yaml files to work with newer api versions",
+      "realistic_q2": "convert manifest from one kubernetes version to another without manual rewriting",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What storage functionality is not supported on Windows nodes?",
+      "original_source": "/content/en/docs/concepts/storage/windows-storage.md",
+      "our_doc_path": "concepts_storage_windows-storage.md",
+      "doc_id": "concepts_storage_windows-storage",
+      "realistic_q1": "why can't my windows worker nodes use certain storage types in kubernetes",
+      "realistic_q2": "which volume types won't work when I deploy to windows server containers",
+      "quality_score": 0.9444444444444444,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you define container environment variables using Secret data in a YAML file?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/distribute-credentials-secure.md",
+      "our_doc_path": "tasks_inject-data-application_distribute-credentials-secure.md",
+      "doc_id": "tasks_inject-data-application_distribute-credentials-secure",
+      "realistic_q1": "how to inject database password into my container without putting secrets in git",
+      "realistic_q2": "my app can't read sensitive credentials when deployed to kubernetes",
+      "quality_score": 0.9464285714285714,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are rules in admission webhooks?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/extensible-admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_extensible-admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "realistic_q1": "how to prevent creating pods that don't meet my security requirements",
+      "realistic_q2": "block deployment of containers with specific configuration or tags automatically",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a gitRepo volume type?",
+      "original_source": "/content/en/docs/concepts/storage/volumes.md",
+      "our_doc_path": "concepts_storage_volumes.md",
+      "doc_id": "concepts_storage_volumes",
+      "realistic_q1": "how to mount a git repository directly into a container during deployment",
+      "realistic_q2": "pull specific branch or commit from github into my kubernetes pod",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the QoS class assigned to a Pod that has no memory or CPU limits or requests?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/quality-service-pod.md",
+      "our_doc_path": "tasks_configure-pod-container_quality-service-pod.md",
+      "doc_id": "tasks_configure-pod-container_quality-service-pod",
+      "realistic_q1": "why are some of my pods getting killed first during high memory pressure",
+      "realistic_q2": "how does kubernetes decide which containers to evict when node runs out of resources",
+      "quality_score": 0.7352941176470589,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between a memory request and a memory limit in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/manage-resources/memory-default-namespace.md",
+      "our_doc_path": "tasks_administer-cluster_manage-resources_memory-default-namespace.md",
+      "doc_id": "tasks_administer-cluster_manage-resources_memory-default-namespace",
+      "realistic_q1": "why are my pods getting killed when they seem to have plenty of memory available",
+      "realistic_q2": "how to prevent out-of-memory errors for my memory-intensive application",
+      "quality_score": 0.7291666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What happens to long-lived ServiceAccount tokens?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/service-accounts-admin.md",
+      "our_doc_path": "reference_access-authn-authz_service-accounts-admin.md",
+      "doc_id": "reference_access-authn-authz_service-accounts-admin",
+      "realistic_q1": "my service account tokens are expiring and breaking my integrations with external services",
+      "realistic_q2": "how to keep kubernetes service account credentials valid for more than a few hours",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is declarative object configuration in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/manage-kubernetes-objects/declarative-config.md",
+      "our_doc_path": "tasks_manage-kubernetes-objects_declarative-config.md",
+      "doc_id": "tasks_manage-kubernetes-objects_declarative-config",
+      "realistic_q1": "how to manage kubernetes resources with version-controlled yaml files instead of manual commands",
+      "realistic_q2": "keep getting conflicts when multiple team members update the same deployment",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the naming convention for service account usernames in ABAC?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/abac.md",
+      "our_doc_path": "reference_access-authn-authz_abac.md",
+      "doc_id": "reference_access-authn-authz_abac",
+      "realistic_q1": "why are my pods failing with authentication errors related to service accounts",
+      "realistic_q2": "how to set up correct permissions for service accounts to access kubernetes resources",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of `kube-controller-manager` in Leader Migration?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/controller-manager-leader-migration.md",
+      "our_doc_path": "tasks_administer-cluster_controller-manager-leader-migration.md",
+      "doc_id": "tasks_administer-cluster_controller-manager-leader-migration",
+      "realistic_q1": "why does my kubernetes cluster seem stuck during controller failover",
+      "realistic_q2": "how to prevent downtime when a control plane node goes offline",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the maximum length for a DNS Subdomain Name?",
+      "original_source": "/content/en/docs/concepts/overview/working-with-objects/names.md",
+      "our_doc_path": "concepts_overview_working-with-objects_names.md",
+      "doc_id": "concepts_overview_working-with-objects_names",
+      "realistic_q1": "why does my kubernetes service name get truncated",
+      "realistic_q2": "getting dns errors with long service or pod names in cluster",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the configuration file options for webhook token authentication?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/authentication.md",
+      "our_doc_path": "reference_access-authn-authz_authentication.md",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "how to configure external authentication for kubernetes api server",
+      "realistic_q2": "my kubernetes cluster is not validating tokens from my identity provider",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the default port used by Kubernetes components to emit traces?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/system-traces.md",
+      "our_doc_path": "concepts_cluster-administration_system-traces.md",
+      "doc_id": "concepts_cluster-administration_system-traces",
+      "realistic_q1": "why can't I see my kubernetes cluster's tracing data",
+      "realistic_q2": "how to configure my monitoring tool to collect telemetry from k8s components",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you mark a StorageClass as non-default?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/change-default-storage-class.md",
+      "our_doc_path": "tasks_administer-cluster_change-default-storage-class.md",
+      "doc_id": "tasks_administer-cluster_change-default-storage-class",
+      "realistic_q1": "remove default storage option so our team chooses specific storage for each deployment",
+      "realistic_q2": "getting errors when provisioning volumes because wrong storage class keeps getting selected",
+      "quality_score": 0.5,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the `kubectl get pods --namespace=kube-system -l k8s-app=cilium` command?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/network-policy-provider/cilium-network-policy.md",
+      "our_doc_path": "tasks_administer-cluster_network-policy-provider_cilium-network-policy.md",
+      "doc_id": "tasks_administer-cluster_network-policy-provider_cilium-network-policy",
+      "realistic_q1": "how to check if my network plugin is running and healthy",
+      "realistic_q2": "can't figure out why my cluster network isn't working - which pods should I look at",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are ServiceAccount permissions in Kubernetes?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "service account can't access kubernetes api resources inside my pod",
+      "realistic_q2": "how to give my pod permissions to list deployments in the cluster",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a ResourceQuota?",
+      "original_source": "/content/en/docs/concepts/policy/resource-quotas.md",
+      "our_doc_path": "concepts_policy_resource-quotas.md",
+      "doc_id": "concepts_policy_resource-quotas",
+      "realistic_q1": "how to prevent one team from consuming all cluster resources and blocking other teams",
+      "realistic_q2": "getting errors when trying to create pods in a namespace that's out of compute resources",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the benefit of enabling process namespace sharing with ephemeral containers?",
+      "original_source": "/content/en/docs/concepts/workloads/pods/ephemeral-containers.md",
+      "our_doc_path": "concepts_workloads_pods_ephemeral-containers.md",
+      "doc_id": "concepts_workloads_pods_ephemeral-containers",
+      "realistic_q1": "how to debug a container when the main app process crashes and won't start",
+      "realistic_q2": "can't diagnose why my container is stuck in a restart loop",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a ServiceCIDR object in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/network/extend-service-ip-ranges.md",
+      "our_doc_path": "tasks_network_extend-service-ip-ranges.md",
+      "doc_id": "tasks_network_extend-service-ip-ranges",
+      "realistic_q1": "why can't my services get an IP address within the expected range",
+      "realistic_q2": "getting network conflicts when deploying new services in my cluster",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the `cfssl` tool?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/certificates.md",
+      "our_doc_path": "tasks_administer-cluster_certificates.md",
+      "doc_id": "tasks_administer-cluster_certificates",
+      "realistic_q1": "how to generate and sign tls certificates for internal services securely",
+      "realistic_q2": "create self-signed certificates for my kubernetes cluster without manual openssl commands",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between init containers and sidecar containers in terms of resource allocation?",
+      "original_source": "/content/en/docs/concepts/workloads/pods/init-containers.md",
+      "our_doc_path": "concepts_workloads_pods_init-containers.md",
+      "doc_id": "concepts_workloads_pods_init-containers",
+      "realistic_q1": "why does my container startup fail when additional containers are added to the pod",
+      "realistic_q2": "how to ensure my initialization container doesn't consume all pod resources before main container starts",
+      "quality_score": 0.7142857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of a full metrics pipeline in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/debug/debug-cluster/resource-usage-monitoring.md",
+      "our_doc_path": "tasks_debug_debug-cluster_resource-usage-monitoring.md",
+      "doc_id": "tasks_debug_debug-cluster_resource-usage-monitoring",
+      "realistic_q1": "how to track which pods are consuming the most CPU and memory in my cluster",
+      "realistic_q2": "get alerts when my services are running out of resources before they crash",
+      "quality_score": 0.9545454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the typical process to update CNI plugins and CNI config files?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/migrating-from-dockershim/troubleshooting-cni-plugin-related-errors.md",
+      "our_doc_path": "tasks_administer-cluster_migrating-from-dockershim_troubleshooting-cni-plugin-related-errors.md",
+      "doc_id": "tasks_administer-cluster_migrating-from-dockershim_troubleshooting-cni-plugin-related-errors",
+      "realistic_q1": "how do i update network settings without breaking cluster connectivity",
+      "realistic_q2": "getting connection errors after changing network plugin configuration",
+      "quality_score": 0.7291666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you request an extended resource in a Container manifest?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/extended-resource.md",
+      "our_doc_path": "tasks_configure-pod-container_extended-resource.md",
+      "doc_id": "tasks_configure-pod-container_extended-resource",
+      "realistic_q1": "how to request a custom GPU resource for machine learning workloads",
+      "realistic_q2": "container keeps failing to schedule because of missing hardware resources",
+      "quality_score": 0.9090909090909091,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between a non-empty and empty selector in a PVC?",
+      "original_source": "/content/en/docs/concepts/storage/persistent-volumes.md",
+      "our_doc_path": "concepts_storage_persistent-volumes.md",
+      "doc_id": "concepts_storage_persistent-volumes",
+      "realistic_q1": "why can't I find a persistent volume for my database when using empty selectors",
+      "realistic_q2": "how do I make sure my claim gets the exact storage I want without guessing",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a RoleBinding and what does it do?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "why can't my developer access resources in our team's namespace",
+      "realistic_q2": "how to give new team member permissions to view and edit specific deployments",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between `dryRun: true` and `dryRun: false`?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/extensible-admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_extensible-admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "realistic_q1": "how can I test my yaml changes without actually creating resources in my cluster",
+      "realistic_q2": "is there a way to validate my kubernetes manifest before it goes live",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you update a live object using `kubectl`?",
+      "original_source": "/content/en/docs/tasks/manage-kubernetes-objects/imperative-config.md",
+      "our_doc_path": "tasks_manage-kubernetes-objects_imperative-config.md",
+      "doc_id": "tasks_manage-kubernetes-objects_imperative-config",
+      "realistic_q1": "how to update container image in a running deployment without downtime",
+      "realistic_q2": "change environment variables for a live pod without recreating it",
+      "quality_score": 0.9166666666666667,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How many parallel worker processes will be created in this example?",
+      "original_source": "/content/en/docs/tasks/job/coarse-parallel-processing-work-queue.md",
+      "our_doc_path": "tasks_job_coarse-parallel-processing-work-queue.md",
+      "doc_id": "tasks_job_coarse-parallel-processing-work-queue",
+      "realistic_q1": "why is my background job processing so slow when I have multiple workers available",
+      "realistic_q2": "how to control the number of concurrent workers processing my task queue",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are RoleBindings and ClusterRoleBindings?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "why can't my team member access resources in our namespace",
+      "realistic_q2": "how to give a service account permission to manage deployments cluster-wide",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you deploy a stateful application like MySQL in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/run-application/run-single-instance-stateful-application.md",
+      "our_doc_path": "tasks_run-application_run-single-instance-stateful-application.md",
+      "doc_id": "tasks_run-application_run-single-instance-stateful-application",
+      "realistic_q1": "my mysql database keeps losing data when pods restart in kubernetes",
+      "realistic_q2": "how to run a stable mysql cluster that preserves data across pod rescheduling",
+      "quality_score": 0.9545454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of specifying a CPU request and limit in a container?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/assign-cpu-resource.md",
+      "our_doc_path": "tasks_configure-pod-container_assign-cpu-resource.md",
+      "doc_id": "tasks_configure-pod-container_assign-cpu-resource",
+      "realistic_q1": "why are my pods getting evicted when there's still memory on the node",
+      "realistic_q2": "one of my containers is hogging all the node's resources and starving other pods",
+      "quality_score": 0.7307692307692308,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a MySQL primary server?",
+      "original_source": "/content/en/docs/tasks/run-application/run-replicated-stateful-application.md",
+      "our_doc_path": "tasks_run-application_run-replicated-stateful-application.md",
+      "doc_id": "tasks_run-application_run-replicated-stateful-application",
+      "realistic_q1": "how to set up database replication in kubernetes with one master and multiple read replicas",
+      "realistic_q2": "my database cluster keeps losing data when the main node goes down",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What flag is used to enable NetworkPolicy when launching a GKE cluster?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/network-policy-provider/calico-network-policy.md",
+      "our_doc_path": "tasks_administer-cluster_network-policy-provider_calico-network-policy.md",
+      "doc_id": "tasks_administer-cluster_network-policy-provider_calico-network-policy",
+      "realistic_q1": "how to make google kubernetes engine block pod-to-pod communication by default",
+      "realistic_q2": "why can all my pods talk to each other even though i want network isolation",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the recommended order of upgrading nodes during a Kubernetes cluster upgrade?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade.md",
+      "our_doc_path": "tasks_administer-cluster_kubeadm_kubeadm-upgrade.md",
+      "doc_id": "tasks_administer-cluster_kubeadm_kubeadm-upgrade",
+      "realistic_q1": "how to upgrade my kubernetes cluster without causing service interruption",
+      "realistic_q2": "my nodes are showing warning about kubernetes version mismatch and i'm worried about stability",
+      "quality_score": 0.9615384615384616,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is an example of a policy that allows Alice to do anything to all resources?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/abac.md",
+      "our_doc_path": "reference_access-authn-authz_abac.md",
+      "doc_id": "reference_access-authn-authz_abac",
+      "realistic_q1": "how to give my admin user full permissions across all kubernetes resources",
+      "realistic_q2": "user can't manage anything in the cluster and I want to grant complete access",
+      "quality_score": 0.9666666666666667,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of Storage Object in Use Protection?",
+      "original_source": "/content/en/docs/concepts/storage/persistent-volumes.md",
+      "our_doc_path": "concepts_storage_persistent-volumes.md",
+      "doc_id": "concepts_storage_persistent-volumes",
+      "realistic_q1": "why can't I delete a persistent volume claim that's being used by a running pod",
+      "realistic_q2": "my volume deletion fails even though I stopped using the storage",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of the `deprecationWarning` field in a CustomResourceDefinition version?",
+      "original_source": "/content/en/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning.md",
+      "our_doc_path": "tasks_extend-kubernetes_custom-resources_custom-resource-definition-versioning.md",
+      "doc_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definition-versioning",
+      "realistic_q1": "why are my custom resource manifests showing warnings when i deploy to the cluster",
+      "realistic_q2": "how to handle kubernetes warnings when upgrading custom resource definitions",
+      "quality_score": 0.7272727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is required before using Telepresence?",
+      "original_source": "/content/en/docs/tasks/debug/debug-cluster/local-debugging.md",
+      "our_doc_path": "tasks_debug_debug-cluster_local-debugging.md",
+      "doc_id": "tasks_debug_debug-cluster_local-debugging",
+      "realistic_q1": "why can't I connect my local development environment to my kubernetes cluster",
+      "realistic_q2": "how to test my service code running locally against remote kubernetes services",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of Kubernetes auditing?",
+      "original_source": "/content/en/docs/concepts/security/controlling-access.md",
+      "our_doc_path": "concepts_security_controlling-access.md",
+      "doc_id": "concepts_security_controlling-access",
+      "realistic_q1": "how to track which users are making changes in my kubernetes cluster",
+      "realistic_q2": "get a log of all security-related events for compliance reporting",
+      "quality_score": 0.9642857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of the /openapi/v3/apis/<group>/<version> endpoint in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/overview/kubernetes-api.md",
+      "our_doc_path": "concepts_overview_kubernetes-api.md",
+      "doc_id": "concepts_overview_kubernetes-api",
+      "realistic_q1": "my api requests to kubernetes cluster failing and not sure why",
+      "realistic_q2": "how to debug connection problems between my tool and kubernetes control plane",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is an EndpointSlice object?",
+      "original_source": "/content/en/docs/concepts/services-networking/endpoint-slices.md",
+      "our_doc_path": "concepts_services-networking_endpoint-slices.md",
+      "doc_id": "concepts_services-networking_endpoint-slices",
+      "realistic_q1": "why are my services not routing traffic to all my pods correctly",
+      "realistic_q2": "is there a way to handle more than 100 pod endpoints in a single service",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are dynamic volume limits?",
+      "original_source": "/content/en/docs/concepts/storage/storage-limits.md",
+      "our_doc_path": "concepts_storage_storage-limits.md",
+      "doc_id": "concepts_storage_storage-limits",
+      "realistic_q1": "why is my kubernetes cluster preventing me from attaching more ebs volumes to a node",
+      "realistic_q2": "how many persistent volumes can i attach to a single worker node",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the main problem with on-disk files in a container?",
+      "original_source": "/content/en/docs/concepts/storage/volumes.md",
+      "our_doc_path": "concepts_storage_volumes.md",
+      "doc_id": "concepts_storage_volumes",
+      "realistic_q1": "my docker container loses all data when it restarts or gets rescheduled",
+      "realistic_q2": "how to preserve files created inside a container between pod restarts",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you verify binary signatures?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/verify-signed-artifacts.md",
+      "our_doc_path": "tasks_administer-cluster_verify-signed-artifacts.md",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "realistic_q1": "how can I confirm the download of my software package wasn't tampered with",
+      "realistic_q2": "why does my security team require checking gpg signatures before installing software",
+      "quality_score": 0.7083333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the eighteenth step in manually rotating CA certificates?",
+      "original_source": "/content/en/docs/tasks/tls/manual-rotation-of-ca-certificates.md",
+      "our_doc_path": "tasks_tls_manual-rotation-of-ca-certificates.md",
+      "doc_id": "tasks_tls_manual-rotation-of-ca-certificates",
+      "realistic_q1": "my kubernetes cluster stopped working after trying to update certificates",
+      "realistic_q2": "how to safely renew cluster's root certificates without breaking everything",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are some resources for learning more about PID limiting in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/policy/pid-limiting.md",
+      "our_doc_path": "concepts_policy_pid-limiting.md",
+      "doc_id": "concepts_policy_pid-limiting",
+      "realistic_q1": "how to prevent my container from consuming all host machine's CPU resources",
+      "realistic_q2": "why is my kubernetes node crashing when a pod starts consuming too many processes",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the default hard eviction threshold in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/memory-manager.md",
+      "our_doc_path": "tasks_administer-cluster_memory-manager.md",
+      "doc_id": "tasks_administer-cluster_memory-manager",
+      "realistic_q1": "node keeps kicking out my pods when memory is low and breaking my application",
+      "realistic_q2": "how to prevent kubernetes from forcibly removing pods during high memory pressure",
+      "quality_score": 0.7222222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you create a namespace in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/manage-resources/quota-pod-namespace.md",
+      "our_doc_path": "tasks_administer-cluster_manage-resources_quota-pod-namespace.md",
+      "doc_id": "tasks_administer-cluster_manage-resources_quota-pod-namespace",
+      "realistic_q1": "how do I separate environments like dev and staging in my cluster",
+      "realistic_q2": "getting permission issues when deploying to a new project team's area",
+      "quality_score": 0.65625,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the sixteenth step in manually rotating CA certificates?",
+      "original_source": "/content/en/docs/tasks/tls/manual-rotation-of-ca-certificates.md",
+      "our_doc_path": "tasks_tls_manual-rotation-of-ca-certificates.md",
+      "doc_id": "tasks_tls_manual-rotation-of-ca-certificates",
+      "realistic_q1": "why are my kubernetes cluster certificates about to expire and causing connection issues",
+      "realistic_q2": "how do I safely update cluster certificates without breaking everything",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the implication of processes being visible to other containers in a shared process namespace?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/share-process-namespace.md",
+      "our_doc_path": "tasks_configure-pod-container_share-process-namespace.md",
+      "doc_id": "tasks_configure-pod-container_share-process-namespace",
+      "realistic_q1": "can containers see and kill processes running in other containers on the same node",
+      "realistic_q2": "security risks when multiple containers share the same process namespace",
+      "quality_score": 0.671875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between `env` and `envFrom` fields in a Pod configuration?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/define-environment-variable-container.md",
+      "our_doc_path": "tasks_inject-data-application_define-environment-variable-container.md",
+      "doc_id": "tasks_inject-data-application_define-environment-variable-container",
+      "realistic_q1": "why kubernetes ignores some of my environment variables when deploying my app",
+      "realistic_q2": "how to load all environment variables from a config file without listing them manually",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of TLS client certificate bootstrapping for kubelets?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/kubelet-tls-bootstrapping.md",
+      "our_doc_path": "reference_access-authn-authz_kubelet-tls-bootstrapping.md",
+      "doc_id": "reference_access-authn-authz_kubelet-tls-bootstrapping",
+      "realistic_q1": "how to automatically generate certificates for new worker nodes joining my cluster",
+      "realistic_q2": "my kubelet can't authenticate to the kubernetes api server without manual certificate signing",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you check if a DaemonSet has the `RollingUpdate` update strategy?",
+      "original_source": "/content/en/docs/tasks/manage-daemon/update-daemon-set.md",
+      "our_doc_path": "tasks_manage-daemon_update-daemon-set.md",
+      "doc_id": "tasks_manage-daemon_update-daemon-set",
+      "realistic_q1": "why are my system monitoring pods not updating when i deploy a new version",
+      "realistic_q2": "how can i tell if my daemonset will replace pods all at once or gradually",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the topology management in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/architecture/nodes.md",
+      "our_doc_path": "concepts_architecture_nodes.md",
+      "doc_id": "concepts_architecture_nodes",
+      "realistic_q1": "why are my cpu-intensive pods running slow and spreading across different numa nodes",
+      "realistic_q2": "how to ensure container gets optimal cpu and memory placement on worker nodes",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of Ingress?",
+      "original_source": "/content/en/docs/concepts/services-networking/ingress.md",
+      "our_doc_path": "concepts_services-networking_ingress.md",
+      "doc_id": "concepts_services-networking_ingress",
+      "realistic_q1": "my external users can't reach my service from the internet",
+      "realistic_q2": "how to route different domains to different services in kubernetes",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the name of the field in a Pod manifest that specifies environment variables?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/environment-variable-expose-pod-information.md",
+      "our_doc_path": "tasks_inject-data-application_environment-variable-expose-pod-information.md",
+      "doc_id": "tasks_inject-data-application_environment-variable-expose-pod-information",
+      "realistic_q1": "how to add environment variables to my container without changing the dockerfile",
+      "realistic_q2": "my app needs runtime config but i can't modify the image's environment",
+      "quality_score": 0.9642857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you bootstrap initial roles and role bindings in Kubernetes?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "how to automatically set up permissions for new team members when they join",
+      "realistic_q2": "getting permission denied errors for developers trying to access their namespace",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How does Kubernetes distribute nodes across zones?",
+      "original_source": "/content/en/docs/setup/best-practices/multiple-zones.md",
+      "our_doc_path": "setup_best-practices_multiple-zones.md",
+      "doc_id": "setup_best-practices_multiple-zones",
+      "realistic_q1": "why are all my pods running on the same node even though I have multiple zones",
+      "realistic_q2": "how to ensure my application stays available if an entire cloud zone goes down",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does Kubernetes do immediately after a container is started?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/attach-handler-lifecycle-event.md",
+      "our_doc_path": "tasks_configure-pod-container_attach-handler-lifecycle-event.md",
+      "doc_id": "tasks_configure-pod-container_attach-handler-lifecycle-event",
+      "realistic_q1": "why did my container exit immediately after starting without showing any error",
+      "realistic_q2": "how to debug what's happening when kubernetes launches my container",
+      "quality_score": 0.925,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does the `driver` field in a VolumeSnapshotClass resource determine?",
+      "original_source": "/content/en/docs/concepts/storage/volume-snapshot-classes.md",
+      "our_doc_path": "concepts_storage_volume-snapshot-classes.md",
+      "doc_id": "concepts_storage_volume-snapshot-classes",
+      "realistic_q1": "which snapshot driver to use for different storage systems like aws ebs or gcp persistent disk",
+      "realistic_q2": "error creating volume snapshots and not sure how to configure the right storage backend",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you verify that a Pod is using a Volume?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/configure-volume-storage.md",
+      "our_doc_path": "tasks_configure-pod-container_configure-volume-storage.md",
+      "doc_id": "tasks_configure-pod-container_configure-volume-storage",
+      "realistic_q1": "how can I check if my database container is actually using the persistent volume",
+      "realistic_q2": "why isn't my volume showing up inside the container's filesystem",
+      "quality_score": 0.675,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the primary method of communication between the API server and kubelet?",
+      "original_source": "/content/en/docs/concepts/architecture/control-plane-node-communication.md",
+      "our_doc_path": "concepts_architecture_control-plane-node-communication.md",
+      "doc_id": "concepts_architecture_control-plane-node-communication",
+      "realistic_q1": "why my node seems disconnected and kubernetes can't schedule new pods",
+      "realistic_q2": "how to troubleshoot communication issues between control plane and worker nodes",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "Why are role references immutable in Kubernetes RBAC?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "why can't I edit a ClusterRole binding after creating it",
+      "realistic_q2": "getting permission denied when trying to update role permissions mid-project",
+      "quality_score": 0.96875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are some common issues when using Windows nodes in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/debug/debug-cluster/windows.md",
+      "our_doc_path": "tasks_debug_debug-cluster_windows.md",
+      "doc_id": "tasks_debug_debug-cluster_windows",
+      "realistic_q1": "why do my windows containers keep crashing when deployed on kubernetes cluster",
+      "realistic_q2": "is there a way to run windows and linux pods together in the same cluster",
+      "quality_score": 0.7045454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of a CronJob?",
+      "original_source": "/content/en/docs/concepts/workloads/controllers/cron-jobs.md",
+      "our_doc_path": "concepts_workloads_controllers_cron-jobs.md",
+      "doc_id": "concepts_workloads_controllers_cron-jobs",
+      "realistic_q1": "how to run database backup script every night automatically in kubernetes",
+      "realistic_q2": "schedule batch job to clean up old logs without manual intervention",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a ConfigMap in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/extend-kubernetes/configure-multiple-schedulers.md",
+      "our_doc_path": "tasks_extend-kubernetes_configure-multiple-schedulers.md",
+      "doc_id": "tasks_extend-kubernetes_configure-multiple-schedulers",
+      "realistic_q1": "how to pass database connection strings to my app without hardcoding secrets",
+      "realistic_q2": "change application environment variables without rebuilding docker image",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the 'options' field in the 'dnsConfig' field of a Pod?",
+      "original_source": "/content/en/docs/concepts/services-networking/dns-pod-service.md",
+      "our_doc_path": "concepts_services-networking_dns-pod-service.md",
+      "doc_id": "concepts_services-networking_dns-pod-service",
+      "realistic_q1": "how to customize dns settings for a specific pod that's having weird network resolution issues",
+      "realistic_q2": "can I override default dns settings for a container that needs to use a custom nameserver",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the primary reason for having multiple containers in a Pod?",
+      "original_source": "/content/en/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume.md",
+      "our_doc_path": "tasks_access-application-cluster_communicate-containers-same-pod-shared-volume.md",
+      "doc_id": "tasks_access-application-cluster_communicate-containers-same-pod-shared-volume",
+      "realistic_q1": "how to run a web app with a separate logging container that shares the same network space",
+      "realistic_q2": "my application needs a helper container to process files before main container starts",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the kubectl binary with curl on macOS?",
+      "original_source": "/content/en/docs/tasks/tools/install-kubectl-macos.md",
+      "our_doc_path": "tasks_tools_install-kubectl-macos.md",
+      "doc_id": "tasks_tools_install-kubectl-macos",
+      "realistic_q1": "how to download and install kubernetes command line tool on my mac",
+      "realistic_q2": "getting error when trying to manage clusters from my macbook",
+      "quality_score": 0.9772727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What happens if a Pod does not meet the constraints imposed by a LimitRange object?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace.md",
+      "our_doc_path": "tasks_administer-cluster_manage-resources_cpu-constraint-namespace.md",
+      "doc_id": "tasks_administer-cluster_manage-resources_cpu-constraint-namespace",
+      "realistic_q1": "why are my pods getting stuck in pending state and not scheduling",
+      "realistic_q2": "kubernetes throwing error when trying to deploy app with specific memory requirements",
+      "quality_score": 0.9821428571428572,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the main use of an `azureFile` volume?",
+      "original_source": "/content/en/docs/concepts/storage/volumes.md",
+      "our_doc_path": "concepts_storage_volumes.md",
+      "doc_id": "concepts_storage_volumes",
+      "realistic_q1": "how to mount azure file share directly into kubernetes pod without complex storage config",
+      "realistic_q2": "my windows containers need persistent storage that works across multiple pods",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of creating a container image in this example?",
+      "original_source": "/content/en/docs/tasks/job/coarse-parallel-processing-work-queue.md",
+      "our_doc_path": "tasks_job_coarse-parallel-processing-work-queue.md",
+      "doc_id": "tasks_job_coarse-parallel-processing-work-queue",
+      "realistic_q1": "how to package my application with all dependencies so it runs consistently everywhere",
+      "realistic_q2": "why my application works on my laptop but fails when deployed to different environments",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you define a dependent environment variable in a container?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/define-interdependent-environment-variables.md",
+      "our_doc_path": "tasks_inject-data-application_define-interdependent-environment-variables.md",
+      "doc_id": "tasks_inject-data-application_define-interdependent-environment-variables",
+      "realistic_q1": "how to set an environment variable based on another environment variable's value",
+      "realistic_q2": "container can't read dynamic value from another config setting",
+      "quality_score": 0.925,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the requirements for using cgroup v2?",
+      "original_source": "/content/en/docs/concepts/architecture/cgroups.md",
+      "our_doc_path": "concepts_architecture_cgroups.md",
+      "doc_id": "concepts_architecture_cgroups",
+      "realistic_q1": "why can't my new ubuntu nodes join the kubernetes cluster after kernel upgrade",
+      "realistic_q2": "how to make docker work correctly on systems with newer linux kernels",
+      "quality_score": 0.96875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the command to generate the kubectl completion script for Bash?",
+      "original_source": "/content/en/docs/tasks/tools/included/optional-kubectl-configs-bash-linux.md",
+      "our_doc_path": "tasks_tools_included_optional-kubectl-configs-bash-linux.md",
+      "doc_id": "tasks_tools_included_optional-kubectl-configs-bash-linux",
+      "realistic_q1": "how do I get auto-completion for kubectl commands in my terminal",
+      "realistic_q2": "why aren't my kubernetes command suggestions working in bash",
+      "quality_score": 0.7045454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the process to enable Leader Migration?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/controller-manager-leader-migration.md",
+      "our_doc_path": "tasks_administer-cluster_controller-manager-leader-migration.md",
+      "doc_id": "tasks_administer-cluster_controller-manager-leader-migration",
+      "realistic_q1": "my kubernetes controllers are crashing during leader election when upgrading cluster version",
+      "realistic_q2": "how to smoothly transition controller leadership without downtime during cluster upgrades",
+      "quality_score": 0.71875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you tune parameters for auditing?",
+      "original_source": "/content/en/docs/tasks/debug/debug-cluster/audit.md",
+      "our_doc_path": "tasks_debug_debug-cluster_audit.md",
+      "doc_id": "tasks_debug_debug-cluster_audit",
+      "realistic_q1": "how to log all changes made to my kubernetes cluster for compliance",
+      "realistic_q2": "reduce performance impact of kubernetes audit logging on my production cluster",
+      "quality_score": 0.9285714285714286,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a FlowSchema in API Priority and Fairness?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/flow-control.md",
+      "our_doc_path": "concepts_cluster-administration_flow-control.md",
+      "doc_id": "concepts_cluster-administration_flow-control",
+      "realistic_q1": "kubernetes api server becoming unresponsive during high traffic spike",
+      "realistic_q2": "how to prevent single user or service from overwhelming cluster api requests",
+      "quality_score": 0.4722222222222222,
+      "quality_pass": false
+    },
+    {
+      "original_instruction": "What is the role of the Cluster Operator in the design principles of Gateway API?",
+      "original_source": "/content/en/docs/concepts/services-networking/gateway.md",
+      "our_doc_path": "concepts_services-networking_gateway.md",
+      "doc_id": "concepts_services-networking_gateway",
+      "realistic_q1": "why can't I configure my ingress gateway settings without complex custom resources",
+      "realistic_q2": "how do I manage multiple gateways and routes across different teams and services",
+      "quality_score": 0.9791666666666666,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the `kubeadm upgrade apply --force` command?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade.md",
+      "our_doc_path": "tasks_administer-cluster_kubeadm_kubeadm-upgrade.md",
+      "doc_id": "tasks_administer-cluster_kubeadm_kubeadm-upgrade",
+      "realistic_q1": "how to fix a stuck kubernetes cluster upgrade that's hanging midway",
+      "realistic_q2": "my control plane upgrade failed and now cluster is in a weird state",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of a ReplicaSet in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/access-application-cluster/port-forward-access-application-cluster.md",
+      "our_doc_path": "tasks_access-application-cluster_port-forward-access-application-cluster.md",
+      "doc_id": "tasks_access-application-cluster_port-forward-access-application-cluster",
+      "realistic_q1": "my application keeps crashing and I want to automatically restart the pod",
+      "realistic_q2": "how do I run multiple copies of my web app to handle more traffic",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can users of the REST API sign CSRs in Kubernetes?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/certificate-signing-requests.md",
+      "our_doc_path": "reference_access-authn-authz_certificate-signing-requests.md",
+      "doc_id": "reference_access-authn-authz_certificate-signing-requests",
+      "realistic_q1": "how do I approve certificate signing requests for my new service account",
+      "realistic_q2": "getting 'unable to validate certificate' error when trying to connect to cluster",
+      "quality_score": 0.7272727272727273,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "Which technique is recommended for getting started or running a one-off task in a cluster?",
+      "original_source": "/content/en/docs/concepts/overview/working-with-objects/object-management.md",
+      "our_doc_path": "concepts_overview_working-with-objects_object-management.md",
+      "doc_id": "concepts_overview_working-with-objects_object-management",
+      "realistic_q1": "how to run a one-time database migration script in my kubernetes cluster",
+      "realistic_q2": "my data processing job keeps failing and I want to run it manually to debug",
+      "quality_score": 0.9642857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of a signer-unlinked ClusterTrustBundle object?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/certificate-signing-requests.md",
+      "our_doc_path": "reference_access-authn-authz_certificate-signing-requests.md",
+      "doc_id": "reference_access-authn-authz_certificate-signing-requests",
+      "realistic_q1": "my certificate management system is creating weird kubernetes objects that don't seem connected",
+      "realistic_q2": "how to handle trust bundles for services that need multiple certificate authorities",
+      "quality_score": 0.7222222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between topology spread constraints and node affinity in terms of scheduling?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/topology-spread-constraints.md",
+      "our_doc_path": "concepts_scheduling-eviction_topology-spread-constraints.md",
+      "doc_id": "concepts_scheduling-eviction_topology-spread-constraints",
+      "realistic_q1": "why are my pods all landing on the same node when I want them spread out",
+      "realistic_q2": "how can I make sure my replicas are evenly distributed across different availability zones",
+      "quality_score": 0.95,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the double dash (--) in the kubectl exec command?",
+      "original_source": "/content/en/docs/tasks/debug/debug-application/get-shell-running-container.md",
+      "our_doc_path": "tasks_debug_debug-application_get-shell-running-container.md",
+      "doc_id": "tasks_debug_debug-application_get-shell-running-container",
+      "realistic_q1": "how to run a command in my container that looks like a kubectl flag",
+      "realistic_q2": "container command not working when using kubectl exec with arguments",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between `In`, `NotIn`, `Exists`, `DoesNotExist`, `Gt`, and `Lt` operators?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/assign-pod-node.md",
+      "our_doc_path": "concepts_scheduling-eviction_assign-pod-node.md",
+      "doc_id": "concepts_scheduling-eviction_assign-pod-node",
+      "realistic_q1": "why can't I schedule pods on nodes with specific labels like 'high-memory'",
+      "realistic_q2": "how to prevent pods from running on nodes with GPU when we have no GPU workloads",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you define container environment variables using Secret data?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/distribute-credentials-secure.md",
+      "our_doc_path": "tasks_inject-data-application_distribute-credentials-secure.md",
+      "doc_id": "tasks_inject-data-application_distribute-credentials-secure",
+      "realistic_q1": "how to pass database password to my app without hardcoding it in dockerfile",
+      "realistic_q2": "kubernetes pods not picking up sensitive config values from environment",
+      "quality_score": 0.975,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How many ports can be defined on a single Service?",
+      "original_source": "/content/en/docs/concepts/services-networking/service.md",
+      "our_doc_path": "concepts_services-networking_service.md",
+      "doc_id": "concepts_services-networking_service",
+      "realistic_q1": "why can't I map multiple application ports in a single kubernetes service",
+      "realistic_q2": "how to expose two different ports for the same microservice",
+      "quality_score": 0.925,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the LoadBalancer type of Service used for?",
+      "original_source": "/content/en/docs/concepts/services-networking/service.md",
+      "our_doc_path": "concepts_services-networking_service.md",
+      "doc_id": "concepts_services-networking_service",
+      "realistic_q1": "how can I expose my web application to the internet from kubernetes",
+      "realistic_q2": "getting error when trying to access my app from outside the cluster",
+      "quality_score": 0.7222222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you access logs from Init Containers in a Pod?",
+      "original_source": "/content/en/docs/tasks/debug/debug-application/debug-init-containers.md",
+      "our_doc_path": "tasks_debug_debug-application_debug-init-containers.md",
+      "doc_id": "tasks_debug_debug-application_debug-init-containers",
+      "realistic_q1": "why can't I see init container logs when my main container starts successfully",
+      "realistic_q2": "kubernetes pod failed and I need to understand what happened during startup",
+      "quality_score": 0.9545454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can Pod failure policy be used to ignore Pod disruptions?",
+      "original_source": "/content/en/docs/tasks/job/pod-failure-policy.md",
+      "our_doc_path": "tasks_job_pod-failure-policy.md",
+      "doc_id": "tasks_job_pod-failure-policy",
+      "realistic_q1": "how to prevent job from restarting when a pod fails during a cluster upgrade",
+      "realistic_q2": "my batch job keeps failing when a single pod has a temporary issue",
+      "quality_score": 0.925,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between FileOrCreate and DirectoryOrCreate in hostPath volume mounts?",
+      "original_source": "/content/en/docs/concepts/storage/volumes.md",
+      "our_doc_path": "concepts_storage_volumes.md",
+      "doc_id": "concepts_storage_volumes",
+      "realistic_q1": "my container says 'file not found' when trying to mount a directory that doesn't exist yet",
+      "realistic_q2": "how to make kubernetes automatically create missing volume paths for my application",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are API discovery roles in Kubernetes?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/rbac.md",
+      "our_doc_path": "reference_access-authn-authz_rbac.md",
+      "doc_id": "reference_access-authn-authz_rbac",
+      "realistic_q1": "why can't my kubernetes dashboard user see any resources",
+      "realistic_q2": "getting permission denied when trying to list available api resources",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of defining a command and arguments when creating a Pod?",
+      "original_source": "/content/en/docs/tasks/inject-data-application/define-command-argument-container.md",
+      "our_doc_path": "tasks_inject-data-application_define-command-argument-container.md",
+      "doc_id": "tasks_inject-data-application_define-command-argument-container",
+      "realistic_q1": "how to override the default startup command in my docker container when running in kubernetes",
+      "realistic_q2": "my container keeps crashing because the wrong entrypoint is being used",
+      "quality_score": 0.9423076923076923,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the recommended kubectl version to use?",
+      "original_source": "/content/en/docs/tasks/tools/install-kubectl-linux.md",
+      "our_doc_path": "tasks_tools_install-kubectl-linux.md",
+      "doc_id": "tasks_tools_install-kubectl-linux",
+      "realistic_q1": "why are my kubectl commands suddenly not working after a cluster upgrade",
+      "realistic_q2": "getting version mismatch warnings between my local kubectl and cluster kubernetes version",
+      "quality_score": 0.96875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you verify the Kubernetes Software Bill of Materials (SBOM)?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/verify-signed-artifacts.md",
+      "our_doc_path": "tasks_administer-cluster_verify-signed-artifacts.md",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "realistic_q1": "how to check if my kubernetes cluster uses vulnerable container images",
+      "realistic_q2": "verify security of all images running in my production environment",
+      "quality_score": 0.9545454545454546,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between init containers and sidecar containers?",
+      "original_source": "/content/en/docs/concepts/workloads/pods/init-containers.md",
+      "our_doc_path": "concepts_workloads_pods_init-containers.md",
+      "doc_id": "concepts_workloads_pods_init-containers",
+      "realistic_q1": "how to run database migration script before my main application starts",
+      "realistic_q2": "my app needs another container to send logs to external service but don't want to modify main container",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of RabbitMQ in this example?",
+      "original_source": "/content/en/docs/tasks/job/coarse-parallel-processing-work-queue.md",
+      "our_doc_path": "tasks_job_coarse-parallel-processing-work-queue.md",
+      "doc_id": "tasks_job_coarse-parallel-processing-work-queue",
+      "realistic_q1": "why does my messaging queue keep dropping messages during high traffic",
+      "realistic_q2": "can't scale microservices because workers aren't getting events reliably",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How does a ReplicaSet work?",
+      "original_source": "/content/en/docs/concepts/workloads/controllers/replicaset.md",
+      "our_doc_path": "concepts_workloads_controllers_replicaset.md",
+      "doc_id": "concepts_workloads_controllers_replicaset",
+      "realistic_q1": "my application keeps going down when a node crashes, how to ensure it stays running",
+      "realistic_q2": "how can I automatically run 3 copies of my web service for high availability",
+      "quality_score": 0.9,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do I access the Kubernetes API using kubectl?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/access-cluster-api.md",
+      "our_doc_path": "tasks_administer-cluster_access-cluster-api.md",
+      "doc_id": "tasks_administer-cluster_access-cluster-api",
+      "realistic_q1": "can't get cluster information from my terminal, kubectl not showing anything",
+      "realistic_q2": "how to list all running pods and services without logging into the dashboard",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the two ways to create a Calico cluster?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/network-policy-provider/calico-network-policy.md",
+      "our_doc_path": "tasks_administer-cluster_network-policy-provider_calico-network-policy.md",
+      "doc_id": "tasks_administer-cluster_network-policy-provider_calico-network-policy",
+      "realistic_q1": "how can I set up a kubernetes cluster with network policy support",
+      "realistic_q2": "which method should I use to install calico in my on-premises kubernetes environment",
+      "quality_score": 0.725,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the minimum CPU value that can be specified in a LimitRange object?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/manage-resources/cpu-constraint-namespace.md",
+      "our_doc_path": "tasks_administer-cluster_manage-resources_cpu-constraint-namespace.md",
+      "doc_id": "tasks_administer-cluster_manage-resources_cpu-constraint-namespace",
+      "realistic_q1": "how small can i set cpu request to avoid wasting cluster resources on tiny containers",
+      "realistic_q2": "my container keeps getting killed because of low cpu allocation",
+      "quality_score": 0.7142857142857143,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between readiness and liveness probes?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes.md",
+      "our_doc_path": "tasks_configure-pod-container_configure-liveness-readiness-startup-probes.md",
+      "doc_id": "tasks_configure-pod-container_configure-liveness-readiness-startup-probes",
+      "realistic_q1": "why are my pods not receiving traffic even though the container starts successfully",
+      "realistic_q2": "kubernetes keeps killing my pod that needs extra time to warm up database connections",
+      "quality_score": 0.9722222222222222,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a structural schema in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions.md",
+      "our_doc_path": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions.md",
+      "doc_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions",
+      "realistic_q1": "why are my kubectl apply commands failing with validation errors",
+      "realistic_q2": "how to automatically catch configuration mistakes before deploying to cluster",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a Service Account in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/configure-pod-container/configure-service-account.md",
+      "our_doc_path": "tasks_configure-pod-container_configure-service-account.md",
+      "doc_id": "tasks_configure-pod-container_configure-service-account",
+      "realistic_q1": "why can't my pod access kubernetes api when running inside the cluster",
+      "realistic_q2": "how to give my application permissions to list and create resources",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the difference between a network plugin and a network controller?",
+      "original_source": "/content/en/docs/concepts/services-networking/network-policies.md",
+      "our_doc_path": "concepts_services-networking_network-policies.md",
+      "doc_id": "concepts_services-networking_network-policies",
+      "realistic_q1": "why can't my pods communicate with each other across different nodes",
+      "realistic_q2": "how to troubleshoot network connectivity issues between kubernetes clusters",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does a 'Mutation.webhook.admission.k8s.io/round_x_index_y' annotation indicate?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/extensible-admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_extensible-admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "realistic_q1": "why is my deployment getting blocked during rollout with a weird webhook annotation",
+      "realistic_q2": "getting admission webhook errors when trying to deploy new container image",
+      "quality_score": 0.9166666666666667,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What does PodSecurity do?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/admission-controllers.md",
+      "our_doc_path": "reference_access-authn-authz_admission-controllers.md",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "realistic_q1": "why are my pods getting blocked from running after kubernetes upgrade",
+      "realistic_q2": "prevent developers from creating containers with root access or privileged mode",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are some examples of policies that could be created using namespaces and quotas?",
+      "original_source": "/content/en/docs/concepts/policy/resource-quotas.md",
+      "our_doc_path": "concepts_policy_resource-quotas.md",
+      "doc_id": "concepts_policy_resource-quotas",
+      "realistic_q1": "how to stop one team from consuming all cluster resources and blocking other teams' workloads",
+      "realistic_q2": "prevent developers from spinning up massive expensive pods that drain my kubernetes cluster",
+      "quality_score": 0.9821428571428572,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you enable or disable a specific API version in a Kubernetes cluster?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/enable-disable-api.md",
+      "our_doc_path": "tasks_administer-cluster_enable-disable-api.md",
+      "doc_id": "tasks_administer-cluster_enable-disable-api",
+      "realistic_q1": "why can't my new CRD work and it says the API is not enabled",
+      "realistic_q2": "how to allow newer kubernetes features without upgrading entire cluster",
+      "quality_score": 0.9807692307692308,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is a node-level logging agent?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/logging.md",
+      "our_doc_path": "concepts_cluster-administration_logging.md",
+      "doc_id": "concepts_cluster-administration_logging",
+      "realistic_q1": "how can I collect container logs from all my kubernetes nodes",
+      "realistic_q2": "my application logs are disappearing when pods restart and I can't debug",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "Why might scaling down a StatefulSet not work right?",
+      "original_source": "/content/en/docs/tasks/run-application/scale-stateful-set.md",
+      "our_doc_path": "tasks_run-application_scale-stateful-set.md",
+      "doc_id": "tasks_run-application_scale-stateful-set",
+      "realistic_q1": "why are my database pods not scaling down gracefully and causing data loss",
+      "realistic_q2": "kubernetes can't remove last pod in my statefulset without manual intervention",
+      "quality_score": 0.8888888888888888,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of device plugins in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/manage-gpus/scheduling-gpus.md",
+      "our_doc_path": "tasks_manage-gpus_scheduling-gpus.md",
+      "doc_id": "tasks_manage-gpus_scheduling-gpus",
+      "realistic_q1": "how to use gpu resources in my machine learning pods without writing complex device configuration",
+      "realistic_q2": "my container can't access custom hardware like tpu or fpga on kubernetes cluster",
+      "quality_score": 0.9444444444444444,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the `status` field in the response from the remote service?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/authentication.md",
+      "our_doc_path": "reference_access-authn-authz_authentication.md",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "why my service keeps failing and I can't understand the error response",
+      "realistic_q2": "how to debug an external api call when something goes wrong with the request",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the minimum Kubernetes version required to configure certificate rotation for the kubelet?",
+      "original_source": "/content/en/docs/tasks/tls/certificate-rotation.md",
+      "our_doc_path": "tasks_tls_certificate-rotation.md",
+      "doc_id": "tasks_tls_certificate-rotation",
+      "realistic_q1": "why are my cluster's certificates expiring and breaking node connections",
+      "realistic_q2": "how to automatically renew kubelet certificates before they expire",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How can you inspect Leases owned by each kube-apiserver?",
+      "original_source": "/content/en/docs/concepts/architecture/leases.md",
+      "our_doc_path": "concepts_architecture_leases.md",
+      "doc_id": "concepts_architecture_leases",
+      "realistic_q1": "why do my kubernetes masters look like they're fighting over leadership",
+      "realistic_q2": "how to debug why cluster leadership election seems stuck",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the impact of bypassing the scheduler for pre-scheduled pods?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/dynamic-resource-allocation.md",
+      "our_doc_path": "concepts_scheduling-eviction_dynamic-resource-allocation.md",
+      "doc_id": "concepts_scheduling-eviction_dynamic-resource-allocation",
+      "realistic_q1": "how can manually placing pods on specific nodes break my cluster's reliability",
+      "realistic_q2": "my application is not being distributed evenly across nodes after deployment",
+      "quality_score": 0.75,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is an owner in Kubernetes?",
+      "original_source": "/content/en/docs/concepts/overview/working-with-objects/owners-dependents.md",
+      "our_doc_path": "concepts_overview_working-with-objects_owners-dependents.md",
+      "doc_id": "concepts_overview_working-with-objects_owners-dependents",
+      "realistic_q1": "why do my child resources get deleted when parent resource is removed",
+      "realistic_q2": "how to prevent automatic deletion of resources when parent resource is deleted",
+      "quality_score": 0.7083333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is webhook token authentication?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/authentication.md",
+      "our_doc_path": "reference_access-authn-authz_authentication.md",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "why do my kubernetes service accounts keep getting rejected with authentication errors",
+      "realistic_q2": "how can I create a secure way to authenticate external services to my cluster",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the possible responses when requesting an eviction using the API?",
+      "original_source": "/content/en/docs/concepts/scheduling-eviction/api-eviction.md",
+      "our_doc_path": "concepts_scheduling-eviction_api-eviction.md",
+      "doc_id": "concepts_scheduling-eviction_api-eviction",
+      "realistic_q1": "how to gracefully remove a node from kubernetes cluster without disrupting running workloads",
+      "realistic_q2": "why is kubernetes not automatically moving my pods when I want to drain a problematic node",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the purpose of the `--allow-metric-labels-manifest` flag?",
+      "original_source": "/content/en/docs/concepts/cluster-administration/system-metrics.md",
+      "our_doc_path": "concepts_cluster-administration_system-metrics.md",
+      "doc_id": "concepts_cluster-administration_system-metrics",
+      "realistic_q1": "why are my kubernetes metrics not showing up with custom labels",
+      "realistic_q2": "getting error when trying to add extra labels to monitoring dashboard",
+      "quality_score": 1.0,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is at-rest encryption in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/administer-cluster/decrypt-data.md",
+      "our_doc_path": "tasks_administer-cluster_decrypt-data.md",
+      "doc_id": "tasks_administer-cluster_decrypt-data",
+      "realistic_q1": "how can I protect sensitive data stored in my kubernetes cluster's volumes",
+      "realistic_q2": "is my database backup safe from unauthorized access if someone gets physical disk access",
+      "quality_score": 0.7083333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "How do you create a CustomResourceDefinition?",
+      "original_source": "/content/en/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions.md",
+      "our_doc_path": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions.md",
+      "doc_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions",
+      "realistic_q1": "how to extend kubernetes with my own custom resource type for our specific infrastructure",
+      "realistic_q2": "getting an error when trying to define a new resource that tracks our company's specific deployment workflow",
+      "quality_score": 0.9583333333333334,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the role of signers in Kubernetes?",
+      "original_source": "/content/en/docs/reference/access-authn-authz/certificate-signing-requests.md",
+      "our_doc_path": "reference_access-authn-authz_certificate-signing-requests.md",
+      "doc_id": "reference_access-authn-authz_certificate-signing-requests",
+      "realistic_q1": "why can't my certificate signing requests get automatically approved in kubernetes",
+      "realistic_q2": "how to automatically generate and validate tls certificates for my services",
+      "quality_score": 0.96875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the recommended key path for etcd-ca?",
+      "original_source": "/content/en/docs/setup/best-practices/certificates.md",
+      "our_doc_path": "setup_best-practices_certificates.md",
+      "doc_id": "setup_best-practices_certificates",
+      "realistic_q1": "why is my kubernetes cluster not authenticating with etcd when using certificates",
+      "realistic_q2": "getting x509 certificate errors when trying to set up cluster security",
+      "quality_score": 0.96875,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What is the default termination message policy in Kubernetes?",
+      "original_source": "/content/en/docs/tasks/debug/debug-application/determine-reason-pod-failure.md",
+      "our_doc_path": "tasks_debug_debug-application_determine-reason-pod-failure.md",
+      "doc_id": "tasks_debug_debug-application_determine-reason-pod-failure",
+      "realistic_q1": "why did my container exit and how can I see the exact error message",
+      "realistic_q2": "is there a way to capture and save the crash reason from a failed pod",
+      "quality_score": 0.9444444444444444,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "Which QoS class has the strictest resource limits and is least likely to face eviction?",
+      "original_source": "/content/en/docs/concepts/workloads/pods/pod-qos.md",
+      "our_doc_path": "concepts_workloads_pods_pod-qos.md",
+      "doc_id": "concepts_workloads_pods_pod-qos",
+      "realistic_q1": "how to prevent my critical services from getting killed when the node runs out of resources",
+      "realistic_q2": "kubernetes keeps evicting my important pods during high memory usage",
+      "quality_score": 0.9666666666666667,
+      "quality_pass": true
+    },
+    {
+      "original_instruction": "What are the two conditions under which Topology Aware Hints will not be assigned?",
+      "original_source": "/content/en/docs/concepts/services-networking/topology-aware-routing.md",
+      "our_doc_path": "concepts_services-networking_topology-aware-routing.md",
+      "doc_id": "concepts_services-networking_topology-aware-routing",
+      "realistic_q1": "why are my service traffic loadbalancing rules not spreading evenly across zones",
+      "realistic_q2": "getting unbalanced traffic distribution in multi-zone kubernetes cluster",
+      "quality_score": 0.9642857142857143,
+      "quality_pass": true
+    }
+  ]
+}
