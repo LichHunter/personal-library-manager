@@ -754,7 +754,7 @@ def run_retrieval_benchmark(questions_file: Optional[str] = None) -> dict:
 
     all_chunks = []
     for doc in documents:
-        chunks = chunker.chunk(doc.content, doc.id)
+        chunks = chunker.chunk(doc)
         all_chunks.extend(chunks)
 
     print(f"Created {len(all_chunks)} chunks")
