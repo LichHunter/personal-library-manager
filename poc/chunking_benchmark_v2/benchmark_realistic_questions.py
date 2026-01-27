@@ -35,12 +35,13 @@ Target user profile:
 - Describes symptoms, behaviors, goals - not technical terms
 
 Guidelines:
-1. Each question should describe a REAL problem, symptom, or goal
-2. Use natural language, not technical jargon
-3. Include specific symptoms or error behaviors when relevant
-4. Keep questions concise (<120 characters each)
-5. Avoid starting with "What is" - use problem-oriented language instead
-6. Questions should sound like Stack Overflow posts, not documentation queries
+1. **MUST start with problem language**: how, why, can't, my, is, does, getting, error, when, which
+2. Each question should describe a REAL problem, symptom, or goal
+3. Use natural language, not technical jargon
+4. Include specific symptoms or error behaviors when relevant
+5. Keep questions concise (<120 characters each)
+6. **AVOID**: Starting with imperatives (mount, block, create), desires (want to, need to), or advice-seeking (best practices)
+7. Questions should sound like Stack Overflow posts, not documentation queries
 
 Examples:
 
