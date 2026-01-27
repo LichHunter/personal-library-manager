@@ -715,7 +715,7 @@ def run_retrieval_benchmark(questions_file: Optional[str] = None) -> dict:
 
     # Load questions
     if questions_file is None:
-        questions_path = Path(__file__).parent / "corpus" / "realistic_questions.json"
+        questions_path = CORPUS_DIR / "realistic_questions.json"
     else:
         questions_path = Path(questions_file)
 
