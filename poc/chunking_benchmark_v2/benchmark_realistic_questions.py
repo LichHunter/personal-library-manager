@@ -740,7 +740,9 @@ def run_retrieval_benchmark(questions_file: Optional[str] = None) -> dict:
         with open(doc_file) as f:
             content = f.read()
         doc_id = doc_file.stem  # filename without .md
-        documents.append(Document(id=doc_id, content=content, metadata={}))
+        documents.append(
+            Document(id=doc_id, title=doc_id, content=content, metadata={})
+        )
 
     print(f"Loaded {len(documents)} documents")
 
