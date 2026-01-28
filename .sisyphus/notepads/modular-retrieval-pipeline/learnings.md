@@ -658,3 +658,269 @@ This component enables:
 - Composability: Works in pipelines with other components
 - Performance: Depends on LLM latency (typically 0.5-2s per query)
 
+
+## Task 5: Query Expander Component (2026-01-28)
+
+### What We Built
+Created `poc/modular_retrieval_pipeline/components/query_expander.py` with QueryExpander component:
+- **QueryExpander class**: Expands queries with domain-specific terms to address vocabulary mismatch
+- **Component protocol**: Implements `process(RewrittenQuery) -> ExpandedQuery` interface
+- **DOMAIN_EXPANSIONS dict**: Ported from enriched_hybrid_llm with 14 expansion rules
+- **Expansion tracking**: Records which expansion keys were applied (tuple of strings)
+- **Stateless design**: DOMAIN_EXPANSIONS as class constant, pure function interface
+- **Case-insensitive matching**: Matches expansion terms regardless of case
+- **Deduplication**: Avoids adding terms already in query (case-insensitive)
+
+### Design Decisions
+
+#### 1. Porting DOMAIN_EXPANSIONS Dictionary
+```python
+DOMAIN_EXPANSIONS = {
+    "rpo": "recovery point objective RPO data loss backup",
+    "token": "JWT authentication token iat exp issued claims expiration",
+    "database": "PostgreSQL Redis Kafka storage data layer",
+    "monitoring": "Prometheus Grafana Jaeger observability metrics tracing",
+    # ... 10 more expansions
+}
+```
+- Copied from `poc/chunking_benchmark_v2/retrieval/enriched_hybrid_llm.py:20-42`
+- 14 expansion rules covering critical vocabulary gaps
+- Addresses VOCABULARY_MISMATCH (59% failure rate in realistic benchmarks)
+- Covers acronyms (RPO, RTO, JWT, HPA) and technical stacks (database, monitoring)
+
+#### 2. Expansion Tracking
+```python
+expansions: tuple[str, ...] = field(default_factory=tuple)
+```
+- Stores which expansion keys were applied (e.g., `("token",)` or `("database", "monitoring")`)
+- Immutable tuple (frozen dataclass)
+- Enables debugging: understand which expansions helped/hurt retrieval
+- Different from expansion text: tracks keys, not full expansion strings
+
+#### 3. Case-Insensitive Matching
+```python
+query_lower = query_text.lower()
+for term, expansion in self.DOMAIN_EXPANSIONS.items():
+    if term in query_lower:
+        expansions_applied.append((term, expansion))
+```
+- Matches expansion keys case-insensitively
+- Handles "TOKEN", "Token", "token" identically
+- Improves recall: catches variations in user input
+
+#### 4. Case-Insensitive Deduplication
+```python
+# Use lowercase comparison to catch case-insensitive duplicates
+query_terms = set(query_lower.split())
+expansion_terms_lower = {term.lower() for term in expansion_terms}
+new_terms_lower = expansion_terms_lower - query_terms
+
+# Map back to original case from expansion_terms
+new_terms = {term for term in expansion_terms if term.lower() in new_terms_lower}
+```
+- Prevents "JWT" from being added if "jwt" already in query
+- Preserves original case from expansion dictionary
+- Critical for correctness: "JWT" in expansion, "jwt" in query should deduplicate
+
+#### 5. Stateless Component Design
+```python
+class QueryExpander(Component[RewrittenQuery, ExpandedQuery]):
+    DOMAIN_EXPANSIONS = DOMAIN_EXPANSIONS  # Class constant, not instance state
+    
+    def process(self, data: RewrittenQuery) -> ExpandedQuery:
+        # Pure function: no state mutation, deterministic
+```
+- DOMAIN_EXPANSIONS is class constant (shared across instances)
+- No instance variables except inherited from Component protocol
+- Deterministic: same input always produces same output
+- Safe for concurrent usage
+
+#### 6. Type Transformation
+```python
+# Input: RewrittenQuery (from QueryRewriter)
+# Output: ExpandedQuery (preserves RewrittenQuery + adds expanded text)
+```
+- Accepts RewrittenQuery objects (immutable dataclass)
+- Returns ExpandedQuery objects (immutable dataclass)
+- Preserves full provenance chain: Query → Rewritten → Expanded
+- Tracks transformation method: "domain_specific"
+
+### Key Patterns
+
+#### Pattern 1: Domain-Specific Expansion Dictionary
+```python
+DOMAIN_EXPANSIONS = {
+    "token": "JWT authentication token iat exp issued claims expiration",
+    "rpo": "recovery point objective RPO data loss backup",
+    # ...
+}
+```
+- Maps short terms to expansion phrases
+- Expansion phrases are space-separated terms
+- Addresses vocabulary gaps in specific domains
+- Easy to extend: add new term → expansion pairs
+
+#### Pattern 2: Expansion Tracking
+```python
+expansions_applied = []
+for term, expansion in DOMAIN_EXPANSIONS.items():
+    if term in query_lower:
+        expansions_applied.append((term, expansion))
+
+expansion_keys = tuple(term for term, _ in expansions_applied)
+```
+- Collect which keys matched
+- Store as tuple for immutability
+- Enables debugging: which expansions were applied?
+- Different from storing full expansion text
+
+#### Pattern 3: Deduplication with Case Handling
+```python
+# Lowercase for comparison
+query_terms = set(query_lower.split())
+expansion_terms_lower = {term.lower() for term in expansion_terms}
+new_terms_lower = expansion_terms_lower - query_terms
+
+# Preserve original case
+new_terms = {term for term in expansion_terms if term.lower() in new_terms_lower}
+```
+- Compares lowercase versions
+- Preserves original case from expansion dictionary
+- Avoids duplicates while maintaining readability
+
+### Verification Results
+
+All 12 tests passed:
+- ✓ Component protocol: QueryExpander implements Component[RewrittenQuery, ExpandedQuery]
+- ✓ Type transformation: RewrittenQuery → ExpandedQuery works correctly
+- ✓ Token expansion: "token" query expands with JWT-related terms
+- ✓ No matching expansions: Queries with no matches return unchanged
+- ✓ Multiple expansions: "monitoring and database" expands both terms
+- ✓ Case-insensitive matching: "TOKEN AUTHENTICATION" matches "token" key
+- ✓ Deduplication: "JWT" appears once even if in both query and expansion
+- ✓ Immutability: ExpandedQuery is frozen dataclass
+- ✓ Input immutability: Input RewrittenQuery not modified
+- ✓ Pure function: Same input always produces same output
+- ✓ Provenance tracking: Full chain preserved (Query → Rewritten → Expanded)
+- ✓ DOMAIN_EXPANSIONS constant: Properly defined as class constant
+
+### Test Results
+
+```
+Test 1: Component protocol implementation
+✓ QueryExpander implements Component protocol
+
+Test 2: Type transformation
+✓ RewrittenQuery → ExpandedQuery transformation works
+  Input: token auth
+  Expanded: token auth JWT authentication claims exp expiration iat issued
+  Expansions: ('token',)
+
+Test 3: Token expansion
+✓ Token expansion works correctly
+  Expansions applied: ('token',)
+
+Test 4: No matching expansions
+✓ No matching expansions handled correctly
+
+Test 5: Multiple expansions
+✓ Multiple expansions work correctly
+  Expansions applied: ('database', 'monitoring')
+
+Test 6: Case-insensitive matching
+✓ Case-insensitive matching works
+
+Test 7: Deduplication
+✓ Deduplication works correctly
+  Expanded: token JWT JSON authentication claims exp expiration iat issued web
+
+Test 8: Immutability of ExpandedQuery
+✓ ExpandedQuery is immutable (frozen dataclass)
+
+Test 9: Input immutability
+✓ Input RewrittenQuery is not modified
+
+Test 10: Pure function interface
+✓ Pure function interface (stateless and deterministic)
+
+Test 11: Provenance tracking
+✓ Provenance tracking works
+  Original: token auth
+  Rewritten: token auth
+  Expanded: token auth JWT authentication claims exp expiration iat issued
+
+Test 12: DOMAIN_EXPANSIONS as class constant
+✓ DOMAIN_EXPANSIONS is properly defined as class constant
+  Total expansions: 14
+```
+
+### Integration with Pipeline
+
+The QueryExpander component fits into the pipeline as the second transformation:
+
+```python
+pipeline = (Pipeline()
+    .add(QueryRewriter(timeout=5.0))      # Query → RewrittenQuery
+    .add(QueryExpander())                 # RewrittenQuery → ExpandedQuery
+    .add(EmbeddingComponent())            # ExpandedQuery → EmbeddedQuery
+    .add(BM25Retriever())                 # EmbeddedQuery → ScoredChunks
+    .add(SemanticRetriever())             # EmbeddedQuery → ScoredChunks
+    .add(FusionComponent())               # ScoredChunks → PipelineResult
+)
+```
+
+### Design Trade-offs
+
+#### Pros
+- ✓ Addresses vocabulary mismatch (59% failure rate in realistic benchmarks)
+- ✓ Stateless: safe for concurrent usage
+- ✓ Deterministic: same input always produces same output
+- ✓ Preserves provenance: full transformation chain tracked
+- ✓ Type-safe with Component protocol
+- ✓ Immutable output
+- ✓ Case-insensitive matching improves recall
+- ✓ Deduplication prevents bloat
+- ✓ Easy to extend: add new term → expansion pairs
+
+#### Cons
+- ✗ Fixed expansion dictionary (not learned from data)
+- ✗ No weighting: all expansions treated equally
+- ✗ No context awareness: same expansion for all queries
+- ✗ Potential query bloat: many new terms added
+- ✗ No feedback loop: can't learn which expansions help
+
+### Performance Characteristics
+
+- **Time complexity**: O(n*m) where n = query terms, m = expansion keys
+- **Space complexity**: O(k) where k = total expansion terms
+- **Typical performance**: <1ms for most queries
+- **Bottleneck**: Deduplication set operations (negligible for typical query sizes)
+
+### Next Steps
+
+This component enables:
+1. **Embedding**: ExpandedQuery → EmbeddedQuery
+2. **Retrieval**: EmbeddedQuery → ScoredChunks
+3. **Fusion**: Combine BM25 + semantic signals
+4. **Full pipeline**: Query → PipelineResult with full history
+
+### Technical Notes
+
+- File: `poc/modular_retrieval_pipeline/components/query_expander.py`
+- Test file: `poc/modular_retrieval_pipeline/test_query_expander.py`
+- Dependencies: `modular_retrieval_pipeline.types`, `modular_retrieval_pipeline.base`
+- Type hints: Complete with generics (Component[RewrittenQuery, ExpandedQuery])
+- Error handling: None (pure function, no external dependencies)
+- Immutability: Output is frozen dataclass
+- Composability: Works in pipelines with other components
+- Performance: <1ms per query (negligible overhead)
+
+### Key Insight: Vocabulary Mismatch is Critical
+
+The realistic benchmark shows 59% failure rate due to vocabulary mismatch:
+- Users describe problems with natural language
+- Documentation uses technical terms
+- Query expansion bridges this gap by adding synonyms and related terms
+- Example: "token" → "JWT authentication iat exp issued claims expiration"
+
+This component directly addresses the #1 failure mode in retrieval systems.
