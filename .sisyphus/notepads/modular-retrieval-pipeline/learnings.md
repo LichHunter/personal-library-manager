@@ -458,3 +458,203 @@ Each expensive operation can be wrapped with `CacheableComponent` for 100-1000x 
 - Composability: Works with any component implementing Component protocol
 - Performance: 1122x speedup on 0.1s operations
 
+## Task 4: Query Rewriter Component (2026-01-28)
+
+### What We Built
+Created `poc/modular_retrieval_pipeline/components/query_rewriter.py` with QueryRewriter component:
+- **QueryRewriter class**: Wraps existing rewrite_query function from enriched_hybrid_llm
+- **Component protocol**: Implements `process(Query) -> RewrittenQuery` interface
+- **Timeout handling**: Configurable timeout (default 5.0 seconds)
+- **Stateless design**: No stored LLM client, pure function interface
+- **Provenance tracking**: Preserves original query and tracks model used
+
+### Design Decisions
+
+#### 1. Wrapping Existing Function (Don't Reimplement)
+```python
+def process(self, data: Query) -> RewrittenQuery:
+    rewritten_text = rewrite_query(data.text, timeout=self.timeout)
+    return RewrittenQuery(
+        original=data,
+        rewritten=rewritten_text,
+        model="claude-3-haiku",
+    )
+```
+- Reuses existing `rewrite_query()` from `poc/chunking_benchmark_v2/retrieval/query_rewrite.py`
+- No reimplementation of LLM logic
+- Focuses on type transformation and Component protocol adaptation
+- Leverages proven query rewriting strategy
+
+#### 2. Stateless Component Design
+```python
+def __init__(self, timeout: float = 5.0):
+    self.timeout = timeout
+```
+- Only stores timeout parameter (configuration)
+- No LLM client stored as instance variable
+- Each `process()` call independently invokes `rewrite_query()`
+- Enables safe concurrent usage and testing
+
+#### 3. Type Transformation
+```python
+# Input: Query (original user query)
+# Output: RewrittenQuery (preserves original + adds rewritten version)
+```
+- Accepts Query objects (immutable dataclass)
+- Returns RewrittenQuery objects (immutable dataclass)
+- Preserves original query for provenance tracking
+- Tracks which model performed rewriting ("claude-3-haiku")
+
+#### 4. Timeout Configuration
+```python
+rewriter_5s = QueryRewriter(timeout=5.0)
+rewriter_10s = QueryRewriter(timeout=10.0)
+```
+- Configurable timeout per instance
+- Default 5.0 seconds (matches enriched_hybrid_llm strategy)
+- Passed to `rewrite_query()` function
+- Handles LLM timeout gracefully (returns original query on timeout)
+
+#### 5. Package Structure
+```
+poc/modular_retrieval_pipeline/
+├── __init__.py                    # Package marker
+├── types.py                       # Immutable types
+├── base.py                        # Component protocol
+├── cache.py                       # Caching wrapper
+├── components/
+│   ├── __init__.py               # Package marker
+│   └── query_rewriter.py         # QueryRewriter component
+├── test_query_rewriter.py        # Tests
+```
+- Created `components/` subdirectory for component implementations
+- Added `__init__.py` files to make proper Python packages
+- Avoids naming conflicts with built-in `types` module
+
+### Key Patterns
+
+#### Pattern 1: Component Wrapper for Existing Functions
+```python
+class QueryRewriter(Component[Query, RewrittenQuery]):
+    def __init__(self, timeout: float = 5.0):
+        self.timeout = timeout
+    
+    def process(self, data: Query) -> RewrittenQuery:
+        result = rewrite_query(data.text, timeout=self.timeout)
+        return RewrittenQuery(original=data, rewritten=result, model="claude-3-haiku")
+```
+- Wraps existing function without modifying it
+- Adapts function signature to Component protocol
+- Adds type safety and provenance tracking
+- Enables composition in pipelines
+
+#### Pattern 2: Preserving Provenance
+```python
+return RewrittenQuery(
+    original=data,           # Preserve original for history
+    rewritten=rewritten_text,  # New data
+    model="claude-3-haiku",  # Track which model
+)
+```
+- Each transformation preserves previous stage
+- Enables full history reconstruction
+- Supports debugging and understanding data flow
+- Follows immutable transformation chain pattern
+
+#### Pattern 3: Configuration via Constructor
+```python
+rewriter = QueryRewriter(timeout=5.0)
+```
+- Timeout is configuration, not state
+- Immutable after construction
+- Enables different timeout strategies
+- Supports dependency injection
+
+### Verification Results
+
+All tests passed:
+- ✓ Component protocol: QueryRewriter implements Component[Query, RewrittenQuery]
+- ✓ Type transformation: Query → RewrittenQuery works correctly
+- ✓ Timeout configuration: Configurable timeout parameter
+- ✓ Immutability: RewrittenQuery is frozen dataclass
+- ✓ Stateless: No stored LLM client, pure function interface
+- ✓ Provenance: Original query preserved in result
+- ✓ Model tracking: Model field set to "claude-3-haiku"
+
+### Test Results
+
+```
+Test 1: Component protocol implementation
+✓ QueryRewriter implements Component protocol
+
+Test 2: Type transformation
+✓ Query → RewrittenQuery transformation works
+  Original: why does my token expire
+  Rewritten: token authentication expiration mechanism lifetime management
+  Model: claude-3-haiku
+
+Test 3: Timeout configuration
+✓ Timeout parameter is configurable
+
+Test 4: Immutability of RewrittenQuery
+✓ RewrittenQuery is immutable (frozen dataclass)
+
+Test 5: Pure function interface
+✓ Pure function interface (stateless)
+
+Test 6: No stored state
+✓ Component is stateless (no stored LLM client)
+```
+
+### Integration with Pipeline
+
+The QueryRewriter component fits into the pipeline as the first transformation:
+
+```python
+pipeline = (Pipeline()
+    .add(QueryRewriter(timeout=5.0))      # Query → RewrittenQuery
+    .add(QueryExpander())                 # RewrittenQuery → ExpandedQuery
+    .add(EmbeddingComponent())            # ExpandedQuery → EmbeddedQuery
+    .add(BM25Retriever())                 # EmbeddedQuery → ScoredChunks
+    .add(SemanticRetriever())             # EmbeddedQuery → ScoredChunks
+    .add(FusionComponent())               # ScoredChunks → PipelineResult
+)
+```
+
+### Design Trade-offs
+
+#### Pros
+- ✓ Reuses proven query rewriting logic
+- ✓ Stateless: safe for concurrent usage
+- ✓ Configurable timeout
+- ✓ Preserves provenance
+- ✓ Type-safe with Component protocol
+- ✓ Immutable output
+- ✓ Simple, focused implementation
+
+#### Cons
+- ✗ Depends on external rewrite_query function
+- ✗ LLM calls are non-deterministic
+- ✗ Timeout handling is implicit (returns original on timeout)
+- ✗ No caching (could wrap with CacheableComponent if needed)
+
+### Next Steps
+
+This component enables:
+1. **Query expansion**: RewrittenQuery → ExpandedQuery
+2. **Embedding**: ExpandedQuery → EmbeddedQuery
+3. **Retrieval**: EmbeddedQuery → ScoredChunks
+4. **Fusion**: Combine BM25 + semantic signals
+5. **Full pipeline**: Query → PipelineResult with full history
+
+### Technical Notes
+
+- File: `poc/modular_retrieval_pipeline/components/query_rewriter.py`
+- Test file: `poc/modular_retrieval_pipeline/test_query_rewriter.py`
+- Dependencies: `modular_retrieval_pipeline.types`, `modular_retrieval_pipeline.base`, `chunking_benchmark_v2.retrieval.query_rewrite`
+- Type hints: Complete with generics (Component[Query, RewrittenQuery])
+- Error handling: Propagates exceptions from rewrite_query (fail-fast)
+- Immutability: Output is frozen dataclass
+- Composability: Works in pipelines with other components
+- Performance: Depends on LLM latency (typically 0.5-2s per query)
+
