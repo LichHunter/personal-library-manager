@@ -1359,3 +1359,107 @@ pipeline = Pipeline()
 ```
 
 Each component adds fields without removing others, enabling flexible composition.
+
+## Task 8: ContentEnricher Component (2026-01-28)
+
+### What We Built
+Created `poc/modular_retrieval_pipeline/components/content_enricher.py` - the final step in the enrichment pipeline that formats accumulated data from KeywordExtractor and EntityExtractor into a single enriched string.
+
+### Design Decisions
+
+#### 1. Pure String Formatting (No Extraction Logic)
+- ContentEnricher is stateless and performs ONLY formatting
+- Receives pre-extracted keywords and entities from previous components
+- No YAKE or spaCy calls - those are handled by dedicated components
+- Keeps separation of concerns: extraction vs. formatting
+
+#### 2. Unix Pipe Accumulation Pattern
+- Input: dict with 'content', 'keywords', 'entities' fields
+- Output: formatted string (not dict)
+- Breaks the accumulation pattern at the final step (intentional)
+- Previous components preserve all input fields; ContentEnricher returns final string
+
+#### 3. Format: "keywords | entities\n\noriginal_content"
+- Keywords formatted as comma-separated list: "key1, key2, key3"
+- Entities formatted by type: "ORG: Company1, Company2 | PRODUCT: Tool1"
+- Multiple entity types joined with " | "
+- Prefix and content separated by "\n\n" (double newline)
+- If no keywords/entities, returns original content unchanged
+
+#### 4. Flexible Entity Type Handling
+- Entities dict can have any number of types (ORG, PRODUCT, PERSON, etc.)
+- Each type is formatted as "TYPE: entity1, entity2"
+- Empty entity lists are skipped
+- Order preserved from input dict
+
+#### 5. Input Validation
+- Validates presence of required fields: 'content', 'keywords', 'entities'
+- Validates field types: content (str), keywords (list), entities (dict)
+- Raises KeyError for missing fields, TypeError for wrong types
+- Fail-fast approach consistent with Component protocol
+
+### Implementation Details
+
+#### Method: _format_enriched_content()
+- Helper method that performs the actual formatting
+- Builds prefix_parts list: [keywords_str, entity_str1, entity_str2, ...]
+- Joins parts with " | " separator
+- Returns formatted string or original content if no prefix
+
+#### Edge Cases Handled
+1. Empty keywords list → skipped in prefix
+2. Empty entities dict → skipped in prefix
+3. Empty entity type lists → skipped in entity formatting
+4. No keywords AND no entities → returns original content unchanged
+5. Only keywords → "key1, key2\n\noriginal_content"
+6. Only entities → "ORG: Company\n\noriginal_content"
+
+### Testing Results
+
+All tests passed:
+- Test 1: Basic enrichment with keywords and entities ✓
+- Test 2: Multiple entity types ✓
+- Test 3: No keywords or entities (returns original) ✓
+- Test 4: Only keywords ✓
+- Test 5: Only entities ✓
+- Test 6: Component protocol implementation ✓
+- Pipeline integration test: Full enrichment pipeline works end-to-end ✓
+
+### Pipeline Integration
+
+Verified in full pipeline:
+```python
+pipeline = (Pipeline()
+    .add(KeywordExtractor(max_keywords=5))
+    .add(EntityExtractor())
+    .add(ContentEnricher())
+)
+result = pipeline.run({'content': '...'})  # Returns enriched string
+```
+
+Output example:
+```
+Google Cloud Platform, Platform offers Kubernetes, ... | PERSON: Cloud Platform | ORG: Kubernetes Engine
+
+Google Cloud Platform offers Kubernetes Engine for container orchestration
+```
+
+### Key Learnings
+
+1. **Final step breaks accumulation pattern**: ContentEnricher returns string, not dict. This is intentional - it's the final output of the enrichment pipeline.
+
+2. **Formatting is simple but critical**: The format "keywords | entities\n\noriginal_content" is used by retrieval systems to boost relevance. Simple string formatting is sufficient.
+
+3. **Component protocol is flexible**: Components can return different types (dict, str, etc.) as long as they implement process(). The pipeline handles type transitions.
+
+4. **Stateless components are easier to test**: No initialization, no state management, just pure functions. Makes testing and caching straightforward.
+
+5. **Entity type ordering matters**: The order of entity types in the output depends on dict iteration order (Python 3.7+ preserves insertion order). This is consistent and predictable.
+
+### Files Created
+- `poc/modular_retrieval_pipeline/components/content_enricher.py` (165 lines)
+
+### Related Components
+- KeywordExtractor: Extracts keywords using YAKE
+- EntityExtractor: Extracts entities using spaCy NER
+- ContentEnricher: Formats both into enriched string

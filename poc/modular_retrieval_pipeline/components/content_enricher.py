@@ -1,0 +1,175 @@
+"""Content enrichment component for formatting accumulated pipeline data.
+
+This module provides a stateless component that formats keywords and entities
+into an enriched content string. It follows the Component protocol for pipeline
+integration.
+
+The component accepts a dict with 'content', 'keywords', and 'entities' fields
+(accumulated from previous pipeline components) and returns a formatted enriched
+string: "keywords | entities\n\noriginal_content"
+
+Example:
+    >>> from content_enricher import ContentEnricher
+    >>> enricher = ContentEnricher()
+    >>> data = {
+    ...     'content': 'Kubernetes horizontal pod autoscaler scales replicas',
+    ...     'keywords': ['kubernetes', 'autoscaler', 'replicas'],
+    ...     'entities': {'PRODUCT': ['Kubernetes']}
+    ... }
+    >>> result = enricher.process(data)
+    >>> print(result)
+    'kubernetes, autoscaler, replicas | PRODUCT: Kubernetes\\n\\nKubernetes horizontal pod autoscaler scales replicas'
+
+Can be wrapped with CacheableComponent for caching:
+    >>> from cache import CacheableComponent
+    >>> cached = CacheableComponent(ContentEnricher(), cache_dir="cache/enriched")
+    >>> result = cached.process(data)  # First call: runs enrichment
+    >>> result = cached.process(data)  # Second call: returns cached result
+"""
+
+from typing import Any
+
+
+class ContentEnricher:
+    """Format accumulated pipeline data into enriched content string.
+
+    This component is the final step in the enrichment pipeline. It receives
+    accumulated data from KeywordExtractor and EntityExtractor, then formats
+    it into the enriched content string used for retrieval.
+
+    The component accepts a dict with 'content', 'keywords', and 'entities'
+    fields and returns a formatted enriched string. The format is:
+    "keywords | entities\n\noriginal_content"
+
+    This is pure string formatting with no extraction logic - it simply
+    combines the accumulated data from previous pipeline components.
+
+    Example:
+        >>> enricher = ContentEnricher()
+        >>> data = {
+        ...     'content': 'Original text here',
+        ...     'keywords': ['key1', 'key2'],
+        ...     'entities': {'ORG': ['Company'], 'PRODUCT': ['Tool']},
+        ...     'source': 'docs.md'
+        ... }
+        >>> result = enricher.process(data)
+        >>> # result = "key1, key2 | ORG: Company | PRODUCT: Tool\\n\\nOriginal text here"
+    """
+
+    def __init__(self):
+        """Initialize ContentEnricher.
+
+        No configuration needed - this component is stateless and performs
+        pure string formatting.
+        """
+        pass
+
+    def process(self, data: dict[str, Any]) -> str:
+        """Format accumulated pipeline data into enriched content string.
+
+        Implements the Component protocol. Accepts a dict with 'content',
+        'keywords', and 'entities' fields, and returns a formatted enriched
+        string combining all three.
+
+        The format is: "keywords | entities\n\noriginal_content"
+        - Keywords are formatted as comma-separated list
+        - Entities are formatted by type: "TYPE: entity1, entity2"
+        - Multiple entity types are separated by " | "
+        - If no keywords or entities, returns original content unchanged
+
+        Args:
+            data: Input dict with 'content', 'keywords', and 'entities' fields.
+                  - 'content' (str): Original content text
+                  - 'keywords' (list[str]): Keywords extracted by KeywordExtractor
+                  - 'entities' (dict[str, list[str]]): Entities extracted by EntityExtractor
+
+        Returns:
+            Formatted enriched string: "keywords | entities\n\noriginal_content"
+            If no keywords or entities, returns original content unchanged.
+
+        Raises:
+            KeyError: If required fields ('content', 'keywords', 'entities') are missing
+            TypeError: If field types are incorrect
+
+        Example:
+            >>> enricher = ContentEnricher()
+            >>> data = {
+            ...     'content': 'Kubernetes pod autoscaler',
+            ...     'keywords': ['kubernetes', 'autoscaler'],
+            ...     'entities': {'PRODUCT': ['Kubernetes']}
+            ... }
+            >>> result = enricher.process(data)
+            >>> assert result == 'kubernetes, autoscaler | PRODUCT: Kubernetes\\n\\nKubernetes pod autoscaler'
+        """
+        # Validate required fields
+        if "content" not in data:
+            raise KeyError("Input dict must have 'content' field")
+        if "keywords" not in data:
+            raise KeyError("Input dict must have 'keywords' field")
+        if "entities" not in data:
+            raise KeyError("Input dict must have 'entities' field")
+
+        content = data["content"]
+        keywords = data["keywords"]
+        entities = data["entities"]
+
+        # Validate types
+        if not isinstance(content, str):
+            raise TypeError(f"'content' must be str, got {type(content).__name__}")
+        if not isinstance(keywords, list):
+            raise TypeError(f"'keywords' must be list, got {type(keywords).__name__}")
+        if not isinstance(entities, dict):
+            raise TypeError(f"'entities' must be dict, got {type(entities).__name__}")
+
+        # Format the enriched string
+        enriched = self._format_enriched_content(content, keywords, entities)
+
+        return enriched
+
+    def _format_enriched_content(
+        self, content: str, keywords: list[str], entities: dict[str, list[str]]
+    ) -> str:
+        """Format keywords and entities into enriched content string.
+
+        This is a stateless helper method that performs pure string formatting.
+        It combines keywords and entities into a prefix, then prepends the
+        prefix to the original content.
+
+        Args:
+            content: Original content text
+            keywords: List of keyword strings
+            entities: Dict mapping entity type to list of entity texts
+
+        Returns:
+            Formatted enriched string: "keywords | entities\n\noriginal_content"
+            If no keywords or entities, returns original content unchanged.
+        """
+        prefix_parts = []
+
+        # Format keywords as comma-separated list
+        if keywords:
+            keyword_str = ", ".join(keywords)
+            prefix_parts.append(keyword_str)
+
+        # Format entities by type
+        if entities:
+            entity_parts = []
+            for entity_type, entity_list in entities.items():
+                if entity_list:
+                    # Format as "TYPE: entity1, entity2"
+                    entity_str = f"{entity_type}: {', '.join(entity_list)}"
+                    entity_parts.append(entity_str)
+
+            # Join multiple entity types with " | "
+            if entity_parts:
+                prefix_parts.append(" | ".join(entity_parts))
+
+        # Combine all parts with " | " separator
+        if prefix_parts:
+            prefix = " | ".join(prefix_parts)
+            enriched = f"{prefix}\n\n{content}"
+        else:
+            # No keywords or entities - return original content
+            enriched = content
+
+        return enriched
