@@ -1,7 +1,16 @@
 {
-  "active_plan": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/realistic-questions-benchmark.md",
-  "started_at": "2026-01-26T22:51:23.126Z",
-  "session_ids": ["ses_409134389ffejIS2rFWN7l7n4m"],
-  "plan_name": "realistic-questions-benchmark",
-  "status": "in_progress"
+  "active_plan": null,
+  "completed_plans": [
+    {
+      "plan_name": "modular-retrieval-pipeline",
+      "plan_path": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/modular-retrieval-pipeline.md",
+      "completed_at": "2026-01-28T18:45:00.000Z",
+      "tasks_completed": 15,
+      "tasks_total": 15,
+      "session_ids": [
+        "ses_3fabdfc1affeUJWlvvtjJJBgsV",
+        "ses_3fa645627ffeDuMiV40j4UZqMh"
+      ]
+    }
+  ]
 }
