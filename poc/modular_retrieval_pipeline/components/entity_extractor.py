@@ -23,7 +23,23 @@ Can be wrapped with CacheableComponent for caching:
     >>> result = cached.process(data)  # Second call: returns cached result
 """
 
+import re
 from typing import Any
+
+CODE_BLOCK_PATTERN = re.compile(r"```[\s\S]*?```|`[^`\n]+`")
+
+
+def _calculate_code_ratio(text: str) -> float:
+    """Calculate ratio of code blocks to total text."""
+    if not text:
+        return 0.0
+    code_chars = sum(len(m.group()) for m in CODE_BLOCK_PATTERN.finditer(text))
+    return code_chars / len(text)
+
+
+def _remove_code_blocks(text: str) -> str:
+    """Remove code blocks from text for NLP processing."""
+    return CODE_BLOCK_PATTERN.sub(" ", text)
 
 
 class EntityExtractor:
@@ -58,7 +74,17 @@ class EntityExtractor:
     """
 
     # Default entity types to extract
-    DEFAULT_ENTITY_TYPES = {"ORG", "PRODUCT", "PERSON", "TECH"}
+    DEFAULT_ENTITY_TYPES = {
+        "ORG",
+        "PRODUCT",
+        "GPE",
+        "PERSON",
+        "WORK_OF_ART",
+        "LAW",
+        "EVENT",
+        "FAC",
+        "NORP",
+    }
 
     def __init__(self, entity_types: set[str] | None = None):
         """Initialize EntityExtractor.
@@ -148,8 +174,9 @@ class EntityExtractor:
             download("en_core_web_sm")
             nlp = spacy.load("en_core_web_sm")
 
-        # Process text with spaCy
-        doc = nlp(content)
+        code_ratio = _calculate_code_ratio(content)
+        text_for_nlp = _remove_code_blocks(content) if code_ratio > 0.3 else content
+        doc = nlp(text_for_nlp[:5000])
 
         # Extract entities
         entities: dict[str, list[str]] = {}
@@ -160,5 +187,8 @@ class EntityExtractor:
                 # Avoid duplicates
                 if ent.text not in entities[ent.label_]:
                     entities[ent.label_].append(ent.text)
+
+        for label in entities:
+            entities[label] = entities[label][:5]
 
         return entities

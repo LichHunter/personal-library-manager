@@ -23,7 +23,23 @@ Can be wrapped with CacheableComponent for caching:
     >>> result = cached.process(data)  # Second call: returns cached result
 """
 
+import re
 from typing import Any, Protocol, runtime_checkable
+
+CODE_BLOCK_PATTERN = re.compile(r"```[\s\S]*?```|`[^`\n]+`")
+
+
+def _calculate_code_ratio(text: str) -> float:
+    """Calculate ratio of code blocks to total text."""
+    if not text:
+        return 0.0
+    code_chars = sum(len(m.group()) for m in CODE_BLOCK_PATTERN.finditer(text))
+    return code_chars / len(text)
+
+
+def _remove_code_blocks(text: str) -> str:
+    """Remove code blocks from text for NLP processing."""
+    return CODE_BLOCK_PATTERN.sub(" ", text)
 
 
 @runtime_checkable
@@ -114,8 +130,11 @@ class KeywordExtractor:
             result["keywords"] = []
             return result
 
+        code_ratio = _calculate_code_ratio(content)
+        text_for_nlp = _remove_code_blocks(content) if code_ratio > 0.3 else content
+
         # Extract keywords using YAKE
-        keywords = self._extract_keywords(content, self.max_keywords)
+        keywords = self._extract_keywords(text_for_nlp, self.max_keywords)
 
         # Create output dict preserving all input fields
         result = dict(data)
@@ -142,19 +161,17 @@ class KeywordExtractor:
         """
         import yake
 
-        # Initialize YAKE extractor (stateless - fresh for each call)
         kw_extractor = yake.KeywordExtractor(
-            lan="en",  # English language
-            n=3,  # Maximum n-gram size (1-3 word phrases)
-            dedupLim=0.9,  # Deduplication threshold
-            top=max_keywords,  # Return top N keywords
-            features=None,  # Use all features
+            lan="en",
+            n=2,
+            dedupLim=0.9,
+            dedupFunc="seqm",
+            windowsSize=1,
+            top=max_keywords,
         )
 
-        # Extract keywords: returns list of (keyword, score) tuples
         keywords_with_scores = kw_extractor.extract_keywords(content)
 
-        # Extract just the keyword strings (discard scores)
         keywords = [kw for kw, score in keywords_with_scores]
 
         return keywords

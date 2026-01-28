@@ -146,23 +146,18 @@ class ContentEnricher:
         """
         prefix_parts = []
 
-        # Format keywords as comma-separated list
+        # Format keywords as comma-separated list (first 7 only)
         if keywords:
-            keyword_str = ", ".join(keywords)
+            keyword_str = ", ".join(keywords[:7])
             prefix_parts.append(keyword_str)
 
-        # Format entities by type
+        # Format entities as flat list (first 2 per type, max 5 total, NO type labels)
         if entities:
-            entity_parts = []
-            for entity_type, entity_list in entities.items():
-                if entity_list:
-                    # Format as "TYPE: entity1, entity2"
-                    entity_str = f"{entity_type}: {', '.join(entity_list)}"
-                    entity_parts.append(entity_str)
-
-            # Join multiple entity types with " | "
-            if entity_parts:
-                prefix_parts.append(" | ".join(entity_parts))
+            entity_values = []
+            for label, values in entities.items():
+                entity_values.extend(values[:2])
+            if entity_values:
+                prefix_parts.append(", ".join(entity_values[:5]))
 
         # Combine all parts with " | " separator
         if prefix_parts:
