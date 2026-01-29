@@ -1,0 +1,22 @@
+{
+  "benchmark_run_at": "2026-01-29T11:57:39.486749",
+  "questions_file": "poc/chunking_benchmark_v2/corpus/needle_questions.json",
+  "baseline": {
+    "strategy": "enriched_hybrid_llm",
+    "accuracy": 90.0,
+    "avg_latency_ms": 1144.3906784057617,
+    "peak_memory_mb": 132.91221141815186
+  },
+  "modular": {
+    "strategy": "enriched_hybrid_llm (modular)",
+    "accuracy": 90.0,
+    "avg_latency_ms": 1050.4477739334106,
+    "peak_memory_mb": 217.7598466873169,
+    "status": "complete"
+  },
+  "comparison": {
+    "accuracy_diff": 0.0,
+    "latency_diff_ms": -93.94290447235107,
+    "memory_diff_mb": 84.84763526916504
+  }
+}

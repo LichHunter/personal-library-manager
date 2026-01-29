@@ -298,7 +298,7 @@ def generate_report(
             "peak_memory_mb": baseline["peak_memory_mb"],
         },
         "modular": {
-            "strategy": "modular_pipeline",
+            "strategy": "enriched_hybrid_llm (modular)",
             "accuracy": modular["accuracy"],
             "avg_latency_ms": modular["avg_latency_ms"],
             "peak_memory_mb": modular["peak_memory_mb"],
