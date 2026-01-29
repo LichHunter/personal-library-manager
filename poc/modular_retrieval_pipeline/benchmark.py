@@ -47,6 +47,9 @@ from modular_retrieval_pipeline.base import Pipeline
 from modular_retrieval_pipeline.modular_enriched_hybrid_llm import (
     ModularEnrichedHybridLLM,
 )
+from modular_retrieval_pipeline.modular_enriched_hybrid import (
+    ModularEnrichedHybrid,
+)
 
 
 CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
@@ -281,6 +284,99 @@ def run_modular_benchmark(
     }
 
 
+def run_modular_no_llm_benchmark(
+    questions: list[dict],
+    needle_doc_id: str,
+    chunks: list[Chunk],
+    documents: list[Document],
+    embedder: SentenceTransformer,
+) -> dict:
+    """Run modular pipeline benchmark using ModularEnrichedHybrid (no LLM).
+
+    This benchmark uses the ModularEnrichedHybrid orchestrator which skips
+    LLM-based query rewriting for faster latency.
+
+    Configuration:
+    - Embedder: BAAI/bge-base-en-v1.5 (same as others)
+    - k: 5 (same as others)
+    - RRF: Semantic first, BM25 second (same as others)
+    - Adaptive weights based on query expansion (same as others)
+    - NO LLM query rewriting (key difference)
+
+    Returns:
+        {
+            'accuracy': float,
+            'avg_latency_ms': float,
+            'peak_memory_mb': float,
+            'results': list[dict],
+        }
+    """
+    print("\n" + "=" * 60)
+    print("MODULAR PIPELINE: ModularEnrichedHybrid (No LLM)")
+    print("=" * 60)
+
+    # Initialize strategy (NO rewrite_timeout parameter!)
+    strategy = ModularEnrichedHybrid(debug=False)
+    strategy.set_embedder(embedder)
+
+    # Index chunks
+    print("Indexing chunks...")
+    tracemalloc.start()
+    index_start = time.time()
+    strategy.index(chunks, documents)
+    index_time = time.time() - index_start
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    peak_memory_mb = peak / 1024 / 1024
+
+    print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
+    print(f"Peak memory: {peak_memory_mb:.1f} MB")
+
+    # Run retrieval for each question
+    print(f"\nRunning retrieval for {len(questions)} questions...")
+    results = []
+    latencies = []
+
+    for i, q in enumerate(questions):
+        query_start = time.time()
+        retrieved = strategy.retrieve(q["question"], k=5)
+        latency = (time.time() - query_start) * 1000  # ms
+        latencies.append(latency)
+
+        # Check if needle found
+        needle_found = any(c.doc_id == needle_doc_id for c in retrieved)
+
+        result = {
+            "question_id": q["id"],
+            "question": q["question"],
+            "needle_found": needle_found,
+            "latency_ms": round(latency, 1),
+        }
+        results.append(result)
+
+        status = "✓" if needle_found else "✗"
+        print(
+            f"  [{i + 1:2d}/{len(questions)}] {status} ({latency:.0f}ms) {q['question'][:50]}..."
+        )
+
+    # Calculate metrics
+    accuracy = sum(1 for r in results if r["needle_found"]) / len(results) * 100
+    avg_latency = sum(latencies) / len(latencies)
+
+    print(
+        f"\nAccuracy: {accuracy:.1f}% ({sum(1 for r in results if r['needle_found'])}/{len(results)})"
+    )
+    print(f"Avg Latency: {avg_latency:.1f}ms")
+    print(f"Peak Memory: {peak_memory_mb:.1f}MB")
+
+    return {
+        "accuracy": accuracy,
+        "avg_latency_ms": avg_latency,
+        "peak_memory_mb": peak_memory_mb,
+        "results": results,
+    }
+
+
 def generate_report(
     baseline: dict,
     modular: dict,
@@ -344,6 +440,113 @@ def generate_report(
     print(f"\nReport saved to: {output_file}")
 
 
+def generate_three_way_report(
+    baseline: dict,
+    modular: dict,
+    modular_no_llm: dict,
+    questions_file: Path,
+    output_file: Path,
+) -> None:
+    """Generate three-way comparison report."""
+    report = {
+        "benchmark_run_at": datetime.now().isoformat(),
+        "questions_file": str(questions_file),
+        "baseline": {
+            "strategy": "enriched_hybrid_llm",
+            "accuracy": baseline["accuracy"],
+            "avg_latency_ms": baseline["avg_latency_ms"],
+            "peak_memory_mb": baseline["peak_memory_mb"],
+        },
+        "modular_with_llm": {
+            "strategy": "enriched_hybrid_llm (modular with LLM)",
+            "accuracy": modular["accuracy"],
+            "avg_latency_ms": modular["avg_latency_ms"],
+            "peak_memory_mb": modular["peak_memory_mb"],
+        },
+        "modular_no_llm": {
+            "strategy": "enriched_hybrid (modular no LLM)",
+            "accuracy": modular_no_llm["accuracy"],
+            "avg_latency_ms": modular_no_llm["avg_latency_ms"],
+            "peak_memory_mb": modular_no_llm["peak_memory_mb"],
+        },
+        "comparison": {
+            "modular_vs_baseline_accuracy": modular["accuracy"] - baseline["accuracy"],
+            "modular_vs_baseline_latency_ms": modular["avg_latency_ms"]
+            - baseline["avg_latency_ms"],
+            "modular_vs_baseline_memory_mb": modular["peak_memory_mb"]
+            - baseline["peak_memory_mb"],
+            "no_llm_vs_baseline_accuracy": modular_no_llm["accuracy"]
+            - baseline["accuracy"],
+            "no_llm_vs_baseline_latency_ms": modular_no_llm["avg_latency_ms"]
+            - baseline["avg_latency_ms"],
+            "no_llm_vs_baseline_memory_mb": modular_no_llm["peak_memory_mb"]
+            - baseline["peak_memory_mb"],
+            "no_llm_vs_with_llm_accuracy": modular_no_llm["accuracy"]
+            - modular["accuracy"],
+            "no_llm_vs_with_llm_latency_ms": modular_no_llm["avg_latency_ms"]
+            - modular["avg_latency_ms"],
+            "no_llm_vs_with_llm_memory_mb": modular_no_llm["peak_memory_mb"]
+            - modular["peak_memory_mb"],
+        },
+    }
+
+    # Save JSON report
+    with open(output_file, "w") as f:
+        json.dump(report, f, indent=2)
+
+    # Print summary
+    print("\n" + "=" * 60)
+    print("THREE-WAY BENCHMARK SUMMARY")
+    print("=" * 60)
+    print(f"\nBaseline (enriched_hybrid_llm):")
+    print(f"  Accuracy: {baseline['accuracy']:.1f}%")
+    print(f"  Avg Latency: {baseline['avg_latency_ms']:.1f}ms")
+    print(f"  Peak Memory: {baseline['peak_memory_mb']:.1f}MB")
+
+    print(f"\nModular Pipeline (with LLM):")
+    print(f"  Accuracy: {modular['accuracy']:.1f}%")
+    print(f"  Avg Latency: {modular['avg_latency_ms']:.1f}ms")
+    print(f"  Peak Memory: {modular['peak_memory_mb']:.1f}MB")
+
+    print(f"\nModular Pipeline (no LLM):")
+    print(f"  Accuracy: {modular_no_llm['accuracy']:.1f}%")
+    print(f"  Avg Latency: {modular_no_llm['avg_latency_ms']:.1f}ms")
+    print(f"  Peak Memory: {modular_no_llm['peak_memory_mb']:.1f}MB")
+
+    print(f"\nComparison (vs Baseline):")
+    print(
+        f"  With LLM - Accuracy Diff: {report['comparison']['modular_vs_baseline_accuracy']:+.1f}%"
+    )
+    print(
+        f"  With LLM - Latency Diff: {report['comparison']['modular_vs_baseline_latency_ms']:+.1f}ms"
+    )
+    print(
+        f"  With LLM - Memory Diff: {report['comparison']['modular_vs_baseline_memory_mb']:+.1f}MB"
+    )
+    print(
+        f"  No LLM - Accuracy Diff: {report['comparison']['no_llm_vs_baseline_accuracy']:+.1f}%"
+    )
+    print(
+        f"  No LLM - Latency Diff: {report['comparison']['no_llm_vs_baseline_latency_ms']:+.1f}ms"
+    )
+    print(
+        f"  No LLM - Memory Diff: {report['comparison']['no_llm_vs_baseline_memory_mb']:+.1f}MB"
+    )
+
+    print(f"\nComparison (No LLM vs With LLM):")
+    print(
+        f"  Accuracy Diff: {report['comparison']['no_llm_vs_with_llm_accuracy']:+.1f}%"
+    )
+    print(
+        f"  Latency Diff: {report['comparison']['no_llm_vs_with_llm_latency_ms']:+.1f}ms"
+    )
+    print(
+        f"  Memory Diff: {report['comparison']['no_llm_vs_with_llm_memory_mb']:+.1f}MB"
+    )
+
+    print(f"\nReport saved to: {output_file}")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Benchmark modular pipeline vs enriched_hybrid_llm baseline"
@@ -397,9 +600,14 @@ def main():
     modular = run_modular_benchmark(
         questions, needle_doc_id, chunks, documents, embedder
     )
+    modular_no_llm = run_modular_no_llm_benchmark(
+        questions, needle_doc_id, chunks, documents, embedder
+    )
 
     # Generate report
-    generate_report(baseline, modular, args.questions, args.output)
+    generate_three_way_report(
+        baseline, modular, modular_no_llm, args.questions, args.output
+    )
 
 
 if __name__ == "__main__":
