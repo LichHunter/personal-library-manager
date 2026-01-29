@@ -700,7 +700,7 @@ print('Cache enabled:', cache.is_connected())
 
 ---
 
-- [ ] 7. End-to-End Verification
+- [x] 7. End-to-End Verification
 
   **What to do**:
   - Run full benchmark twice, compare times
