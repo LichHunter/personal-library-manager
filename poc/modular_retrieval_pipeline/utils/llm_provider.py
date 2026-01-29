@@ -30,10 +30,11 @@ class AnthropicProvider(LLMProvider):
         "claude-haiku": "claude-3-5-haiku-latest",
         "claude-haiku-4-5": "claude-3-5-haiku-latest",
         "claude-3-5-haiku": "claude-3-5-haiku-latest",
-        "claude-sonnet": "claude-sonnet-4-20250514",
+        "claude-sonnet": "claude-sonnet-4-5-20250929",
         "claude-sonnet-4": "claude-sonnet-4-20250514",
+        "claude-sonnet-4-5": "claude-sonnet-4-5-20250929",
         "haiku": "claude-3-5-haiku-latest",
-        "sonnet": "claude-sonnet-4-20250514",
+        "sonnet": "claude-sonnet-4-5-20250929",
     }
 
     def __init__(self, auth_path: Optional[str] = None):
@@ -170,15 +171,20 @@ class AnthropicProvider(LLMProvider):
             request_body = {
                 "model": resolved_model,
                 "max_tokens": 1024,
+                "system": [
+                    {
+                        "type": "text",
+                        "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+                    }
+                ],
                 "messages": [{"role": "user", "content": prompt}],
             }
 
             headers = {
                 "Authorization": f"Bearer {self._auth_data['access']}",
-                "anthropic-beta": "oauth-2025-04-20",
+                "anthropic-beta": "claude-code-20250219,oauth-2025-04-20,interleaved-thinking-2025-05-14,fine-grained-tool-streaming-2025-05-14",
                 "anthropic-version": "2023-06-01",
                 "Content-Type": "application/json",
-                "User-Agent": "claude-cli/2.1.2 (external, cli)",
             }
 
             log.debug(f"[anthropic] REQUEST: POST {self.API_ENDPOINT}")
