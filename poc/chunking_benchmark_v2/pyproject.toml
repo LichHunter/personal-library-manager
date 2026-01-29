@@ -16,6 +16,7 @@ dependencies = [
     "yake>=0.4.8",
     "spacy>=3.7.0",
     "baguetter>=0.1.1",
+    "redis>=5.0.0",
 ]
 
 [dependency-groups]
