@@ -44,6 +44,9 @@ from modular_retrieval_pipeline.components.keyword_extractor import KeywordExtra
 from modular_retrieval_pipeline.components.entity_extractor import EntityExtractor
 from modular_retrieval_pipeline.components.content_enricher import ContentEnricher
 from modular_retrieval_pipeline.base import Pipeline
+from modular_retrieval_pipeline.modular_enriched_hybrid_llm import (
+    ModularEnrichedHybridLLM,
+)
 
 
 CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
@@ -192,20 +195,17 @@ def run_modular_benchmark(
     documents: list[Document],
     embedder: SentenceTransformer,
 ) -> dict:
-    """Run modular pipeline benchmark.
+    """Run modular pipeline benchmark using ModularEnrichedHybridLLM.
 
-    NOTE: This is a PARTIAL implementation demonstrating component usage.
-    The modular pipeline does NOT yet have complete retrieval components
-    (BM25Scorer, SimilarityScorer, RRFFuser require chunk indexing).
+    This benchmark uses the ModularEnrichedHybridLLM orchestrator which replicates
+    the exact behavior of the baseline enriched_hybrid_llm strategy using modular
+    components.
 
-    This benchmark demonstrates:
-    1. Query processing pipeline (QueryRewriter → QueryExpander)
-    2. Content enrichment pipeline (KeywordExtractor → EntityExtractor → ContentEnricher)
-
-    For a fair comparison, we would need to implement:
-    - BM25Scorer component (wraps rank_bm25.BM25Okapi)
-    - SimilarityScorer component (wraps cosine similarity)
-    - RRFFuser component (reciprocal rank fusion)
+    Configuration:
+    - Embedder: BAAI/bge-base-en-v1.5 (same as baseline)
+    - k: 5 (same as baseline)
+    - RRF: Semantic first, BM25 second (same as baseline)
+    - Adaptive weights based on query expansion
 
     Returns:
         {
@@ -216,76 +216,68 @@ def run_modular_benchmark(
         }
     """
     print("\n" + "=" * 60)
-    print("MODULAR PIPELINE (PARTIAL IMPLEMENTATION)")
+    print("MODULAR PIPELINE: ModularEnrichedHybridLLM")
     print("=" * 60)
-    print("\nNOTE: This is a demonstration of component usage.")
-    print("Full retrieval pipeline (BM25 + semantic + RRF) not yet implemented.")
-    print("Showing query processing and content enrichment only.\n")
 
-    # Build query processing pipeline
-    query_pipeline = (
-        Pipeline().add(QueryRewriter(timeout=5.0)).add(QueryExpander()).build()
+    # Initialize modular strategy
+    strategy = ModularEnrichedHybridLLM(debug=False)
+    strategy.set_embedder(embedder)
+
+    # Index chunks
+    print("Indexing chunks...")
+    tracemalloc.start()
+    index_start = time.time()
+    strategy.index(chunks, documents)
+    index_time = time.time() - index_start
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    peak_memory_mb = peak / 1024 / 1024
+
+    print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
+    print(f"Peak memory: {peak_memory_mb:.1f} MB")
+
+    # Run retrieval for each question
+    print(f"\nRunning retrieval for {len(questions)} questions...")
+    results = []
+    latencies = []
+
+    for i, q in enumerate(questions):
+        query_start = time.time()
+        retrieved = strategy.retrieve(q["question"], k=5)
+        latency = (time.time() - query_start) * 1000  # ms
+        latencies.append(latency)
+
+        # Check if needle found
+        needle_found = any(c.doc_id == needle_doc_id for c in retrieved)
+
+        result = {
+            "question_id": q["id"],
+            "question": q["question"],
+            "needle_found": needle_found,
+            "latency_ms": round(latency, 1),
+        }
+        results.append(result)
+
+        status = "✓" if needle_found else "✗"
+        print(
+            f"  [{i + 1:2d}/{len(questions)}] {status} ({latency:.0f}ms) {q['question'][:50]}..."
+        )
+
+    # Calculate metrics
+    accuracy = sum(1 for r in results if r["needle_found"]) / len(results) * 100
+    avg_latency = sum(latencies) / len(latencies)
+
+    print(
+        f"\nAccuracy: {accuracy:.1f}% ({sum(1 for r in results if r['needle_found'])}/{len(results)})"
     )
-
-    # Build content enrichment pipeline
-    enrichment_pipeline = (
-        Pipeline()
-        .add(KeywordExtractor(max_keywords=10))
-        .add(EntityExtractor())
-        .add(ContentEnricher())
-        .build()
-    )
-
-    # Demonstrate query processing
-    print("Query Processing Pipeline:")
-    print("  QueryRewriter (Claude Haiku, 5s timeout)")
-    print("  → QueryExpander (DOMAIN_EXPANSIONS)")
-
-    sample_query = Query(questions[0]["question"])
-    print(f"\nSample query: {sample_query.text}")
-
-    query_start = time.time()
-    expanded = query_pipeline.run(sample_query)
-    query_time = (time.time() - query_start) * 1000
-
-    print(f"  Original: {expanded.query.original.text}")
-    print(f"  Rewritten: {expanded.query.rewritten}")
-    print(f"  Expanded: {expanded.expanded}")
-    print(f"  Time: {query_time:.1f}ms")
-
-    # Demonstrate content enrichment
-    print("\nContent Enrichment Pipeline:")
-    print("  KeywordExtractor (YAKE, max_keywords=10)")
-    print("  → EntityExtractor (spaCy NER)")
-    print("  → ContentEnricher (formatting)")
-
-    sample_chunk = chunks[0]
-    print(f"\nSample chunk: {sample_chunk.content[:100]}...")
-
-    enrich_start = time.time()
-    enriched = enrichment_pipeline.run({"content": sample_chunk.content})
-    enrich_time = (time.time() - enrich_start) * 1000
-
-    print(f"  Enriched: {enriched[:200]}...")
-    print(f"  Time: {enrich_time:.1f}ms")
-
-    # Return placeholder results
-    print("\n" + "=" * 60)
-    print("INCOMPLETE: Full retrieval pipeline not implemented")
-    print("=" * 60)
-    print("\nTo complete this benchmark, implement:")
-    print("  1. BM25Scorer component (wraps rank_bm25.BM25Okapi)")
-    print("  2. SimilarityScorer component (wraps cosine similarity)")
-    print("  3. RRFFuser component (reciprocal rank fusion)")
-    print("  4. End-to-end retrieval pipeline integration")
+    print(f"Avg Latency: {avg_latency:.1f}ms")
+    print(f"Peak Memory: {peak_memory_mb:.1f}MB")
 
     return {
-        "accuracy": 0.0,
-        "avg_latency_ms": 0.0,
-        "peak_memory_mb": 0.0,
-        "results": [],
-        "status": "incomplete",
-        "message": "Modular pipeline components exist but full retrieval not implemented",
+        "accuracy": accuracy,
+        "avg_latency_ms": avg_latency,
+        "peak_memory_mb": peak_memory_mb,
+        "results": results,
     }
 
 

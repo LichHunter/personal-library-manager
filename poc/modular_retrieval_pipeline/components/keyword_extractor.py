@@ -28,6 +28,26 @@ from typing import Any, Protocol, runtime_checkable
 
 CODE_BLOCK_PATTERN = re.compile(r"```[\s\S]*?```|`[^`\n]+`")
 
+# Module-level cache for YAKE extractor (matches FastEnricher)
+_yake_extractor = None
+
+
+def _get_yake_extractor():
+    """Lazy-load YAKE extractor."""
+    global _yake_extractor
+    if _yake_extractor is None:
+        import yake
+
+        _yake_extractor = yake.KeywordExtractor(
+            lan="en",
+            n=2,
+            top=10,
+            dedupLim=0.9,
+            dedupFunc="seqm",
+            windowsSize=1,
+        )
+    return _yake_extractor
+
 
 def _calculate_code_ratio(text: str) -> float:
     """Calculate ratio of code blocks to total text."""
@@ -145,9 +165,8 @@ class KeywordExtractor:
     def _extract_keywords(self, content: str, max_keywords: int) -> list[str]:
         """Extract keywords from content using YAKE.
 
-        This is a stateless helper method that initializes YAKE fresh for each call.
-        YAKE is initialized in the method (not __init__) to keep the component
-        stateless and avoid storing model state.
+        Uses module-level cached YAKE extractor for performance.
+        YAKE is initialized once and reused across all calls.
 
         Args:
             content: Text to extract keywords from
@@ -159,16 +178,7 @@ class KeywordExtractor:
         Raises:
             ImportError: If yake package is not installed
         """
-        import yake
-
-        kw_extractor = yake.KeywordExtractor(
-            lan="en",
-            n=2,
-            dedupLim=0.9,
-            dedupFunc="seqm",
-            windowsSize=1,
-            top=max_keywords,
-        )
+        kw_extractor = _get_yake_extractor()
 
         keywords_with_scores = kw_extractor.extract_keywords(content)
 

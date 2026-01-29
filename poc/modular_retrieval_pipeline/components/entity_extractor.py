@@ -28,6 +28,25 @@ from typing import Any
 
 CODE_BLOCK_PATTERN = re.compile(r"```[\s\S]*?```|`[^`\n]+`")
 
+# Module-level cache for spaCy model (matches FastEnricher)
+_spacy_nlp = None
+
+
+def _get_spacy_nlp():
+    """Lazy-load spaCy model."""
+    global _spacy_nlp
+    if _spacy_nlp is None:
+        import spacy
+
+        try:
+            _spacy_nlp = spacy.load("en_core_web_sm")
+        except OSError:
+            from spacy.cli.download import download
+
+            download("en_core_web_sm")
+            _spacy_nlp = spacy.load("en_core_web_sm")
+    return _spacy_nlp
+
 
 def _calculate_code_ratio(text: str) -> float:
     """Calculate ratio of code blocks to total text."""
@@ -148,9 +167,8 @@ class EntityExtractor:
     ) -> dict[str, list[str]]:
         """Extract named entities from content using spaCy.
 
-        This is a stateless helper method that initializes spaCy fresh for each call.
-        spaCy model is loaded in the method (not __init__) to keep the component
-        stateless and avoid storing model state.
+        Uses module-level cached spaCy model for performance.
+        spaCy model is loaded once and reused across all calls.
 
         Args:
             content: Text to extract entities from
@@ -162,17 +180,7 @@ class EntityExtractor:
         Raises:
             ImportError: If spacy package is not installed
         """
-        import spacy
-
-        # Load spaCy model (stateless - fresh for each call)
-        try:
-            nlp = spacy.load("en_core_web_sm")
-        except OSError:
-            # Model not found, download it
-            from spacy.cli import download
-
-            download("en_core_web_sm")
-            nlp = spacy.load("en_core_web_sm")
+        nlp = _get_spacy_nlp()
 
         code_ratio = _calculate_code_ratio(content)
         text_for_nlp = _remove_code_blocks(content) if code_ratio > 0.3 else content
