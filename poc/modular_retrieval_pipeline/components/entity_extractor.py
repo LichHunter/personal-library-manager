@@ -26,6 +26,8 @@ Can be wrapped with CacheableComponent for caching:
 import re
 from typing import Any
 
+from ..utils.logger import get_logger
+
 CODE_BLOCK_PATTERN = re.compile(r"```[\s\S]*?```|`[^`\n]+`")
 
 # Module-level cache for spaCy model (matches FastEnricher)
@@ -112,6 +114,10 @@ class EntityExtractor:
             entity_types: Set of entity types to extract (default: ORG, PRODUCT, PERSON, TECH)
         """
         self.entity_types = entity_types or self.DEFAULT_ENTITY_TYPES
+        self._log = get_logger()
+        self._log.debug(
+            f"[{self.__class__.__name__}] initialized with entity_types={self.entity_types}"
+        )
 
     def process(self, data: dict[str, Any]) -> dict[str, Any]:
         """Extract entities from content and return enriched dict.
@@ -145,12 +151,19 @@ class EntityExtractor:
             raise KeyError("Input dict must have 'content' field")
 
         content = data["content"]
+        content_len = len(content) if content else 0
+        self._log.debug(
+            f"[{self.__class__.__name__}] processing content, length={content_len}"
+        )
 
         # Handle empty or short content
         if (
             not content or len(content.strip()) < 50
         ):  # Min length matches FastEnricher.min_text_length default
             # Return input dict with empty entities
+            self._log.trace(
+                f"[{self.__class__.__name__}] content too short, returning empty entities"
+            )
             result = dict(data)
             result["entities"] = {}
             return result
@@ -161,6 +174,13 @@ class EntityExtractor:
         # Create output dict preserving all input fields
         result = dict(data)
         result["entities"] = entities
+        entity_count = sum(len(v) for v in entities.values())
+        self._log.debug(
+            f"[{self.__class__.__name__}] extracted {entity_count} entities across {len(entities)} types"
+        )
+        self._log.trace(
+            f"[{self.__class__.__name__}] entity types found: {list(entities.keys())}"
+        )
 
         return result
 

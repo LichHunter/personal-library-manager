@@ -29,6 +29,8 @@ Can be wrapped with CacheableComponent for caching:
 
 from typing import Any
 
+from ..utils.logger import get_logger
+
 
 class ContentEnricher:
     """Format accumulated pipeline data into enriched content string.
@@ -62,7 +64,8 @@ class ContentEnricher:
         No configuration needed - this component is stateless and performs
         pure string formatting.
         """
-        pass
+        self._log = get_logger()
+        self._log.debug(f"[{self.__class__.__name__}] initialized")
 
     def process(self, data: dict[str, Any]) -> str:
         """Format accumulated pipeline data into enriched content string.
@@ -113,6 +116,10 @@ class ContentEnricher:
         keywords = data["keywords"]
         entities = data["entities"]
 
+        self._log.debug(
+            f"[{self.__class__.__name__}] processing enrichment, content_len={len(content)}, keywords={len(keywords)}, entity_types={len(entities)}"
+        )
+
         # Validate types
         if not isinstance(content, str):
             raise TypeError(f"'content' must be str, got {type(content).__name__}")
@@ -123,6 +130,10 @@ class ContentEnricher:
 
         # Format the enriched string
         enriched = self._format_enriched_content(content, keywords, entities)
+        self._log.trace(
+            f"[{self.__class__.__name__}] enriched content length={len(enriched)}"
+        )
+        self._log.debug(f"[{self.__class__.__name__}] enrichment complete")
 
         return enriched
 
