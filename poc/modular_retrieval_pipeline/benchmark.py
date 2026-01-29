@@ -568,6 +568,13 @@ def main():
         action="store_true",
         help="Quick mode: test with first 5 questions only",
     )
+    parser.add_argument(
+        "--strategy",
+        type=str,
+        choices=["baseline", "modular", "modular-no-llm", "all"],
+        default="all",
+        help="Which strategy to run (default: all)",
+    )
 
     args = parser.parse_args()
 
@@ -593,21 +600,68 @@ def main():
     embedder = SentenceTransformer("BAAI/bge-base-en-v1.5")
     print("Embedder loaded")
 
-    # Run benchmarks
-    baseline = run_baseline_benchmark(
-        questions, needle_doc_id, chunks, documents, embedder
-    )
-    modular = run_modular_benchmark(
-        questions, needle_doc_id, chunks, documents, embedder
-    )
-    modular_no_llm = run_modular_no_llm_benchmark(
-        questions, needle_doc_id, chunks, documents, embedder
-    )
+    # Run benchmarks based on --strategy flag
+    baseline = None
+    modular = None
+    modular_no_llm = None
+
+    if args.strategy in ["baseline", "all"]:
+        baseline = run_baseline_benchmark(
+            questions, needle_doc_id, chunks, documents, embedder
+        )
+
+    if args.strategy in ["modular", "all"]:
+        modular = run_modular_benchmark(
+            questions, needle_doc_id, chunks, documents, embedder
+        )
+
+    if args.strategy in ["modular-no-llm", "all"]:
+        modular_no_llm = run_modular_no_llm_benchmark(
+            questions, needle_doc_id, chunks, documents, embedder
+        )
 
     # Generate report
-    generate_three_way_report(
-        baseline, modular, modular_no_llm, args.questions, args.output
-    )
+    if args.strategy == "all":
+        # All three must be non-None here
+        assert (
+            baseline is not None and modular is not None and modular_no_llm is not None
+        )
+        generate_three_way_report(
+            baseline, modular, modular_no_llm, args.questions, args.output
+        )
+    else:
+        # Single strategy report - get the non-None result
+        if baseline is not None:
+            result = baseline
+            strategy_name = "baseline"
+        elif modular is not None:
+            result = modular
+            strategy_name = "modular"
+        else:
+            assert modular_no_llm is not None
+            result = modular_no_llm
+            strategy_name = "modular-no-llm"
+
+        print(f"\n{'=' * 60}")
+        print(f"RESULTS: {strategy_name}")
+        print(f"{'=' * 60}")
+        print(f"Accuracy: {result['accuracy']:.1f}%")
+        print(f"Avg Latency: {result['avg_latency_ms']:.2f}ms")
+        print(f"Peak Memory: {result['peak_memory_mb']:.2f}MB")
+        print(f"\nResults saved to: {args.output}")
+
+        # Save single strategy result
+        with open(args.output, "w") as f:
+            json.dump(
+                {
+                    "strategy": strategy_name,
+                    "benchmark_run_at": datetime.now().isoformat(),
+                    "questions_file": str(args.questions),
+                    **result,
+                },
+                f,
+                indent=2,
+            )
 
 
 if __name__ == "__main__":
