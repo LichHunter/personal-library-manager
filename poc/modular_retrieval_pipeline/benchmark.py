@@ -68,6 +68,13 @@ from modular_retrieval_pipeline.utils.logger import (
     get_logger,
 )
 
+# Import grading and metrics
+from modular_retrieval_pipeline.components.retrieval_grader import (
+    RetrievalGrader,
+    GradeResult,
+)
+from modular_retrieval_pipeline.utils.metrics import RetrievalMetrics
+
 
 CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
 DEFAULT_QUESTIONS = Path("poc/chunking_benchmark_v2/corpus/needle_questions.json")
@@ -359,6 +366,10 @@ def run_modular_no_llm_benchmark(
     logger = get_logger()
     logger.section("MODULAR PIPELINE: ModularEnrichedHybrid (No LLM)")
 
+    # Initialize grading and metrics calculators
+    grader = RetrievalGrader(timeout=30.0)
+    metrics = RetrievalMetrics()
+
     # Initialize strategy (NO rewrite_timeout parameter!)
     strategy = ModularEnrichedHybrid(cache=cache, debug=False)
     if cache and cache.is_connected():
@@ -414,11 +425,37 @@ def run_modular_no_llm_benchmark(
         # Check if needle found
         needle_found = any(c.doc_id == needle_doc_id for c in retrieved)
 
+        # Convert Chunk objects to dicts for grading
+        retrieved_chunks = [
+            {"content": c.content, "doc_id": c.doc_id} for c in retrieved
+        ]
+
+        # Calculate rank of needle document
+        rank = metrics.calculate_rank(retrieved_chunks, needle_doc_id)
+
+        # Grade retrieval quality
+        grade_result = grader.grade(
+            question=q["question"],
+            expected_answer=q.get("expected_answer", ""),
+            chunks=retrieved_chunks,
+        )
+
+        # Calculate total score
+        total_score = metrics.calculate_total_score(grade_result.grade, rank)
+
         result = {
             "question_id": q["id"],
             "question": q["question"],
+            "expected_answer": q.get("expected_answer", ""),
             "needle_found": needle_found,
+            "rank": rank,
+            "hit_at_1": rank == 1,
+            "hit_at_5": rank is not None and rank <= 5,
+            "llm_grade": grade_result.grade,
+            "llm_reasoning": grade_result.reasoning,
+            "total_score": total_score,
             "latency_ms": round(latency, 1),
+            "grading_latency_ms": grade_result.latency_ms,
         }
         results.append(result)
 
@@ -431,12 +468,38 @@ def run_modular_no_llm_benchmark(
     accuracy = sum(1 for r in results if r["needle_found"]) / len(results) * 100
     avg_latency = sum(latencies) / len(latencies)
 
+    # Calculate rank-based metrics
+    hit_at_1_rate = sum(1 for r in results if r["hit_at_1"]) / len(results) * 100
+    hit_at_5_rate = sum(1 for r in results if r["hit_at_5"]) / len(results) * 100
+    mrr = metrics.calculate_mrr(results)
+
+    # LLM grading metrics
+    grades = [r["llm_grade"] for r in results if r["llm_grade"] is not None]
+    avg_llm_grade = sum(grades) / len(grades) if grades else None
+    scores = [r["total_score"] for r in results if r["total_score"] is not None]
+    avg_total_score = sum(scores) / len(scores) if scores else None
+
+    # Pass rates at multiple thresholds
+    pass_rates = metrics.calculate_pass_rates(results, [8.0, 7.0, 6.5])
+    pass_rate_8 = pass_rates[8.0]
+    pass_rate_7 = pass_rates[7.0]
+    pass_rate_6_5 = pass_rates[6.5]
+
     logger.metric("accuracy", accuracy, "%")
     logger.metric("avg_latency", avg_latency, "ms")
     logger.metric("peak_memory_final", peak_memory_mb, "MB")
 
     return {
+        "strategy": "modular-no-llm",
         "accuracy": accuracy,
+        "hit_at_1_rate": hit_at_1_rate,
+        "hit_at_5_rate": hit_at_5_rate,
+        "mrr": mrr,
+        "avg_llm_grade": avg_llm_grade,
+        "avg_total_score": avg_total_score,
+        "pass_rate_8": pass_rate_8,
+        "pass_rate_7": pass_rate_7,
+        "pass_rate_6_5": pass_rate_6_5,
         "avg_latency_ms": avg_latency,
         "peak_memory_mb": peak_memory_mb,
         "results": results,
