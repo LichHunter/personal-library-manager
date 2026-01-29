@@ -268,7 +268,7 @@ print('Get returns:', result)
 
 ---
 
-- [ ] 2. Create CachedKeywordExtractor Wrapper
+- [x] 2. Create CachedKeywordExtractor Wrapper
 
   **What to do**:
   - Create `poc/modular_retrieval_pipeline/cache/cached_keyword_extractor.py`
@@ -366,7 +366,7 @@ print('Hits:', cached.hits, 'Misses:', cached.misses)
 
 ---
 
-- [ ] 3. Create CachedEntityExtractor Wrapper
+- [x] 3. Create CachedEntityExtractor Wrapper
 
   **What to do**:
   - Create `poc/modular_retrieval_pipeline/cache/cached_entity_extractor.py`
@@ -451,7 +451,7 @@ print('Hits:', cached.hits, 'Misses:', cached.misses)
 
 ---
 
-- [ ] 4. Create CachingEmbedder Wrapper
+- [x] 4. Create CachingEmbedder Wrapper
 
   **What to do**:
   - Create `poc/modular_retrieval_pipeline/cache/caching_embedder.py`
