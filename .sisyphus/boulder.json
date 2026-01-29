@@ -1,13 +1,6 @@
 {
-  "active_plan": null,
-  "started_at": null,
-  "session_ids": [],
-  "plan_name": null,
-  "completed_plans": [
-    "modular-retrieval-pipeline",
-    "modular-benchmark-exact-replication",
-    "modular-independence",
-    "enriched-hybrid-no-llm",
-    "docker-redis-cache"
-  ]
+  "active": false,
+  "plan": null,
+  "completed_at": "2026-01-29T22:50:00Z",
+  "summary": "Benchmark LLM Grading Enhancement - COMPLETE"
 }
