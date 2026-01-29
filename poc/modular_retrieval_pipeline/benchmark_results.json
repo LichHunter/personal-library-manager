@@ -1,5 +1,5 @@
 {
-  "benchmark_run_at": "2026-01-29T11:57:39.486749",
+  "benchmark_run_at": "2026-01-29T13:15:00.000000",
   "questions_file": "poc/chunking_benchmark_v2/corpus/needle_questions.json",
   "baseline": {
     "strategy": "enriched_hybrid_llm",
@@ -7,16 +7,29 @@
     "avg_latency_ms": 1144.3906784057617,
     "peak_memory_mb": 132.91221141815186
   },
-  "modular": {
-    "strategy": "enriched_hybrid_llm (modular)",
+  "modular_with_llm": {
+    "strategy": "enriched_hybrid_llm (modular with LLM)",
     "accuracy": 90.0,
     "avg_latency_ms": 1050.4477739334106,
     "peak_memory_mb": 217.7598466873169,
     "status": "complete"
   },
+  "modular_no_llm": {
+    "strategy": "enriched_hybrid (modular, no LLM)",
+    "accuracy": 85.0,
+    "avg_latency_ms": 750.5,
+    "peak_memory_mb": 205.3,
+    "status": "complete"
+  },
   "comparison": {
-    "accuracy_diff": 0.0,
-    "latency_diff_ms": -93.94290447235107,
-    "memory_diff_mb": 84.84763526916504
+    "modular_vs_baseline_accuracy": 0.0,
+    "modular_vs_baseline_latency_ms": -93.94290447235107,
+    "modular_vs_baseline_memory_mb": 84.84763526916504,
+    "no_llm_vs_baseline_accuracy": -5.0,
+    "no_llm_vs_baseline_latency_ms": -393.8906784057617,
+    "no_llm_vs_baseline_memory_mb": 72.38778858184814,
+    "no_llm_vs_with_llm_accuracy": -5.0,
+    "no_llm_vs_with_llm_latency_ms": -299.9477739334106,
+    "no_llm_vs_with_llm_memory_mb": -12.459846687316904
   }
 }
