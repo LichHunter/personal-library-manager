@@ -6,7 +6,7 @@
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|-------------------------------------------------------------------------|---------------|
 | enriched_hybrid_llm (baseline) | FastEnricher, QueryRewriter, Semantic Search, BM25, RRF Fusion                                                                                       | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) |
 | enriched_hybrid_llm (modular)  | KeywordExtractor, EntityExtractor, ContentEnricher, QueryRewriter, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser, Reranker | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) |
-| enriched_hybrid (modular, no LLM) | KeywordExtractor, EntityExtractor, ContentEnricher, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 85.0% (17/20) |
+| enriched_hybrid (modular, no LLM) | KeywordExtractor, EntityExtractor, ContentEnricher, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) |
 
 ---
 
