@@ -320,3 +320,202 @@ Successfully created CachingEmbedder wrapper that transparently caches SentenceT
 - Task 5: Integrate caching into benchmark
 - Task 6: Integrate caching into orchestrator
 - Task 7: End-to-end verification
+
+## 2026-01-29 Task 6: Integrate Caching into Orchestrator
+
+### Implementation Summary
+Successfully integrated caching into both orchestrator files (modular_enriched_hybrid.py and modular_enriched_hybrid_llm.py) with optional cache parameter and cache statistics methods.
+
+### Files Modified
+1. `poc/modular_retrieval_pipeline/modular_enriched_hybrid.py`
+   - Added cache parameter to __init__
+   - Added conditional wrapping of KeywordExtractor and EntityExtractor
+   - Added set_cached_embedder() method
+   - Added get_cache_stats() method
+
+2. `poc/modular_retrieval_pipeline/modular_enriched_hybrid_llm.py`
+   - Added cache parameter to __init__
+   - Added conditional wrapping of KeywordExtractor and EntityExtractor
+   - Added set_cached_embedder() method
+   - Added get_cache_stats() method
+
+### Key Design Decisions
+
+#### Cache Parameter Integration
+- Optional `cache: RedisCacheClient | None = None` parameter in __init__
+- Stored as `self._cache` for later reference
+- Graceful fallback: if cache is None, uses non-cached components
+
+#### Component Wrapping Strategy
+- Only wraps KeywordExtractor and EntityExtractor (expensive components)
+- ContentEnricher NOT wrapped (too fast, <1ms as per plan)
+- QueryRewriter NOT wrapped (LLM responses, not cacheable)
+- Wrapping only happens if cache is provided and connected
+
+#### set_cached_embedder() Method
+- Accepts embedder and cache parameters
+- Wraps embedder with CachingEmbedder if cache provided
+- Uses hardcoded model_name='BAAI/bge-base-en-v1.5' (matches benchmark)
+- Gracefully falls back to unwrapped embedder if cache is None
+
+#### get_cache_stats() Method
+- Returns None if cache not provided or not connected
+- Returns dict with cache statistics if cache enabled:
+  - enabled: True (always true when method returns dict)
+  - keyword_hits/misses: from CachedKeywordExtractor
+  - entity_hits/misses: from CachedEntityExtractor
+  - embedding_hits/misses: from CachingEmbedder
+  - total_hits/misses: sum of all component hits/misses
+- Uses hasattr() checks for safe attribute access (graceful fallback)
+
+### Verification Results
+
+#### Test 1: ModularEnrichedHybrid without cache
+```
+No cache: None
+✓ Returns None when cache not provided
+```
+
+#### Test 2: ModularEnrichedHybrid with cache
+```
+With cache: {'enabled': True, 'keyword_hits': 0, 'keyword_misses': 0, 'entity_hits': 0, 'entity_misses': 0, 'embedding_hits': 0, 'embedding_misses': 0, 'total_hits': 0, 'total_misses': 0}
+Cache enabled: True
+✓ Returns proper cache stats dict when cache provided
+✓ All counters initialized to 0
+✓ Cache connection successful
+```
+
+#### Test 3: ModularEnrichedHybridLLM without cache
+```
+No cache: None
+✓ Returns None when cache not provided
+```
+
+#### Test 4: ModularEnrichedHybridLLM with cache
+```
+With cache: {'enabled': True, 'keyword_hits': 0, 'keyword_misses': 0, 'entity_hits': 0, 'entity_misses': 0, 'embedding_hits': 0, 'embedding_misses': 0, 'total_hits': 0, 'total_misses': 0}
+Cache enabled: True
+✓ Returns proper cache stats dict when cache provided
+✓ All counters initialized to 0
+✓ Cache connection successful
+```
+
+#### Test 5: Graceful fallback (Redis down)
+```
+No cache: None
+With cache: None
+Cache enabled: False
+✓ Returns None for cache stats when Redis unavailable
+✓ is_connected() returns False
+✓ No exceptions raised
+```
+
+### Patterns Applied from Previous Tasks
+
+1. **Conditional Wrapping**: Only wrap components if cache provided
+2. **Graceful Fallback**: Return safe defaults when cache unavailable
+3. **Hit/Miss Tracking**: Access via hasattr() for safe attribute access
+4. **Type Hints**: Use Optional[RedisCacheClient] for optional cache parameter
+
+### Integration Points
+
+- **Imports**: Added RedisCacheClient, CachedKeywordExtractor, CachedEntityExtractor, CachingEmbedder
+- **__init__**: Added cache parameter and conditional component wrapping
+- **set_cached_embedder()**: New method for wrapping embedder with caching
+- **get_cache_stats()**: New method for retrieving cache statistics
+- **Backward Compatibility**: Existing code without cache parameter works unchanged
+
+### Blockers Resolved
+- None - Task completed successfully
+
+### Next Steps
+- Task 5: Integrate caching into benchmark.py (add --no-cache flag)
+- Task 7: End-to-end verification with full benchmark runs
+
+## 2026-01-29 Task 5: Integrate Caching into Benchmark
+
+### Implementation Summary
+Successfully integrated Redis caching into benchmark.py with --no-cache flag (cache enabled by default).
+
+### Files Modified
+1. `poc/modular_retrieval_pipeline/benchmark.py` - Added caching integration
+
+### Key Design Decisions
+
+#### Argument Parsing
+- Added `--no-cache` flag with `action='store_true'`
+- Cache is enabled by default (no flag needed to enable)
+- Help text: "Disable Redis caching (cache enabled by default)"
+
+#### Cache Initialization
+- Cache client created in main() only if `not args.no_cache`
+- `cache = None if args.no_cache else RedisCacheClient()`
+- Passed to all benchmark functions
+
+#### Embedder Wrapping
+- When cache enabled and connected: use `set_cached_embedder(embedder, cache)`
+- When cache disabled or not connected: use `set_embedder(embedder)`
+- Ensures embeddings are cached when cache available
+
+#### Cache Status Logging
+- After strategy initialization: "Cache: enabled (Redis connected)" or "Cache: disabled"
+- Checks both cache existence and connection status
+- Graceful fallback if Redis unavailable
+
+#### Cache Statistics Logging
+- After indexing completes: logs cache hit/miss statistics
+- Format: "Cache stats: {hits} hits, {misses} misses ({hit_rate:.1f}% hit rate)"
+- Uses strategy.get_cache_stats() method (already implemented in modular_enriched_hybrid.py)
+- Only logs if cache exists and stats available
+
+### Verification Results
+
+#### Test 1: --no-cache flag exists
+```
+✓ python poc/modular_retrieval_pipeline/benchmark.py --help | grep -i cache
+  --no-cache            Disable Redis caching (cache enabled by default)
+```
+
+#### Test 2: Cache disabled mode
+```
+✓ python poc/modular_retrieval_pipeline/benchmark.py --no-cache --strategy modular-no-llm ...
+  Cache: disabled
+  Indexing chunks...
+  (benchmark runs successfully without Redis)
+```
+
+#### Test 3: Cache enabled mode
+```
+✓ python poc/modular_retrieval_pipeline/benchmark.py --quick --strategy modular-no-llm ...
+  Cache: enabled (Redis connected)
+```
+
+#### Test 4: Cache stats integration
+```
+✓ Cache stats method returns correct structure:
+  {'enabled': True, 'keyword_hits': 0, 'keyword_misses': 0, 'entity_hits': 0, 'entity_misses': 0, 'embedding_hits': 0, 'embedding_misses': 0, 'total_hits': 0, 'total_misses': 0}
+```
+
+### Patterns Applied from Previous Tasks
+
+1. **Graceful Fallback**: Cache client creation handles connection failures
+2. **Cache Key Format**: Uses versioned v1: prefix (inherited from Tasks 1-4)
+3. **Hit/Miss Tracking**: Aggregates stats from all cached components
+4. **Logging Strategy**: INFO level for cache status, console output for stats
+
+### Integration Points
+
+- **Imports**: Added RedisCacheClient and cached wrapper classes
+- **Argument Parsing**: Added --no-cache flag to argparse
+- **Cache Initialization**: Created in main() based on args.no_cache
+- **Benchmark Functions**: All three (baseline, modular, modular-no-llm) accept cache parameter
+- **Embedder Wrapping**: Uses set_cached_embedder when cache enabled
+- **Statistics Logging**: Calls strategy.get_cache_stats() after indexing
+
+### Blockers Resolved
+- None - Task completed successfully
+
+### Next Steps
+- Task 6: Integrate caching into orchestrator (already done in modular_enriched_hybrid.py)
+- Task 7: End-to-end verification with full benchmark runs
+

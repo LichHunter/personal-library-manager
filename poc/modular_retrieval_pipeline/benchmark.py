@@ -51,6 +51,16 @@ from modular_retrieval_pipeline.modular_enriched_hybrid import (
     ModularEnrichedHybrid,
 )
 
+# Import caching components
+from modular_retrieval_pipeline.cache.redis_client import RedisCacheClient
+from modular_retrieval_pipeline.cache.cached_keyword_extractor import (
+    CachedKeywordExtractor,
+)
+from modular_retrieval_pipeline.cache.cached_entity_extractor import (
+    CachedEntityExtractor,
+)
+from modular_retrieval_pipeline.cache.caching_embedder import CachingEmbedder
+
 
 CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
 DEFAULT_QUESTIONS = Path("poc/chunking_benchmark_v2/corpus/needle_questions.json")
@@ -114,6 +124,7 @@ def run_baseline_benchmark(
     chunks: list[Chunk],
     documents: list[Document],
     embedder: SentenceTransformer,
+    cache: RedisCacheClient | None = None,
 ) -> dict:
     """Run baseline enriched_hybrid_llm benchmark.
 
@@ -133,6 +144,12 @@ def run_baseline_benchmark(
     strategy = create_retrieval_strategy("enriched_hybrid_llm", debug=False)
     strategy.set_embedder(embedder)
 
+    # Log cache status
+    if cache and cache.is_connected():
+        print("Cache: enabled (Redis connected)")
+    else:
+        print("Cache: disabled")
+
     # Index chunks
     print("Indexing chunks...")
     tracemalloc.start()
@@ -145,6 +162,20 @@ def run_baseline_benchmark(
 
     print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
     print(f"Peak memory: {peak_memory_mb:.1f} MB")
+
+    # Log cache statistics if available
+    if cache:
+        stats = (
+            strategy.get_cache_stats() if hasattr(strategy, "get_cache_stats") else None
+        )
+        if stats:
+            hits = stats.get("total_hits", 0)
+            misses = stats.get("total_misses", 0)
+            total = hits + misses
+            hit_rate = (hits / total * 100) if total > 0 else 0
+            print(
+                f"Cache stats: {hits} hits, {misses} misses ({hit_rate:.1f}% hit rate)"
+            )
 
     # Run retrieval for each question
     print(f"\nRunning retrieval for {len(questions)} questions...")
@@ -197,6 +228,7 @@ def run_modular_benchmark(
     chunks: list[Chunk],
     documents: list[Document],
     embedder: SentenceTransformer,
+    cache: RedisCacheClient | None = None,
 ) -> dict:
     """Run modular pipeline benchmark using ModularEnrichedHybridLLM.
 
@@ -223,8 +255,17 @@ def run_modular_benchmark(
     print("=" * 60)
 
     # Initialize modular strategy
-    strategy = ModularEnrichedHybridLLM(debug=False)
-    strategy.set_embedder(embedder)
+    strategy = ModularEnrichedHybridLLM(cache=cache, debug=False)
+    if cache and cache.is_connected():
+        strategy.set_cached_embedder(embedder, cache)
+    else:
+        strategy.set_embedder(embedder)
+
+    # Log cache status
+    if cache and cache.is_connected():
+        print("Cache: enabled (Redis connected)")
+    else:
+        print("Cache: disabled")
 
     # Index chunks
     print("Indexing chunks...")
@@ -290,6 +331,7 @@ def run_modular_no_llm_benchmark(
     chunks: list[Chunk],
     documents: list[Document],
     embedder: SentenceTransformer,
+    cache: RedisCacheClient | None = None,
 ) -> dict:
     """Run modular pipeline benchmark using ModularEnrichedHybrid (no LLM).
 
@@ -316,8 +358,17 @@ def run_modular_no_llm_benchmark(
     print("=" * 60)
 
     # Initialize strategy (NO rewrite_timeout parameter!)
-    strategy = ModularEnrichedHybrid(debug=False)
-    strategy.set_embedder(embedder)
+    strategy = ModularEnrichedHybrid(cache=cache, debug=False)
+    if cache and cache.is_connected():
+        strategy.set_cached_embedder(embedder, cache)
+    else:
+        strategy.set_embedder(embedder)
+
+    # Log cache status
+    if cache and cache.is_connected():
+        print("Cache: enabled (Redis connected)")
+    else:
+        print("Cache: disabled")
 
     # Index chunks
     print("Indexing chunks...")
@@ -331,6 +382,20 @@ def run_modular_no_llm_benchmark(
 
     print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
     print(f"Peak memory: {peak_memory_mb:.1f} MB")
+
+    # Log cache statistics if available
+    if cache:
+        stats = (
+            strategy.get_cache_stats() if hasattr(strategy, "get_cache_stats") else None
+        )
+        if stats:
+            hits = stats.get("total_hits", 0)
+            misses = stats.get("total_misses", 0)
+            total = hits + misses
+            hit_rate = (hits / total * 100) if total > 0 else 0
+            print(
+                f"Cache stats: {hits} hits, {misses} misses ({hit_rate:.1f}% hit rate)"
+            )
 
     # Run retrieval for each question
     print(f"\nRunning retrieval for {len(questions)} questions...")
@@ -575,6 +640,11 @@ def main():
         default="all",
         help="Which strategy to run (default: all)",
     )
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Disable Redis caching (cache enabled by default)",
+    )
 
     args = parser.parse_args()
 
@@ -600,6 +670,9 @@ def main():
     embedder = SentenceTransformer("BAAI/bge-base-en-v1.5")
     print("Embedder loaded")
 
+    # Initialize cache if enabled
+    cache = None if args.no_cache else RedisCacheClient()
+
     # Run benchmarks based on --strategy flag
     baseline = None
     modular = None
@@ -607,17 +680,17 @@ def main():
 
     if args.strategy in ["baseline", "all"]:
         baseline = run_baseline_benchmark(
-            questions, needle_doc_id, chunks, documents, embedder
+            questions, needle_doc_id, chunks, documents, embedder, cache
         )
 
     if args.strategy in ["modular", "all"]:
         modular = run_modular_benchmark(
-            questions, needle_doc_id, chunks, documents, embedder
+            questions, needle_doc_id, chunks, documents, embedder, cache
         )
 
     if args.strategy in ["modular-no-llm", "all"]:
         modular_no_llm = run_modular_no_llm_benchmark(
-            questions, needle_doc_id, chunks, documents, embedder
+            questions, needle_doc_id, chunks, documents, embedder, cache
         )
 
     # Generate report

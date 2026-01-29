@@ -547,7 +547,7 @@ print('Hits:', embedder.hits, 'Misses:', embedder.misses)
 
 ---
 
-- [ ] 5. Integrate Caching into Benchmark
+- [x] 5. Integrate Caching into Benchmark
 
   **What to do**:
   - Modify `poc/modular_retrieval_pipeline/benchmark.py`:
@@ -622,7 +622,7 @@ print('Hits:', embedder.hits, 'Misses:', embedder.misses)
 
 ---
 
-- [ ] 6. Integrate Caching into Orchestrator
+- [x] 6. Integrate Caching into Orchestrator
 
   **What to do**:
   - Modify `poc/modular_retrieval_pipeline/modular_enriched_hybrid.py`:

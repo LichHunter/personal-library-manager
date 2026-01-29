@@ -36,6 +36,10 @@ from .components.content_enricher import ContentEnricher
 from .components.query_expander import QueryExpander, DOMAIN_EXPANSIONS
 from .base import Pipeline
 from .types import Query
+from .cache.redis_client import RedisCacheClient
+from .cache.cached_keyword_extractor import CachedKeywordExtractor
+from .cache.cached_entity_extractor import CachedEntityExtractor
+from .cache.caching_embedder import CachingEmbedder
 
 
 class Embedder(Protocol):
@@ -87,6 +91,7 @@ class ModularEnrichedHybrid:
         candidate_multiplier: int = 10,
         verbose: bool = True,
         debug: bool = False,
+        cache: Optional[RedisCacheClient] = None,
     ):
         """Initialize ModularEnrichedHybrid orchestrator.
 
@@ -95,11 +100,13 @@ class ModularEnrichedHybrid:
             candidate_multiplier: Multiplier for candidate retrieval (default 10)
             verbose: Print progress messages (default True)
             debug: Enable debug logging (default False)
+            cache: Optional RedisCacheClient for caching components (default None)
         """
         self.rrf_k = rrf_k
         self.candidate_multiplier = candidate_multiplier
         self.verbose = verbose
         self.debug = debug
+        self._cache = cache
 
         # State (set by index())
         self.chunks: Optional[list[Any]] = None
@@ -111,8 +118,15 @@ class ModularEnrichedHybrid:
         self.embedder: Optional[Any] = None
 
         # Modular components
-        self._keyword_extractor = KeywordExtractor(max_keywords=10)
-        self._entity_extractor = EntityExtractor()
+        if cache:
+            self._keyword_extractor = CachedKeywordExtractor(
+                KeywordExtractor(max_keywords=10), cache
+            )
+            self._entity_extractor = CachedEntityExtractor(EntityExtractor(), cache)
+        else:
+            self._keyword_extractor = KeywordExtractor(max_keywords=10)
+            self._entity_extractor = EntityExtractor()
+
         self._content_enricher = ContentEnricher()
         self._query_expander = QueryExpander()
 
@@ -140,6 +154,20 @@ class ModularEnrichedHybrid:
             embedder: Embedder instance with encode() method
         """
         self.embedder = embedder
+
+    def set_cached_embedder(self, embedder: Any, cache: RedisCacheClient) -> None:
+        """Set embedder with caching wrapper.
+
+        Args:
+            embedder: Embedder instance with encode() method
+            cache: RedisCacheClient for caching embeddings
+        """
+        if cache:
+            self.embedder = CachingEmbedder(
+                embedder, cache, model_name="BAAI/bge-base-en-v1.5"
+            )
+        else:
+            self.embedder = embedder
 
     def encode_texts(self, texts: list[str]) -> np.ndarray:
         """Encode texts using the embedder.
@@ -452,4 +480,53 @@ class ModularEnrichedHybrid:
             "bm25_avg_doc_len": self.bm25.avgdl if self.bm25 else 0,
             "rrf_k": self.rrf_k,
             "enrichment_time_s": self.enrichment_time_s,
+        }
+
+    def get_cache_stats(self) -> Optional[dict]:
+        """Get cache statistics for all cached components.
+
+        Returns:
+            Dict with cache stats if cache enabled, None otherwise
+        """
+        if not self._cache or not self._cache.is_connected():
+            return None
+
+        keyword_hits = (
+            self._keyword_extractor.hits
+            if hasattr(self._keyword_extractor, "hits")
+            else 0
+        )
+        keyword_misses = (
+            self._keyword_extractor.misses
+            if hasattr(self._keyword_extractor, "misses")
+            else 0
+        )
+        entity_hits = (
+            self._entity_extractor.hits
+            if hasattr(self._entity_extractor, "hits")
+            else 0
+        )
+        entity_misses = (
+            self._entity_extractor.misses
+            if hasattr(self._entity_extractor, "misses")
+            else 0
+        )
+        embedding_hits = self.embedder.hits if hasattr(self.embedder, "hits") else 0
+        embedding_misses = (
+            self.embedder.misses if hasattr(self.embedder, "misses") else 0
+        )
+
+        total_hits = keyword_hits + entity_hits + embedding_hits
+        total_misses = keyword_misses + entity_misses + embedding_misses
+
+        return {
+            "enabled": True,
+            "keyword_hits": keyword_hits,
+            "keyword_misses": keyword_misses,
+            "entity_hits": entity_hits,
+            "entity_misses": entity_misses,
+            "embedding_hits": embedding_hits,
+            "embedding_misses": embedding_misses,
+            "total_hits": total_hits,
+            "total_misses": total_misses,
         }
