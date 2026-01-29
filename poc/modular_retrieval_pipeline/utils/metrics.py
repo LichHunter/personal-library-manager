@@ -91,15 +91,18 @@ class RetrievalMetrics:
     ) -> dict[float, float]:
         """Calculate pass rates at multiple thresholds.
 
+        Pass rate is calculated as: (passed questions) / (successfully graded questions)
+        Questions that failed to be graded (null scores) are excluded from denominator.
+
         Args:
             results: List of result dicts with 'total_score' field
-            thresholds: List of score thresholds (e.g., [8.0, 7.0, 6.5])
+            thresholds: List of threshold values to check
 
         Returns:
-            Dict mapping threshold to pass rate percentage
+            Dict mapping threshold -> pass rate percentage
         """
         valid_scores = [r for r in results if r.get("total_score") is not None]
-        total = len(results)
+        total = len(valid_scores)
         rates = {}
         for threshold in thresholds:
             passed = len([r for r in valid_scores if r["total_score"] >= threshold])

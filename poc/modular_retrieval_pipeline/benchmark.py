@@ -459,9 +459,37 @@ def run_modular_no_llm_benchmark(
         }
         results.append(result)
 
-        status = "✓" if needle_found else "✗"
+        # Determine pass/fail symbol based on total_score threshold (7.0 = PRIMARY)
+        if total_score is not None and total_score >= 7.0:
+            status = "✓"
+        elif total_score is not None:
+            status = "✗"
+        else:
+            status = "?" if needle_found else "✗"  # Fallback if grading failed
+
+        # Format rank, grade, total score for display
+        rank_str = f"R{rank}" if rank is not None else "R?"
+        grade_str = f"G{grade_result.grade}" if grade_result.grade is not None else "G?"
+        score_str = f"T{total_score:.1f}" if total_score is not None else "T?"
+
         logger.info(
-            f"  [{i + 1:2d}/{len(questions)}] {status} ({latency:.0f}ms) {q['question'][:50]}..."
+            f"  [{i + 1:2d}/{len(questions)}] {status} {rank_str} {grade_str} {score_str} ({latency:.0f}ms) {q['question'][:50]}..."
+        )
+
+        # Debug logging for grading details
+        doc_ids = [c["doc_id"] for c in retrieved_chunks]
+        logger.trace(
+            f"[q:{q['id']}] Retrieved {len(retrieved_chunks)} chunks from docs: {doc_ids}"
+        )
+        logger.trace(f"[q:{q['id']}] Needle doc '{needle_doc_id}' at rank: {rank}")
+        logger.debug(
+            f"[q:{q['id']}] Grade={grade_result.grade}, Reasoning: {grade_result.reasoning[:100] if grade_result.reasoning else 'None'}..."
+        )
+
+        # Calculate weight for logging
+        weight = metrics.POSITION_WEIGHTS.get(rank, metrics.POSITION_WEIGHTS[None])
+        logger.debug(
+            f"[q:{q['id']}] Total score: {total_score} (grade={grade_result.grade} × weight={weight})"
         )
 
     # Calculate metrics
@@ -488,6 +516,16 @@ def run_modular_no_llm_benchmark(
     logger.metric("accuracy", accuracy, "%")
     logger.metric("avg_latency", avg_latency, "ms")
     logger.metric("peak_memory_final", peak_memory_mb, "MB")
+
+    # Add new metric logs for grading and ranking
+    logger.metric("hit_at_1_rate", hit_at_1_rate, "%")
+    logger.metric("hit_at_5_rate", hit_at_5_rate, "%")
+    logger.metric("mrr", mrr)
+    logger.metric("avg_llm_grade", avg_llm_grade)
+    logger.metric("avg_total_score", avg_total_score)
+    logger.metric("pass_rate_8", pass_rate_8, "%")
+    logger.metric("pass_rate_7", pass_rate_7, "%")
+    logger.metric("pass_rate_6_5", pass_rate_6_5, "%")
 
     return {
         "strategy": "modular-no-llm",

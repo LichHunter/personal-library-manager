@@ -16,6 +16,7 @@ Example:
 """
 
 import json
+import re
 import time
 from dataclasses import dataclass
 from typing import Optional
@@ -163,37 +164,47 @@ class RetrievalGrader:
                     grade=None, reasoning=None, latency_ms=elapsed * 1000
                 )
 
-            try:
-                data = json.loads(response)
-                grade = data.get("grade")
-                reasoning = data.get("reasoning")
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    response_clean = self._strip_markdown_json(response)
+                    data = json.loads(response_clean)
+                    grade = data.get("grade")
+                    reasoning = data.get("reasoning")
 
-                # Validate grade is in range
-                if grade is not None:
-                    if isinstance(grade, (int, float)):
-                        grade = int(grade)
-                        # Clamp to valid range
-                        if grade < 1:
-                            grade = 1
-                        elif grade > 10:
-                            grade = 10
+                    if grade is not None:
+                        if isinstance(grade, (int, float)):
+                            grade = int(grade)
+                            if grade < 1:
+                                grade = 1
+                            elif grade > 10:
+                                grade = 10
+                        else:
+                            grade = None
+
+                    self._log.info(
+                        f"[retrieval-grader] Grade={grade}/10 - {reasoning[:80] if reasoning else 'N/A'}..."
+                    )
+                    return GradeResult(
+                        grade=grade, reasoning=reasoning, latency_ms=elapsed * 1000
+                    )
+
+                except json.JSONDecodeError as e:
+                    self._log.debug(
+                        f"[retrieval-grader] Raw response: {response[:200]}..."
+                    )
+                    if attempt < max_retries - 1:
+                        self._log.debug(
+                            f"[retrieval-grader] Parse fail attempt {attempt + 1}/{max_retries}, retrying..."
+                        )
+                        continue
                     else:
-                        grade = None
-
-                self._log.debug(
-                    f"[retrieval-grader] SUCCESS in {elapsed:.3f}s: grade={grade}"
-                )
-                return GradeResult(
-                    grade=grade, reasoning=reasoning, latency_ms=elapsed * 1000
-                )
-
-            except json.JSONDecodeError as e:
-                self._log.debug(
-                    f"[retrieval-grader] JSON parse error in {elapsed:.3f}s: {e}"
-                )
-                return GradeResult(
-                    grade=None, reasoning=None, latency_ms=elapsed * 1000
-                )
+                        self._log.warn(
+                            f"[retrieval-grader] All {max_retries} attempts failed"
+                        )
+                        return GradeResult(
+                            grade=None, reasoning=None, latency_ms=elapsed * 1000
+                        )
 
         except Exception as e:
             elapsed = time.time() - start_time
@@ -201,6 +212,21 @@ class RetrievalGrader:
                 f"[retrieval-grader] ERROR after {elapsed:.3f}s: {type(e).__name__}: {e}"
             )
             return GradeResult(grade=None, reasoning=None, latency_ms=elapsed * 1000)
+
+    def _strip_markdown_json(self, text: str) -> str:
+        """Strip markdown code blocks from JSON response.
+
+        Handles responses wrapped in ```json ... ``` blocks.
+
+        Args:
+            text: Raw response text that may contain markdown wrappers
+
+        Returns:
+            Clean JSON string with markdown removed
+        """
+        text = re.sub(r"^```json\s*", "", text.strip())
+        text = re.sub(r"\s*```$", "", text.strip())
+        return text
 
     def _format_chunks(self, chunks: list[dict]) -> str:
         """Format chunks into readable text for the prompt.
