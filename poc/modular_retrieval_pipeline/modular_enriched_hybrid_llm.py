@@ -41,6 +41,7 @@ from .cache.redis_client import RedisCacheClient
 from .cache.cached_keyword_extractor import CachedKeywordExtractor
 from .cache.cached_entity_extractor import CachedEntityExtractor
 from .cache.caching_embedder import CachingEmbedder
+from .utils.logger import get_logger
 
 
 class Embedder(Protocol):
@@ -151,7 +152,7 @@ class ModularEnrichedHybridLLM:
     def _trace_log(self, msg: str):
         """Log trace message if debug is enabled."""
         if self.debug:
-            print(f"[modular-enriched-hybrid-llm] {msg}", flush=True)
+            get_logger().trace(f"[modular-enriched-hybrid-llm] {msg}")
 
     def set_embedder(self, embedder: Any) -> None:
         """Set the embedder for encoding texts.
@@ -220,14 +221,12 @@ class ModularEnrichedHybridLLM:
                 if stats:
                     total = stats["total_hits"] + stats["total_misses"]
                     hit_rate = (stats["total_hits"] / total * 100) if total > 0 else 0
-                    print(
-                        f"    [enriching {self._enrichment_count}] cache hit rate: {hit_rate:.1f}% ({stats['total_hits']}/{total})",
-                        flush=True,
+                    get_logger().info(
+                        f"[enriching {self._enrichment_count}] cache hit rate: {hit_rate:.1f}% ({stats['total_hits']}/{total})"
                     )
             else:
-                print(
-                    f"    [enriching {self._enrichment_count}] modular pipeline...",
-                    flush=True,
+                get_logger().info(
+                    f"[enriching {self._enrichment_count}] modular pipeline..."
                 )
 
         # Run through enrichment pipeline
@@ -269,10 +268,8 @@ class ModularEnrichedHybridLLM:
         self.enrichment_time_s = time.time() - enrichment_start
 
         if self.verbose:
-            print(
-                f"    [enriched] chunks={len(chunks)} "
-                f"time={self.enrichment_time_s:.1f}s",
-                flush=True,
+            get_logger().info(
+                f"[enriched] chunks={len(chunks)} time={self.enrichment_time_s:.1f}s"
             )
 
         # Encode enriched contents to embeddings

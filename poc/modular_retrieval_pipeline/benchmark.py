@@ -61,6 +61,13 @@ from modular_retrieval_pipeline.cache.cached_entity_extractor import (
 )
 from modular_retrieval_pipeline.cache.caching_embedder import CachingEmbedder
 
+# Import logger
+from modular_retrieval_pipeline.utils.logger import (
+    BenchmarkLogger,
+    set_logger,
+    get_logger,
+)
+
 
 CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
 DEFAULT_QUESTIONS = Path("poc/chunking_benchmark_v2/corpus/needle_questions.json")
@@ -136,9 +143,8 @@ def run_baseline_benchmark(
             'results': list[dict],
         }
     """
-    print("\n" + "=" * 60)
-    print("BASELINE: enriched_hybrid_llm")
-    print("=" * 60)
+    logger = get_logger()
+    logger.section("BASELINE: enriched_hybrid_llm")
 
     # Initialize strategy
     strategy = create_retrieval_strategy("enriched_hybrid_llm", debug=False)
@@ -146,12 +152,12 @@ def run_baseline_benchmark(
 
     # Log cache status
     if cache and cache.is_connected():
-        print("Cache: enabled (Redis connected)")
+        logger.info("Cache: enabled (Redis connected)")
     else:
-        print("Cache: disabled")
+        logger.info("Cache: disabled")
 
     # Index chunks
-    print("Indexing chunks...")
+    logger.info("Indexing chunks...")
     tracemalloc.start()
     index_start = time.time()
     strategy.index(chunks, documents)
@@ -160,8 +166,9 @@ def run_baseline_benchmark(
     tracemalloc.stop()
     peak_memory_mb = peak / 1024 / 1024
 
-    print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
-    print(f"Peak memory: {peak_memory_mb:.1f} MB")
+    logger.metric("chunks_indexed", len(chunks))
+    logger.metric("index_time", index_time, "s")
+    logger.metric("peak_memory", peak_memory_mb, "MB")
 
     # Log cache statistics if available
     if cache:
@@ -173,12 +180,12 @@ def run_baseline_benchmark(
             misses = stats.get("total_misses", 0)
             total = hits + misses
             hit_rate = (hits / total * 100) if total > 0 else 0
-            print(
+            logger.info(
                 f"Cache stats: {hits} hits, {misses} misses ({hit_rate:.1f}% hit rate)"
             )
 
     # Run retrieval for each question
-    print(f"\nRunning retrieval for {len(questions)} questions...")
+    logger.info(f"Running retrieval for {len(questions)} questions...")
     results = []
     latencies = []
 
@@ -200,7 +207,7 @@ def run_baseline_benchmark(
         results.append(result)
 
         status = "✓" if needle_found else "✗"
-        print(
+        logger.info(
             f"  [{i + 1:2d}/{len(questions)}] {status} ({latency:.0f}ms) {q['question'][:50]}..."
         )
 
@@ -208,11 +215,9 @@ def run_baseline_benchmark(
     accuracy = sum(1 for r in results if r["needle_found"]) / len(results) * 100
     avg_latency = sum(latencies) / len(latencies)
 
-    print(
-        f"\nAccuracy: {accuracy:.1f}% ({sum(1 for r in results if r['needle_found'])}/{len(results)})"
-    )
-    print(f"Avg Latency: {avg_latency:.1f}ms")
-    print(f"Peak Memory: {peak_memory_mb:.1f}MB")
+    logger.metric("accuracy", accuracy, "%")
+    logger.metric("avg_latency", avg_latency, "ms")
+    logger.metric("peak_memory_final", peak_memory_mb, "MB")
 
     return {
         "accuracy": accuracy,
@@ -250,9 +255,8 @@ def run_modular_benchmark(
             'results': list[dict],
         }
     """
-    print("\n" + "=" * 60)
-    print("MODULAR PIPELINE: ModularEnrichedHybridLLM")
-    print("=" * 60)
+    logger = get_logger()
+    logger.section("MODULAR PIPELINE: ModularEnrichedHybridLLM")
 
     # Initialize modular strategy
     strategy = ModularEnrichedHybridLLM(cache=cache, debug=False)
@@ -263,12 +267,12 @@ def run_modular_benchmark(
 
     # Log cache status
     if cache and cache.is_connected():
-        print("Cache: enabled (Redis connected)")
+        logger.info("Cache: enabled (Redis connected)")
     else:
-        print("Cache: disabled")
+        logger.info("Cache: disabled")
 
     # Index chunks
-    print("Indexing chunks...")
+    logger.info("Indexing chunks...")
     tracemalloc.start()
     index_start = time.time()
     strategy.index(chunks, documents)
@@ -277,11 +281,12 @@ def run_modular_benchmark(
     tracemalloc.stop()
     peak_memory_mb = peak / 1024 / 1024
 
-    print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
-    print(f"Peak memory: {peak_memory_mb:.1f} MB")
+    logger.metric("chunks_indexed", len(chunks))
+    logger.metric("index_time", index_time, "s")
+    logger.metric("peak_memory", peak_memory_mb, "MB")
 
     # Run retrieval for each question
-    print(f"\nRunning retrieval for {len(questions)} questions...")
+    logger.info(f"Running retrieval for {len(questions)} questions...")
     results = []
     latencies = []
 
@@ -303,7 +308,7 @@ def run_modular_benchmark(
         results.append(result)
 
         status = "✓" if needle_found else "✗"
-        print(
+        logger.info(
             f"  [{i + 1:2d}/{len(questions)}] {status} ({latency:.0f}ms) {q['question'][:50]}..."
         )
 
@@ -311,11 +316,9 @@ def run_modular_benchmark(
     accuracy = sum(1 for r in results if r["needle_found"]) / len(results) * 100
     avg_latency = sum(latencies) / len(latencies)
 
-    print(
-        f"\nAccuracy: {accuracy:.1f}% ({sum(1 for r in results if r['needle_found'])}/{len(results)})"
-    )
-    print(f"Avg Latency: {avg_latency:.1f}ms")
-    print(f"Peak Memory: {peak_memory_mb:.1f}MB")
+    logger.metric("accuracy", accuracy, "%")
+    logger.metric("avg_latency", avg_latency, "ms")
+    logger.metric("peak_memory_final", peak_memory_mb, "MB")
 
     return {
         "accuracy": accuracy,
@@ -353,9 +356,8 @@ def run_modular_no_llm_benchmark(
             'results': list[dict],
         }
     """
-    print("\n" + "=" * 60)
-    print("MODULAR PIPELINE: ModularEnrichedHybrid (No LLM)")
-    print("=" * 60)
+    logger = get_logger()
+    logger.section("MODULAR PIPELINE: ModularEnrichedHybrid (No LLM)")
 
     # Initialize strategy (NO rewrite_timeout parameter!)
     strategy = ModularEnrichedHybrid(cache=cache, debug=False)
@@ -366,12 +368,12 @@ def run_modular_no_llm_benchmark(
 
     # Log cache status
     if cache and cache.is_connected():
-        print("Cache: enabled (Redis connected)")
+        logger.info("Cache: enabled (Redis connected)")
     else:
-        print("Cache: disabled")
+        logger.info("Cache: disabled")
 
     # Index chunks
-    print("Indexing chunks...")
+    logger.info("Indexing chunks...")
     tracemalloc.start()
     index_start = time.time()
     strategy.index(chunks, documents)
@@ -380,8 +382,9 @@ def run_modular_no_llm_benchmark(
     tracemalloc.stop()
     peak_memory_mb = peak / 1024 / 1024
 
-    print(f"Indexed {len(chunks)} chunks in {index_time:.1f}s")
-    print(f"Peak memory: {peak_memory_mb:.1f} MB")
+    logger.metric("chunks_indexed", len(chunks))
+    logger.metric("index_time", index_time, "s")
+    logger.metric("peak_memory", peak_memory_mb, "MB")
 
     # Log cache statistics if available
     if cache:
@@ -393,12 +396,12 @@ def run_modular_no_llm_benchmark(
             misses = stats.get("total_misses", 0)
             total = hits + misses
             hit_rate = (hits / total * 100) if total > 0 else 0
-            print(
+            logger.info(
                 f"Cache stats: {hits} hits, {misses} misses ({hit_rate:.1f}% hit rate)"
             )
 
     # Run retrieval for each question
-    print(f"\nRunning retrieval for {len(questions)} questions...")
+    logger.info(f"Running retrieval for {len(questions)} questions...")
     results = []
     latencies = []
 
@@ -420,7 +423,7 @@ def run_modular_no_llm_benchmark(
         results.append(result)
 
         status = "✓" if needle_found else "✗"
-        print(
+        logger.info(
             f"  [{i + 1:2d}/{len(questions)}] {status} ({latency:.0f}ms) {q['question'][:50]}..."
         )
 
@@ -428,11 +431,9 @@ def run_modular_no_llm_benchmark(
     accuracy = sum(1 for r in results if r["needle_found"]) / len(results) * 100
     avg_latency = sum(latencies) / len(latencies)
 
-    print(
-        f"\nAccuracy: {accuracy:.1f}% ({sum(1 for r in results if r['needle_found'])}/{len(results)})"
-    )
-    print(f"Avg Latency: {avg_latency:.1f}ms")
-    print(f"Peak Memory: {peak_memory_mb:.1f}MB")
+    logger.metric("accuracy", accuracy, "%")
+    logger.metric("avg_latency", avg_latency, "ms")
+    logger.metric("peak_memory_final", peak_memory_mb, "MB")
 
     return {
         "accuracy": accuracy,
@@ -477,32 +478,31 @@ def generate_report(
         json.dump(report, f, indent=2)
 
     # Print summary
-    print("\n" + "=" * 60)
-    print("BENCHMARK SUMMARY")
-    print("=" * 60)
-    print(f"\nBaseline (enriched_hybrid_llm):")
-    print(f"  Accuracy: {baseline['accuracy']:.1f}%")
-    print(f"  Avg Latency: {baseline['avg_latency_ms']:.1f}ms")
-    print(f"  Peak Memory: {baseline['peak_memory_mb']:.1f}MB")
+    logger = get_logger()
+    logger.section("BENCHMARK SUMMARY")
+    logger.info(f"Baseline (enriched_hybrid_llm):")
+    logger.info(f"  Accuracy: {baseline['accuracy']:.1f}%")
+    logger.info(f"  Avg Latency: {baseline['avg_latency_ms']:.1f}ms")
+    logger.info(f"  Peak Memory: {baseline['peak_memory_mb']:.1f}MB")
 
-    print(f"\nModular Pipeline:")
-    print(f"  Accuracy: {modular['accuracy']:.1f}%")
-    print(f"  Avg Latency: {modular['avg_latency_ms']:.1f}ms")
-    print(f"  Peak Memory: {modular['peak_memory_mb']:.1f}MB")
-    print(f"  Status: {modular.get('status', 'complete')}")
+    logger.info(f"Modular Pipeline:")
+    logger.info(f"  Accuracy: {modular['accuracy']:.1f}%")
+    logger.info(f"  Avg Latency: {modular['avg_latency_ms']:.1f}ms")
+    logger.info(f"  Peak Memory: {modular['peak_memory_mb']:.1f}MB")
+    logger.info(f"  Status: {modular.get('status', 'complete')}")
 
     if modular.get("status") != "incomplete":
-        print(f"\nComparison:")
-        print(f"  Accuracy Diff: {report['comparison']['accuracy_diff']:+.1f}%")
-        print(f"  Latency Diff: {report['comparison']['latency_diff_ms']:+.1f}ms")
-        print(f"  Memory Diff: {report['comparison']['memory_diff_mb']:+.1f}MB")
+        logger.info(f"Comparison:")
+        logger.info(f"  Accuracy Diff: {report['comparison']['accuracy_diff']:+.1f}%")
+        logger.info(f"  Latency Diff: {report['comparison']['latency_diff_ms']:+.1f}ms")
+        logger.info(f"  Memory Diff: {report['comparison']['memory_diff_mb']:+.1f}MB")
 
         # Verdict
         accuracy_pass = modular["accuracy"] >= 85.0
         verdict = "✓ PASS" if accuracy_pass else "✗ FAIL"
-        print(f"\nVERDICT: {verdict} (target: ≥85% accuracy)")
+        logger.info(f"VERDICT: {verdict} (target: ≥85% accuracy)")
 
-    print(f"\nReport saved to: {output_file}")
+    logger.info(f"Report saved to: {output_file}")
 
 
 def generate_three_way_report(
@@ -560,56 +560,55 @@ def generate_three_way_report(
         json.dump(report, f, indent=2)
 
     # Print summary
-    print("\n" + "=" * 60)
-    print("THREE-WAY BENCHMARK SUMMARY")
-    print("=" * 60)
-    print(f"\nBaseline (enriched_hybrid_llm):")
-    print(f"  Accuracy: {baseline['accuracy']:.1f}%")
-    print(f"  Avg Latency: {baseline['avg_latency_ms']:.1f}ms")
-    print(f"  Peak Memory: {baseline['peak_memory_mb']:.1f}MB")
+    logger = get_logger()
+    logger.section("THREE-WAY BENCHMARK SUMMARY")
+    logger.info(f"Baseline (enriched_hybrid_llm):")
+    logger.info(f"  Accuracy: {baseline['accuracy']:.1f}%")
+    logger.info(f"  Avg Latency: {baseline['avg_latency_ms']:.1f}ms")
+    logger.info(f"  Peak Memory: {baseline['peak_memory_mb']:.1f}MB")
 
-    print(f"\nModular Pipeline (with LLM):")
-    print(f"  Accuracy: {modular['accuracy']:.1f}%")
-    print(f"  Avg Latency: {modular['avg_latency_ms']:.1f}ms")
-    print(f"  Peak Memory: {modular['peak_memory_mb']:.1f}MB")
+    logger.info(f"Modular Pipeline (with LLM):")
+    logger.info(f"  Accuracy: {modular['accuracy']:.1f}%")
+    logger.info(f"  Avg Latency: {modular['avg_latency_ms']:.1f}ms")
+    logger.info(f"  Peak Memory: {modular['peak_memory_mb']:.1f}MB")
 
-    print(f"\nModular Pipeline (no LLM):")
-    print(f"  Accuracy: {modular_no_llm['accuracy']:.1f}%")
-    print(f"  Avg Latency: {modular_no_llm['avg_latency_ms']:.1f}ms")
-    print(f"  Peak Memory: {modular_no_llm['peak_memory_mb']:.1f}MB")
+    logger.info(f"Modular Pipeline (no LLM):")
+    logger.info(f"  Accuracy: {modular_no_llm['accuracy']:.1f}%")
+    logger.info(f"  Avg Latency: {modular_no_llm['avg_latency_ms']:.1f}ms")
+    logger.info(f"  Peak Memory: {modular_no_llm['peak_memory_mb']:.1f}MB")
 
-    print(f"\nComparison (vs Baseline):")
-    print(
+    logger.info(f"Comparison (vs Baseline):")
+    logger.info(
         f"  With LLM - Accuracy Diff: {report['comparison']['modular_vs_baseline_accuracy']:+.1f}%"
     )
-    print(
+    logger.info(
         f"  With LLM - Latency Diff: {report['comparison']['modular_vs_baseline_latency_ms']:+.1f}ms"
     )
-    print(
+    logger.info(
         f"  With LLM - Memory Diff: {report['comparison']['modular_vs_baseline_memory_mb']:+.1f}MB"
     )
-    print(
+    logger.info(
         f"  No LLM - Accuracy Diff: {report['comparison']['no_llm_vs_baseline_accuracy']:+.1f}%"
     )
-    print(
+    logger.info(
         f"  No LLM - Latency Diff: {report['comparison']['no_llm_vs_baseline_latency_ms']:+.1f}ms"
     )
-    print(
+    logger.info(
         f"  No LLM - Memory Diff: {report['comparison']['no_llm_vs_baseline_memory_mb']:+.1f}MB"
     )
 
-    print(f"\nComparison (No LLM vs With LLM):")
-    print(
+    logger.info(f"Comparison (No LLM vs With LLM):")
+    logger.info(
         f"  Accuracy Diff: {report['comparison']['no_llm_vs_with_llm_accuracy']:+.1f}%"
     )
-    print(
+    logger.info(
         f"  Latency Diff: {report['comparison']['no_llm_vs_with_llm_latency_ms']:+.1f}ms"
     )
-    print(
+    logger.info(
         f"  Memory Diff: {report['comparison']['no_llm_vs_with_llm_memory_mb']:+.1f}MB"
     )
 
-    print(f"\nReport saved to: {output_file}")
+    logger.info(f"Report saved to: {output_file}")
 
 
 def main():
@@ -648,27 +647,32 @@ def main():
 
     args = parser.parse_args()
 
+    # Initialize logger
+    logger = BenchmarkLogger(min_level="INFO")
+    set_logger(logger)
+
     # Load data
-    print("Loading questions...")
+    logger.info("Loading questions...")
     questions, needle_doc_id = load_questions(args.questions)
 
     if args.quick:
         questions = questions[:5]
-        print(f"QUICK MODE: Using first {len(questions)} questions only")
+        logger.info(f"QUICK MODE: Using first {len(questions)} questions only")
 
-    print(f"Loaded {len(questions)} questions for needle: {needle_doc_id}")
+    logger.metric("questions_loaded", len(questions))
+    logger.info(f"Needle document: {needle_doc_id}")
 
-    print("\nLoading documents...")
+    logger.info("Loading documents...")
     documents = load_documents()
-    print(f"Loaded {len(documents)} documents")
+    logger.metric("documents_loaded", len(documents))
 
-    print("\nChunking documents...")
+    logger.info("Chunking documents...")
     chunks = chunk_documents(documents)
-    print(f"Created {len(chunks)} chunks")
+    logger.metric("chunks_created", len(chunks))
 
-    print("\nLoading embedder...")
+    logger.info("Loading embedder...")
     embedder = SentenceTransformer("BAAI/bge-base-en-v1.5")
-    print("Embedder loaded")
+    logger.info("Embedder loaded")
 
     # Initialize cache if enabled
     cache = None if args.no_cache else RedisCacheClient()
@@ -715,13 +719,11 @@ def main():
             result = modular_no_llm
             strategy_name = "modular-no-llm"
 
-        print(f"\n{'=' * 60}")
-        print(f"RESULTS: {strategy_name}")
-        print(f"{'=' * 60}")
-        print(f"Accuracy: {result['accuracy']:.1f}%")
-        print(f"Avg Latency: {result['avg_latency_ms']:.2f}ms")
-        print(f"Peak Memory: {result['peak_memory_mb']:.2f}MB")
-        print(f"\nResults saved to: {args.output}")
+        logger.section(f"RESULTS: {strategy_name}")
+        logger.metric("accuracy", result["accuracy"], "%")
+        logger.metric("avg_latency", result["avg_latency_ms"], "ms")
+        logger.metric("peak_memory", result["peak_memory_mb"], "MB")
+        logger.info(f"Results saved to: {args.output}")
 
         # Save single strategy result
         with open(args.output, "w") as f:
