@@ -25,9 +25,10 @@ sys.path.insert(0, str(Path(__file__).parent))
 from strategies import Document, Chunk, MarkdownSemanticStrategy
 from retrieval import create_retrieval_strategy
 from enrichment import call_llm
+from logger import BenchmarkLogger, set_logger
 
 
-CORPUS_DIR = Path("corpus/kubernetes_sample_200")
+CORPUS_DIR = Path("corpus/kubernetes")
 NEEDLE_SELECTION_FILE = Path("corpus/needle_selection.json")
 NEEDLE_QUESTIONS_FILE = Path("corpus/needle_questions.json")
 RETRIEVAL_RESULTS_FILE = Path("results/needle_haystack_retrieval.json")
@@ -208,6 +209,10 @@ def chunk_documents(documents: list[Document]) -> list[Chunk]:
 
 def run_benchmark(questions_file=None):
     """Run the benchmark: index all docs and retrieve for all questions."""
+    # Initialize logger with TRACE level to capture query rewrites
+    logger = BenchmarkLogger(min_level="TRACE")
+    set_logger(logger)
+
     print("=" * 60)
     print("TASK 3: Run Benchmark - Index and Retrieve")
     print("=" * 60)
@@ -243,7 +248,7 @@ def run_benchmark(questions_file=None):
 
     # Initialize retrieval strategy
     print("\nInitializing enriched_hybrid_llm strategy...")
-    strategy = create_retrieval_strategy("enriched_hybrid_llm")
+    strategy = create_retrieval_strategy("enriched_hybrid_llm", debug=True)
 
     # Set up embedder
     print("Loading BGE embedder...")

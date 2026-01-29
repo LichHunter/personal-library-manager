@@ -1,5 +1,10 @@
 {
   "active_plan": null,
+  "started_at": null,
+  "session_ids": [
+    "ses_3fabdfc1affeUJWlvvtjJJBgsV"
+  ],
+  "plan_name": null,
   "completed_plans": [
     {
       "plan_name": "modular-retrieval-pipeline",
@@ -10,6 +15,26 @@
       "session_ids": [
         "ses_3fabdfc1affeUJWlvvtjJJBgsV",
         "ses_3fa645627ffeDuMiV40j4UZqMh"
+      ]
+    },
+    {
+      "plan_name": "modular-benchmark-exact-replication",
+      "plan_path": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/modular-benchmark-exact-replication.md",
+      "completed_at": "2026-01-29T10:08:56.255Z",
+      "tasks_completed": 7,
+      "tasks_total": 7,
+      "session_ids": [
+        "ses_3fabdfc1affeUJWlvvtjJJBgsV"
+      ]
+    },
+    {
+      "plan_name": "modular-independence",
+      "plan_path": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/modular-independence.md",
+      "completed_at": "2026-01-29T11:15:00.000Z",
+      "tasks_completed": 6,
+      "tasks_total": 6,
+      "session_ids": [
+        "ses_3fabdfc1affeUJWlvvtjJJBgsV"
       ]
     }
   ]
