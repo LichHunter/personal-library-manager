@@ -1,130 +1,130 @@
 {
   "strategy": "modular-no-llm",
-  "benchmark_run_at": "2026-01-29T13:33:22.815693",
+  "benchmark_run_at": "2026-01-29T13:40:25.215542",
   "questions_file": "poc/chunking_benchmark_v2/corpus/needle_questions.json",
   "accuracy": 90.0,
-  "avg_latency_ms": 36.55292987823486,
-  "peak_memory_mb": 217.8747730255127,
+  "avg_latency_ms": 39.71567153930664,
+  "peak_memory_mb": 217.87643909454346,
   "results": [
     {
       "question_id": "q_001",
       "question": "My pod keeps getting rejected with a topology affinity error, what's going on?",
       "needle_found": true,
-      "latency_ms": 43.0
+      "latency_ms": 41.0
     },
     {
       "question_id": "q_002",
       "question": "How do I force all my containers to run on the same NUMA node in k8s?",
       "needle_found": true,
-      "latency_ms": 44.9
+      "latency_ms": 45.6
     },
     {
       "question_id": "q_003",
       "question": "What's the difference between restricted and best-effort topology policies?",
       "needle_found": true,
-      "latency_ms": 28.5
+      "latency_ms": 50.4
     },
     {
       "question_id": "q_004",
       "question": "Getting error about too many NUMA nodes on my server, what's the limit?",
       "needle_found": true,
-      "latency_ms": 38.5
+      "latency_ms": 36.9
     },
     {
       "question_id": "q_005",
       "question": "How to enable topology manager on Windows nodes?",
       "needle_found": true,
-      "latency_ms": 31.3
+      "latency_ms": 31.6
     },
     {
       "question_id": "q_006",
       "question": "Which k8s version made topology manager GA/stable?",
       "needle_found": true,
-      "latency_ms": 27.1
+      "latency_ms": 26.7
     },
     {
       "question_id": "q_007",
       "question": "What flag do I pass to kubelet for setting topology policy?",
       "needle_found": true,
-      "latency_ms": 33.8
+      "latency_ms": 35.7
     },
     {
       "question_id": "q_008",
       "question": "My latency-sensitive app is slow, containers seem to be on different NUMA nodes. How to fix?",
       "needle_found": true,
-      "latency_ms": 44.9
+      "latency_ms": 45.1
     },
     {
       "question_id": "q_009",
       "question": "Why would I use pod scope instead of container scope for topology?",
       "needle_found": true,
-      "latency_ms": 36.5
+      "latency_ms": 36.0
     },
     {
       "question_id": "q_010",
       "question": "What are hint providers in topology manager?",
       "needle_found": true,
-      "latency_ms": 29.0
+      "latency_ms": 28.1
     },
     {
       "question_id": "q_011",
       "question": "How do I configure kubelet to prefer NUMA nodes that are closer together?",
       "needle_found": true,
-      "latency_ms": 38.0
+      "latency_ms": 43.0
     },
     {
       "question_id": "q_012",
       "question": "When did prefer-closest-numa-nodes become generally available?",
       "needle_found": true,
-      "latency_ms": 24.5
+      "latency_ms": 31.6
     },
     {
       "question_id": "q_013",
       "question": "What's the default topology manager policy if I don't set anything?",
       "needle_found": true,
-      "latency_ms": 37.3
+      "latency_ms": 38.7
     },
     {
       "question_id": "q_014",
       "question": "Pod was scheduled but then failed on the node, says something about topology. Is that a bug?",
       "needle_found": false,
-      "latency_ms": 48.5
+      "latency_ms": 59.6
     },
     {
       "question_id": "q_015",
       "question": "What QoS class does my pod need to be for topology hints to work?",
       "needle_found": true,
-      "latency_ms": 43.7
+      "latency_ms": 48.6
     },
     {
       "question_id": "q_016",
       "question": "How to set topology scope to pod level in kubelet?",
       "needle_found": true,
-      "latency_ms": 35.2
+      "latency_ms": 42.0
     },
     {
       "question_id": "q_017",
       "question": "What feature gate do I need for topology manager policy options?",
       "needle_found": true,
-      "latency_ms": 33.9
+      "latency_ms": 38.9
     },
     {
       "question_id": "q_018",
       "question": "My multi-socket server has GPUs and CPUs, how does k8s coordinate their placement?",
       "needle_found": false,
-      "latency_ms": 41.5
+      "latency_ms": 44.5
     },
     {
       "question_id": "q_019",
       "question": "With single-numa-node policy, when exactly does a pod get rejected?",
       "needle_found": true,
-      "latency_ms": 32.5
+      "latency_ms": 33.3
     },
     {
       "question_id": "q_020",
       "question": "What happens if topology manager can't find preferred NUMA affinity with best-effort policy?",
       "needle_found": true,
-      "latency_ms": 38.3
+      "latency_ms": 37.1
     }
   ]
 }
