@@ -215,10 +215,20 @@ class ModularEnrichedHybridLLM:
         """
         self._enrichment_count += 1
         if self.verbose and self._enrichment_count % 50 == 0:
-            print(
-                f"    [enriching {self._enrichment_count}] modular pipeline...",
-                flush=True,
-            )
+            if self._cache:
+                stats = self.get_cache_stats()
+                if stats:
+                    total = stats["total_hits"] + stats["total_misses"]
+                    hit_rate = (stats["total_hits"] / total * 100) if total > 0 else 0
+                    print(
+                        f"    [enriching {self._enrichment_count}] cache hit rate: {hit_rate:.1f}% ({stats['total_hits']}/{total})",
+                        flush=True,
+                    )
+            else:
+                print(
+                    f"    [enriching {self._enrichment_count}] modular pipeline...",
+                    flush=True,
+                )
 
         # Run through enrichment pipeline
         data = {"content": content}

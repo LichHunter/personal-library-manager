@@ -37,6 +37,7 @@ from typing import Any, Optional
 import numpy as np
 
 from .redis_client import RedisCacheClient
+from ..utils.logger import get_logger
 
 logger = logging.getLogger(__name__)
 

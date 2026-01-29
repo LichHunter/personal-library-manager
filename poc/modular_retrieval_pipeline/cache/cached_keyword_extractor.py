@@ -30,6 +30,7 @@ import logging
 from typing import Any, Optional
 
 from .redis_client import RedisCacheClient
+from ..utils.logger import get_logger
 
 logger = logging.getLogger(__name__)
 
@@ -108,6 +109,9 @@ class CachedKeywordExtractor:
                     logger.debug(
                         f"[{self.__class__.__name__}] cache hit for content length={len(content)}"
                     )
+                    get_logger().trace(
+                        f"[CachedKeywordExtractor] CACHE HIT - content_len={len(content)}, keywords={len(keywords)}, total_hits={self.hits}"
+                    )
                     # Return input dict with cached keywords
                     result = dict(data)
                     result["keywords"] = keywords
@@ -121,6 +125,9 @@ class CachedKeywordExtractor:
         self.misses += 1
         logger.debug(
             f"[{self.__class__.__name__}] cache miss for content length={len(content)}"
+        )
+        get_logger().trace(
+            f"[CachedKeywordExtractor] CACHE MISS - content_len={len(content)}, total_misses={self.misses}"
         )
         result = self._extractor.process(data)
 
