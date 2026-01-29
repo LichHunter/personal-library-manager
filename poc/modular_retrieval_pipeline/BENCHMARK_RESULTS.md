@@ -2,11 +2,20 @@
 
 ## Results
 
-| Strategy            | Components                                                                                                                                           | Data Ingested                                              | Data Used for Testing                                                   | Success Rate  |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|-------------------------------------------------------------------------|---------------|
-| enriched_hybrid_llm (baseline) | FastEnricher, QueryRewriter, Semantic Search, BM25, RRF Fusion                                                                                       | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) |
-| enriched_hybrid_llm (modular)  | KeywordExtractor, EntityExtractor, ContentEnricher, QueryRewriter, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser, Reranker | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) |
-| enriched_hybrid (modular, no LLM) | KeywordExtractor, EntityExtractor, ContentEnricher, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) |
+| Strategy            | Components                                                                                                                                           | Data Ingested                                              | Data Used for Testing                                                   | Accuracy | Hit@1 | Hit@5 | MRR | Avg Grade | Avg Score | Pass Rate ≥7.0 |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|-------------------------------------------------------------------------|----------|-------|-------|-----|-----------|-----------|----------------|
+| enriched_hybrid_llm (baseline) | FastEnricher, QueryRewriter, Semantic Search, BM25, RRF Fusion                                                                                       | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) | - | - | - | - | - | - |
+| enriched_hybrid_llm (modular)  | KeywordExtractor, EntityExtractor, ContentEnricher, QueryRewriter, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser, Reranker | `poc/chunking_benchmark_v2/corpus/kubernetes/` (200 files) | `poc/chunking_benchmark_v2/corpus/needle_questions.json` (20 questions) | 90.0% (18/20) | - | - | - | - | - | - |
+| enriched_hybrid (modular, no LLM) | KeywordExtractor, EntityExtractor, ContentEnricher, QueryExpander, EmbeddingEncoder, BM25Scorer, SimilarityScorer, RRFFuser, **RetrievalGrader** | 1,569 Kubernetes docs (7,269 chunks) | `poc/modular_retrieval_pipeline/needle_questions.json` (20 questions) | 90.0% (18/20) | 65.0% | 90.0% | 0.746 | 7.6/10 | 7.32 | 65.0% |
+
+**Metrics Explanation:**
+- **Accuracy**: Percentage of questions where needle document found in top-5 results
+- **Hit@1**: Percentage of questions where needle document is ranked #1
+- **Hit@5**: Percentage of questions where needle document is in top-5 (same as accuracy)
+- **MRR**: Mean Reciprocal Rank - average of 1/rank for each query
+- **Avg Grade**: LLM quality assessment (1-10 scale, Sonnet evaluates if chunks answer the question)
+- **Avg Score**: Total score (grade × position weight, penalizes lower ranks)
+- **Pass Rate ≥7.0**: Percentage of questions scoring 7.0 or higher (user can likely solve their problem)
 
 ---
 
