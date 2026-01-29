@@ -27,6 +27,7 @@ from rank_bm25 import BM25Okapi
 
 from ..base import Component
 from ..types import ScoredChunk
+from ..utils.logger import get_logger
 
 
 class BM25Scorer(Component):
@@ -55,6 +56,11 @@ class BM25Scorer(Component):
         >>> results[0].rank
         1
     """
+
+    def __init__(self):
+        """Initialize BM25Scorer with logger."""
+        self._log = get_logger()
+        self._log.debug("[BM25Scorer] Initialized")
 
     def process(self, data: dict[str, Any]) -> list[ScoredChunk]:
         """Score chunks using BM25 algorithm.
@@ -106,6 +112,10 @@ class BM25Scorer(Component):
         if not chunks:
             raise ValueError("Chunks list cannot be empty")
 
+        self._log.debug(
+            f"[BM25Scorer] Indexing {len(chunks)} chunks for query: {query}"
+        )
+
         # Extract chunk content (handle both strings and dicts)
         chunk_contents = []
         for chunk in chunks:
@@ -130,6 +140,8 @@ class BM25Scorer(Component):
         query_tokens = query.lower().split()
         scores = bm25.get_scores(query_tokens)
 
+        self._log.trace(f"[BM25Scorer] Computed BM25 scores for {len(scores)} chunks")
+
         # Sort by score (descending)
         sorted_indices = np.argsort(scores)[::-1]
 
@@ -145,5 +157,9 @@ class BM25Scorer(Component):
                     rank=rank,
                 )
             )
+
+        self._log.debug(
+            f"[BM25Scorer] Completed scoring, returned {len(scored_chunks)} ranked chunks"
+        )
 
         return scored_chunks

@@ -21,6 +21,7 @@ Example:
 
 from ..types import RewrittenQuery, ExpandedQuery
 from ..base import Component
+from ..utils.logger import get_logger
 
 
 # Domain expansion dictionary for query expansion
@@ -81,6 +82,11 @@ class QueryExpander(Component[RewrittenQuery, ExpandedQuery]):
     # Not instance state - shared across all instances
     DOMAIN_EXPANSIONS = DOMAIN_EXPANSIONS
 
+    def __init__(self):
+        """Initialize QueryExpander with logger."""
+        self._log = get_logger()
+        self._log.debug("[QueryExpander] Initialized")
+
     def process(self, data: RewrittenQuery) -> ExpandedQuery:
         """Expand a rewritten query with domain-specific terms.
 
@@ -118,6 +124,8 @@ class QueryExpander(Component[RewrittenQuery, ExpandedQuery]):
             >>> # result.expanded = "token auth JWT authentication iat exp issued claims expiration"
             >>> # result.expansions = ("token",)
         """
+        self._log.debug(f"[QueryExpander] Processing query: {data.rewritten}")
+
         # Get the rewritten query text and convert to lowercase for matching
         query_text = data.rewritten
         query_lower = query_text.lower()
@@ -127,9 +135,13 @@ class QueryExpander(Component[RewrittenQuery, ExpandedQuery]):
         for term, expansion in self.DOMAIN_EXPANSIONS.items():
             if term in query_lower:
                 expansions_applied.append((term, expansion))
+                self._log.trace(f"[QueryExpander] Matched expansion term: {term}")
 
         # If no expansions found, return query unchanged
         if not expansions_applied:
+            self._log.debug(
+                "[QueryExpander] No expansions matched, returning original query"
+            )
             return ExpandedQuery(
                 query=data,
                 expanded=query_text,
@@ -158,6 +170,10 @@ class QueryExpander(Component[RewrittenQuery, ExpandedQuery]):
 
         # Extract just the expansion keys (not the full expansion text)
         expansion_keys = tuple(term for term, _ in expansions_applied)
+
+        self._log.debug(
+            f"[QueryExpander] Completed expansion with {len(expansion_keys)} terms: {expansion_keys}"
+        )
 
         return ExpandedQuery(
             query=data,

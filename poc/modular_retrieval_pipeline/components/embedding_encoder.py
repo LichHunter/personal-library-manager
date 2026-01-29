@@ -29,6 +29,7 @@ from typing import Any, Optional
 import numpy as np
 
 from ..base import Component
+from ..utils.logger import get_logger
 
 
 class EmbeddingEncoder(Component):
@@ -68,9 +69,13 @@ class EmbeddingEncoder(Component):
             The model is NOT loaded in __init__. It's loaded lazily on first
             process() call to avoid unnecessary initialization overhead.
         """
+        self._log = get_logger()
         self.model = model
         self.batch_size = batch_size
         self._embedder = None  # Lazy-loaded model
+        self._log.debug(
+            f"[EmbeddingEncoder] Initialized with model={model}, batch_size={batch_size}"
+        )
 
     def _load_model(self) -> None:
         """Load the sentence-transformers model (lazy loading).
@@ -133,6 +138,8 @@ class EmbeddingEncoder(Component):
         if not text or not isinstance(text, str):
             raise ValueError("Text must be a non-empty string")
 
+        self._log.debug(f"[EmbeddingEncoder] Encoding text of length {len(text)}")
+
         # Load model on first use (lazy loading)
         self._load_model()
 
@@ -146,6 +153,11 @@ class EmbeddingEncoder(Component):
 
         # Convert numpy array to immutable tuple
         embedding_tuple = tuple(float(x) for x in embedding_array)
+
+        self._log.trace(
+            f"[EmbeddingEncoder] Generated embedding with dimension {len(embedding_tuple)}"
+        )
+        self._log.debug(f"[EmbeddingEncoder] Completed encoding")
 
         # Return result dict
         return {
@@ -186,6 +198,8 @@ class EmbeddingEncoder(Component):
             if not isinstance(text, str) or not text:
                 raise ValueError(f"Text at index {i} must be a non-empty string")
 
+        self._log.debug(f"[EmbeddingEncoder] Batch encoding {len(texts)} texts")
+
         # Load model on first use (lazy loading)
         self._load_model()
 
@@ -204,5 +218,9 @@ class EmbeddingEncoder(Component):
         embeddings_tuples = [
             tuple(float(x) for x in embedding) for embedding in embeddings_array
         ]
+
+        self._log.debug(
+            f"[EmbeddingEncoder] Completed batch encoding {len(embeddings_tuples)} texts"
+        )
 
         return embeddings_tuples
