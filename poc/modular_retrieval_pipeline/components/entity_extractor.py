@@ -147,7 +147,9 @@ class EntityExtractor:
         content = data["content"]
 
         # Handle empty or short content
-        if not content or len(content.strip()) < 10:
+        if (
+            not content or len(content.strip()) < 50
+        ):  # Min length matches FastEnricher.min_text_length default
             # Return input dict with empty entities
             result = dict(data)
             result["entities"] = {}

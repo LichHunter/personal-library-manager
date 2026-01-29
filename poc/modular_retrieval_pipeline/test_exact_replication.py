@@ -216,22 +216,28 @@ def test_identical_results():
     ]
 
     print(f"\nRunning {len(test_queries)} test queries...")
-    print("(Note: Results may differ due to LLM-based query rewriting non-determinism)")
+    print("(Query rewriting is mocked for deterministic results)")
 
     for query in test_queries:
         orig_results = original.retrieve(query, k=5)
         mod_results = modular.retrieve(query, k=5)
 
-        # Verify both return results
+        # Verify EXACT chunk ID matches in SAME order
         orig_ids = [c.id for c in orig_results]
         mod_ids = [c.id for c in mod_results]
 
-        if orig_ids and mod_ids:
-            print(f"✓ Query '{query[:40]}...' - both return results")
-        else:
-            print(f"✗ Query '{query[:40]}...' - missing results")
+        if orig_ids != mod_ids:
+            print(f"✗ Query '{query[:40]}...' - MISMATCH!")
+            print(f"  Original: {orig_ids}")
+            print(f"  Modular:  {mod_ids}")
+            raise AssertionError(f"Chunk ID mismatch for query: {query}")
 
-    print("\n✓ Functionally equivalent retrieval verified!")
+        if not orig_ids or not mod_ids:
+            raise AssertionError(f"Empty results for query: {query}")
+
+        print(f"✓ Query '{query[:40]}...' - IDENTICAL results: {orig_ids}")
+
+    print("\n✓ EXACT IDENTICAL retrieval verified! (100% match)")
 
 
 if __name__ == "__main__":
