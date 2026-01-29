@@ -20,11 +20,19 @@ sys.path.insert(0, str(project_root / "poc" / "chunking_benchmark_v2"))
 sys.path.insert(0, str(project_root / "poc" / "modular_retrieval_pipeline"))
 sys.path.insert(0, str(project_root / "poc"))
 
-# Mock query rewriting BEFORE importing modular implementation
+# Mock query rewriting BEFORE any imports
+# NOTE: This must happen before importing enriched_hybrid_llm because it does:
+#   from retrieval.query_rewrite import rewrite_query
+# which creates a local reference that can't be mocked later
 import retrieval.query_rewrite as qr_module
 
 _original_rewrite = qr_module.rewrite_query
 qr_module.rewrite_query = lambda query, **kwargs: query
+
+# Now patch the module-level function in enriched_hybrid_llm
+import retrieval.enriched_hybrid_llm as ehl_module
+
+ehl_module.rewrite_query = lambda query, **kwargs: query
 
 from strategies import Document, MarkdownSemanticStrategy
 from retrieval import create_retrieval_strategy
