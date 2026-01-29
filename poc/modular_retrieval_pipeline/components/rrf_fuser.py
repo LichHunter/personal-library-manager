@@ -31,6 +31,7 @@ Example:
 from typing import Any
 from ..base import Component
 from ..types import ScoredChunk, FusionConfig
+from ..utils.logger import get_logger
 
 
 class RRFFuser(Component):
@@ -71,6 +72,10 @@ class RRFFuser(Component):
                 - semantic_weight: Weight for semantic signal (default 0.5)
         """
         self.config = config
+        self._log = get_logger()
+        self._log.debug(
+            f"[RRFFuser] Initialized with k={config.k}, bm25_weight={config.bm25_weight}, semantic_weight={config.semantic_weight}"
+        )
 
     def process(self, data: list[list[ScoredChunk]]) -> list[ScoredChunk]:
         """Fuse multiple ranked result lists using Reciprocal Rank Fusion.
@@ -106,6 +111,8 @@ class RRFFuser(Component):
             >>> fused[0].score > 0
             True
         """
+        self._log.debug(f"[RRFFuser] Fusing {len(data)} result sets")
+
         # Validate input
         if not isinstance(data, list):
             raise TypeError(f"Input must be list of lists, got {type(data).__name__}")
@@ -130,6 +137,9 @@ class RRFFuser(Component):
 
         for retriever_idx, result_list in enumerate(data):
             weight = weights[retriever_idx]
+            self._log.trace(
+                f"[RRFFuser] Processing retriever {retriever_idx} with weight {weight}, {len(result_list)} results"
+            )
 
             for rank, scored_chunk in enumerate(result_list, start=1):
                 chunk_id = scored_chunk.chunk_id
@@ -160,6 +170,9 @@ class RRFFuser(Component):
                 )
             )
 
+        self._log.debug(
+            f"[RRFFuser] Completed fusion: {len(fused_chunks)} chunks fused and ranked"
+        )
         return fused_chunks
 
     def _extract_weights(self, num_retrievers: int) -> list[float]:

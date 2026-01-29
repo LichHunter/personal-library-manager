@@ -28,6 +28,7 @@ import numpy as np
 
 from ..base import Component
 from ..types import ScoredChunk
+from ..utils.logger import get_logger
 
 
 class Reranker(Component):
@@ -72,6 +73,8 @@ class Reranker(Component):
         """
         self.model_name = model
         self._model = None
+        self._log = get_logger()
+        self._log.debug(f"[Reranker] Initialized with model: {model}")
 
     def _load_model(self) -> Any:
         """Load cross-encoder model lazily.
@@ -143,6 +146,8 @@ class Reranker(Component):
             >>> results[0].score > results[1].score
             True
         """
+        self._log.debug(f"[Reranker] Reranking chunks for query")
+
         # Validate input
         if "query" not in data:
             raise KeyError("Input dict must have 'query' field")
@@ -173,6 +178,9 @@ class Reranker(Component):
 
         # Score pairs using cross-encoder
         scores = model.predict(pairs)
+        self._log.trace(
+            f"[Reranker] Computed cross-encoder scores for {len(scores)} chunks"
+        )
 
         # Normalize scores to [0, 1] range
         # Cross-encoder outputs are typically in [-inf, inf], so we use sigmoid
@@ -197,4 +205,7 @@ class Reranker(Component):
                 )
             )
 
+        self._log.debug(
+            f"[Reranker] Completed reranking: {len(reranked_chunks)} chunks reranked"
+        )
         return reranked_chunks

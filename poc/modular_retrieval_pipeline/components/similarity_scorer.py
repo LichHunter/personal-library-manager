@@ -26,6 +26,7 @@ import numpy as np
 
 from ..base import Component
 from ..types import ScoredChunk
+from ..utils.logger import get_logger
 
 
 class SimilarityScorer(Component):
@@ -58,6 +59,11 @@ class SimilarityScorer(Component):
         >>> results[0].score
         1.0
     """
+
+    def __init__(self):
+        """Initialize SimilarityScorer component."""
+        self._log = get_logger()
+        self._log.debug("[SimilarityScorer] Initialized")
 
     def process(self, data: dict[str, Any]) -> list[ScoredChunk]:
         """Score chunks using cosine similarity with query embedding.
@@ -105,6 +111,8 @@ class SimilarityScorer(Component):
             >>> results[1].score
             0.0
         """
+        self._log.debug("[SimilarityScorer] Scoring chunks with query embedding")
+
         # Validate input
         if "query_embedding" not in data:
             raise KeyError("Input dict must have 'query_embedding' field")
@@ -173,6 +181,9 @@ class SimilarityScorer(Component):
 
         # Compute cosine similarity (dot product of normalized vectors)
         similarities = np.dot(chunk_normalized, query_normalized)
+        self._log.trace(
+            f"[SimilarityScorer] Computed similarities for {len(similarities)} chunks"
+        )
 
         # Sort by similarity (descending)
         sorted_indices = np.argsort(similarities)[::-1]
@@ -190,4 +201,7 @@ class SimilarityScorer(Component):
                 )
             )
 
+        self._log.debug(
+            f"[SimilarityScorer] Completed scoring: {len(scored_chunks)} chunks ranked"
+        )
         return scored_chunks
