@@ -36,6 +36,16 @@
       "session_ids": [
         "ses_3fabdfc1affeUJWlvvtjJJBgsV"
       ]
+    },
+    {
+      "plan_name": "enriched-hybrid-no-llm",
+      "plan_path": "/home/fujin/Code/personal-library-manager/.sisyphus/plans/enriched-hybrid-no-llm.md",
+      "completed_at": "2026-01-29T13:45:00.000Z",
+      "tasks_completed": 3,
+      "tasks_total": 3,
+      "session_ids": [
+        "ses_3fabdfc1affeUJWlvvtjJJBgsV"
+      ]
     }
   ]
 }
