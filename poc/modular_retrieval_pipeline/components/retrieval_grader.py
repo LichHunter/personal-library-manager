@@ -139,35 +139,34 @@ class RetrievalGrader:
         )
 
         start_time = time.time()
+        chunks_text = self._format_chunks(chunks)
+        prompt = GRADING_PROMPT.format(
+            question=question,
+            expected_answer=expected_answer,
+            chunks_text=chunks_text,
+        )
 
-        try:
-            # Format chunks into text
-            chunks_text = self._format_chunks(chunks)
-
-            # Build prompt
-            prompt = GRADING_PROMPT.format(
-                question=question,
-                expected_answer=expected_answer,
-                chunks_text=chunks_text,
-            )
-
-            # Call LLM
-            response = call_llm(
-                prompt, model="claude-sonnet", timeout=int(self.timeout)
-            )
-            elapsed = time.time() - start_time
-
-            # Parse response
-            if not response or not response.strip():
-                self._log.debug(f"[retrieval-grader] Empty response in {elapsed:.3f}s")
-                return GradeResult(
-                    grade=None, reasoning=None, latency_ms=elapsed * 1000
+        max_llm_retries = 3
+        for llm_attempt in range(max_llm_retries):
+            try:
+                response = call_llm(
+                    prompt, model="claude-haiku", timeout=int(self.timeout)
                 )
+                elapsed = time.time() - start_time
 
-            max_retries = 3
-            for attempt in range(max_retries):
+                if not response or not response.strip():
+                    self._log.debug(
+                        f"[retrieval-grader] Empty response attempt {llm_attempt + 1}/{max_llm_retries}"
+                    )
+                    if llm_attempt < max_llm_retries - 1:
+                        time.sleep(1.0 * (llm_attempt + 1))
+                        continue
+                    return GradeResult(
+                        grade=None, reasoning=None, latency_ms=elapsed * 1000
+                    )
+
+                response_clean = self._strip_markdown_json(response)
                 try:
-                    response_clean = self._strip_markdown_json(response)
                     data = json.loads(response_clean)
                     grade = data.get("grade")
                     reasoning = data.get("reasoning")
@@ -175,10 +174,7 @@ class RetrievalGrader:
                     if grade is not None:
                         if isinstance(grade, (int, float)):
                             grade = int(grade)
-                            if grade < 1:
-                                grade = 1
-                            elif grade > 10:
-                                grade = 10
+                            grade = max(1, min(10, grade))
                         else:
                             grade = None
 
@@ -189,44 +185,66 @@ class RetrievalGrader:
                         grade=grade, reasoning=reasoning, latency_ms=elapsed * 1000
                     )
 
-                except json.JSONDecodeError as e:
-                    self._log.debug(
-                        f"[retrieval-grader] Raw response: {response[:200]}..."
-                    )
-                    if attempt < max_retries - 1:
-                        self._log.debug(
-                            f"[retrieval-grader] Parse fail attempt {attempt + 1}/{max_retries}, retrying..."
-                        )
-                        continue
-                    else:
-                        self._log.warn(
-                            f"[retrieval-grader] All {max_retries} attempts failed"
+                except json.JSONDecodeError:
+                    grade = self._extract_grade_fallback(response)
+                    if grade is not None:
+                        self._log.info(
+                            f"[retrieval-grader] Grade={grade}/10 (extracted from malformed response)"
                         )
                         return GradeResult(
-                            grade=None, reasoning=None, latency_ms=elapsed * 1000
+                            grade=grade,
+                            reasoning="(extracted from malformed JSON)",
+                            latency_ms=elapsed * 1000,
                         )
 
-        except Exception as e:
-            elapsed = time.time() - start_time
-            self._log.warn(
-                f"[retrieval-grader] ERROR after {elapsed:.3f}s: {type(e).__name__}: {e}"
-            )
-            return GradeResult(grade=None, reasoning=None, latency_ms=elapsed * 1000)
+                    self._log.debug(
+                        f"[retrieval-grader] Parse failed attempt {llm_attempt + 1}/{max_llm_retries}: {response[:150]}..."
+                    )
+                    if llm_attempt < max_llm_retries - 1:
+                        time.sleep(1.0 * (llm_attempt + 1))
+                        continue
+
+                    self._log.warn(
+                        f"[retrieval-grader] All {max_llm_retries} LLM attempts failed to produce valid JSON"
+                    )
+                    return GradeResult(
+                        grade=None, reasoning=None, latency_ms=elapsed * 1000
+                    )
+
+            except Exception as e:
+                elapsed = time.time() - start_time
+                self._log.warn(
+                    f"[retrieval-grader] ERROR attempt {llm_attempt + 1}/{max_llm_retries}: {type(e).__name__}: {e}"
+                )
+                if llm_attempt < max_llm_retries - 1:
+                    time.sleep(1.0 * (llm_attempt + 1))
+                    continue
+                return GradeResult(
+                    grade=None, reasoning=None, latency_ms=elapsed * 1000
+                )
+
+        elapsed = time.time() - start_time
+        return GradeResult(grade=None, reasoning=None, latency_ms=elapsed * 1000)
 
     def _strip_markdown_json(self, text: str) -> str:
-        """Strip markdown code blocks from JSON response.
-
-        Handles responses wrapped in ```json ... ``` blocks.
-
-        Args:
-            text: Raw response text that may contain markdown wrappers
-
-        Returns:
-            Clean JSON string with markdown removed
-        """
         text = re.sub(r"^```json\s*", "", text.strip())
         text = re.sub(r"\s*```$", "", text.strip())
         return text
+
+    def _extract_grade_fallback(self, text: str) -> int | None:
+        patterns = [
+            r'"grade"\s*:\s*(\d+)',
+            r"[Gg]rade[:\s]+(\d+)",
+            r"(\d+)/10",
+            r"score[:\s]+(\d+)",
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, text)
+            if match:
+                grade = int(match.group(1))
+                if 1 <= grade <= 10:
+                    return grade
+        return None
 
     def _format_chunks(self, chunks: list[dict]) -> str:
         """Format chunks into readable text for the prompt.

@@ -2,12 +2,21 @@
 
 import json
 import os
+import random
 import time
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Optional
 
 from .logger import get_logger
+
+
+# Rate limiting configuration
+DEFAULT_MAX_RETRIES = 5
+DEFAULT_INITIAL_BACKOFF = 1.0  # seconds
+DEFAULT_MAX_BACKOFF = 60.0  # seconds
+DEFAULT_BACKOFF_MULTIPLIER = 2.0
+JITTER_FACTOR = 0.1  # 10% jitter
 
 
 class LLMProvider(ABC):
@@ -147,6 +156,24 @@ class AnthropicProvider(LLMProvider):
             log.debug(f"[anthropic] Model alias: {model} -> {resolved}")
         return resolved
 
+    def _calculate_backoff(self, attempt: int, retry_after: float | None) -> float:
+        if retry_after is not None:
+            return min(retry_after, DEFAULT_MAX_BACKOFF)
+
+        backoff = DEFAULT_INITIAL_BACKOFF * (DEFAULT_BACKOFF_MULTIPLIER**attempt)
+        backoff = min(backoff, DEFAULT_MAX_BACKOFF)
+        jitter = backoff * JITTER_FACTOR * random.random()
+        return backoff + jitter
+
+    def _parse_retry_after(self, response) -> float | None:
+        retry_after = response.headers.get("retry-after")
+        if retry_after:
+            try:
+                return float(retry_after)
+            except ValueError:
+                pass
+        return None
+
     def generate(
         self, prompt: str, model: str = "claude-haiku-4-5", timeout: int = 90
     ) -> str:
@@ -165,81 +192,123 @@ class AnthropicProvider(LLMProvider):
 
         start_time = time.time()
 
-        try:
-            self._refresh_token_if_needed()
+        request_body = {
+            "model": resolved_model,
+            "max_tokens": 1024,
+            "system": [
+                {
+                    "type": "text",
+                    "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+                }
+            ],
+            "messages": [{"role": "user", "content": prompt}],
+        }
 
-            request_body = {
-                "model": resolved_model,
-                "max_tokens": 1024,
-                "system": [
-                    {
-                        "type": "text",
-                        "text": "You are Claude Code, Anthropic's official CLI for Claude.",
-                    }
-                ],
-                "messages": [{"role": "user", "content": prompt}],
-            }
+        headers = {
+            "Authorization": f"Bearer {self._auth_data['access']}",
+            "anthropic-beta": "claude-code-20250219,oauth-2025-04-20,interleaved-thinking-2025-05-14,fine-grained-tool-streaming-2025-05-14",
+            "anthropic-version": "2023-06-01",
+            "Content-Type": "application/json",
+        }
 
-            headers = {
-                "Authorization": f"Bearer {self._auth_data['access']}",
-                "anthropic-beta": "claude-code-20250219,oauth-2025-04-20,interleaved-thinking-2025-05-14,fine-grained-tool-streaming-2025-05-14",
-                "anthropic-version": "2023-06-01",
-                "Content-Type": "application/json",
-            }
+        for attempt in range(DEFAULT_MAX_RETRIES):
+            try:
+                self._refresh_token_if_needed()
 
-            log.debug(f"[anthropic] REQUEST: POST {self.API_ENDPOINT}")
-            log.debug(
-                f"[anthropic] REQUEST body: model={resolved_model} max_tokens=1024"
-            )
+                log.debug(f"[anthropic] REQUEST: POST {self.API_ENDPOINT}")
+                log.debug(
+                    f"[anthropic] REQUEST body: model={resolved_model} max_tokens=1024"
+                )
 
-            response = httpx.post(
-                self.API_ENDPOINT,
-                json=request_body,
-                headers=headers,
-                timeout=timeout,
-            )
-            elapsed = time.time() - start_time
+                response = httpx.post(
+                    self.API_ENDPOINT,
+                    json=request_body,
+                    headers=headers,
+                    timeout=timeout,
+                )
+                elapsed = time.time() - start_time
 
-            log.debug(
-                f"[anthropic] RESPONSE status={response.status_code} elapsed={elapsed:.2f}s"
-            )
+                log.debug(
+                    f"[anthropic] RESPONSE status={response.status_code} elapsed={elapsed:.2f}s"
+                )
 
-            if not response.is_success:
-                error_text = response.text[:500]
-                log.error(f"[anthropic] API ERROR: {response.status_code} {error_text}")
+                if response.status_code == 429:
+                    retry_after = self._parse_retry_after(response)
+                    backoff = self._calculate_backoff(attempt, retry_after)
+                    log.warn(
+                        f"[anthropic] Rate limited (429). Attempt {attempt + 1}/{DEFAULT_MAX_RETRIES}. "
+                        f"Waiting {backoff:.1f}s before retry..."
+                    )
+                    time.sleep(backoff)
+                    continue
+
+                if response.status_code == 529:
+                    backoff = self._calculate_backoff(attempt, None)
+                    log.warn(
+                        f"[anthropic] API overloaded (529). Attempt {attempt + 1}/{DEFAULT_MAX_RETRIES}. "
+                        f"Waiting {backoff:.1f}s before retry..."
+                    )
+                    time.sleep(backoff)
+                    continue
+
+                if not response.is_success:
+                    error_text = response.text[:500]
+                    log.error(
+                        f"[anthropic] API ERROR: {response.status_code} {error_text}"
+                    )
+                    return ""
+
+                data = response.json()
+
+                usage = data.get("usage", {})
+                input_tokens = usage.get("input_tokens", 0)
+                output_tokens = usage.get("output_tokens", 0)
+                log.debug(
+                    f"[anthropic] USAGE: input_tokens={input_tokens} output_tokens={output_tokens}"
+                )
+
+                content = data.get("content", [])
+                stop_reason = data.get("stop_reason", "unknown")
+
+                if content and content[0].get("type") == "text":
+                    text = content[0].get("text", "").strip()
+                    log.debug(
+                        f"[anthropic] SUCCESS stop_reason={stop_reason} response_len={len(text)}"
+                    )
+                    log.debug(
+                        f"[anthropic] RESPONSE: {text[:500]}{'...' if len(text) > 500 else ''}"
+                    )
+                    return text
+
+                log.warn(
+                    f"[anthropic] Unexpected response format: {json.dumps(data)[:500]}"
+                )
                 return ""
 
-            data = response.json()
-
-            usage = data.get("usage", {})
-            input_tokens = usage.get("input_tokens", 0)
-            output_tokens = usage.get("output_tokens", 0)
-            log.debug(
-                f"[anthropic] USAGE: input_tokens={input_tokens} output_tokens={output_tokens}"
-            )
-
-            content = data.get("content", [])
-            stop_reason = data.get("stop_reason", "unknown")
-
-            if content and content[0].get("type") == "text":
-                text = content[0].get("text", "").strip()
-                log.debug(
-                    f"[anthropic] SUCCESS stop_reason={stop_reason} response_len={len(text)}"
+            except httpx.TimeoutException as e:
+                elapsed = time.time() - start_time
+                if attempt < DEFAULT_MAX_RETRIES - 1:
+                    backoff = self._calculate_backoff(attempt, None)
+                    log.warn(
+                        f"[anthropic] Timeout after {elapsed:.2f}s. Attempt {attempt + 1}/{DEFAULT_MAX_RETRIES}. "
+                        f"Waiting {backoff:.1f}s before retry..."
+                    )
+                    time.sleep(backoff)
+                    continue
+                log.error(
+                    f"[anthropic] Timeout after {elapsed:.2f}s (max retries exhausted): {e}"
                 )
-                log.debug(
-                    f"[anthropic] RESPONSE: {text[:500]}{'...' if len(text) > 500 else ''}"
-                )
-                return text
+                return ""
 
-            log.warn(
-                f"[anthropic] Unexpected response format: {json.dumps(data)[:500]}"
-            )
-            return ""
+            except Exception as e:
+                elapsed = time.time() - start_time
+                log.error(f"[anthropic] ERROR after {elapsed:.2f}s: {e}")
+                return ""
 
-        except Exception as e:
-            elapsed = time.time() - start_time
-            log.error(f"[anthropic] ERROR after {elapsed:.2f}s: {e}")
-            return ""
+        log.error(
+            f"[anthropic] Max retries ({DEFAULT_MAX_RETRIES}) exhausted for rate limiting"
+        )
+        return ""
 
 
 _provider_cache: dict[str, LLMProvider] = {}

@@ -80,15 +80,58 @@ CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
 DEFAULT_QUESTIONS = Path("poc/chunking_benchmark_v2/corpus/needle_questions.json")
 
 
-def load_questions(questions_file: Path) -> tuple[list[dict], str]:
+def load_questions(questions_file: Path) -> tuple[list[dict], str | None]:
     """Load questions from JSON file.
 
+    Supports two formats:
+    1. Needle format: {needle_doc_id: str, questions: [{id, question, expected_answer}]}
+    2. Realistic format: {questions: [{doc_id, realistic_q1, realistic_q2, ...}]}
+
     Returns:
-        (questions, needle_doc_id)
+        (questions, needle_doc_id) - needle_doc_id is None for realistic format
     """
     with open(questions_file) as f:
         data = json.load(f)
-    return data["questions"], data["needle_doc_id"]
+
+    # Detect format based on presence of needle_doc_id
+    if "needle_doc_id" in data:
+        # Needle format - single target document for all questions
+        return data["questions"], data["needle_doc_id"]
+    else:
+        # Realistic format - each question has its own doc_id
+        # Expand q1/q2 variants into separate questions
+        expanded_questions = []
+        for i, q in enumerate(data["questions"]):
+            # Skip low-quality questions
+            if not q.get("quality_pass", True):
+                continue
+
+            base_id = f"q_{i:03d}"
+            doc_id = q.get("doc_id", q.get("our_doc_path", "").replace(".md", ""))
+
+            # Add q1 variant
+            if q.get("realistic_q1"):
+                expanded_questions.append(
+                    {
+                        "id": f"{base_id}_q1",
+                        "question": q["realistic_q1"],
+                        "expected_answer": q.get("original_instruction", ""),
+                        "doc_id": doc_id,  # Per-question target
+                    }
+                )
+
+            # Add q2 variant
+            if q.get("realistic_q2"):
+                expanded_questions.append(
+                    {
+                        "id": f"{base_id}_q2",
+                        "question": q["realistic_q2"],
+                        "expected_answer": q.get("original_instruction", ""),
+                        "doc_id": doc_id,  # Per-question target
+                    }
+                )
+
+        return expanded_questions, None  # No global needle_doc_id
 
 
 def load_documents() -> list[Document]:
@@ -337,7 +380,7 @@ def run_modular_benchmark(
 
 def run_modular_no_llm_benchmark(
     questions: list[dict],
-    needle_doc_id: str,
+    needle_doc_id: str | None,
     chunks: list[Chunk],
     documents: list[Document],
     embedder: SentenceTransformer,
@@ -347,6 +390,10 @@ def run_modular_no_llm_benchmark(
 
     This benchmark uses the ModularEnrichedHybrid orchestrator which skips
     LLM-based query rewriting for faster latency.
+
+    Supports two question formats:
+    - Needle format: Global needle_doc_id for all questions
+    - Realistic format: Per-question doc_id field
 
     Configuration:
     - Embedder: BAAI/bge-base-en-v1.5 (same as others)
@@ -422,16 +469,19 @@ def run_modular_no_llm_benchmark(
         latency = (time.time() - query_start) * 1000  # ms
         latencies.append(latency)
 
-        # Check if needle found
-        needle_found = any(c.doc_id == needle_doc_id for c in retrieved)
+        # Get target doc_id - per-question (realistic) or global (needle)
+        target_doc_id = q.get("doc_id", needle_doc_id)
+
+        # Check if target document found
+        needle_found = any(c.doc_id == target_doc_id for c in retrieved)
 
         # Convert Chunk objects to dicts for grading
         retrieved_chunks = [
             {"content": c.content, "doc_id": c.doc_id} for c in retrieved
         ]
 
-        # Calculate rank of needle document
-        rank = metrics.calculate_rank(retrieved_chunks, needle_doc_id)
+        # Calculate rank of target document
+        rank = metrics.calculate_rank(retrieved_chunks, target_doc_id)
 
         # Grade retrieval quality
         grade_result = grader.grade(
@@ -447,6 +497,7 @@ def run_modular_no_llm_benchmark(
             "question_id": q["id"],
             "question": q["question"],
             "expected_answer": q.get("expected_answer", ""),
+            "target_doc_id": target_doc_id,
             "needle_found": needle_found,
             "rank": rank,
             "hit_at_1": rank == 1,
@@ -481,7 +532,7 @@ def run_modular_no_llm_benchmark(
         logger.trace(
             f"[q:{q['id']}] Retrieved {len(retrieved_chunks)} chunks from docs: {doc_ids}"
         )
-        logger.trace(f"[q:{q['id']}] Needle doc '{needle_doc_id}' at rank: {rank}")
+        logger.trace(f"[q:{q['id']}] Target doc '{target_doc_id}' at rank: {rank}")
         logger.debug(
             f"[q:{q['id']}] Grade={grade_result.grade}, Reasoning: {grade_result.reasoning[:100] if grade_result.reasoning else 'None'}..."
         )
@@ -745,6 +796,12 @@ def main():
         action="store_true",
         help="Disable Redis caching (cache enabled by default)",
     )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limit number of questions to run (default: all)",
+    )
 
     args = parser.parse_args()
 
@@ -756,12 +813,35 @@ def main():
     logger.info("Loading questions...")
     questions, needle_doc_id = load_questions(args.questions)
 
+    # Detect question format
+    is_realistic_format = needle_doc_id is None
+    if is_realistic_format:
+        logger.info("Detected REALISTIC question format (per-question doc_id)")
+    else:
+        logger.info(f"Detected NEEDLE question format (global needle: {needle_doc_id})")
+
+    # Apply question limits
     if args.quick:
         questions = questions[:5]
         logger.info(f"QUICK MODE: Using first {len(questions)} questions only")
+    elif args.limit:
+        questions = questions[: args.limit]
+        logger.info(f"LIMITED MODE: Using first {len(questions)} questions")
 
     logger.metric("questions_loaded", len(questions))
-    logger.info(f"Needle document: {needle_doc_id}")
+
+    # Validate strategy compatibility with question format
+    if is_realistic_format and args.strategy in ["baseline", "modular", "all"]:
+        logger.info(
+            "WARNING: baseline and modular strategies don't support per-question doc_id. "
+            "Use --strategy modular-no-llm for realistic questions."
+        )
+        if args.strategy == "all":
+            logger.info("Falling back to modular-no-llm only.")
+            args.strategy = "modular-no-llm"
+        else:
+            logger.info(f"Skipping {args.strategy} strategy.")
+            args.strategy = "modular-no-llm"
 
     logger.info("Loading documents...")
     documents = load_documents()
@@ -783,12 +863,14 @@ def main():
     modular = None
     modular_no_llm = None
 
-    if args.strategy in ["baseline", "all"]:
+    if args.strategy in ["baseline", "all"] and not is_realistic_format:
+        assert needle_doc_id is not None  # Type narrowing
         baseline = run_baseline_benchmark(
             questions, needle_doc_id, chunks, documents, embedder, cache
         )
 
-    if args.strategy in ["modular", "all"]:
+    if args.strategy in ["modular", "all"] and not is_realistic_format:
+        assert needle_doc_id is not None  # Type narrowing
         modular = run_modular_benchmark(
             questions, needle_doc_id, chunks, documents, embedder, cache
         )
