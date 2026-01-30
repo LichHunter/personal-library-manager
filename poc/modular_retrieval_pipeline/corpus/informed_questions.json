@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "source": "kubefix",
+    "total": 50,
+    "description": "Informed questions using technical Kubernetes terminology"
+  },
+  "questions": [
+    {
+      "question": "What is the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "expected_answer": "What is the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "doc_id": "concepts_services-networking_gateway",
+      "id": "q_000_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "expected_answer": "What is the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "doc_id": "concepts_services-networking_gateway",
+      "id": "q_000_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the Kubernetes approach to dynamic port allocation?",
+      "expected_answer": "What is the Kubernetes approach to dynamic port allocation?",
+      "doc_id": "concepts_cluster-administration_networking",
+      "id": "q_001_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the Kubernetes approach to dynamic port allocation?",
+      "expected_answer": "What is the Kubernetes approach to dynamic port allocation?",
+      "doc_id": "concepts_cluster-administration_networking",
+      "id": "q_001_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does a SubjectAccessReview object describe?",
+      "expected_answer": "What does a SubjectAccessReview object describe?",
+      "doc_id": "reference_access-authn-authz_webhook",
+      "id": "q_002_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does a SubjectAccessReview object describe?",
+      "expected_answer": "What does a SubjectAccessReview object describe?",
+      "doc_id": "reference_access-authn-authz_webhook",
+      "id": "q_002_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the difference between a mutating webhook and a validating webhook?",
+      "expected_answer": "What is the difference between a mutating webhook and a validating webhook?",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "id": "q_003_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the difference between a mutating webhook and a validating webhook?",
+      "expected_answer": "What is the difference between a mutating webhook and a validating webhook?",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "id": "q_003_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the NamespaceAutoProvision admission controller do?",
+      "expected_answer": "What does the NamespaceAutoProvision admission controller do?",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "id": "q_004_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the NamespaceAutoProvision admission controller do?",
+      "expected_answer": "What does the NamespaceAutoProvision admission controller do?",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "id": "q_004_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "expected_answer": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "doc_id": "concepts_storage_persistent-volumes",
+      "id": "q_005_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "expected_answer": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "doc_id": "concepts_storage_persistent-volumes",
+      "id": "q_005_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What are the two default user accounts for Windows containers?",
+      "expected_answer": "What are the two default user accounts for Windows containers?",
+      "doc_id": "concepts_security_windows-security",
+      "id": "q_006_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What are the characteristics of the two default user accounts for Windows containers?",
+      "expected_answer": "What are the two default user accounts for Windows containers?",
+      "doc_id": "concepts_security_windows-security",
+      "id": "q_006_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the purpose of using an Indexed Job in Kubernetes?",
+      "expected_answer": "What is the purpose of using an Indexed Job in Kubernetes?",
+      "doc_id": "tasks_job_indexed-parallel-processing-static",
+      "id": "q_007_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the purpose of using an Indexed Job in Kubernetes?",
+      "expected_answer": "What is the purpose of using an Indexed Job in Kubernetes?",
+      "doc_id": "tasks_job_indexed-parallel-processing-static",
+      "id": "q_007_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the etcd API and what risks does it pose to the cluster's security?",
+      "expected_answer": "What is the etcd API and what risks does it pose to the cluster's security?",
+      "doc_id": "concepts_security_api-server-bypass-risks",
+      "id": "q_008_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the etcd API and what risks does it pose to the cluster's security?",
+      "expected_answer": "What is the etcd API and what risks does it pose to the cluster's security?",
+      "doc_id": "concepts_security_api-server-bypass-risks",
+      "id": "q_008_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the role of a signer in Kubernetes?",
+      "expected_answer": "What is the role of a signer in Kubernetes?",
+      "doc_id": "tasks_tls_managing-tls-in-a-cluster",
+      "id": "q_009_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the role of a signer in Kubernetes?",
+      "expected_answer": "What is the role of a signer in Kubernetes?",
+      "doc_id": "tasks_tls_managing-tls-in-a-cluster",
+      "id": "q_009_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What tools are required to verify Kubernetes artifacts?",
+      "expected_answer": "What tools are required to verify Kubernetes artifacts?",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "id": "q_010_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What tools are required to verify Kubernetes artifacts?",
+      "expected_answer": "What tools are required to verify Kubernetes artifacts?",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "id": "q_010_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What protocol does Kubernetes components use to emit traces?",
+      "expected_answer": "What protocol does Kubernetes components use to emit traces?",
+      "doc_id": "concepts_cluster-administration_system-traces",
+      "id": "q_011_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What protocol does Kubernetes components use to emit traces?",
+      "expected_answer": "What protocol does Kubernetes components use to emit traces?",
+      "doc_id": "concepts_cluster-administration_system-traces",
+      "id": "q_011_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the format in which Kubernetes components emit metrics?",
+      "expected_answer": "What is the format in which Kubernetes components emit metrics?",
+      "doc_id": "concepts_cluster-administration_system-metrics",
+      "id": "q_012_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the format in which Kubernetes components emit metrics?",
+      "expected_answer": "What is the format in which Kubernetes components emit metrics?",
+      "doc_id": "concepts_cluster-administration_system-metrics",
+      "id": "q_012_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What are the different types of isolation in Kubernetes?",
+      "expected_answer": "What are the different types of isolation in Kubernetes?",
+      "doc_id": "concepts_security_multi-tenancy",
+      "id": "q_013_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What are the characteristics of the different types of isolation in Kubernetes?",
+      "expected_answer": "What are the different types of isolation in Kubernetes?",
+      "doc_id": "concepts_security_multi-tenancy",
+      "id": "q_013_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is Attribute-based access control (ABAC) and how does it work?",
+      "expected_answer": "What is Attribute-based access control (ABAC) and how does it work?",
+      "doc_id": "reference_access-authn-authz_abac",
+      "id": "q_014_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does Attribute-based access control (ABAC) and how does it work?",
+      "expected_answer": "What is Attribute-based access control (ABAC) and how does it work?",
+      "doc_id": "reference_access-authn-authz_abac",
+      "id": "q_014_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the role of the webhook token authenticator in the authentication process?",
+      "expected_answer": "What is the role of the webhook token authenticator in the authentication process?",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "id": "q_015_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the role of the webhook token authenticator in the authentication process?",
+      "expected_answer": "What is the role of the webhook token authenticator in the authentication process?",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "id": "q_015_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the purpose of the authentication flow in the aggregation layer?",
+      "expected_answer": "What is the purpose of the authentication flow in the aggregation layer?",
+      "doc_id": "tasks_extend-kubernetes_configure-aggregation-layer",
+      "id": "q_016_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the purpose of the authentication flow in the aggregation layer?",
+      "expected_answer": "What is the purpose of the authentication flow in the aggregation layer?",
+      "doc_id": "tasks_extend-kubernetes_configure-aggregation-layer",
+      "id": "q_016_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does sourcing the completion script in your shell enable?",
+      "expected_answer": "What does sourcing the completion script in your shell enable?",
+      "doc_id": "tasks_tools_included_optional-kubectl-configs-fish",
+      "id": "q_017_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does sourcing the completion script in your shell enable?",
+      "expected_answer": "What does sourcing the completion script in your shell enable?",
+      "doc_id": "tasks_tools_included_optional-kubectl-configs-fish",
+      "id": "q_017_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is kube proxy?",
+      "expected_answer": "What is kube proxy?",
+      "doc_id": "concepts_cluster-administration_proxies",
+      "id": "q_018_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does kube proxy?",
+      "expected_answer": "What is kube proxy?",
+      "doc_id": "concepts_cluster-administration_proxies",
+      "id": "q_018_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "How can you use `kubectl` to create an object from a configuration file?",
+      "expected_answer": "How can you use `kubectl` to create an object from a configuration file?",
+      "doc_id": "tasks_manage-kubernetes-objects_imperative-config",
+      "id": "q_019_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "How do you you use `kubectl` to create an object from a configuration file?",
+      "expected_answer": "How can you use `kubectl` to create an object from a configuration file?",
+      "doc_id": "tasks_manage-kubernetes-objects_imperative-config",
+      "id": "q_019_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "How can you suspend and resume a Job in Kubernetes?",
+      "expected_answer": "How can you suspend and resume a Job in Kubernetes?",
+      "doc_id": "concepts_workloads_controllers_job",
+      "id": "q_020_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "How do you you suspend and resume a Job in Kubernetes?",
+      "expected_answer": "How can you suspend and resume a Job in Kubernetes?",
+      "doc_id": "concepts_workloads_controllers_job",
+      "id": "q_020_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "expected_answer": "What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "doc_id": "tasks_job_fine-parallel-processing-work-queue",
+      "id": "q_021_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "expected_answer": "What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "doc_id": "tasks_job_fine-parallel-processing-work-queue",
+      "id": "q_021_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What are the four supported Topology Manager policies?",
+      "expected_answer": "What are the four supported Topology Manager policies?",
+      "doc_id": "tasks_administer-cluster_topology-manager",
+      "id": "q_022_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What are the characteristics of the four supported Topology Manager policies?",
+      "expected_answer": "What are the four supported Topology Manager policies?",
+      "doc_id": "tasks_administer-cluster_topology-manager",
+      "id": "q_022_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "Why do we need admission controllers?",
+      "expected_answer": "Why do we need admission controllers?",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "id": "q_023_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is the reason we need admission controllers?",
+      "expected_answer": "Why do we need admission controllers?",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "id": "q_023_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    },
+    {
+      "question": "What is a ServiceAccount in Kubernetes?",
+      "expected_answer": "What is a ServiceAccount in Kubernetes?",
+      "doc_id": "tasks_configure-pod-container_configure-service-account",
+      "id": "q_024_q1",
+      "variant": "informed_q1",
+      "source": "kubefix"
+    },
+    {
+      "question": "What does a ServiceAccount in Kubernetes?",
+      "expected_answer": "What is a ServiceAccount in Kubernetes?",
+      "doc_id": "tasks_configure-pod-container_configure-service-account",
+      "id": "q_024_q2",
+      "variant": "informed_q2",
+      "source": "kubefix"
+    }
+  ]
+}
