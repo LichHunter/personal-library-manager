@@ -75,6 +75,11 @@ from modular_retrieval_pipeline.components.retrieval_grader import (
 )
 from modular_retrieval_pipeline.utils.metrics import RetrievalMetrics
 
+# Import new question loader component
+from modular_retrieval_pipeline.components.question_loader import (
+    load_questions as load_questions_new,
+)
+
 
 CORPUS_DIR = Path("poc/chunking_benchmark_v2/corpus/kubernetes")
 DEFAULT_QUESTIONS = Path("poc/chunking_benchmark_v2/corpus/needle_questions.json")
@@ -83,13 +88,20 @@ DEFAULT_QUESTIONS = Path("poc/chunking_benchmark_v2/corpus/needle_questions.json
 def load_questions(questions_file: Path) -> tuple[list[dict], str | None]:
     """Load questions from JSON file.
 
-    Supports two formats:
+    Supports three formats:
     1. Needle format: {needle_doc_id: str, questions: [{id, question, expected_answer}]}
     2. Realistic format: {questions: [{doc_id, realistic_q1, realistic_q2, ...}]}
+    3. Corpus format: {metadata: {...}, questions: [{question, expected_answer, doc_id, ...}]}
 
     Returns:
-        (questions, needle_doc_id) - needle_doc_id is None for realistic format
+        (questions, needle_doc_id) - needle_doc_id is None for realistic/corpus formats
     """
+    # Check if using new corpus format (path contains "corpus/")
+    if "corpus/" in str(questions_file):
+        # Use new question loader for corpus format
+        questions = load_questions_new(str(questions_file))
+        return questions, None  # No global needle_doc_id for corpus format
+
     with open(questions_file) as f:
         data = json.load(f)
 
