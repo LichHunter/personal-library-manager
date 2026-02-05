@@ -1,0 +1,3287 @@
+{
+  "created_at": "2026-02-03T17:38:55.237548+00:00",
+  "created_by": "claude-opus",
+  "total_chunks": 45,
+  "total_terms": 553,
+  "content_type_distribution": {
+    "prose": 20,
+    "code": 10,
+    "tables": 8,
+    "errors": 7
+  },
+  "chunks": [
+    {
+      "chunk_id": "chunk_000",
+      "source_file": "reference_command-line-tools-reference_feature-gates_ServiceAppProtocol.md",
+      "content_type": "prose",
+      "text": "---\n# Removed from Kubernetes\ntitle: ServiceAppProtocol\ncontent_type: feature_gate\n\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha \n    defaultValue: false\n    fromVersion: \"1.18\"\n    toVersion: \"1.18\"\n  - stage: beta \n    defaultValue: true\n    fromVersion: \"1.19\"\n    toVersion: \"1.19\"    \n  - stage: stable\n    defaultValue: true\n    fromVersion: \"1.20\"\n    toVersion: \"1.22\"    \n\nremoved: true\n---\nEnables the `appProtocol` field on Services and Endpoints.\n",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "Removed from Kubernetes"
+        },
+        {
+          "term": "ServiceAppProtocol",
+          "tier": 1,
+          "span": "title: ServiceAppProtocol"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 2,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 2,
+          "span": "stage: stable"
+        },
+        {
+          "term": "Services",
+          "tier": 2,
+          "span": "field on Services and Endpoints"
+        },
+        {
+          "term": "Endpoints",
+          "tier": 2,
+          "span": "field on Services and Endpoints"
+        }
+      ],
+      "total_terms": 8,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_001",
+      "source_file": "reference_glossary_watch.md",
+      "content_type": "prose",
+      "text": "---\ntitle: Watch\nid: watch\ndate: 2024-07-02\nfull_link: /docs/reference/using-api/api-concepts/#api-verbs\nshort_description: >\n  A verb that is used to track changes to an object in Kubernetes as a stream.\n\naka:\ntags:\n- API verb\n- fundamental\n---\nA verb that is used to track changes to an object in Kubernetes as a stream.\nIt is used for the efficient detection of changes.\n\n<!--more-->\n\nA verb that is used to track changes to an object in Kubernetes as a stream. Watches allow\nefficient detection of changes; for example, a\n{{< glossary_tooltip term_id=\"controller\" text=\"controller\">}} that needs to know whenever a\nConfigMap has changed can use a watch rather than polling.\n\nSee [Efficient Detection of Changes in API Concepts](/docs/reference/using-api/api-concepts/#efficient-detection-of-changes) for more information.\n",
+      "terms": [
+        {
+          "term": "Watch",
+          "tier": 2,
+          "span": "title: Watch"
+        },
+        {
+          "term": "object",
+          "tier": 2,
+          "span": "track changes to an object in Kubernetes"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "an object in Kubernetes as a stream"
+        },
+        {
+          "term": "API verb",
+          "tier": 3,
+          "span": "tags:\n- API verb"
+        },
+        {
+          "term": "controller",
+          "tier": 2,
+          "span": "a {{< glossary_tooltip term_id=\"controller\" text=\"controller\">}}"
+        },
+        {
+          "term": "ConfigMap",
+          "tier": 1,
+          "span": "whenever a ConfigMap has changed"
+        },
+        {
+          "term": "watch",
+          "tier": 2,
+          "span": "can use a watch rather than polling"
+        },
+        {
+          "term": "stream",
+          "tier": 2,
+          "span": "as a stream"
+        }
+      ],
+      "total_terms": 8,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_002",
+      "source_file": "reference_command-line-tools-reference_feature-gates_JobPodFailurePolicy.md",
+      "content_type": "prose",
+      "text": "---\ntitle: JobPodFailurePolicy\ncontent_type: feature_gate\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha\n    defaultValue: false\n    fromVersion: \"1.25\"\n    toVersion: \"1.25\"\n  - stage: beta\n    defaultValue: true\n    fromVersion: \"1.26\"\n    toVersion: \"1.30\"\n  - stage: stable\n    defaultValue: true\n    fromVersion: \"1.31\"\n    toVersion: \"1.32\"\n\nremoved: true\n---\nAllow users to specify handling of pod failures based on container\nexit codes and pod conditions.\n",
+      "terms": [
+        {
+          "term": "JobPodFailurePolicy",
+          "tier": 1,
+          "span": "title: JobPodFailurePolicy"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 3,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "beta",
+          "tier": 3,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 3,
+          "span": "stage: stable"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "handling of pod failures"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "based on container"
+        },
+        {
+          "term": "exit codes",
+          "tier": 3,
+          "span": "container exit codes"
+        },
+        {
+          "term": "pod conditions",
+          "tier": 2,
+          "span": "exit codes and pod conditions"
+        }
+      ],
+      "total_terms": 9,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_003",
+      "source_file": "reference_glossary_kubelet.md",
+      "content_type": "prose",
+      "text": "---\ntitle: Kubelet\nid: kubelet\ndate: 2018-04-12\nfull_link: /docs/reference/command-line-tools-reference/kubelet\nshort_description: >\n  An agent that runs on each node in the cluster. It makes sure that containers are running in a pod.\n\naka:\ntags:\n- fundamental\n---\n An agent that runs on each {{< glossary_tooltip text=\"node\" term_id=\"node\" >}} in the cluster. It makes sure that {{< glossary_tooltip text=\"containers\" term_id=\"container\" >}} are running in a {{< glossary_tooltip text=\"Pod\" term_id=\"pod\" >}}.\n\n<!--more-->\n\n\nThe [kubelet](/docs/reference/command-line-tools-reference/kubelet/) takes a set of PodSpecs that \nare provided through various mechanisms and ensures that the containers described in those \nPodSpecs are running and healthy. The kubelet doesn't manage containers which were not created by \nKubernetes.\n",
+      "terms": [
+        {
+          "term": "Kubelet",
+          "tier": 1,
+          "span": "title: Kubelet"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "id: kubelet"
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "span": "An agent that runs on each node in the cluster"
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "span": "It makes sure that containers are running in a pod"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "containers are running in a pod"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "runs on each node in the cluster"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "are running in a Pod"
+        },
+        {
+          "term": "PodSpecs",
+          "tier": 1,
+          "span": "takes a set of PodSpecs that are provided"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "containers which were not created by Kubernetes"
+        }
+      ],
+      "total_terms": 9,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_004",
+      "source_file": "reference_command-line-tools-reference_feature-gates_PodDisruptionBudget.md",
+      "content_type": "prose",
+      "text": "---\n# Removed from Kubernetes\ntitle: PodDisruptionBudget\ncontent_type: feature_gate\n\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha \n    defaultValue: false\n    fromVersion: \"1.3\"\n    toVersion: \"1.4\"\n  - stage: beta \n    defaultValue: true\n    fromVersion: \"1.5\"\n    toVersion: \"1.20\"\n  - stage: stable\n    defaultValue: true\n    fromVersion: \"1.21\"\n    toVersion: \"1.25\"\n\nremoved: true\n---\nEnable the [PodDisruptionBudget](/docs/tasks/run-application/configure-pdb/) feature.\n",
+      "terms": [
+        {
+          "term": "PodDisruptionBudget",
+          "tier": 1,
+          "span": "title: PodDisruptionBudget"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 2,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 2,
+          "span": "stage: stable"
+        },
+        {
+          "term": "PodDisruptionBudget",
+          "tier": 1,
+          "span": "Enable the [PodDisruptionBudget]"
+        }
+      ],
+      "total_terms": 6,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_005",
+      "source_file": "concepts_policy__index.md",
+      "content_type": "prose",
+      "text": "---\ntitle: \"Policies\"\nweight: 90\nno_list: true\ndescription: >\n  Manage security and best-practices with policies.\n---\n\n<!-- overview -->\n\nKubernetes policies are configurations that manage other configurations or runtime behaviors. Kubernetes offers various forms of policies, described below:\n\n<!-- body -->\n\n## Apply policies using API objects\n\n Some API objects act as policies. Here are some examples:\n* [NetworkPolicies](/docs/concepts/services-networking/network-policies/) can be used to restrict ingress and egress traffic for a workload.\n* [LimitRanges](/docs/concepts/policy/limit-range/) manage resource allocation constraints across different object kinds.\n* [ResourceQuotas](/docs/concepts/policy/resource-quotas/) limit resource consumption for a {{< glossary_tooltip text=\"namespace\" term_id=\"namespace\" >}}.\n\n## Apply policies using admission controllers\n\nAn {{< glossary_tooltip text=\"admission controller\" term_id=\"admission-controller\" >}}\nruns in the API server\nand can validate or mutate API requests. Some admission controllers act to apply policies.\nFor example, the [AlwaysPullImages](/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) admission controller modifies a new Pod to set the image pull policy to `Always`.\n\nKubernetes has several built-in admission controllers that are configurable via the API server `--enable-admission-plugins` flag.\n\nDetails on admission controllers, with the complete list of available admission controllers, are documented in a dedicated section:\n\n* [Admission Controllers](/docs/reference/access-authn-authz/admission-controllers/)\n\n## Apply policies using ValidatingAdmissionPolicy\n\nValidating admission policies allow configurable validation checks to be executed in the API server using the Common Expression Language (CEL). For example, a `ValidatingAdmissionPolicy` can be used to disallow use of the `latest` image tag.\n\nA `ValidatingAdmissionPolicy` operates on an API request and can be used to block, audit, and warn users about non-compliant configurations.\n\nDetails on the `ValidatingAdmissionPolicy` API, with examples, are documented in a dedicated section:\n* [Validating Admission Policy](/docs/reference/access-authn-authz/validating-admission-policy/)\n\n\n## Apply policies using dynamic admission control\n\nDynamic admission controllers (or admission webhooks) run outside the API server as separate applications that register to receive webhooks requests to perform validation or mutation of API requests. \n\nDynamic admission controllers can be used to apply policies on API requests and trigger other policy-based workflows. A dynamic admission controller can perform complex checks including those that require retrieval of other cluster resources and external data. For example, an image verification check can lookup data from OCI registries to validate the container image signatures and attestations.\n\nDetails on dynamic admission control are documented in a dedicated section:\n* [Dynamic Admis",
+      "terms": [
+        {
+          "term": "policies",
+          "tier": 2,
+          "span": "Kubernetes policies are configurations that manage other configurations or runtime behaviors"
+        },
+        {
+          "term": "API objects",
+          "tier": 2,
+          "span": "Apply policies using API objects"
+        },
+        {
+          "term": "NetworkPolicies",
+          "tier": 1,
+          "span": "NetworkPolicies can be used to restrict ingress and egress traffic for a workload"
+        },
+        {
+          "term": "ingress",
+          "tier": 2,
+          "span": "restrict ingress and egress traffic for a workload"
+        },
+        {
+          "term": "egress",
+          "tier": 2,
+          "span": "restrict ingress and egress traffic for a workload"
+        },
+        {
+          "term": "workload",
+          "tier": 2,
+          "span": "restrict ingress and egress traffic for a workload"
+        },
+        {
+          "term": "LimitRanges",
+          "tier": 1,
+          "span": "LimitRanges manage resource allocation constraints across different object kinds"
+        },
+        {
+          "term": "ResourceQuotas",
+          "tier": 1,
+          "span": "ResourceQuotas limit resource consumption for a namespace"
+        },
+        {
+          "term": "namespace",
+          "tier": 2,
+          "span": "ResourceQuotas limit resource consumption for a namespace"
+        },
+        {
+          "term": "admission controller",
+          "tier": 1,
+          "span": "An admission controller runs in the API server"
+        },
+        {
+          "term": "API server",
+          "tier": 2,
+          "span": "runs in the API server and can validate or mutate API requests"
+        },
+        {
+          "term": "API requests",
+          "tier": 3,
+          "span": "can validate or mutate API requests"
+        },
+        {
+          "term": "admission controllers",
+          "tier": 1,
+          "span": "Some admission controllers act to apply policies"
+        },
+        {
+          "term": "AlwaysPullImages",
+          "tier": 1,
+          "span": "the AlwaysPullImages admission controller modifies a new Pod"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "admission controller modifies a new Pod to set the image pull policy"
+        },
+        {
+          "term": "image pull policy",
+          "tier": 1,
+          "span": "set the image pull policy to Always"
+        },
+        {
+          "term": "--enable-admission-plugins",
+          "tier": 1,
+          "span": "configurable via the API server --enable-admission-plugins flag"
+        },
+        {
+          "term": "ValidatingAdmissionPolicy",
+          "tier": 1,
+          "span": "Apply policies using ValidatingAdmissionPolicy"
+        },
+        {
+          "term": "Common Expression Language",
+          "tier": 3,
+          "span": "using the Common Expression Language (CEL)"
+        },
+        {
+          "term": "CEL",
+          "tier": 3,
+          "span": "Common Expression Language (CEL)"
+        },
+        {
+          "term": "admission webhooks",
+          "tier": 1,
+          "span": "Dynamic admission controllers (or admission webhooks) run outside the API server"
+        },
+        {
+          "term": "Dynamic admission controllers",
+          "tier": 1,
+          "span": "Dynamic admission controllers (or admission webhooks) run outside the API server"
+        },
+        {
+          "term": "webhooks",
+          "tier": 3,
+          "span": "register to receive webhooks requests to perform validation or mutation"
+        },
+        {
+          "term": "dynamic admission control",
+          "tier": 1,
+          "span": "Apply policies using dynamic admission control"
+        }
+      ],
+      "total_terms": 24,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_006",
+      "source_file": "reference_glossary_cla.md",
+      "content_type": "prose",
+      "text": "---\ntitle: CLA (Contributor License Agreement)\nid: cla\ndate: 2018-04-12\nfull_link: https://github.com/kubernetes/community/blob/master/CLA.md\nshort_description: >\n  Terms under which a contributor grants a license to an open source project for their contributions.\n\naka: \ntags:\n- community\n---\n Terms under which a {{< glossary_tooltip text=\"contributor\" term_id=\"contributor\" >}} grants a license to an open source project for their contributions.\n\n<!--more--> \n\nCLAs help resolve legal disputes involving contributed material and intellectual property (IP).\n\n",
+      "terms": [
+        {
+          "term": "contributor",
+          "tier": 2,
+          "span": "Terms under which a {{< glossary_tooltip text=\"contributor\" term_id=\"contributor\" >}} grants a license"
+        }
+      ],
+      "total_terms": 1,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_007",
+      "source_file": "reference_command-line-tools-reference_feature-gates_WarningHeaders.md",
+      "content_type": "prose",
+      "text": "---\n# Removed from Kubernetes\ntitle: WarningHeaders\ncontent_type: feature_gate\n\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: beta \n    defaultValue: true\n    fromVersion: \"1.19\"\n    toVersion: \"1.21\"\n  - stage: stable\n    defaultValue: true\n    fromVersion: \"1.22\"\n    toVersion: \"1.24\"\n\nremoved: true\n---\nAllow sending warning headers in API responses.\n",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "Removed from Kubernetes"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 2,
+          "span": "stage: stable"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "span": "warning headers in API responses"
+        }
+      ],
+      "total_terms": 5,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_008",
+      "source_file": "reference_command-line-tools-reference_feature-gates_HonorPVReclaimPolicy.md",
+      "content_type": "prose",
+      "text": "---\ntitle: HonorPVReclaimPolicy\ncontent_type: feature_gate\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha\n    defaultValue: false\n    fromVersion: \"1.23\"\n    toVersion: \"1.30\"\n  - stage: beta\n    defaultValue: true\n    fromVersion: \"1.31\"\n    toVersion: \"1.32\"\n  - stage: stable\n    defaultValue: true\n    locked: true\n    fromVersion: \"1.33\"\n---\nHonor persistent volume reclaim policy when it is `Delete` irrespective of PV-PVC deletion ordering.\nFor more details, check the\n[PersistentVolume deletion protection finalizer](/docs/concepts/storage/persistent-volumes/#persistentvolume-deletion-protection-finalizer)\ndocumentation.\n",
+      "terms": [
+        {
+          "term": "HonorPVReclaimPolicy",
+          "tier": 1,
+          "span": "title: HonorPVReclaimPolicy"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 2,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 2,
+          "span": "stage: stable"
+        },
+        {
+          "term": "persistent volume",
+          "tier": 2,
+          "span": "Honor persistent volume reclaim policy"
+        },
+        {
+          "term": "reclaim policy",
+          "tier": 2,
+          "span": "persistent volume reclaim policy"
+        },
+        {
+          "term": "PV",
+          "tier": 1,
+          "span": "irrespective of PV-PVC deletion ordering"
+        },
+        {
+          "term": "PVC",
+          "tier": 1,
+          "span": "irrespective of PV-PVC deletion ordering"
+        },
+        {
+          "term": "PersistentVolume",
+          "tier": 1,
+          "span": "PersistentVolume deletion protection finalizer"
+        },
+        {
+          "term": "finalizer",
+          "tier": 2,
+          "span": "deletion protection finalizer"
+        }
+      ],
+      "total_terms": 11,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_009",
+      "source_file": "reference_glossary_replica-set.md",
+      "content_type": "prose",
+      "text": "---\ntitle: ReplicaSet\nid: replica-set\ndate: 2018-04-12\nfull_link: /docs/concepts/workloads/controllers/replicaset/\nshort_description: >\n ReplicaSet ensures that a specified number of Pod replicas are running at one time\n\naka: \ntags:\n- fundamental\n- core-object\n- workload\n---\n A ReplicaSet (aims to) maintain a set of replica Pods running at any given time.\n\n<!--more-->\n\nWorkload objects such as {{< glossary_tooltip term_id=\"deployment\" >}} make use of ReplicaSets\nto ensure that the configured number of {{< glossary_tooltip term_id=\"pod\" text=\"Pods\" >}} are\nrunning in your cluster, based on the spec of that ReplicaSet.\n",
+      "terms": [
+        {
+          "term": "ReplicaSet",
+          "tier": 1,
+          "span": "title: ReplicaSet"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "number of Pod replicas"
+        },
+        {
+          "term": "Workload",
+          "tier": 2,
+          "span": "Workload objects such as"
+        },
+        {
+          "term": "deployment",
+          "tier": 2,
+          "span": "glossary_tooltip term_id=\"deployment\""
+        },
+        {
+          "term": "Pods",
+          "tier": 2,
+          "span": "number of Pods are running"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "running in your cluster"
+        },
+        {
+          "term": "spec",
+          "tier": 2,
+          "span": "based on the spec of that ReplicaSet"
+        }
+      ],
+      "total_terms": 7,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_010",
+      "source_file": "tasks_inject-data-application__index.md",
+      "content_type": "prose",
+      "text": "---\ntitle: \"Inject Data Into Applications\"\ndescription: Specify configuration and other data for the Pods that run your workload.\nweight: 70\n---\n\n",
+      "terms": [
+        {
+          "term": "Pods",
+          "tier": 2,
+          "span": "for the Pods that run your workload"
+        }
+      ],
+      "total_terms": 1,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_011",
+      "source_file": "reference_glossary_duration.md",
+      "content_type": "prose",
+      "text": "---\ntitle: Duration\nid: duration\ndate: 2024-10-05\nfull_link:\nshort_description: >\n  A string value representing an amount of time.\ntags:\n- fundamental\n---\nA string value representing an amount of time.\n\n<!--more-->\n\nThe format of a (Kubernetes) duration is based on the\n[`time.Duration`](https://pkg.go.dev/time#Duration) type from the Go programming language.\n\nIn Kubernetes APIs that use durations, the value is expressed as series of a non-negative\nintegers combined with a time unit suffix. You can have more than one time quantity and\nthe duration is the sum of those time quantities.\nThe valid time units are \"ns\", \"\u00b5s\" (or \"us\"), \"ms\", \"s\", \"m\", and \"h\".\n\nFor example: `5s` represents a duration of five seconds, and `1m30s` represents a duration\nof one minute and thirty seconds.\n",
+      "terms": [
+        {
+          "term": "duration",
+          "tier": 2,
+          "span": "title: Duration"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "The format of a (Kubernetes) duration is based on the"
+        },
+        {
+          "term": "Kubernetes APIs",
+          "tier": 1,
+          "span": "In Kubernetes APIs that use durations"
+        }
+      ],
+      "total_terms": 3,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_012",
+      "source_file": "reference_command-line-tools-reference_feature-gates_CSIVolumeHealth.md",
+      "content_type": "prose",
+      "text": "---\ntitle: CSIVolumeHealth\ncontent_type: feature_gate\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha\n    defaultValue: false\n    fromVersion: \"1.21\"\n---\nEnable support for CSI volume health monitoring on node.\n",
+      "terms": [
+        {
+          "term": "CSIVolumeHealth",
+          "tier": 1,
+          "span": "title: CSIVolumeHealth"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 2,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "span": "CSI volume health monitoring on node"
+        }
+      ],
+      "total_terms": 4,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_013",
+      "source_file": "reference_command-line-tools-reference_feature-gates_CSINodeInfo.md",
+      "content_type": "prose",
+      "text": "---\n# Removed from Kubernetes\ntitle: CSINodeInfo\ncontent_type: feature_gate\n\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha \n    defaultValue: false\n    fromVersion: \"1.12\"\n    toVersion: \"1.13\"\n  - stage: beta \n    defaultValue: true\n    fromVersion: \"1.14\"\n    toVersion: \"1.16\"    \n  - stage: stable\n    defaultValue: true\n    fromVersion: \"1.17\"\n    toVersion: \"1.22\"\n\nremoved: true  \n---\nEnable all logic related to the CSINodeInfo API object in `csi.storage.k8s.io`.\n",
+      "terms": [
+        {
+          "term": "CSINodeInfo",
+          "tier": 1,
+          "span": "title: CSINodeInfo"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 2,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 2,
+          "span": "stage: stable"
+        },
+        {
+          "term": "CSINodeInfo API object",
+          "tier": 1,
+          "span": "CSINodeInfo API object"
+        },
+        {
+          "term": "csi.storage.k8s.io",
+          "tier": 1,
+          "span": "csi.storage.k8s.io"
+        }
+      ],
+      "total_terms": 7,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_014",
+      "source_file": "reference_command-line-tools-reference_feature-gates_DisableCloudProviders.md",
+      "content_type": "prose",
+      "text": "---\ntitle: DisableCloudProviders\ncontent_type: feature_gate\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha\n    defaultValue: false\n    fromVersion: \"1.22\"\n    toVersion: \"1.28\"\n  - stage: beta\n    defaultValue: true\n    fromVersion: \"1.29\"\n    toVersion: \"1.30\"\n  - stage: stable\n    defaultValue: true\n    fromVersion: \"1.31\"\n    toVersion: \"1.32\"\n\nremoved: true\n---\nEnabling this feature gate deactivated functionality in `kube-apiserver`,\n`kube-controller-manager` and `kubelet` that related to the `--cloud-provider`\ncommand line argument.\n\nIn Kubernetes v1.31 and later, the only valid values for `--cloud-provider`\nare the empty string (no cloud provider integration), or \"external\"\n(integration via a separate cloud-controller-manager).\n",
+      "terms": [
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": "alpha",
+          "tier": 2,
+          "span": "stage: alpha"
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "span": "stage: beta"
+        },
+        {
+          "term": "stable",
+          "tier": 2,
+          "span": "stage: stable"
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "span": "functionality in `kube-apiserver`"
+        },
+        {
+          "term": "kube-controller-manager",
+          "tier": 1,
+          "span": "`kube-controller-manager` and `kubelet`"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "`kube-controller-manager` and `kubelet`"
+        },
+        {
+          "term": "--cloud-provider",
+          "tier": 1,
+          "span": "related to the `--cloud-provider`"
+        },
+        {
+          "term": "cloud-controller-manager",
+          "tier": 1,
+          "span": "via a separate cloud-controller-manager"
+        }
+      ],
+      "total_terms": 9,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_015",
+      "source_file": "reference_glossary_cni.md",
+      "content_type": "prose",
+      "text": "---\ntitle: Container network interface (CNI)\nid: cni\ndate: 2018-05-25\nfull_link: /docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/\nshort_description: >\n    Container network interface (CNI) plugins are a type of Network plugin that adheres to the appc/CNI specification.\n\n\naka: \ntags:\n- networking \n---\n Container network interface (CNI) plugins are a type of Network plugin that adheres to the appc/CNI specification.\n\n<!--more-->\n\n* For information on Kubernetes and CNI, see [**Network Plugins**](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/).\n",
+      "terms": [
+        {
+          "term": "Container network interface",
+          "tier": 1,
+          "span": "title: Container network interface (CNI)"
+        },
+        {
+          "term": "CNI",
+          "tier": 1,
+          "span": "Container network interface (CNI)"
+        },
+        {
+          "term": "Network plugin",
+          "tier": 2,
+          "span": "a type of Network plugin that adheres"
+        },
+        {
+          "term": "networking",
+          "tier": 3,
+          "span": "tags:\n- networking"
+        },
+        {
+          "term": "appc/CNI specification",
+          "tier": 2,
+          "span": "adheres to the appc/CNI specification"
+        }
+      ],
+      "total_terms": 5,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_016",
+      "source_file": "reference_glossary_persistent-volume.md",
+      "content_type": "prose",
+      "text": "---\ntitle: Persistent Volume\nid: persistent-volume\ndate: 2018-04-12\nfull_link: /docs/concepts/storage/persistent-volumes/\nshort_description: >\n  API object that represents a piece of storage in the cluster.\n\naka: \ntags:\n- core-object\n- storage\n---\nAn API object that represents a piece of storage in the cluster. Representation of as a general, pluggable storage\n{{< glossary_tooltip text=\"resource\" term_id=\"infrastructure-resource\" >}} that can persist beyond the lifecycle of any\nindividual {{< glossary_tooltip text=\"Pod\" term_id=\"pod\" >}}.\n\n<!--more--> \n\nPersistentVolumes (PVs) provide an API that abstracts details of how storage is provided from how it is consumed.\nPVs are used directly in scenarios where storage can be created ahead of time (static provisioning).\nFor scenarios that require on-demand storage (dynamic provisioning), PersistentVolumeClaims (PVCs) are used instead.\n\n",
+      "terms": [
+        {
+          "term": "Persistent Volume",
+          "tier": 1,
+          "span": "title: Persistent Volume"
+        },
+        {
+          "term": "persistent-volume",
+          "tier": 1,
+          "span": "id: persistent-volume"
+        },
+        {
+          "term": "API object",
+          "tier": 2,
+          "span": "An API object that represents a piece of storage in the cluster"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "a piece of storage in the cluster"
+        },
+        {
+          "term": "storage",
+          "tier": 2,
+          "span": "a piece of storage in the cluster"
+        },
+        {
+          "term": "resource",
+          "tier": 3,
+          "span": "pluggable storage resource that can persist"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "lifecycle of any individual Pod"
+        },
+        {
+          "term": "PersistentVolumes",
+          "tier": 1,
+          "span": "PersistentVolumes (PVs) provide an API"
+        },
+        {
+          "term": "PVs",
+          "tier": 1,
+          "span": "PersistentVolumes (PVs) provide an API"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "span": "PVs provide an API that abstracts details"
+        },
+        {
+          "term": "static provisioning",
+          "tier": 2,
+          "span": "created ahead of time (static provisioning)"
+        },
+        {
+          "term": "dynamic provisioning",
+          "tier": 2,
+          "span": "require on-demand storage (dynamic provisioning)"
+        },
+        {
+          "term": "PersistentVolumeClaims",
+          "tier": 1,
+          "span": "PersistentVolumeClaims (PVCs) are used instead"
+        },
+        {
+          "term": "PVCs",
+          "tier": 1,
+          "span": "PersistentVolumeClaims (PVCs) are used instead"
+        }
+      ],
+      "total_terms": 14,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_017",
+      "source_file": "concepts_configuration_windows-resource-management.md",
+      "content_type": "prose",
+      "text": "---\nreviewers:\n- jayunit100\n- jsturtevant\n- marosset\n- perithompson\ntitle: Resource Management for Windows nodes\ncontent_type: concept\nweight: 75\n---\n\n<!-- overview -->\n\nThis page outlines the differences in how resources are managed between Linux and Windows.\n\n<!-- body -->\n\nOn Linux nodes, {{< glossary_tooltip text=\"cgroups\" term_id=\"cgroup\" >}} are used\nas a pod boundary for resource control. Containers are created within that boundary\nfor network, process and file system isolation. The Linux cgroup APIs can be used to\ngather CPU, I/O, and memory use statistics.\n\nIn contrast, Windows uses a [_job object_](https://docs.microsoft.com/windows/win32/procthread/job-objects) per container with a system namespace filter\nto contain all processes in a container and provide logical isolation from the\nhost.\n(Job objects are a Windows process isolation mechanism and are different from\nwhat Kubernetes refers to as a {{< glossary_tooltip term_id=\"job\" text=\"Job\" >}}).\n\nThere is no way to run a Windows container without the namespace filtering in\nplace. This means that system privileges cannot be asserted in the context of the\nhost, and thus privileged containers are not available on Windows.\nContainers cannot assume an identity from the host because the Security Account Manager\n(SAM) is separate.\n\n## Memory management {#resource-management-memory}\n\nWindows does not have an out-of-memory process killer as Linux does. Windows always\ntreats all user-mode memory allocations as virtual, and pagefiles are mandatory.\n\nWindows nodes do not overcommit memory for processes. The\nnet effect is that Windows won't reach out of memory conditions the same way Linux\ndoes, and processes page to disk instead of being subject to out of memory (OOM)\ntermination. If memory is over-provisioned and all physical memory is exhausted,\nthen paging can slow down performance.\n\n## CPU management {#resource-management-cpu}\n\nWindows can limit the amount of CPU time allocated for different processes but cannot\nguarantee a minimum amount of CPU time.\n\nOn Windows, the kubelet supports a command-line flag to set the\n[scheduling priority](https://docs.microsoft.com/windows/win32/procthread/scheduling-priorities) of the\nkubelet process: `--windows-priorityclass`. This flag allows the kubelet process to get\nmore CPU time slices when compared to other processes running on the Windows host.\nMore information on the allowable values and their meaning is available at\n[Windows Priority Classes](https://docs.microsoft.com/en-us/windows/win32/procthread/scheduling-priorities#priority-class).\nTo ensure that running Pods do not starve the kubelet of CPU cycles, set this flag to `ABOVE_NORMAL_PRIORITY_CLASS` or above.\n\n## Resource reservation {#resource-reservation}\n\nTo account for memory and CPU used by the operating system, the container runtime, and by\nKubernetes host processes such as the kubelet, you can (and should) reserve\nmemory and CPU resources with the  `--kube-reserved` and/or `--system-reserved",
+      "terms": [
+        {
+          "term": "Windows nodes",
+          "tier": 2,
+          "span": "Resource Management for Windows nodes"
+        },
+        {
+          "term": "Linux",
+          "tier": 3,
+          "span": "differences in how resources are managed between Linux and Windows"
+        },
+        {
+          "term": "Linux nodes",
+          "tier": 2,
+          "span": "On Linux nodes"
+        },
+        {
+          "term": "cgroups",
+          "tier": 1,
+          "span": "cgroups"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "as a pod boundary for resource control"
+        },
+        {
+          "term": "Containers",
+          "tier": 2,
+          "span": "Containers are created within that boundary"
+        },
+        {
+          "term": "namespace",
+          "tier": 2,
+          "span": "with a system namespace filter"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "per container with a system namespace filter"
+        },
+        {
+          "term": "host",
+          "tier": 3,
+          "span": "provide logical isolation from the host"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "what Kubernetes refers to as a"
+        },
+        {
+          "term": "Job",
+          "tier": 2,
+          "span": "Job"
+        },
+        {
+          "term": "privileged containers",
+          "tier": 2,
+          "span": "privileged containers are not available on Windows"
+        },
+        {
+          "term": "Windows nodes",
+          "tier": 2,
+          "span": "Windows nodes do not overcommit memory for processes"
+        },
+        {
+          "term": "OOM",
+          "tier": 3,
+          "span": "out of memory (OOM) termination"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "the kubelet supports a command-line flag"
+        },
+        {
+          "term": "kubelet process",
+          "tier": 1,
+          "span": "kubelet process to get more CPU time slices"
+        },
+        {
+          "term": "job object",
+          "tier": 2,
+          "span": "Windows uses a _job object_ per container"
+        }
+      ],
+      "total_terms": 17,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_018",
+      "source_file": "tutorials_kubernetes-basics_create-cluster_cluster-intro.md",
+      "content_type": "prose",
+      "text": "---\ntitle: Using Minikube to Create a Cluster\nweight: 10\n---\n\n## {{% heading \"objectives\" %}}\n\n* Learn what a Kubernetes cluster is.\n* Learn what Minikube is.\n* Start a Kubernetes cluster on your computer.\n\n## Kubernetes Clusters\n\n{{% alert %}}\n_Kubernetes is a production-grade, open-source platform that orchestrates\nthe placement (scheduling) and execution of application containers\nwithin and across computer clusters._\n{{% /alert %}}\n\n**Kubernetes coordinates a highly available cluster of computers that are connected\nto work as a single unit.** The abstractions in Kubernetes allow you to deploy\ncontainerized applications to a cluster without tying them specifically to individual\nmachines. To make use of this new model of deployment, applications need to be packaged\nin a way that decouples them from individual hosts: they need to be containerized.\nContainerized applications are more flexible and available than in past deployment models,\nwhere applications were installed directly onto specific machines as packages deeply\nintegrated into the host. **Kubernetes automates the distribution and scheduling of\napplication containers across a cluster in a more efficient way.** Kubernetes is an\nopen-source platform and is production-ready.\n\nA Kubernetes cluster consists of two types of resources:\n\n* The **Control Plane** coordinates the cluster\n* **Nodes** are the workers that run applications\n\n### Cluster Diagram\n\n{{< figure src=\"/docs/tutorials/kubernetes-basics/public/images/module_01_cluster.svg\" style=\"width: 100%;\" >}}\n\n**The Control Plane is responsible for managing the cluster.** The Control Plane\ncoordinates all activities in your cluster, such as scheduling applications, maintaining\napplications' desired state, scaling applications, and rolling out new updates.\n\n{{% alert %}}\n_Control Planes manage the cluster and the nodes that are used to host the running\napplications._\n{{% /alert %}}\n\n**A node is a VM or a physical computer that serves as a worker machine in a Kubernetes\ncluster.** Each node has a Kubelet, which is an agent for managing the node and\ncommunicating with the Kubernetes control plane. The node should also have tools for\nhandling container operations, such as {{< glossary_tooltip text=\"containerd\" term_id=\"containerd\" >}}\nor {{< glossary_tooltip term_id=\"cri-o\" >}}. A Kubernetes cluster that handles production\ntraffic should have a minimum of three nodes because if one node goes down, both an\n[etcd](/docs/concepts/architecture/#etcd) member and a control plane instance are lost,\nand redundancy is compromised. You can mitigate this risk by adding more control plane nodes.\n\nWhen you deploy applications on Kubernetes, you tell the control plane to start\nthe application containers. The control plane schedules the containers to run on\nthe cluster's nodes. **Node-level components, such as the kubelet, communicate\nwith the control plane using the [Kubernetes API](/docs/concepts/overview/kubernetes-api/)**,\nwhich the control plane exposes.",
+      "terms": [
+        {
+          "term": "Minikube",
+          "tier": 1,
+          "span": "Using Minikube to Create a Cluster"
+        },
+        {
+          "term": "Kubernetes cluster",
+          "tier": 2,
+          "span": "Learn what a Kubernetes cluster is"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 2,
+          "span": "Kubernetes is a production-grade, open-source platform"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "within and across computer clusters"
+        },
+        {
+          "term": "containerized applications",
+          "tier": 2,
+          "span": "deploy containerized applications to a cluster"
+        },
+        {
+          "term": "containerized",
+          "tier": 2,
+          "span": "they need to be containerized"
+        },
+        {
+          "term": "scheduling",
+          "tier": 2,
+          "span": "the placement (scheduling) and execution"
+        },
+        {
+          "term": "Control Plane",
+          "tier": 1,
+          "span": "The **Control Plane** coordinates the cluster"
+        },
+        {
+          "term": "Nodes",
+          "tier": 2,
+          "span": "**Nodes** are the workers that run applications"
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "span": "A node is a VM or a physical computer"
+        },
+        {
+          "term": "Kubelet",
+          "tier": 1,
+          "span": "Each node has a Kubelet"
+        },
+        {
+          "term": "control plane",
+          "tier": 1,
+          "span": "communicating with the Kubernetes control plane"
+        },
+        {
+          "term": "containerd",
+          "tier": 1,
+          "span": "containerd"
+        },
+        {
+          "term": "cri-o",
+          "tier": 1,
+          "span": "cri-o"
+        },
+        {
+          "term": "etcd",
+          "tier": 1,
+          "span": "etcd"
+        },
+        {
+          "term": "VM",
+          "tier": 2,
+          "span": "A node is a VM or a physical computer"
+        }
+      ],
+      "total_terms": 16,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_019",
+      "source_file": "reference_command-line-tools-reference_feature-gates_AllowServiceLBStatusOnNonLB.md",
+      "content_type": "prose",
+      "text": "---\ntitle: AllowServiceLBStatusOnNonLB\ncontent_type: feature_gate\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: deprecated\n    defaultValue: false\n    fromVersion: \"1.29\"    \n    toVersion: \"1.34\"\n\nremoved: true\n---\nEnables `.status.ingress.loadBalancer` to be set on Services of types other than `LoadBalancer`.\n",
+      "terms": [
+        {
+          "term": "AllowServiceLBStatusOnNonLB",
+          "tier": 1,
+          "span": "title: AllowServiceLBStatusOnNonLB"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 1,
+          "span": "content_type: feature_gate"
+        },
+        {
+          "term": ".status.ingress.loadBalancer",
+          "tier": 1,
+          "span": "Enables `.status.ingress.loadBalancer` to be set"
+        },
+        {
+          "term": "Services",
+          "tier": 2,
+          "span": "to be set on Services of types"
+        },
+        {
+          "term": "LoadBalancer",
+          "tier": 2,
+          "span": "types other than `LoadBalancer`"
+        }
+      ],
+      "total_terms": 5,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_020",
+      "source_file": "reference_kubernetes-api_common-definitions_object-field-selector.md",
+      "content_type": "code",
+      "text": "---\napi_metadata:\n  apiVersion: \"\"\n  import: \"k8s.io/api/core/v1\"\n  kind: \"ObjectFieldSelector\"\ncontent_type: \"api_reference\"\ndescription: \"ObjectFieldSelector selects an APIVersioned field of an object.\"\ntitle: \"ObjectFieldSelector\"\nweight: 6\nauto_generated: true\n---\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the \n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n\n`import \"k8s.io/api/core/v1\"`\n\n\nObjectFieldSelector selects an APIVersioned field of an object.\n\n<hr>\n\n- **fieldPath** (string), required\n\n  Path of the field to select in the specified API version.\n\n- **apiVersion** (string)\n\n  Version of the schema the FieldPath is written in terms of, defaults to \"v1\".\n\n\n\n\n\n",
+      "terms": [
+        {
+          "term": "ObjectFieldSelector",
+          "tier": 1,
+          "span": "ObjectFieldSelector selects an APIVersioned field of an object."
+        },
+        {
+          "term": "apiVersion",
+          "tier": 1,
+          "span": "apiVersion: \"\""
+        },
+        {
+          "term": "k8s.io/api/core/v1",
+          "tier": 1,
+          "span": "import: \"k8s.io/api/core/v1\""
+        },
+        {
+          "term": "fieldPath",
+          "tier": 1,
+          "span": "**fieldPath** (string), required"
+        }
+      ],
+      "total_terms": 4,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_021",
+      "source_file": "reference_kubernetes-api_workload-resources_resource-claim-template-v1.md",
+      "content_type": "code",
+      "text": "---\napi_metadata:\n  apiVersion: \"resource.k8s.io/v1\"\n  import: \"k8s.io/api/resource/v1\"\n  kind: \"ResourceClaimTemplate\"\ncontent_type: \"api_reference\"\ndescription: \"ResourceClaimTemplate is used to produce ResourceClaim objects.\"\ntitle: \"ResourceClaimTemplate\"\nweight: 17\nauto_generated: true\n---\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the \n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n`apiVersion: resource.k8s.io/v1`\n\n`import \"k8s.io/api/resource/v1\"`\n\n\n## ResourceClaimTemplate {#ResourceClaimTemplate}\n\nResourceClaimTemplate is used to produce ResourceClaim objects.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.\n\n<hr>\n\n- **apiVersion**: resource.k8s.io/v1\n\n\n- **kind**: ResourceClaimTemplate\n\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n\n  Standard object metadata\n\n- **spec** (<a href=\"{{< ref \"../workload-resources/resource-claim-template-v1#ResourceClaimTemplateSpec\" >}}\">ResourceClaimTemplateSpec</a>), required\n\n  Describes the ResourceClaim that is to be generated.\n  \n  This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore.\n\n\n\n\n\n## ResourceClaimTemplateSpec {#ResourceClaimTemplateSpec}\n\nResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.\n\n<hr>\n\n- **spec** (<a href=\"{{< ref \"../workload-resources/resource-claim-v1#ResourceClaimSpec\" >}}\">ResourceClaimSpec</a>), required\n\n  Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n\n  ObjectMeta may contain labels and annotations that will be copied into the ResourceClaim when creating it. No other fields are allowed and will be rejected during validation.\n\n\n\n\n\n## ResourceClaimTemplateList {#ResourceClaimTemplateList}\n\nResourceClaimTemplateList is a collection of claim templates.\n\n<hr>\n\n- **apiVersion**: resource.k8s.io/v1\n\n\n- **kind**: ResourceClaimTemplateList\n\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/list-meta#ListMeta\" >}}\">ListMeta</a>)\n\n  Standard list metadata\n\n- **items** ([]<a href=\"{{< ref \"../workload-resources/resource-claim-template-v1#ResourceClaimTemplate\" >}}\">ResourceClaimTemplate</a>), required\n\n  Items is the list of resource claim templates.\n\n\n\n\n\n## Opera",
+      "terms": [
+        {
+          "term": "resource.k8s.io/v1",
+          "tier": 1,
+          "span": "apiVersion: \"resource.k8s.io/v1\""
+        },
+        {
+          "term": "ResourceClaimTemplate",
+          "tier": 1,
+          "span": "kind: \"ResourceClaimTemplate\""
+        },
+        {
+          "term": "ResourceClaim",
+          "tier": 1,
+          "span": "ResourceClaimTemplate is used to produce ResourceClaim objects."
+        },
+        {
+          "term": "DynamicResourceAllocation",
+          "tier": 1,
+          "span": "requires enabling the DynamicResourceAllocation feature gate"
+        },
+        {
+          "term": "feature gate",
+          "tier": 1,
+          "span": "requires enabling the DynamicResourceAllocation feature gate"
+        },
+        {
+          "term": "apiVersion",
+          "tier": 2,
+          "span": "**apiVersion**: resource.k8s.io/v1"
+        },
+        {
+          "term": "kind",
+          "tier": 2,
+          "span": "**kind**: ResourceClaimTemplate"
+        },
+        {
+          "term": "metadata",
+          "tier": 2,
+          "span": "**metadata** (<a href="
+        },
+        {
+          "term": "ObjectMeta",
+          "tier": 1,
+          "span": "ObjectMeta</a>)"
+        },
+        {
+          "term": "spec",
+          "tier": 2,
+          "span": "**spec** (<a href="
+        },
+        {
+          "term": "ResourceClaimTemplateSpec",
+          "tier": 1,
+          "span": "ResourceClaimTemplateSpec</a>), required"
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "span": "A ResourceClaim will get created by the control plane for a Pod when needed"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "control plane for a Pod when needed"
+        },
+        {
+          "term": "ResourceClaimSpec",
+          "tier": 1,
+          "span": "ResourceClaimSpec</a>), required"
+        },
+        {
+          "term": "ResourceClaimTemplateList",
+          "tier": 1,
+          "span": "## ResourceClaimTemplateList {#Resource"
+        },
+        {
+          "term": "immutable",
+          "tier": 2,
+          "span": "This field is immutable."
+        }
+      ],
+      "total_terms": 16,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_022",
+      "source_file": "tasks_debug_debug-cluster_topology.md",
+      "content_type": "code",
+      "text": "---\ntitle: Troubleshooting Topology Management\nweight: 60\ncontent_type: task\n---\n\n<!-- overview -->\n\nKubernetes keeps many aspects of how pods execute on nodes abstracted\nfrom the user. This is by design. However, some workloads require\nstronger guarantees in terms of latency and/or performance in order to operate\nacceptably. The `kubelet` provides methods to enable more complex workload\nplacement policies while keeping the abstraction free from explicit placement\ndirectives.\n\nYou can manage topology within nodes. This means helping the kubelet to configure the host operating system so that\nPods and containers are placed on the correct side of inner boundaries, such as _NUMA domains_. (NUMA is an abbreviation\nof _non-uniform memory access_, and refers to an idea that CPUs might be topologically closer to specific regions of\nmemory, due to the physical layout of the hardware components and the way that these are connected).\n\n## Sources of troubleshooting information\n\nYou can use the following means to troubleshoot the reason why a pod could not be deployed or\nbecame rejected at a node, in the context of topology management:\n\n- _Pod status_ - indicates topology affinity errors\n- _system logs_ - include valuable information for debugging; for example, about generated hints\n- _kubelet state file_ - the dump of internal state of the Memory Manager\n  (including the _node map_ and _memory maps_)\n- You can use the [device plugin resource API](#device-plugin-resource-api)\n  to retrieve information about the memory reserved for containers\n\n## Troubleshoot `TopologyAffinityError` {#TopologyAffinityError}\n\nThis error typically occurs in the following situations:\n\n* a node has not enough resources available to satisfy the pod's request\n* the pod's request is rejected due to particular Topology Manager policy constraints\n\nThe error appears in the status of a pod:\n\n```shell\nkubectl get pods\n```\n\n```none\nNAME         READY   STATUS                  RESTARTS   AGE\nguaranteed   0/1     TopologyAffinityError   0          113s\n```\n\nUse `kubectl describe pod <id>` or `kubectl events` to obtain a detailed error message:\n\n```none\nWarning  TopologyAffinityError  10m   kubelet, dell8  Resources cannot be allocated with Topology locality\n```\n\n## Examine system logs\n\nSearch system logs with respect to a particular pod.\n\nThe set of hints generated by CPU Manager should be present in the logs.\nAlso, the set of hints that Memory Manager generated for the pod can be found in the logs.\n\nTopology Manager merges these hints to calculate a single best hint.\nThe best hint should also be present in the logs.\n\nThe best hint indicates where to allocate all the resources.\nTopology Manager tests this hint against its current policy, and based on the verdict,\nit either admits the pod to the node or rejects it.\n\nAlso, search the logs for occurrences associated with the Memory Manager;\nfor example to find out information about `cgroups` and `cpuset.mems` updates.\n\n## Examples\n\n### Examine ",
+      "terms": [
+        {
+          "term": "pods",
+          "tier": 2,
+          "span": "many aspects of how pods execute on nodes"
+        },
+        {
+          "term": "nodes",
+          "tier": 2,
+          "span": "how pods execute on nodes abstracted"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "The `kubelet` provides methods"
+        },
+        {
+          "term": "Pods",
+          "tier": 2,
+          "span": "Pods and containers are placed"
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "span": "Pods and containers are placed"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "the reason why a pod could not be deployed"
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "span": "became rejected at a node"
+        },
+        {
+          "term": "Pod status",
+          "tier": 2,
+          "span": "Pod status - indicates topology affinity errors"
+        },
+        {
+          "term": "kubelet state file",
+          "tier": 1,
+          "span": "kubelet state file - the dump of internal state"
+        },
+        {
+          "term": "Memory Manager",
+          "tier": 1,
+          "span": "internal state of the Memory Manager"
+        },
+        {
+          "term": "node map",
+          "tier": 2,
+          "span": "including the _node map_ and _memory maps_"
+        },
+        {
+          "term": "device plugin resource API",
+          "tier": 1,
+          "span": "use the [device plugin resource API]"
+        },
+        {
+          "term": "TopologyAffinityError",
+          "tier": 1,
+          "span": "Troubleshoot `TopologyAffinityError`"
+        },
+        {
+          "term": "Topology Manager",
+          "tier": 1,
+          "span": "particular Topology Manager policy constraints"
+        },
+        {
+          "term": "kubectl get pods",
+          "tier": 1,
+          "span": "kubectl get pods"
+        },
+        {
+          "term": "kubectl describe pod",
+          "tier": 1,
+          "span": "Use `kubectl describe pod <id>`"
+        },
+        {
+          "term": "kubectl events",
+          "tier": 1,
+          "span": "or `kubectl events` to obtain"
+        },
+        {
+          "term": "CPU Manager",
+          "tier": 1,
+          "span": "hints generated by CPU Manager"
+        },
+        {
+          "term": "NUMA domains",
+          "tier": 1,
+          "span": "such as _NUMA domains_"
+        },
+        {
+          "term": "NUMA",
+          "tier": 1,
+          "span": "NUMA is an abbreviation"
+        },
+        {
+          "term": "non-uniform memory access",
+          "tier": 2,
+          "span": "_non-uniform memory access_"
+        },
+        {
+          "term": "topology management",
+          "tier": 1,
+          "span": "in the context of topology management"
+        },
+        {
+          "term": "system logs",
+          "tier": 2,
+          "span": "_system logs_ - include valuable information"
+        },
+        {
+          "term": "memory maps",
+          "tier": 2,
+          "span": "and _memory maps_"
+        }
+      ],
+      "total_terms": 24,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_023",
+      "source_file": "tasks_debug_debug-cluster_audit.md",
+      "content_type": "code",
+      "text": "---\nreviewers:\n- soltysh\n- sttts\ncontent_type: concept\ntitle: Auditing\n---\n\n<!-- overview -->\n\nKubernetes _auditing_ provides a security-relevant, chronological set of records documenting\nthe sequence of actions in a cluster. The cluster audits the activities generated by users,\nby applications that use the Kubernetes API, and by the control plane itself.\n\nAuditing allows cluster administrators to answer the following questions:\n\n - what happened?\n - when did it happen?\n - who initiated it?\n - on what did it happen?\n - where was it observed?\n - from where was it initiated?\n - to where was it going?\n\n<!-- body -->\n\nAudit records begin their lifecycle inside the\n[kube-apiserver](/docs/reference/command-line-tools-reference/kube-apiserver/)\ncomponent. Each request on each stage\nof its execution generates an audit event, which is then pre-processed according to\na certain policy and written to a backend. The policy determines what's recorded\nand the backends persist the records. The current backend implementations\ninclude logs files and webhooks.\n\nEach request can be recorded with an associated _stage_. The defined stages are:\n\n- `RequestReceived` - The stage for events generated as soon as the audit\n  handler receives the request, and before it is delegated down the handler\n  chain.\n- `ResponseStarted` - Once the response headers are sent, but before the\n  response body is sent. This stage is only generated for long-running requests\n  (e.g. watch).\n- `ResponseComplete` - The response body has been completed and no more bytes\n  will be sent.\n- `Panic` - Events generated when a panic occurred.\n\n{{< note >}}\nThe configuration of an\n[Audit Event configuration](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event)\nis different from the\n[Event](/docs/reference/generated/kubernetes-api/{{< param \"version\" >}}/#event-v1-core)\nAPI object.\n{{< /note >}}\n\nThe audit logging feature increases the memory consumption of the API server\nbecause some context required for auditing is stored for each request.\nMemory consumption depends on the audit logging configuration.\n\n## Audit policy\n\nAudit policy defines rules about what events should be recorded and what data\nthey should include. The audit policy object structure is defined in the\n[`audit.k8s.io` API group](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Policy).\nWhen an event is processed, it's\ncompared against the list of rules in order. The first matching rule sets the\n_audit level_ of the event. The defined audit levels are:\n\n- `None` - don't log events that match this rule.\n- `Metadata` - log events with metadata (requesting user, timestamp, resource,\n  verb, etc.) but not request or response body.\n- `Request` - log events with request metadata and body but not response body.\n  This does not apply for non-resource requests.\n- `RequestResponse` - log events with request metadata, request body and response body.\n  This does not apply for non-resource requests.\n\nYou can pass a file",
+      "terms": [
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "chronological set of records documenting the sequence of actions in a cluster"
+        },
+        {
+          "term": "Kubernetes API",
+          "tier": 1,
+          "span": "by applications that use the Kubernetes API"
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "span": "and by the control plane itself"
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "span": "[kube-apiserver](/docs/reference/command-line-tools-reference/kube-apiserver/)"
+        },
+        {
+          "term": "audit event",
+          "tier": 2,
+          "span": "of its execution generates an audit event"
+        },
+        {
+          "term": "backend",
+          "tier": 3,
+          "span": "and written to a backend"
+        },
+        {
+          "term": "webhooks",
+          "tier": 3,
+          "span": "include logs files and webhooks"
+        },
+        {
+          "term": "RequestReceived",
+          "tier": 1,
+          "span": "`RequestReceived` - The stage for events generated"
+        },
+        {
+          "term": "ResponseStarted",
+          "tier": 1,
+          "span": "`ResponseStarted` - Once the response headers are sent"
+        },
+        {
+          "term": "watch",
+          "tier": 2,
+          "span": "(e.g. watch)"
+        },
+        {
+          "term": "ResponseComplete",
+          "tier": 1,
+          "span": "`ResponseComplete` - The response body has been completed"
+        },
+        {
+          "term": "Panic",
+          "tier": 1,
+          "span": "`Panic` - Events generated when a panic occurred"
+        },
+        {
+          "term": "Audit Event configuration",
+          "tier": 1,
+          "span": "[Audit Event configuration](/docs/reference/config-api/apiserver-audit.v1/#audit-k8s-io-v1-Event)"
+        },
+        {
+          "term": "Event",
+          "tier": 2,
+          "span": "[Event](/docs/reference/generated/kubernetes-api/"
+        },
+        {
+          "term": "API server",
+          "tier": 2,
+          "span": "increases the memory consumption of the API server"
+        },
+        {
+          "term": "Audit policy",
+          "tier": 1,
+          "span": "## Audit policy"
+        },
+        {
+          "term": "audit.k8s.io",
+          "tier": 1,
+          "span": "[`audit.k8s.io` API group]"
+        },
+        {
+          "term": "API group",
+          "tier": 2,
+          "span": "[`audit.k8s.io` API group]"
+        },
+        {
+          "term": "audit level",
+          "tier": 2,
+          "span": "The first matching rule sets the _audit level_ of the"
+        },
+        {
+          "term": "auditing",
+          "tier": 1,
+          "span": "Kubernetes _auditing_ provides a security-relevant"
+        },
+        {
+          "term": "stage",
+          "tier": 2,
+          "span": "Each request can be recorded with an associated _stage_"
+        },
+        {
+          "term": "long-running requests",
+          "tier": 2,
+          "span": "This stage is only generated for long-running requests"
+        }
+      ],
+      "total_terms": 22,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_024",
+      "source_file": "reference_kubernetes-api_service-resources_ingress-class-v1.md",
+      "content_type": "code",
+      "text": "---\napi_metadata:\n  apiVersion: \"networking.k8s.io/v1\"\n  import: \"k8s.io/api/networking/v1\"\n  kind: \"IngressClass\"\ncontent_type: \"api_reference\"\ndescription: \"IngressClass represents the class of the Ingress, referenced by the Ingress Spec.\"\ntitle: \"IngressClass\"\nweight: 5\nauto_generated: true\n---\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the \n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n`apiVersion: networking.k8s.io/v1`\n\n`import \"k8s.io/api/networking/v1\"`\n\n\n## IngressClass {#IngressClass}\n\nIngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.\n\n<hr>\n\n- **apiVersion**: networking.k8s.io/v1\n\n\n- **kind**: IngressClass\n\n\n- **metadata** (<a href=\"{{< ref \"../common-definitions/object-meta#ObjectMeta\" >}}\">ObjectMeta</a>)\n\n  Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata\n\n- **spec** (<a href=\"{{< ref \"../service-resources/ingress-class-v1#IngressClassSpec\" >}}\">IngressClassSpec</a>)\n\n  spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status\n\n\n\n\n\n## IngressClassSpec {#IngressClassSpec}\n\nIngressClassSpec provides information about the class of an Ingress.\n\n<hr>\n\n- **controller** (string)\n\n  controller refers to the name of the controller that should handle this class. This allows for different \"flavors\" that are controlled by the same controller. For example, you may have different parameters for the same implementing controller. This should be specified as a domain-prefixed path no more than 250 characters in length, e.g. \"acme.io/ingress-controller\". This field is immutable.\n\n- **parameters** (IngressClassParametersReference)\n\n  parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.\n\n  <a name=\"IngressClassParametersReference\"></a>\n  *IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource.*\n\n  - **parameters.kind** (string), required\n\n    kind is the type of resource being referenced.\n\n  - **paramet",
+      "terms": [
+        {
+          "term": "networking.k8s.io/v1",
+          "tier": 1,
+          "span": "apiVersion: \"networking.k8s.io/v1\""
+        },
+        {
+          "term": "IngressClass",
+          "tier": 1,
+          "span": "kind: \"IngressClass\""
+        },
+        {
+          "term": "Ingress",
+          "tier": 1,
+          "span": "IngressClass represents the class of the Ingress"
+        },
+        {
+          "term": "Ingress Spec",
+          "tier": 1,
+          "span": "referenced by the Ingress Spec"
+        },
+        {
+          "term": "ingressclass.kubernetes.io/is-default-class",
+          "tier": 1,
+          "span": "The `ingressclass.kubernetes.io/is-default-class` annotation"
+        },
+        {
+          "term": "annotation",
+          "tier": 2,
+          "span": "annotation can be used to indicate"
+        },
+        {
+          "term": "apiVersion",
+          "tier": 1,
+          "span": "**apiVersion**: networking.k8s.io/v1"
+        },
+        {
+          "term": "kind",
+          "tier": 1,
+          "span": "**kind**: IngressClass"
+        },
+        {
+          "term": "metadata",
+          "tier": 2,
+          "span": "**metadata** (<a href="
+        },
+        {
+          "term": "ObjectMeta",
+          "tier": 1,
+          "span": "ObjectMeta"
+        },
+        {
+          "term": "spec",
+          "tier": 2,
+          "span": "**spec** (<a href="
+        },
+        {
+          "term": "IngressClassSpec",
+          "tier": 1,
+          "span": "IngressClassSpec"
+        },
+        {
+          "term": "controller",
+          "tier": 2,
+          "span": "**controller** (string)"
+        },
+        {
+          "term": "default class",
+          "tier": 2,
+          "span": "new Ingress resources without a class specified will be assigned this default class"
+        },
+        {
+          "term": "immutable",
+          "tier": 2,
+          "span": "This field is immutable"
+        }
+      ],
+      "total_terms": 15,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_025",
+      "source_file": "reference_setup-tools_kubeadm_generated_kubeadm_init_kubeadm_init_phase_certs_apiserver.md",
+      "content_type": "code",
+      "text": "<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n### Synopsis\n\n\nGenerate the certificate for serving the Kubernetes API, and save them into apiserver.crt and apiserver.key files.\n\nIf both files already exist, kubeadm skips the generation step and existing files will be used.\n\n```\nkubeadm init phase certs apiserver [flags]\n```\n\n### Options\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--apiserver-advertise-address string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>The IP address the API Server will advertise it's listening on. If not set the default network interface will be used.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--apiserver-cert-extra-sans strings</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Optional extra Subject Alternative Names (SANs) to use for the API Server serving certificate. Can be both IP addresses and DNS names.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--cert-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: \"/etc/kubernetes/pki\"</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>The path where to save and store the certificates.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--config string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Path to a kubeadm configuration file.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--control-plane-endpoint string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Specify a stable IP address or DNS name for the control plane.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--dry-run</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Don't apply any changes; just output what would be done.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-h, --help</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>help for apiserver</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--kubernetes-version string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: \"stable-1\"</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Choose a specific Kubernetes version for the control plane.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--service-cidr string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: \"10.96.0.0/12\"</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Use alternative range",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "serving the Kubernetes API"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "span": "serving the Kubernetes API"
+        },
+        {
+          "term": "apiserver.crt",
+          "tier": 1,
+          "span": "into apiserver.crt and apiserver.key files"
+        },
+        {
+          "term": "apiserver.key",
+          "tier": 1,
+          "span": "into apiserver.crt and apiserver.key files"
+        },
+        {
+          "term": "kubeadm",
+          "tier": 1,
+          "span": "kubeadm skips the generation step"
+        },
+        {
+          "term": "kubeadm init phase certs apiserver",
+          "tier": 1,
+          "span": "kubeadm init phase certs apiserver [flags]"
+        },
+        {
+          "term": "API Server",
+          "tier": 1,
+          "span": "The IP address the API Server will advertise"
+        },
+        {
+          "term": "--apiserver-advertise-address",
+          "tier": 1,
+          "span": "--apiserver-advertise-address string"
+        },
+        {
+          "term": "--apiserver-cert-extra-sans",
+          "tier": 1,
+          "span": "--apiserver-cert-extra-sans strings"
+        },
+        {
+          "term": "--cert-dir",
+          "tier": 1,
+          "span": "--cert-dir string"
+        },
+        {
+          "term": "/etc/kubernetes/pki",
+          "tier": 1,
+          "span": "Default: \"/etc/kubernetes/pki\""
+        },
+        {
+          "term": "--config",
+          "tier": 1,
+          "span": "--config string"
+        },
+        {
+          "term": "kubeadm configuration file",
+          "tier": 1,
+          "span": "Path to a kubeadm configuration file"
+        },
+        {
+          "term": "--control-plane-endpoint",
+          "tier": 1,
+          "span": "--control-plane-endpoint string"
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "span": "IP address or DNS name for the control plane"
+        },
+        {
+          "term": "--dry-run",
+          "tier": 1,
+          "span": "--dry-run"
+        }
+      ],
+      "total_terms": 16,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_026",
+      "source_file": "tasks_run-application_configure-pdb.md",
+      "content_type": "code",
+      "text": "---\ntitle: Specifying a Disruption Budget for your Application\ncontent_type: task\nweight: 110\nmin-kubernetes-server-version: v1.21\n---\n\n<!-- overview -->\n\n{{< feature-state for_k8s_version=\"v1.21\" state=\"stable\" >}}\n\nThis page shows how to limit the number of concurrent disruptions\nthat your application experiences, allowing for higher availability\nwhile permitting the cluster administrator to manage the clusters\nnodes.\n\n## {{% heading \"prerequisites\" %}}\n\n{{< version-check >}}\n\n- You are the owner of an application running on a Kubernetes cluster that requires\n  high availability.\n- You should know how to deploy [Replicated Stateless Applications](/docs/tasks/run-application/run-stateless-application-deployment/)\n  and/or [Replicated Stateful Applications](/docs/tasks/run-application/run-replicated-stateful-application/).\n- You should have read about [Pod Disruptions](/docs/concepts/workloads/pods/disruptions/).\n- You should confirm with your cluster owner or service provider that they respect\n  Pod Disruption Budgets.\n\n<!-- steps -->\n\n## Protecting an Application with a PodDisruptionBudget\n\n1. Identify what application you want to protect with a PodDisruptionBudget (PDB).\n1. Think about how your application reacts to disruptions.\n1. Create a PDB definition as a YAML file.\n1. Create the PDB object from the YAML file.\n\n<!-- discussion -->\n\n## Identify an Application to Protect\n\nThe most common use case when you want to protect an application\nspecified by one of the built-in Kubernetes controllers:\n\n- Deployment\n- ReplicationController\n- ReplicaSet\n- StatefulSet\n\nIn this case, make a note of the controller's `.spec.selector`; the same\nselector goes into the PDBs `.spec.selector`.\n\nFrom version 1.15 PDBs support custom controllers where the\n[scale subresource](/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#scale-subresource)\nis enabled.\n\nYou can also use PDBs with pods which are not controlled by one of the above\ncontrollers, or arbitrary groups of pods, but there are some restrictions,\ndescribed in [Arbitrary workloads and arbitrary selectors](#arbitrary-controllers-and-selectors).\n\n## Think about how your application reacts to disruptions\n\nDecide how many instances can be down at the same time for a short period\ndue to a voluntary disruption.\n\n- Stateless frontends:\n  - Concern: don't reduce serving capacity by more than 10%.\n    - Solution: use PDB with minAvailable 90% for example.\n- Single-instance Stateful Application:\n  - Concern: do not terminate this application without talking to me.\n    - Possible Solution 1: Do not use a PDB and tolerate occasional downtime.\n    - Possible Solution 2: Set PDB with maxUnavailable=0. Have an understanding\n      (outside of Kubernetes) that the cluster operator needs to consult you before\n      termination. When the cluster operator contacts you, prepare for downtime,\n      and then delete the PDB to indicate readiness for disruption. Recreate afterwards.\n- Multiple-instance St",
+      "terms": [
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "permitting the cluster administrator to manage the clusters"
+        },
+        {
+          "term": "nodes",
+          "tier": 2,
+          "span": "manage the clusters nodes"
+        },
+        {
+          "term": "Kubernetes cluster",
+          "tier": 2,
+          "span": "application running on a Kubernetes cluster that requires"
+        },
+        {
+          "term": "Replicated Stateless Applications",
+          "tier": 2,
+          "span": "deploy Replicated Stateless Applications"
+        },
+        {
+          "term": "Replicated Stateful Applications",
+          "tier": 2,
+          "span": "Replicated Stateful Applications"
+        },
+        {
+          "term": "Pod Disruptions",
+          "tier": 1,
+          "span": "read about Pod Disruptions"
+        },
+        {
+          "term": "Pod Disruption Budgets",
+          "tier": 1,
+          "span": "they respect Pod Disruption Budgets"
+        },
+        {
+          "term": "PodDisruptionBudget",
+          "tier": 1,
+          "span": "Protecting an Application with a PodDisruptionBudget"
+        },
+        {
+          "term": "PDB",
+          "tier": 1,
+          "span": "PodDisruptionBudget (PDB)"
+        },
+        {
+          "term": "YAML",
+          "tier": 3,
+          "span": "Create a PDB definition as a YAML file"
+        },
+        {
+          "term": "Deployment",
+          "tier": 2,
+          "span": "- Deployment"
+        },
+        {
+          "term": "ReplicationController",
+          "tier": 1,
+          "span": "- ReplicationController"
+        },
+        {
+          "term": "ReplicaSet",
+          "tier": 1,
+          "span": "- ReplicaSet"
+        },
+        {
+          "term": "StatefulSet",
+          "tier": 1,
+          "span": "- StatefulSet"
+        },
+        {
+          "term": ".spec.selector",
+          "tier": 1,
+          "span": "make a note of the controller's `.spec.selector`"
+        },
+        {
+          "term": "PDBs",
+          "tier": 1,
+          "span": "the same selector goes into the PDBs `.spec.selector`"
+        },
+        {
+          "term": "scale subresource",
+          "tier": 1,
+          "span": "scale subresource"
+        },
+        {
+          "term": "custom controllers",
+          "tier": 2,
+          "span": "PDBs support custom controllers"
+        },
+        {
+          "term": "pods",
+          "tier": 2,
+          "span": "use PDBs with pods which are not controlled"
+        },
+        {
+          "term": "controllers",
+          "tier": 2,
+          "span": "not controlled by one of the above controllers"
+        },
+        {
+          "term": "selectors",
+          "tier": 2,
+          "span": "Arbitrary workloads and arbitrary selectors"
+        },
+        {
+          "term": "voluntary disruption",
+          "tier": 2,
+          "span": "short period due to a voluntary disruption"
+        },
+        {
+          "term": "minAvailable",
+          "tier": 1,
+          "span": "use PDB with minAvailable 90%"
+        },
+        {
+          "term": "Stateless frontends",
+          "tier": 2,
+          "span": "- Stateless frontends:"
+        },
+        {
+          "term": "Single-instance Stateful Application",
+          "tier": 2,
+          "span": "- Single-instance Stateful Application:"
+        },
+        {
+          "term": "high availability",
+          "tier": 2,
+          "span": "allowing for higher availability"
+        },
+        {
+          "term": "custom resource definitions",
+          "tier": 2,
+          "span": "custom-resource-definitions"
+        }
+      ],
+      "total_terms": 27,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_027",
+      "source_file": "tasks_configure-pod-container_configure-liveness-readiness-startup-probes.md",
+      "content_type": "code",
+      "text": "---\ntitle: Configure Liveness, Readiness and Startup Probes\ncontent_type: task\nweight: 140\n---\n\n<!-- overview -->\n\nThis page shows how to configure liveness, readiness and startup probes for containers.\n\nFor more information about probes, see [Liveness, Readiness and Startup Probes](/docs/concepts/configuration/liveness-readiness-startup-probes)\n\nThe [kubelet](/docs/reference/command-line-tools-reference/kubelet/) uses\nliveness probes to know when to restart a container. For example, liveness\nprobes could catch a deadlock, where an application is running, but unable to\nmake progress. Restarting a container in such a state can help to make the\napplication more available despite bugs.\n\nA common pattern for liveness probes is to use the same low-cost HTTP endpoint\nas for readiness probes, but with a higher failureThreshold. This ensures that the pod\nis observed as not-ready for some period of time before it is hard killed.\n\nThe kubelet uses readiness probes to know when a container is ready to start\naccepting traffic. One use of this signal is to control which Pods are used as\nbackends for Services. A Pod is considered ready when its `Ready` [condition](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions)\nis true. When a Pod is not ready, it is removed from Service load balancers.\nA Pod's `Ready` condition is false when its Node's `Ready` condition is not true,\nwhen one of the Pod's `readinessGates` is false, or when at least one of its containers\nis not ready.\n\nThe kubelet uses startup probes to know when a container application has started.\nIf such a probe is configured, liveness and readiness probes do not start until\nit succeeds, making sure those probes don't interfere with the application startup.\nThis can be used to adopt liveness checks on slow starting containers, avoiding them\ngetting killed by the kubelet before they are up and running.\n\n{{< caution >}}\nLiveness probes can be a powerful way to recover from application failures, but\nthey should be used with caution. Liveness probes must be configured carefully\nto ensure that they truly indicate unrecoverable application failure, for example a deadlock.\n{{< /caution >}}\n\n{{< note >}}\nIncorrect implementation of liveness probes can lead to cascading failures. This results in\nrestarting of container under high load; failed client requests as your application became less\nscalable; and increased workload on remaining pods due to some failed pods.\nUnderstand the difference between readiness and liveness probes and when to apply them for your app.\n{{< /note >}}\n\n## {{% heading \"prerequisites\" %}}\n\n{{< include \"task-tutorial-prereqs.md\" >}}\n\n<!-- steps -->\n\n## Define a liveness command\n\nMany applications running for long periods of time eventually transition to\nbroken states, and cannot recover except by being restarted. Kubernetes provides\nliveness probes to detect and remedy such situations.\n\nIn this exercise, you create a Pod that runs a container based on the\n`registry.k8s.io/busybox:1",
+      "terms": [
+        {
+          "term": "liveness probes",
+          "tier": 2,
+          "span": "configure liveness, readiness and startup probes for containers"
+        },
+        {
+          "term": "readiness probes",
+          "tier": 2,
+          "span": "configure liveness, readiness and startup probes for containers"
+        },
+        {
+          "term": "startup probes",
+          "tier": 2,
+          "span": "configure liveness, readiness and startup probes for containers"
+        },
+        {
+          "term": "probes",
+          "tier": 2,
+          "span": "For more information about probes"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "The [kubelet](/docs/reference/command-line-tools-reference/kubelet/) uses"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "liveness probes to know when to restart a container"
+        },
+        {
+          "term": "failureThreshold",
+          "tier": 1,
+          "span": "but with a higher failureThreshold"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "This ensures that the pod"
+        },
+        {
+          "term": "Pods",
+          "tier": 2,
+          "span": "to control which Pods are used as"
+        },
+        {
+          "term": "Services",
+          "tier": 2,
+          "span": "backends for Services"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "A Pod is considered ready when its"
+        },
+        {
+          "term": "Ready",
+          "tier": 2,
+          "span": "when its `Ready` [condition]"
+        },
+        {
+          "term": "condition",
+          "tier": 2,
+          "span": "when its `Ready` [condition](/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions)"
+        },
+        {
+          "term": "Service",
+          "tier": 2,
+          "span": "it is removed from Service load balancers"
+        },
+        {
+          "term": "Node",
+          "tier": 2,
+          "span": "when its Node's `Ready` condition is not true"
+        },
+        {
+          "term": "readinessGates",
+          "tier": 1,
+          "span": "when one of the Pod's `readinessGates` is false"
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "span": "or when at least one of its containers"
+        },
+        {
+          "term": "deadlock",
+          "tier": 2,
+          "span": "liveness probes could catch a deadlock"
+        },
+        {
+          "term": "load balancers",
+          "tier": 2,
+          "span": "it is removed from Service load balancers"
+        },
+        {
+          "term": "cascading failures",
+          "tier": 2,
+          "span": "Incorrect implementation of liveness probes can lead to cascading failures"
+        }
+      ],
+      "total_terms": 20,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_028",
+      "source_file": "tasks_debug_debug-application_debug-statefulset.md",
+      "content_type": "code",
+      "text": "---\nreviewers:\n- bprashanth\n- enisoc\n- erictune\n- foxish\n- janetkuo\n- kow3ns\n- smarterclayton\ntitle: Debug a StatefulSet\ncontent_type: task\nweight: 30\n---\n\n<!-- overview -->\nThis task shows you how to debug a StatefulSet.\n\n## {{% heading \"prerequisites\" %}}\n\n* You need to have a Kubernetes cluster, and the kubectl command-line tool must be configured to communicate with your cluster.\n* You should have a StatefulSet running that you want to investigate.\n\n<!-- steps -->\n\n## Debugging a StatefulSet\n\nIn order to list all the pods which belong to a StatefulSet, which have a label `app.kubernetes.io/name=MyApp` set on them,\nyou can use the following:\n\n```shell\nkubectl get pods -l app.kubernetes.io/name=MyApp\n```\n\nIf you find that any Pods listed are in `Unknown` or `Terminating` state for an extended period of time,\nrefer to the [Deleting StatefulSet Pods](/docs/tasks/run-application/delete-stateful-set/) task for\ninstructions on how to deal with them.\nYou can debug individual Pods in a StatefulSet using the\n[Debugging Pods](/docs/tasks/debug/debug-application/debug-pods/) guide.\n\n## {{% heading \"whatsnext\" %}}\n\nLearn more about [debugging an init-container](/docs/tasks/debug/debug-application/debug-init-containers/).\n\n",
+      "terms": [
+        {
+          "term": "StatefulSet",
+          "tier": 1,
+          "span": "Debug a StatefulSet"
+        },
+        {
+          "term": "Kubernetes cluster",
+          "tier": 2,
+          "span": "You need to have a Kubernetes cluster"
+        },
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "the kubectl command-line tool must be configured"
+        },
+        {
+          "term": "pods",
+          "tier": 2,
+          "span": "In order to list all the pods which belong to a StatefulSet"
+        },
+        {
+          "term": "label",
+          "tier": 2,
+          "span": "which have a label `app.kubernetes.io/name=MyApp` set on them"
+        },
+        {
+          "term": "app.kubernetes.io/name",
+          "tier": 1,
+          "span": "which have a label `app.kubernetes.io/name=MyApp` set on them"
+        },
+        {
+          "term": "kubectl get pods",
+          "tier": 1,
+          "span": "kubectl get pods -l app.kubernetes.io/name=MyApp"
+        },
+        {
+          "term": "Pods",
+          "tier": 2,
+          "span": "If you find that any Pods listed are in `Unknown` or `Terminating` state"
+        },
+        {
+          "term": "Terminating",
+          "tier": 2,
+          "span": "Pods listed are in `Unknown` or `Terminating` state"
+        },
+        {
+          "term": "init-container",
+          "tier": 1,
+          "span": "debugging an init-container"
+        },
+        {
+          "term": "Unknown",
+          "tier": 2,
+          "span": "Pods listed are in `Unknown` or `Terminating` state"
+        }
+      ],
+      "total_terms": 11,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_029",
+      "source_file": "reference_setup-tools_kubeadm_generated_kubeadm_join_kubeadm_join_phase_kubelet-wait-bootstrap.md",
+      "content_type": "code",
+      "text": "<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n### Synopsis\n\n\nWait for the kubelet to bootstrap itself\n\n```\nkubeadm join phase kubelet-wait-bootstrap [flags]\n```\n\n### Options\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--config string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Path to a kubeadm configuration file.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--cri-socket string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Path to the CRI socket to connect. If empty kubeadm will try to auto-detect this value; use this option only if you have more than one CRI installed or if you have non-standard CRI socket.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--dry-run</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Don't apply any changes; just output what would be done.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-h, --help</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>help for kubelet-wait-bootstrap</p></td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n### Options inherited from parent commands\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--rootfs string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>The path to the 'real' host root filesystem. This will cause kubeadm to chroot into the provided path.</p></td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n",
+      "terms": [
+        {
+          "term": "kubelet",
+          "tier": 2,
+          "span": "Wait for the kubelet to bootstrap itself"
+        },
+        {
+          "term": "kubeadm join phase kubelet-wait-bootstrap",
+          "tier": 1,
+          "span": "kubeadm join phase kubelet-wait-bootstrap [flags]"
+        },
+        {
+          "term": "kubeadm",
+          "tier": 1,
+          "span": "Path to a kubeadm configuration file."
+        },
+        {
+          "term": "CRI socket",
+          "tier": 1,
+          "span": "Path to the CRI socket to connect."
+        },
+        {
+          "term": "CRI",
+          "tier": 1,
+          "span": "If empty kubeadm will try to auto-detect this value; use this option only if you have more than one CRI installed"
+        },
+        {
+          "term": "dry-run",
+          "tier": 2,
+          "span": "--dry-run"
+        },
+        {
+          "term": "rootfs",
+          "tier": 2,
+          "span": "--rootfs string"
+        },
+        {
+          "term": "chroot",
+          "tier": 2,
+          "span": "This will cause kubeadm to chroot into the provided path."
+        }
+      ],
+      "total_terms": 8,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_030",
+      "source_file": "reference_kubectl_generated_kubectl_options__index.md",
+      "content_type": "tables",
+      "text": "---\ntitle: kubectl options\ncontent_type: tool-reference\nweight: 30\nauto_generated: true\nno_list: true\n---\n\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n## {{% heading \"synopsis\" %}}\n\n\nPrint the list of flags inherited by all commands\n\n```\nkubectl options [flags]\n```\n\n## {{% heading \"examples\" %}}\n\n```\n  # Print flags inherited by all commands\n  kubectl options\n```\n\n## {{% heading \"options\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">-h, --help</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>help for options</p></td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n## {{% heading \"parentoptions\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--as string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Username to impersonate for the operation. User could be a regular user or a service account in a namespace.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--as-group strings</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Group to impersonate for the operation, this flag can be repeated to specify multiple groups.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--as-uid string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>UID to impersonate for the operation.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--as-user-extra strings</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>User extras to impersonate for the operation, this flag can be repeated to specify multiple values for the same key.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--cache-dir string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: \"$HOME/.kube/cache\"</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Default cache directory</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--certificate-authority string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Path to a cert file for the certificate authority</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--client-certificate string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Path to a client certificate file for TLS</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--client-key string</td>\n</tr>\n<tr>\n<td></td><td s",
+      "terms": [
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "kubectl options [flags]"
+        },
+        {
+          "term": "kubectl options",
+          "tier": 1,
+          "span": "kubectl options [flags]"
+        },
+        {
+          "term": "service account",
+          "tier": 2,
+          "span": "User could be a regular user or a service account in a namespace"
+        },
+        {
+          "term": "namespace",
+          "tier": 2,
+          "span": "service account in a namespace"
+        },
+        {
+          "term": "--as",
+          "tier": 1,
+          "span": "--as string"
+        },
+        {
+          "term": "--as-group",
+          "tier": 1,
+          "span": "--as-group strings"
+        },
+        {
+          "term": "--as-uid",
+          "tier": 1,
+          "span": "--as-uid string"
+        },
+        {
+          "term": "--as-user-extra",
+          "tier": 1,
+          "span": "--as-user-extra strings"
+        },
+        {
+          "term": "--cache-dir",
+          "tier": 1,
+          "span": "--cache-dir string"
+        },
+        {
+          "term": "impersonate",
+          "tier": 2,
+          "span": "Username to impersonate for the operation"
+        }
+      ],
+      "total_terms": 10,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_031",
+      "source_file": "reference_kubectl_generated_kubectl_attach__index.md",
+      "content_type": "tables",
+      "text": "---\ntitle: kubectl attach\ncontent_type: tool-reference\nweight: 30\nauto_generated: true\nno_list: true\n---\n\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n## {{% heading \"synopsis\" %}}\n\n\nAttach to a process that is already running inside an existing container.\n\n```\nkubectl attach (POD | TYPE/NAME) -c CONTAINER\n```\n\n## {{% heading \"examples\" %}}\n\n```\n  # Get output from running pod mypod; use the 'kubectl.kubernetes.io/default-container' annotation\n  # for selecting the container to be attached or the first container in the pod will be chosen\n  kubectl attach mypod\n  \n  # Get output from ruby-container from pod mypod\n  kubectl attach mypod -c ruby-container\n  \n  # Switch to raw terminal mode; sends stdin to 'bash' in ruby-container from pod mypod\n  # and sends stdout/stderr from 'bash' back to the client\n  kubectl attach mypod -c ruby-container -i -t\n  \n  # Get output from the first pod of a replica set named nginx\n  kubectl attach rs/nginx\n```\n\n## {{% heading \"options\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">-c, --container string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Container name. If omitted, use the kubectl.kubernetes.io/default-container annotation for selecting the container to be attached or the first container in the pod will be chosen</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-h, --help</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>help for attach</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--pod-running-timeout duration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: 1m0s</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>The length of time (like 5s, 2m, or 3h, higher than zero) to wait until at least one pod is running</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-q, --quiet</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Only print output from the remote session</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-i, --stdin</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Pass stdin to the container</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-t, --tty</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Stdin is a TTY</p></td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n## {{% heading \"parentoptions\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed",
+      "terms": [
+        {
+          "term": "kubectl attach",
+          "tier": 1,
+          "span": "title: kubectl attach"
+        },
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "kubectl attach (POD | TYPE/NAME) -c CONTAINER"
+        },
+        {
+          "term": "POD",
+          "tier": 2,
+          "span": "kubectl attach (POD | TYPE/NAME) -c CONTAINER"
+        },
+        {
+          "term": "CONTAINER",
+          "tier": 2,
+          "span": "kubectl attach (POD | TYPE/NAME) -c CONTAINER"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "Attach to a process that is already running inside an existing container"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "Get output from running pod mypod"
+        },
+        {
+          "term": "kubectl.kubernetes.io/default-container",
+          "tier": 1,
+          "span": "use the 'kubectl.kubernetes.io/default-container' annotation"
+        },
+        {
+          "term": "annotation",
+          "tier": 2,
+          "span": "use the 'kubectl.kubernetes.io/default-container' annotation"
+        },
+        {
+          "term": "ruby-container",
+          "tier": 2,
+          "span": "Get output from ruby-container from pod mypod"
+        },
+        {
+          "term": "stdin",
+          "tier": 3,
+          "span": "sends stdin to 'bash' in ruby-container"
+        },
+        {
+          "term": "stdout/stderr",
+          "tier": 3,
+          "span": "sends stdout/stderr from 'bash' back to the client"
+        },
+        {
+          "term": "replica set",
+          "tier": 2,
+          "span": "Get output from the first pod of a replica set named nginx"
+        },
+        {
+          "term": "--container",
+          "tier": 1,
+          "span": "-c, --container string"
+        },
+        {
+          "term": "--pod-running-timeout",
+          "tier": 1,
+          "span": "--pod-running-timeout duration"
+        },
+        {
+          "term": "-c",
+          "tier": 1,
+          "span": "-c, --container string"
+        },
+        {
+          "term": "-h",
+          "tier": 2,
+          "span": "-h, --help"
+        },
+        {
+          "term": "--help",
+          "tier": 2,
+          "span": "-h, --help"
+        },
+        {
+          "term": "-q",
+          "tier": 2,
+          "span": "-q, --quiet"
+        },
+        {
+          "term": "--quiet",
+          "tier": 2,
+          "span": "-q, --quiet"
+        },
+        {
+          "term": "-i",
+          "tier": 2,
+          "span": "-i -t"
+        },
+        {
+          "term": "-t",
+          "tier": 2,
+          "span": "-i -t"
+        },
+        {
+          "term": "raw terminal mode",
+          "tier": 2,
+          "span": "Switch to raw terminal mode"
+        }
+      ],
+      "total_terms": 22,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_032",
+      "source_file": "reference_kubectl_generated_kubectl_logs__index.md",
+      "content_type": "tables",
+      "text": "---\ntitle: kubectl logs\ncontent_type: tool-reference\nweight: 30\nauto_generated: true\nno_list: true\n---\n\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n## {{% heading \"synopsis\" %}}\n\n\nPrint the logs for a container in a pod or specified resource. If the pod has only one container, the container name is optional.\n\n```\nkubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]\n```\n\n## {{% heading \"examples\" %}}\n\n```\n  # Return snapshot logs from pod nginx with only one container\n  kubectl logs nginx\n  \n  # Return snapshot logs from pod nginx, prefixing each line with the source pod and container name\n  kubectl logs nginx --prefix\n  \n  # Return snapshot logs from pod nginx, limiting output to 500 bytes\n  kubectl logs nginx --limit-bytes=500\n  \n  # Return snapshot logs from pod nginx, waiting up to 20 seconds for it to start running.\n  kubectl logs nginx --pod-running-timeout=20s\n  \n  # Return snapshot logs from pod nginx with multi containers\n  kubectl logs nginx --all-containers=true\n  \n  # Return snapshot logs from all pods in the deployment nginx\n  kubectl logs deployment/nginx --all-pods=true\n  \n  # Return snapshot logs from all containers in pods defined by label app=nginx\n  kubectl logs -l app=nginx --all-containers=true\n  \n  # Return snapshot logs from all pods defined by label app=nginx, limiting concurrent log requests to 10 pods\n  kubectl logs -l app=nginx --max-log-requests=10\n  \n  # Return snapshot of previous terminated ruby container logs from pod web-1\n  kubectl logs -p -c ruby web-1\n  \n  # Begin streaming the logs from pod nginx, continuing even if errors occur\n  kubectl logs nginx -f --ignore-errors=true\n  \n  # Begin streaming the logs of the ruby container in pod web-1\n  kubectl logs -f -c ruby web-1\n  \n  # Begin streaming the logs from all containers in pods defined by label app=nginx\n  kubectl logs -f -l app=nginx --all-containers=true\n  \n  # Display only the most recent 20 lines of output in pod nginx\n  kubectl logs --tail=20 nginx\n  \n  # Show all logs from pod nginx written in the last hour\n  kubectl logs --since=1h nginx\n  \n  # Show all logs with timestamps from pod nginx starting from August 30, 2024, at 06:00:00 UTC\n  kubectl logs nginx --since-time=2024-08-30T06:00:00Z --timestamps=true\n  \n  # Show logs from a kubelet with an expired serving certificate\n  kubectl logs --insecure-skip-tls-verify-backend nginx\n  \n  # Return snapshot logs from first container of a job named hello\n  kubectl logs job/hello\n  \n  ",
+      "terms": [
+        {
+          "term": "kubectl logs",
+          "tier": 1,
+          "span": "title: kubectl logs"
+        },
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "kubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "Print the logs for a container in a pod"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "Print the logs for a container in a pod"
+        },
+        {
+          "term": "logs",
+          "tier": 2,
+          "span": "Print the logs for a container in a pod"
+        },
+        {
+          "term": "POD",
+          "tier": 2,
+          "span": "kubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]"
+        },
+        {
+          "term": "CONTAINER",
+          "tier": 2,
+          "span": "kubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]"
+        },
+        {
+          "term": "deployment",
+          "tier": 2,
+          "span": "Return snapshot logs from all pods in the deployment nginx"
+        },
+        {
+          "term": "label",
+          "tier": 2,
+          "span": "Return snapshot logs from all containers in pods defined by label app=nginx"
+        },
+        {
+          "term": "--all-containers",
+          "tier": 1,
+          "span": "kubectl logs nginx --all-containers=true"
+        },
+        {
+          "term": "--all-pods",
+          "tier": 1,
+          "span": "kubectl logs deployment/nginx --all-pods=true"
+        },
+        {
+          "term": "--prefix",
+          "tier": 1,
+          "span": "kubectl logs nginx --prefix"
+        },
+        {
+          "term": "--limit-bytes",
+          "tier": 1,
+          "span": "kubectl logs nginx --limit-bytes=500"
+        },
+        {
+          "term": "--pod-running-timeout",
+          "tier": 1,
+          "span": "kubectl logs nginx --pod-running-timeout=20s"
+        },
+        {
+          "term": "--max-log-requests",
+          "tier": 1,
+          "span": "kubectl logs -l app=nginx --max-log-requests=10"
+        },
+        {
+          "term": "--ignore-errors",
+          "tier": 1,
+          "span": "kubectl logs nginx -f --ignore-errors=true"
+        },
+        {
+          "term": "pods",
+          "tier": 2,
+          "span": "Return snapshot logs from all pods in the deployment nginx"
+        },
+        {
+          "term": "-f",
+          "tier": 1,
+          "span": "kubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]"
+        },
+        {
+          "term": "-p",
+          "tier": 1,
+          "span": "kubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]"
+        },
+        {
+          "term": "-c",
+          "tier": 1,
+          "span": "kubectl logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]"
+        },
+        {
+          "term": "-l",
+          "tier": 1,
+          "span": "kubectl logs -l app=nginx --all-containers=true"
+        }
+      ],
+      "total_terms": 21,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_033",
+      "source_file": "reference_kubectl_generated_kubectl_config_kubectl_config_set-context.md",
+      "content_type": "tables",
+      "text": "---\ntitle: kubectl config set-context\ncontent_type: tool-reference\nweight: 30\nauto_generated: true\n---\n\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n## {{% heading \"synopsis\" %}}\n\n\nSet a context entry in kubeconfig.\n\n Specifying a name that already exists will merge new fields on top of existing values for those fields.\n\n```\nkubectl config set-context [NAME | --current] [--cluster=cluster_nickname] [--user=user_nickname] [--namespace=namespace]\n```\n\n## {{% heading \"examples\" %}}\n\n```\n  # Set the user field on the gce context entry without touching other values\n  kubectl config set-context gce --user=cluster-admin\n```\n\n## {{% heading \"options\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--cluster string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>cluster for the context entry in kubeconfig</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--current</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Modify the current context</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-h, --help</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>help for set-context</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-n, --namespace string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>namespace for the context entry in kubeconfig</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--user string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>user for the context entry in kubeconfig</p></td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n## {{% heading \"parentoptions\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--as string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Username to impersonate for the operation. User could be a regular user or a service account in a namespace.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--as-group strings</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Group to impersonate for the operation, this flag can be repeated to specify multiple groups.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--as-uid string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>UID to impersonate for the operati",
+      "terms": [
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "kubectl config set-context"
+        },
+        {
+          "term": "kubectl config set-context",
+          "tier": 1,
+          "span": "kubectl config set-context [NAME | --current]"
+        },
+        {
+          "term": "kubeconfig",
+          "tier": 1,
+          "span": "Set a context entry in kubeconfig"
+        },
+        {
+          "term": "context",
+          "tier": 2,
+          "span": "Set a context entry in kubeconfig"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "--cluster=cluster_nickname"
+        },
+        {
+          "term": "namespace",
+          "tier": 2,
+          "span": "--namespace=namespace"
+        },
+        {
+          "term": "user",
+          "tier": 2,
+          "span": "--user=user_nickname"
+        },
+        {
+          "term": "--cluster",
+          "tier": 1,
+          "span": "--cluster string"
+        },
+        {
+          "term": "--namespace",
+          "tier": 1,
+          "span": "-n, --namespace string"
+        },
+        {
+          "term": "--user",
+          "tier": 1,
+          "span": "--user string"
+        },
+        {
+          "term": "--current",
+          "tier": 1,
+          "span": "--current"
+        },
+        {
+          "term": "-n",
+          "tier": 1,
+          "span": "-n, --namespace string"
+        },
+        {
+          "term": "--as",
+          "tier": 1,
+          "span": "--as string"
+        },
+        {
+          "term": "gce",
+          "tier": 2,
+          "span": "Set the user field on the gce context entry"
+        }
+      ],
+      "total_terms": 14,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_034",
+      "source_file": "reference_kubectl_generated_kubectl_run__index.md",
+      "content_type": "tables",
+      "text": "---\ntitle: kubectl run\ncontent_type: tool-reference\nweight: 30\nauto_generated: true\nno_list: true\n---\n\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n## {{% heading \"synopsis\" %}}\n\n\nCreate and run a particular image in a pod.\n\n```\nkubectl run NAME --image=image [--env=\"key=value\"] [--port=port] [--dry-run=server|client] [--overrides=inline-json] [--command] -- [COMMAND] [args...]\n```\n\n## {{% heading \"examples\" %}}\n\n```\n  # Start a nginx pod\n  kubectl run nginx --image=nginx\n  \n  # Start a hazelcast pod and let the container expose port 5701\n  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701\n  \n  # Start a hazelcast pod and set environment variables \"DNS_DOMAIN=cluster\" and \"POD_NAMESPACE=default\" in the container\n  kubectl run hazelcast --image=hazelcast/hazelcast --env=\"DNS_DOMAIN=cluster\" --env=\"POD_NAMESPACE=default\"\n  \n  # Start a hazelcast pod and set labels \"app=hazelcast\" and \"env=prod\" in the container\n  kubectl run hazelcast --image=hazelcast/hazelcast --labels=\"app=hazelcast,env=prod\"\n  \n  # Dry run; print the corresponding API objects without creating them\n  kubectl run nginx --image=nginx --dry-run=client\n  \n  # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON\n  kubectl run nginx --image=nginx --overrides='{ \"apiVersion\": \"v1\", \"spec\": { ... } }'\n  \n  # Start a busybox pod and keep it in the foreground, don't restart it if it exits\n  kubectl run -i -t busybox --image=busybox --restart=Never\n  \n  # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command\n  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>\n  \n  # Start the nginx pod using a different command and custom arguments\n  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>\n```\n\n## {{% heading \"options\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--allow-missing-template-keys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: true</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--annotations strings</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Annotations to apply to the pod.</p></",
+      "terms": [
+        {
+          "term": "kubectl run",
+          "tier": 1,
+          "span": "title: kubectl run"
+        },
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "kubectl run NAME --image=image"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "Create and run a particular image in a pod"
+        },
+        {
+          "term": "--image",
+          "tier": 1,
+          "span": "kubectl run NAME --image=image"
+        },
+        {
+          "term": "--env",
+          "tier": 1,
+          "span": "[--env=\"key=value\"]"
+        },
+        {
+          "term": "--port",
+          "tier": 1,
+          "span": "[--port=port]"
+        },
+        {
+          "term": "--dry-run",
+          "tier": 1,
+          "span": "[--dry-run=server|client]"
+        },
+        {
+          "term": "--overrides",
+          "tier": 1,
+          "span": "[--overrides=inline-json]"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "let the container expose port 5701"
+        },
+        {
+          "term": "--labels",
+          "tier": 1,
+          "span": "--labels=\"app=hazelcast,env=prod\""
+        },
+        {
+          "term": "API objects",
+          "tier": 3,
+          "span": "print the corresponding API objects without creating them"
+        },
+        {
+          "term": "spec",
+          "tier": 2,
+          "span": "overload the spec with a partial set of values parsed from JSON"
+        },
+        {
+          "term": "--restart",
+          "tier": 1,
+          "span": "--restart=Never"
+        },
+        {
+          "term": "--command",
+          "tier": 1,
+          "span": "[--command] -- [COMMAND]"
+        },
+        {
+          "term": "hazelcast",
+          "tier": 2,
+          "span": "Start a hazelcast pod"
+        },
+        {
+          "term": "DNS_DOMAIN",
+          "tier": 1,
+          "span": "DNS_DOMAIN=cluster"
+        },
+        {
+          "term": "-i",
+          "tier": 1,
+          "span": "kubectl run -i -t busybox"
+        },
+        {
+          "term": "-t",
+          "tier": 1,
+          "span": "kubectl run -i -t busybox"
+        }
+      ],
+      "total_terms": 18,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_035",
+      "source_file": "reference_node_node-status.md",
+      "content_type": "tables",
+      "text": "---\ncontent_type: reference\ntitle: Node Status\nweight: 80\n---\n<!-- overview -->\n\nThe status of a [node](/docs/concepts/architecture/nodes/) in Kubernetes is a critical\naspect of managing a Kubernetes cluster. In this article, we'll cover the basics of\nmonitoring and maintaining node status to ensure a healthy and stable cluster.\n\n## Node status fields\n\nA Node's status contains the following information:\n\n* [Addresses](#addresses)\n* [Conditions](#condition)\n* [Capacity and Allocatable](#capacity)\n* [Info](#info)\n* [Declared Features](#declaredfeatures)\n\nYou can use `kubectl` to view a Node's status and other details:\n\n```shell\nkubectl describe node <insert-node-name-here>\n```\n\nEach section of the output is described below.\n\n## Addresses\n\nThe usage of these fields varies depending on your cloud provider or bare metal configuration.\n\n* HostName: The hostname as reported by the node's kernel. Can be overridden via the kubelet\n  `--hostname-override` parameter.\n* ExternalIP: Typically the IP address of the node that is externally routable (available from\n  outside the cluster).\n* InternalIP: Typically the IP address of the node that is routable only within the cluster.\n\n## Conditions {#condition}\n\nThe `conditions` field describes the status of all `Running` nodes. Examples of conditions include:\n\n{{< table caption = \"Node conditions, and a description of when each condition applies.\" >}}\n| Node Condition       | Description |\n|----------------------|-------------|\n| `Ready`              | `True` if the node is healthy and ready to accept pods, `False` if the node is not healthy and is not accepting pods, and `Unknown` if the node controller has not heard from the node in the last `node-monitor-grace-period` (default is 50 seconds) |\n| `DiskPressure`       | `True` if pressure exists on the disk size\u2014that is, if the disk capacity is low; otherwise `False` |\n| `MemoryPressure`     | `True` if pressure exists on the node memory\u2014that is, if the node memory is low; otherwise `False` |\n| `PIDPressure`        | `True` if pressure exists on the processes\u2014that is, if there are too many processes on the node; otherwise `False` |\n| `NetworkUnavailable` | `True` if the network for the node is not correctly configured, otherwise `False` |\n{{< /table >}}\n\n{{< note >}}\nIf you use command-line tools to print details of a cordoned Node, the Condition includes\n`SchedulingDisabled`. `SchedulingDisabled` is not a Condition in the Kubernetes API; instead,\ncordoned nodes are marked Unschedulable in their spec.\n{{< /note >}}\n\nIn the Kubernetes API, a node's condition is represented as part of the `.status`\nof the Node resource. For example, the following JSON structure describes a healthy node:\n\n```json\n\"conditions\": [\n  {\n    \"type\": \"Ready\",\n    \"status\": \"True\",\n    \"reason\": \"KubeletReady\",\n    \"message\": \"kubelet is posting ready status\",\n    \"lastHeartbeatTime\": \"2019-06-05T18:38:35Z\",\n    \"lastTransitionTime\": \"2019-06-05T11:41:27Z\"\n  }\n]\n```\n\nWhen problems occur on ",
+      "terms": [
+        {
+          "term": "node",
+          "tier": 2,
+          "span": "The status of a [node](/docs/concepts/architecture/nodes/) in Kubernetes"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "in Kubernetes is a critical"
+        },
+        {
+          "term": "Kubernetes cluster",
+          "tier": 1,
+          "span": "managing a Kubernetes cluster"
+        },
+        {
+          "term": "Node",
+          "tier": 2,
+          "span": "A Node's status contains the following information"
+        },
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "You can use `kubectl` to view a Node's status"
+        },
+        {
+          "term": "kubectl describe node",
+          "tier": 1,
+          "span": "kubectl describe node <insert-node-name-here>"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "Can be overridden via the kubelet"
+        },
+        {
+          "term": "HostName",
+          "tier": 1,
+          "span": "HostName: The hostname as reported by the node's kernel"
+        },
+        {
+          "term": "ExternalIP",
+          "tier": 1,
+          "span": "ExternalIP: Typically the IP address of the node that is externally routable"
+        },
+        {
+          "term": "InternalIP",
+          "tier": 1,
+          "span": "InternalIP: Typically the IP address of the node that is routable only within the cluster"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "routable only within the cluster"
+        },
+        {
+          "term": "conditions",
+          "tier": 2,
+          "span": "The `conditions` field describes the status of all `Running` nodes"
+        },
+        {
+          "term": "Node Condition",
+          "tier": 1,
+          "span": "| Node Condition       | Description |"
+        },
+        {
+          "term": "Ready",
+          "tier": 2,
+          "span": "| `Ready`              | `True` if the node is healthy and ready to accept pods"
+        },
+        {
+          "term": "pods",
+          "tier": 2,
+          "span": "healthy and ready to accept pods"
+        },
+        {
+          "term": "node controller",
+          "tier": 1,
+          "span": "if the node controller has not heard from the node"
+        },
+        {
+          "term": "node-monitor-grace-period",
+          "tier": 1,
+          "span": "in the last `node-monitor-grace-period` (default is 50 seconds)"
+        },
+        {
+          "term": "DiskPressure",
+          "tier": 1,
+          "span": "| `DiskPressure`       | `True` if pressure exists on the disk size"
+        },
+        {
+          "term": "MemoryPressure",
+          "tier": 1,
+          "span": "| `MemoryPressure`     | `True` if pressure exists on the node memory"
+        },
+        {
+          "term": "PIDPressure",
+          "tier": 1,
+          "span": "| `PIDPressure`        | `True` if pressure exists on the processes"
+        },
+        {
+          "term": "NetworkUnavailable",
+          "tier": 1,
+          "span": "| `NetworkUnavailable` | `True` if the network for the node is not correctly configured"
+        },
+        {
+          "term": "cordoned",
+          "tier": 2,
+          "span": "details of a cordoned Node"
+        },
+        {
+          "term": "SchedulingDisabled",
+          "tier": 1,
+          "span": "the Condition includes `SchedulingDisabled`"
+        },
+        {
+          "term": "Kubernetes API",
+          "tier": 1,
+          "span": "`SchedulingDisabled` is not a Condition in the Kubernetes API"
+        },
+        {
+          "term": "cordoned nodes",
+          "tier": 2,
+          "span": "cordoned nodes are marked"
+        },
+        {
+          "term": "Addresses",
+          "tier": 2,
+          "span": "* [Addresses](#addresses)"
+        },
+        {
+          "term": "Capacity and Allocatable",
+          "tier": 1,
+          "span": "* [Capacity and Allocatable](#capacity)"
+        },
+        {
+          "term": "Info",
+          "tier": 2,
+          "span": "* [Info](#info)"
+        },
+        {
+          "term": "Declared Features",
+          "tier": 1,
+          "span": "* [Declared Features](#declaredfeatures)"
+        }
+      ],
+      "total_terms": 29,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_036",
+      "source_file": "reference_kubectl_generated_kubectl_alpha_kubectl_alpha_kuberc_view.md",
+      "content_type": "tables",
+      "text": "---\ntitle: kubectl alpha kuberc view\ncontent_type: tool-reference\nweight: 30\nauto_generated: true\n---\n\n\n<!--\nThe file is auto-generated from the Go source code of the component using a generic\n[generator](https://github.com/kubernetes-sigs/reference-docs/). To learn how\nto generate the reference documentation, please read\n[Contributing to the reference documentation](/docs/contribute/generate-ref-docs/).\nTo update the reference content, please follow the\n[Contributing upstream](/docs/contribute/generate-ref-docs/contribute-upstream/)\nguide. You can file document formatting bugs against the\n[reference-docs](https://github.com/kubernetes-sigs/reference-docs/) project.\n-->\n\n\n## {{% heading \"synopsis\" %}}\n\n\nDisplay the contents of the kuberc file in the specified output format.\n\n```\nkubectl alpha kuberc view\n```\n\n## {{% heading \"examples\" %}}\n\n```\n  # View kuberc configuration in YAML format (default)\n  kubectl alpha kuberc view\n  \n  # View kuberc configuration in JSON format\n  kubectl alpha kuberc view --output json\n  \n  # View a specific kuberc file\n  kubectl alpha kuberc view --kuberc /path/to/kuberc\n```\n\n## {{% heading \"options\" %}}\n\n   <table style=\"width: 100%; table-layout: fixed;\">\n<colgroup>\n<col span=\"1\" style=\"width: 10px;\" />\n<col span=\"1\" />\n</colgroup>\n<tbody>\n\n<tr>\n<td colspan=\"2\">--allow-missing-template-keys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: true</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-h, --help</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>help for view</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--kuberc string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Path to the kuberc file to use for preferences. This can be disabled by exporting KUBECTL_KUBERC=false feature gate or turning off the feature KUBERC=off.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">-o, --output string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default: \"yaml\"</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Output format. One of: (json, yaml, kyaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file).</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--show-managed-fields</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>If true, keep the managedFields when printing objects in JSON or YAML format.</p></td>\n</tr>\n\n<tr>\n<td colspan=\"2\">--template string</td>\n</tr>\n<tr>\n<td></td><td style=\"line-height: 130%; word-wrap: break-word;\"><p>Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].</p></td>\n</tr>\n\n</tbody>\n</table>\n\n\n\n## {{% heading \"parentoptions\" %}}\n\n   <table ",
+      "terms": [
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "span": "kubectl alpha kuberc view"
+        },
+        {
+          "term": "kuberc",
+          "tier": 1,
+          "span": "kubectl alpha kuberc view"
+        },
+        {
+          "term": "kubectl alpha kuberc view",
+          "tier": 1,
+          "span": "kubectl alpha kuberc view"
+        },
+        {
+          "term": "KUBECTL_KUBERC",
+          "tier": 1,
+          "span": "exporting KUBECTL_KUBERC=false feature gate"
+        },
+        {
+          "term": "KUBERC",
+          "tier": 1,
+          "span": "turning off the feature KUBERC=off"
+        },
+        {
+          "term": "feature gate",
+          "tier": 2,
+          "span": "exporting KUBECTL_KUBERC=false feature gate"
+        }
+      ],
+      "total_terms": 6,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_037",
+      "source_file": "tasks_administer-cluster_encrypt-data.md",
+      "content_type": "tables",
+      "text": "---\ntitle: Encrypting Confidential Data at Rest\nreviewers:\n- aramase\n- enj\ncontent_type: task\nweight: 210\n---\n\n<!-- overview -->\n\nAll of the APIs in Kubernetes that let you write persistent API resource data support\nat-rest encryption. For example, you can enable at-rest encryption for\n{{< glossary_tooltip text=\"Secrets\" term_id=\"secret\" >}}.\nThis at-rest encryption is additional to any system-level encryption for the\netcd cluster or for the filesystem(s) on hosts where you are running the\nkube-apiserver.\n\nThis page shows how to enable and configure encryption of API data at rest.\n\n{{< note >}}\nThis task covers encryption for resource data stored using the\n{{< glossary_tooltip text=\"Kubernetes API\" term_id=\"kubernetes-api\" >}}. For example, you can\nencrypt Secret objects, including the key-value data they contain.\n\nIf you want to encrypt data in filesystems that are mounted into containers, you instead need\nto either:\n\n- use a storage integration that provides encrypted\n  {{< glossary_tooltip text=\"volumes\" term_id=\"volume\" >}}\n- encrypt the data within your own application\n{{< /note >}}\n\n## {{% heading \"prerequisites\" %}}\n\n* {{< include \"task-tutorial-prereqs.md\" >}}\n\n* This task assumes that you are running the Kubernetes API server as a\n  {{< glossary_tooltip text=\"static pod\" term_id=\"static-pod\" >}} on each control\n  plane node.\n\n* Your cluster's control plane **must** use etcd v3.x (major version 3, any minor version).\n\n* To encrypt a custom resource, your cluster must be running Kubernetes v1.26 or newer.\n\n* To use a wildcard to match resources, your cluster must be running Kubernetes v1.27 or newer.\n\n{{< version-check >}}\n\n\n<!-- steps -->\n\n## Determine whether encryption at rest is already enabled {#determining-whether-encryption-at-rest-is-already-enabled}\n\nBy default, the API server stores plain-text representations of resources into etcd, with\nno at-rest encryption.\n\nThe `kube-apiserver` process accepts an argument `--encryption-provider-config`\nthat specifies a path to a configuration file. The contents of that file, if you specify one,\ncontrol how Kubernetes API data is encrypted in etcd.\nIf you are running the kube-apiserver without the `--encryption-provider-config` command line\nargument, you do not have encryption at rest enabled. If you are running the kube-apiserver\nwith the `--encryption-provider-config` command line argument, and the file that it references\nspecifies the `identity` provider as the first encryption provider in the list, then you\ndo not have at-rest encryption enabled\n(**the default `identity` provider does not provide any confidentiality protection.**)\n\nIf you are running the kube-apiserver\nwith the `--encryption-provider-config` command line argument, and the file that it references\nspecifies a provider other than `identity` as the first encryption provider in the list, then\nyou already have at-rest encryption enabled. However, that check does not tell you whether\na previous migration to encrypted storage has ",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "All of the APIs in Kubernetes that let you write persistent API resource data support"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "span": "All of the APIs in Kubernetes that let you write persistent API resource data support"
+        },
+        {
+          "term": "Secrets",
+          "tier": 2,
+          "span": "you can enable at-rest encryption for Secrets"
+        },
+        {
+          "term": "etcd",
+          "tier": 3,
+          "span": "any system-level encryption for the etcd cluster"
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "span": "hosts where you are running the kube-apiserver"
+        },
+        {
+          "term": "Kubernetes API",
+          "tier": 1,
+          "span": "resource data stored using the Kubernetes API"
+        },
+        {
+          "term": "Secret",
+          "tier": 2,
+          "span": "encrypt Secret objects, including the key-value data they contain"
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "span": "encrypt data in filesystems that are mounted into containers"
+        },
+        {
+          "term": "volumes",
+          "tier": 2,
+          "span": "storage integration that provides encrypted volumes"
+        },
+        {
+          "term": "static pod",
+          "tier": 1,
+          "span": "API server as a static pod on each control plane node"
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "span": "static pod on each control plane node"
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "span": "static pod on each control plane node"
+        },
+        {
+          "term": "custom resource",
+          "tier": 2,
+          "span": "To encrypt a custom resource, your cluster must be running Kubernetes v1.26 or newer"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "your cluster must be running Kubernetes v1.26 or newer"
+        },
+        {
+          "term": "API server",
+          "tier": 2,
+          "span": "By default, the API server stores plain-text representations of resources into etcd"
+        },
+        {
+          "term": "--encryption-provider-config",
+          "tier": 1,
+          "span": "The kube-apiserver process accepts an argument --encryption-provider-config"
+        },
+        {
+          "term": "resources",
+          "tier": 2,
+          "span": "the API server stores plain-text representations of resources into etcd"
+        },
+        {
+          "term": "identity",
+          "tier": 3,
+          "span": "specifies the identity provider as the first encryption provider in the list"
+        }
+      ],
+      "total_terms": 18,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_038",
+      "source_file": "reference_command-line-tools-reference_feature-gates_AllowUnsafeMalformedObjectDeletion.md",
+      "content_type": "errors",
+      "text": "---\ntitle: AllowUnsafeMalformedObjectDeletion\ncontent_type: feature_gate\n_build:\n  list: never\n  render: false\n\nstages:\n  - stage: alpha\n    defaultValue: false\n    fromVersion: \"1.32\"\n---\nEnables the cluster operator to identify corrupt resource(s) using the **list**\noperation, and introduces an option `ignoreStoreReadErrorWithClusterBreakingPotential`\nthat the operator can set to perform unsafe and force **delete** operation of\nsuch corrupt resource(s) using the Kubernetes API.\n",
+      "terms": [
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "Enables the cluster operator"
+        },
+        {
+          "term": "Kubernetes API",
+          "tier": 1,
+          "span": "using the Kubernetes API"
+        },
+        {
+          "term": "AllowUnsafeMalformedObjectDeletion",
+          "tier": 2,
+          "span": "title: AllowUnsafeMalformedObjectDeletion",
+          "reason": "Feature gate name is a key Kubernetes concept being documented"
+        },
+        {
+          "term": "feature_gate",
+          "tier": 2,
+          "span": "content_type: feature_gate",
+          "reason": "Feature gates are important Kubernetes configuration mechanisms"
+        }
+      ],
+      "total_terms": 4,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_039",
+      "source_file": "reference_config-api_apiserver-admission.v1.md",
+      "content_type": "errors",
+      "text": "---\ntitle: kube-apiserver Admission (v1)\ncontent_type: tool-reference\npackage: admission.k8s.io/v1\nauto_generated: true\n---\n\n\n## Resource Types \n\n\n- [AdmissionReview](#admission-k8s-io-v1-AdmissionReview)\n  \n\n## `AdmissionReview`     {#admission-k8s-io-v1-AdmissionReview}\n    \n\n\n<p>AdmissionReview describes an admission review request/response.</p>\n\n\n<table class=\"table\">\n<thead><tr><th width=\"30%\">Field</th><th>Description</th></tr></thead>\n<tbody>\n    \n<tr><td><code>apiVersion</code><br/>string</td><td><code>admission.k8s.io/v1</code></td></tr>\n<tr><td><code>kind</code><br/>string</td><td><code>AdmissionReview</code></td></tr>\n    \n  \n<tr><td><code>request</code><br/>\n<a href=\"#admission-k8s-io-v1-AdmissionRequest\"><code>AdmissionRequest</code></a>\n</td>\n<td>\n   <p>request describes the attributes for the admission request.</p>\n</td>\n</tr>\n<tr><td><code>response</code><br/>\n<a href=\"#admission-k8s-io-v1-AdmissionResponse\"><code>AdmissionResponse</code></a>\n</td>\n<td>\n   <p>response describes the attributes for the admission response.</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n## `AdmissionRequest`     {#admission-k8s-io-v1-AdmissionRequest}\n    \n\n**Appears in:**\n\n- [AdmissionReview](#admission-k8s-io-v1-AdmissionReview)\n\n\n<p>AdmissionRequest describes the admission.Attributes for the admission request.</p>\n\n\n<table class=\"table\">\n<thead><tr><th width=\"30%\">Field</th><th>Description</th></tr></thead>\n<tbody>\n    \n  \n<tr><td><code>uid</code> <B>[Required]</B><br/>\n<a href=\"https://pkg.go.dev/k8s.io/apimachinery/pkg/types#UID\"><code>k8s.io/apimachinery/pkg/types.UID</code></a>\n</td>\n<td>\n   <p>uid is an identifier for the individual request/response. It allows us to distinguish instances of requests which are\notherwise identical (parallel requests, requests when earlier requests did not modify etc)\nThe UID is meant to track the round trip (request/response) between the KAS and the WebHook, not the user request.\nIt is suitable for correlating log entries between the webhook and apiserver, for either auditing or debugging.</p>\n</td>\n</tr>\n<tr><td><code>kind</code> <B>[Required]</B><br/>\n<a href=\"https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#GroupVersionKind\"><code>meta/v1.GroupVersionKind</code></a>\n</td>\n<td>\n   <p>kind is the fully-qualified type of object being submitted (for example, v1.Pod or autoscaling.v1.Scale)</p>\n</td>\n</tr>\n<tr><td><code>resource</code> <B>[Required]</B><br/>\n<a href=\"https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#GroupVersionResource\"><code>meta/v1.GroupVersionResource</code></a>\n</td>\n<td>\n   <p>resource is the fully-qualified resource being requested (for example, v1.pods)</p>\n</td>\n</tr>\n<tr><td><code>subResource</code><br/>\n<code>string</code>\n</td>\n<td>\n   <p>subResource is the subresource being requested, if any (for example, &quot;status&quot; or &quot;scale&quot;)</p>\n</td>\n</tr>\n<tr><td><code>requestKind</code><br/>\n<a href=\"https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#GroupVersionKind\"><co",
+      "terms": [
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "span": "kube-apiserver Admission (v1)"
+        },
+        {
+          "term": "admission.k8s.io/v1",
+          "tier": 1,
+          "span": "package: admission.k8s.io/v1"
+        },
+        {
+          "term": "AdmissionReview",
+          "tier": 1,
+          "span": "AdmissionReview describes an admission review request/response"
+        },
+        {
+          "term": "apiVersion",
+          "tier": 2,
+          "span": "<code>apiVersion</code><br/>string"
+        },
+        {
+          "term": "kind",
+          "tier": 2,
+          "span": "<code>kind</code><br/>string"
+        },
+        {
+          "term": "AdmissionRequest",
+          "tier": 1,
+          "span": "<a href=\"#admission-k8s-io-v1-AdmissionRequest\"><code>AdmissionRequest</code></a>"
+        },
+        {
+          "term": "AdmissionResponse",
+          "tier": 1,
+          "span": "<a href=\"#admission-k8s-io-v1-AdmissionResponse\"><code>AdmissionResponse</code></a>"
+        },
+        {
+          "term": "uid",
+          "tier": 3,
+          "span": "<code>uid</code> <B>[Required]</B>"
+        },
+        {
+          "term": "KAS",
+          "tier": 1,
+          "span": "between the KAS and the WebHook"
+        },
+        {
+          "term": "WebHook",
+          "tier": 2,
+          "span": "between the KAS and the WebHook"
+        },
+        {
+          "term": "apiserver",
+          "tier": 1,
+          "span": "between the webhook and apiserver"
+        },
+        {
+          "term": "webhook",
+          "tier": 2,
+          "span": "between the webhook and apiserver"
+        },
+        {
+          "term": "GroupVersionKind",
+          "tier": 1,
+          "span": "meta/v1.GroupVersionKind"
+        },
+        {
+          "term": "resource",
+          "tier": 2,
+          "span": "<code>resource</code> <B>[Required]</B>"
+        },
+        {
+          "term": "Pod",
+          "tier": 2,
+          "span": "v1.Pod or autoscaling.v1.Scale"
+        },
+        {
+          "term": "Scale",
+          "tier": 2,
+          "span": "autoscaling.v1.Scale"
+        }
+      ],
+      "total_terms": 16,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_040",
+      "source_file": "concepts_configuration_liveness-readiness-startup-probes.md",
+      "content_type": "errors",
+      "text": "---\ntitle: Liveness, Readiness, and Startup Probes\ncontent_type: concept\nweight: 40\n---\n\n<!-- overview -->\n\nKubernetes has various types of probes:\n\n- [Liveness probe](#liveness-probe)\n- [Readiness probe](#readiness-probe)\n- [Startup probe](#startup-probe)\n\n<!-- body -->\n\n## Liveness probe\n\nLiveness probes determine when to restart a container. For example, liveness probes could catch a deadlock when an application is running but unable to make progress.\n\nIf a container fails its liveness probe repeatedly, the kubelet restarts the container.\n\nLiveness probes do not wait for readiness probes to succeed. If you want to wait before executing a liveness probe, you can either define `initialDelaySeconds` or use a\n[startup probe](#startup-probe).\n\n\n## Readiness probe\n\nReadiness probes determine when a container is ready to accept traffic. This is useful when waiting for an application to perform time-consuming initial tasks that depend on its backing services; for example: establishing network connections, loading files, and warming caches. Readiness probes can also be useful later in the container\u2019s lifecycle, for example, when recovering from temporary faults or overloads.\n\nIf the readiness probe returns a failed state, Kubernetes removes the pod from all matching service endpoints.\n\nReadiness probes run on the container during its whole lifecycle.\n\n\n## Startup probe\n\nA startup probe verifies whether the application within a container is started. This can be used to adopt liveness checks on slow starting containers, avoiding them getting killed by the kubelet before they are up and running.\n\nIf such a probe is configured, it disables liveness and readiness checks until it succeeds.\n\nThis type of probe is only executed at startup, unlike liveness and readiness probes, which are run periodically.\n\n* Read more about the [Configure Liveness, Readiness and Startup Probes](/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes).\n",
+      "terms": [
+        {
+          "term": "probes",
+          "tier": 2,
+          "span": "Kubernetes has various types of probes"
+        },
+        {
+          "term": "Liveness probe",
+          "tier": 1,
+          "span": "- [Liveness probe](#liveness-probe)"
+        },
+        {
+          "term": "Readiness probe",
+          "tier": 1,
+          "span": "- [Readiness probe](#readiness-probe)"
+        },
+        {
+          "term": "Startup probe",
+          "tier": 1,
+          "span": "- [Startup probe](#startup-probe)"
+        },
+        {
+          "term": "Liveness probes",
+          "tier": 1,
+          "span": "Liveness probes determine when to restart a container"
+        },
+        {
+          "term": "container",
+          "tier": 2,
+          "span": "Liveness probes determine when to restart a container"
+        },
+        {
+          "term": "liveness probes",
+          "tier": 1,
+          "span": "liveness probes could catch a deadlock"
+        },
+        {
+          "term": "liveness probe",
+          "tier": 1,
+          "span": "If a container fails its liveness probe repeatedly"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "span": "the kubelet restarts the container"
+        },
+        {
+          "term": "readiness probes",
+          "tier": 1,
+          "span": "Liveness probes do not wait for readiness probes to succeed"
+        },
+        {
+          "term": "initialDelaySeconds",
+          "tier": 1,
+          "span": "you can either define `initialDelaySeconds`"
+        },
+        {
+          "term": "startup probe",
+          "tier": 1,
+          "span": "or use a startup probe"
+        },
+        {
+          "term": "Readiness probes",
+          "tier": 1,
+          "span": "Readiness probes determine when a container is ready to accept traffic"
+        },
+        {
+          "term": "pod",
+          "tier": 2,
+          "span": "Kubernetes removes the pod from all matching service endpoints"
+        },
+        {
+          "term": "service endpoints",
+          "tier": 2,
+          "span": "Kubernetes removes the pod from all matching service endpoints"
+        },
+        {
+          "term": "startup probe",
+          "tier": 1,
+          "span": "A startup probe verifies whether the application within a container is started"
+        },
+        {
+          "term": "liveness checks",
+          "tier": 1,
+          "span": "This can be used to adopt liveness checks on slow starting containers"
+        },
+        {
+          "term": "readiness checks",
+          "tier": 1,
+          "span": "it disables liveness and readiness checks until it succeeds"
+        },
+        {
+          "term": "deadlock",
+          "tier": 2,
+          "span": "liveness probes could catch a deadlock"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 2,
+          "span": "Kubernetes has various types of probes"
+        }
+      ],
+      "total_terms": 20,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_041",
+      "source_file": "reference_glossary_shuffle-sharding.md",
+      "content_type": "errors",
+      "text": "---\ntitle: Shuffle-sharding\nid: shuffle-sharding\ndate: 2020-03-04\nfull_link:\nshort_description: >\n  A technique for assigning requests to queues that provides better isolation than hashing modulo the number of queues.\n\naka:\ntags:\n- fundamental\n---\nA technique for assigning requests to queues that provides better isolation than hashing modulo the number of queues.\n\n<!--more--> \n\nWe are often concerned with insulating different flows of requests\nfrom each other, so that a high-intensity flow does not crowd out low-intensity flows.\nA simple way to put requests into queues is to hash some\ncharacteristics of the request, modulo the number of queues, to get\nthe index of the queue to use. The hash function uses as input\ncharacteristics of the request that align with flows. For example, in\nthe Internet this is often the 5-tuple of source and destination\naddress, protocol, and source and destination port.\n\nThat simple hash-based scheme has the property that any high-intensity flow\nwill crowd out all the low-intensity flows that hash to the same queue.\nProviding good insulation for a large number of flows requires a large\nnumber of queues, which is problematic. Shuffle-sharding is a more\nnimble technique that can do a better job of insulating the low-intensity\nflows from the high-intensity flows. The terminology of shuffle-sharding uses\nthe metaphor of dealing a hand from a deck of cards; each queue is a\nmetaphorical card. The shuffle-sharding technique starts with hashing\nthe flow-identifying characteristics of the request, to produce a hash\nvalue with dozens or more of bits. Then the hash value is used as a\nsource of entropy to shuffle the deck and deal a hand of cards\n(queues). All the dealt queues are examined, and the request is put\ninto one of the examined queues with the shortest length. With a\nmodest hand size, it does not cost much to examine all the dealt cards\nand a given low-intensity flow has a good chance to dodge the effects of a\ngiven high-intensity flow. With a large hand size it is expensive to examine\nthe dealt queues and more difficult for the low-intensity flows to dodge the\ncollective effects of a set of high-intensity flows. Thus, the hand size\nshould be chosen judiciously.\n\n",
+      "terms": [
+        {
+          "term": "Shuffle-sharding",
+          "tier": 1,
+          "span": "title: Shuffle-sharding"
+        },
+        {
+          "term": "shuffle-sharding",
+          "tier": 1,
+          "span": "Shuffle-sharding is a more nimble technique"
+        },
+        {
+          "term": "queues",
+          "tier": 3,
+          "span": "A technique for assigning requests to queues"
+        },
+        {
+          "term": "requests",
+          "tier": 3,
+          "span": "assigning requests to queues"
+        },
+        {
+          "term": "flows",
+          "tier": 3,
+          "span": "insulating different flows of requests"
+        },
+        {
+          "term": "hash",
+          "tier": 3,
+          "span": "A simple way to put requests into queues is to hash some characteristics"
+        }
+      ],
+      "total_terms": 6,
+      "human_validated": false,
+      "review_status": "approved"
+    },
+    {
+      "chunk_id": "chunk_042",
+      "source_file": "contribute_analytics.md",
+      "content_type": "errors",
+      "text": "---\ntitle: Viewing Site Analytics\ncontent_type: concept\nweight: 120\ncard:\n  name: contribute\n  weight: 100\n---\n\n<!-- overview -->\n\nThis page contains information about the kubernetes.io analytics dashboard.\n\n\n<!-- body -->\n\n[View the dashboard](https://lookerstudio.google.com/u/0/reporting/fe615dc5-59b0-4db5-8504-ef9eacb663a9/page/4VDGB/).\n\nThis dashboard is built using [Google Looker Studio](https://lookerstudio.google.com/overview) and shows information collected on kubernetes.io using Google Analytics 4 since August 2022. \n\n### Using the dashboard\n\nBy default, the dashboard shows all collected analytics for the past 30 days. Use the date selector to see data from a different date range. Other filtering options allow you to view data based on user location, the device used to access the site, the translation of the docs used, and more.\n\n If you notice an issue with this dashboard, or would like to request any improvements, please [open an issue](https://github.com/kubernetes/website/issues/new/choose).\n",
+      "terms": [],
+      "total_terms": 0,
+      "human_validated": false,
+      "review_status": "no_terms"
+    },
+    {
+      "chunk_id": "chunk_043",
+      "source_file": "concepts_security_security-checklist.md",
+      "content_type": "errors",
+      "text": "---\ntitle: Security Checklist\ndescription: >\n  Baseline checklist for ensuring security in Kubernetes clusters.\ncontent_type: concept\nweight: 100\n---\n\n<!-- overview -->\n\nThis checklist aims at providing a basic list of guidance with links to more\ncomprehensive documentation on each topic. It does not claim to be exhaustive\nand is meant to evolve.\n\nOn how to read and use this document:\n\n- The order of topics does not reflect an order of priority.\n- Some checklist items are detailed in the paragraph below the list of each section.\n\n{{< caution >}}\nChecklists are **not** sufficient for attaining a good security posture on their\nown. A good security posture requires constant attention and improvement, but a\nchecklist can be the first step on the never-ending journey towards security\npreparedness. Some of the recommendations in this checklist may be too\nrestrictive or too lax for your specific security needs. Since Kubernetes\nsecurity is not \"one size fits all\", each category of checklist items should be\nevaluated on its merits.\n{{< /caution >}}\n\n<!-- body -->\n\n## Authentication & Authorization\n\n- [ ] `system:masters` group is not used for user or component authentication after bootstrapping.\n- [ ] The kube-controller-manager is running with `--use-service-account-credentials`\n  enabled.\n- [ ] The root certificate is protected (either an offline CA, or a managed\n  online CA with effective access controls).\n- [ ] Intermediate and leaf certificates have an expiry date no more than 3\n  years in the future.\n- [ ] A process exists for periodic access review, and reviews occur no more\n  than 24 months apart.\n- [ ] The [Role Based Access Control Good Practices](/docs/concepts/security/rbac-good-practices/)\n  are followed for guidance related to authentication and authorization.\n\nAfter bootstrapping, neither users nor components should authenticate to the\nKubernetes API as `system:masters`. Similarly, running all of\nkube-controller-manager as `system:masters` should be avoided. In fact,\n`system:masters` should only be used as a break-glass mechanism, as opposed to\nan admin user.\n\n## Network security\n\n- [ ] CNI plugins in use support network policies.\n- [ ] Ingress and egress network policies are applied to all workloads in the\n  cluster.\n- [ ] Default network policies within each namespace, selecting all pods, denying\n  everything, are in place.\n- [ ] If appropriate, a service mesh is used to encrypt all communications inside of the cluster.\n- [ ] The Kubernetes API, kubelet API and etcd are not exposed publicly on Internet.\n- [ ] Access from the workloads to the cloud metadata API is filtered.\n- [ ] Use of LoadBalancer and ExternalIPs is restricted.\n\nA number of [Container Network Interface (CNI) plugins](/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)\nplugins provide the functionality to\nrestrict network resources that pods may communicate with. This is most commonly done\nthrough [Network Policies](/docs/concepts/services-networking/n",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "span": "Baseline checklist for ensuring security in Kubernetes clusters"
+        },
+        {
+          "term": "clusters",
+          "tier": 2,
+          "span": "Baseline checklist for ensuring security in Kubernetes clusters"
+        },
+        {
+          "term": "system:masters",
+          "tier": 1,
+          "span": "`system:masters` group is not used for user or component authentication after bootstrapping"
+        },
+        {
+          "term": "kube-controller-manager",
+          "tier": 1,
+          "span": "The kube-controller-manager is running with `--use-service-account-credentials`"
+        },
+        {
+          "term": "--use-service-account-credentials",
+          "tier": 1,
+          "span": "kube-controller-manager is running with `--use-service-account-credentials`"
+        },
+        {
+          "term": "Kubernetes API",
+          "tier": 1,
+          "span": "should authenticate to the Kubernetes API as `system:masters`"
+        },
+        {
+          "term": "Role Based Access Control",
+          "tier": 2,
+          "span": "The [Role Based Access Control Good Practices]"
+        },
+        {
+          "term": "CNI plugins",
+          "tier": 1,
+          "span": "CNI plugins in use support network policies"
+        },
+        {
+          "term": "network policies",
+          "tier": 2,
+          "span": "CNI plugins in use support network policies"
+        },
+        {
+          "term": "Ingress",
+          "tier": 2,
+          "span": "Ingress and egress network policies are applied to all workloads"
+        },
+        {
+          "term": "egress",
+          "tier": 2,
+          "span": "Ingress and egress network policies are applied to all workloads"
+        },
+        {
+          "term": "workloads",
+          "tier": 2,
+          "span": "network policies are applied to all workloads in the cluster"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "span": "network policies are applied to all workloads in the cluster"
+        },
+        {
+          "term": "namespace",
+          "tier": 2,
+          "span": "Default network policies within each namespace"
+        },
+        {
+          "term": "pods",
+          "tier": 2,
+          "span": "within each namespace, selecting all pods"
+        },
+        {
+          "term": "service mesh",
+          "tier": 3,
+          "span": "a service mesh is used to encrypt all communications inside of the cluster"
+        },
+        {
+          "term": "authentication",
+          "tier": 2,
+          "span": "Authentication & Authorization"
+        },
+        {
+          "term": "authorization",
+          "tier": 2,
+          "span": "Authentication & Authorization"
+        },
+        {
+          "term": "root certificate",
+          "tier": 2,
+          "span": "The root certificate is protected"
+        },
+        {
+          "term": "offline CA",
+          "tier": 2,
+          "span": "either an offline CA, or a managed online CA"
+        },
+        {
+          "term": "online CA",
+          "tier": 2,
+          "span": "either an offline CA, or a managed online CA"
+        },
+        {
+          "term": "bootstrapping",
+          "tier": 2,
+          "span": "is not used for user or component authentication after bootstrapping"
+        }
+      ],
+      "total_terms": 22,
+      "human_validated": false,
+      "review_status": "corrected"
+    },
+    {
+      "chunk_id": "chunk_044",
+      "source_file": "reference_config-api_apiserver-config.v1.md",
+      "content_type": "errors",
+      "text": "---\ntitle: kube-apiserver Configuration (v1)\ncontent_type: tool-reference\npackage: apiserver.config.k8s.io/v1\nauto_generated: true\n---\n<p>Package v1 is the v1 version of the API.</p>\n\n\n## Resource Types \n\n\n- [AdmissionConfiguration](#apiserver-config-k8s-io-v1-AdmissionConfiguration)\n- [AuthenticationConfiguration](#apiserver-config-k8s-io-v1-AuthenticationConfiguration)\n- [AuthorizationConfiguration](#apiserver-config-k8s-io-v1-AuthorizationConfiguration)\n- [EncryptionConfiguration](#apiserver-config-k8s-io-v1-EncryptionConfiguration)\n- [TracingConfiguration](#apiserver-config-k8s-io-v1-TracingConfiguration)\n  \n    \n    \n\n## `TracingConfiguration`     {#TracingConfiguration}\n    \n\n**Appears in:**\n\n- [KubeletConfiguration](#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)\n\n- [TracingConfiguration](#apiserver-config-k8s-io-v1-TracingConfiguration)\n\n- [TracingConfiguration](#apiserver-k8s-io-v1alpha1-TracingConfiguration)\n\n- [TracingConfiguration](#apiserver-k8s-io-v1beta1-TracingConfiguration)\n\n\n<p>TracingConfiguration provides versioned configuration for OpenTelemetry tracing clients.</p>\n\n\n<table class=\"table\">\n<thead><tr><th width=\"30%\">Field</th><th>Description</th></tr></thead>\n<tbody>\n    \n  \n<tr><td><code>endpoint</code><br/>\n<code>string</code>\n</td>\n<td>\n   <p>Endpoint of the collector this component will report traces to.\nThe connection is insecure, and does not currently support TLS.\nRecommended is unset, and endpoint is the otlp grpc default, localhost:4317.</p>\n</td>\n</tr>\n<tr><td><code>samplingRatePerMillion</code><br/>\n<code>int32</code>\n</td>\n<td>\n   <p>SamplingRatePerMillion is the number of samples to collect per million spans.\nRecommended is unset. If unset, sampler respects its parent span's sampling\nrate, but otherwise never samples.</p>\n</td>\n</tr>\n</tbody>\n</table>\n  \n\n## `AdmissionConfiguration`     {#apiserver-config-k8s-io-v1-AdmissionConfiguration}\n    \n\n\n<p>AdmissionConfiguration provides versioned configuration for admission controllers.</p>\n\n\n<table class=\"table\">\n<thead><tr><th width=\"30%\">Field</th><th>Description</th></tr></thead>\n<tbody>\n    \n<tr><td><code>apiVersion</code><br/>string</td><td><code>apiserver.config.k8s.io/v1</code></td></tr>\n<tr><td><code>kind</code><br/>string</td><td><code>AdmissionConfiguration</code></td></tr>\n    \n  \n<tr><td><code>plugins</code><br/>\n<a href=\"#apiserver-config-k8s-io-v1-AdmissionPluginConfiguration\"><code>[]AdmissionPluginConfiguration</code></a>\n</td>\n<td>\n   <p>Plugins allows specifying a configuration per admission control plugin.</p>\n</td>\n</tr>\n</tbody>\n</table>\n\n## `AuthenticationConfiguration`     {#apiserver-config-k8s-io-v1-AuthenticationConfiguration}\n    \n\n\n<p>AuthenticationConfiguration provides versioned configuration for authentication.</p>\n\n\n<table class=\"table\">\n<thead><tr><th width=\"30%\">Field</th><th>Description</th></tr></thead>\n<tbody>\n    \n<tr><td><code>apiVersion</code><br/>string</td><td><code>apiserver.config.k8s.io/v1</code></td></tr>\n<tr><td><code",
+      "terms": [
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "span": "kube-apiserver Configuration (v1)"
+        },
+        {
+          "term": "apiserver.config.k8s.io/v1",
+          "tier": 1,
+          "span": "package: apiserver.config.k8s.io/v1"
+        },
+        {
+          "term": "AdmissionConfiguration",
+          "tier": 1,
+          "span": "AdmissionConfiguration"
+        },
+        {
+          "term": "AuthenticationConfiguration",
+          "tier": 1,
+          "span": "AuthenticationConfiguration"
+        },
+        {
+          "term": "AuthorizationConfiguration",
+          "tier": 1,
+          "span": "AuthorizationConfiguration"
+        },
+        {
+          "term": "EncryptionConfiguration",
+          "tier": 1,
+          "span": "EncryptionConfiguration"
+        },
+        {
+          "term": "TracingConfiguration",
+          "tier": 1,
+          "span": "TracingConfiguration"
+        },
+        {
+          "term": "KubeletConfiguration",
+          "tier": 1,
+          "span": "KubeletConfiguration"
+        },
+        {
+          "term": "endpoint",
+          "tier": 3,
+          "span": "Endpoint of the collector this component will report traces to"
+        },
+        {
+          "term": "samplingRatePerMillion",
+          "tier": 1,
+          "span": "samplingRatePerMillion"
+        },
+        {
+          "term": "admission controllers",
+          "tier": 2,
+          "span": "AdmissionConfiguration provides versioned configuration for admission controllers"
+        },
+        {
+          "term": "apiVersion",
+          "tier": 2,
+          "span": "apiVersion"
+        },
+        {
+          "term": "kind",
+          "tier": 2,
+          "span": "kind"
+        },
+        {
+          "term": "AdmissionPluginConfiguration",
+          "tier": 1,
+          "span": "AdmissionPluginConfiguration"
+        },
+        {
+          "term": "OpenTelemetry",
+          "tier": 2,
+          "span": "TracingConfiguration provides versioned configuration for OpenTelemetry tracing clients"
+        }
+      ],
+      "total_terms": 15,
+      "human_validated": false,
+      "review_status": "corrected"
+    }
+  ],
+  "human_spot_check": {
+    "chunks_checked": 0,
+    "chunks_to_check": [
+      "chunk_002",
+      "chunk_029",
+      "chunk_034",
+      "chunk_007",
+      "chunk_024"
+    ],
+    "discrepancies": [],
+    "agreement_rate": 0.0
+  }
+}

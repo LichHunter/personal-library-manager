@@ -1,0 +1,809 @@
+{
+  "created_at": "2026-02-04 10:49:09",
+  "total_chunks": 15,
+  "total_terms": 163,
+  "chunks": [
+    {
+      "chunk_id": "_index_chunk_0",
+      "doc_id": "_index",
+      "heading": "Content",
+      "source_file": "_index.md",
+      "content": "---\nlinktitle: Kubernetes Documentation\ntitle: Documentation\nsitemap:\n  priority: 1.0\n---",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1
+        }
+      ],
+      "term_count": 1
+    },
+    {
+      "chunk_id": "concepts__index_chunk_0",
+      "doc_id": "concepts__index",
+      "heading": "Content",
+      "source_file": "concepts__index.md",
+      "content": "---\ntitle: Concepts\nmain_menu: true\ncontent_type: concept\nweight: 40\n---\n\n<!-- overview -->\n\nThe Concepts section helps you learn about the parts of the Kubernetes system and the abstractions Kubernetes uses to represent your {{< glossary_tooltip text=\"cluster\" term_id=\"cluster\" length=\"all\" >}}, and helps you obtain a deeper understanding of how Kubernetes works.\n\n\n\n<!-- body -->",
+      "terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1
+        },
+        {
+          "term": "cluster",
+          "tier": 1
+        }
+      ],
+      "term_count": 2
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_0",
+      "doc_id": "concepts_architecture__index",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture__index.md",
+      "content": "---\ntitle: \"Cluster Architecture\"\nweight: 30\ndescription: >\n  The architectural concepts behind Kubernetes.\n---\n\nA Kubernetes cluster consists of a control plane plus a set of worker machines, called nodes,\nthat run containerized applications. Every cluster needs at least one worker node in order to run Pods.\n\nThe worker node(s) host the Pods that are the components of the application workload.\nThe control plane manages the worker nodes and the Pods in the cluster. In production\nenvironments, the control plane usually runs across multiple computers and a cluster\nusually runs multiple nodes, providing fault-tolerance and high availability.\n\nThis document outlines the various components you need to have for a complete and working Kubernetes cluster.\n\n{{< figure src=\"/images/docs/kubernetes-cluster-architecture.svg\" alt=\"The control plane (kube-apiserver, etcd, kube-controller-manager, kube-scheduler) and several nodes. Each node is running a kubelet and kube-proxy.\" caption=\"Figure 1. Kubernetes cluster components.\" class=\"diagram-large\" >}}\n\n{{< details summary=\"About this architecture\" >}}\nThe diagram in Figure 1 presents an example reference architecture for a Kubernetes cluster.\nThe actual distribution of components can vary based on specific cluster setups and requirements.\n\nIn the diagram, each node runs the [`kube-proxy`](#kube-proxy) component. You need a\nnetwork proxy component on each node to ensure that the\n{{< glossary_tooltip text=\"Service\" term_id=\"service\">}} API and associated behaviors\nare available on your cluster network. However, some network plugins provide their own,\nthird party implementation of proxying. When you use that kind of network plugin,\nthe node does not need to run `kube-proxy`.\n{{< /details >}}",
+      "terms": [
+        {
+          "term": "Kubernetes cluster",
+          "tier": 1
+        },
+        {
+          "term": "control plane",
+          "tier": 1
+        },
+        {
+          "term": "nodes",
+          "tier": 1
+        },
+        {
+          "term": "worker nodes",
+          "tier": 1
+        },
+        {
+          "term": "Pods",
+          "tier": 1
+        },
+        {
+          "term": "containerized applications",
+          "tier": 2
+        },
+        {
+          "term": "fault-tolerance",
+          "tier": 2
+        },
+        {
+          "term": "high availability",
+          "tier": 2
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1
+        },
+        {
+          "term": "etcd",
+          "tier": 1
+        },
+        {
+          "term": "kube-controller-manager",
+          "tier": 1
+        },
+        {
+          "term": "kube-scheduler",
+          "tier": 1
+        },
+        {
+          "term": "kubelet",
+          "tier": 1
+        },
+        {
+          "term": "kube-proxy",
+          "tier": 1
+        },
+        {
+          "term": "network proxy",
+          "tier": 2
+        },
+        {
+          "term": "Service",
+          "tier": 1
+        },
+        {
+          "term": "network plugin",
+          "tier": 2
+        }
+      ],
+      "term_count": 17
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_1",
+      "doc_id": "concepts_architecture__index",
+      "heading": "Control plane components",
+      "source_file": "concepts_architecture__index.md",
+      "content": "## Control plane components\n\nThe control plane's components make global decisions about the cluster (for example, scheduling),\nas well as detecting and responding to cluster events (for example, starting up a new\n{{< glossary_tooltip text=\"pod\" term_id=\"pod\">}} when a Deployment's\n`{{< glossary_tooltip text=\"replicas\" term_id=\"replica\" >}}` field is unsatisfied).\n\nControl plane components can be run on any machine in the cluster. However, for simplicity, setup scripts\ntypically start all control plane components on the same machine, and do not run user containers on this machine.\nSee [Creating Highly Available clusters with kubeadm](/docs/setup/production-environment/tools/kubeadm/high-availability/)\nfor an example control plane setup that runs across multiple machines.",
+      "terms": [
+        {
+          "term": "control plane",
+          "tier": 1
+        },
+        {
+          "term": "cluster",
+          "tier": 1
+        },
+        {
+          "term": "scheduling",
+          "tier": 2
+        },
+        {
+          "term": "pod",
+          "tier": 1
+        },
+        {
+          "term": "Deployment",
+          "tier": 1
+        },
+        {
+          "term": "replicas",
+          "tier": 1
+        },
+        {
+          "term": "control plane components",
+          "tier": 1
+        },
+        {
+          "term": "user containers",
+          "tier": 3
+        },
+        {
+          "term": "kubeadm",
+          "tier": 2
+        }
+      ],
+      "term_count": 9
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_0",
+      "doc_id": "concepts_architecture_cgroups",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture_cgroups.md",
+      "content": "---\ntitle: About cgroup v2\ncontent_type: concept\nweight: 50\n---\n\n<!-- overview -->\n\nOn Linux, {{< glossary_tooltip text=\"control groups\" term_id=\"cgroup\" >}}\nconstrain resources that are allocated to processes.\n\nThe {{< glossary_tooltip text=\"kubelet\" term_id=\"kubelet\" >}} and the\nunderlying container runtime need to interface with cgroups to enforce\n[resource management for pods and containers](/docs/concepts/configuration/manage-resources-containers/) which\nincludes cpu/memory requests and limits for containerized workloads.\n\nThere are two versions of cgroups in Linux: cgroup v1 and cgroup v2. cgroup v2 is\nthe new generation of the `cgroup` API.\n\n<!-- body -->",
+      "terms": [
+        {
+          "term": "cgroup v2",
+          "tier": 1
+        },
+        {
+          "term": "control groups",
+          "tier": 1
+        },
+        {
+          "term": "cgroup",
+          "tier": 1
+        },
+        {
+          "term": "kubelet",
+          "tier": 1
+        },
+        {
+          "term": "container runtime",
+          "tier": 2
+        },
+        {
+          "term": "resource management",
+          "tier": 2
+        },
+        {
+          "term": "pods",
+          "tier": 1
+        },
+        {
+          "term": "containers",
+          "tier": 1
+        },
+        {
+          "term": "cpu/memory requests and limits",
+          "tier": 2
+        },
+        {
+          "term": "requests",
+          "tier": 2
+        },
+        {
+          "term": "limits",
+          "tier": 2
+        },
+        {
+          "term": "cgroup v1",
+          "tier": 2
+        },
+        {
+          "term": "containerized workloads",
+          "tier": 3
+        }
+      ],
+      "term_count": 13
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_1",
+      "doc_id": "concepts_architecture_cgroups",
+      "heading": "What is cgroup v2? {#cgroup-v2}",
+      "source_file": "concepts_architecture_cgroups.md",
+      "content": "## What is cgroup v2? {#cgroup-v2}\n\n{{< feature-state for_k8s_version=\"v1.25\" state=\"stable\" >}}\n\ncgroup v2 is the next version of the Linux `cgroup` API. cgroup v2 provides a\nunified control system with enhanced resource management\ncapabilities.\n\ncgroup v2 offers several improvements over cgroup v1, such as the following:\n\n- Single unified hierarchy design in API\n- Safer sub-tree delegation to containers\n- Newer features like [Pressure Stall Information](https://www.kernel.org/doc/html/latest/accounting/psi.html)\n- Enhanced resource allocation management and isolation across multiple resources\n  - Unified accounting for different types of memory allocations (network memory, kernel memory, etc)\n  - Accounting for non-immediate resource changes such as page cache write backs\n\nSome Kubernetes features exclusively use cgroup v2 for enhanced resource\nmanagement and isolation. For example, the\n[MemoryQoS](/docs/concepts/workloads/pods/pod-qos/#memory-qos-with-cgroup-v2) feature improves memory QoS\nand relies on cgroup v2 primitives.",
+      "terms": [
+        {
+          "term": "cgroup v2",
+          "tier": 1
+        },
+        {
+          "term": "cgroup",
+          "tier": 1
+        },
+        {
+          "term": "cgroup v1",
+          "tier": 2
+        },
+        {
+          "term": "stable",
+          "tier": 2
+        },
+        {
+          "term": "Pressure Stall Information",
+          "tier": 3
+        },
+        {
+          "term": "MemoryQoS",
+          "tier": 1
+        },
+        {
+          "term": "memory QoS",
+          "tier": 2
+        },
+        {
+          "term": "resource management",
+          "tier": 2
+        },
+        {
+          "term": "containers",
+          "tier": 2
+        },
+        {
+          "term": "kernel memory",
+          "tier": 3
+        },
+        {
+          "term": "network memory",
+          "tier": 3
+        },
+        {
+          "term": "page cache write backs",
+          "tier": 3
+        }
+      ],
+      "term_count": 12
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+      "doc_id": "concepts_architecture_cloud-controller",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture_cloud-controller.md",
+      "content": "---\ntitle: Cloud Controller Manager\ncontent_type: concept\nweight: 40\n---\n\n<!-- overview -->\n\n{{< feature-state state=\"beta\" for_k8s_version=\"v1.11\" >}}\n\nCloud infrastructure technologies let you run Kubernetes on public, private, and hybrid clouds.\nKubernetes believes in automated, API-driven infrastructure without tight coupling between\ncomponents.\n\n{{< glossary_definition term_id=\"cloud-controller-manager\" length=\"all\" prepend=\"The cloud-controller-manager is\">}}\n\nThe cloud-controller-manager is structured using a plugin\nmechanism that allows different cloud providers to integrate their platforms with Kubernetes.\n\n<!-- body -->",
+      "terms": [
+        {
+          "term": "Cloud Controller Manager",
+          "tier": 1
+        },
+        {
+          "term": "cloud-controller-manager",
+          "tier": 1
+        },
+        {
+          "term": "beta",
+          "tier": 2
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1
+        },
+        {
+          "term": "API-driven infrastructure",
+          "tier": 3
+        },
+        {
+          "term": "cloud providers",
+          "tier": 2
+        }
+      ],
+      "term_count": 6
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+      "doc_id": "concepts_architecture_cloud-controller",
+      "heading": "Design",
+      "source_file": "concepts_architecture_cloud-controller.md",
+      "content": "## Design\n\n![Kubernetes components](/images/docs/components-of-kubernetes.svg)\n\nThe cloud controller manager runs in the control plane as a replicated set of processes\n(usually, these are containers in Pods). Each cloud-controller-manager implements\nmultiple {{< glossary_tooltip text=\"controllers\" term_id=\"controller\" >}} in a single\nprocess.\n\n\n{{< note >}}\nYou can also run the cloud controller manager as a Kubernetes\n{{< glossary_tooltip text=\"addon\" term_id=\"addons\" >}} rather than as part\nof the control plane.\n{{< /note >}}",
+      "terms": [
+        {
+          "term": "cloud controller manager",
+          "tier": 1
+        },
+        {
+          "term": "control plane",
+          "tier": 1
+        },
+        {
+          "term": "Pods",
+          "tier": 1
+        },
+        {
+          "term": "controllers",
+          "tier": 1
+        },
+        {
+          "term": "cloud-controller-manager",
+          "tier": 1
+        },
+        {
+          "term": "addon",
+          "tier": 2
+        },
+        {
+          "term": "replicated set of processes",
+          "tier": 3
+        }
+      ],
+      "term_count": 7
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+      "doc_id": "concepts_architecture_control-plane-node-communication",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture_control-plane-node-communication.md",
+      "content": "---\nreviewers:\n- dchen1107\n- liggitt\ntitle: Communication between Nodes and the Control Plane\ncontent_type: concept\nweight: 20\naliases:\n- master-node-communication\n---\n\n<!-- overview -->\n\nThis document catalogs the communication paths between the {{< glossary_tooltip term_id=\"kube-apiserver\" text=\"API server\" >}}\nand the Kubernetes {{< glossary_tooltip text=\"cluster\" term_id=\"cluster\" length=\"all\" >}}.\nThe intent is to allow users to customize their installation to harden the network configuration\nsuch that the cluster can be run on an untrusted network (or on fully public IPs on a cloud\nprovider).\n\n<!-- body -->",
+      "terms": [
+        {
+          "term": "API server",
+          "tier": 1
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1
+        },
+        {
+          "term": "cluster",
+          "tier": 1
+        },
+        {
+          "term": "Control Plane",
+          "tier": 1
+        },
+        {
+          "term": "Nodes",
+          "tier": 1
+        },
+        {
+          "term": "master-node-communication",
+          "tier": 2
+        },
+        {
+          "term": "network configuration",
+          "tier": 3
+        }
+      ],
+      "term_count": 7
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+      "doc_id": "concepts_architecture_control-plane-node-communication",
+      "heading": "Node to Control Plane",
+      "source_file": "concepts_architecture_control-plane-node-communication.md",
+      "content": "## Node to Control Plane\n\nKubernetes has a \"hub-and-spoke\" API pattern. All API usage from nodes (or the pods they run)\nterminates at the API server. None of the other control plane components are designed to expose\nremote services. The API server is configured to listen for remote connections on a secure HTTPS\nport (typically 443) with one or more forms of client\n[authentication](/docs/reference/access-authn-authz/authentication/) enabled.\nOne or more forms of [authorization](/docs/reference/access-authn-authz/authorization/) should be\nenabled, especially if [anonymous requests](/docs/reference/access-authn-authz/authentication/#anonymous-requests)\nor [service account tokens](/docs/reference/access-authn-authz/authentication/#service-account-tokens)\nare allowed.\n\nNodes should be provisioned with the public root {{< glossary_tooltip text=\"certificate\" term_id=\"certificate\" >}} for the cluster such that they can\nconnect securely to the API server along with valid client credentials. A good approach is that the\nclient credentials provided to the kubelet are in the form of a client certificate. See\n[kubelet TLS bootstrapping](/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/)\nfor automated provisioning of kubelet client certificates.\n\n{{< glossary_tooltip text=\"Pods\" term_id=\"pod\" >}} that wish to connect to the API server can do so securely by leveraging a service account so\nthat Kubernetes will automatically inject the public root certificate and a valid bearer token\ninto the pod when it is instantiated.\nThe `kubernetes` service (in `default` namespace) is configured with a virtual IP address that is\nredirected (via `{{< glossary_tooltip text=\"kube-proxy\" term_id=\"kube-proxy\" >}}`) to the HTTPS endpoint on the API server.\n\nThe control plane components also communicate with the API server over the secure port.\n\nAs a result, the default operating mode for connections from the nodes and pod running on the\nnodes to the control plane is secured by default and can run over untrusted and/or public\nnetworks.",
+      "terms": [
+        {
+          "term": "Node",
+          "tier": 1
+        },
+        {
+          "term": "Control Plane",
+          "tier": 1
+        },
+        {
+          "term": "API server",
+          "tier": 1
+        },
+        {
+          "term": "Pods",
+          "tier": 1
+        },
+        {
+          "term": "kubelet",
+          "tier": 1
+        },
+        {
+          "term": "kube-proxy",
+          "tier": 1
+        },
+        {
+          "term": "service account",
+          "tier": 1
+        },
+        {
+          "term": "namespace",
+          "tier": 2
+        },
+        {
+          "term": "authentication",
+          "tier": 2
+        },
+        {
+          "term": "authorization",
+          "tier": 2
+        },
+        {
+          "term": "anonymous requests",
+          "tier": 2
+        },
+        {
+          "term": "service account tokens",
+          "tier": 2
+        },
+        {
+          "term": "certificate",
+          "tier": 2
+        },
+        {
+          "term": "client certificate",
+          "tier": 2
+        },
+        {
+          "term": "public root certificate",
+          "tier": 2
+        },
+        {
+          "term": "client credentials",
+          "tier": 2
+        },
+        {
+          "term": "bearer token",
+          "tier": 2
+        },
+        {
+          "term": "TLS bootstrapping",
+          "tier": 2
+        },
+        {
+          "term": "kubelet TLS bootstrapping",
+          "tier": 2
+        },
+        {
+          "term": "HTTPS",
+          "tier": 3
+        },
+        {
+          "term": "hub-and-spoke",
+          "tier": 3
+        },
+        {
+          "term": "virtual IP address",
+          "tier": 3
+        }
+      ],
+      "term_count": 22
+    },
+    {
+      "chunk_id": "concepts_architecture_controller_chunk_0",
+      "doc_id": "concepts_architecture_controller",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture_controller.md",
+      "content": "---\ntitle: Controllers\ncontent_type: concept\nweight: 30\n---\n\n<!-- overview -->\n\nIn robotics and automation, a _control loop_ is\na non-terminating loop that regulates the state of a system.\n\nHere is one example of a control loop: a thermostat in a room.\n\nWhen you set the temperature, that's telling the thermostat\nabout your *desired state*. The actual room temperature is the\n*current state*. The thermostat acts to bring the current state\ncloser to the desired state, by turning equipment on or off.\n\n{{< glossary_definition term_id=\"controller\" length=\"short\">}}\n\n\n\n\n<!-- body -->",
+      "terms": [
+        {
+          "term": "Controllers",
+          "tier": 1
+        },
+        {
+          "term": "controller",
+          "tier": 1
+        },
+        {
+          "term": "control loop",
+          "tier": 2
+        },
+        {
+          "term": "desired state",
+          "tier": 2
+        },
+        {
+          "term": "current state",
+          "tier": 2
+        }
+      ],
+      "term_count": 5
+    },
+    {
+      "chunk_id": "concepts_architecture_controller_chunk_1",
+      "doc_id": "concepts_architecture_controller",
+      "heading": "Controller pattern",
+      "source_file": "concepts_architecture_controller.md",
+      "content": "## Controller pattern\n\nA controller tracks at least one Kubernetes resource type.\nThese {{< glossary_tooltip text=\"objects\" term_id=\"object\" >}}\nhave a spec field that represents the desired state. The\ncontroller(s) for that resource are responsible for making the current\nstate come closer to that desired state.\n\nThe controller might carry the action out itself; more commonly, in Kubernetes,\na controller will send messages to the\n{{< glossary_tooltip text=\"API server\" term_id=\"kube-apiserver\" >}} that have\nuseful side effects. You'll see examples of this below.\n\n{{< comment >}}\nSome built-in controllers, such as the namespace controller, act on objects\nthat do not have a spec. For simplicity, this page omits explaining that\ndetail.\n{{< /comment >}}",
+      "terms": [
+        {
+          "term": "controller",
+          "tier": 1
+        },
+        {
+          "term": "Controller pattern",
+          "tier": 1
+        },
+        {
+          "term": "Kubernetes resource type",
+          "tier": 1
+        },
+        {
+          "term": "objects",
+          "tier": 2
+        },
+        {
+          "term": "spec",
+          "tier": 1
+        },
+        {
+          "term": "desired state",
+          "tier": 1
+        },
+        {
+          "term": "API server",
+          "tier": 1
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1
+        },
+        {
+          "term": "namespace controller",
+          "tier": 2
+        }
+      ],
+      "term_count": 9
+    },
+    {
+      "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+      "doc_id": "concepts_architecture_garbage-collection",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture_garbage-collection.md",
+      "content": "---\ntitle: Garbage Collection\ncontent_type: concept\nweight: 70\n---\n\n<!-- overview -->\n{{<glossary_definition term_id=\"garbage-collection\" length=\"short\">}} This\nallows the clean up of resources like the following:\n\n* [Terminated pods](/docs/concepts/workloads/pods/pod-lifecycle/#pod-garbage-collection)\n* [Completed Jobs](/docs/concepts/workloads/controllers/ttlafterfinished/)\n* [Objects without owner references](#owners-dependents)\n* [Unused containers and container images](#containers-images)\n* [Dynamically provisioned PersistentVolumes with a StorageClass reclaim policy of Delete](/docs/concepts/storage/persistent-volumes/#delete)\n* [Stale or expired CertificateSigningRequests (CSRs)](/docs/reference/access-authn-authz/certificate-signing-requests/#request-signing-process)\n* {{<glossary_tooltip text=\"Nodes\" term_id=\"node\">}} deleted in the following scenarios:\n  * On a cloud when the cluster uses a [cloud controller manager](/docs/concepts/architecture/cloud-controller/)\n  * On-premises when the cluster uses an addon similar to a cloud controller\n    manager\n* [Node Lease objects](/docs/concepts/architecture/nodes/#heartbeats)",
+      "terms": [
+        {
+          "term": "Garbage Collection",
+          "tier": 1
+        },
+        {
+          "term": "pods",
+          "tier": 1
+        },
+        {
+          "term": "Terminated pods",
+          "tier": 2
+        },
+        {
+          "term": "Jobs",
+          "tier": 1
+        },
+        {
+          "term": "Completed Jobs",
+          "tier": 2
+        },
+        {
+          "term": "owner references",
+          "tier": 2
+        },
+        {
+          "term": "containers",
+          "tier": 1
+        },
+        {
+          "term": "container images",
+          "tier": 1
+        },
+        {
+          "term": "PersistentVolumes",
+          "tier": 1
+        },
+        {
+          "term": "StorageClass",
+          "tier": 1
+        },
+        {
+          "term": "reclaim policy",
+          "tier": 2
+        },
+        {
+          "term": "Delete",
+          "tier": 3
+        },
+        {
+          "term": "CertificateSigningRequests",
+          "tier": 2
+        },
+        {
+          "term": "CSRs",
+          "tier": 2
+        },
+        {
+          "term": "Nodes",
+          "tier": 1
+        },
+        {
+          "term": "cloud controller manager",
+          "tier": 1
+        },
+        {
+          "term": "Node Lease objects",
+          "tier": 2
+        },
+        {
+          "term": "heartbeats",
+          "tier": 2
+        },
+        {
+          "term": "pod-lifecycle",
+          "tier": 2
+        },
+        {
+          "term": "pod-garbage-collection",
+          "tier": 2
+        },
+        {
+          "term": "ttlafterfinished",
+          "tier": 2
+        },
+        {
+          "term": "owners-dependents",
+          "tier": 3
+        },
+        {
+          "term": "Dynamically provisioned PersistentVolumes",
+          "tier": 2
+        }
+      ],
+      "term_count": 23
+    },
+    {
+      "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+      "doc_id": "concepts_architecture_garbage-collection",
+      "heading": "Owners and dependents {#owners-dependents}",
+      "source_file": "concepts_architecture_garbage-collection.md",
+      "content": "## Owners and dependents {#owners-dependents}\n\nMany objects in Kubernetes link to each other through [*owner references*](/docs/concepts/overview/working-with-objects/owners-dependents/).\nOwner references tell the control plane which objects are dependent on others.\nKubernetes uses owner references to give the control plane, and other API\nclients, the opportunity to clean up related resources before deleting an\nobject. In most cases, Kubernetes manages owner references automatically.\n\nOwnership is different from the [labels and selectors](/docs/concepts/overview/working-with-objects/labels/)\nmechanism that some resources also use. For example, consider a\n{{<glossary_tooltip text=\"Service\" term_id=\"service\">}} that creates\n`EndpointSlice` objects. The Service uses *labels* to allow the control plane to\ndetermine which `EndpointSlice` objects are used for that Service. In addition\nto the labels, each `EndpointSlice` that is managed on behalf of a Service has\nan owner reference. Owner references help different parts of Kubernetes avoid\ninterfering with objects they don\u2019t control.\n\n{{< note >}}\nCross-namespace owner references are disallowed by design.\nNamespaced dependents can specify cluster-scoped or namespaced owners.\nA namespaced owner **must** exist in the same namespace as the dependent.\nIf it does not, the owner reference is treated as absent, and the dependent\nis subject to deletion once all owners are verified absent.\n\nCluster-scoped dependents can only specify cluster-scoped owners.\nIn v1.20+, if a cluster-scoped dependent specifies a namespaced kind as an owner,\nit is treated as having an unresolvable owner reference, and is not able to be garbage collected.\n\nIn v1.20+, if the garbage collector detects an invalid cross-namespace `ownerReference`,\nor a cluster-scoped dependent with an `ownerReference` referencing a namespaced kind, a warning Event\nwith a reason of `OwnerRefInvalidNamespace` and an `involvedObject` of the invalid dependent is reported.\nYou can check for that kind of Event by running\n`kubectl get events -A --field-selector=reason=OwnerRefInvalidNamespace`.\n{{< /note >}}",
+      "terms": [
+        {
+          "term": "owner references",
+          "tier": 1
+        },
+        {
+          "term": "owners",
+          "tier": 1
+        },
+        {
+          "term": "dependents",
+          "tier": 1
+        },
+        {
+          "term": "control plane",
+          "tier": 1
+        },
+        {
+          "term": "labels",
+          "tier": 1
+        },
+        {
+          "term": "selectors",
+          "tier": 1
+        },
+        {
+          "term": "Service",
+          "tier": 1
+        },
+        {
+          "term": "EndpointSlice",
+          "tier": 1
+        },
+        {
+          "term": "namespace",
+          "tier": 1
+        },
+        {
+          "term": "namespaced",
+          "tier": 2
+        },
+        {
+          "term": "cluster-scoped",
+          "tier": 2
+        },
+        {
+          "term": "garbage collector",
+          "tier": 1
+        },
+        {
+          "term": "ownerReference",
+          "tier": 1
+        },
+        {
+          "term": "OwnerRefInvalidNamespace",
+          "tier": 2
+        },
+        {
+          "term": "involvedObject",
+          "tier": 3
+        },
+        {
+          "term": "Event",
+          "tier": 2
+        },
+        {
+          "term": "kubectl get events",
+          "tier": 2
+        },
+        {
+          "term": "--field-selector",
+          "tier": 2
+        },
+        {
+          "term": "cross-namespace owner references",
+          "tier": 2
+        }
+      ],
+      "term_count": 19
+    },
+    {
+      "chunk_id": "concepts_architecture_leases_chunk_0",
+      "doc_id": "concepts_architecture_leases",
+      "heading": "Introduction",
+      "source_file": "concepts_architecture_leases.md",
+      "content": "---\ntitle: Leases\napi_metadata:\n- apiVersion: \"coordination.k8s.io/v1\"\n  kind: \"Lease\"\ncontent_type: concept\nweight: 30\n---\n\n<!-- overview -->\n\nDistributed systems often have a need for _leases_, which provide a mechanism to lock shared resources\nand coordinate activity between members of a set.\nIn Kubernetes, the lease concept is represented by [Lease](/docs/reference/kubernetes-api/cluster-resources/lease-v1/)\nobjects in the `coordination.k8s.io` {{< glossary_tooltip text=\"API Group\" term_id=\"api-group\" >}},\nwhich are used for system-critical capabilities such as node heartbeats and component-level leader election.\n\n<!-- body -->",
+      "terms": [
+        {
+          "term": "Lease",
+          "tier": 1
+        },
+        {
+          "term": "leases",
+          "tier": 1
+        },
+        {
+          "term": "apiVersion",
+          "tier": 2
+        },
+        {
+          "term": "kind",
+          "tier": 2
+        },
+        {
+          "term": "coordination.k8s.io/v1",
+          "tier": 2
+        },
+        {
+          "term": "coordination.k8s.io",
+          "tier": 2
+        },
+        {
+          "term": "API Group",
+          "tier": 2
+        },
+        {
+          "term": "node heartbeats",
+          "tier": 2
+        },
+        {
+          "term": "leader election",
+          "tier": 2
+        },
+        {
+          "term": "distributed systems",
+          "tier": 3
+        },
+        {
+          "term": "shared resources",
+          "tier": 3
+        }
+      ],
+      "term_count": 11
+    }
+  ]
+}

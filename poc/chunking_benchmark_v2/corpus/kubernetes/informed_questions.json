@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "source": "kubefix",
+    "model": "transformed from realistic_questions.json",
+    "prompt_version": "informed_user_v1",
+    "description": "Questions transformed to use proper Kubernetes terminology - simulating users who know what they're looking for",
+    "total": 25,
+    "variants_per_question": 2
+  },
+  "questions": [
+    {
+      "original_instruction": "What is the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "doc_id": "concepts_services-networking_gateway",
+      "realistic_q1": "how do i connect my cluster's load balancers and network configurations with gateway resources",
+      "realistic_q2": "which cloud provider configurations are needed to make my gateway api work correctly"
+    },
+    {
+      "original_instruction": "What is the Kubernetes approach to dynamic port allocation?",
+      "doc_id": "concepts_cluster-administration_networking",
+      "realistic_q1": "why do my service ports keep changing between deployments",
+      "realistic_q2": "can't access my microservice because its port is randomly assigned each time"
+    },
+    {
+      "original_instruction": "What does a SubjectAccessReview object describe?",
+      "doc_id": "reference_access-authn-authz_webhook",
+      "realistic_q1": "how to check if my service account has permission to do something in kubernetes",
+      "realistic_q2": "why is my pipeline failing with a permission denied error when deploying"
+    },
+    {
+      "original_instruction": "What is the difference between a mutating webhook and a validating webhook?",
+      "doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "realistic_q1": "how to automatically modify incoming pod specs before they're created in my cluster",
+      "realistic_q2": "prevent developers from deploying containers without specific labels or security settings"
+    },
+    {
+      "original_instruction": "What does the NamespaceAutoProvision admission controller do?",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "realistic_q1": "why can't my team create resources without manually creating namespaces first",
+      "realistic_q2": "how to automatically set up default namespaces for new projects without manual intervention"
+    },
+    {
+      "original_instruction": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "doc_id": "concepts_storage_persistent-volumes",
+      "realistic_q1": "is there a way to increase storage size for my database without losing data",
+      "realistic_q2": "why can't I resize my volume claim after initial provisioning"
+    },
+    {
+      "original_instruction": "What are the two default user accounts for Windows containers?",
+      "doc_id": "concepts_security_windows-security",
+      "realistic_q1": "why can't I log into my windows container as administrator",
+      "realistic_q2": "how to manage default user accounts in windows container images"
+    },
+    {
+      "original_instruction": "What is the purpose of using an Indexed Job in Kubernetes?",
+      "doc_id": "tasks_job_indexed-parallel-processing-static",
+      "realistic_q1": "how to run a parallel batch job where each pod needs a unique index",
+      "realistic_q2": "restart failed pod in a batch processing job without redoing entire workload"
+    },
+    {
+      "original_instruction": "What is the etcd API and what risks does it pose to the cluster's security?",
+      "doc_id": "concepts_security_api-server-bypass-risks",
+      "realistic_q1": "why does my kubernetes cluster hang when multiple nodes go offline simultaneously",
+      "realistic_q2": "how to protect against potential data corruption if etcd nodes lose connection"
+    },
+    {
+      "original_instruction": "What is the role of a signer in Kubernetes?",
+      "doc_id": "tasks_tls_managing-tls-in-a-cluster",
+      "realistic_q1": "why can't my certificate signing requests get automatically approved in kubernetes",
+      "realistic_q2": "how to manage tls certificates for my services without manual intervention"
+    },
+    {
+      "original_instruction": "What tools are required to verify Kubernetes artifacts?",
+      "doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "realistic_q1": "how can I quickly check if my kubernetes yaml files are valid before deploying",
+      "realistic_q2": "getting weird errors in production, want to validate my deployment configs locally"
+    },
+    {
+      "original_instruction": "What protocol does Kubernetes components use to emit traces?",
+      "doc_id": "concepts_cluster-administration_system-traces",
+      "realistic_q1": "why can't I see my application's logs and traces in the monitoring dashboard",
+      "realistic_q2": "how to collect and track performance metrics from my kubernetes cluster"
+    },
+    {
+      "original_instruction": "What is the format in which Kubernetes components emit metrics?",
+      "doc_id": "concepts_cluster-administration_system-metrics",
+      "realistic_q1": "how to collect and monitor resource usage for my kubernetes cluster",
+      "realistic_q2": "my prometheus dashboard is not showing kubernetes component performance metrics"
+    },
+    {
+      "original_instruction": "What are the different types of isolation in Kubernetes?",
+      "doc_id": "concepts_security_multi-tenancy",
+      "realistic_q1": "how to prevent one container from consuming all resources of my node",
+      "realistic_q2": "stop my team's pods from interfering with critical system services"
+    },
+    {
+      "original_instruction": "What is Attribute-based access control (ABAC) and how does it work?",
+      "doc_id": "reference_access-authn-authz_abac",
+      "realistic_q1": "why can't I make granular permissions based on user attributes like job title",
+      "realistic_q2": "kubernetes access control too rigid, how to define complex authorization rules"
+    },
+    {
+      "original_instruction": "What is the role of the webhook token authenticator in the authentication process?",
+      "doc_id": "reference_access-authn-authz_authentication",
+      "realistic_q1": "why can't my CI/CD pipeline authenticate with kubernetes cluster after rotating service account tokens",
+      "realistic_q2": "getting authentication errors when trying to call kubernetes api from external tool"
+    },
+    {
+      "original_instruction": "What is the purpose of the authentication flow in the aggregation layer?",
+      "doc_id": "tasks_extend-kubernetes_configure-aggregation-layer",
+      "realistic_q1": "why can't my custom API server authenticate requests from kubernetes cluster",
+      "realistic_q2": "my extension API is not showing up in kubectl get api-services"
+    },
+    {
+      "original_instruction": "What does sourcing the completion script in your shell enable?",
+      "doc_id": "tasks_tools_included_optional-kubectl-configs-fish",
+      "realistic_q1": "how to make kubectl commands autocomplete in my terminal",
+      "realistic_q2": "getting tired of typing full kubernetes command names every time"
+    },
+    {
+      "original_instruction": "What is kube proxy?",
+      "doc_id": "concepts_cluster-administration_proxies",
+      "realistic_q1": "why can't my services communicate between nodes in my cluster",
+      "realistic_q2": "how kubernetes routes traffic to the right pod when I have multiple replicas"
+    },
+    {
+      "original_instruction": "How can you use `kubectl` to create an object from a configuration file?",
+      "doc_id": "tasks_manage-kubernetes-objects_imperative-config",
+      "realistic_q1": "how do i deploy my yaml file from the command line",
+      "realistic_q2": "getting error when trying to apply kubernetes configuration from file"
+    },
+    {
+      "original_instruction": "How can you suspend and resume a Job in Kubernetes?",
+      "doc_id": "concepts_workloads_controllers_job",
+      "realistic_q1": "my kubernetes batch job is stuck midway and I want to pause it without deleting",
+      "realistic_q2": "how to temporarily stop a long-running job and resume it later without losing progress"
+    },
+    {
+      "original_instruction": "What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "doc_id": "tasks_job_fine-parallel-processing-work-queue",
+      "realistic_q1": "how to see what my job failed and why it's not completing",
+      "realistic_q2": "can't figure out what's happening inside my worker pod during a batch job"
+    },
+    {
+      "original_instruction": "What are the four supported Topology Manager policies?",
+      "doc_id": "tasks_administer-cluster_topology-manager",
+      "realistic_q1": "why are my high performance containers not getting scheduled on the right cpu cores",
+      "realistic_q2": "can't control how cpu and memory resources get allocated across my numa nodes"
+    },
+    {
+      "original_instruction": "Why do we need admission controllers?",
+      "doc_id": "reference_access-authn-authz_admission-controllers",
+      "realistic_q1": "how to prevent developers from deploying containers with latest tag in production",
+      "realistic_q2": "why can't I stop someone from using root containers in my cluster"
+    },
+    {
+      "original_instruction": "What is a ServiceAccount in Kubernetes?",
+      "doc_id": "tasks_configure-pod-container_configure-service-account",
+      "realistic_q1": "why can't my pod access kubernetes api when running inside the cluster",
+      "realistic_q2": "error accessing cloud resources from inside my application container"
+    }
+  ]
+}

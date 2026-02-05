@@ -1,0 +1,139 @@
+{
+  "phase": 3,
+  "test_chunks": [
+    "chunk_000",
+    "chunk_001",
+    "chunk_002"
+  ],
+  "models_tested": [
+    "claude-haiku",
+    "claude-sonnet"
+  ],
+  "variants_tested": [
+    "A",
+    "D"
+  ],
+  "sample_metrics": [
+    {
+      "chunk_id": "chunk_000",
+      "model": "claude-haiku",
+      "variant": "A",
+      "extracted_count": 9,
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "hallucination_rate": 0.1111111111111111,
+      "latency_ms": 3078.8402557373047
+    },
+    {
+      "chunk_id": "chunk_000",
+      "model": "claude-haiku",
+      "variant": "D",
+      "extracted_count": 5,
+      "precision": 0.8,
+      "recall": 0.5,
+      "hallucination_rate": 0.2,
+      "latency_ms": 4927.431106567383
+    },
+    {
+      "chunk_id": "chunk_000",
+      "model": "claude-sonnet",
+      "variant": "A",
+      "extracted_count": 6,
+      "precision": 0.8333333333333334,
+      "recall": 0.625,
+      "hallucination_rate": 0.16666666666666666,
+      "latency_ms": 1648.8354206085205
+    },
+    {
+      "chunk_id": "chunk_000",
+      "model": "claude-sonnet",
+      "variant": "D",
+      "extracted_count": 5,
+      "precision": 0.8,
+      "recall": 0.5,
+      "hallucination_rate": 0.2,
+      "latency_ms": 3494.2941665649414
+    },
+    {
+      "chunk_id": "chunk_001",
+      "model": "claude-haiku",
+      "variant": "A",
+      "extracted_count": 6,
+      "precision": 1.0,
+      "recall": 0.75,
+      "hallucination_rate": 0.0,
+      "latency_ms": 2571.267604827881
+    },
+    {
+      "chunk_id": "chunk_001",
+      "model": "claude-haiku",
+      "variant": "D",
+      "extracted_count": 4,
+      "precision": 1.0,
+      "recall": 0.5,
+      "hallucination_rate": 0.0,
+      "latency_ms": 4415.659427642822
+    },
+    {
+      "chunk_id": "chunk_001",
+      "model": "claude-sonnet",
+      "variant": "A",
+      "extracted_count": 9,
+      "precision": 0.7777777777777778,
+      "recall": 0.875,
+      "hallucination_rate": 0.2222222222222222,
+      "latency_ms": 1649.7185230255127
+    },
+    {
+      "chunk_id": "chunk_001",
+      "model": "claude-sonnet",
+      "variant": "D",
+      "extracted_count": 6,
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "hallucination_rate": 0.3333333333333333,
+      "latency_ms": 3801.1302947998047
+    },
+    {
+      "chunk_id": "chunk_002",
+      "model": "claude-haiku",
+      "variant": "A",
+      "extracted_count": 11,
+      "precision": 0.8181818181818182,
+      "recall": 1.0,
+      "hallucination_rate": 0.18181818181818182,
+      "latency_ms": 3799.2069721221924
+    },
+    {
+      "chunk_id": "chunk_002",
+      "model": "claude-haiku",
+      "variant": "D",
+      "extracted_count": 5,
+      "precision": 1.0,
+      "recall": 0.5555555555555556,
+      "hallucination_rate": 0.0,
+      "latency_ms": 4722.697734832764
+    },
+    {
+      "chunk_id": "chunk_002",
+      "model": "claude-sonnet",
+      "variant": "A",
+      "extracted_count": 7,
+      "precision": 0.7142857142857143,
+      "recall": 0.5555555555555556,
+      "hallucination_rate": 0.2857142857142857,
+      "latency_ms": 2262.8471851348877
+    },
+    {
+      "chunk_id": "chunk_002",
+      "model": "claude-sonnet",
+      "variant": "D",
+      "extracted_count": 5,
+      "precision": 1.0,
+      "recall": 0.5555555555555556,
+      "hallucination_rate": 0.0,
+      "latency_ms": 2879.067897796631
+    }
+  ],
+  "validation_status": "PASS"
+}

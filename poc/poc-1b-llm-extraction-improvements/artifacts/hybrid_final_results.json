@@ -1,0 +1,50 @@
+{
+  "exhaustive_haiku": {
+    "precision": 0.5652281928597718,
+    "recall": 0.8856186705451411,
+    "hallucination": 0.43477180714022823,
+    "f1": 0.6423378912968696
+  },
+  "exhaustive_sonnet": {
+    "precision": 0.4581583498023715,
+    "recall": 0.9725274725274725,
+    "hallucination": 0.5418416501976284,
+    "f1": 0.5888878446115288
+  },
+  "ensemble_sonnet_verify": {
+    "precision": 0.94375,
+    "recall": 0.7089124111182935,
+    "hallucination": 0.05625,
+    "f1": 0.798596256684492
+  },
+  "sonnet_exh_haiku_verify": {
+    "precision": 0.7046130952380952,
+    "recall": 0.793455523234935,
+    "hallucination": 0.29538690476190477,
+    "f1": 0.7256271506271507
+  },
+  "ensemble_vote_hybrid": {
+    "precision": 0.6412941408007198,
+    "recall": 0.8412810637075343,
+    "hallucination": 0.3587058591992802,
+    "f1": 0.7116947818263608
+  },
+  "multi_consensus": {
+    "precision": 0.7144345238095238,
+    "recall": 0.8087898620986856,
+    "hallucination": 0.2855654761904762,
+    "f1": 0.736485818325655
+  },
+  "union_verified": {
+    "precision": 0.8834821428571429,
+    "recall": 0.7209316418875242,
+    "hallucination": 0.11651785714285715,
+    "f1": 0.7850335148722245
+  },
+  "exhaustive_double_verify": {
+    "precision": 0.9368131868131868,
+    "recall": 0.6518799827623357,
+    "hallucination": 0.06318681318681318,
+    "f1": 0.7482456140350877
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "phase": 1,
+  "timestamp": "2026-02-03T17:17:22.869038+00:00",
+  "models_verified": {
+    "claude": {
+      "available": true,
+      "models": {
+        "claude-haiku": {
+          "status": "ok",
+          "latency_ms": 1723,
+          "response_preview": "Here's the extracted Kubernetes terms in a JSON list:\n\n```json\n[\n    \"pod\",\n    \"CrashLoopBackOff\",\n"
+        },
+        "claude-sonnet": {
+          "status": "ok",
+          "latency_ms": 1842,
+          "response_preview": "```json\n[\n  \"pod\",\n  \"CrashLoopBackOff\",\n  \"kubelet\",\n  \"image\"\n]\n```"
+        },
+        "claude-opus": {
+          "status": "ok",
+          "latency_ms": 2456,
+          "response_preview": "```json\n[\"pod\", \"CrashLoopBackOff\", \"kubelet\", \"image\"]\n```"
+        }
+      }
+    },
+    "ollama": {
+      "available": false,
+      "models": {}
+    }
+  },
+  "dependencies": {
+    "all_available": true,
+    "packages": {
+      "anthropic": "ok",
+      "rapidfuzz": "ok",
+      "numpy": "ok",
+      "scipy": "ok",
+      "pydantic": "ok",
+      "rich": "ok",
+      "httpx": "ok"
+    }
+  },
+  "corpus": {
+    "available": true,
+    "files": [
+      "reference_command-line-tools-reference_feature-gates_SchedulerPopFromBackoffQ.md",
+      "reference_issues-security__index.md",
+      "tasks_configure-pod-container_configure-liveness-readiness-startup-probes.md",
+      "reference_command-line-tools-reference_feature-gates_CronJobTimeZone.md",
+      "concepts_overview_working-with-objects_annotations.md",
+      "reference_setup-tools_kubeadm_generated_kubeadm_init_kubeadm_init_phase_upload-certs.md",
+      "reference_kubectl_generated_kubectl_create_kubectl_create_priorityclass.md",
+      "tasks_debug_debug-cluster_windows.md",
+      "reference_setup-tools_kubeadm_generated_kubeadm_certs_kubeadm_certs_renew_super-admin.conf.md",
+      "reference_kubectl_generated_kubectl_patch__index.md"
+    ],
+    "total_files": 200
+  },
+  "api_status": {
+    "anthropic": "ok",
+    "ollama": "skip"
+  },
+  "phase_status": "COMPLETE"
+}

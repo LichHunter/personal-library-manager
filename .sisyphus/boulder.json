@@ -1,6 +1,8 @@
 {
-  "active": false,
-  "plan": null,
-  "completed_at": "2026-01-29T22:50:00Z",
-  "summary": "Benchmark LLM Grading Enhancement - COMPLETE"
+  "active_plan": null,
+  "started_at": "2026-01-30T11:46:07.061Z",
+  "completed_at": "2026-01-30T13:01:00.000Z",
+  "session_ids": ["ses_3fabdfc1affeUJWlvvtjJJBgsV"],
+  "plan_name": "benchmark-question-loader-refactor",
+  "status": "completed"
 }

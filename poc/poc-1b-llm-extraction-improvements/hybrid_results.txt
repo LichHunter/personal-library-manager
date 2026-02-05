@@ -1,0 +1,108 @@
+POC-1b: Hybrid Final Strategy Test
+======================================================================
+
+Testing on 8 chunks
+
+======================================================================
+
+[1/8] _index_chunk_0 (GT: 1 terms)
+  exhaustive_haiku         : R= 100%✓ H=  80%  ( 5 ext, 4.2s)
+  exhaustive_sonnet        : R= 100%✓ H=  83%  ( 6 ext, 1.8s)
+  ensemble_sonnet_verify   : R= 100%✓ H=   0%✓ ( 1 ext, 12.4s)
+  sonnet_exh_haiku_verify  : R= 100%✓ H=  50%  ( 2 ext, 4.8s)
+  ensemble_vote_hybrid     : R= 100%✓ H=  67%  ( 3 ext, 13.0s)
+  multi_consensus          : R= 100%✓ H=  67%  ( 3 ext, 22.0s)
+  union_verified           : R= 100%✓ H=   0%✓ ( 1 ext, 9.6s)
+  exhaustive_double_verify : R= 100%✓ H=   0%✓ ( 1 ext, 12.1s)
+
+[2/8] concepts__index_chunk_0 (GT: 2 terms)
+  exhaustive_haiku         : R= 100%✓ H=  80%  (10 ext, 3.6s)
+  exhaustive_sonnet        : R= 100%✓ H=  80%  (10 ext, 2.8s)
+  ensemble_sonnet_verify   : R= 100%✓ H=   0%✓ ( 2 ext, 12.1s)
+  sonnet_exh_haiku_verify  : R= 100%✓ H=  33%  ( 3 ext, 5.3s)
+  ensemble_vote_hybrid     : R= 100%✓ H=  33%  ( 3 ext, 12.7s)
+  multi_consensus          : R= 100%✓ H=   0%✓ ( 2 ext, 19.1s)
+  union_verified           : R= 100%✓ H=   0%✓ ( 2 ext, 10.9s)
+  exhaustive_double_verify : R= 100%✓ H=   0%✓ ( 2 ext, 12.0s)
+
+[3/8] concepts_architecture__index_chunk_0 (GT: 17 terms)
+  exhaustive_haiku         : R=  94%~ H=  16%~ (19 ext, 4.1s)
+  exhaustive_sonnet        : R= 100%✓ H=  26%  (23 ext, 2.9s)
+  ensemble_sonnet_verify   : R=  76%  H=   0%✓ (13 ext, 16.5s)
+  sonnet_exh_haiku_verify  : R=  82%  H=  12%~ (16 ext, 5.7s)
+  ensemble_vote_hybrid     : R=  94%~ H=  16%~ (19 ext, 16.8s)
+  multi_consensus          : R=  65%  H=   8%✓ (12 ext, 22.9s)
+  union_verified           : R=  76%  H=   7%✓ (14 ext, 15.6s)
+  exhaustive_double_verify : R=  71%  H=   8%✓ (13 ext, 12.4s)
+
+[4/8] concepts_architecture__index_chunk_1 (GT: 9 terms)
+  exhaustive_haiku         : R= 100%✓ H=  18%~ (11 ext, 3.6s)
+  exhaustive_sonnet        : R= 100%✓ H=  44%  (16 ext, 2.6s)
+  ensemble_sonnet_verify   : R=  67%  H=   0%✓ ( 6 ext, 16.2s)
+  sonnet_exh_haiku_verify  : R=  78%  H=  22%  ( 9 ext, 6.4s)
+  ensemble_vote_hybrid     : R=  89%~ H=  20%  (10 ext, 13.1s)
+  multi_consensus          : R= 100%✓ H=  10%~ (10 ext, 21.1s)
+  union_verified           : R=  67%  H=   0%✓ ( 6 ext, 12.2s)
+  exhaustive_double_verify : R=  67%  H=   0%✓ ( 6 ext, 11.4s)
+
+[5/8] concepts_architecture_cgroups_chunk_0 (GT: 13 terms)
+  exhaustive_haiku         : R=  85%  H=   8%✓ (12 ext, 4.1s)
+  exhaustive_sonnet        : R=  92%~ H=  20%  (15 ext, 2.1s)
+  ensemble_sonnet_verify   : R=  69%  H=   0%✓ ( 9 ext, 14.2s)
+  sonnet_exh_haiku_verify  : R=  62%  H=   0%✓ ( 8 ext, 6.2s)
+  ensemble_vote_hybrid     : R=  77%  H=  23%  (13 ext, 14.4s)
+  multi_consensus          : R=  69%  H=  36%  (14 ext, 22.9s)
+  union_verified           : R=  54%  H=   0%✓ ( 7 ext, 12.5s)
+[11:56:42] WARN  | [anthropic] Timeout after 90.14s. Attempt 1/5. Waiting 1.1s before retry...
+  exhaustive_double_verify : R=  46%  H=   0%✓ ( 6 ext, 103.8s)
+
+[6/8] concepts_architecture_cgroups_chunk_1 (GT: 12 terms)
+  exhaustive_haiku         : R=  58%  H=  42%  (12 ext, 4.1s)
+  exhaustive_sonnet        : R= 100%✓ H=  64%  (33 ext, 4.3s)
+  ensemble_sonnet_verify   : R=  33%  H=  20%  ( 5 ext, 14.7s)
+  sonnet_exh_haiku_verify  : R=  58%  H=  61%  (18 ext, 7.1s)
+  ensemble_vote_hybrid     : R=  58%  H=  46%  (13 ext, 14.4s)
+  multi_consensus          : R=  58%  H=  42%  (12 ext, 21.2s)
+  union_verified           : R=  42%  H=  38%  ( 8 ext, 13.3s)
+  exhaustive_double_verify : R=  33%  H=  43%  ( 7 ext, 13.9s)
+
+[7/8] concepts_architecture_cloud-controller_chunk_0 (GT: 6 terms)
+  exhaustive_haiku         : R= 100%✓ H=  54%  (13 ext, 4.3s)
+  exhaustive_sonnet        : R= 100%✓ H=  67%  (18 ext, 3.8s)
+  ensemble_sonnet_verify   : R=  50%  H=  25%  ( 4 ext, 15.0s)
+  sonnet_exh_haiku_verify  : R=  83%  H=  29%  ( 7 ext, 6.2s)
+  ensemble_vote_hybrid     : R=  83%  H=  44%  ( 9 ext, 15.3s)
+  multi_consensus          : R=  83%  H=  29%  ( 7 ext, 22.8s)
+  union_verified           : R=  67%  H=  20%  ( 5 ext, 13.8s)
+  exhaustive_double_verify : R=  33%  H=   0%✓ ( 2 ext, 12.8s)
+
+[8/8] concepts_architecture_cloud-controller_chunk_1 (GT: 7 terms)
+  exhaustive_haiku         : R=  71%  H=  50%  (10 ext, 3.9s)
+  exhaustive_sonnet        : R=  86%~ H=  50%  (12 ext, 2.4s)
+  ensemble_sonnet_verify   : R=  71%  H=   0%✓ ( 5 ext, 12.6s)
+  sonnet_exh_haiku_verify  : R=  71%  H=  29%  ( 7 ext, 5.5s)
+  ensemble_vote_hybrid     : R=  71%  H=  38%  ( 8 ext, 13.3s)
+  multi_consensus          : R=  71%  H=  38%  ( 8 ext, 20.2s)
+  union_verified           : R=  71%  H=  29%  ( 7 ext, 11.4s)
+  exhaustive_double_verify : R=  71%  H=   0%✓ ( 5 ext, 13.9s)
+
+======================================================================
+AGGREGATE RESULTS
+======================================================================
+Strategy                     Precision     Recall     Halluc       F1
+--------------------------------------------------------------------
+exhaustive_haiku                 56.5%    88.6% ~    43.5%      64.2%
+exhaustive_sonnet                45.8%    97.3% ✓    54.2%      58.9%
+ensemble_sonnet_verify           94.4%    70.9%        5.6% ✓   79.9%
+sonnet_exh_haiku_verify          70.5%    79.3%       29.5%      72.6%
+ensemble_vote_hybrid             64.1%    84.1%       35.9%      71.2%
+multi_consensus                  71.4%    80.9%       28.6%      73.6%
+union_verified                   88.3%    72.1%       11.7% ~   78.5%
+exhaustive_double_verify         93.7%    65.2%        6.3% ✓   74.8%
+
+======================================================================
+TARGET CHECK: 95%+ recall AND <10% hallucination
+======================================================================
+❌ No strategy met both targets.
+
+Saved to: /home/fujin/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/hybrid_final_results.json

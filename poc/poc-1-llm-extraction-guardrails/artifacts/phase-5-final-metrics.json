@@ -1,0 +1,223 @@
+{
+  "analysis_completed_at": "2026-02-03T19:04:36.662906+00:00",
+  "best_configuration": {
+    "model": "claude-sonnet",
+    "prompt_variant": "D",
+    "precision": true,
+    "recall": true,
+    "hallucination_rate": true,
+    "passes_precision": true,
+    "passes_recall": true,
+    "passes_hallucination": false,
+    "passes_all": false
+  },
+  "metrics_by_model_prompt": {
+    "claude-haiku": {
+      "A": {
+        "precision": {
+          "mean": 0.6935674757277784,
+          "std": 0.2882971377345601,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.6318376085679444,
+          "std": 0.27104794803197724,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.24717326501296227,
+          "std": 0.23803833590696735,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      },
+      "B": {
+        "precision": {
+          "mean": 0.844670247448025,
+          "std": 0.23889482464755019,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.5220275633764477,
+          "std": 0.24882567688711923,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.12570012292234514,
+          "std": 0.18912408291626734,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      },
+      "C": {
+        "precision": {
+          "mean": 0.7018680702014034,
+          "std": 0.24734001944441356,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.6613012867982442,
+          "std": 0.2193471754334437,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.27590970757637423,
+          "std": 0.22740128369711454,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      },
+      "D": {
+        "precision": {
+          "mean": 0.7930540858318637,
+          "std": 0.3370147685133654,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.4535171137485013,
+          "std": 0.25379090672940585,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.07361258083480306,
+          "std": 0.13286617401170708,
+          "min": 0.0,
+          "max": 0.5,
+          "n": 135
+        }
+      }
+    },
+    "claude-sonnet": {
+      "A": {
+        "precision": {
+          "mean": 0.6782319427798004,
+          "std": 0.23932426149834252,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.7137933901839694,
+          "std": 0.23345648084707799,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.2921384275905699,
+          "std": 0.21409412482426593,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      },
+      "B": {
+        "precision": {
+          "mean": 0.7329640553425963,
+          "std": 0.24053591644906921,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.6707766041127546,
+          "std": 0.26538412539302536,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.2522211298425889,
+          "std": 0.22524522123050394,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      },
+      "C": {
+        "precision": {
+          "mean": 0.7167218378329487,
+          "std": 0.2314844617614465,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.6964693697441048,
+          "std": 0.2172550405314742,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.28327816216705104,
+          "std": 0.23148446176144646,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      },
+      "D": {
+        "precision": {
+          "mean": 0.8099021760132871,
+          "std": 0.2320595316541999,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "recall": {
+          "mean": 0.6369461476038742,
+          "std": 0.2213267865797226,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        },
+        "hallucination_rate": {
+          "mean": 0.16787560176449062,
+          "std": 0.19895820924515226,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 135
+        }
+      }
+    }
+  },
+  "hypothesis_verdicts": {
+    "H1": {
+      "verdict": "REJECTED",
+      "evidence": "Best config (claude-sonnet+D) achieves P=81.0%, H=16.8%, R=63.7%"
+    },
+    "H2": {
+      "verdict": "SUPPORTED",
+      "evidence": "Evidence requirement reduced hallucination by 55% (baseline 27.0% -> guardrails 12.1%)"
+    },
+    "H3": {
+      "verdict": "REJECTED",
+      "evidence": "Sonnet 73.4% vs Haiku 75.8% (diff=-2.4%), Haiku below 80%"
+    },
+    "H4": {
+      "verdict": "NOT_TESTED",
+      "evidence": "Local models (Ollama) not tested in this run"
+    }
+  },
+  "pass_fail_status": "PARTIAL"
+}

@@ -1,0 +1,92 @@
+POC-1b: Fast Combined Strategy Test
+======================================================================
+
+Testing on 5 chunks
+
+======================================================================
+
+[1/5] _index_chunk_0 (GT: 1 terms)
+  simple_haiku        : R= 100%✓ H=  50%  ( 2 ext)
+  quote_haiku         : R=   0%  H=   0%✓ ( 0 ext)
+  exhaustive_haiku    : R= 100%✓ H=  80%  ( 5 ext)
+  ensemble_verified   : R= 100%✓ H=   0%✓ ( 1 ext)
+  vote_2              : R= 100%✓ H=  67%  ( 3 ext)
+  vote_3              : R= 100%✓ H=   0%✓ ( 1 ext)
+  rated_important     : R= 100%✓ H=  50%  ( 2 ext)
+  sonnet_conservative : R= 100%✓ H=   0%✓ ( 1 ext)
+  quote_verified      : R=   0%  H=   0%✓ ( 0 ext)
+  union_conservative  : R= 100%✓ H=   0%✓ ( 1 ext)
+
+[2/5] concepts__index_chunk_0 (GT: 2 terms)
+  simple_haiku        : R= 100%✓ H=  50%  ( 4 ext)
+  quote_haiku         : R= 100%✓ H=  33%  ( 3 ext)
+  exhaustive_haiku    : R= 100%✓ H=  80%  (10 ext)
+  ensemble_verified   : R= 100%✓ H=  33%  ( 3 ext)
+  vote_2              : R= 100%✓ H=  60%  ( 5 ext)
+  vote_3              : R= 100%✓ H=   0%✓ ( 2 ext)
+  rated_important     : R= 100%✓ H=  50%  ( 4 ext)
+  sonnet_conservative : R=  50%  H=   0%✓ ( 1 ext)
+  quote_verified      : R= 100%✓ H=   0%✓ ( 2 ext)
+  union_conservative  : R= 100%✓ H=   0%✓ ( 2 ext)
+
+[3/5] concepts_architecture__index_chunk_0 (GT: 17 terms)
+  simple_haiku        : R=  88%~ H=  17%~ (18 ext)
+  quote_haiku         : R=  71%  H=   0%✓ (12 ext)
+  exhaustive_haiku    : R=  94%~ H=  16%~ (19 ext)
+  ensemble_verified   : R=  94%~ H=  20%  (20 ext)
+  vote_2              : R=  94%~ H=  11%~ (18 ext)
+  vote_3              : R=  47%  H=   0%✓ ( 8 ext)
+  rated_important     : R=  94%~ H=  20%  (20 ext)
+  sonnet_conservative : R=  59%  H=   9%✓ (11 ext)
+  quote_verified      : R=  71%  H=   0%✓ (12 ext)
+  union_conservative  : R=  59%  H=  29%  (14 ext)
+
+[4/5] concepts_architecture__index_chunk_1 (GT: 9 terms)
+  simple_haiku        : R= 100%✓ H=  10%~ (10 ext)
+  quote_haiku         : R=  67%  H=   0%✓ ( 6 ext)
+  exhaustive_haiku    : R= 100%✓ H=  25%  (12 ext)
+  ensemble_verified   : R=  89%~ H=   0%✓ ( 8 ext)
+  vote_2              : R= 100%✓ H=  18%~ (11 ext)
+  vote_3              : R=  67%  H=   0%✓ ( 6 ext)
+  rated_important     : R=  89%~ H=  20%  (10 ext)
+  sonnet_conservative : R=  56%  H=   0%✓ ( 5 ext)
+  quote_verified      : R=  67%  H=   0%✓ ( 6 ext)
+  union_conservative  : R=  67%  H=  14%~ ( 7 ext)
+
+[5/5] concepts_architecture_cgroups_chunk_0 (GT: 13 terms)
+  simple_haiku        : R=  77%  H=  29%  (14 ext)
+  quote_haiku         : R=  69%  H=   0%✓ ( 9 ext)
+  exhaustive_haiku    : R=  85%  H=   8%✓ (12 ext)
+  ensemble_verified   : R=  62%  H=   0%✓ ( 8 ext)
+  vote_2              : R=  69%  H=  18%~ (11 ext)
+  vote_3              : R=  62%  H=  11%~ ( 9 ext)
+  rated_important     : R=  69%  H=  36%  (14 ext)
+  sonnet_conservative : R=  31%  H=   0%✓ ( 4 ext)
+  quote_verified      : R=  62%  H=   0%✓ ( 8 ext)
+  union_conservative  : R=  38%  H=  29%  ( 7 ext)
+
+======================================================================
+AGGREGATE RESULTS
+======================================================================
+Strategy                Precision     Recall     Halluc       F1
+-------------------------------------------------------
+simple_haiku                69.0%    93.0% ~    31.0%      77.6%
+quote_haiku                 73.3%    61.3%        6.7% ✓   64.9%
+exhaustive_haiku            58.2%    95.7% ✓    41.8%      65.9%
+ensemble_verified           89.3%    88.9% ~    10.7% ~   87.4%
+vote_2                      65.2%    92.7% ~    34.8%      72.7%
+vote_3                      97.8%    75.1%        2.2% ✓   83.3%
+rated_important             64.9%    90.4% ~    35.1%      74.1%
+sonnet_conservative         98.2%    59.0%        1.8% ✓   71.3%
+quote_verified              80.0%    59.8%        0.0% ✓   67.8%
+union_conservative          85.7%    72.8%       14.3% ~   77.9%
+
+======================================================================
+TARGET CHECK: 95%+ recall AND <10% hallucination
+======================================================================
+❌ No strategy met both targets.
+
+Close candidates (85%+ recall, <20% hallucination):
+   ensemble_verified: R=88.9%, H=10.7%
+
+Saved to: /home/fujin/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/fast_combined_results.json
