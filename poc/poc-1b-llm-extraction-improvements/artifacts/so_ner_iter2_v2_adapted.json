@@ -1,0 +1,1321 @@
+{
+  "metadata": {
+    "iteration": 2,
+    "strategy": "v2_adapted",
+    "timestamp": "2026-02-09T13:47:58.292171",
+    "so_ner_path": "/tmp/StackOverflowNER/resources/annotated_ner_data/StackOverflow/test.txt",
+    "n_docs": 10,
+    "seed": 42,
+    "elapsed_seconds": 231.7,
+    "main_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter2_v2_adapted_20260209_134406.log",
+    "trace_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter2_v2_adapted_20260209_134406_trace.log"
+  },
+  "targets": {
+    "precision": 0.95,
+    "recall": 0.95,
+    "hallucination": 0.05
+  },
+  "aggregate": {
+    "precision": 0.6787,
+    "recall": 0.8671,
+    "hallucination": 0.3213,
+    "f1": 0.7614,
+    "total_tp": 150,
+    "total_fp": 71,
+    "total_fn": 39,
+    "total_extracted": 221,
+    "total_gt": 173
+  },
+  "target_check": {
+    "meets_precision": false,
+    "meets_recall": false,
+    "meets_hallucination": false,
+    "all_pass": false
+  },
+  "all_fp_terms": [
+    {
+      "term": "LEVEL-3 hardware level",
+      "question_id": "42873050"
+    },
+    {
+      "term": "4608 x 3456",
+      "question_id": "42873050"
+    },
+    {
+      "term": "native libraries",
+      "question_id": "42873050"
+    },
+    {
+      "term": "hardware level",
+      "question_id": "42873050"
+    },
+    {
+      "term": "getInputSizes",
+      "question_id": "42873050"
+    },
+    {
+      "term": "LEVEL-3",
+      "question_id": "42873050"
+    },
+    {
+      "term": "Target",
+      "question_id": "42873050"
+    },
+    {
+      "term": "ZSL",
+      "question_id": "42873050"
+    },
+    {
+      "term": "presenter",
+      "question_id": "10709772"
+    },
+    {
+      "term": "arguments",
+      "question_id": "10709772"
+    },
+    {
+      "term": "mute",
+      "question_id": "10709772"
+    },
+    {
+      "term": "Privacy settings",
+      "question_id": "14831694"
+    },
+    {
+      "term": "Human Factors",
+      "question_id": "14831694"
+    },
+    {
+      "term": "ergonomics",
+      "question_id": "14831694"
+    },
+    {
+      "term": "control",
+      "question_id": "14831694"
+    },
+    {
+      "term": "parent",
+      "question_id": "14831694"
+    },
+    {
+      "term": "thumb",
+      "question_id": "14831694"
+    },
+    {
+      "term": "module catalog",
+      "question_id": "3639039"
+    },
+    {
+      "term": "event handler",
+      "question_id": "3639039"
+    },
+    {
+      "term": "WPF",
+      "question_id": "3639039"
+    },
+    {
+      "term": "CLI",
+      "question_id": "3639039"
+    },
+    {
+      "term": "vertical orientation",
+      "question_id": "39079773"
+    },
+    {
+      "term": "specificity",
+      "question_id": "39079773"
+    },
+    {
+      "term": "siblings",
+      "question_id": "39079773"
+    },
+    {
+      "term": "floating",
+      "question_id": "39079773"
+    },
+    {
+      "term": "cascade",
+      "question_id": "39079773"
+    },
+    {
+      "term": "filesystem handle",
+      "question_id": "39288595"
+    },
+    {
+      "term": "entropy pool",
+      "question_id": "39288595"
+    },
+    {
+      "term": "cross-platform",
+      "question_id": "39288595"
+    },
+    {
+      "term": "Deterministic",
+      "question_id": "39288595"
+    },
+    {
+      "term": "distribution",
+      "question_id": "39288595"
+    },
+    {
+      "term": "std::fopen",
+      "question_id": "39288595"
+    },
+    {
+      "term": "hardware",
+      "question_id": "39288595"
+    },
+    {
+      "term": "pseudo",
+      "question_id": "39288595"
+    },
+    {
+      "term": "boost",
+      "question_id": "39288595"
+    },
+    {
+      "term": "seed",
+      "question_id": "39288595"
+    },
+    {
+      "term": "MSVC",
+      "question_id": "39288595"
+    },
+    {
+      "term": "gallery items",
+      "question_id": "9965761"
+    },
+    {
+      "term": "text content",
+      "question_id": "9965761"
+    },
+    {
+      "term": "ID attribute",
+      "question_id": "9965761"
+    },
+    {
+      "term": "ListItemIndex",
+      "question_id": "9965761"
+    },
+    {
+      "term": "appending",
+      "question_id": "9965761"
+    },
+    {
+      "term": "gallery",
+      "question_id": "9965761"
+    },
+    {
+      "term": "hidden fields",
+      "question_id": "44055225"
+    },
+    {
+      "term": "partial view",
+      "question_id": "44055225"
+    },
+    {
+      "term": "partialview",
+      "question_id": "44055225"
+    },
+    {
+      "term": "credential",
+      "question_id": "44055225"
+    },
+    {
+      "term": "database",
+      "question_id": "44055225"
+    },
+    {
+      "term": "Staff",
+      "question_id": "44055225"
+    },
+    {
+      "term": "popup",
+      "question_id": "44055225"
+    },
+    {
+      "term": "tags",
+      "question_id": "44055225"
+    },
+    {
+      "term": "SOAP web-service",
+      "question_id": "45734089"
+    },
+    {
+      "term": "service class",
+      "question_id": "45734089"
+    },
+    {
+      "term": "web-service",
+      "question_id": "45734089"
+    },
+    {
+      "term": "resources",
+      "question_id": "45734089"
+    },
+    {
+      "term": "classpath",
+      "question_id": "45734089"
+    },
+    {
+      "term": "endpoint",
+      "question_id": "45734089"
+    },
+    {
+      "term": "Weblogic",
+      "question_id": "45734089"
+    },
+    {
+      "term": "version",
+      "question_id": "45734089"
+    },
+    {
+      "term": "pom.xml",
+      "question_id": "45734089"
+    },
+    {
+      "term": "main",
+      "question_id": "45734089"
+    },
+    {
+      "term": "SOAP",
+      "question_id": "45734089"
+    },
+    {
+      "term": "src",
+      "question_id": "45734089"
+    },
+    {
+      "term": "DSL",
+      "question_id": "45734089"
+    },
+    {
+      "term": "error 500",
+      "question_id": "42692779"
+    },
+    {
+      "term": "de-serialized",
+      "question_id": "42692779"
+    },
+    {
+      "term": "properties",
+      "question_id": "42692779"
+    },
+    {
+      "term": "serialize",
+      "question_id": "42692779"
+    },
+    {
+      "term": "action",
+      "question_id": "42692779"
+    },
+    {
+      "term": "server",
+      "question_id": "42692779"
+    },
+    {
+      "term": "Model",
+      "question_id": "42692779"
+    }
+  ],
+  "all_fn_terms": [
+    {
+      "term": "tables",
+      "question_id": "42873050"
+    },
+    {
+      "term": "table",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX SIZE(4608x3456)",
+      "question_id": "42873050"
+    },
+    {
+      "term": "bytearrays",
+      "question_id": "42873050"
+    },
+    {
+      "term": "image",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX Size",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAXIMUM",
+      "question_id": "42873050"
+    },
+    {
+      "term": "Session",
+      "question_id": "42873050"
+    },
+    {
+      "term": "Left arrow",
+      "question_id": "14831694"
+    },
+    {
+      "term": "up/down arrow",
+      "question_id": "14831694"
+    },
+    {
+      "term": "arrow up",
+      "question_id": "14831694"
+    },
+    {
+      "term": "Arrow down",
+      "question_id": "14831694"
+    },
+    {
+      "term": "up/down keys",
+      "question_id": "14831694"
+    },
+    {
+      "term": "arrow left",
+      "question_id": "14831694"
+    },
+    {
+      "term": "arrow right",
+      "question_id": "14831694"
+    },
+    {
+      "term": "PgUp",
+      "question_id": "14831694"
+    },
+    {
+      "term": "Left",
+      "question_id": "14831694"
+    },
+    {
+      "term": "Up",
+      "question_id": "14831694"
+    },
+    {
+      "term": "Right",
+      "question_id": "14831694"
+    },
+    {
+      "term": "private",
+      "question_id": "3639039"
+    },
+    {
+      "term": "calculator",
+      "question_id": "39079773"
+    },
+    {
+      "term": "column",
+      "question_id": "39079773"
+    },
+    {
+      "term": "keys",
+      "question_id": "39079773"
+    },
+    {
+      "term": "key",
+      "question_id": "39079773"
+    },
+    {
+      "term": "row",
+      "question_id": "39079773"
+    },
+    {
+      "term": "long",
+      "question_id": "39079773"
+    },
+    {
+      "term": ".long",
+      "question_id": "39079773"
+    },
+    {
+      "term": "exception",
+      "question_id": "39288595"
+    },
+    {
+      "term": "phone",
+      "question_id": "39288595"
+    },
+    {
+      "term": "jQuery-generated",
+      "question_id": "9965761"
+    },
+    {
+      "term": "jQ",
+      "question_id": "9965761"
+    },
+    {
+      "term": "string",
+      "question_id": "9965761"
+    },
+    {
+      "term": "strings",
+      "question_id": "9965761"
+    },
+    {
+      "term": "screen",
+      "question_id": "44055225"
+    },
+    {
+      "term": "strings",
+      "question_id": "44055225"
+    },
+    {
+      "term": "page",
+      "question_id": "44055225"
+    },
+    {
+      "term": "configuration",
+      "question_id": "45734089"
+    },
+    {
+      "term": "exception",
+      "question_id": "45734089"
+    },
+    {
+      "term": "string",
+      "question_id": "42692779"
+    }
+  ],
+  "per_doc": [
+    {
+      "doc_idx": 0,
+      "question_id": "42873050",
+      "text_length": 2278,
+      "text_preview": "Recently I 'm trying to create a ZSL session on my camera app using the camera2 API from android . I 'm using a device with a LEVEL-3 hardware level which supports [CODE] . In this case I 'm using the",
+      "gt_terms": [
+        "camera",
+        "camera2 API",
+        "android",
+        "tables",
+        "ReprocessableCaptureSession",
+        "table",
+        "ReprocessableCatureSession",
+        "YUV",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader Surface",
+        "JPEG",
+        "Surface",
+        "RAW",
+        "CaptureRequest",
+        "images",
+        "RingQueue",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "imageReader",
+        "Byte[]"
+      ],
+      "extracted_terms": [
+        "LEVEL-3 hardware level",
+        "Camera API 2",
+        "4608 x 3456",
+        "native libraries",
+        "Preview Surface",
+        "hardware level",
+        "CTS repository",
+        "camera2 API",
+        "YUV format",
+        "ReprocessableCaptureSession",
+        "ReprocessableCaptureRequest",
+        "ReprocessableCatureSession",
+        "ImageFormat.YUV_420_888",
+        "CameraCharacteristics",
+        "CaptureRequest",
+        "getInputSizes",
+        "YUV_420_888",
+        "ImageReader",
+        "ImageFormat",
+        "RingQueue",
+        "android",
+        "LEVEL-3",
+        "Surface",
+        "Target",
+        "Google",
+        "Byte[]",
+        "JPEG",
+        "ZSL",
+        "YUV",
+        "RAW",
+        "CTS"
+      ],
+      "scores": {
+        "precision": 0.7419,
+        "recall": 0.7333,
+        "hallucination": 0.2581,
+        "f1": 0.7376,
+        "tp": 23,
+        "fp": 8,
+        "fn": 8
+      },
+      "fp_terms": [
+        "LEVEL-3 hardware level",
+        "4608 x 3456",
+        "native libraries",
+        "hardware level",
+        "getInputSizes",
+        "LEVEL-3",
+        "Target",
+        "ZSL"
+      ],
+      "fn_terms": [
+        "tables",
+        "table",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Session"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "Organization",
+        "Library_Variable",
+        "Library_Function",
+        "Library",
+        "Data_Type",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 1,
+      "question_id": "10709772",
+      "text_length": 1262,
+      "text_preview": "I am wondering if this is possible and maybe some code examples if it is . I am trying to have the presenter during a live address be able to hit a button when he is away . This button will then trigg",
+      "gt_terms": [
+        "button",
+        "jpg",
+        "image",
+        "clients",
+        "microphone",
+        "FMIS",
+        "AS3",
+        "Client",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "NetStream.send()",
+        "toggleAwayImageDisplay"
+      ],
+      "extracted_terms": [
+        "subscribing clients",
+        "client property",
+        "microphone gain",
+        "FMIS 4",
+        "toggleAwayImageDisplay",
+        "NetStream.send()",
+        "NetConnection",
+        "presenter",
+        "NetStream",
+        "arguments",
+        "button",
+        "client",
+        "image",
+        "mute",
+        "jpg",
+        "AS3",
+        "FMS"
+      ],
+      "scores": {
+        "precision": 0.8235,
+        "recall": 1.0,
+        "hallucination": 0.1765,
+        "f1": 0.9032,
+        "tp": 14,
+        "fp": 3,
+        "fn": 0
+      },
+      "fp_terms": [
+        "presenter",
+        "arguments",
+        "mute"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Function_Name",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 2,
+      "question_id": "14831694",
+      "text_length": 2271,
+      "text_preview": "I stumbled upon an interesting behavior in the Trackbar Winforms control . On a horizontal trackbar , the left/right arrow keys work as expected . ( Left arrow moves the slider to the left and decreas",
+      "gt_terms": [
+        "Trackbar",
+        "Winforms",
+        "left/right arrow",
+        "Left arrow",
+        "slider",
+        "right arrow",
+        "up/down arrow",
+        "PageUp/PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "trackbar control",
+        "scrollbar control",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "keyboard",
+        "scrollbars",
+        "Left",
+        "Up",
+        "Right",
+        "Down"
+      ],
+      "extracted_terms": [
+        "left/right arrow keys",
+        "horizontal trackbar",
+        "keyboard navigation",
+        "vertical trackbar",
+        "Internet Explorer",
+        "scrollbar control",
+        "Privacy settings",
+        "trackbar control",
+        "slider control",
+        "Human Factors",
+        "ergonomics",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "scrollbar",
+        "Trackbar",
+        "Winforms",
+        "PageDown",
+        "control",
+        "Windows",
+        "slider",
+        "PageUp",
+        "parent",
+        "thumb",
+        "UAC",
+        "WPF",
+        "C#"
+      ],
+      "scores": {
+        "precision": 0.7692,
+        "recall": 0.6452,
+        "hallucination": 0.2308,
+        "f1": 0.7018,
+        "tp": 20,
+        "fp": 6,
+        "fn": 11
+      },
+      "fp_terms": [
+        "Privacy settings",
+        "Human Factors",
+        "ergonomics",
+        "control",
+        "parent",
+        "thumb"
+      ],
+      "fn_terms": [
+        "Left arrow",
+        "up/down arrow",
+        "arrow up",
+        "Arrow down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "PgUp",
+        "Left",
+        "Up",
+        "Right"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 3,
+      "question_id": "3639039",
+      "text_length": 1191,
+      "text_preview": "I have a Silverlight 4 app using Prism 2.2 and I have a few modules that I am loading on demand by defining them as ondemand in the module catalog ( via a xaml file ) and then using the ModuleManager ",
+      "gt_terms": [
+        "Silverlight",
+        "Prism",
+        "2.2",
+        "ondemand",
+        "xaml",
+        "ModuleManager",
+        "codeplex",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "private",
+        "IFileDownloader"
+      ],
+      "extracted_terms": [
+        "DownloadProgressChanged event handler",
+        "module catalog",
+        "Silverlight 4",
+        "event handler",
+        "Prism event",
+        "Prism 2.2",
+        "xaml file",
+        "FileDownloaderWithProgress",
+        "DownloadProgressChanged",
+        "IFileDownloader",
+        "FileDownloader",
+        "ModuleManager",
+        "Silverlight",
+        "WebClient",
+        "ondemand",
+        "download",
+        "codeplex",
+        "Prism",
+        "xaml",
+        "WPF",
+        "CLI"
+      ],
+      "scores": {
+        "precision": 0.8095,
+        "recall": 0.9231,
+        "hallucination": 0.1905,
+        "f1": 0.8626,
+        "tp": 17,
+        "fp": 4,
+        "fn": 1
+      },
+      "fp_terms": [
+        "module catalog",
+        "event handler",
+        "WPF",
+        "CLI"
+      ],
+      "fn_terms": [
+        "private"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Class_Name",
+        "Website",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Type",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 4,
+      "question_id": "39079773",
+      "text_length": 2359,
+      "text_preview": "I am building a calculator with flexbox . I want one of its keys twice the height and another key twice the width . I googled much about it but could n't find both cases together . For twice height ke",
+      "gt_terms": [
+        "calculator",
+        "flexbox",
+        "height",
+        "width",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "keys",
+        "flex containers",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "flex container",
+        "key",
+        "row",
+        "long",
+        "container",
+        ".long",
+        "flex-basis",
+        "flex-grow"
+      ],
+      "extracted_terms": [
+        "flexbox layout model",
+        "vertical orientation",
+        "flex containers",
+        "flex-direction",
+        "specificity",
+        "codepen.io",
+        "flex-basis",
+        "flex-grow",
+        "siblings",
+        "floating",
+        "flexbox",
+        "padding",
+        "borders",
+        "cascade",
+        "Codepen",
+        "height",
+        "width",
+        "flex",
+        "CSS"
+      ],
+      "scores": {
+        "precision": 0.7368,
+        "recall": 0.6667,
+        "hallucination": 0.2632,
+        "f1": 0.7,
+        "tp": 14,
+        "fp": 5,
+        "fn": 7
+      },
+      "fp_terms": [
+        "vertical orientation",
+        "specificity",
+        "siblings",
+        "floating",
+        "cascade"
+      ],
+      "fn_terms": [
+        "calculator",
+        "column",
+        "keys",
+        "key",
+        "row",
+        "long",
+        ".long"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 5,
+      "question_id": "39288595",
+      "text_length": 4048,
+      "text_preview": "I am a bit confused about the c++11 random library . What I understand : we need two separate concepts : random engine ( which can be pseudo ( need seed ) or real ) distribution : it maps the numbers ",
+      "gt_terms": [
+        "c++11",
+        "random",
+        "random engine",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen(\"/dev/urandom\")",
+        "windows",
+        "microsoft crypto API",
+        "crypto",
+        "mt19937",
+        "exception",
+        "unix",
+        "visual studio",
+        "mingw",
+        "phone",
+        "time(NULL)",
+        "Pseudo-randomic",
+        "CPU"
+      ],
+      "extracted_terms": [
+        "microsoft crypto API",
+        "Pseudo-randomic algorithm",
+        "filesystem handle",
+        "random library",
+        "random engine",
+        "mt19937 paper",
+        "visual studio",
+        "entropy pool",
+        "std::default_random_engine",
+        "std::random_device",
+        "cross-platform",
+        "Deterministic",
+        "/dev/urandom/",
+        "distribution",
+        "std::mt19937",
+        "/dev/urandom",
+        "/dev/random",
+        "time(NULL)",
+        "std::fopen",
+        "hardware",
+        "windows",
+        "pseudo",
+        "libc++",
+        "c++11",
+        "boost",
+        "mingw",
+        "seed",
+        "unix",
+        "MSVC",
+        "CPU"
+      ],
+      "scores": {
+        "precision": 0.6333,
+        "recall": 0.9,
+        "hallucination": 0.3667,
+        "f1": 0.7435,
+        "tp": 19,
+        "fp": 11,
+        "fn": 2
+      },
+      "fp_terms": [
+        "filesystem handle",
+        "entropy pool",
+        "cross-platform",
+        "Deterministic",
+        "distribution",
+        "std::fopen",
+        "hardware",
+        "pseudo",
+        "boost",
+        "seed",
+        "MSVC"
+      ],
+      "fn_terms": [
+        "exception",
+        "phone"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "Library",
+        "Device",
+        "Language",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 6,
+      "question_id": "9965761",
+      "text_length": 1507,
+      "text_preview": "I have a hard-coded list , each list item of which has an ID . I want to have jQuery generate list items in another list , and set as their text content the ID attribute values of each of the hard-cod",
+      "gt_terms": [
+        "list",
+        "jQuery",
+        "jQuery-generated",
+        "jQ",
+        "var",
+        "jsFiddle",
+        "each",
+        "string",
+        "li",
+        "strings",
+        "JS",
+        "W3C",
+        "HTML4"
+      ],
+      "extracted_terms": [
+        "gallery items",
+        "each function",
+        "text content",
+        "ID attribute",
+        "list items",
+        "nav list",
+        "ListItemIndex",
+        "appending",
+        "jsFiddle",
+        "gallery",
+        "jQuery",
+        "HTML4",
+        "var",
+        "W3C",
+        "li",
+        "JS"
+      ],
+      "scores": {
+        "precision": 0.625,
+        "recall": 0.6923,
+        "hallucination": 0.375,
+        "f1": 0.6569,
+        "tp": 10,
+        "fp": 6,
+        "fn": 4
+      },
+      "fp_terms": [
+        "gallery items",
+        "text content",
+        "ID attribute",
+        "ListItemIndex",
+        "appending",
+        "gallery"
+      ],
+      "fn_terms": [
+        "jQuery-generated",
+        "jQ",
+        "string",
+        "strings"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Organization",
+        "Data_Type",
+        "HTML_XML_Tag",
+        "Data_Structure",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 7,
+      "question_id": "44055225",
+      "text_length": 1489,
+      "text_preview": "I have a problem that I frequently deal with using MVC that I ca n't seem to find an easy solution for . Very frequently I find myself creating a viewmodel for an object that has a collection of small",
+      "gt_terms": [
+        "MVC",
+        "viewmodel",
+        "screen",
+        "table",
+        "IEnumerable",
+        "form",
+        "html",
+        "javascript",
+        "strings",
+        "page",
+        "HTTPPOST"
+      ],
+      "extracted_terms": [
+        "hidden fields",
+        "partial view",
+        "nested form",
+        "IEnumerable",
+        "partialview",
+        "credential",
+        "javascript",
+        "viewmodel",
+        "database",
+        "HTTPPOST",
+        "Staff",
+        "table",
+        "popup",
+        "tags",
+        "html",
+        "form",
+        "MVC"
+      ],
+      "scores": {
+        "precision": 0.5294,
+        "recall": 0.7273,
+        "hallucination": 0.4706,
+        "f1": 0.6128,
+        "tp": 9,
+        "fp": 8,
+        "fn": 3
+      },
+      "fp_terms": [
+        "hidden fields",
+        "partial view",
+        "partialview",
+        "credential",
+        "database",
+        "Staff",
+        "popup",
+        "tags"
+      ],
+      "fn_terms": [
+        "screen",
+        "strings",
+        "page"
+      ],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 8,
+      "question_id": "45734089",
+      "text_length": 781,
+      "text_preview": "I have a WSDL file located under src \\main\\resources\\wsdl\\ folder and it is having multiple operations defined within it . My application is running on Weblogic 12C server . I 'm trying to expose the ",
+      "gt_terms": [
+        "WSDL",
+        "Weblogic 12C server",
+        "Apache",
+        "Cammel",
+        "2.18.3",
+        "Java",
+        "configuration",
+        "RouteBuilder",
+        "exception",
+        "wsdl2java",
+        "IDE"
+      ],
+      "extracted_terms": [
+        "SOAP web-service",
+        "Apache Cammel",
+        "service class",
+        "Weblogic 12C",
+        "Java DSL",
+        "RouteBuilder",
+        "web-service",
+        "resources",
+        "wsdl2java",
+        "classpath",
+        "endpoint",
+        "Weblogic",
+        "version",
+        "pom.xml",
+        "2.18.3",
+        "WSDL",
+        "main",
+        "SOAP",
+        "Java",
+        "src",
+        "IDE",
+        "12C",
+        "DSL"
+      ],
+      "scores": {
+        "precision": 0.4348,
+        "recall": 0.8182,
+        "hallucination": 0.5652,
+        "f1": 0.5678,
+        "tp": 10,
+        "fp": 13,
+        "fn": 2
+      },
+      "fp_terms": [
+        "SOAP web-service",
+        "service class",
+        "web-service",
+        "resources",
+        "classpath",
+        "endpoint",
+        "Weblogic",
+        "version",
+        "pom.xml",
+        "main",
+        "SOAP",
+        "src",
+        "DSL"
+      ],
+      "fn_terms": [
+        "configuration",
+        "exception"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 9,
+      "question_id": "42692779",
+      "text_length": 1032,
+      "text_preview": "I have a quite odd problem . The problem is like this .. . When I try to pass a string to my controller action ( .NET MVC ) , this one : [CODE] I checked in the console and I 'm getting an server inte",
+      "gt_terms": [
+        "string",
+        "controller",
+        ".NET",
+        "MVC",
+        "console",
+        "server internal error 500",
+        "post",
+        "internal server error 500",
+        "request",
+        "Json"
+      ],
+      "extracted_terms": [
+        "server internal error 500",
+        "internal server error",
+        "Controller action",
+        "internal error",
+        "request object",
+        "post method",
+        "error 500",
+        ".NET MVC",
+        "de-serialized",
+        "controller",
+        "properties",
+        "serialize",
+        "postData",
+        "console",
+        "action",
+        "server",
+        "Model",
+        ".NET",
+        "post",
+        "Json",
+        "MVC"
+      ],
+      "scores": {
+        "precision": 0.6667,
+        "recall": 0.9,
+        "hallucination": 0.3333,
+        "f1": 0.766,
+        "tp": 14,
+        "fp": 7,
+        "fn": 1
+      },
+      "fp_terms": [
+        "error 500",
+        "de-serialized",
+        "properties",
+        "serialize",
+        "action",
+        "server",
+        "Model"
+      ],
+      "fn_terms": [
+        "string"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Error_Name",
+        "Function_Name",
+        "Library"
+      ]
+    }
+  ]
+}

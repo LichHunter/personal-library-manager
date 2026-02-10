@@ -1,8 +1,8 @@
 {
-  "active_plan": null,
-  "started_at": "2026-01-30T11:46:07.061Z",
-  "completed_at": "2026-01-30T13:01:00.000Z",
-  "session_ids": ["ses_3fabdfc1affeUJWlvvtjJJBgsV"],
-  "plan_name": "benchmark-question-loader-refactor",
+  "active_plan": "/home/susano/Code/personal-library-manager/.sisyphus/plans/poc-1b-scale-testing.md",
+  "started_at": "2026-02-08T15:55:00.000Z",
+  "completed_at": "2026-02-09T11:25:00.000Z",
+  "session_ids": ["ses_3d1712039ffeVLO49kukAQF0Zh"],
+  "plan_name": "poc-1b-scale-testing",
   "status": "completed"
 }

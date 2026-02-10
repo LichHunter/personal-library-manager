@@ -1,0 +1,4171 @@
+{
+  "extraction_ceiling": {
+    "total_gt": 277,
+    "extracted": 275,
+    "never_extracted_count": 2,
+    "ceiling_pct": 0.9927797833935018,
+    "never_extracted": [
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "requests and limits",
+        "tier": 2
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "messages",
+        "tier": 3
+      }
+    ]
+  },
+  "extractor_contributions": {
+    "total_gt": 277,
+    "union_coverage": 275,
+    "union_recall": 0.9927797833935018,
+    "per_extractor": {
+      "sonnet_exhaustive": {
+        "total_matches": 274,
+        "unique_matches": 23,
+        "recall": 0.9891696750902527
+      },
+      "haiku_exhaustive": {
+        "total_matches": 248,
+        "unique_matches": 0,
+        "recall": 0.8953068592057761
+      },
+      "haiku_simple": {
+        "total_matches": 200,
+        "unique_matches": 1,
+        "recall": 0.7220216606498195
+      }
+    }
+  },
+  "pipeline_stages": {
+    "stage_counts": {
+      "AUTO_KEPT": 236,
+      "SONNET_REVIEW": 38,
+      "NEVER_EXTRACTED": 2,
+      "UNGROUNDED": 1
+    },
+    "classifications": [
+      {
+        "chunk_id": "_index_chunk_0",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "_index_chunk_0",
+        "gt_term": "Documentation",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Documentation']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "cluster",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "Concepts",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Concepts']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "Kubernetes system",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "abstractions",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['abstractions']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Kubernetes cluster",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "control plane",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "nodes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['nodes']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "worker nodes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['nodes', 'worker node']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Pods",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Pods']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "containerized applications",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containerized applications']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "fault-tolerance",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['fault-tolerance']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "high availability",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['high availability']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "kube-apiserver",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-apiserver']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "etcd",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['etcd']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "kube-controller-manager",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-controller-manager']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "kube-scheduler",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-scheduler']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "kubelet",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kubelet']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "kube-proxy",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-proxy']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "network proxy",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['network proxy']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Service",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Service']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "network plugin",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['network plugins', 'network plugin']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "cluster",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Cluster Architecture', 'cluster', 'cluster network']",
+        "vote_counts": [
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "worker machines",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['worker machines']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "application workload",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['application workload']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "cluster network",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster network']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "third party implementation",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['third party implementation']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "proxying",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['proxying']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "reference architecture",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['reference architecture']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "components",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['components', 'Kubernetes cluster components', 'cluster components']",
+        "candidate_terms": [
+          "components",
+          "Kubernetes cluster components",
+          "cluster components"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane components', 'control plane setup']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "cluster",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "scheduling",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['scheduling']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "pod",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pod']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "Deployment",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Deployment']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "replicas",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['replicas']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane components",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane components']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "user containers",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['user containers']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "kubeadm",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kubeadm']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "cluster events",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "machine",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['machine']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "setup scripts",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['setup scripts']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "containers",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['user containers']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "Highly Available clusters",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Creating Highly Available clusters', 'Highly Available clusters']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "high availability",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['high availability']",
+        "candidate_terms": [
+          "high availability"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane setup",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane setup']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup v2",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']",
+        "vote_counts": [
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "control groups",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control groups']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']",
+        "vote_counts": [
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "kubelet",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kubelet']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "container runtime",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['container runtime', 'containers']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "resource management",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource management']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "pods",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pods']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "containers",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['container runtime', 'containers']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cpu/memory requests and limits",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['memory requests']",
+        "candidate_terms": [
+          "memory requests"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "requests",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['requests', 'memory requests']",
+        "candidate_terms": [
+          "requests",
+          "memory requests"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "limits",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['limits']",
+        "candidate_terms": [
+          "limits"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup v1",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']",
+        "vote_counts": [
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "containerized workloads",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containerized workloads']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "requests and limits",
+        "tier": 2,
+        "stage": "NEVER_EXTRACTED",
+        "detail": "No extractor produced a matching term"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cpu",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cpu']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "memory",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['memory']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "Linux",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Linux']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "processes",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['processes']",
+        "candidate_terms": [
+          "processes"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "resources",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['resources']",
+        "candidate_terms": [
+          "resources"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "API",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup v2",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup v1",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "stable",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['stable']",
+        "candidate_terms": [
+          "stable"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "Pressure Stall Information",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Pressure Stall Information']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "MemoryQoS",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['MemoryQoS']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "memory QoS",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['MemoryQoS']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "resource management",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource management']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "containers",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containers']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "kernel memory",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kernel memory']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "network memory",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['network memory']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "page cache write backs",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['page cache write backs', 'write backs']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "Linux",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Linux']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "API",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "unified control system",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['unified control system']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "hierarchy",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['unified hierarchy', 'hierarchy']",
+        "candidate_terms": [
+          "unified hierarchy",
+          "hierarchy"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "sub-tree delegation",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['sub-tree delegation']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "resource allocation",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource allocation']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "isolation",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['isolation']",
+        "candidate_terms": [
+          "isolation"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "memory allocations",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['memory allocations']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "page cache",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['page cache', 'page cache write backs']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "QoS",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pod-qos']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup v2 primitives",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['v2', 'cgroup v2 primitives', 'primitives']",
+        "candidate_terms": [
+          "v2",
+          "cgroup v2 primitives",
+          "primitives"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "unified accounting",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['unified accounting', 'accounting']",
+        "candidate_terms": [
+          "unified accounting",
+          "accounting"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "v1.25",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['v1.25']",
+        "candidate_terms": [
+          "v1.25"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "Cloud Controller Manager",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Cloud Controller Manager']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "beta",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['beta']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "API-driven infrastructure",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['infrastructure', 'API-driven infrastructure']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "cloud providers",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cloud providers']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "cloud infrastructure",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Cloud infrastructure technologies', 'cloud infrastructure', 'infrastructure']",
+        "vote_counts": [
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "hybrid clouds",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['hybrid cloud']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "platforms",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['platforms']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "components",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['components']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "infrastructure",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Cloud infrastructure technologies', 'cloud infrastructure', 'infrastructure', 'API-driven infrastructure']",
+        "vote_counts": [
+          2,
+          2,
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "API",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API-driven infrastructure']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "integrate",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['integrate']",
+        "candidate_terms": [
+          "integrate"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "cloud controller manager",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cloud controller manager']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "control plane",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "Pods",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Pods']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "controllers",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controllers']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "addon",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['addon']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "replicated set of processes",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['replicated set']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "processes",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['processes']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "gt_term": "containers",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containers']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "API server",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-apiserver', 'API server']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "kube-apiserver",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-apiserver', 'API server']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "cluster",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "Control Plane",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Control Plane']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "Nodes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Nodes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "master-node-communication",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['master-node-communication', 'Communication']",
+        "candidate_terms": [
+          "master-node-communication",
+          "Communication"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "network configuration",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['network configuration']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "communication paths",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['communication paths', 'Communication']",
+        "candidate_terms": [
+          "communication paths",
+          "Communication"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "untrusted network",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['untrusted network']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "public IPs",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['public IPs']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "installation",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['installation']",
+        "candidate_terms": [
+          "installation"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "harden",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['harden']",
+        "candidate_terms": [
+          "harden"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "Node",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Node']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "Control Plane",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Control Plane', 'control plane components']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "API server",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "Pods",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pods']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "kubelet",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kubelet']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "kube-proxy",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-proxy']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "service account",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['service account tokens', 'service account']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "namespace",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['namespace']",
+        "candidate_terms": [
+          "namespace"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "authentication",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['authentication']",
+        "candidate_terms": [
+          "authentication"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "authorization",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['authorization']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "anonymous requests",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['anonymous requests']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "service account tokens",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['service account tokens', 'service account']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "certificate",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['certificate', 'public root certificate']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "client certificate",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['certificate']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "public root certificate",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['public root certificate']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "client credentials",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['client credentials']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "bearer token",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['bearer token']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "TLS bootstrapping",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['TLS bootstrapping']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "kubelet TLS bootstrapping",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['TLS bootstrapping']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "HTTPS",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['HTTPS', 'HTTPS endpoint']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "hub-and-spoke",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['hub-and-spoke']",
+        "candidate_terms": [
+          "hub-and-spoke"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "virtual IP address",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['virtual IP address']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "API",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "control plane components",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Control Plane', 'control plane components']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "remote services",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['remote services']",
+        "candidate_terms": [
+          "remote services"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "port",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['port', 'secure port']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "HTTPS endpoint",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['HTTPS', 'HTTPS endpoint']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "secure port",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['port', 'secure port']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "cluster",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "443",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['443']",
+        "candidate_terms": [
+          "443"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "Controllers",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "control loop",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control loop']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "desired state",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['state', 'desired state']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "current state",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['state', 'current state']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "robotics",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['robotics']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "automation",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['automation']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "non-terminating loop",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['non-terminating loop', 'loop']",
+        "candidate_terms": [
+          "non-terminating loop",
+          "loop"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "state",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['state', 'desired state', 'current state']",
+        "vote_counts": [
+          2,
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "system",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['system']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "thermostat",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['thermostat']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "temperature",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['temperature']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "controller",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Controller pattern', 'controller', 'namespace controller']",
+        "vote_counts": [
+          3,
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "Controller pattern",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Controller pattern', 'controller']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "Kubernetes resource type",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource type']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "objects",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['objects']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "spec",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['spec field']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "desired state",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['desired state']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "API server",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server', 'kube-apiserver']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "kube-apiserver",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server', 'kube-apiserver']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "namespace controller",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller', 'namespace controller']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "resource type",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource type']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "spec field",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['spec field']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "resource",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource type']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "messages",
+        "tier": 3,
+        "stage": "NEVER_EXTRACTED",
+        "detail": "No extractor produced a matching term"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "side effects",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['side effects']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "built-in controllers",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "namespace",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['namespace controller']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Garbage Collection",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Garbage Collection']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pods",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Terminated pods', 'pods', 'pod-lifecycle']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Terminated pods",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Terminated pods', 'pods']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Jobs",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Completed Jobs', 'Jobs']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Completed Jobs",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Completed Jobs', 'Jobs']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "owner references",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "containers",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Unused containers', 'containers', 'container images']",
+        "vote_counts": [
+          2,
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "container images",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containers', 'container images']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "PersistentVolumes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Dynamically provisioned PersistentVolumes', 'PersistentVolumes']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "StorageClass",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['StorageClass']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "reclaim policy",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['reclaim policy']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Delete",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Delete']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "CertificateSigningRequests",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['CertificateSigningRequests']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "CSRs",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['CSRs']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Nodes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Nodes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "cloud controller manager",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cloud', 'cloud controller manager']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Node Lease objects",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Node Lease objects']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "heartbeats",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['heartbeats']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-lifecycle",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pods', 'pod-lifecycle']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-garbage-collection",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Garbage Collection', 'pods']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "ttlafterfinished",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['ttlafterfinished']",
+        "candidate_terms": [
+          "ttlafterfinished"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "owners-dependents",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['dependents']",
+        "candidate_terms": [
+          "dependents"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Dynamically provisioned PersistentVolumes",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Dynamically provisioned PersistentVolumes']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Unused containers",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Unused containers', 'containers']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Stale or expired CertificateSigningRequests",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['CertificateSigningRequests']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "request-signing-process",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['request-signing-process']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "cluster",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "cloud",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cloud', 'cloud controller manager']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "On-premises",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['On-premises']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "addon",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['addon']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "resources",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resources']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "controllers",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['controller', 'cloud-controller', 'controllers']",
+        "candidate_terms": [
+          "controller",
+          "cloud-controller",
+          "controllers"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "workloads",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['workloads']",
+        "candidate_terms": [
+          "workloads"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "storage",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['StorageClass']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "persistent-volumes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['PersistentVolumes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "access-authn-authz",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['access-authn-authz']",
+        "candidate_terms": [
+          "access-authn-authz"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "architecture",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['architecture']",
+        "candidate_terms": [
+          "architecture"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "owner references",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'owner', 'ownerReference']",
+        "vote_counts": [
+          3,
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "owners",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "dependents",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['dependent']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "control plane",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "labels",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['labels']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "selectors",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['selectors', 'field-selector']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Service",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Service']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "EndpointSlice",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['EndpointSlice']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespace",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cross-namespace', 'namespace', 'namespaced']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cross-namespace', 'namespace', 'namespaced']",
+        "vote_counts": [
+          3,
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "cluster-scoped",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster-scoped']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "garbage collector",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['garbage collector']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "ownerReference",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'ownerReference']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "OwnerRefInvalidNamespace",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['OwnerRefInvalidNamespace']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "involvedObject",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['involvedObject']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Event",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Event']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "kubectl get events",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['kubectl get events', 'get events']",
+        "candidate_terms": [
+          "kubectl get events",
+          "get events"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "--field-selector",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['selectors', 'field-selector']",
+        "vote_counts": [
+          3,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "cross-namespace owner references",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'owner']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "resources",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['related resources', 'resources']",
+        "candidate_terms": [
+          "related resources",
+          "resources"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Ownership",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "labels and selectors",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['labels and selectors']",
+        "candidate_terms": [
+          "labels and selectors"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "objects",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['involvedObject']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Namespaced dependents",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['Namespaced dependents']",
+        "candidate_terms": [
+          "Namespaced dependents"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced owners",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['namespace', 'namespaced']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "deletion",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['deleting', 'deletion']",
+        "candidate_terms": [
+          "deleting",
+          "deletion"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Cluster-scoped dependents",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster-scoped']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "garbage collected",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['garbage collector']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "kubectl",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kubectl']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "v1.20+",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['v1.20+']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "API",
+        "tier": 3,
+        "stage": "UNGROUNDED",
+        "detail": "Extracted as ['API clients'] but failed span grounding",
+        "candidate_terms": [
+          "API clients"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "kind",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['namespaced kind']",
+        "candidate_terms": [
+          "namespaced kind"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "Lease",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Leases', 'Lease']",
+        "vote_counts": [
+          3,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "apiVersion",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['apiVersion']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "kind",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kind']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "coordination.k8s.io/v1",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['coordination.k8s.io/v1', 'coordination.k8s.io']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "coordination.k8s.io",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['coordination.k8s.io/v1', 'coordination.k8s.io']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "API Group",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API Group']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "node heartbeats",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['node heartbeats']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "leader election",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['component-level leader election', 'leader election']",
+        "vote_counts": [
+          2,
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "distributed systems",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Distributed systems']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "shared resources",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['shared resources']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "lock",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['lock']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "component-level leader election",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['component-level leader election']",
+        "vote_counts": [
+          2
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "node",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['node heartbeats']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "Kubernetes",
+        "tier": 1,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "cluster-resources",
+        "tier": 2,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster-resources']",
+        "vote_counts": [
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "system-critical capabilities",
+        "tier": 2,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['system-critical capabilities']",
+        "candidate_terms": [
+          "system-critical capabilities"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "API",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['api_metadata', 'API Group']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "members",
+        "tier": 3,
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['members']",
+        "candidate_terms": [
+          "members"
+        ]
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "coordinate",
+        "tier": 3,
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['coordinate activity', 'coordination.k8s.io']",
+        "vote_counts": [
+          2,
+          3
+        ]
+      }
+    ]
+  },
+  "variant_V_B_analysis": {
+    "total_fns": 55,
+    "total_fps": 40,
+    "fn_by_stage": {
+      "AUTO_KEPT": 48,
+      "NEVER_EXTRACTED": 2,
+      "SONNET_REVIEW": 4,
+      "UNGROUNDED": 1
+    },
+    "fn_details": [
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "Kubernetes system",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Kubernetes",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "cluster network",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster network']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane components",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane components']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "cluster events",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "containers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['user containers']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane setup",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane setup']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "containers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['container runtime', 'containers']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup v1",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "requests and limits",
+        "stage": "NEVER_EXTRACTED",
+        "detail": "No extractor produced a matching term"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "API",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API-driven infrastructure']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "integrate",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['integrate']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "kube-apiserver",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-apiserver', 'API server']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "service account tokens",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['service account tokens', 'service account']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "client certificate",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['certificate']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "public root certificate",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['public root certificate']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "kubelet TLS bootstrapping",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['TLS bootstrapping']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "control plane components",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Control Plane', 'control plane components']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "secure port",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['port', 'secure port']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "state",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['state', 'desired state', 'current state']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "Controller pattern",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Controller pattern', 'controller']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "kube-apiserver",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server', 'kube-apiserver']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "namespace controller",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller', 'namespace controller']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "resource",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource type']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "messages",
+        "stage": "NEVER_EXTRACTED",
+        "detail": "No extractor produced a matching term"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "built-in controllers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Terminated pods",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Terminated pods', 'pods']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Completed Jobs",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Completed Jobs', 'Jobs']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "container images",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containers', 'container images']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-lifecycle",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pods', 'pod-lifecycle']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-garbage-collection",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Garbage Collection', 'pods']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Dynamically provisioned PersistentVolumes",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Dynamically provisioned PersistentVolumes']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Unused containers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Unused containers', 'containers']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Stale or expired CertificateSigningRequests",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['CertificateSigningRequests']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "cloud",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cloud', 'cloud controller manager']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "storage",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['StorageClass']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "persistent-volumes",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['PersistentVolumes']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cross-namespace', 'namespace', 'namespaced']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "ownerReference",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'ownerReference']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "--field-selector",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['selectors', 'field-selector']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "cross-namespace owner references",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'owner']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Ownership",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "labels and selectors",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['labels and selectors']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "objects",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['involvedObject']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Namespaced dependents",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['Namespaced dependents']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced owners",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['namespace', 'namespaced']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Cluster-scoped dependents",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster-scoped']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "garbage collected",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['garbage collector']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "API",
+        "stage": "UNGROUNDED",
+        "detail": "Extracted as ['API clients'] but failed span grounding"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "kind",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['namespaced kind']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "coordination.k8s.io",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['coordination.k8s.io/v1', 'coordination.k8s.io']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "component-level leader election",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['component-level leader election']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "node",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['node heartbeats']"
+      }
+    ],
+    "fp_list": [
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "extracted_term": "system"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "production environment"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "multiple machines"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "components"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "field"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "tools"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "extracted_term": "workloads"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "workloads"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "kernel"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "pods"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "PSI"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "tight coupling"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "mechanism"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "coupling"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "clouds"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "plugin"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "v1.11"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "extracted_term": "components"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "extracted_term": "dchen1107"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "extracted_term": "liggitt"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "extracted_term": "network"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "extracted_term": "default operating mode"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "extracted_term": "secured by default"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "extracted_term": "public root"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "extracted_term": "connections"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "extracted_term": "networks"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "extracted_term": "client"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "concepts"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "Objects"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "manager"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "owners"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "images"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "extracted_term": "reason"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "extracted_term": "CLI"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "mechanism"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "concept"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "objects"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "k8s.io"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "set"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "k8s"
+      }
+    ]
+  },
+  "variant_V_BASELINE_analysis": {
+    "total_fns": 71,
+    "total_fps": 20,
+    "fn_by_stage": {
+      "AUTO_KEPT": 52,
+      "SONNET_REVIEW": 16,
+      "NEVER_EXTRACTED": 2,
+      "UNGROUNDED": 1
+    },
+    "fn_details": [
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "Kubernetes system",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Kubernetes",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Kubernetes']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "cluster network",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster network']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "components",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['components', 'Kubernetes cluster components', 'cluster components']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane components",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane components']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "cluster events",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "containers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['user containers']"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane setup",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['control plane', 'control plane setup']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "containers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['container runtime', 'containers']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup v1",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "requests and limits",
+        "stage": "NEVER_EXTRACTED",
+        "detail": "No extractor produced a matching term"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "processes",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['processes']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup v1",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cgroup v2', 'cgroup', 'cgroup v1']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup v2 primitives",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['v2', 'cgroup v2 primitives', 'primitives']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "infrastructure",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Cloud infrastructure technologies', 'cloud infrastructure', 'infrastructure', 'API-driven infrastructure']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "API",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API-driven infrastructure']"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "integrate",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['integrate']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "kube-apiserver",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['kube-apiserver', 'API server']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "master-node-communication",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['master-node-communication', 'Communication']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "installation",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['installation']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "harden",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['harden']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "service account tokens",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['service account tokens', 'service account']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "client certificate",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['certificate']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "public root certificate",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['public root certificate']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "kubelet TLS bootstrapping",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['TLS bootstrapping']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "API",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "control plane components",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Control Plane', 'control plane components']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "remote services",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['remote services']"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "secure port",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['port', 'secure port']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "state",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['state', 'desired state', 'current state']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "Controller pattern",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Controller pattern', 'controller']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "kube-apiserver",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['API server', 'kube-apiserver']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "namespace controller",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller', 'namespace controller']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "spec field",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['spec field']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "resource",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['resource type']"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "messages",
+        "stage": "NEVER_EXTRACTED",
+        "detail": "No extractor produced a matching term"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "built-in controllers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['controller']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Terminated pods",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Terminated pods', 'pods']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Completed Jobs",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Completed Jobs', 'Jobs']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "container images",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['containers', 'container images']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-lifecycle",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['pods', 'pod-lifecycle']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-garbage-collection",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Garbage Collection', 'pods']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Dynamically provisioned PersistentVolumes",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Dynamically provisioned PersistentVolumes']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Unused containers",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['Unused containers', 'containers']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Stale or expired CertificateSigningRequests",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['CertificateSigningRequests']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "cloud",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cloud', 'cloud controller manager']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "storage",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['StorageClass']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "persistent-volumes",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['PersistentVolumes']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "access-authn-authz",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['access-authn-authz']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "architecture",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['architecture']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cross-namespace', 'namespace', 'namespaced']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "ownerReference",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'ownerReference']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "--field-selector",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['selectors', 'field-selector']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "cross-namespace owner references",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner references', 'owner']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Ownership",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['owner']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "labels and selectors",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['labels and selectors']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "objects",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['involvedObject']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Namespaced dependents",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['Namespaced dependents']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced owners",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['namespace', 'namespaced']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "deletion",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['deleting', 'deletion']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Cluster-scoped dependents",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['cluster-scoped']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "garbage collected",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['garbage collector']"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "API",
+        "stage": "UNGROUNDED",
+        "detail": "Extracted as ['API clients'] but failed span grounding"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "kind",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['namespaced kind']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "coordination.k8s.io",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['coordination.k8s.io/v1', 'coordination.k8s.io']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "component-level leader election",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['component-level leader election']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "node",
+        "stage": "AUTO_KEPT",
+        "detail": "Auto-kept via ['node heartbeats']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "system-critical capabilities",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['system-critical capabilities']"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "members",
+        "stage": "SONNET_REVIEW",
+        "detail": "1-vote, sent to Sonnet review: ['members']"
+      }
+    ],
+    "fp_list": [
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "extracted_term": "system"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "production environment"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "extracted_term": "multiple machines"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "extracted_term": "workloads"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "workloads"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "kernel"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "pods"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "extracted_term": "PSI"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "tight coupling"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "plugin"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "extracted_term": "v1.11"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+        "extracted_term": "components"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "extracted_term": "dchen1107"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "extracted_term": "liggitt"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "Objects"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "owners"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "extracted_term": "images"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "extracted_term": "CLI"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "k8s.io"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "extracted_term": "k8s"
+      }
+    ]
+  },
+  "greedy_vs_m2o_V_B": {
+    "variant": "V_B",
+    "greedy_v3_fn_count": 12,
+    "m2o_v3_fn_count": 55,
+    "both_fn": 12,
+    "greedy_only_fn": 0,
+    "m2o_only_fn": 43,
+    "both_fn_list": [
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "containers"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "requests and limits"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "integrate"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "public root certificate"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "messages"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Dynamically provisioned PersistentVolumes"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "labels and selectors"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Namespaced dependents"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Cluster-scoped dependents"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "API"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "component-level leader election"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "node"
+      }
+    ],
+    "greedy_only_fn_list": [],
+    "m2o_only_fn_list": [
+      {
+        "chunk_id": "concepts__index_chunk_0",
+        "gt_term": "Kubernetes system"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "Kubernetes"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_0",
+        "gt_term": "cluster network"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane components"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "cluster events"
+      },
+      {
+        "chunk_id": "concepts_architecture__index_chunk_1",
+        "gt_term": "control plane setup"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "containers"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_0",
+        "gt_term": "cgroup v1"
+      },
+      {
+        "chunk_id": "concepts_architecture_cgroups_chunk_1",
+        "gt_term": "cgroup"
+      },
+      {
+        "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+        "gt_term": "API"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+        "gt_term": "kube-apiserver"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "service account tokens"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "client certificate"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "kubelet TLS bootstrapping"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "control plane components"
+      },
+      {
+        "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+        "gt_term": "secure port"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_0",
+        "gt_term": "state"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "Controller pattern"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "kube-apiserver"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "namespace controller"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "resource"
+      },
+      {
+        "chunk_id": "concepts_architecture_controller_chunk_1",
+        "gt_term": "built-in controllers"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Terminated pods"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Completed Jobs"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "container images"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-lifecycle"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "pod-garbage-collection"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Unused containers"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "Stale or expired CertificateSigningRequests"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "cloud"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "storage"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+        "gt_term": "persistent-volumes"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "ownerReference"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "--field-selector"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "cross-namespace owner references"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "Ownership"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "objects"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "namespaced owners"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "garbage collected"
+      },
+      {
+        "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+        "gt_term": "kind"
+      },
+      {
+        "chunk_id": "concepts_architecture_leases_chunk_0",
+        "gt_term": "coordination.k8s.io"
+      }
+    ]
+  }
+}

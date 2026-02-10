@@ -1,0 +1,985 @@
+{
+  "metadata": {
+    "iteration": 5,
+    "strategy": "v5_contextual",
+    "timestamp": "2026-02-09T14:11:01.855882",
+    "so_ner_path": "/tmp/StackOverflowNER/resources/annotated_ner_data/StackOverflow/test.txt",
+    "n_docs": 10,
+    "seed": 42,
+    "elapsed_seconds": 234.1,
+    "main_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter5_v5_contextual_20260209_140707.log",
+    "trace_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter5_v5_contextual_20260209_140707_trace.log"
+  },
+  "targets": {
+    "precision": 0.95,
+    "recall": 0.95,
+    "hallucination": 0.05
+  },
+  "aggregate": {
+    "precision": 0.8177,
+    "recall": 0.9595,
+    "hallucination": 0.1823,
+    "f1": 0.883,
+    "total_tp": 166,
+    "total_fp": 37,
+    "total_fn": 10,
+    "total_extracted": 203,
+    "total_gt": 173
+  },
+  "target_check": {
+    "meets_precision": false,
+    "meets_recall": true,
+    "meets_hallucination": false,
+    "all_pass": false
+  },
+  "all_fp_terms": [
+    {
+      "term": "getInputSizes",
+      "question_id": "42873050"
+    },
+    {
+      "term": "LEVEL-3",
+      "question_id": "42873050"
+    },
+    {
+      "term": "Preview",
+      "question_id": "42873050"
+    },
+    {
+      "term": "ZSL",
+      "question_id": "42873050"
+    },
+    {
+      "term": "send()",
+      "question_id": "10709772"
+    },
+    {
+      "term": "function",
+      "question_id": "10709772"
+    },
+    {
+      "term": "thumb",
+      "question_id": "14831694"
+    },
+    {
+      "term": "compositewpf.codeplex.com",
+      "question_id": "3639039"
+    },
+    {
+      "term": "class",
+      "question_id": "39079773"
+    },
+    {
+      "term": "std::fopen",
+      "question_id": "39288595"
+    },
+    {
+      "term": "boost",
+      "question_id": "39288595"
+    },
+    {
+      "term": "MSVC",
+      "question_id": "39288595"
+    },
+    {
+      "term": "filesystem",
+      "question_id": "39288595"
+    },
+    {
+      "term": "ID",
+      "question_id": "9965761"
+    },
+    {
+      "term": "element",
+      "question_id": "9965761"
+    },
+    {
+      "term": "index",
+      "question_id": "9965761"
+    },
+    {
+      "term": "loop",
+      "question_id": "9965761"
+    },
+    {
+      "term": "partial view",
+      "question_id": "44055225"
+    },
+    {
+      "term": "partialview",
+      "question_id": "44055225"
+    },
+    {
+      "term": "database",
+      "question_id": "44055225"
+    },
+    {
+      "term": "collection",
+      "question_id": "44055225"
+    },
+    {
+      "term": "object",
+      "question_id": "44055225"
+    },
+    {
+      "term": "popup",
+      "question_id": "44055225"
+    },
+    {
+      "term": "tags",
+      "question_id": "44055225"
+    },
+    {
+      "term": "service class",
+      "question_id": "45734089"
+    },
+    {
+      "term": "web-service",
+      "question_id": "45734089"
+    },
+    {
+      "term": "Weblogic",
+      "question_id": "45734089"
+    },
+    {
+      "term": "pom.xml",
+      "question_id": "45734089"
+    },
+    {
+      "term": "SOAP",
+      "question_id": "45734089"
+    },
+    {
+      "term": "DSL",
+      "question_id": "45734089"
+    },
+    {
+      "term": "endpoint",
+      "question_id": "45734089"
+    },
+    {
+      "term": "class",
+      "question_id": "45734089"
+    },
+    {
+      "term": "error 500",
+      "question_id": "42692779"
+    },
+    {
+      "term": "properties",
+      "question_id": "42692779"
+    },
+    {
+      "term": "action",
+      "question_id": "42692779"
+    },
+    {
+      "term": "object",
+      "question_id": "42692779"
+    },
+    {
+      "term": "model",
+      "question_id": "42692779"
+    }
+  ],
+  "all_fn_terms": [
+    {
+      "term": "MAX SIZE(4608x3456)",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX Size",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAXIMUM",
+      "question_id": "42873050"
+    },
+    {
+      "term": "up/down arrow",
+      "question_id": "14831694"
+    },
+    {
+      "term": "ondemand",
+      "question_id": "3639039"
+    },
+    {
+      "term": "std::fopen(\"/dev/urandom\")",
+      "question_id": "39288595"
+    },
+    {
+      "term": "exception",
+      "question_id": "39288595"
+    },
+    {
+      "term": "Pseudo-randomic",
+      "question_id": "39288595"
+    },
+    {
+      "term": "jQuery-generated",
+      "question_id": "9965761"
+    },
+    {
+      "term": "configuration",
+      "question_id": "45734089"
+    }
+  ],
+  "per_doc": [
+    {
+      "doc_idx": 0,
+      "question_id": "42873050",
+      "text_length": 2278,
+      "text_preview": "Recently I 'm trying to create a ZSL session on my camera app using the camera2 API from android . I 'm using a device with a LEVEL-3 hardware level which supports [CODE] . In this case I 'm using the",
+      "gt_terms": [
+        "camera",
+        "camera2 API",
+        "android",
+        "tables",
+        "ReprocessableCaptureSession",
+        "table",
+        "ReprocessableCatureSession",
+        "YUV",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader Surface",
+        "JPEG",
+        "Surface",
+        "RAW",
+        "CaptureRequest",
+        "images",
+        "RingQueue",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "imageReader",
+        "Byte[]"
+      ],
+      "extracted_terms": [
+        "Camera API 2",
+        "camera2 API",
+        "ReprocessableCaptureSession",
+        "ReprocessableCaptureRequest",
+        "ReprocessableCatureSession",
+        "ImageFormat.YUV_420_888",
+        "CameraCharacteristics",
+        "CaptureRequest",
+        "getInputSizes",
+        "YUV_420_888",
+        "ImageReader",
+        "bytearrays",
+        "RingQueue",
+        "android",
+        "Surface",
+        "session",
+        "camera2",
+        "LEVEL-3",
+        "Preview",
+        "Google",
+        "camera",
+        "images",
+        "Byte[]",
+        "table",
+        "JPEG",
+        "ZSL",
+        "YUV",
+        "RAW",
+        "CTS",
+        "API"
+      ],
+      "scores": {
+        "precision": 0.8667,
+        "recall": 0.9,
+        "hallucination": 0.1333,
+        "f1": 0.883,
+        "tp": 26,
+        "fp": 4,
+        "fn": 3
+      },
+      "fp_terms": [
+        "getInputSizes",
+        "LEVEL-3",
+        "Preview",
+        "ZSL"
+      ],
+      "fn_terms": [
+        "MAX SIZE(4608x3456)",
+        "MAX Size",
+        "MAXIMUM"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "Organization",
+        "Library_Variable",
+        "Library_Function",
+        "Library",
+        "Data_Type",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 1,
+      "question_id": "10709772",
+      "text_length": 1262,
+      "text_preview": "I am wondering if this is possible and maybe some code examples if it is . I am trying to have the presenter during a live address be able to hit a button when he is away . This button will then trigg",
+      "gt_terms": [
+        "button",
+        "jpg",
+        "image",
+        "clients",
+        "microphone",
+        "FMIS",
+        "AS3",
+        "Client",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "NetStream.send()",
+        "toggleAwayImageDisplay"
+      ],
+      "extracted_terms": [
+        "FMIS 4",
+        "toggleAwayImageDisplay",
+        "NetStream.send()",
+        "NetConnection",
+        "microphone",
+        "NetStream",
+        "clients",
+        "button",
+        "send()",
+        "image",
+        "jpg",
+        "AS3",
+        "FMS",
+        "function"
+      ],
+      "scores": {
+        "precision": 0.8571,
+        "recall": 1.0,
+        "hallucination": 0.1429,
+        "f1": 0.9231,
+        "tp": 12,
+        "fp": 2,
+        "fn": 0
+      },
+      "fp_terms": [
+        "send()",
+        "function"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Function_Name",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 2,
+      "question_id": "14831694",
+      "text_length": 2271,
+      "text_preview": "I stumbled upon an interesting behavior in the Trackbar Winforms control . On a horizontal trackbar , the left/right arrow keys work as expected . ( Left arrow moves the slider to the left and decreas",
+      "gt_terms": [
+        "Trackbar",
+        "Winforms",
+        "left/right arrow",
+        "Left arrow",
+        "slider",
+        "right arrow",
+        "up/down arrow",
+        "PageUp/PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "trackbar control",
+        "scrollbar control",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "keyboard",
+        "scrollbars",
+        "Left",
+        "Up",
+        "Right",
+        "Down"
+      ],
+      "extracted_terms": [
+        "Internet Explorer",
+        "scrollbar control",
+        "left/right arrow",
+        "slider control",
+        "up/down keys",
+        "right arrow",
+        "arrow right",
+        "Left arrow",
+        "Arrow down",
+        "arrow left",
+        "page down",
+        "arrow up",
+        "page up",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "scrollbar",
+        "Trackbar",
+        "Winforms",
+        "PageDown",
+        "keyboard",
+        "Windows",
+        "PageUp",
+        "slider",
+        "Right",
+        "PgUp",
+        "Left",
+        "Down",
+        "UAC",
+        "WPF",
+        "C#",
+        "Up",
+        "thumb"
+      ],
+      "scores": {
+        "precision": 0.9688,
+        "recall": 0.9677,
+        "hallucination": 0.0312,
+        "f1": 0.9682,
+        "tp": 31,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "thumb"
+      ],
+      "fn_terms": [
+        "up/down arrow"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 3,
+      "question_id": "3639039",
+      "text_length": 1191,
+      "text_preview": "I have a Silverlight 4 app using Prism 2.2 and I have a few modules that I am loading on demand by defining them as ondemand in the module catalog ( via a xaml file ) and then using the ModuleManager ",
+      "gt_terms": [
+        "Silverlight",
+        "Prism",
+        "2.2",
+        "ondemand",
+        "xaml",
+        "ModuleManager",
+        "codeplex",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "private",
+        "IFileDownloader"
+      ],
+      "extracted_terms": [
+        "Silverlight 4",
+        "Prism 2.2",
+        "FileDownloaderWithProgress",
+        "compositewpf.codeplex.com",
+        "DownloadProgressChanged",
+        "IFileDownloader",
+        "FileDownloader",
+        "ModuleManager",
+        "Silverlight",
+        "WebClient",
+        "codeplex",
+        "private",
+        "Prism",
+        "xaml"
+      ],
+      "scores": {
+        "precision": 0.9286,
+        "recall": 0.9231,
+        "hallucination": 0.0714,
+        "f1": 0.9258,
+        "tp": 13,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "compositewpf.codeplex.com"
+      ],
+      "fn_terms": [
+        "ondemand"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Class_Name",
+        "Website",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Type",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 4,
+      "question_id": "39079773",
+      "text_length": 2359,
+      "text_preview": "I am building a calculator with flexbox . I want one of its keys twice the height and another key twice the width . I googled much about it but could n't find both cases together . For twice height ke",
+      "gt_terms": [
+        "calculator",
+        "flexbox",
+        "height",
+        "width",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "keys",
+        "flex containers",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "flex container",
+        "key",
+        "row",
+        "long",
+        "container",
+        ".long",
+        "flex-basis",
+        "flex-grow"
+      ],
+      "extracted_terms": [
+        "flex containers",
+        "flex-direction",
+        "calculator",
+        "codepen.io",
+        "flex-basis",
+        "flex-grow",
+        "container",
+        "flexbox",
+        "Codepen",
+        "padding",
+        "borders",
+        "height",
+        "column",
+        "width",
+        "keys",
+        "long",
+        "CSS",
+        "row",
+        "class"
+      ],
+      "scores": {
+        "precision": 0.9474,
+        "recall": 1.0,
+        "hallucination": 0.0526,
+        "f1": 0.973,
+        "tp": 18,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "class"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 5,
+      "question_id": "39288595",
+      "text_length": 4048,
+      "text_preview": "I am a bit confused about the c++11 random library . What I understand : we need two separate concepts : random engine ( which can be pseudo ( need seed ) or real ) distribution : it maps the numbers ",
+      "gt_terms": [
+        "c++11",
+        "random",
+        "random engine",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen(\"/dev/urandom\")",
+        "windows",
+        "microsoft crypto API",
+        "crypto",
+        "mt19937",
+        "exception",
+        "unix",
+        "visual studio",
+        "mingw",
+        "phone",
+        "time(NULL)",
+        "Pseudo-randomic",
+        "CPU"
+      ],
+      "extracted_terms": [
+        "microsoft crypto API",
+        "random library",
+        "visual studio",
+        "std::default_random_engine",
+        "std::random_device",
+        "std::mt19937",
+        "/dev/urandom",
+        "/dev/random",
+        "std::fopen",
+        "time(NULL)",
+        "mt19937",
+        "windows",
+        "libc++",
+        "random",
+        "crypto",
+        "c++11",
+        "boost",
+        "mingw",
+        "phone",
+        "MSVC",
+        "unix",
+        "CPU",
+        "filesystem"
+      ],
+      "scores": {
+        "precision": 0.8261,
+        "recall": 0.85,
+        "hallucination": 0.1739,
+        "f1": 0.8379,
+        "tp": 19,
+        "fp": 4,
+        "fn": 3
+      },
+      "fp_terms": [
+        "std::fopen",
+        "boost",
+        "MSVC",
+        "filesystem"
+      ],
+      "fn_terms": [
+        "std::fopen(\"/dev/urandom\")",
+        "exception",
+        "Pseudo-randomic"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "Library",
+        "Device",
+        "Language",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 6,
+      "question_id": "9965761",
+      "text_length": 1507,
+      "text_preview": "I have a hard-coded list , each list item of which has an ID . I want to have jQuery generate list items in another list , and set as their text content the ID attribute values of each of the hard-cod",
+      "gt_terms": [
+        "list",
+        "jQuery",
+        "jQuery-generated",
+        "jQ",
+        "var",
+        "jsFiddle",
+        "each",
+        "string",
+        "li",
+        "strings",
+        "JS",
+        "W3C",
+        "HTML4"
+      ],
+      "extracted_terms": [
+        "jsFiddle",
+        "jQuery",
+        "string",
+        "HTML4",
+        "list",
+        "each",
+        "HTML",
+        "var",
+        "W3C",
+        "ID",
+        "li",
+        "JS",
+        "jQ",
+        "element",
+        "index",
+        "loop"
+      ],
+      "scores": {
+        "precision": 0.75,
+        "recall": 0.9231,
+        "hallucination": 0.25,
+        "f1": 0.8276,
+        "tp": 12,
+        "fp": 4,
+        "fn": 1
+      },
+      "fp_terms": [
+        "ID",
+        "element",
+        "index",
+        "loop"
+      ],
+      "fn_terms": [
+        "jQuery-generated"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Organization",
+        "Data_Type",
+        "HTML_XML_Tag",
+        "Data_Structure",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 7,
+      "question_id": "44055225",
+      "text_length": 1489,
+      "text_preview": "I have a problem that I frequently deal with using MVC that I ca n't seem to find an easy solution for . Very frequently I find myself creating a viewmodel for an object that has a collection of small",
+      "gt_terms": [
+        "MVC",
+        "viewmodel",
+        "screen",
+        "table",
+        "IEnumerable",
+        "form",
+        "html",
+        "javascript",
+        "strings",
+        "page",
+        "HTTPPOST"
+      ],
+      "extracted_terms": [
+        "partial view",
+        "IEnumerable",
+        "partialview",
+        "javascript",
+        "viewmodel",
+        "HTTPPOST",
+        "database",
+        "string",
+        "screen",
+        "table",
+        "form",
+        "html",
+        "page",
+        "MVC",
+        "collection",
+        "object",
+        "popup",
+        "tags"
+      ],
+      "scores": {
+        "precision": 0.6111,
+        "recall": 1.0,
+        "hallucination": 0.3889,
+        "f1": 0.7586,
+        "tp": 11,
+        "fp": 7,
+        "fn": 0
+      },
+      "fp_terms": [
+        "partial view",
+        "partialview",
+        "database",
+        "collection",
+        "object",
+        "popup",
+        "tags"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 8,
+      "question_id": "45734089",
+      "text_length": 781,
+      "text_preview": "I have a WSDL file located under src \\main\\resources\\wsdl\\ folder and it is having multiple operations defined within it . My application is running on Weblogic 12C server . I 'm trying to expose the ",
+      "gt_terms": [
+        "WSDL",
+        "Weblogic 12C server",
+        "Apache",
+        "Cammel",
+        "2.18.3",
+        "Java",
+        "configuration",
+        "RouteBuilder",
+        "exception",
+        "wsdl2java",
+        "IDE"
+      ],
+      "extracted_terms": [
+        "Apache Cammel",
+        "service class",
+        "Weblogic 12C",
+        "Java DSL",
+        "RouteBuilder",
+        "web-service",
+        "wsdl2java",
+        "exception",
+        "Weblogic",
+        "pom.xml",
+        "2.18.3",
+        "WSDL",
+        "Java",
+        "SOAP",
+        "IDE",
+        "12C",
+        "DSL",
+        "endpoint",
+        "class"
+      ],
+      "scores": {
+        "precision": 0.5789,
+        "recall": 0.9091,
+        "hallucination": 0.4211,
+        "f1": 0.7074,
+        "tp": 11,
+        "fp": 8,
+        "fn": 1
+      },
+      "fp_terms": [
+        "service class",
+        "web-service",
+        "Weblogic",
+        "pom.xml",
+        "SOAP",
+        "DSL",
+        "endpoint",
+        "class"
+      ],
+      "fn_terms": [
+        "configuration"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 9,
+      "question_id": "42692779",
+      "text_length": 1032,
+      "text_preview": "I have a quite odd problem . The problem is like this .. . When I try to pass a string to my controller action ( .NET MVC ) , this one : [CODE] I checked in the console and I 'm getting an server inte",
+      "gt_terms": [
+        "string",
+        "controller",
+        ".NET",
+        "MVC",
+        "console",
+        "server internal error 500",
+        "post",
+        "internal server error 500",
+        "request",
+        "Json"
+      ],
+      "extracted_terms": [
+        "internal server error 500",
+        "internal error 500",
+        "Controller Action",
+        "request object",
+        "error 500",
+        ".NET MVC",
+        "controller",
+        "Console",
+        "request",
+        "string",
+        "post",
+        "Json",
+        ".NET",
+        "MVC",
+        "properties",
+        "action",
+        "object",
+        "model"
+      ],
+      "scores": {
+        "precision": 0.7222,
+        "recall": 1.0,
+        "hallucination": 0.2778,
+        "f1": 0.8387,
+        "tp": 13,
+        "fp": 5,
+        "fn": 0
+      },
+      "fp_terms": [
+        "error 500",
+        "properties",
+        "action",
+        "object",
+        "model"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Error_Name",
+        "Function_Name",
+        "Library"
+      ]
+    }
+  ]
+}

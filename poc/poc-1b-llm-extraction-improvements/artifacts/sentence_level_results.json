@@ -1,0 +1,360 @@
+{
+  "strategy": "sentence_level_quote_verify",
+  "num_chunks": 10,
+  "timestamp": "20260205_173940",
+  "aggregate_metrics": {
+    "precision": 0.8871428571428572,
+    "recall": 0.487909802615685,
+    "hallucination": 0.11285714285714285,
+    "f1": 0.6002093812620128,
+    "avg_time": 55.65701098442078
+  },
+  "per_chunk_results": [
+    {
+      "chunk_id": "_index_chunk_0",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "extracted_count": 1,
+        "gt_count": 1,
+        "elapsed": 18.83189845085144
+      },
+      "extracted_terms": [
+        "Kubernetes"
+      ],
+      "ground_truth_terms": [
+        "Kubernetes"
+      ]
+    },
+    {
+      "chunk_id": "concepts__index_chunk_0",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "hallucination": 0.0,
+        "f1": 0.6666666666666666,
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "extracted_count": 1,
+        "gt_count": 2,
+        "elapsed": 25.630401134490967
+      },
+      "extracted_terms": [
+        "Kubernetes"
+      ],
+      "ground_truth_terms": [
+        "Kubernetes",
+        "cluster"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_0",
+      "metrics": {
+        "precision": 0.75,
+        "recall": 0.7058823529411765,
+        "hallucination": 0.25,
+        "f1": 0.7272727272727272,
+        "tp": 12,
+        "fp": 4,
+        "fn": 5,
+        "extracted_count": 16,
+        "gt_count": 17,
+        "elapsed": 103.77469158172607
+      },
+      "extracted_terms": [
+        "Kubernetes",
+        "Cluster Architecture",
+        "Kubernetes cluster",
+        "control plane",
+        "worker machines",
+        "nodes",
+        "Pod",
+        "worker node",
+        "application workload",
+        "kube-apiserver",
+        "etcd",
+        "kube-controller-manager",
+        "kube-scheduler",
+        "kubelet",
+        "kube-proxy",
+        "network plugins"
+      ],
+      "ground_truth_terms": [
+        "Kubernetes cluster",
+        "control plane",
+        "nodes",
+        "worker nodes",
+        "Pods",
+        "containerized applications",
+        "fault-tolerance",
+        "high availability",
+        "kube-apiserver",
+        "etcd",
+        "kube-controller-manager",
+        "kube-scheduler",
+        "kubelet",
+        "kube-proxy",
+        "network proxy",
+        "Service",
+        "network plugin"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_1",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 0.4444444444444444,
+        "hallucination": 0.0,
+        "f1": 0.6153846153846153,
+        "tp": 4,
+        "fp": 0,
+        "fn": 5,
+        "extracted_count": 4,
+        "gt_count": 9,
+        "elapsed": 34.452513217926025
+      },
+      "extracted_terms": [
+        "Control plane",
+        "cluster",
+        "control plane components",
+        "kubeadm"
+      ],
+      "ground_truth_terms": [
+        "control plane",
+        "cluster",
+        "scheduling",
+        "pod",
+        "Deployment",
+        "replicas",
+        "control plane components",
+        "user containers",
+        "kubeadm"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_0",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 0.38461538461538464,
+        "hallucination": 0.0,
+        "f1": 0.5555555555555556,
+        "tp": 5,
+        "fp": 0,
+        "fn": 8,
+        "extracted_count": 5,
+        "gt_count": 13,
+        "elapsed": 48.97573733329773
+      },
+      "extracted_terms": [
+        "cgroup v2",
+        "control groups",
+        "kubelet",
+        "cgroups",
+        "cgroup v1"
+      ],
+      "ground_truth_terms": [
+        "cgroup v2",
+        "control groups",
+        "cgroup",
+        "kubelet",
+        "container runtime",
+        "resource management",
+        "pods",
+        "containers",
+        "cpu/memory requests and limits",
+        "requests",
+        "limits",
+        "cgroup v1",
+        "containerized workloads"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_1",
+      "metrics": {
+        "precision": 0.5714285714285714,
+        "recall": 0.3333333333333333,
+        "hallucination": 0.42857142857142855,
+        "f1": 0.4210526315789474,
+        "tp": 4,
+        "fp": 3,
+        "fn": 8,
+        "extracted_count": 7,
+        "gt_count": 12,
+        "elapsed": 86.59309649467468
+      },
+      "extracted_terms": [
+        "cgroup v2",
+        "feature-state",
+        "v1.25",
+        "stable",
+        "cgroup v1",
+        "MemoryQoS",
+        "QoS"
+      ],
+      "ground_truth_terms": [
+        "cgroup v2",
+        "cgroup",
+        "cgroup v1",
+        "stable",
+        "Pressure Stall Information",
+        "MemoryQoS",
+        "memory QoS",
+        "resource management",
+        "containers",
+        "kernel memory",
+        "network memory",
+        "page cache write backs"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+      "metrics": {
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "hallucination": 0.2,
+        "f1": 0.7272727272727272,
+        "tp": 4,
+        "fp": 1,
+        "fn": 2,
+        "extracted_count": 5,
+        "gt_count": 6,
+        "elapsed": 73.75537300109863
+      },
+      "extracted_terms": [
+        "Cloud Controller Manager",
+        "k8s",
+        "beta",
+        "Kubernetes",
+        "cloud-controller-manager"
+      ],
+      "ground_truth_terms": [
+        "Cloud Controller Manager",
+        "cloud-controller-manager",
+        "beta",
+        "Kubernetes",
+        "API-driven infrastructure",
+        "cloud providers"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 0.2857142857142857,
+        "hallucination": 0.0,
+        "f1": 0.4444444444444445,
+        "tp": 2,
+        "fp": 0,
+        "fn": 5,
+        "extracted_count": 2,
+        "gt_count": 7,
+        "elapsed": 31.979365825653076
+      },
+      "extracted_terms": [
+        "control plane",
+        "Pod"
+      ],
+      "ground_truth_terms": [
+        "cloud controller manager",
+        "control plane",
+        "Pods",
+        "controllers",
+        "cloud-controller-manager",
+        "addon",
+        "replicated set of processes"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 0.2857142857142857,
+        "hallucination": 0.0,
+        "f1": 0.4444444444444445,
+        "tp": 2,
+        "fp": 0,
+        "fn": 5,
+        "extracted_count": 2,
+        "gt_count": 7,
+        "elapsed": 47.015926122665405
+      },
+      "extracted_terms": [
+        "Nodes",
+        "Control Plane"
+      ],
+      "ground_truth_terms": [
+        "API server",
+        "kube-apiserver",
+        "cluster",
+        "Control Plane",
+        "Nodes",
+        "master-node-communication",
+        "network configuration"
+      ]
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+      "metrics": {
+        "precision": 0.75,
+        "recall": 0.2727272727272727,
+        "hallucination": 0.25,
+        "f1": 0.39999999999999997,
+        "tp": 6,
+        "fp": 2,
+        "fn": 16,
+        "extracted_count": 8,
+        "gt_count": 22,
+        "elapsed": 85.56110668182373
+      },
+      "extracted_terms": [
+        "Node",
+        "Control Plane",
+        "hub-and-spoke",
+        "API server",
+        "nodes",
+        "pods",
+        "kubelet",
+        "pod"
+      ],
+      "ground_truth_terms": [
+        "Node",
+        "Control Plane",
+        "API server",
+        "Pods",
+        "kubelet",
+        "kube-proxy",
+        "service account",
+        "namespace",
+        "authentication",
+        "authorization",
+        "anonymous requests",
+        "service account tokens",
+        "certificate",
+        "client certificate",
+        "public root certificate",
+        "client credentials",
+        "bearer token",
+        "TLS bootstrapping",
+        "kubelet TLS bootstrapping",
+        "HTTPS",
+        "hub-and-spoke",
+        "virtual IP address"
+      ]
+    }
+  ],
+  "baseline_comparison": {
+    "baseline": {
+      "precision": 0.893,
+      "recall": 0.889,
+      "hallucination": 0.107,
+      "f1": 0.874
+    },
+    "beats_baseline_count": 0
+  }
+}

@@ -1,0 +1,2546 @@
+{
+  "metadata": {
+    "iteration": 11,
+    "strategy": "v6_spanfix",
+    "timestamp": "2026-02-09T16:15:44.755863",
+    "so_ner_path": "/tmp/StackOverflowNER/resources/annotated_ner_data/StackOverflow/test.txt",
+    "n_docs": 30,
+    "seed": 42,
+    "elapsed_seconds": 690.7,
+    "main_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter11_v6_spanfix_20260209_160414.log",
+    "trace_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter11_v6_spanfix_20260209_160414_trace.log"
+  },
+  "targets": {
+    "precision": 0.95,
+    "recall": 0.95,
+    "hallucination": 0.05
+  },
+  "aggregate": {
+    "precision": 0.8982,
+    "recall": 0.8876,
+    "hallucination": 0.1018,
+    "f1": 0.8929,
+    "total_tp": 450,
+    "total_fp": 51,
+    "total_fn": 55,
+    "total_extracted": 501,
+    "total_gt": 507
+  },
+  "target_check": {
+    "meets_precision": false,
+    "meets_recall": false,
+    "meets_hallucination": false,
+    "all_pass": false
+  },
+  "all_fp_terms": [
+    {
+      "term": "Answer_to_Question_ID",
+      "question_id": "45734089"
+    },
+    {
+      "term": "DSL",
+      "question_id": "45734089"
+    },
+    {
+      "term": "serialcommunication capability",
+      "question_id": "30516702"
+    },
+    {
+      "term": "serialcommunication",
+      "question_id": "30516702"
+    },
+    {
+      "term": "Windows",
+      "question_id": "30516702"
+    },
+    {
+      "term": "Device",
+      "question_id": "30516702"
+    },
+    {
+      "term": "Behgozin_DB",
+      "question_id": "12028246"
+    },
+    {
+      "term": "Never",
+      "question_id": "12028246"
+    },
+    {
+      "term": "ID attribute",
+      "question_id": "9965761"
+    },
+    {
+      "term": "ListItemIndex",
+      "question_id": "9965761"
+    },
+    {
+      "term": "ID",
+      "question_id": "9965761"
+    },
+    {
+      "term": "Window View",
+      "question_id": "38496528"
+    },
+    {
+      "term": "content",
+      "question_id": "38496528"
+    },
+    {
+      "term": "window",
+      "question_id": "38496528"
+    },
+    {
+      "term": "vm",
+      "question_id": "38496528"
+    },
+    {
+      "term": "AJAX",
+      "question_id": "18656558"
+    },
+    {
+      "term": "Credential objects",
+      "question_id": "44055225"
+    },
+    {
+      "term": "Staff object",
+      "question_id": "44055225"
+    },
+    {
+      "term": "CODE",
+      "question_id": "44055225"
+    },
+    {
+      "term": "Create-Read-Update-Destroy",
+      "question_id": "46801920"
+    },
+    {
+      "term": "controller",
+      "question_id": "46801920"
+    },
+    {
+      "term": "stack trace",
+      "question_id": "35574488"
+    },
+    {
+      "term": "file",
+      "question_id": "35574488"
+    },
+    {
+      "term": "click event",
+      "question_id": "35087680"
+    },
+    {
+      "term": "application",
+      "question_id": "35087680"
+    },
+    {
+      "term": "events",
+      "question_id": "35087680"
+    },
+    {
+      "term": "paint",
+      "question_id": "35087680"
+    },
+    {
+      "term": "panel",
+      "question_id": "35087680"
+    },
+    {
+      "term": "soft search",
+      "question_id": "21380268"
+    },
+    {
+      "term": "hard search",
+      "question_id": "21380268"
+    },
+    {
+      "term": "Viper-7",
+      "question_id": "21380268"
+    },
+    {
+      "term": "mode",
+      "question_id": "21380268"
+    },
+    {
+      "term": "registry hives/keys",
+      "question_id": "29175"
+    },
+    {
+      "term": "registry",
+      "question_id": "29175"
+    },
+    {
+      "term": "webpage",
+      "question_id": "29175"
+    },
+    {
+      "term": "debug mode",
+      "question_id": "22864488"
+    },
+    {
+      "term": "key entry",
+      "question_id": "22864488"
+    },
+    {
+      "term": "jdk1.7.0_51",
+      "question_id": "22864488"
+    },
+    {
+      "term": "password",
+      "question_id": "22864488"
+    },
+    {
+      "term": "Java",
+      "question_id": "22864488"
+    },
+    {
+      "term": "activex component",
+      "question_id": "12206050"
+    },
+    {
+      "term": "document",
+      "question_id": "12206050"
+    },
+    {
+      "term": "control",
+      "question_id": "12206050"
+    },
+    {
+      "term": "controller",
+      "question_id": "38572866"
+    },
+    {
+      "term": "basename",
+      "question_id": "1523043"
+    },
+    {
+      "term": "divider",
+      "question_id": "7182845"
+    },
+    {
+      "term": "db",
+      "question_id": "8360162"
+    },
+    {
+      "term": "UI",
+      "question_id": "22361019"
+    },
+    {
+      "term": "input element",
+      "question_id": "2831693"
+    },
+    {
+      "term": "events",
+      "question_id": "2831693"
+    },
+    {
+      "term": "key",
+      "question_id": "2831693"
+    }
+  ],
+  "all_fn_terms": [
+    {
+      "term": "tables",
+      "question_id": "42873050"
+    },
+    {
+      "term": "table",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX SIZE(4608x3456)",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX Size",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAXIMUM",
+      "question_id": "42873050"
+    },
+    {
+      "term": "c++11",
+      "question_id": "39288595"
+    },
+    {
+      "term": "exception",
+      "question_id": "39288595"
+    },
+    {
+      "term": "CPU",
+      "question_id": "39288595"
+    },
+    {
+      "term": "src \\main\\resources\\wsdl\\",
+      "question_id": "45734089"
+    },
+    {
+      "term": "private",
+      "question_id": "3639039"
+    },
+    {
+      "term": "erb",
+      "question_id": "10809866"
+    },
+    {
+      "term": "row",
+      "question_id": "39079773"
+    },
+    {
+      "term": "setCustomDoneTarget:action :",
+      "question_id": "27926052"
+    },
+    {
+      "term": "doneAction :",
+      "question_id": "27926052"
+    },
+    {
+      "term": "visual editor",
+      "question_id": "30516702"
+    },
+    {
+      "term": "menu",
+      "question_id": "30516702"
+    },
+    {
+      "term": "menu",
+      "question_id": "12028246"
+    },
+    {
+      "term": "jQuery-generated",
+      "question_id": "9965761"
+    },
+    {
+      "term": "shell",
+      "question_id": "38496528"
+    },
+    {
+      "term": "controller/view manager",
+      "question_id": "38496528"
+    },
+    {
+      "term": "server",
+      "question_id": "18656558"
+    },
+    {
+      "term": "2.ajax_js2.php",
+      "question_id": "18656558"
+    },
+    {
+      "term": "request",
+      "question_id": "46801920"
+    },
+    {
+      "term": "Widget",
+      "question_id": "46801920"
+    },
+    {
+      "term": "command line",
+      "question_id": "35574488"
+    },
+    {
+      "term": "Stack Overflow",
+      "question_id": "35087680"
+    },
+    {
+      "term": "list",
+      "question_id": "21380268"
+    },
+    {
+      "term": "webserver",
+      "question_id": "29175"
+    },
+    {
+      "term": "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+      "question_id": "22864488"
+    },
+    {
+      "term": "console",
+      "question_id": "22864488"
+    },
+    {
+      "term": "command line",
+      "question_id": "22864488"
+    },
+    {
+      "term": "run time 429 error",
+      "question_id": "12206050"
+    },
+    {
+      "term": "global",
+      "question_id": "38572866"
+    },
+    {
+      "term": "Picture00000001.jpg",
+      "question_id": "1523043"
+    },
+    {
+      "term": "string",
+      "question_id": "1523043"
+    },
+    {
+      "term": "box",
+      "question_id": "7182845"
+    },
+    {
+      "term": "event views",
+      "question_id": "7182845"
+    },
+    {
+      "term": "button",
+      "question_id": "7182845"
+    },
+    {
+      "term": "vertical divider",
+      "question_id": "7182845"
+    },
+    {
+      "term": "drawRect",
+      "question_id": "7182845"
+    },
+    {
+      "term": "text",
+      "question_id": "7182845"
+    },
+    {
+      "term": "events",
+      "question_id": "7182845"
+    },
+    {
+      "term": "scrollToPoint :",
+      "question_id": "7182845"
+    },
+    {
+      "term": "Visual studio",
+      "question_id": "8360162"
+    },
+    {
+      "term": "2010",
+      "question_id": "8360162"
+    },
+    {
+      "term": "server",
+      "question_id": "8360162"
+    },
+    {
+      "term": "PDFs",
+      "question_id": "8360162"
+    },
+    {
+      "term": "cells",
+      "question_id": "22361019"
+    },
+    {
+      "term": "setup",
+      "question_id": "22361019"
+    },
+    {
+      "term": "cell",
+      "question_id": "22361019"
+    },
+    {
+      "term": "cursor",
+      "question_id": "2831693"
+    },
+    {
+      "term": "ABCDEF|",
+      "question_id": "2831693"
+    },
+    {
+      "term": "cross-browser",
+      "question_id": "2831693"
+    },
+    {
+      "term": "up",
+      "question_id": "2831693"
+    },
+    {
+      "term": "down",
+      "question_id": "2831693"
+    }
+  ],
+  "per_doc": [
+    {
+      "doc_idx": 0,
+      "question_id": "42873050",
+      "text_length": 2278,
+      "text_preview": "Recently I 'm trying to create a ZSL session on my camera app using the camera2 API from android . I 'm using a device with a LEVEL-3 hardware level which supports [CODE] . In this case I 'm using the",
+      "gt_terms": [
+        "camera",
+        "camera2 API",
+        "android",
+        "tables",
+        "ReprocessableCaptureSession",
+        "table",
+        "ReprocessableCatureSession",
+        "YUV",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader Surface",
+        "JPEG",
+        "Surface",
+        "RAW",
+        "CaptureRequest",
+        "images",
+        "RingQueue",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "imageReader",
+        "Byte[]"
+      ],
+      "extracted_terms": [
+        "JPEG ImageReader Surface",
+        "RAW ImageReader Surface",
+        "Camera API 2",
+        "ImageReader Surface",
+        "camera2 API",
+        "YUV Byte[]",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "ReprocessableCaptureSession",
+        "ReprocessableCaptureRequest",
+        "ReprocessableCatureSession",
+        "ImageFormat.YUV_420_888",
+        "CameraCharacteristics",
+        "CaptureRequest",
+        "YUV_420_888",
+        "ImageReader",
+        "bytearrays",
+        "RingQueue",
+        "android",
+        "Surface",
+        "Session",
+        "Byte[]",
+        "images",
+        "Google",
+        "JPEG",
+        "YUV",
+        "RAW",
+        "CTS"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8333,
+        "hallucination": 0.0,
+        "f1": 0.9091,
+        "tp": 27,
+        "fp": 0,
+        "fn": 5
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "tables",
+        "table",
+        "MAX SIZE(4608x3456)",
+        "MAX Size",
+        "MAXIMUM"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "Organization",
+        "Library_Variable",
+        "Library_Function",
+        "Library",
+        "Data_Type",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 1,
+      "question_id": "10709772",
+      "text_length": 1262,
+      "text_preview": "I am wondering if this is possible and maybe some code examples if it is . I am trying to have the presenter during a live address be able to hit a button when he is away . This button will then trigg",
+      "gt_terms": [
+        "button",
+        "jpg",
+        "image",
+        "clients",
+        "microphone",
+        "FMIS",
+        "AS3",
+        "Client",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "NetStream.send()",
+        "toggleAwayImageDisplay"
+      ],
+      "extracted_terms": [
+        "FMIS 4",
+        "toggleAwayImageDisplay",
+        "NetStream.send()",
+        "NetConnection",
+        "microphone",
+        "NetStream",
+        "button",
+        "client",
+        "image",
+        "jpg",
+        "AS3",
+        "FMS"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 12,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Function_Name",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 2,
+      "question_id": "14831694",
+      "text_length": 2271,
+      "text_preview": "I stumbled upon an interesting behavior in the Trackbar Winforms control . On a horizontal trackbar , the left/right arrow keys work as expected . ( Left arrow moves the slider to the left and decreas",
+      "gt_terms": [
+        "Trackbar",
+        "Winforms",
+        "left/right arrow",
+        "Left arrow",
+        "slider",
+        "right arrow",
+        "up/down arrow",
+        "PageUp/PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "trackbar control",
+        "scrollbar control",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "keyboard",
+        "scrollbars",
+        "Left",
+        "Up",
+        "Right",
+        "Down"
+      ],
+      "extracted_terms": [
+        "Internet Explorer",
+        "scrollbar control",
+        "left/right arrow",
+        "slider control",
+        "up/down arrow",
+        "up/down keys",
+        "arrow right",
+        "Arrow down",
+        "arrow left",
+        "Left arrow",
+        "page down",
+        "arrow up",
+        "page up",
+        "PageUp/PageDown",
+        "left/right",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "scrollbar",
+        "Trackbar",
+        "Winforms",
+        "keyboard",
+        "up/down",
+        "Windows",
+        "slider",
+        "PgUp",
+        "UAC",
+        "WPF",
+        "up",
+        "C#"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 29,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 3,
+      "question_id": "39288595",
+      "text_length": 4048,
+      "text_preview": "I am a bit confused about the c++11 random library . What I understand : we need two separate concepts : random engine ( which can be pseudo ( need seed ) or real ) distribution : it maps the numbers ",
+      "gt_terms": [
+        "c++11",
+        "random",
+        "random engine",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen(\"/dev/urandom\")",
+        "windows",
+        "microsoft crypto API",
+        "crypto",
+        "mt19937",
+        "exception",
+        "/dev/random",
+        "unix",
+        "/dev/urandom/",
+        "visual studio",
+        "mingw",
+        "phone",
+        "time(NULL)",
+        "Pseudo-randomic",
+        "CPU"
+      ],
+      "extracted_terms": [
+        "microsoft crypto API",
+        "MSVC crypto API",
+        "random library",
+        "visual studio",
+        "std::default_random_engine",
+        "std::fopen(\"/dev/urandom\")",
+        "std::random_device",
+        "Pseudo-randomic",
+        "/dev/urandom/",
+        "std::mt19937",
+        "/dev/urandom",
+        "/dev/random",
+        "time(NULL)",
+        "mt19937",
+        "windows",
+        "libc++",
+        "crypto",
+        "mingw",
+        "phone",
+        "unix"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8636,
+        "hallucination": 0.0,
+        "f1": 0.9268,
+        "tp": 20,
+        "fp": 0,
+        "fn": 3
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "c++11",
+        "exception",
+        "CPU"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "Library",
+        "File_Name",
+        "Device",
+        "Language",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 4,
+      "question_id": "45734089",
+      "text_length": 781,
+      "text_preview": "I have a WSDL file located under src \\main\\resources\\wsdl\\ folder and it is having multiple operations defined within it . My application is running on Weblogic 12C server . I 'm trying to expose the ",
+      "gt_terms": [
+        "WSDL",
+        "src \\main\\resources\\wsdl\\",
+        "Weblogic 12C server",
+        "Apache",
+        "Cammel",
+        "2.18.3",
+        "Java",
+        "configuration",
+        "RouteBuilder",
+        "exception",
+        "pom.xml",
+        "wsdl2java",
+        "IDE"
+      ],
+      "extracted_terms": [
+        "Weblogic 12C server",
+        "Apache Cammel",
+        "Java DSL",
+        "Answer_to_Question_ID",
+        "configuration",
+        "RouteBuilder",
+        "wsdl2java",
+        "exception",
+        "pom.xml",
+        "2.18.3",
+        "WSDL",
+        "Java",
+        "IDE",
+        "DSL"
+      ],
+      "scores": {
+        "precision": 0.8571,
+        "recall": 0.9231,
+        "hallucination": 0.1429,
+        "f1": 0.8889,
+        "tp": 12,
+        "fp": 2,
+        "fn": 1
+      },
+      "fp_terms": [
+        "Answer_to_Question_ID",
+        "DSL"
+      ],
+      "fn_terms": [
+        "src \\main\\resources\\wsdl\\"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 5,
+      "question_id": "3639039",
+      "text_length": 1191,
+      "text_preview": "I have a Silverlight 4 app using Prism 2.2 and I have a few modules that I am loading on demand by defining them as ondemand in the module catalog ( via a xaml file ) and then using the ModuleManager ",
+      "gt_terms": [
+        "Silverlight",
+        "Prism",
+        "2.2",
+        "ondemand",
+        "xaml",
+        "ModuleManager",
+        "codeplex",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "private",
+        "IFileDownloader"
+      ],
+      "extracted_terms": [
+        "Silverlight 4",
+        "Prism event",
+        "Prism 2.2",
+        "FileDownloaderWithProgress",
+        "DownloadProgressChanged",
+        "IFileDownloader",
+        "FileDownloader",
+        "ModuleManager",
+        "Silverlight",
+        "WebClient",
+        "ondemand",
+        "codeplex",
+        "Prism",
+        "xaml"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9231,
+        "hallucination": 0.0,
+        "f1": 0.96,
+        "tp": 14,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "private"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Class_Name",
+        "Website",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Type",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 6,
+      "question_id": "10809866",
+      "text_length": 2202,
+      "text_preview": "I am trying to install homebrew according to the guidelines described in here . I have curl and rvm , and want to install rails 1.9.3 on my lion 1.7.4 with Xcode 4.3.2 and with developer command line ",
+      "gt_terms": [
+        "homebrew",
+        "curl",
+        "rvm",
+        "rails",
+        "1.9.3",
+        "lion",
+        "1.7.4",
+        "Xcode",
+        "4.3.2",
+        "developer command line tools",
+        "libksba",
+        "Home Brew",
+        "brew",
+        "MacPorts",
+        "ruby",
+        "SnowLeopard - OSX",
+        "10.6.8",
+        "/System/Library/Frameworks/Ruby.framework",
+        "/usr/bin",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "symlinks",
+        "erb",
+        "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+        "/usr/bin/ruby",
+        "ostruct"
+      ],
+      "extracted_terms": [
+        "developer command line tools",
+        "system ruby",
+        "rails 1.9.3",
+        "Xcode 4.3.2",
+        "lion 1.7.4",
+        "OSX 10.6.8",
+        "Home Brew",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "/System/Library/Frameworks/Ruby.framework",
+        "SnowLeopard",
+        "homebrew",
+        "MacPorts",
+        "symlinks",
+        "/usr/bin",
+        "libksba",
+        "ostruct",
+        "10.6.8",
+        "rails",
+        "Xcode",
+        "1.9.3",
+        "1.7.4",
+        "4.3.2",
+        "curl",
+        "lion",
+        "brew",
+        "rvm",
+        "OSX"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.96,
+        "hallucination": 0.0,
+        "f1": 0.9796,
+        "tp": 27,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "erb"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "File_Name",
+        "Library",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 7,
+      "question_id": "19471961",
+      "text_length": 1618,
+      "text_preview": "I 'm setting up IPython to automatically load Sympy and configure it 's output method on startup . However , whatever I try I ca n't get sympy to initialize the latex/unicode style output printing . S",
+      "gt_terms": [
+        "IPython",
+        "Sympy",
+        "latex/unicode",
+        "qtconsole/notebook",
+        "kernel",
+        "0.7.3",
+        "ipython3",
+        "1.1",
+        "matplotlib",
+        "1.3.1",
+        "numpy",
+        "1.7.1",
+        "scipy",
+        "0.12.0",
+        "Ubuntu",
+        "13.10",
+        "python3 terminal",
+        "PYTHONSTARTUP",
+        "1.1.0",
+        "global",
+        "00-startup.py",
+        "ipython_config.py"
+      ],
+      "extracted_terms": [
+        "matplotlib 1.3.1",
+        "global namespace",
+        "ipython3 1.1.0",
+        "ipython3 1.1",
+        "scipy 0.12.0",
+        "Ubuntu 13.10",
+        "sympy 0.7.3",
+        "numpy 1.7.1",
+        "qtconsole/notebook",
+        "ipython_config.py",
+        "latex/unicode",
+        "PYTHONSTARTUP",
+        "00-startup.py",
+        "matplotlib",
+        "ipython3",
+        "terminal",
+        "IPython",
+        "python3",
+        "Ubuntu",
+        "kernel",
+        "Sympy",
+        "numpy",
+        "scipy"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 23,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "Data_Type",
+        "Library",
+        "File_Name",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 8,
+      "question_id": "39079773",
+      "text_length": 2359,
+      "text_preview": "I am building a calculator with flexbox . I want one of its keys twice the height and another key twice the width . I googled much about it but could n't find both cases together . For twice height ke",
+      "gt_terms": [
+        "calculator",
+        "flexbox",
+        "height",
+        "width",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "keys",
+        "flex containers",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "flex container",
+        "key",
+        "row",
+        "long",
+        "container",
+        ".long",
+        "flex-basis",
+        "flex-grow"
+      ],
+      "extracted_terms": [
+        "flex containers",
+        "flex-direction",
+        "calculator",
+        "codepen.io",
+        "flex-basis",
+        "container",
+        "flex-grow",
+        "flexbox",
+        "Codepen",
+        "padding",
+        "borders",
+        "height",
+        "column",
+        "width",
+        "keys",
+        "long",
+        "CSS"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9524,
+        "hallucination": 0.0,
+        "f1": 0.9756,
+        "tp": 17,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "row"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 9,
+      "question_id": "27926052",
+      "text_length": 1488,
+      "text_preview": "I 've implemented the IQKeyboardManager framework to make the keyboard handle easier . It works very fine , except for one thing : There 're some UItextField controls in my app which open a UIDatePick",
+      "gt_terms": [
+        "IQKeyboardManager",
+        "keyboard",
+        "UItextField",
+        "UIDatePicker",
+        "pad",
+        "button",
+        ".h",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "Interface Builder",
+        ".xib",
+        "Identity Inspector",
+        ".m",
+        "setCustomDoneTarget:action :",
+        "doneAction :",
+        "IQUIView+",
+        "IQKeyboardToolbar.h",
+        "TextFieldViewController.m"
+      ],
+      "extracted_terms": [
+        "IQKeyboardManager framework to make",
+        "IQUIView+ IQKeyboardToolbar.h",
+        "Identity Inspector",
+        "Interface Builder",
+        "decimal pad",
+        "number pad",
+        "TextFieldViewController.m",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "UIDatePicker",
+        "UItextField",
+        "keyboard",
+        "button",
+        ".xib",
+        ".h",
+        ".m"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8889,
+        "hallucination": 0.0,
+        "f1": 0.9412,
+        "tp": 16,
+        "fp": 0,
+        "fn": 2
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "setCustomDoneTarget:action :",
+        "doneAction :"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Device",
+        "User_Interface_Element",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 10,
+      "question_id": "30516702",
+      "text_length": 1423,
+      "text_preview": "I am trying to deploy and test a Universal Windows App to a Surface Pro 3 directly from Visual Studio 2013 ( Update 4) and I am unable to launch the App ( by hitting F 5) . I am running into the follo",
+      "gt_terms": [
+        "Universal Windows App",
+        "Surface Pro",
+        "Visual Studio",
+        "2013",
+        "Update 4)",
+        "F 5)",
+        "DEP0700",
+        "AppxManifest",
+        "ApxManifest",
+        "designer",
+        "manifest",
+        "XML Editor",
+        "2015",
+        "Manifest Designer",
+        "visual editor",
+        "xml",
+        "menu"
+      ],
+      "extracted_terms": [
+        "Universal Windows App",
+        "Visual Studio 2013",
+        "Visual Studio 2015",
+        "Surface Pro 3",
+        "serialcommunication capability",
+        "Manifest Designer",
+        "XML Editor",
+        "Update 4",
+        "F 5",
+        "serialcommunication",
+        "AppxManifest",
+        "DEP0700",
+        "Windows",
+        "Device",
+        "xml"
+      ],
+      "scores": {
+        "precision": 0.7333,
+        "recall": 0.8824,
+        "hallucination": 0.2667,
+        "f1": 0.801,
+        "tp": 11,
+        "fp": 4,
+        "fn": 2
+      },
+      "fp_terms": [
+        "serialcommunication capability",
+        "serialcommunication",
+        "Windows",
+        "Device"
+      ],
+      "fn_terms": [
+        "visual editor",
+        "menu"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Keyboard_IP",
+        "File_Name",
+        "Device",
+        "Error_Name",
+        "Language",
+        "User_Interface_Element",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 11,
+      "question_id": "12028246",
+      "text_length": 1805,
+      "text_preview": "In my C# program I have a big problem : I add an SQL server database named \" Behgozin_DB \" to my project . I do the following steps for adding the database : In my SQL server management studio I detac",
+      "gt_terms": [
+        "C#",
+        "SQL server",
+        "SQL server management studio",
+        "visual studio",
+        "menu",
+        "String",
+        "tables",
+        "table",
+        "2010",
+        "2008",
+        "bin \\debug",
+        "window",
+        "server explorer",
+        "server",
+        "|DataDirectory|"
+      ],
+      "extracted_terms": [
+        "SQL server management studio",
+        "Visual Studio 2010",
+        "SQL Server 2008",
+        "Connection String",
+        "properties window",
+        "server explorer",
+        "visual studio",
+        "SQL server",
+        "DataDirectory",
+        "Behgozin_DB",
+        "tables",
+        "debug",
+        "Never",
+        "bin",
+        "SQL",
+        "C#"
+      ],
+      "scores": {
+        "precision": 0.875,
+        "recall": 0.9333,
+        "hallucination": 0.125,
+        "f1": 0.9032,
+        "tp": 14,
+        "fp": 2,
+        "fn": 1
+      },
+      "fp_terms": [
+        "Behgozin_DB",
+        "Never"
+      ],
+      "fn_terms": [
+        "menu"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "Data_Type",
+        "File_Name",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 12,
+      "question_id": "9965761",
+      "text_length": 1507,
+      "text_preview": "I have a hard-coded list , each list item of which has an ID . I want to have jQuery generate list items in another list , and set as their text content the ID attribute values of each of the hard-cod",
+      "gt_terms": [
+        "list",
+        "jQuery",
+        "jQuery-generated",
+        "jQ",
+        "var",
+        "jsFiddle",
+        "each",
+        "string",
+        "li",
+        "strings",
+        "JS",
+        "W3C",
+        "HTML4"
+      ],
+      "extracted_terms": [
+        "ID attribute",
+        "ListItemIndex",
+        "jsFiddle",
+        "jQuery",
+        "string",
+        "HTML4",
+        "list",
+        "each",
+        "HTML",
+        "var",
+        "W3C",
+        "ID",
+        "li",
+        "JS",
+        "jQ"
+      ],
+      "scores": {
+        "precision": 0.8,
+        "recall": 0.9231,
+        "hallucination": 0.2,
+        "f1": 0.8571,
+        "tp": 12,
+        "fp": 3,
+        "fn": 1
+      },
+      "fp_terms": [
+        "ID attribute",
+        "ListItemIndex",
+        "ID"
+      ],
+      "fn_terms": [
+        "jQuery-generated"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Organization",
+        "Data_Type",
+        "HTML_XML_Tag",
+        "Data_Structure",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 13,
+      "question_id": "38496528",
+      "text_length": 1111,
+      "text_preview": "There are many questions in this community for opening the window View on a click of a button just we need to create the instance of the view and use .Show and some question are based on using User Co",
+      "gt_terms": [
+        "button",
+        ".Show",
+        "User Control",
+        "MVVM",
+        "WPF",
+        "SalesView.xaml",
+        "User Control(WPF)",
+        "Dashboard.xaml",
+        "App.xaml",
+        "shell",
+        "Prism",
+        "controller/view manager"
+      ],
+      "extracted_terms": [
+        "User Control(WPF)",
+        "user controls",
+        "Window View",
+        "SalesView.xaml",
+        "Dashboard.xaml",
+        "App.xaml",
+        "content",
+        "button",
+        "window",
+        "Prism",
+        ".Show",
+        "MVVM",
+        "xaml",
+        "WPF",
+        "vm"
+      ],
+      "scores": {
+        "precision": 0.7333,
+        "recall": 0.8333,
+        "hallucination": 0.2667,
+        "f1": 0.7801,
+        "tp": 11,
+        "fp": 4,
+        "fn": 2
+      },
+      "fp_terms": [
+        "Window View",
+        "content",
+        "window",
+        "vm"
+      ],
+      "fn_terms": [
+        "shell",
+        "controller/view manager"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "File_Name",
+        "User_Interface_Element",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 14,
+      "question_id": "18656558",
+      "text_length": 966,
+      "text_preview": "I want to execute a function that is sent over AJAX request from the server . The function body is n't in the calling page . For example : ( the complete code is given below ) 1.calling PHP script : [",
+      "gt_terms": [
+        "server",
+        "PHP",
+        "2.ajax_js2.php",
+        "span",
+        "client",
+        "<script>",
+        "DOM",
+        "eval()",
+        "innerHTML",
+        "test()",
+        "test",
+        "eval"
+      ],
+      "extracted_terms": [
+        "innerHTML",
+        "<script>",
+        "test()",
+        "eval()",
+        "script",
+        "client",
+        "AJAX",
+        "span",
+        "PHP",
+        "DOM"
+      ],
+      "scores": {
+        "precision": 0.9,
+        "recall": 0.8333,
+        "hallucination": 0.1,
+        "f1": 0.8654,
+        "tp": 9,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "AJAX"
+      ],
+      "fn_terms": [
+        "server",
+        "2.ajax_js2.php"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "File_Name",
+        "HTML_XML_Tag",
+        "Library_Function",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 15,
+      "question_id": "44055225",
+      "text_length": 1489,
+      "text_preview": "I have a problem that I frequently deal with using MVC that I ca n't seem to find an easy solution for . Very frequently I find myself creating a viewmodel for an object that has a collection of small",
+      "gt_terms": [
+        "MVC",
+        "viewmodel",
+        "screen",
+        "table",
+        "IEnumerable",
+        "form",
+        "html",
+        "javascript",
+        "strings",
+        "page",
+        "HTTPPOST"
+      ],
+      "extracted_terms": [
+        "Credential objects",
+        "Staff object",
+        "IEnumerable",
+        "javascript",
+        "viewmodel",
+        "HTTPPOST",
+        "strings",
+        "screen",
+        "table",
+        "html",
+        "form",
+        "CODE",
+        "page",
+        "MVC"
+      ],
+      "scores": {
+        "precision": 0.7857,
+        "recall": 1.0,
+        "hallucination": 0.2143,
+        "f1": 0.88,
+        "tp": 11,
+        "fp": 3,
+        "fn": 0
+      },
+      "fp_terms": [
+        "Credential objects",
+        "Staff object",
+        "CODE"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 16,
+      "question_id": "42692779",
+      "text_length": 1032,
+      "text_preview": "I have a quite odd problem . The problem is like this .. . When I try to pass a string to my controller action ( .NET MVC ) , this one : [CODE] I checked in the console and I 'm getting an server inte",
+      "gt_terms": [
+        "string",
+        "controller",
+        ".NET",
+        "MVC",
+        "console",
+        "server internal error 500",
+        "post",
+        "internal server error 500",
+        "request",
+        "Json"
+      ],
+      "extracted_terms": [
+        "internal server error 500",
+        "controller action",
+        "request object",
+        "post method",
+        "Json object",
+        ".NET MVC",
+        "Controller",
+        "console",
+        "string",
+        "post",
+        "Json",
+        ".NET"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 12,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Error_Name",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 17,
+      "question_id": "46801920",
+      "text_length": 2266,
+      "text_preview": "As i mentioned on the question title , I want to know the best approach to get this to work and i 'll need and example ( very simple one as the follow : ) Let 's say i have an API which has 1 controll",
+      "gt_terms": [
+        "API",
+        "rails",
+        "JSON",
+        "request",
+        "Jbuilder",
+        "ActiveModel Serializers",
+        "HTTP GET",
+        "Net::HTTP",
+        "Active Resource",
+        "REST API",
+        "Widget",
+        "Active Record",
+        "ActiveRecord",
+        "Javascript",
+        "JQuery",
+        "Angular",
+        "Rails API"
+      ],
+      "extracted_terms": [
+        "REST API rather than",
+        "JSON from the API",
+        "ActiveModel Serializers",
+        "Active Resource",
+        "Active Record",
+        "HTTP GET",
+        "Create-Read-Update-Destroy",
+        "ActiveResource",
+        "ActiveRecord",
+        "controller",
+        "Javascript",
+        "Net::HTTP",
+        "Jbuilder",
+        "Angular",
+        "JQuery",
+        "rails",
+        "GET"
+      ],
+      "scores": {
+        "precision": 0.8824,
+        "recall": 0.8824,
+        "hallucination": 0.1176,
+        "f1": 0.8824,
+        "tp": 15,
+        "fp": 2,
+        "fn": 2
+      },
+      "fp_terms": [
+        "Create-Read-Update-Destroy",
+        "controller"
+      ],
+      "fn_terms": [
+        "request",
+        "Widget"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Function",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 18,
+      "question_id": "35574488",
+      "text_length": 1859,
+      "text_preview": "We 're hosting the script in out app . On exceptions/crashes , we 'd like to see the line number in the stacktrace . I ca n't find if there is a setting to include debug info when setting up the CSScr",
+      "gt_terms": [
+        "exceptions/crashes",
+        "CSScript compiler",
+        "CS-Script",
+        "command line",
+        ".net",
+        ".pdb",
+        "cscs.exe",
+        ".exe",
+        ".dll",
+        "exception",
+        "Test.cs",
+        "Test.exe",
+        "Test.pdb",
+        "DebugBuild",
+        "EvaluatorConfig",
+        "LoadCode"
+      ],
+      "extracted_terms": [
+        "stack trace",
+        "EvaluatorConfig",
+        "DebugBuild",
+        "CS-Script",
+        "exception",
+        "cscs.exe",
+        "Test.exe",
+        "Test.pdb",
+        "LoadCode",
+        "CSScript",
+        "Test.cs",
+        ".net",
+        ".pdb",
+        ".exe",
+        ".dll",
+        "file"
+      ],
+      "scores": {
+        "precision": 0.875,
+        "recall": 0.9375,
+        "hallucination": 0.125,
+        "f1": 0.9052,
+        "tp": 14,
+        "fp": 2,
+        "fn": 1
+      },
+      "fp_terms": [
+        "stack trace",
+        "file"
+      ],
+      "fn_terms": [
+        "command line"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "File_Name",
+        "Library_Function",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 19,
+      "question_id": "35087680",
+      "text_length": 1943,
+      "text_preview": "Context In a C# Windows Forms application for Win7 we host an ActiveX control . So far , so good . Need : prevent ActiveX to receive mouse events Actually , the ActiveX has too much functionality . It",
+      "gt_terms": [
+        "C#",
+        "Windows Forms",
+        "Win7",
+        "ActiveX control",
+        "ActiveX",
+        "mouse",
+        "Control",
+        "Stack Overflow",
+        "IMessageFilters",
+        "winforms",
+        "WInForm",
+        "WndProc",
+        "IMessageFilter",
+        "/.NET",
+        "EnableWindow(hand,FALSE)",
+        "hwnd"
+      ],
+      "extracted_terms": [
+        "ActiveX control",
+        "Windows Forms",
+        "mouse clicks",
+        "click event",
+        "C# WInForm",
+        "EnableWindow(hand,FALSE)",
+        "IMessageFilters",
+        "application",
+        "winforms",
+        "controls",
+        "ActiveX",
+        "WndProc",
+        "Windows",
+        "events",
+        "mouse",
+        "paint",
+        "Win7",
+        ".NET",
+        "hwnd",
+        "C#",
+        "panel"
+      ],
+      "scores": {
+        "precision": 0.7619,
+        "recall": 0.9375,
+        "hallucination": 0.2381,
+        "f1": 0.8406,
+        "tp": 16,
+        "fp": 5,
+        "fn": 1
+      },
+      "fp_terms": [
+        "click event",
+        "application",
+        "events",
+        "paint",
+        "panel"
+      ],
+      "fn_terms": [
+        "Stack Overflow"
+      ],
+      "entity_types_in_doc": [
+        "Operating_System",
+        "Website",
+        "Library_Class",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 20,
+      "question_id": "21380268",
+      "text_length": 2162,
+      "text_preview": "I have a string of numerical values separated with spaces : [CODE] I want to get all occurrences of the string , where combined sum of numbers is x . So , if I search : 2041 it should return an array ",
+      "gt_terms": [
+        "string",
+        "array",
+        "PHP",
+        "NodeJs",
+        "MySQL",
+        "integers",
+        "Python",
+        "list",
+        "to_array()",
+        "find",
+        "strlen",
+        "order())",
+        "in_array"
+      ],
+      "extracted_terms": [
+        "multidimensional array",
+        "soft search",
+        "hard search",
+        "to_array()",
+        "integers",
+        "in_array",
+        "order()",
+        "Viper-7",
+        "string",
+        "NodeJs",
+        "Python",
+        "strlen",
+        "array",
+        "MySQL",
+        "mode",
+        "find",
+        "PHP"
+      ],
+      "scores": {
+        "precision": 0.7647,
+        "recall": 0.9231,
+        "hallucination": 0.2353,
+        "f1": 0.8365,
+        "tp": 13,
+        "fp": 4,
+        "fn": 1
+      },
+      "fp_terms": [
+        "soft search",
+        "hard search",
+        "Viper-7",
+        "mode"
+      ],
+      "fn_terms": [
+        "list"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 21,
+      "question_id": "29175",
+      "text_length": 2451,
+      "text_preview": "Okay , so I 'm running a small test webserver on my private network . I 've got a machine running Windows 2000 Pro , and I 'm trying to run an ASP.NET app through IIS . I wrote it so that the webpage ",
+      "gt_terms": [
+        "webserver",
+        "Windows",
+        "2000 Pro",
+        "ASP.NET",
+        "IIS",
+        "strings",
+        "VStudio.NET",
+        "2005",
+        "regedit",
+        "Google",
+        "XP",
+        "2000",
+        "RegEdt32.exe"
+      ],
+      "extracted_terms": [
+        "Windows 2000 Pro",
+        "registry hives/keys",
+        "connection strings",
+        "VStudio.NET 2005",
+        "Windows 2000",
+        "Windows XP",
+        "RegEdt32.exe",
+        "registry",
+        "ASP.NET",
+        "regedit",
+        "webpage",
+        "string",
+        "Google",
+        "IIS"
+      ],
+      "scores": {
+        "precision": 0.7857,
+        "recall": 0.9231,
+        "hallucination": 0.2143,
+        "f1": 0.8489,
+        "tp": 11,
+        "fp": 3,
+        "fn": 1
+      },
+      "fp_terms": [
+        "registry hives/keys",
+        "registry",
+        "webpage"
+      ],
+      "fn_terms": [
+        "webserver"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Website",
+        "Data_Type",
+        "File_Name",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 22,
+      "question_id": "22864488",
+      "text_length": 979,
+      "text_preview": "I am from brazil and im trying to generate a keystore and after going to the bin of my jre7/bin in here its \" C:\\Program Files \\Java\\jdk1.7.0_51\\bin \" i try to run this code : [CODE] But it is asking ",
+      "gt_terms": [
+        "keystore",
+        "bin",
+        "jre7/bin",
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+        "keyboard",
+        "enter",
+        "key store",
+        "console",
+        "command line",
+        "storepass",
+        "keypass",
+        "android"
+      ],
+      "extracted_terms": [
+        "debug mode",
+        "key store",
+        "key entry",
+        "jdk1.7.0_51",
+        "storepass",
+        "keystore",
+        "jre7/bin",
+        "password",
+        "keyboard",
+        "keypass",
+        "android",
+        "enter",
+        "Java",
+        "keys",
+        "bin"
+      ],
+      "scores": {
+        "precision": 0.6667,
+        "recall": 0.75,
+        "hallucination": 0.3333,
+        "f1": 0.7059,
+        "tp": 10,
+        "fp": 5,
+        "fn": 3
+      },
+      "fp_terms": [
+        "debug mode",
+        "key entry",
+        "jdk1.7.0_51",
+        "password",
+        "Java"
+      ],
+      "fn_terms": [
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+        "console",
+        "command line"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Variable",
+        "File_Name",
+        "Device",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 23,
+      "question_id": "12206050",
+      "text_length": 699,
+      "text_preview": "I have a really simple bit of code that I 'm trying to in Ms Access 2010 . I want a control on a form to open a word document . I 've tried several things but the simplest piece of code I 've cobbled ",
+      "gt_terms": [
+        "Ms Access",
+        "2010",
+        "form",
+        "word",
+        "run time 429 error",
+        "ADO",
+        "6.0",
+        "VBA",
+        "FollowHyperlink",
+        "CreateObject"
+      ],
+      "extracted_terms": [
+        "Ms Access 2010",
+        "activex component",
+        "word document",
+        "Access 2010",
+        "ADO 6.0",
+        "FollowHyperlink",
+        "CreateObject",
+        "document",
+        "control",
+        "Word",
+        "form",
+        "VBA"
+      ],
+      "scores": {
+        "precision": 0.75,
+        "recall": 0.9,
+        "hallucination": 0.25,
+        "f1": 0.8182,
+        "tp": 9,
+        "fp": 3,
+        "fn": 1
+      },
+      "fp_terms": [
+        "activex component",
+        "document",
+        "control"
+      ],
+      "fn_terms": [
+        "run time 429 error"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Function",
+        "Error_Name",
+        "User_Interface_Element",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 24,
+      "question_id": "38572866",
+      "text_length": 524,
+      "text_preview": "I have a route defined in node/express that has a res.render [CODE] On rendering this index page , I want to capture this req.user as a $scope object in the angular controller on the front end . How c",
+      "gt_terms": [
+        "node/express",
+        "res.render",
+        "page",
+        "req.user",
+        "$scope",
+        "angular",
+        "JADE",
+        "global",
+        "javascript"
+      ],
+      "extracted_terms": [
+        "node/express",
+        "res.render",
+        "javascript",
+        "controller",
+        "req.user",
+        "angular",
+        "$scope",
+        "JADE",
+        "page"
+      ],
+      "scores": {
+        "precision": 0.8889,
+        "recall": 0.8889,
+        "hallucination": 0.1111,
+        "f1": 0.8889,
+        "tp": 8,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "controller"
+      ],
+      "fn_terms": [
+        "global"
+      ],
+      "entity_types_in_doc": [
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Data_Type",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 25,
+      "question_id": "1523043",
+      "text_length": 1048,
+      "text_preview": "I would like to rename all the jpg files in a folder to uniform convention like Picture00000001.jpg where 00000001 is a counter . It would be a walk in the park in C# but I would think this is the kin",
+      "gt_terms": [
+        "jpg",
+        "Picture00000001.jpg",
+        "C#",
+        "PowerShell",
+        "FilenameWithOutExtension",
+        "2.0",
+        "FileInfo",
+        "1.0",
+        "string"
+      ],
+      "extracted_terms": [
+        "PowerShell Community Extensions",
+        "FileInfo object",
+        "PowerShell 2.0",
+        "PowerShell 1.0",
+        "FilenameWithOutExtension",
+        "PowerShell",
+        "basename",
+        "FileInfo",
+        "jpg",
+        "C#"
+      ],
+      "scores": {
+        "precision": 0.9,
+        "recall": 0.7778,
+        "hallucination": 0.1,
+        "f1": 0.8344,
+        "tp": 9,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "basename"
+      ],
+      "fn_terms": [
+        "Picture00000001.jpg",
+        "string"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Data_Type",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 26,
+      "question_id": "7182845",
+      "text_length": 3212,
+      "text_preview": "Synopsis I want to build a custom control which displays events in a calendar . Here is the draft : The Concept The bottom left box is vertically scrollable . The bottom right box scrollable in both d",
+      "gt_terms": [
+        "calendar",
+        "box",
+        "event views",
+        "scroll area",
+        "button",
+        "scroller",
+        "cell",
+        "cells",
+        "header rows",
+        "columns",
+        "Cappuccino",
+        "Cocoa",
+        "Cappuccino/Cocoa",
+        "SplitView",
+        "vertical divider",
+        "TableView",
+        "header column",
+        "view",
+        "background grid",
+        "table",
+        "CPView",
+        "background",
+        "drawRect",
+        "CPControl",
+        "borders",
+        "CPBox",
+        "setBackgroundColor :",
+        "text",
+        "mouseDown",
+        "events",
+        "CPScrollView",
+        "CPTableView",
+        "scrollToPoint :"
+      ],
+      "extracted_terms": [
+        "content view",
+        "scroll area",
+        "scroll view",
+        "CPScrollView",
+        "CPTableView",
+        "Cappuccino",
+        "background",
+        "CPControl",
+        "mouseDown",
+        "SplitView",
+        "TableView",
+        "calendar",
+        "scroller",
+        "subviews",
+        "columns",
+        "divider",
+        "borders",
+        "CPView",
+        "Cocoa",
+        "CPBox",
+        "cells",
+        "rows",
+        "grid"
+      ],
+      "scores": {
+        "precision": 0.9565,
+        "recall": 0.7576,
+        "hallucination": 0.0435,
+        "f1": 0.8455,
+        "tp": 22,
+        "fp": 1,
+        "fn": 8
+      },
+      "fp_terms": [
+        "divider"
+      ],
+      "fn_terms": [
+        "box",
+        "event views",
+        "button",
+        "vertical divider",
+        "drawRect",
+        "text",
+        "events",
+        "scrollToPoint :"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "User_Interface_Element",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 27,
+      "question_id": "8360162",
+      "text_length": 1252,
+      "text_preview": "is there any free tool to read excel without using Excel Interop . I am creating a website using Visual studio 2010 , and I am using c# and asp . I cant install any software on server so I want to use",
+      "gt_terms": [
+        "excel",
+        "Excel Interop",
+        "Visual studio",
+        "2010",
+        "c#",
+        "asp",
+        "server",
+        "XLSX",
+        "XLS",
+        "Interop",
+        "MS",
+        "OpenXML SDK",
+        "V 2.0",
+        "MS Office",
+        "PDFs",
+        "ClosedXML",
+        "EPPlus",
+        "Aspose.Cells",
+        "SpreadsheetGear",
+        "LibXL",
+        "Flexcel",
+        "ExcelDataReader",
+        "XLS/XLSX",
+        "Excel Data Reader"
+      ],
+      "extracted_terms": [
+        "OpenXML SDK V 2.0",
+        "OpenXML SDK V 2",
+        "Excel Data Reader",
+        "Excel Interop",
+        "OpenXML SDK",
+        "MS Office",
+        "SpreadsheetGear",
+        "ExcelDataReader",
+        "Aspose.Cells",
+        "ClosedXML",
+        "Interop",
+        "Flexcel",
+        "EPPlus",
+        "excel",
+        "LibXL",
+        "XLSX",
+        "asp",
+        "XLS",
+        "c#",
+        "db",
+        "MS"
+      ],
+      "scores": {
+        "precision": 0.9524,
+        "recall": 0.8333,
+        "hallucination": 0.0476,
+        "f1": 0.8889,
+        "tp": 20,
+        "fp": 1,
+        "fn": 4
+      },
+      "fp_terms": [
+        "db"
+      ],
+      "fn_terms": [
+        "Visual studio",
+        "2010",
+        "server",
+        "PDFs"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Organization",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 28,
+      "question_id": "22361019",
+      "text_length": 3049,
+      "text_preview": "I have a UITableView that is never consistent . This table view has 2 sections . I have created 2 UIButtons , they both are practically the same image , but one is grey and one is red . Every row in t",
+      "gt_terms": [
+        "UITableView",
+        "UIButtons",
+        "image",
+        "button",
+        "iPhone",
+        "rows",
+        "NSLogs",
+        "console",
+        "xcode",
+        "row",
+        "buttons",
+        "cellForRowAtIndexPath",
+        "UIButton",
+        "UITableViewCell",
+        "tableView:cellForRowAtIndexPath :",
+        "cells",
+        "setup",
+        "cell",
+        "images",
+        "IB"
+      ],
+      "extracted_terms": [
+        "cellForRowAtIndexPath",
+        "UITableViewCell",
+        "UITableView",
+        "UIButtons",
+        "console",
+        "iPhone",
+        "NSLogs",
+        "button",
+        "xcode",
+        "image",
+        "row",
+        "IB",
+        "UI"
+      ],
+      "scores": {
+        "precision": 0.9231,
+        "recall": 0.85,
+        "hallucination": 0.0769,
+        "f1": 0.885,
+        "tp": 12,
+        "fp": 1,
+        "fn": 3
+      },
+      "fp_terms": [
+        "UI"
+      ],
+      "fn_terms": [
+        "cells",
+        "setup",
+        "cell"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Function_Name"
+      ]
+    },
+    {
+      "doc_idx": 29,
+      "question_id": "2831693",
+      "text_length": 1192,
+      "text_preview": "I am trying to programmatically fire a key event to go left in a text box , but not having any luck . The input element has focus and the cursor is at the end . I 'm trying to get the cursor to move l",
+      "gt_terms": [
+        "text box",
+        "cursor",
+        "Keyboard",
+        "keydown/keyup/keypress",
+        "input box",
+        "ABCDEF|",
+        "HTML",
+        "Javascript",
+        "jsfiddle",
+        "cross-browser",
+        "Chrome",
+        "jQuery",
+        "textarea",
+        "left",
+        "up",
+        "right",
+        "down"
+      ],
+      "extracted_terms": [
+        "input element",
+        "text box",
+        "keydown/keyup/keypress",
+        "down/keyup/keypress",
+        "up/keypress",
+        "Javascript",
+        "jsfiddle",
+        "textarea",
+        "Keyboard",
+        "Chrome",
+        "jQuery",
+        "events",
+        "input",
+        "right",
+        "HTML",
+        "left",
+        "key"
+      ],
+      "scores": {
+        "precision": 0.8235,
+        "recall": 0.7059,
+        "hallucination": 0.1765,
+        "f1": 0.7602,
+        "tp": 14,
+        "fp": 3,
+        "fn": 5
+      },
+      "fp_terms": [
+        "input element",
+        "events",
+        "key"
+      ],
+      "fn_terms": [
+        "cursor",
+        "ABCDEF|",
+        "cross-browser",
+        "up",
+        "down"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Keyboard_IP",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    }
+  ]
+}

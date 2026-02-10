@@ -1,0 +1,3522 @@
+{
+  "metadata": {
+    "iteration": 28,
+    "strategy": "v6_spanfix",
+    "timestamp": "2026-02-10T03:11:18.917932",
+    "so_ner_path": "/tmp/StackOverflowNER/resources/annotated_ner_data/StackOverflow/test.txt",
+    "n_docs": 50,
+    "seed": 42,
+    "elapsed_seconds": 1412.7,
+    "main_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter28_v6_spanfix_20260210_024746.log",
+    "trace_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter28_v6_spanfix_20260210_024746_trace.log"
+  },
+  "targets": {
+    "precision": 0.95,
+    "recall": 0.95,
+    "hallucination": 0.05
+  },
+  "aggregate": {
+    "precision": 0.9492,
+    "recall": 0.9404,
+    "hallucination": 0.0508,
+    "f1": 0.9448,
+    "total_tp": 710,
+    "total_fp": 38,
+    "total_fn": 46,
+    "total_extracted": 748,
+    "total_gt": 755
+  },
+  "target_check": {
+    "meets_precision": false,
+    "meets_recall": false,
+    "meets_hallucination": false,
+    "all_pass": false
+  },
+  "all_fp_terms": [
+    {
+      "term": "repository",
+      "question_id": "42873050"
+    },
+    {
+      "term": "server",
+      "question_id": "45734089"
+    },
+    {
+      "term": "command line",
+      "question_id": "10809866"
+    },
+    {
+      "term": "bin",
+      "question_id": "10809866"
+    },
+    {
+      "term": "selector",
+      "question_id": "27926052"
+    },
+    {
+      "term": "Windows",
+      "question_id": "30516702"
+    },
+    {
+      "term": "Device",
+      "question_id": "30516702"
+    },
+    {
+      "term": "ListItemIndex",
+      "question_id": "9965761"
+    },
+    {
+      "term": "Window",
+      "question_id": "38496528"
+    },
+    {
+      "term": "AJAX",
+      "question_id": "18656558"
+    },
+    {
+      "term": "server",
+      "question_id": "42692779"
+    },
+    {
+      "term": "client",
+      "question_id": "46801920"
+    },
+    {
+      "term": "Java",
+      "question_id": "22864488"
+    },
+    {
+      "term": "cells",
+      "question_id": "8360162"
+    },
+    {
+      "term": "table",
+      "question_id": "22361019"
+    },
+    {
+      "term": "keys",
+      "question_id": "2831693"
+    },
+    {
+      "term": "int",
+      "question_id": "81972"
+    },
+    {
+      "term": "Android",
+      "question_id": "13968390"
+    },
+    {
+      "term": "WebSphere",
+      "question_id": "10435773"
+    },
+    {
+      "term": "docs.spring.io",
+      "question_id": "37406714"
+    },
+    {
+      "term": "repository",
+      "question_id": "37406714"
+    },
+    {
+      "term": "DTC",
+      "question_id": "494550"
+    },
+    {
+      "term": "registers",
+      "question_id": "494550"
+    },
+    {
+      "term": "static",
+      "question_id": "494550"
+    },
+    {
+      "term": "POST",
+      "question_id": "27716407"
+    },
+    {
+      "term": "PowerCubes",
+      "question_id": "42527503"
+    },
+    {
+      "term": "avr-gcc",
+      "question_id": "22879151"
+    },
+    {
+      "term": "Controller",
+      "question_id": "36914244"
+    },
+    {
+      "term": "Resources",
+      "question_id": "36914244"
+    },
+    {
+      "term": "global",
+      "question_id": "41527933"
+    },
+    {
+      "term": "POST",
+      "question_id": "7219258"
+    },
+    {
+      "term": "select",
+      "question_id": "7219258"
+    },
+    {
+      "term": "var",
+      "question_id": "19776462"
+    },
+    {
+      "term": "Thread",
+      "question_id": "14202215"
+    },
+    {
+      "term": "Task",
+      "question_id": "14202215"
+    },
+    {
+      "term": "request/action",
+      "question_id": "20428669"
+    },
+    {
+      "term": "list",
+      "question_id": "20428669"
+    },
+    {
+      "term": "async",
+      "question_id": "20428669"
+    }
+  ],
+  "all_fn_terms": [
+    {
+      "term": "MAX SIZE(4608x3456)",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX Size",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAXIMUM",
+      "question_id": "42873050"
+    },
+    {
+      "term": "CTS",
+      "question_id": "42873050"
+    },
+    {
+      "term": "c++11",
+      "question_id": "39288595"
+    },
+    {
+      "term": "src \\main\\resources\\wsdl\\",
+      "question_id": "45734089"
+    },
+    {
+      "term": "configuration",
+      "question_id": "45734089"
+    },
+    {
+      "term": "padding",
+      "question_id": "39079773"
+    },
+    {
+      "term": "setCustomDoneTarget:action :",
+      "question_id": "27926052"
+    },
+    {
+      "term": "doneAction :",
+      "question_id": "27926052"
+    },
+    {
+      "term": "window",
+      "question_id": "12028246"
+    },
+    {
+      "term": "jQuery-generated",
+      "question_id": "9965761"
+    },
+    {
+      "term": "2.ajax_js2.php",
+      "question_id": "18656558"
+    },
+    {
+      "term": "request",
+      "question_id": "42692779"
+    },
+    {
+      "term": "request",
+      "question_id": "46801920"
+    },
+    {
+      "term": "find",
+      "question_id": "21380268"
+    },
+    {
+      "term": "Picture00000001.jpg",
+      "question_id": "1523043"
+    },
+    {
+      "term": "event views",
+      "question_id": "7182845"
+    },
+    {
+      "term": "drawRect",
+      "question_id": "7182845"
+    },
+    {
+      "term": "text",
+      "question_id": "7182845"
+    },
+    {
+      "term": "events",
+      "question_id": "7182845"
+    },
+    {
+      "term": "scrollToPoint :",
+      "question_id": "7182845"
+    },
+    {
+      "term": "setup",
+      "question_id": "22361019"
+    },
+    {
+      "term": "ABCDEF|",
+      "question_id": "2831693"
+    },
+    {
+      "term": "up",
+      "question_id": "2831693"
+    },
+    {
+      "term": "down",
+      "question_id": "2831693"
+    },
+    {
+      "term": "Trace->Server",
+      "question_id": "10435773"
+    },
+    {
+      "term": "Log",
+      "question_id": "10435773"
+    },
+    {
+      "term": "stack",
+      "question_id": "494550"
+    },
+    {
+      "term": "Views",
+      "question_id": "4522886"
+    },
+    {
+      "term": "selector",
+      "question_id": "20557278"
+    },
+    {
+      "term": "set",
+      "question_id": "20557278"
+    },
+    {
+      "term": "items",
+      "question_id": "27716407"
+    },
+    {
+      "term": "item",
+      "question_id": "27716407"
+    },
+    {
+      "term": "10",
+      "question_id": "42527503"
+    },
+    {
+      "term": "d:\\Cognos\\PowerCubes\\Build",
+      "question_id": "42527503"
+    },
+    {
+      "term": "d:\\Cognos\\PowerCubes\\Live",
+      "question_id": "42527503"
+    },
+    {
+      "term": "C-only",
+      "question_id": "22879151"
+    },
+    {
+      "term": ":complete",
+      "question_id": "36914244"
+    },
+    {
+      "term": "/usr/include/c ++ /5/bits/range_access.h",
+      "question_id": "41527933"
+    },
+    {
+      "term": "C:/.. .",
+      "question_id": "38189474"
+    },
+    {
+      "term": "script/batch",
+      "question_id": "38189474"
+    },
+    {
+      "term": ":init",
+      "question_id": "19776462"
+    },
+    {
+      "term": "route",
+      "question_id": "19776462"
+    },
+    {
+      "term": "getfiltered",
+      "question_id": "14202215"
+    },
+    {
+      "term": "log",
+      "question_id": "20428669"
+    }
+  ],
+  "per_doc": [
+    {
+      "doc_idx": 0,
+      "question_id": "42873050",
+      "text_length": 2278,
+      "text_preview": "Recently I 'm trying to create a ZSL session on my camera app using the camera2 API from android . I 'm using a device with a LEVEL-3 hardware level which supports [CODE] . In this case I 'm using the",
+      "gt_terms": [
+        "camera",
+        "camera2 API",
+        "android",
+        "tables",
+        "ReprocessableCaptureSession",
+        "table",
+        "ReprocessableCatureSession",
+        "YUV",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader Surface",
+        "JPEG",
+        "Surface",
+        "RAW",
+        "CaptureRequest",
+        "images",
+        "RingQueue",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "imageReader",
+        "Byte[]"
+      ],
+      "extracted_terms": [
+        "JPEG ImageReader Surface",
+        "RAW ImageReader Surface",
+        "Camera API 2",
+        "ImageReader Surface",
+        "camera2 API",
+        "YUV format",
+        "YUV Byte[]",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "ReprocessableCaptureSession",
+        "ReprocessableCaptureRequest",
+        "ImageFormat.YUV_420_888",
+        "CameraCharacteristics",
+        "CaptureRequest",
+        "YUV_420_888",
+        "ImageReader",
+        "bytearrays",
+        "RingQueue",
+        "Surface",
+        "Session",
+        "Byte[]",
+        "images",
+        "Google",
+        "tables",
+        "JPEG",
+        "YUV",
+        "RAW",
+        "android",
+        "repository",
+        "table"
+      ],
+      "scores": {
+        "precision": 0.9655,
+        "recall": 0.8667,
+        "hallucination": 0.0345,
+        "f1": 0.9134,
+        "tp": 28,
+        "fp": 1,
+        "fn": 4
+      },
+      "fp_terms": [
+        "repository"
+      ],
+      "fn_terms": [
+        "MAX SIZE(4608x3456)",
+        "MAX Size",
+        "MAXIMUM",
+        "CTS"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "Organization",
+        "Library_Variable",
+        "Library_Function",
+        "Library",
+        "Data_Type",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 1,
+      "question_id": "10709772",
+      "text_length": 1262,
+      "text_preview": "I am wondering if this is possible and maybe some code examples if it is . I am trying to have the presenter during a live address be able to hit a button when he is away . This button will then trigg",
+      "gt_terms": [
+        "button",
+        "jpg",
+        "image",
+        "clients",
+        "microphone",
+        "FMIS",
+        "AS3",
+        "Client",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "NetStream.send()",
+        "toggleAwayImageDisplay"
+      ],
+      "extracted_terms": [
+        "FMIS 4",
+        "toggleAwayImageDisplay",
+        "NetStream.send()",
+        "NetConnection",
+        "microphone",
+        "NetStream",
+        "button",
+        "Client",
+        "image",
+        "AS3",
+        "FMS",
+        "jpg"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 12,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Function_Name",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 2,
+      "question_id": "14831694",
+      "text_length": 2271,
+      "text_preview": "I stumbled upon an interesting behavior in the Trackbar Winforms control . On a horizontal trackbar , the left/right arrow keys work as expected . ( Left arrow moves the slider to the left and decreas",
+      "gt_terms": [
+        "Trackbar",
+        "Winforms",
+        "left/right arrow",
+        "Left arrow",
+        "slider",
+        "right arrow",
+        "up/down arrow",
+        "PageUp/PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "trackbar control",
+        "scrollbar control",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "keyboard",
+        "scrollbars",
+        "Left",
+        "Up",
+        "Right",
+        "Down"
+      ],
+      "extracted_terms": [
+        "Internet Explorer",
+        "left/right arrow",
+        "up/down arrow",
+        "up/down keys",
+        "arrow right",
+        "Arrow down",
+        "arrow left",
+        "Left arrow",
+        "page down",
+        "arrow up",
+        "page up",
+        "PageUp/PageDown",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "left/right",
+        "scrollbar",
+        "Trackbar",
+        "Winforms",
+        "Windows",
+        "up/down",
+        "slider",
+        "PgUp",
+        "UAC",
+        "WPF",
+        "C#",
+        "Up",
+        "keyboard"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 27,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 3,
+      "question_id": "39288595",
+      "text_length": 4048,
+      "text_preview": "I am a bit confused about the c++11 random library . What I understand : we need two separate concepts : random engine ( which can be pseudo ( need seed ) or real ) distribution : it maps the numbers ",
+      "gt_terms": [
+        "c++11",
+        "random",
+        "random engine",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen(\"/dev/urandom\")",
+        "windows",
+        "microsoft crypto API",
+        "crypto",
+        "mt19937",
+        "exception",
+        "/dev/random",
+        "unix",
+        "/dev/urandom/",
+        "visual studio",
+        "mingw",
+        "phone",
+        "time(NULL)",
+        "Pseudo-randomic",
+        "CPU"
+      ],
+      "extracted_terms": [
+        "microsoft crypto API",
+        "MSVC crypto API",
+        "random library",
+        "visual studio",
+        "crypto API",
+        "std::default_random_engine",
+        "std::fopen(\"/dev/urandom\")",
+        "std::random_device",
+        "Pseudo-randomic",
+        "/dev/urandom/",
+        "std::mt19937",
+        "/dev/urandom",
+        "/dev/random",
+        "time(NULL)",
+        "mt19937",
+        "libc++",
+        "phone",
+        "CPU",
+        "windows",
+        "mingw",
+        "unix",
+        "exception"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9545,
+        "hallucination": 0.0,
+        "f1": 0.9767,
+        "tp": 22,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "c++11"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "Library",
+        "File_Name",
+        "Device",
+        "Language",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 4,
+      "question_id": "45734089",
+      "text_length": 781,
+      "text_preview": "I have a WSDL file located under src \\main\\resources\\wsdl\\ folder and it is having multiple operations defined within it . My application is running on Weblogic 12C server . I 'm trying to expose the ",
+      "gt_terms": [
+        "WSDL",
+        "src \\main\\resources\\wsdl\\",
+        "Weblogic 12C server",
+        "Apache",
+        "Cammel",
+        "2.18.3",
+        "Java",
+        "configuration",
+        "RouteBuilder",
+        "exception",
+        "pom.xml",
+        "wsdl2java",
+        "IDE"
+      ],
+      "extracted_terms": [
+        "Weblogic 12C server",
+        "Apache Cammel",
+        "Java DSL",
+        "RouteBuilder",
+        "wsdl2java",
+        "exception",
+        "pom.xml",
+        "2.18.3",
+        "WSDL",
+        "Java",
+        "IDE",
+        "server"
+      ],
+      "scores": {
+        "precision": 0.9167,
+        "recall": 0.8462,
+        "hallucination": 0.0833,
+        "f1": 0.88,
+        "tp": 11,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "server"
+      ],
+      "fn_terms": [
+        "src \\main\\resources\\wsdl\\",
+        "configuration"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 5,
+      "question_id": "3639039",
+      "text_length": 1191,
+      "text_preview": "I have a Silverlight 4 app using Prism 2.2 and I have a few modules that I am loading on demand by defining them as ondemand in the module catalog ( via a xaml file ) and then using the ModuleManager ",
+      "gt_terms": [
+        "Silverlight",
+        "Prism",
+        "2.2",
+        "ondemand",
+        "xaml",
+        "ModuleManager",
+        "codeplex",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "private",
+        "IFileDownloader"
+      ],
+      "extracted_terms": [
+        "Silverlight 4",
+        "Prism 2.2",
+        "FileDownloaderWithProgress",
+        "DownloadProgressChanged",
+        "IFileDownloader",
+        "FileDownloader",
+        "ModuleManager",
+        "Silverlight",
+        "WebClient",
+        "Prism",
+        "codeplex",
+        "xaml",
+        "ondemand",
+        "private"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 14,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Class_Name",
+        "Website",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Type",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 6,
+      "question_id": "10809866",
+      "text_length": 2202,
+      "text_preview": "I am trying to install homebrew according to the guidelines described in here . I have curl and rvm , and want to install rails 1.9.3 on my lion 1.7.4 with Xcode 4.3.2 and with developer command line ",
+      "gt_terms": [
+        "homebrew",
+        "curl",
+        "rvm",
+        "rails",
+        "1.9.3",
+        "lion",
+        "1.7.4",
+        "Xcode",
+        "4.3.2",
+        "developer command line tools",
+        "libksba",
+        "Home Brew",
+        "brew",
+        "MacPorts",
+        "ruby",
+        "SnowLeopard - OSX",
+        "10.6.8",
+        "/System/Library/Frameworks/Ruby.framework",
+        "/usr/bin",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "symlinks",
+        "erb",
+        "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+        "/usr/bin/ruby",
+        "ostruct"
+      ],
+      "extracted_terms": [
+        "developer command line tools",
+        "rails 1.9.3",
+        "Xcode 4.3.2",
+        "lion 1.7.4",
+        "OSX 10.6.8",
+        "Home Brew",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "/System/Library/Frameworks/Ruby.framework",
+        "/usr/bin/ruby",
+        "SnowLeopard",
+        "MacPorts",
+        "symlinks",
+        "/usr/bin",
+        "10.6.8",
+        "Xcode",
+        "1.9.3",
+        "1.7.4",
+        "4.3.2",
+        "OSX",
+        "homebrew",
+        "libksba",
+        "ostruct",
+        "rails",
+        "curl",
+        "lion",
+        "brew",
+        "rvm",
+        "command line",
+        "ruby",
+        "bin",
+        "erb"
+      ],
+      "scores": {
+        "precision": 0.9355,
+        "recall": 1.0,
+        "hallucination": 0.0645,
+        "f1": 0.9667,
+        "tp": 29,
+        "fp": 2,
+        "fn": 0
+      },
+      "fp_terms": [
+        "command line",
+        "bin"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "File_Name",
+        "Library",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 7,
+      "question_id": "19471961",
+      "text_length": 1618,
+      "text_preview": "I 'm setting up IPython to automatically load Sympy and configure it 's output method on startup . However , whatever I try I ca n't get sympy to initialize the latex/unicode style output printing . S",
+      "gt_terms": [
+        "IPython",
+        "Sympy",
+        "latex/unicode",
+        "qtconsole/notebook",
+        "kernel",
+        "0.7.3",
+        "ipython3",
+        "1.1",
+        "matplotlib",
+        "1.3.1",
+        "numpy",
+        "1.7.1",
+        "scipy",
+        "0.12.0",
+        "Ubuntu",
+        "13.10",
+        "python3 terminal",
+        "PYTHONSTARTUP",
+        "1.1.0",
+        "global",
+        "00-startup.py",
+        "ipython_config.py"
+      ],
+      "extracted_terms": [
+        "matplotlib 1.3.1",
+        "global namespace",
+        "ipython3 1.1.0",
+        "ipython3 1.1",
+        "scipy 0.12.0",
+        "Ubuntu 13.10",
+        "sympy 0.7.3",
+        "numpy 1.7.1",
+        "qtconsole/notebook",
+        "ipython_config.py",
+        "latex/unicode",
+        "PYTHONSTARTUP",
+        "00-startup.py",
+        "ipython3",
+        "IPython",
+        "python3",
+        "Ubuntu",
+        "kernel",
+        "Sympy",
+        "matplotlib",
+        "numpy",
+        "scipy",
+        "global"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 23,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "Data_Type",
+        "Library",
+        "File_Name",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 8,
+      "question_id": "39079773",
+      "text_length": 2359,
+      "text_preview": "I am building a calculator with flexbox . I want one of its keys twice the height and another key twice the width . I googled much about it but could n't find both cases together . For twice height ke",
+      "gt_terms": [
+        "calculator",
+        "flexbox",
+        "height",
+        "width",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "keys",
+        "flex containers",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "flex container",
+        "key",
+        "row",
+        "long",
+        "container",
+        ".long",
+        "flex-basis",
+        "flex-grow"
+      ],
+      "extracted_terms": [
+        "flex containers",
+        "flex-direction",
+        "calculator",
+        "codepen.io",
+        "flex-basis",
+        "flex-grow",
+        "Codepen",
+        "borders",
+        "height",
+        "column",
+        "width",
+        "keys",
+        "long",
+        "CSS",
+        "flexbox",
+        "row"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9524,
+        "hallucination": 0.0,
+        "f1": 0.9756,
+        "tp": 16,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "padding"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 9,
+      "question_id": "27926052",
+      "text_length": 1488,
+      "text_preview": "I 've implemented the IQKeyboardManager framework to make the keyboard handle easier . It works very fine , except for one thing : There 're some UItextField controls in my app which open a UIDatePick",
+      "gt_terms": [
+        "IQKeyboardManager",
+        "keyboard",
+        "UItextField",
+        "UIDatePicker",
+        "pad",
+        "button",
+        ".h",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "Interface Builder",
+        ".xib",
+        "Identity Inspector",
+        ".m",
+        "setCustomDoneTarget:action :",
+        "doneAction :",
+        "IQUIView+",
+        "IQKeyboardToolbar.h",
+        "TextFieldViewController.m"
+      ],
+      "extracted_terms": [
+        "IQKeyboardManager framework to make",
+        "IQUIView+ IQKeyboardToolbar.h",
+        "Identity Inspector",
+        "Interface Builder",
+        "decimal pad",
+        "number pad",
+        "TextFieldViewController.m",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "UIDatePicker",
+        "UItextField",
+        "keyboard",
+        "button",
+        ".xib",
+        ".h",
+        ".m",
+        "selector"
+      ],
+      "scores": {
+        "precision": 0.9412,
+        "recall": 0.8889,
+        "hallucination": 0.0588,
+        "f1": 0.9143,
+        "tp": 16,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "selector"
+      ],
+      "fn_terms": [
+        "setCustomDoneTarget:action :",
+        "doneAction :"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Device",
+        "User_Interface_Element",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 10,
+      "question_id": "30516702",
+      "text_length": 1423,
+      "text_preview": "I am trying to deploy and test a Universal Windows App to a Surface Pro 3 directly from Visual Studio 2013 ( Update 4) and I am unable to launch the App ( by hitting F 5) . I am running into the follo",
+      "gt_terms": [
+        "Universal Windows App",
+        "Surface Pro",
+        "Visual Studio",
+        "2013",
+        "Update 4)",
+        "F 5)",
+        "DEP0700",
+        "AppxManifest",
+        "ApxManifest",
+        "designer",
+        "manifest",
+        "XML Editor",
+        "2015",
+        "Manifest Designer",
+        "visual editor",
+        "xml",
+        "menu"
+      ],
+      "extracted_terms": [
+        "Universal Windows App",
+        "Visual Studio 2013",
+        "Visual Studio 2015",
+        "Surface Pro 3",
+        "Manifest Designer",
+        "XML Editor",
+        "Update 4",
+        "F 5",
+        "AppxManifest",
+        "DEP0700",
+        "Windows",
+        "Device",
+        "xml",
+        "visual editor",
+        "menu"
+      ],
+      "scores": {
+        "precision": 0.8667,
+        "recall": 1.0,
+        "hallucination": 0.1333,
+        "f1": 0.9286,
+        "tp": 13,
+        "fp": 2,
+        "fn": 0
+      },
+      "fp_terms": [
+        "Windows",
+        "Device"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Keyboard_IP",
+        "File_Name",
+        "Device",
+        "Error_Name",
+        "Language",
+        "User_Interface_Element",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 11,
+      "question_id": "12028246",
+      "text_length": 1805,
+      "text_preview": "In my C# program I have a big problem : I add an SQL server database named \" Behgozin_DB \" to my project . I do the following steps for adding the database : In my SQL server management studio I detac",
+      "gt_terms": [
+        "C#",
+        "SQL server",
+        "SQL server management studio",
+        "visual studio",
+        "menu",
+        "String",
+        "tables",
+        "table",
+        "2010",
+        "2008",
+        "bin \\debug",
+        "window",
+        "server explorer",
+        "server",
+        "|DataDirectory|"
+      ],
+      "extracted_terms": [
+        "SQL server management studio",
+        "Visual Studio 2010",
+        "SQL Server 2008",
+        "Connection String",
+        "server explorer",
+        "visual studio",
+        "SQL server",
+        "DataDirectory",
+        "tables",
+        "bin",
+        "SQL",
+        "C#",
+        "menu",
+        "server",
+        "table",
+        "string"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9333,
+        "hallucination": 0.0,
+        "f1": 0.9655,
+        "tp": 16,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "window"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "Data_Type",
+        "File_Name",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 12,
+      "question_id": "9965761",
+      "text_length": 1507,
+      "text_preview": "I have a hard-coded list , each list item of which has an ID . I want to have jQuery generate list items in another list , and set as their text content the ID attribute values of each of the hard-cod",
+      "gt_terms": [
+        "list",
+        "jQuery",
+        "jQuery-generated",
+        "jQ",
+        "var",
+        "jsFiddle",
+        "each",
+        "string",
+        "li",
+        "strings",
+        "JS",
+        "W3C",
+        "HTML4"
+      ],
+      "extracted_terms": [
+        "nav list",
+        "ListItemIndex",
+        "jsFiddle",
+        "jQuery",
+        "string",
+        "HTML4",
+        "list",
+        "each",
+        "HTML",
+        "W3C",
+        "li",
+        "jQ",
+        "JS",
+        "var"
+      ],
+      "scores": {
+        "precision": 0.9286,
+        "recall": 0.9231,
+        "hallucination": 0.0714,
+        "f1": 0.9258,
+        "tp": 13,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "ListItemIndex"
+      ],
+      "fn_terms": [
+        "jQuery-generated"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Organization",
+        "Data_Type",
+        "HTML_XML_Tag",
+        "Data_Structure",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 13,
+      "question_id": "38496528",
+      "text_length": 1111,
+      "text_preview": "There are many questions in this community for opening the window View on a click of a button just we need to create the instance of the view and use .Show and some question are based on using User Co",
+      "gt_terms": [
+        "button",
+        ".Show",
+        "User Control",
+        "MVVM",
+        "WPF",
+        "SalesView.xaml",
+        "User Control(WPF)",
+        "Dashboard.xaml",
+        "App.xaml",
+        "shell",
+        "Prism",
+        "controller/view manager"
+      ],
+      "extracted_terms": [
+        "User Control",
+        "SalesView.xaml",
+        "Dashboard.xaml",
+        "App.xaml",
+        "button",
+        "Window",
+        "Prism",
+        ".Show",
+        "MVVM",
+        "WPF",
+        "xaml",
+        "view manager",
+        "shell"
+      ],
+      "scores": {
+        "precision": 0.9231,
+        "recall": 1.0,
+        "hallucination": 0.0769,
+        "f1": 0.96,
+        "tp": 12,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "Window"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "File_Name",
+        "User_Interface_Element",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 14,
+      "question_id": "18656558",
+      "text_length": 966,
+      "text_preview": "I want to execute a function that is sent over AJAX request from the server . The function body is n't in the calling page . For example : ( the complete code is given below ) 1.calling PHP script : [",
+      "gt_terms": [
+        "server",
+        "PHP",
+        "2.ajax_js2.php",
+        "span",
+        "client",
+        "<script>",
+        "DOM",
+        "eval()",
+        "innerHTML",
+        "test()",
+        "test",
+        "eval"
+      ],
+      "extracted_terms": [
+        "innerHTML",
+        "<script>",
+        "test()",
+        "eval()",
+        "AJAX",
+        "PHP",
+        "DOM",
+        "span",
+        "client",
+        "server"
+      ],
+      "scores": {
+        "precision": 0.9,
+        "recall": 0.9167,
+        "hallucination": 0.1,
+        "f1": 0.9083,
+        "tp": 9,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "AJAX"
+      ],
+      "fn_terms": [
+        "2.ajax_js2.php"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "File_Name",
+        "HTML_XML_Tag",
+        "Library_Function",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 15,
+      "question_id": "44055225",
+      "text_length": 1489,
+      "text_preview": "I have a problem that I frequently deal with using MVC that I ca n't seem to find an easy solution for . Very frequently I find myself creating a viewmodel for an object that has a collection of small",
+      "gt_terms": [
+        "MVC",
+        "viewmodel",
+        "screen",
+        "table",
+        "IEnumerable",
+        "form",
+        "html",
+        "javascript",
+        "strings",
+        "page",
+        "HTTPPOST"
+      ],
+      "extracted_terms": [
+        "IEnumerable",
+        "viewmodel",
+        "HTTPPOST",
+        "strings",
+        "screen",
+        "table",
+        "form",
+        "page",
+        "MVC",
+        "javascript",
+        "html"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 11,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 16,
+      "question_id": "42692779",
+      "text_length": 1032,
+      "text_preview": "I have a quite odd problem . The problem is like this .. . When I try to pass a string to my controller action ( .NET MVC ) , this one : [CODE] I checked in the console and I 'm getting an server inte",
+      "gt_terms": [
+        "string",
+        "controller",
+        ".NET",
+        "MVC",
+        "console",
+        "server internal error 500",
+        "post",
+        "internal server error 500",
+        "request",
+        "Json"
+      ],
+      "extracted_terms": [
+        "server internal error 500",
+        "internal server error 500",
+        "Controller Action",
+        "post method",
+        ".NET MVC",
+        "Console",
+        "string",
+        "post",
+        "Json",
+        ".NET",
+        "MVC",
+        "server"
+      ],
+      "scores": {
+        "precision": 0.9167,
+        "recall": 0.9,
+        "hallucination": 0.0833,
+        "f1": 0.9083,
+        "tp": 11,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "server"
+      ],
+      "fn_terms": [
+        "request"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Error_Name",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 17,
+      "question_id": "46801920",
+      "text_length": 2266,
+      "text_preview": "As i mentioned on the question title , I want to know the best approach to get this to work and i 'll need and example ( very simple one as the follow : ) Let 's say i have an API which has 1 controll",
+      "gt_terms": [
+        "API",
+        "rails",
+        "JSON",
+        "request",
+        "Jbuilder",
+        "ActiveModel Serializers",
+        "HTTP GET",
+        "Net::HTTP",
+        "Active Resource",
+        "REST API",
+        "Widget",
+        "Active Record",
+        "ActiveRecord",
+        "Javascript",
+        "JQuery",
+        "Angular",
+        "Rails API"
+      ],
+      "extracted_terms": [
+        "REST API rather than",
+        "JSON from the API",
+        "API which has 1",
+        "ActiveModel Serializers",
+        "Active Resource",
+        "Active Record",
+        "HTTP GET",
+        "REST API",
+        "ActiveResource",
+        "ActiveRecord",
+        "Javascript",
+        "Net::HTTP",
+        "Jbuilder",
+        "Angular",
+        "Widget",
+        "JQuery",
+        "GET",
+        "rails",
+        "client"
+      ],
+      "scores": {
+        "precision": 0.9474,
+        "recall": 0.9412,
+        "hallucination": 0.0526,
+        "f1": 0.9443,
+        "tp": 18,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "client"
+      ],
+      "fn_terms": [
+        "request"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Function",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 18,
+      "question_id": "35574488",
+      "text_length": 1859,
+      "text_preview": "We 're hosting the script in out app . On exceptions/crashes , we 'd like to see the line number in the stacktrace . I ca n't find if there is a setting to include debug info when setting up the CSScr",
+      "gt_terms": [
+        "exceptions/crashes",
+        "CSScript compiler",
+        "CS-Script",
+        "command line",
+        ".net",
+        ".pdb",
+        "cscs.exe",
+        ".exe",
+        ".dll",
+        "exception",
+        "Test.cs",
+        "Test.exe",
+        "Test.pdb",
+        "DebugBuild",
+        "EvaluatorConfig",
+        "LoadCode"
+      ],
+      "extracted_terms": [
+        "EvaluatorConfig",
+        "DebugBuild",
+        "CS-Script",
+        "cscs.exe",
+        "Test.exe",
+        "Test.pdb",
+        "LoadCode",
+        "CSScript",
+        "Test.cs",
+        ".net",
+        ".pdb",
+        ".exe",
+        ".dll",
+        "command line",
+        "exception"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 15,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "File_Name",
+        "Library_Function",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 19,
+      "question_id": "35087680",
+      "text_length": 1943,
+      "text_preview": "Context In a C# Windows Forms application for Win7 we host an ActiveX control . So far , so good . Need : prevent ActiveX to receive mouse events Actually , the ActiveX has too much functionality . It",
+      "gt_terms": [
+        "C#",
+        "Windows Forms",
+        "Win7",
+        "ActiveX control",
+        "ActiveX",
+        "mouse",
+        "Control",
+        "Stack Overflow",
+        "IMessageFilters",
+        "winforms",
+        "WInForm",
+        "WndProc",
+        "IMessageFilter",
+        "/.NET",
+        "EnableWindow(hand,FALSE)",
+        "hwnd"
+      ],
+      "extracted_terms": [
+        "ActiveX control",
+        "Windows Forms",
+        "mouse clicks",
+        "EnableWindow(hand,FALSE)",
+        "IMessageFilters",
+        "ActiveX",
+        "WndProc",
+        "Windows",
+        "mouse",
+        "Win7",
+        ".NET",
+        "C#",
+        "winforms",
+        "hwnd",
+        "Stack Overflow"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 15,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Operating_System",
+        "Website",
+        "Library_Class",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 20,
+      "question_id": "21380268",
+      "text_length": 2162,
+      "text_preview": "I have a string of numerical values separated with spaces : [CODE] I want to get all occurrences of the string , where combined sum of numbers is x . So , if I search : 2041 it should return an array ",
+      "gt_terms": [
+        "string",
+        "array",
+        "PHP",
+        "NodeJs",
+        "MySQL",
+        "integers",
+        "Python",
+        "list",
+        "to_array()",
+        "find",
+        "strlen",
+        "order())",
+        "in_array"
+      ],
+      "extracted_terms": [
+        "multidimensional array",
+        "to_array()",
+        "integers",
+        "in_array",
+        "order()",
+        "string",
+        "NodeJs",
+        "Python",
+        "array",
+        "MySQL",
+        "list",
+        "PHP",
+        "strlen"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9231,
+        "hallucination": 0.0,
+        "f1": 0.96,
+        "tp": 13,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "find"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "Language",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 21,
+      "question_id": "29175",
+      "text_length": 2451,
+      "text_preview": "Okay , so I 'm running a small test webserver on my private network . I 've got a machine running Windows 2000 Pro , and I 'm trying to run an ASP.NET app through IIS . I wrote it so that the webpage ",
+      "gt_terms": [
+        "webserver",
+        "Windows",
+        "2000 Pro",
+        "ASP.NET",
+        "IIS",
+        "strings",
+        "VStudio.NET",
+        "2005",
+        "regedit",
+        "Google",
+        "XP",
+        "2000",
+        "RegEdt32.exe"
+      ],
+      "extracted_terms": [
+        "Windows 2000 Pro",
+        "connection strings",
+        "VStudio.NET 2005",
+        "Windows 2000",
+        "Windows XP",
+        "RegEdt32.exe",
+        "ASP.NET",
+        "Google",
+        "IIS",
+        "regedit",
+        "webserver"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 11,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Website",
+        "Data_Type",
+        "File_Name",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 22,
+      "question_id": "22864488",
+      "text_length": 979,
+      "text_preview": "I am from brazil and im trying to generate a keystore and after going to the bin of my jre7/bin in here its \" C:\\Program Files \\Java\\jdk1.7.0_51\\bin \" i try to run this code : [CODE] But it is asking ",
+      "gt_terms": [
+        "keystore",
+        "bin",
+        "jre7/bin",
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+        "keyboard",
+        "enter",
+        "key store",
+        "console",
+        "command line",
+        "storepass",
+        "keypass",
+        "android"
+      ],
+      "extracted_terms": [
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+        "key store",
+        "jre7/bin",
+        "keyboard",
+        "enter",
+        "Java",
+        "keys",
+        "bin",
+        "storepass",
+        "keystore",
+        "keypass",
+        "android",
+        "command line",
+        "console"
+      ],
+      "scores": {
+        "precision": 0.9286,
+        "recall": 1.0,
+        "hallucination": 0.0714,
+        "f1": 0.963,
+        "tp": 13,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "Java"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Variable",
+        "File_Name",
+        "Device",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 23,
+      "question_id": "12206050",
+      "text_length": 699,
+      "text_preview": "I have a really simple bit of code that I 'm trying to in Ms Access 2010 . I want a control on a form to open a word document . I 've tried several things but the simplest piece of code I 've cobbled ",
+      "gt_terms": [
+        "Ms Access",
+        "2010",
+        "form",
+        "word",
+        "run time 429 error",
+        "ADO",
+        "6.0",
+        "VBA",
+        "FollowHyperlink",
+        "CreateObject"
+      ],
+      "extracted_terms": [
+        "Ms Access 2010",
+        "word document",
+        "Access 2010",
+        "ADO 6.0",
+        "FollowHyperlink",
+        "CreateObject",
+        "Word",
+        "form",
+        "VBA",
+        "run time 429 error"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 10,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Function",
+        "Error_Name",
+        "User_Interface_Element",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 24,
+      "question_id": "38572866",
+      "text_length": 524,
+      "text_preview": "I have a route defined in node/express that has a res.render [CODE] On rendering this index page , I want to capture this req.user as a $scope object in the angular controller on the front end . How c",
+      "gt_terms": [
+        "node/express",
+        "res.render",
+        "page",
+        "req.user",
+        "$scope",
+        "angular",
+        "JADE",
+        "global",
+        "javascript"
+      ],
+      "extracted_terms": [
+        "node/express",
+        "res.render",
+        "req.user",
+        "$scope",
+        "JADE",
+        "page",
+        "javascript",
+        "angular",
+        "global"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 9,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Data_Type",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 25,
+      "question_id": "1523043",
+      "text_length": 1048,
+      "text_preview": "I would like to rename all the jpg files in a folder to uniform convention like Picture00000001.jpg where 00000001 is a counter . It would be a walk in the park in C# but I would think this is the kin",
+      "gt_terms": [
+        "jpg",
+        "Picture00000001.jpg",
+        "C#",
+        "PowerShell",
+        "FilenameWithOutExtension",
+        "2.0",
+        "FileInfo",
+        "1.0",
+        "string"
+      ],
+      "extracted_terms": [
+        "PowerShell Community Extensions",
+        "FileInfo object",
+        "PowerShell 2.0",
+        "PowerShell 1.0",
+        "FilenameWithOutExtension",
+        "PowerShell",
+        "FileInfo",
+        "C#",
+        "jpg",
+        "string"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8889,
+        "hallucination": 0.0,
+        "f1": 0.9412,
+        "tp": 10,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "Picture00000001.jpg"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Data_Type",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 26,
+      "question_id": "7182845",
+      "text_length": 3212,
+      "text_preview": "Synopsis I want to build a custom control which displays events in a calendar . Here is the draft : The Concept The bottom left box is vertically scrollable . The bottom right box scrollable in both d",
+      "gt_terms": [
+        "calendar",
+        "box",
+        "event views",
+        "scroll area",
+        "button",
+        "scroller",
+        "cell",
+        "cells",
+        "header rows",
+        "columns",
+        "Cappuccino",
+        "Cocoa",
+        "Cappuccino/Cocoa",
+        "SplitView",
+        "vertical divider",
+        "TableView",
+        "header column",
+        "view",
+        "background grid",
+        "table",
+        "CPView",
+        "background",
+        "drawRect",
+        "CPControl",
+        "borders",
+        "CPBox",
+        "setBackgroundColor :",
+        "text",
+        "mouseDown",
+        "events",
+        "CPScrollView",
+        "CPTableView",
+        "scrollToPoint :"
+      ],
+      "extracted_terms": [
+        "scroll area",
+        "CPScrollView",
+        "CPTableView",
+        "Cappuccino",
+        "background",
+        "CPControl",
+        "mouseDown",
+        "SplitView",
+        "TableView",
+        "calendar",
+        "scroller",
+        "columns",
+        "borders",
+        "CPView",
+        "Cocoa",
+        "CPBox",
+        "cells",
+        "header rows",
+        "vertical divider",
+        "header column",
+        "background grid",
+        "cell",
+        "box",
+        "table",
+        "column",
+        "button"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8485,
+        "hallucination": 0.0,
+        "f1": 0.918,
+        "tp": 26,
+        "fp": 0,
+        "fn": 5
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "event views",
+        "drawRect",
+        "text",
+        "events",
+        "scrollToPoint :"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "User_Interface_Element",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 27,
+      "question_id": "8360162",
+      "text_length": 1252,
+      "text_preview": "is there any free tool to read excel without using Excel Interop . I am creating a website using Visual studio 2010 , and I am using c# and asp . I cant install any software on server so I want to use",
+      "gt_terms": [
+        "excel",
+        "Excel Interop",
+        "Visual studio",
+        "2010",
+        "c#",
+        "asp",
+        "server",
+        "XLSX",
+        "XLS",
+        "Interop",
+        "MS",
+        "OpenXML SDK",
+        "V 2.0",
+        "MS Office",
+        "PDFs",
+        "ClosedXML",
+        "EPPlus",
+        "Aspose.Cells",
+        "SpreadsheetGear",
+        "LibXL",
+        "Flexcel",
+        "ExcelDataReader",
+        "XLS/XLSX",
+        "Excel Data Reader"
+      ],
+      "extracted_terms": [
+        "OpenXML SDK V 2.0",
+        "Visual studio 2010",
+        "Excel Data Reader",
+        "Excel Interop",
+        "OpenXML SDK",
+        "MS Office",
+        "SpreadsheetGear",
+        "ExcelDataReader",
+        "Aspose.Cells",
+        "ClosedXML",
+        "Interop",
+        "Flexcel",
+        "EPPlus",
+        "LibXL",
+        "XLSX",
+        "XLS",
+        "c#",
+        "excel",
+        "asp",
+        "pdfs",
+        "server",
+        "cells"
+      ],
+      "scores": {
+        "precision": 0.9545,
+        "recall": 1.0,
+        "hallucination": 0.0455,
+        "f1": 0.9767,
+        "tp": 21,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "cells"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Organization",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 28,
+      "question_id": "22361019",
+      "text_length": 3049,
+      "text_preview": "I have a UITableView that is never consistent . This table view has 2 sections . I have created 2 UIButtons , they both are practically the same image , but one is grey and one is red . Every row in t",
+      "gt_terms": [
+        "UITableView",
+        "UIButtons",
+        "image",
+        "button",
+        "iPhone",
+        "rows",
+        "NSLogs",
+        "console",
+        "xcode",
+        "row",
+        "buttons",
+        "cellForRowAtIndexPath",
+        "UIButton",
+        "UITableViewCell",
+        "tableView:cellForRowAtIndexPath :",
+        "cells",
+        "setup",
+        "cell",
+        "images",
+        "IB"
+      ],
+      "extracted_terms": [
+        "UITableViewCell subclass",
+        "cellForRowAtIndexPath",
+        "UITableViewCell",
+        "UITableView",
+        "UIButtons",
+        "console",
+        "iPhone",
+        "NSLogs",
+        "button",
+        "image",
+        "row",
+        "IB",
+        "xcode",
+        "cell",
+        "table",
+        "cells"
+      ],
+      "scores": {
+        "precision": 0.9375,
+        "recall": 0.95,
+        "hallucination": 0.0625,
+        "f1": 0.9437,
+        "tp": 15,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "table"
+      ],
+      "fn_terms": [
+        "setup"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Function_Name"
+      ]
+    },
+    {
+      "doc_idx": 29,
+      "question_id": "2831693",
+      "text_length": 1192,
+      "text_preview": "I am trying to programmatically fire a key event to go left in a text box , but not having any luck . The input element has focus and the cursor is at the end . I 'm trying to get the cursor to move l",
+      "gt_terms": [
+        "text box",
+        "cursor",
+        "Keyboard",
+        "keydown/keyup/keypress",
+        "input box",
+        "ABCDEF|",
+        "HTML",
+        "Javascript",
+        "jsfiddle",
+        "cross-browser",
+        "Chrome",
+        "jQuery",
+        "textarea",
+        "left",
+        "up",
+        "right",
+        "down"
+      ],
+      "extracted_terms": [
+        "text box",
+        "keydown/keyup/keypress",
+        "down/keyup/keypress",
+        "up/keypress",
+        "Javascript",
+        "Keyboard",
+        "cursor",
+        "Chrome",
+        "jQuery",
+        "right",
+        "HTML",
+        "left",
+        "keys",
+        "jsfiddle",
+        "textarea",
+        "input",
+        "browser",
+        "box"
+      ],
+      "scores": {
+        "precision": 0.9444,
+        "recall": 0.8235,
+        "hallucination": 0.0556,
+        "f1": 0.8799,
+        "tp": 17,
+        "fp": 1,
+        "fn": 3
+      },
+      "fp_terms": [
+        "keys"
+      ],
+      "fn_terms": [
+        "ABCDEF|",
+        "up",
+        "down"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Keyboard_IP",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 30,
+      "question_id": "20321910",
+      "text_length": 2033,
+      "text_preview": "I am using Ghost Blogging Platform , and when I insert a image it automatically wraps a image in a p tag . I have a max-width setup for the container wrapping the p tag and the img . I want the img to",
+      "gt_terms": [
+        "Ghost Blogging Platform",
+        "image",
+        "max-width",
+        "img",
+        "width",
+        "browser",
+        "blockquote",
+        "HTML",
+        "CSS",
+        "borders",
+        "border",
+        "Fiddle",
+        "div",
+        "ghost",
+        "WordPress",
+        "images"
+      ],
+      "extracted_terms": [
+        "Ghost Blogging Platform",
+        "WordPress",
+        "max-width",
+        "browser",
+        "FIDDLE",
+        "Ghost",
+        "image",
+        "width",
+        "HTML",
+        "CSS",
+        "blockquote",
+        "img",
+        "div",
+        "borders"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 14,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Website",
+        "Library_Variable",
+        "HTML_XML_Tag",
+        "User_Interface_Element",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 31,
+      "question_id": "81972",
+      "text_length": 2573,
+      "text_preview": "The question I want to ask is thus : Is casting down the inheritance tree ( ie . towards a more specialiased class ) from inside an abstract class excusable , or even a good thing , or is it always a ",
+      "gt_terms": [
+        "tree",
+        "BitTorrent",
+        "C#",
+        "abstract",
+        "BItem",
+        "string",
+        "BString",
+        "BInteger",
+        "BList",
+        "BDictionary",
+        "this[int]",
+        "this[string]",
+        "array-like",
+        "torrent",
+        "BItems",
+        "BCollection"
+      ],
+      "extracted_terms": [
+        "BitTorrent protocol in C",
+        "Torrent protocol in C",
+        "this[string]",
+        "BDictionary",
+        "BCollection",
+        "this[int]",
+        "BInteger",
+        "BString",
+        "string",
+        "BItem",
+        "BList",
+        "array",
+        "C#",
+        "int",
+        "list",
+        "abstract",
+        "tree"
+      ],
+      "scores": {
+        "precision": 0.9412,
+        "recall": 1.0,
+        "hallucination": 0.0588,
+        "f1": 0.9697,
+        "tp": 16,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "int"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Class_Name",
+        "Website",
+        "Data_Type",
+        "Data_Structure",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 32,
+      "question_id": "13968390",
+      "text_length": 1276,
+      "text_preview": "I am using custom adapter which I use for my ListView . After creating ArrayList [CODE] I have the following code in my app : [CODE] However , when I try to click on the checkbox , nothing happens . S",
+      "gt_terms": [
+        "ListView",
+        "ArrayList",
+        "checkbox",
+        "setChoiceMode",
+        "R.layout.listview_item_text.xml",
+        "listview_item_checkbox.xml",
+        "widget",
+        "Checkable",
+        "android.R.layout.simple_list_item_multiple_choice",
+        "CheckableFrameLayout",
+        "List Item",
+        "BooleanSparseArray",
+        "getCheckedItemPositions())",
+        "grepcode",
+        "View"
+      ],
+      "extracted_terms": [
+        "android.R.layout.simple_list_item_multiple_choice",
+        "R.layout.listview_item_text.xml",
+        "listview_item_checkbox.xml",
+        "getCheckedItemPositions()",
+        "CheckableFrameLayout",
+        "BooleanSparseArray",
+        "setChoiceMode",
+        "ArrayList",
+        "Checkable",
+        "ListView",
+        "checkbox",
+        "grepcode",
+        "Android",
+        "View",
+        "list",
+        "widget"
+      ],
+      "scores": {
+        "precision": 0.9375,
+        "recall": 1.0,
+        "hallucination": 0.0625,
+        "f1": 0.9677,
+        "tp": 15,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "Android"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "File_Name",
+        "Library_Function",
+        "User_Interface_Element"
+      ]
+    },
+    {
+      "doc_idx": 33,
+      "question_id": "10435773",
+      "text_length": 1623,
+      "text_preview": "Whenever I go into the tab TroubleShooting->Logs and Trace->Server I get the general properties section in which there 's only a link of Change Log Details Level . I 've changed the tracing inside to ",
+      "gt_terms": [
+        "tab",
+        "Trace->Server",
+        "Log",
+        "WAS",
+        "Z/OS",
+        "logs",
+        "mainframe",
+        "JVM",
+        "AIX",
+        "linux",
+        "Windows",
+        "Server",
+        "tabs",
+        "string",
+        "wsadmin"
+      ],
+      "extracted_terms": [
+        "Logs and Trace",
+        "trace string",
+        "WebSphere",
+        "Windows",
+        "Server",
+        "string",
+        "Z/OS",
+        "WAS",
+        "JVM",
+        "AIX",
+        "wsadmin",
+        "linux",
+        "tabs",
+        "tab",
+        "mainframe"
+      ],
+      "scores": {
+        "precision": 0.9333,
+        "recall": 0.8667,
+        "hallucination": 0.0667,
+        "f1": 0.8988,
+        "tp": 14,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "WebSphere"
+      ],
+      "fn_terms": [
+        "Trace->Server",
+        "Log"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Data_Type",
+        "Device",
+        "User_Interface_Element",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 34,
+      "question_id": "37406714",
+      "text_length": 1422,
+      "text_preview": "I am using Spring Boot 1.4.0.M3 . I have an @Entity that has a username which should be unique : [CODE] Using a Spring Data Repository , I want to test if there will be an exception when a duplicate u",
+      "gt_terms": [
+        "Spring Boot",
+        "1.4.0.M3",
+        "@Entity",
+        "Spring",
+        "exception",
+        "@Transactional",
+        "@Commit",
+        "DataIntegrityViolationException",
+        "JUnit",
+        "MVC",
+        "@WebAppConfiguration",
+        "@ResponseStatus",
+        "@ControllerAdvice",
+        "@NotTransactional",
+        "static"
+      ],
+      "extracted_terms": [
+        "Spring Boot 1.4.0.M3",
+        "Spring Boot",
+        "Spring Data",
+        "Spring 4",
+        "DataIntegrityViolationException",
+        "@WebAppConfiguration",
+        "@ControllerAdvice",
+        "@NotTransactional",
+        "@ResponseStatus",
+        "@Transactional",
+        "docs.spring.io",
+        "1.4.0.M3",
+        "@Entity",
+        "@Commit",
+        "Spring",
+        "JUnit",
+        "MVC",
+        "exception",
+        "repository",
+        "static"
+      ],
+      "scores": {
+        "precision": 0.9,
+        "recall": 1.0,
+        "hallucination": 0.1,
+        "f1": 0.9474,
+        "tp": 18,
+        "fp": 2,
+        "fn": 0
+      },
+      "fp_terms": [
+        "docs.spring.io",
+        "repository"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Algorithm",
+        "Data_Type",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 35,
+      "question_id": "494550",
+      "text_length": 2794,
+      "text_preview": "I 'm writing an integration test where I will be inserting a number of objects into a database and then checking to make sure whether my method retrieves those objects . My connection to the database ",
+      "gt_terms": [
+        "NHibernate",
+        "TransactionScope",
+        "txScope.Complete()",
+        "BeginTransaction()",
+        "RollbackTransaction()",
+        "Adapter",
+        "Transaction Scope",
+        "SQL server",
+        "dispose",
+        "exception",
+        "Transaction",
+        "stack",
+        "Current",
+        "kernel"
+      ],
+      "extracted_terms": [
+        "Distribtued Transaction",
+        "Transaction class",
+        "Transaction Scope",
+        "SQL server",
+        "RollbackTransaction()",
+        "txScope.Complete()",
+        "BeginTransaction()",
+        "TransactionScope",
+        "Transaction",
+        "deptAdapter",
+        "NHibernate",
+        "empAdapter",
+        "exception",
+        "Current",
+        "Dispose",
+        "SQL",
+        "DTC",
+        "server",
+        "kernel",
+        "registers",
+        "static"
+      ],
+      "scores": {
+        "precision": 0.8571,
+        "recall": 0.9286,
+        "hallucination": 0.1429,
+        "f1": 0.8914,
+        "tp": 18,
+        "fp": 3,
+        "fn": 1
+      },
+      "fp_terms": [
+        "DTC",
+        "registers",
+        "static"
+      ],
+      "fn_terms": [
+        "stack"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Function",
+        "Data_Structure",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 36,
+      "question_id": "4522886",
+      "text_length": 638,
+      "text_preview": "From reading the documentation , you can dynamically theme Drupal blocks and nodes by adding template files : \" page-node-1.tpl \" or \" block-modulename-2.tpl \" . How do i know the delta value ( in thi",
+      "gt_terms": [
+        "Drupal",
+        "blocks",
+        "nodes",
+        "page-node-1.tpl",
+        "block-modulename-2.tpl",
+        "delta",
+        "node",
+        "block",
+        "admin/build/block",
+        "cursor",
+        "list",
+        "admin/build/block/configure/views/news -block_2",
+        "Views",
+        "news-block_2"
+      ],
+      "extracted_terms": [
+        "admin/build/block/configure/views/news",
+        "block-modulename-2.tpl",
+        "admin/build/block",
+        "page-node-1.tpl",
+        "news-block_2",
+        "Drupal",
+        "nodes",
+        "delta",
+        "list",
+        "blocks",
+        "cursor"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9286,
+        "hallucination": 0.0,
+        "f1": 0.963,
+        "tp": 11,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "Views"
+      ],
+      "entity_types_in_doc": [
+        "Library_Class",
+        "Library_Variable",
+        "File_Name",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 37,
+      "question_id": "20557278",
+      "text_length": 1411,
+      "text_preview": "Here is an example of three forms with the same repeated instance and no unique identifier : [CODE] How can I attach a different console.log or any message triggered by a click to each of these button",
+      "gt_terms": [
+        "console.log",
+        "buttons",
+        "jQuery Dom",
+        "selector",
+        "codepen",
+        "button",
+        "console",
+        "jQuery",
+        ".on()",
+        ".eq()",
+        "eq(0)",
+        "set",
+        "alert()"
+      ],
+      "extracted_terms": [
+        "console.log",
+        "alert()",
+        "console",
+        "jQuery",
+        ".on()",
+        ".eq()",
+        "eq()",
+        "on()",
+        "Dom",
+        "codepen",
+        "button"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8462,
+        "hallucination": 0.0,
+        "f1": 0.9167,
+        "tp": 11,
+        "fp": 0,
+        "fn": 2
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "selector",
+        "set"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Function",
+        "File_Name",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 38,
+      "question_id": "45291615",
+      "text_length": 1351,
+      "text_preview": "I 'm wondering how I can check which modules I need to load in my modules array ( config/modules.config.php ) . The autoloader does not seem to load all which were installed using composer or some are",
+      "gt_terms": [
+        "array",
+        "config/modules.config.php",
+        "autoloader",
+        "composer",
+        "ZF3",
+        "Zend Component Installer",
+        "Zend",
+        "modules.config.php",
+        "extra.zf.component",
+        "composer.json",
+        "Zend Form",
+        "Zend \\\\Form",
+        "Zend Skeleton Application"
+      ],
+      "extracted_terms": [
+        "Zend Skeleton Application",
+        "Zend Component Installer",
+        "modules array",
+        "Zend Modules",
+        "Zend Form",
+        "config/modules.config.php",
+        "extra.zf.component",
+        "composer.json",
+        "autoloader",
+        "array",
+        "Zend",
+        "ZF3",
+        "composer"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 13,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "Library_Function",
+        "File_Name",
+        "Data_Structure",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 39,
+      "question_id": "27716407",
+      "text_length": 1724,
+      "text_preview": "I 'm attempting to build a nested relationship using Django Rest Framework 3.0 . I 've created my serializers and have attempted to override the create() function . My models are defined as follows : ",
+      "gt_terms": [
+        "Django Rest Framework",
+        "3.0",
+        "serializers",
+        "create()",
+        "prices",
+        "items",
+        "Price serializer",
+        "item",
+        "serializer",
+        "price",
+        "PriceSerializer",
+        "PrimaryKeyRelatedField"
+      ],
+      "extracted_terms": [
+        "Django Rest Framework 3.0",
+        "Django Rest Framework 3",
+        "PrimaryKeyRelatedField",
+        "PriceSerializer",
+        "create()",
+        "Price",
+        "POST"
+      ],
+      "scores": {
+        "precision": 0.8571,
+        "recall": 0.8333,
+        "hallucination": 0.1429,
+        "f1": 0.8451,
+        "tp": 6,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "POST"
+      ],
+      "fn_terms": [
+        "items",
+        "item"
+      ],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 40,
+      "question_id": "42527503",
+      "text_length": 933,
+      "text_preview": "The Macro Excel pointe in Cognos 8 Cube . The cube is published in the server of the company . I want to make these process local . Please check and advice Answer_to_Question_ID : 42527503 NOTE-Cognos",
+      "gt_terms": [
+        "Macro Excel",
+        "Cognos",
+        "Cube",
+        "server",
+        "NOTE-Cognos",
+        "10",
+        "desktop",
+        "d:\\Cognos\\PowerCubes\\Build",
+        "d:\\Cognos\\PowerCubes\\Live",
+        "windows",
+        "task scheduler",
+        "mycube.mdc"
+      ],
+      "extracted_terms": [
+        "task scheduler",
+        "macro excel",
+        "Cognos 8",
+        "PowerCubes",
+        "mycube.mdc",
+        "Windows",
+        "server",
+        "Cognos",
+        "Excel",
+        "Macro",
+        "Cube",
+        "desktop"
+      ],
+      "scores": {
+        "precision": 0.9167,
+        "recall": 0.75,
+        "hallucination": 0.0833,
+        "f1": 0.825,
+        "tp": 11,
+        "fp": 1,
+        "fn": 3
+      },
+      "fp_terms": [
+        "PowerCubes"
+      ],
+      "fn_terms": [
+        "10",
+        "d:\\Cognos\\PowerCubes\\Build",
+        "d:\\Cognos\\PowerCubes\\Live"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Name",
+        "Device",
+        "Data_Structure",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 41,
+      "question_id": "22879151",
+      "text_length": 1872,
+      "text_preview": "How can i use \" Plain C \" to program Arduino without using the \" Processing programming language \" ? I want to improve my C programming skills by using it with Arduino for embedded systems . I have ve",
+      "gt_terms": [
+        "Arduino",
+        "Processing",
+        "C++",
+        "Java",
+        "pointers",
+        "MCU",
+        "AVR MCU",
+        "PDF",
+        "Atmel",
+        "registers",
+        "avr-gcc toolchain",
+        "C-only"
+      ],
+      "extracted_terms": [
+        "C and C++",
+        "avr-gcc toolchain",
+        "Arduino Library",
+        "C pointers",
+        "AVR MCU",
+        "Processing",
+        "registers",
+        "Arduino",
+        "avr-gcc",
+        "Atmel",
+        "Java",
+        "C++",
+        "AVR",
+        "PDF"
+      ],
+      "scores": {
+        "precision": 0.9286,
+        "recall": 0.9167,
+        "hallucination": 0.0714,
+        "f1": 0.9226,
+        "tp": 13,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "avr-gcc"
+      ],
+      "fn_terms": [
+        "C-only"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Website",
+        "Data_Type",
+        "Device",
+        "Language"
+      ]
+    },
+    {
+      "doc_idx": 42,
+      "question_id": "36914244",
+      "text_length": 1404,
+      "text_preview": "I 'm trying to add the ability to complete a todo item by patching in :complete method . Is it possible to use a checkbox for this rather than the link_to I have below ? I would very much like a check",
+      "gt_terms": [
+        ":complete",
+        "checkbox",
+        "link_to",
+        "boolean",
+        "form",
+        "RESTful",
+        "PATCH",
+        "enum",
+        "columns",
+        "button",
+        "ajax"
+      ],
+      "extracted_terms": [
+        "simple_form",
+        "Controller",
+        "Resources",
+        "checkbox",
+        "link_to",
+        "boolean",
+        "RESTful",
+        "button",
+        "PATCH",
+        "form",
+        "enum",
+        "ajax",
+        "columns"
+      ],
+      "scores": {
+        "precision": 0.8462,
+        "recall": 0.9091,
+        "hallucination": 0.1538,
+        "f1": 0.8765,
+        "tp": 11,
+        "fp": 2,
+        "fn": 1
+      },
+      "fp_terms": [
+        "Controller",
+        "Resources"
+      ],
+      "fn_terms": [
+        ":complete"
+      ],
+      "entity_types_in_doc": [
+        "Library_Function",
+        "Data_Type",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 43,
+      "question_id": "41527933",
+      "text_length": 1568,
+      "text_preview": "I 'm constrained to writing C++11 code , but I want to use std::cbegin() . So , I 'm looking at GCC 5.4.0 ' s implementation , in /usr/include/c ++ /5/bits/range_access.h on my system , thinking I mig",
+      "gt_terms": [
+        "C++11",
+        "std::cbegin()",
+        "GCC",
+        "5.4.0",
+        "/usr/include/c ++ /5/bits/range_access.h",
+        "std::begin()",
+        "C++14",
+        "std::make_unique",
+        "C++",
+        "14",
+        "C++ Standard Library"
+      ],
+      "extracted_terms": [
+        "C++ Standard Library",
+        "Standard Library",
+        "GCC 5.4.0",
+        "C++ 14",
+        "std::make_unique",
+        "std::cbegin()",
+        "std::begin()",
+        "C++11",
+        "C++14",
+        "C++",
+        "global"
+      ],
+      "scores": {
+        "precision": 0.9091,
+        "recall": 0.9091,
+        "hallucination": 0.0909,
+        "f1": 0.9091,
+        "tp": 10,
+        "fp": 1,
+        "fn": 1
+      },
+      "fp_terms": [
+        "global"
+      ],
+      "fn_terms": [
+        "/usr/include/c ++ /5/bits/range_access.h"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Name",
+        "Library_Function",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 44,
+      "question_id": "7219258",
+      "text_length": 903,
+      "text_preview": "[OUTPUT] I have MySQL tables looking like that regions table [CODE] .. . and schools table [CODE] There are multiple select ( dropdown ) menus in my registration form . The regions dropdown looks like",
+      "gt_terms": [
+        "MySQL",
+        "tables",
+        "table",
+        "dropdown",
+        "menus",
+        "form",
+        "dropdown list",
+        "dropdown menu",
+        "js",
+        "search.php",
+        "getschools()"
+      ],
+      "extracted_terms": [
+        "registration form",
+        "regions table",
+        "schools table",
+        "dropdown list",
+        "getschools()",
+        "search.php",
+        "tables",
+        "MySQL",
+        "POST",
+        "form",
+        "js",
+        "select",
+        "menu",
+        "list",
+        "table"
+      ],
+      "scores": {
+        "precision": 0.8667,
+        "recall": 1.0,
+        "hallucination": 0.1333,
+        "f1": 0.9286,
+        "tp": 13,
+        "fp": 2,
+        "fn": 0
+      },
+      "fp_terms": [
+        "POST",
+        "select"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Name",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Function_Name"
+      ]
+    },
+    {
+      "doc_idx": 45,
+      "question_id": "38189474",
+      "text_length": 496,
+      "text_preview": "while adding a new classifier in weka ... by running java call [CODE] what to set classpath ... and is it the correct format to add a classifier a weka ... i am using windows 10 Answer_to_Question_ID ",
+      "gt_terms": [
+        "weka",
+        "java",
+        "windows",
+        "10",
+        ".jar",
+        "C:/.. .",
+        "jar",
+        "weka-src.jar",
+        "script/batch",
+        "weka.jar"
+      ],
+      "extracted_terms": [
+        "Windows 10",
+        "weka-src.jar",
+        "weka.jar",
+        ".jar",
+        "weka",
+        "java"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8,
+        "hallucination": 0.0,
+        "f1": 0.8889,
+        "tp": 6,
+        "fp": 0,
+        "fn": 2
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "C:/.. .",
+        "script/batch"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "File_Name",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 46,
+      "question_id": "42091674",
+      "text_length": 833,
+      "text_preview": "I am practicing for Java fresher interview coding examples . I am trying to write a program to find duplicate numbers between 1 to N , where N is given by the user along with the numbers themselves . ",
+      "gt_terms": [
+        "Java",
+        "Eclipse",
+        "Neon",
+        "JVM",
+        "heap",
+        "DataInputStream",
+        "int",
+        "array",
+        "debugger",
+        "Scanner"
+      ],
+      "extracted_terms": [
+        "Eclipse Neon",
+        "heap space",
+        "DataInputStream",
+        "debugger",
+        "Scanner",
+        "array",
+        "Java",
+        "JVM",
+        "int"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 9,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Data_Type",
+        "Data_Structure",
+        "Language",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 47,
+      "question_id": "19776462",
+      "text_length": 1403,
+      "text_preview": "How does one inject state into ring handlers most conveniently ( without using global vars ) ? Here is an example : [CODE] I would like to get the-state into the compojure handler for main-routes . Th",
+      "gt_terms": [
+        "ring",
+        "global",
+        "compojure",
+        "main-routes",
+        "map",
+        "main",
+        ":init",
+        "server",
+        "routes",
+        "route"
+      ],
+      "extracted_terms": [
+        "request map",
+        "global var",
+        "main-routes",
+        "map",
+        "compojure",
+        "ring",
+        "var",
+        "server",
+        "global"
+      ],
+      "scores": {
+        "precision": 0.8889,
+        "recall": 0.8,
+        "hallucination": 0.1111,
+        "f1": 0.8421,
+        "tp": 8,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "var"
+      ],
+      "fn_terms": [
+        ":init",
+        "route"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Data_Type",
+        "Library_Function",
+        "Data_Structure",
+        "Function_Name",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 48,
+      "question_id": "14202215",
+      "text_length": 1664,
+      "text_preview": "I 'm hoping someone can point me in the right direction ; I think I 'm getting close but I 've never done threading and keep getting stuck on syntax/concepts . The first part I believe is working , ho",
+      "gt_terms": [
+        "WPF",
+        "Dispatcher",
+        "BackGroundWorker",
+        "Entity Framework",
+        "ObservableCollection",
+        "exception",
+        "repository",
+        "InnerException",
+        "getfiltered"
+      ],
+      "extracted_terms": [
+        "Entity Framework 5",
+        "ObservableCollection",
+        "BackGroundWorker",
+        "InnerException",
+        "Dispatcher",
+        "repository",
+        "exception",
+        "Thread",
+        "Task",
+        "WPF"
+      ],
+      "scores": {
+        "precision": 0.8,
+        "recall": 0.8889,
+        "hallucination": 0.2,
+        "f1": 0.8421,
+        "tp": 8,
+        "fp": 2,
+        "fn": 1
+      },
+      "fp_terms": [
+        "Thread",
+        "Task"
+      ],
+      "fn_terms": [
+        "getfiltered"
+      ],
+      "entity_types_in_doc": [
+        "Class_Name",
+        "Library_Class",
+        "Library_Function",
+        "Error_Name",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 49,
+      "question_id": "20428669",
+      "text_length": 772,
+      "text_preview": "I got some strange behaviour using grails 2.3.x and async . I 'm doing some test with this code : [CODE] but in my log i got : [CODE] In fact the tasks ( and onError closure ) are executed , but onCom",
+      "gt_terms": [
+        "grails",
+        "2.3.x",
+        "log",
+        "onError",
+        "onComplete",
+        "Thread.sleep()",
+        "GPars",
+        "waitAll()",
+        "list.get()"
+      ],
+      "extracted_terms": [
+        "grails 2.3.x",
+        "Thread.sleep()",
+        "request/action",
+        "onComplete",
+        "list.get()",
+        "waitAll()",
+        "onError",
+        "GPars",
+        "2.3.x",
+        "list",
+        "grails",
+        "async"
+      ],
+      "scores": {
+        "precision": 0.75,
+        "recall": 0.8889,
+        "hallucination": 0.25,
+        "f1": 0.8136,
+        "tp": 9,
+        "fp": 3,
+        "fn": 1
+      },
+      "fp_terms": [
+        "request/action",
+        "list",
+        "async"
+      ],
+      "fn_terms": [
+        "log"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Class_Name",
+        "Library_Class",
+        "Library_Function",
+        "Version",
+        "Library"
+      ]
+    }
+  ]
+}

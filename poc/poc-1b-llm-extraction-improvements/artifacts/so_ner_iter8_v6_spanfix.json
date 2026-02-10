@@ -1,0 +1,910 @@
+{
+  "metadata": {
+    "iteration": 8,
+    "strategy": "v6_spanfix",
+    "timestamp": "2026-02-09T15:22:53.696817",
+    "so_ner_path": "/tmp/StackOverflowNER/resources/annotated_ner_data/StackOverflow/test.txt",
+    "n_docs": 10,
+    "seed": 42,
+    "elapsed_seconds": 232.9,
+    "main_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter8_v6_spanfix_20260209_151900.log",
+    "trace_log": "/home/susano/Code/personal-library-manager/poc/poc-1b-llm-extraction-improvements/artifacts/so_ner_logs/so_ner_iter8_v6_spanfix_20260209_151900_trace.log"
+  },
+  "targets": {
+    "precision": 0.95,
+    "recall": 0.95,
+    "hallucination": 0.05
+  },
+  "aggregate": {
+    "precision": 0.9479,
+    "recall": 0.9615,
+    "hallucination": 0.0521,
+    "f1": 0.9547,
+    "total_tp": 200,
+    "total_fp": 11,
+    "total_fn": 13,
+    "total_extracted": 211,
+    "total_gt": 208
+  },
+  "target_check": {
+    "meets_precision": false,
+    "meets_recall": true,
+    "meets_hallucination": false,
+    "all_pass": false
+  },
+  "all_fp_terms": [
+    {
+      "term": "height",
+      "question_id": "42873050"
+    },
+    {
+      "term": "width",
+      "question_id": "42873050"
+    },
+    {
+      "term": "A Guide to Human Factors and Ergonomics",
+      "question_id": "14831694"
+    },
+    {
+      "term": "boost",
+      "question_id": "39288595"
+    },
+    {
+      "term": "Time Machine",
+      "question_id": "10809866"
+    },
+    {
+      "term": "testrb",
+      "question_id": "10809866"
+    },
+    {
+      "term": "rdoc",
+      "question_id": "10809866"
+    },
+    {
+      "term": "gem",
+      "question_id": "10809866"
+    },
+    {
+      "term": "irb",
+      "question_id": "10809866"
+    },
+    {
+      "term": "ri",
+      "question_id": "10809866"
+    },
+    {
+      "term": "64-bit",
+      "question_id": "19471961"
+    }
+  ],
+  "all_fn_terms": [
+    {
+      "term": "tables",
+      "question_id": "42873050"
+    },
+    {
+      "term": "table",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX SIZE(4608x3456)",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAX Size",
+      "question_id": "42873050"
+    },
+    {
+      "term": "MAXIMUM",
+      "question_id": "42873050"
+    },
+    {
+      "term": "c++11",
+      "question_id": "39288595"
+    },
+    {
+      "term": "exception",
+      "question_id": "39288595"
+    },
+    {
+      "term": "src \\main\\resources\\wsdl\\",
+      "question_id": "45734089"
+    },
+    {
+      "term": "configuration",
+      "question_id": "45734089"
+    },
+    {
+      "term": "private",
+      "question_id": "3639039"
+    },
+    {
+      "term": "row",
+      "question_id": "39079773"
+    },
+    {
+      "term": "setCustomDoneTarget:action :",
+      "question_id": "27926052"
+    },
+    {
+      "term": "doneAction :",
+      "question_id": "27926052"
+    }
+  ],
+  "per_doc": [
+    {
+      "doc_idx": 0,
+      "question_id": "42873050",
+      "text_length": 2278,
+      "text_preview": "Recently I 'm trying to create a ZSL session on my camera app using the camera2 API from android . I 'm using a device with a LEVEL-3 hardware level which supports [CODE] . In this case I 'm using the",
+      "gt_terms": [
+        "camera",
+        "camera2 API",
+        "android",
+        "tables",
+        "ReprocessableCaptureSession",
+        "table",
+        "ReprocessableCatureSession",
+        "YUV",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader Surface",
+        "JPEG",
+        "Surface",
+        "RAW",
+        "CaptureRequest",
+        "images",
+        "RingQueue",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "imageReader",
+        "Byte[]"
+      ],
+      "extracted_terms": [
+        "JPEG ImageReader Surface",
+        "RAW ImageReader Surface",
+        "Camera API 2",
+        "ImageReader Surface",
+        "camera2 API",
+        "YUV format",
+        "YUV Byte[]",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "ReprocessableCaptureSession",
+        "ReprocessableCaptureRequest",
+        "ImageFormat.YUV_420_888",
+        "CameraCharacteristics",
+        "CaptureRequest",
+        "YUV_420_888",
+        "ImageReader",
+        "bytearrays",
+        "RingQueue",
+        "android",
+        "Surface",
+        "Session",
+        "Byte[]",
+        "images",
+        "Google",
+        "height",
+        "width",
+        "JPEG",
+        "YUV",
+        "RAW",
+        "CTS"
+      ],
+      "scores": {
+        "precision": 0.931,
+        "recall": 0.8333,
+        "hallucination": 0.069,
+        "f1": 0.8795,
+        "tp": 27,
+        "fp": 2,
+        "fn": 5
+      },
+      "fp_terms": [
+        "height",
+        "width"
+      ],
+      "fn_terms": [
+        "tables",
+        "table",
+        "MAX SIZE(4608x3456)",
+        "MAX Size",
+        "MAXIMUM"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "Organization",
+        "Library_Variable",
+        "Library_Function",
+        "Library",
+        "Data_Type",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 1,
+      "question_id": "10709772",
+      "text_length": 1262,
+      "text_preview": "I am wondering if this is possible and maybe some code examples if it is . I am trying to have the presenter during a live address be able to hit a button when he is away . This button will then trigg",
+      "gt_terms": [
+        "button",
+        "jpg",
+        "image",
+        "clients",
+        "microphone",
+        "FMIS",
+        "AS3",
+        "Client",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "NetStream.send()",
+        "toggleAwayImageDisplay"
+      ],
+      "extracted_terms": [
+        "FMIS 4",
+        "toggleAwayImageDisplay",
+        "NetStream.send()",
+        "NetConnection",
+        "microphone",
+        "NetStream",
+        "button",
+        "Client",
+        "image",
+        "jpg",
+        "AS3",
+        "FMS"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 12,
+        "fp": 0,
+        "fn": 0
+      },
+      "fp_terms": [],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "Library_Variable",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Function_Name",
+        "Version"
+      ]
+    },
+    {
+      "doc_idx": 2,
+      "question_id": "14831694",
+      "text_length": 2271,
+      "text_preview": "I stumbled upon an interesting behavior in the Trackbar Winforms control . On a horizontal trackbar , the left/right arrow keys work as expected . ( Left arrow moves the slider to the left and decreas",
+      "gt_terms": [
+        "Trackbar",
+        "Winforms",
+        "left/right arrow",
+        "Left arrow",
+        "slider",
+        "right arrow",
+        "up/down arrow",
+        "PageUp/PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "trackbar control",
+        "scrollbar control",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "keyboard",
+        "scrollbars",
+        "Left",
+        "Up",
+        "Right",
+        "Down"
+      ],
+      "extracted_terms": [
+        "A Guide to Human Factors and Ergonomics",
+        "Internet Explorer",
+        "scrollbar control",
+        "left/right arrow",
+        "slider control",
+        "up/down arrow",
+        "up/down keys",
+        "arrow right",
+        "Arrow down",
+        "arrow left",
+        "Left arrow",
+        "page down",
+        "arrow up",
+        "page up",
+        "PageUp/PageDown",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "left/right",
+        "scrollbar",
+        "Trackbar",
+        "Winforms",
+        "keyboard",
+        "up/down",
+        "Windows",
+        "slider",
+        "PgUp",
+        "UAC",
+        "WPF",
+        "C#",
+        "Up"
+      ],
+      "scores": {
+        "precision": 0.9667,
+        "recall": 1.0,
+        "hallucination": 0.0333,
+        "f1": 0.9831,
+        "tp": 29,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "A Guide to Human Factors and Ergonomics"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Operating_System",
+        "Library_Class",
+        "Keyboard_IP",
+        "Library_Function",
+        "Device",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 3,
+      "question_id": "39288595",
+      "text_length": 4048,
+      "text_preview": "I am a bit confused about the c++11 random library . What I understand : we need two separate concepts : random engine ( which can be pseudo ( need seed ) or real ) distribution : it maps the numbers ",
+      "gt_terms": [
+        "c++11",
+        "random",
+        "random engine",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen(\"/dev/urandom\")",
+        "windows",
+        "microsoft crypto API",
+        "crypto",
+        "mt19937",
+        "exception",
+        "/dev/random",
+        "unix",
+        "/dev/urandom/",
+        "visual studio",
+        "mingw",
+        "phone",
+        "time(NULL)",
+        "Pseudo-randomic",
+        "CPU"
+      ],
+      "extracted_terms": [
+        "microsoft crypto API",
+        "MSVC crypto API",
+        "random library",
+        "visual studio",
+        "std::default_random_engine",
+        "std::fopen(\"/dev/urandom\")",
+        "std::random_device",
+        "Pseudo-randomic",
+        "/dev/urandom/",
+        "std::mt19937",
+        "/dev/urandom",
+        "/dev/random",
+        "time(NULL)",
+        "mt19937",
+        "windows",
+        "libc++",
+        "crypto",
+        "boost",
+        "mingw",
+        "phone",
+        "unix",
+        "CPU"
+      ],
+      "scores": {
+        "precision": 0.9545,
+        "recall": 0.9091,
+        "hallucination": 0.0455,
+        "f1": 0.9313,
+        "tp": 21,
+        "fp": 1,
+        "fn": 2
+      },
+      "fp_terms": [
+        "boost"
+      ],
+      "fn_terms": [
+        "c++11",
+        "exception"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Class",
+        "Algorithm",
+        "Library_Function",
+        "Library",
+        "File_Name",
+        "Device",
+        "Language",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 4,
+      "question_id": "45734089",
+      "text_length": 781,
+      "text_preview": "I have a WSDL file located under src \\main\\resources\\wsdl\\ folder and it is having multiple operations defined within it . My application is running on Weblogic 12C server . I 'm trying to expose the ",
+      "gt_terms": [
+        "WSDL",
+        "src \\main\\resources\\wsdl\\",
+        "Weblogic 12C server",
+        "Apache",
+        "Cammel",
+        "2.18.3",
+        "Java",
+        "configuration",
+        "RouteBuilder",
+        "exception",
+        "pom.xml",
+        "wsdl2java",
+        "IDE"
+      ],
+      "extracted_terms": [
+        "Weblogic 12C server",
+        "Apache Cammel",
+        "Java DSL",
+        "RouteBuilder",
+        "wsdl2java",
+        "exception",
+        "pom.xml",
+        "2.18.3",
+        "WSDL",
+        "Java",
+        "IDE"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8462,
+        "hallucination": 0.0,
+        "f1": 0.9167,
+        "tp": 11,
+        "fp": 0,
+        "fn": 2
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "src \\main\\resources\\wsdl\\",
+        "configuration"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Library_Function",
+        "Device",
+        "Language",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 5,
+      "question_id": "3639039",
+      "text_length": 1191,
+      "text_preview": "I have a Silverlight 4 app using Prism 2.2 and I have a few modules that I am loading on demand by defining them as ondemand in the module catalog ( via a xaml file ) and then using the ModuleManager ",
+      "gt_terms": [
+        "Silverlight",
+        "Prism",
+        "2.2",
+        "ondemand",
+        "xaml",
+        "ModuleManager",
+        "codeplex",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "private",
+        "IFileDownloader"
+      ],
+      "extracted_terms": [
+        "Silverlight 4",
+        "Prism event",
+        "Prism 2.2",
+        "FileDownloaderWithProgress",
+        "DownloadProgressChanged",
+        "IFileDownloader",
+        "FileDownloader",
+        "ModuleManager",
+        "Silverlight",
+        "WebClient",
+        "ondemand",
+        "codeplex",
+        "Prism",
+        "xaml"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9231,
+        "hallucination": 0.0,
+        "f1": 0.96,
+        "tp": 14,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "private"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Class_Name",
+        "Website",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Type",
+        "Version",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 6,
+      "question_id": "10809866",
+      "text_length": 2202,
+      "text_preview": "I am trying to install homebrew according to the guidelines described in here . I have curl and rvm , and want to install rails 1.9.3 on my lion 1.7.4 with Xcode 4.3.2 and with developer command line ",
+      "gt_terms": [
+        "homebrew",
+        "curl",
+        "rvm",
+        "rails",
+        "1.9.3",
+        "lion",
+        "1.7.4",
+        "Xcode",
+        "4.3.2",
+        "developer command line tools",
+        "libksba",
+        "Home Brew",
+        "brew",
+        "MacPorts",
+        "ruby",
+        "SnowLeopard - OSX",
+        "10.6.8",
+        "/System/Library/Frameworks/Ruby.framework",
+        "/usr/bin",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "symlinks",
+        "erb",
+        "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+        "/usr/bin/ruby",
+        "ostruct"
+      ],
+      "extracted_terms": [
+        "developer command line tools",
+        "Time Machine",
+        "system ruby",
+        "rails 1.9.3",
+        "Xcode 4.3.2",
+        "lion 1.7.4",
+        "OSX 10.6.8",
+        "Home Brew",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "/System/Library/Frameworks/Ruby.framework",
+        "/usr/bin/ruby",
+        "SnowLeopard",
+        "homebrew",
+        "MacPorts",
+        "symlinks",
+        "/usr/bin",
+        "libksba",
+        "ostruct",
+        "testrb",
+        "10.6.8",
+        "rails",
+        "Xcode",
+        "1.9.3",
+        "1.7.4",
+        "4.3.2",
+        "curl",
+        "lion",
+        "brew",
+        "ruby",
+        "rdoc",
+        "rvm",
+        "OSX",
+        "erb",
+        "gem",
+        "irb",
+        "ri"
+      ],
+      "scores": {
+        "precision": 0.8333,
+        "recall": 1.0,
+        "hallucination": 0.1667,
+        "f1": 0.9091,
+        "tp": 30,
+        "fp": 6,
+        "fn": 0
+      },
+      "fp_terms": [
+        "Time Machine",
+        "testrb",
+        "rdoc",
+        "gem",
+        "irb",
+        "ri"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "File_Type",
+        "Library_Class",
+        "File_Name",
+        "Library",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 7,
+      "question_id": "19471961",
+      "text_length": 1618,
+      "text_preview": "I 'm setting up IPython to automatically load Sympy and configure it 's output method on startup . However , whatever I try I ca n't get sympy to initialize the latex/unicode style output printing . S",
+      "gt_terms": [
+        "IPython",
+        "Sympy",
+        "latex/unicode",
+        "qtconsole/notebook",
+        "kernel",
+        "0.7.3",
+        "ipython3",
+        "1.1",
+        "matplotlib",
+        "1.3.1",
+        "numpy",
+        "1.7.1",
+        "scipy",
+        "0.12.0",
+        "Ubuntu",
+        "13.10",
+        "python3 terminal",
+        "PYTHONSTARTUP",
+        "1.1.0",
+        "global",
+        "00-startup.py",
+        "ipython_config.py"
+      ],
+      "extracted_terms": [
+        "matplotlib 1.3.1",
+        "global namespace",
+        "ipython3 1.1.0",
+        "ipython3 1.1",
+        "scipy 0.12.0",
+        "Ubuntu 13.10",
+        "sympy 0.7.3",
+        "numpy 1.7.1",
+        "qtconsole/notebook",
+        "ipython_config.py",
+        "latex/unicode",
+        "PYTHONSTARTUP",
+        "00-startup.py",
+        "matplotlib",
+        "ipython3",
+        "terminal",
+        "IPython",
+        "python3",
+        "Ubuntu",
+        "kernel",
+        "64-bit",
+        "Sympy",
+        "numpy",
+        "scipy"
+      ],
+      "scores": {
+        "precision": 0.9583,
+        "recall": 1.0,
+        "hallucination": 0.0417,
+        "f1": 0.9787,
+        "tp": 23,
+        "fp": 1,
+        "fn": 0
+      },
+      "fp_terms": [
+        "64-bit"
+      ],
+      "fn_terms": [],
+      "entity_types_in_doc": [
+        "Application",
+        "Library_Variable",
+        "Data_Type",
+        "Library",
+        "File_Name",
+        "Language",
+        "Version",
+        "Operating_System"
+      ]
+    },
+    {
+      "doc_idx": 8,
+      "question_id": "39079773",
+      "text_length": 2359,
+      "text_preview": "I am building a calculator with flexbox . I want one of its keys twice the height and another key twice the width . I googled much about it but could n't find both cases together . For twice height ke",
+      "gt_terms": [
+        "calculator",
+        "flexbox",
+        "height",
+        "width",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "keys",
+        "flex containers",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "flex container",
+        "key",
+        "row",
+        "long",
+        "container",
+        ".long",
+        "flex-basis",
+        "flex-grow"
+      ],
+      "extracted_terms": [
+        "flex containers",
+        "flex-direction",
+        "calculator",
+        "codepen.io",
+        "flex-basis",
+        "container",
+        "flex-grow",
+        "flexbox",
+        "Codepen",
+        "padding",
+        "borders",
+        "height",
+        "column",
+        "width",
+        "keys",
+        "long",
+        "CSS"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.9524,
+        "hallucination": 0.0,
+        "f1": 0.9756,
+        "tp": 17,
+        "fp": 0,
+        "fn": 1
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "row"
+      ],
+      "entity_types_in_doc": [
+        "Application",
+        "Class_Name",
+        "Library_Class",
+        "Library_Variable",
+        "Data_Structure",
+        "User_Interface_Element",
+        "Language",
+        "Library"
+      ]
+    },
+    {
+      "doc_idx": 9,
+      "question_id": "27926052",
+      "text_length": 1488,
+      "text_preview": "I 've implemented the IQKeyboardManager framework to make the keyboard handle easier . It works very fine , except for one thing : There 're some UItextField controls in my app which open a UIDatePick",
+      "gt_terms": [
+        "IQKeyboardManager",
+        "keyboard",
+        "UItextField",
+        "UIDatePicker",
+        "pad",
+        "button",
+        ".h",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "Interface Builder",
+        ".xib",
+        "Identity Inspector",
+        ".m",
+        "setCustomDoneTarget:action :",
+        "doneAction :",
+        "IQUIView+",
+        "IQKeyboardToolbar.h",
+        "TextFieldViewController.m"
+      ],
+      "extracted_terms": [
+        "IQKeyboardManager framework to make",
+        "IQUIView+ IQKeyboardToolbar.h",
+        "Identity Inspector",
+        "Interface Builder",
+        "decimal pad",
+        "number pad",
+        "TextFieldViewController.m",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "UIDatePicker",
+        "UItextField",
+        "keyboard",
+        "button",
+        ".xib",
+        ".h",
+        ".m"
+      ],
+      "scores": {
+        "precision": 1.0,
+        "recall": 0.8889,
+        "hallucination": 0.0,
+        "f1": 0.9412,
+        "tp": 16,
+        "fp": 0,
+        "fn": 2
+      },
+      "fp_terms": [],
+      "fn_terms": [
+        "setCustomDoneTarget:action :",
+        "doneAction :"
+      ],
+      "entity_types_in_doc": [
+        "File_Type",
+        "Application",
+        "Library_Class",
+        "File_Name",
+        "Device",
+        "User_Interface_Element",
+        "Function_Name",
+        "Library"
+      ]
+    }
+  ]
+}

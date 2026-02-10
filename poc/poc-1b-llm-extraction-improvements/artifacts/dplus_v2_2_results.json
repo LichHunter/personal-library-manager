@@ -1,0 +1,2012 @@
+{
+  "strategy": "dplus_v2_2",
+  "gt_version": "v2",
+  "gt_total_terms": 277,
+  "num_chunks": 15,
+  "timestamp": "20260208_130440",
+  "changes_from_v2_1": [
+    "Balanced Sonnet prompt (category-based, neither default approve nor reject)",
+    "Conservative dedup (singular/plural only, no substring merging)",
+    "Structural term filter (kept from v2.1)"
+  ],
+  "aggregate_metrics": {
+    "precision": 0.8052139933796281,
+    "recall": 0.8630763693874149,
+    "hallucination": 0.19478600662037193,
+    "f1": 0.8308310640947604,
+    "total_time": 294.4629399776459,
+    "avg_time": 19.63086266517639
+  },
+  "per_chunk_results": [
+    {
+      "chunk_id": "_index_chunk_0",
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "hallucination": 0.0,
+        "f1": 1.0,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "extracted_count": 2,
+        "gt_count": 2
+      },
+      "extracted_terms": [
+        "Documentation",
+        "Kubernetes"
+      ],
+      "ground_truth_terms": [
+        "Kubernetes",
+        "Documentation"
+      ],
+      "fp_terms": [],
+      "fn_terms": [],
+      "tp_matches": [
+        [
+          "Documentation",
+          "Documentation"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ]
+      ],
+      "elapsed": 9.243457794189453
+    },
+    {
+      "chunk_id": "concepts__index_chunk_0",
+      "metrics": {
+        "precision": 0.6666666666666666,
+        "recall": 0.8,
+        "hallucination": 0.3333333333333333,
+        "f1": 0.7272727272727272,
+        "tp": 4,
+        "fp": 2,
+        "fn": 1,
+        "extracted_count": 6,
+        "gt_count": 5
+      },
+      "extracted_terms": [
+        "Kubernetes system",
+        "abstractions",
+        "Kubernetes",
+        "Concepts",
+        "cluster",
+        "system"
+      ],
+      "ground_truth_terms": [
+        "Kubernetes",
+        "cluster",
+        "Concepts",
+        "Kubernetes system",
+        "abstractions"
+      ],
+      "fp_terms": [
+        "Kubernetes",
+        "system"
+      ],
+      "fn_terms": [
+        "Kubernetes system"
+      ],
+      "tp_matches": [
+        [
+          "Kubernetes system",
+          "Kubernetes"
+        ],
+        [
+          "abstractions",
+          "abstractions"
+        ],
+        [
+          "Concepts",
+          "Concepts"
+        ],
+        [
+          "cluster",
+          "cluster"
+        ]
+      ],
+      "elapsed": 14.054483652114868
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_0",
+      "metrics": {
+        "precision": 0.9615384615384616,
+        "recall": 0.9615384615384616,
+        "hallucination": 0.038461538461538464,
+        "f1": 0.9615384615384616,
+        "tp": 25,
+        "fp": 1,
+        "fn": 1,
+        "extracted_count": 26,
+        "gt_count": 26
+      },
+      "extracted_terms": [
+        "third party implementation",
+        "containerized applications",
+        "reference architecture",
+        "Cluster Architecture",
+        "application workload",
+        "Kubernetes cluster",
+        "high availability",
+        "worker machines",
+        "cluster network",
+        "network plugins",
+        "control plane",
+        "network proxy",
+        "worker node",
+        "kube-controller-manager",
+        "fault-tolerance",
+        "kube-apiserver",
+        "kube-scheduler",
+        "Kubernetes",
+        "kube-proxy",
+        "proxying",
+        "cluster",
+        "kubelet",
+        "Service",
+        "nodes",
+        "Pods",
+        "etcd"
+      ],
+      "ground_truth_terms": [
+        "Kubernetes cluster",
+        "control plane",
+        "nodes",
+        "worker nodes",
+        "Pods",
+        "containerized applications",
+        "fault-tolerance",
+        "high availability",
+        "kube-apiserver",
+        "etcd",
+        "kube-controller-manager",
+        "kube-scheduler",
+        "kubelet",
+        "kube-proxy",
+        "network proxy",
+        "Service",
+        "network plugin",
+        "Kubernetes",
+        "cluster",
+        "worker machines",
+        "application workload",
+        "cluster network",
+        "third party implementation",
+        "proxying",
+        "reference architecture",
+        "components"
+      ],
+      "fp_terms": [
+        "cluster"
+      ],
+      "fn_terms": [
+        "components"
+      ],
+      "tp_matches": [
+        [
+          "third party implementation",
+          "third party implementation"
+        ],
+        [
+          "containerized applications",
+          "containerized applications"
+        ],
+        [
+          "reference architecture",
+          "reference architecture"
+        ],
+        [
+          "Cluster Architecture",
+          "cluster"
+        ],
+        [
+          "application workload",
+          "application workload"
+        ],
+        [
+          "Kubernetes cluster",
+          "Kubernetes cluster"
+        ],
+        [
+          "high availability",
+          "high availability"
+        ],
+        [
+          "worker machines",
+          "worker machines"
+        ],
+        [
+          "cluster network",
+          "cluster network"
+        ],
+        [
+          "network plugins",
+          "network plugin"
+        ],
+        [
+          "control plane",
+          "control plane"
+        ],
+        [
+          "network proxy",
+          "network proxy"
+        ],
+        [
+          "worker node",
+          "worker nodes"
+        ],
+        [
+          "kube-controller-manager",
+          "kube-controller-manager"
+        ],
+        [
+          "fault-tolerance",
+          "fault-tolerance"
+        ],
+        [
+          "kube-apiserver",
+          "kube-apiserver"
+        ],
+        [
+          "kube-scheduler",
+          "kube-scheduler"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "kube-proxy",
+          "kube-proxy"
+        ],
+        [
+          "proxying",
+          "proxying"
+        ],
+        [
+          "kubelet",
+          "kubelet"
+        ],
+        [
+          "Service",
+          "Service"
+        ],
+        [
+          "nodes",
+          "nodes"
+        ],
+        [
+          "Pods",
+          "Pods"
+        ],
+        [
+          "etcd",
+          "etcd"
+        ]
+      ],
+      "elapsed": 19.81114888191223
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_1",
+      "metrics": {
+        "precision": 0.7222222222222222,
+        "recall": 0.8125,
+        "hallucination": 0.2777777777777778,
+        "f1": 0.7647058823529411,
+        "tp": 13,
+        "fp": 5,
+        "fn": 3,
+        "extracted_count": 18,
+        "gt_count": 16
+      },
+      "extracted_terms": [
+        "Creating Highly Available clusters",
+        "Highly Available clusters",
+        "control plane components",
+        "control plane setup",
+        "production environment",
+        "multiple machines",
+        "high availability",
+        "user containers",
+        "cluster events",
+        "control plane",
+        "setup scripts",
+        "scheduling",
+        "Deployment",
+        "replicas",
+        "cluster",
+        "machine",
+        "kubeadm",
+        "pod"
+      ],
+      "ground_truth_terms": [
+        "control plane",
+        "cluster",
+        "scheduling",
+        "pod",
+        "Deployment",
+        "replicas",
+        "control plane components",
+        "user containers",
+        "kubeadm",
+        "cluster events",
+        "machine",
+        "setup scripts",
+        "containers",
+        "Highly Available clusters",
+        "high availability",
+        "control plane setup"
+      ],
+      "fp_terms": [
+        "Highly Available clusters",
+        "production environment",
+        "multiple machines",
+        "control plane",
+        "cluster"
+      ],
+      "fn_terms": [
+        "control plane components",
+        "cluster events",
+        "containers"
+      ],
+      "tp_matches": [
+        [
+          "Creating Highly Available clusters",
+          "Highly Available clusters"
+        ],
+        [
+          "control plane components",
+          "control plane"
+        ],
+        [
+          "control plane setup",
+          "control plane setup"
+        ],
+        [
+          "high availability",
+          "high availability"
+        ],
+        [
+          "user containers",
+          "user containers"
+        ],
+        [
+          "cluster events",
+          "cluster"
+        ],
+        [
+          "setup scripts",
+          "setup scripts"
+        ],
+        [
+          "scheduling",
+          "scheduling"
+        ],
+        [
+          "Deployment",
+          "Deployment"
+        ],
+        [
+          "replicas",
+          "replicas"
+        ],
+        [
+          "machine",
+          "machine"
+        ],
+        [
+          "kubeadm",
+          "kubeadm"
+        ],
+        [
+          "pod",
+          "pod"
+        ]
+      ],
+      "elapsed": 18.94613289833069
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_0",
+      "metrics": {
+        "precision": 0.8421052631578947,
+        "recall": 0.8,
+        "hallucination": 0.15789473684210525,
+        "f1": 0.8205128205128205,
+        "tp": 16,
+        "fp": 3,
+        "fn": 4,
+        "extracted_count": 19,
+        "gt_count": 20
+      },
+      "extracted_terms": [
+        "containerized workloads",
+        "resource management",
+        "container runtime",
+        "memory requests",
+        "control groups",
+        "cgroup v2",
+        "cgroup v1",
+        "containers",
+        "workloads",
+        "resources",
+        "requests",
+        "kubelet",
+        "cgroups",
+        "memory",
+        "limits",
+        "Linux",
+        "pods",
+        "cpu",
+        "API"
+      ],
+      "ground_truth_terms": [
+        "cgroup v2",
+        "control groups",
+        "cgroup",
+        "kubelet",
+        "container runtime",
+        "resource management",
+        "pods",
+        "containers",
+        "cpu/memory requests and limits",
+        "requests",
+        "limits",
+        "cgroup v1",
+        "containerized workloads",
+        "requests and limits",
+        "cpu",
+        "memory",
+        "Linux",
+        "processes",
+        "resources",
+        "API"
+      ],
+      "fp_terms": [
+        "workloads",
+        "requests",
+        "cgroups"
+      ],
+      "fn_terms": [
+        "cpu/memory requests and limits",
+        "cgroup v1",
+        "requests and limits",
+        "processes"
+      ],
+      "tp_matches": [
+        [
+          "containerized workloads",
+          "containerized workloads"
+        ],
+        [
+          "resource management",
+          "resource management"
+        ],
+        [
+          "container runtime",
+          "container runtime"
+        ],
+        [
+          "memory requests",
+          "requests"
+        ],
+        [
+          "control groups",
+          "control groups"
+        ],
+        [
+          "cgroup v2",
+          "cgroup v2"
+        ],
+        [
+          "cgroup v1",
+          "cgroup"
+        ],
+        [
+          "containers",
+          "containers"
+        ],
+        [
+          "resources",
+          "resources"
+        ],
+        [
+          "kubelet",
+          "kubelet"
+        ],
+        [
+          "memory",
+          "memory"
+        ],
+        [
+          "limits",
+          "limits"
+        ],
+        [
+          "Linux",
+          "Linux"
+        ],
+        [
+          "pods",
+          "pods"
+        ],
+        [
+          "cpu",
+          "cpu"
+        ],
+        [
+          "API",
+          "API"
+        ]
+      ],
+      "elapsed": 15.989638328552246
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_1",
+      "metrics": {
+        "precision": 0.7352941176470589,
+        "recall": 0.9615384615384616,
+        "hallucination": 0.2647058823529412,
+        "f1": 0.8333333333333333,
+        "tp": 25,
+        "fp": 9,
+        "fn": 1,
+        "extracted_count": 34,
+        "gt_count": 26
+      },
+      "extracted_terms": [
+        "page cache write backs",
+        "non-immediate resource changes",
+        "Pressure Stall Information",
+        "unified control system",
+        "cgroup v2 primitives",
+        "resource management",
+        "sub-tree delegation",
+        "resource allocation",
+        "memory allocations",
+        "unified accounting",
+        "unified hierarchy",
+        "network memory",
+        "kernel memory",
+        "write backs",
+        "page cache",
+        "memory QoS",
+        "cgroup v2",
+        "cgroup v1",
+        "containers",
+        "Kubernetes",
+        "accounting",
+        "MemoryQoS",
+        "isolation",
+        "pod-qos",
+        "cgroup",
+        "stable",
+        "Linux",
+        "v1.25",
+        "pods",
+        "API",
+        "PSI",
+        "QoS",
+        "v2",
+        "v1"
+      ],
+      "ground_truth_terms": [
+        "cgroup v2",
+        "cgroup",
+        "cgroup v1",
+        "stable",
+        "Pressure Stall Information",
+        "MemoryQoS",
+        "memory QoS",
+        "resource management",
+        "containers",
+        "kernel memory",
+        "network memory",
+        "page cache write backs",
+        "Linux",
+        "API",
+        "unified control system",
+        "hierarchy",
+        "sub-tree delegation",
+        "resource allocation",
+        "isolation",
+        "memory allocations",
+        "page cache",
+        "Kubernetes",
+        "QoS",
+        "cgroup v2 primitives",
+        "unified accounting",
+        "v1.25"
+      ],
+      "fp_terms": [
+        "non-immediate resource changes",
+        "write backs",
+        "accounting",
+        "cgroup",
+        "pods",
+        "PSI",
+        "QoS",
+        "v2",
+        "v1"
+      ],
+      "fn_terms": [
+        "cgroup v2 primitives"
+      ],
+      "tp_matches": [
+        [
+          "page cache write backs",
+          "page cache write backs"
+        ],
+        [
+          "Pressure Stall Information",
+          "Pressure Stall Information"
+        ],
+        [
+          "unified control system",
+          "unified control system"
+        ],
+        [
+          "cgroup v2 primitives",
+          "cgroup v2"
+        ],
+        [
+          "resource management",
+          "resource management"
+        ],
+        [
+          "sub-tree delegation",
+          "sub-tree delegation"
+        ],
+        [
+          "resource allocation",
+          "resource allocation"
+        ],
+        [
+          "memory allocations",
+          "memory allocations"
+        ],
+        [
+          "unified accounting",
+          "unified accounting"
+        ],
+        [
+          "unified hierarchy",
+          "hierarchy"
+        ],
+        [
+          "network memory",
+          "network memory"
+        ],
+        [
+          "kernel memory",
+          "kernel memory"
+        ],
+        [
+          "page cache",
+          "page cache"
+        ],
+        [
+          "memory QoS",
+          "MemoryQoS"
+        ],
+        [
+          "cgroup v2",
+          "cgroup"
+        ],
+        [
+          "cgroup v1",
+          "cgroup v1"
+        ],
+        [
+          "containers",
+          "containers"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "MemoryQoS",
+          "memory QoS"
+        ],
+        [
+          "isolation",
+          "isolation"
+        ],
+        [
+          "pod-qos",
+          "QoS"
+        ],
+        [
+          "stable",
+          "stable"
+        ],
+        [
+          "Linux",
+          "Linux"
+        ],
+        [
+          "v1.25",
+          "v1.25"
+        ],
+        [
+          "API",
+          "API"
+        ]
+      ],
+      "elapsed": 21.46007537841797
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+      "metrics": {
+        "precision": 0.6875,
+        "recall": 0.9166666666666666,
+        "hallucination": 0.3125,
+        "f1": 0.7857142857142857,
+        "tp": 11,
+        "fp": 5,
+        "fn": 1,
+        "extracted_count": 16,
+        "gt_count": 12
+      },
+      "extracted_terms": [
+        "Cloud infrastructure technologies",
+        "Cloud Controller Manager",
+        "API-driven infrastructure",
+        "cloud infrastructure",
+        "cloud providers",
+        "tight coupling",
+        "hybrid clouds",
+        "infrastructure",
+        "Kubernetes",
+        "components",
+        "platforms",
+        "coupling",
+        "plugin",
+        "v1.11",
+        "beta",
+        "API"
+      ],
+      "ground_truth_terms": [
+        "Cloud Controller Manager",
+        "beta",
+        "Kubernetes",
+        "API-driven infrastructure",
+        "cloud providers",
+        "cloud infrastructure",
+        "hybrid clouds",
+        "platforms",
+        "components",
+        "infrastructure",
+        "API",
+        "integrate"
+      ],
+      "fp_terms": [
+        "tight coupling",
+        "infrastructure",
+        "coupling",
+        "plugin",
+        "v1.11"
+      ],
+      "fn_terms": [
+        "integrate"
+      ],
+      "tp_matches": [
+        [
+          "Cloud infrastructure technologies",
+          "cloud infrastructure"
+        ],
+        [
+          "Cloud Controller Manager",
+          "Cloud Controller Manager"
+        ],
+        [
+          "API-driven infrastructure",
+          "API-driven infrastructure"
+        ],
+        [
+          "cloud infrastructure",
+          "infrastructure"
+        ],
+        [
+          "cloud providers",
+          "cloud providers"
+        ],
+        [
+          "hybrid clouds",
+          "hybrid clouds"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "components",
+          "components"
+        ],
+        [
+          "platforms",
+          "platforms"
+        ],
+        [
+          "beta",
+          "beta"
+        ],
+        [
+          "API",
+          "API"
+        ]
+      ],
+      "elapsed": 20.98547077178955
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+      "metrics": {
+        "precision": 0.8,
+        "recall": 0.8888888888888888,
+        "hallucination": 0.2,
+        "f1": 0.8421052631578948,
+        "tp": 8,
+        "fp": 2,
+        "fn": 1,
+        "extracted_count": 10,
+        "gt_count": 9
+      },
+      "extracted_terms": [
+        "cloud controller manager",
+        "Kubernetes components",
+        "replicated set",
+        "control plane",
+        "controllers",
+        "Kubernetes",
+        "containers",
+        "processes",
+        "addons",
+        "Pods"
+      ],
+      "ground_truth_terms": [
+        "cloud controller manager",
+        "control plane",
+        "Pods",
+        "controllers",
+        "addon",
+        "replicated set of processes",
+        "Kubernetes",
+        "processes",
+        "containers"
+      ],
+      "fp_terms": [
+        "replicated set",
+        "Kubernetes"
+      ],
+      "fn_terms": [
+        "replicated set of processes"
+      ],
+      "tp_matches": [
+        [
+          "cloud controller manager",
+          "cloud controller manager"
+        ],
+        [
+          "Kubernetes components",
+          "Kubernetes"
+        ],
+        [
+          "control plane",
+          "control plane"
+        ],
+        [
+          "controllers",
+          "controllers"
+        ],
+        [
+          "containers",
+          "containers"
+        ],
+        [
+          "processes",
+          "processes"
+        ],
+        [
+          "addons",
+          "addon"
+        ],
+        [
+          "Pods",
+          "Pods"
+        ]
+      ],
+      "elapsed": 15.346183776855469
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+      "metrics": {
+        "precision": 0.8461538461538461,
+        "recall": 0.8461538461538461,
+        "hallucination": 0.15384615384615385,
+        "f1": 0.8461538461538461,
+        "tp": 11,
+        "fp": 2,
+        "fn": 2,
+        "extracted_count": 13,
+        "gt_count": 13
+      },
+      "extracted_terms": [
+        "network configuration",
+        "communication paths",
+        "untrusted network",
+        "Control Plane",
+        "API server",
+        "public IPs",
+        "master-node-communication",
+        "kube-apiserver",
+        "Kubernetes",
+        "dchen1107",
+        "liggitt",
+        "cluster",
+        "Nodes"
+      ],
+      "ground_truth_terms": [
+        "API server",
+        "kube-apiserver",
+        "cluster",
+        "Control Plane",
+        "Nodes",
+        "master-node-communication",
+        "network configuration",
+        "Kubernetes",
+        "communication paths",
+        "untrusted network",
+        "public IPs",
+        "installation",
+        "harden"
+      ],
+      "fp_terms": [
+        "dchen1107",
+        "liggitt"
+      ],
+      "fn_terms": [
+        "installation",
+        "harden"
+      ],
+      "tp_matches": [
+        [
+          "network configuration",
+          "network configuration"
+        ],
+        [
+          "communication paths",
+          "communication paths"
+        ],
+        [
+          "untrusted network",
+          "untrusted network"
+        ],
+        [
+          "Control Plane",
+          "Control Plane"
+        ],
+        [
+          "API server",
+          "API server"
+        ],
+        [
+          "public IPs",
+          "public IPs"
+        ],
+        [
+          "master-node-communication",
+          "master-node-communication"
+        ],
+        [
+          "kube-apiserver",
+          "kube-apiserver"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "cluster",
+          "cluster"
+        ],
+        [
+          "Nodes",
+          "Nodes"
+        ]
+      ],
+      "elapsed": 18.169126510620117
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+      "metrics": {
+        "precision": 0.6857142857142857,
+        "recall": 0.7741935483870968,
+        "hallucination": 0.3142857142857143,
+        "f1": 0.7272727272727272,
+        "tp": 24,
+        "fp": 11,
+        "fn": 7,
+        "extracted_count": 35,
+        "gt_count": 31
+      },
+      "extracted_terms": [
+        "kubelet client certificates",
+        "kubelet TLS bootstrapping",
+        "control plane components",
+        "public root certificate",
+        "service account tokens",
+        "virtual IP address",
+        "anonymous requests",
+        "client credentials",
+        "client certificate",
+        "TLS bootstrapping",
+        "service account",
+        "HTTPS endpoint",
+        "Control Plane",
+        "bearer token",
+        "secure port",
+        "API pattern",
+        "API server",
+        "IP address",
+        "authentication",
+        "authorization",
+        "hub-and-spoke",
+        "certificate",
+        "Kubernetes",
+        "kube-proxy",
+        "namespace",
+        "endpoint",
+        "kubelet",
+        "cluster",
+        "HTTPS",
+        "nodes",
+        "token",
+        "pods",
+        "port",
+        "443",
+        "TLS"
+      ],
+      "ground_truth_terms": [
+        "Node",
+        "Control Plane",
+        "API server",
+        "Pods",
+        "kubelet",
+        "kube-proxy",
+        "service account",
+        "namespace",
+        "authentication",
+        "authorization",
+        "anonymous requests",
+        "service account tokens",
+        "certificate",
+        "client certificate",
+        "public root certificate",
+        "client credentials",
+        "bearer token",
+        "TLS bootstrapping",
+        "kubelet TLS bootstrapping",
+        "HTTPS",
+        "hub-and-spoke",
+        "virtual IP address",
+        "Kubernetes",
+        "API",
+        "control plane components",
+        "remote services",
+        "port",
+        "HTTPS endpoint",
+        "secure port",
+        "cluster",
+        "443"
+      ],
+      "fp_terms": [
+        "TLS bootstrapping",
+        "service account",
+        "Control Plane",
+        "IP address",
+        "certificate",
+        "endpoint",
+        "kubelet",
+        "HTTPS",
+        "token",
+        "port",
+        "TLS"
+      ],
+      "fn_terms": [
+        "service account tokens",
+        "public root certificate",
+        "kubelet TLS bootstrapping",
+        "control plane components",
+        "remote services",
+        "HTTPS endpoint",
+        "secure port"
+      ],
+      "tp_matches": [
+        [
+          "kubelet client certificates",
+          "kubelet"
+        ],
+        [
+          "kubelet TLS bootstrapping",
+          "TLS bootstrapping"
+        ],
+        [
+          "control plane components",
+          "Control Plane"
+        ],
+        [
+          "public root certificate",
+          "certificate"
+        ],
+        [
+          "service account tokens",
+          "service account"
+        ],
+        [
+          "virtual IP address",
+          "virtual IP address"
+        ],
+        [
+          "anonymous requests",
+          "anonymous requests"
+        ],
+        [
+          "client credentials",
+          "client credentials"
+        ],
+        [
+          "client certificate",
+          "client certificate"
+        ],
+        [
+          "HTTPS endpoint",
+          "HTTPS"
+        ],
+        [
+          "bearer token",
+          "bearer token"
+        ],
+        [
+          "secure port",
+          "port"
+        ],
+        [
+          "API pattern",
+          "API"
+        ],
+        [
+          "API server",
+          "API server"
+        ],
+        [
+          "authentication",
+          "authentication"
+        ],
+        [
+          "authorization",
+          "authorization"
+        ],
+        [
+          "hub-and-spoke",
+          "hub-and-spoke"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "kube-proxy",
+          "kube-proxy"
+        ],
+        [
+          "namespace",
+          "namespace"
+        ],
+        [
+          "cluster",
+          "cluster"
+        ],
+        [
+          "nodes",
+          "Node"
+        ],
+        [
+          "pods",
+          "Pods"
+        ],
+        [
+          "443",
+          "443"
+        ]
+      ],
+      "elapsed": 27.938077688217163
+    },
+    {
+      "chunk_id": "concepts_architecture_controller_chunk_0",
+      "metrics": {
+        "precision": 0.9166666666666666,
+        "recall": 1.0,
+        "hallucination": 0.08333333333333333,
+        "f1": 0.9565217391304348,
+        "tp": 11,
+        "fp": 1,
+        "fn": 0,
+        "extracted_count": 12,
+        "gt_count": 11
+      },
+      "extracted_terms": [
+        "non-terminating loop",
+        "desired state",
+        "current state",
+        "control loop",
+        "temperature",
+        "Controllers",
+        "automation",
+        "thermostat",
+        "equipment",
+        "robotics",
+        "system",
+        "state"
+      ],
+      "ground_truth_terms": [
+        "Controllers",
+        "control loop",
+        "desired state",
+        "current state",
+        "robotics",
+        "automation",
+        "non-terminating loop",
+        "state",
+        "system",
+        "thermostat",
+        "temperature"
+      ],
+      "fp_terms": [
+        "equipment"
+      ],
+      "fn_terms": [],
+      "tp_matches": [
+        [
+          "non-terminating loop",
+          "non-terminating loop"
+        ],
+        [
+          "desired state",
+          "desired state"
+        ],
+        [
+          "current state",
+          "current state"
+        ],
+        [
+          "control loop",
+          "control loop"
+        ],
+        [
+          "temperature",
+          "temperature"
+        ],
+        [
+          "Controllers",
+          "Controllers"
+        ],
+        [
+          "automation",
+          "automation"
+        ],
+        [
+          "thermostat",
+          "thermostat"
+        ],
+        [
+          "robotics",
+          "robotics"
+        ],
+        [
+          "system",
+          "system"
+        ],
+        [
+          "state",
+          "state"
+        ]
+      ],
+      "elapsed": 16.75517511367798
+    },
+    {
+      "chunk_id": "concepts_architecture_controller_chunk_1",
+      "metrics": {
+        "precision": 0.875,
+        "recall": 0.8235294117647058,
+        "hallucination": 0.125,
+        "f1": 0.8484848484848485,
+        "tp": 14,
+        "fp": 2,
+        "fn": 3,
+        "extracted_count": 16,
+        "gt_count": 17
+      },
+      "extracted_terms": [
+        "built-in controllers",
+        "namespace controller",
+        "Kubernetes resource",
+        "Controller pattern",
+        "resource type",
+        "desired state",
+        "side effects",
+        "spec field",
+        "API server",
+        "kube-apiserver",
+        "controller",
+        "Kubernetes",
+        "namespace",
+        "resource",
+        "objects",
+        "spec"
+      ],
+      "ground_truth_terms": [
+        "controller",
+        "Controller pattern",
+        "Kubernetes resource type",
+        "objects",
+        "spec",
+        "desired state",
+        "API server",
+        "kube-apiserver",
+        "namespace controller",
+        "Kubernetes",
+        "resource type",
+        "spec field",
+        "resource",
+        "messages",
+        "side effects",
+        "built-in controllers",
+        "namespace"
+      ],
+      "fp_terms": [
+        "controller",
+        "spec"
+      ],
+      "fn_terms": [
+        "namespace controller",
+        "spec field",
+        "messages"
+      ],
+      "tp_matches": [
+        [
+          "built-in controllers",
+          "built-in controllers"
+        ],
+        [
+          "namespace controller",
+          "controller"
+        ],
+        [
+          "Kubernetes resource",
+          "Kubernetes resource type"
+        ],
+        [
+          "Controller pattern",
+          "Controller pattern"
+        ],
+        [
+          "resource type",
+          "resource type"
+        ],
+        [
+          "desired state",
+          "desired state"
+        ],
+        [
+          "side effects",
+          "side effects"
+        ],
+        [
+          "spec field",
+          "spec"
+        ],
+        [
+          "API server",
+          "API server"
+        ],
+        [
+          "kube-apiserver",
+          "kube-apiserver"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "namespace",
+          "namespace"
+        ],
+        [
+          "resource",
+          "resource"
+        ],
+        [
+          "objects",
+          "objects"
+        ]
+      ],
+      "elapsed": 17.036482572555542
+    },
+    {
+      "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+      "metrics": {
+        "precision": 0.7631578947368421,
+        "recall": 0.7837837837837838,
+        "hallucination": 0.23684210526315788,
+        "f1": 0.7733333333333334,
+        "tp": 29,
+        "fp": 9,
+        "fn": 8,
+        "extracted_count": 38,
+        "gt_count": 37
+      },
+      "extracted_terms": [
+        "Stale or expired CertificateSigningRequests",
+        "Dynamically provisioned PersistentVolumes",
+        "cloud controller manager",
+        "Node Lease objects",
+        "Garbage Collection",
+        "Unused containers",
+        "owner references",
+        "container images",
+        "Terminated pods",
+        "Completed Jobs",
+        "reclaim policy",
+        "Lease objects",
+        "CertificateSigningRequests",
+        "request-signing-process",
+        "pod-garbage-collection",
+        "PersistentVolumes",
+        "ttlafterfinished",
+        "pod-lifecycle",
+        "StorageClass",
+        "On-premises",
+        "controllers",
+        "containers",
+        "heartbeats",
+        "dependents",
+        "resources",
+        "workloads",
+        "Objects",
+        "cluster",
+        "storage",
+        "Delete",
+        "owners",
+        "images",
+        "Nodes",
+        "cloud",
+        "addon",
+        "pods",
+        "Jobs",
+        "CSRs"
+      ],
+      "ground_truth_terms": [
+        "Garbage Collection",
+        "pods",
+        "Terminated pods",
+        "Jobs",
+        "Completed Jobs",
+        "owner references",
+        "containers",
+        "container images",
+        "PersistentVolumes",
+        "StorageClass",
+        "reclaim policy",
+        "Delete",
+        "CertificateSigningRequests",
+        "CSRs",
+        "Nodes",
+        "cloud controller manager",
+        "Node Lease objects",
+        "heartbeats",
+        "pod-lifecycle",
+        "pod-garbage-collection",
+        "ttlafterfinished",
+        "owners-dependents",
+        "Dynamically provisioned PersistentVolumes",
+        "Unused containers",
+        "Stale or expired CertificateSigningRequests",
+        "request-signing-process",
+        "cluster",
+        "cloud",
+        "On-premises",
+        "addon",
+        "resources",
+        "controllers",
+        "workloads",
+        "storage",
+        "persistent-volumes",
+        "access-authn-authz",
+        "architecture"
+      ],
+      "fp_terms": [
+        "Lease objects",
+        "CertificateSigningRequests",
+        "containers",
+        "dependents",
+        "Objects",
+        "owners",
+        "images",
+        "pods",
+        "Jobs"
+      ],
+      "fn_terms": [
+        "Terminated pods",
+        "Completed Jobs",
+        "owners-dependents",
+        "Dynamically provisioned PersistentVolumes",
+        "Unused containers",
+        "Stale or expired CertificateSigningRequests",
+        "access-authn-authz",
+        "architecture"
+      ],
+      "tp_matches": [
+        [
+          "Stale or expired CertificateSigningRequests",
+          "CertificateSigningRequests"
+        ],
+        [
+          "Dynamically provisioned PersistentVolumes",
+          "PersistentVolumes"
+        ],
+        [
+          "cloud controller manager",
+          "cloud controller manager"
+        ],
+        [
+          "Node Lease objects",
+          "Node Lease objects"
+        ],
+        [
+          "Garbage Collection",
+          "Garbage Collection"
+        ],
+        [
+          "Unused containers",
+          "containers"
+        ],
+        [
+          "owner references",
+          "owner references"
+        ],
+        [
+          "container images",
+          "container images"
+        ],
+        [
+          "Terminated pods",
+          "pods"
+        ],
+        [
+          "Completed Jobs",
+          "Jobs"
+        ],
+        [
+          "reclaim policy",
+          "reclaim policy"
+        ],
+        [
+          "request-signing-process",
+          "request-signing-process"
+        ],
+        [
+          "pod-garbage-collection",
+          "pod-garbage-collection"
+        ],
+        [
+          "PersistentVolumes",
+          "persistent-volumes"
+        ],
+        [
+          "ttlafterfinished",
+          "ttlafterfinished"
+        ],
+        [
+          "pod-lifecycle",
+          "pod-lifecycle"
+        ],
+        [
+          "StorageClass",
+          "StorageClass"
+        ],
+        [
+          "On-premises",
+          "On-premises"
+        ],
+        [
+          "controllers",
+          "controllers"
+        ],
+        [
+          "heartbeats",
+          "heartbeats"
+        ],
+        [
+          "resources",
+          "resources"
+        ],
+        [
+          "workloads",
+          "workloads"
+        ],
+        [
+          "cluster",
+          "cluster"
+        ],
+        [
+          "storage",
+          "storage"
+        ],
+        [
+          "Delete",
+          "Delete"
+        ],
+        [
+          "Nodes",
+          "Nodes"
+        ],
+        [
+          "cloud",
+          "cloud"
+        ],
+        [
+          "addon",
+          "addon"
+        ],
+        [
+          "CSRs",
+          "CSRs"
+        ]
+      ],
+      "elapsed": 27.50192904472351
+    },
+    {
+      "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+      "metrics": {
+        "precision": 0.7428571428571429,
+        "recall": 0.7878787878787878,
+        "hallucination": 0.2571428571428571,
+        "f1": 0.7647058823529412,
+        "tp": 26,
+        "fp": 9,
+        "fn": 7,
+        "extracted_count": 35,
+        "gt_count": 33
+      },
+      "extracted_terms": [
+        "Cross-namespace owner references",
+        "unresolvable owner reference",
+        "labels and selectors",
+        "kubectl get events",
+        "Cluster-scoped dependents",
+        "Namespaced dependents",
+        "cluster-scoped owners",
+        "garbage collector",
+        "namespaced owners",
+        "garbage collected",
+        "owner references",
+        "namespaced kind",
+        "control plane",
+        "warning Event",
+        "OwnerRefInvalidNamespace",
+        "cross-namespace",
+        "cluster-scoped",
+        "involvedObject",
+        "ownerReference",
+        "field-selector",
+        "EndpointSlice",
+        "Kubernetes",
+        "namespaced",
+        "dependents",
+        "namespaces",
+        "selectors",
+        "resources",
+        "Service",
+        "kubectl",
+        "objects",
+        "labels",
+        "v1.20+",
+        "Owners",
+        "events",
+        "CLI"
+      ],
+      "ground_truth_terms": [
+        "owner references",
+        "owners",
+        "dependents",
+        "control plane",
+        "labels",
+        "selectors",
+        "Service",
+        "EndpointSlice",
+        "namespace",
+        "namespaced",
+        "cluster-scoped",
+        "garbage collector",
+        "ownerReference",
+        "OwnerRefInvalidNamespace",
+        "involvedObject",
+        "Event",
+        "kubectl get events",
+        "--field-selector",
+        "cross-namespace owner references",
+        "Kubernetes",
+        "resources",
+        "Ownership",
+        "labels and selectors",
+        "objects",
+        "Namespaced dependents",
+        "namespaced owners",
+        "deletion",
+        "Cluster-scoped dependents",
+        "garbage collected",
+        "kubectl",
+        "v1.20+",
+        "API",
+        "kind"
+      ],
+      "fp_terms": [
+        "unresolvable owner reference",
+        "ownerReference",
+        "namespaced",
+        "dependents",
+        "namespaces",
+        "labels",
+        "Owners",
+        "events",
+        "CLI"
+      ],
+      "fn_terms": [
+        "cross-namespace owner references",
+        "Ownership",
+        "labels and selectors",
+        "Namespaced dependents",
+        "deletion",
+        "Cluster-scoped dependents",
+        "API"
+      ],
+      "tp_matches": [
+        [
+          "Cross-namespace owner references",
+          "owner references"
+        ],
+        [
+          "labels and selectors",
+          "labels"
+        ],
+        [
+          "kubectl get events",
+          "kubectl get events"
+        ],
+        [
+          "Cluster-scoped dependents",
+          "dependents"
+        ],
+        [
+          "Namespaced dependents",
+          "namespaced"
+        ],
+        [
+          "cluster-scoped owners",
+          "owners"
+        ],
+        [
+          "garbage collector",
+          "garbage collector"
+        ],
+        [
+          "namespaced owners",
+          "namespaced owners"
+        ],
+        [
+          "garbage collected",
+          "garbage collected"
+        ],
+        [
+          "owner references",
+          "ownerReference"
+        ],
+        [
+          "namespaced kind",
+          "kind"
+        ],
+        [
+          "control plane",
+          "control plane"
+        ],
+        [
+          "warning Event",
+          "Event"
+        ],
+        [
+          "OwnerRefInvalidNamespace",
+          "OwnerRefInvalidNamespace"
+        ],
+        [
+          "cross-namespace",
+          "namespace"
+        ],
+        [
+          "cluster-scoped",
+          "cluster-scoped"
+        ],
+        [
+          "involvedObject",
+          "involvedObject"
+        ],
+        [
+          "field-selector",
+          "--field-selector"
+        ],
+        [
+          "EndpointSlice",
+          "EndpointSlice"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "selectors",
+          "selectors"
+        ],
+        [
+          "resources",
+          "resources"
+        ],
+        [
+          "Service",
+          "Service"
+        ],
+        [
+          "kubectl",
+          "kubectl"
+        ],
+        [
+          "objects",
+          "objects"
+        ],
+        [
+          "v1.20+",
+          "v1.20+"
+        ]
+      ],
+      "elapsed": 30.252625465393066
+    },
+    {
+      "chunk_id": "concepts_architecture_leases_chunk_0",
+      "metrics": {
+        "precision": 0.8333333333333334,
+        "recall": 0.7894736842105263,
+        "hallucination": 0.16666666666666666,
+        "f1": 0.8108108108108109,
+        "tp": 15,
+        "fp": 3,
+        "fn": 4,
+        "extracted_count": 18,
+        "gt_count": 19
+      },
+      "extracted_terms": [
+        "component-level leader election",
+        "system-critical capabilities",
+        "Distributed systems",
+        "shared resources",
+        "node heartbeats",
+        "leader election",
+        "API Group",
+        "coordination.k8s.io/v1",
+        "coordination.k8s.io",
+        "cluster-resources",
+        "apiVersion",
+        "Kubernetes",
+        "heartbeats",
+        "lease-v1",
+        "Leases",
+        "kind",
+        "lock",
+        "API"
+      ],
+      "ground_truth_terms": [
+        "Lease",
+        "apiVersion",
+        "kind",
+        "coordination.k8s.io/v1",
+        "coordination.k8s.io",
+        "API Group",
+        "node heartbeats",
+        "leader election",
+        "distributed systems",
+        "shared resources",
+        "lock",
+        "component-level leader election",
+        "node",
+        "Kubernetes",
+        "cluster-resources",
+        "system-critical capabilities",
+        "API",
+        "members",
+        "coordinate"
+      ],
+      "fp_terms": [
+        "leader election",
+        "heartbeats",
+        "Leases"
+      ],
+      "fn_terms": [
+        "component-level leader election",
+        "node",
+        "members",
+        "coordinate"
+      ],
+      "tp_matches": [
+        [
+          "component-level leader election",
+          "leader election"
+        ],
+        [
+          "system-critical capabilities",
+          "system-critical capabilities"
+        ],
+        [
+          "Distributed systems",
+          "distributed systems"
+        ],
+        [
+          "shared resources",
+          "shared resources"
+        ],
+        [
+          "node heartbeats",
+          "node heartbeats"
+        ],
+        [
+          "API Group",
+          "API Group"
+        ],
+        [
+          "coordination.k8s.io/v1",
+          "coordination.k8s.io/v1"
+        ],
+        [
+          "coordination.k8s.io",
+          "coordination.k8s.io"
+        ],
+        [
+          "cluster-resources",
+          "cluster-resources"
+        ],
+        [
+          "apiVersion",
+          "apiVersion"
+        ],
+        [
+          "Kubernetes",
+          "Kubernetes"
+        ],
+        [
+          "lease-v1",
+          "Lease"
+        ],
+        [
+          "kind",
+          "kind"
+        ],
+        [
+          "lock",
+          "lock"
+        ],
+        [
+          "API",
+          "API"
+        ]
+      ],
+      "elapsed": 20.97293210029602
+    }
+  ]
+}

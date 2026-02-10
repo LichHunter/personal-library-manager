@@ -1,0 +1,1317 @@
+{
+  "metadata": {
+    "num_chunks": 20,
+    "timestamp": "2026-02-09 12:11:04",
+    "gt_file": "artifacts/gt_100_chunks.json"
+  },
+  "variants": {
+    "V0_BASELINE": {
+      "variant": "V0_BASELINE",
+      "chunks": [
+        {
+          "chunk_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions_sec0",
+          "extracted": 10,
+          "tp": 5,
+          "fp": 5,
+          "fn": 7,
+          "precision": 0.5,
+          "recall": 0.4166666666666667,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec10",
+          "extracted": 23,
+          "tp": 15,
+          "fp": 8,
+          "fn": 10,
+          "precision": 0.6521739130434783,
+          "recall": 0.6,
+          "generic_fps": 5
+        },
+        {
+          "chunk_id": "concepts_extend-kubernetes_operator_sec7",
+          "extracted": 13,
+          "tp": 11,
+          "fp": 2,
+          "fn": 4,
+          "precision": 0.8461538461538461,
+          "recall": 0.7333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_glossary_sysctl_sec0",
+          "extracted": 10,
+          "tp": 8,
+          "fp": 2,
+          "fn": 5,
+          "precision": 0.8,
+          "recall": 0.6153846153846154,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec18",
+          "extracted": 13,
+          "tp": 10,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.7692307692307693,
+          "recall": 0.7142857142857143,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec24",
+          "extracted": 22,
+          "tp": 12,
+          "fp": 10,
+          "fn": 11,
+          "precision": 0.5454545454545454,
+          "recall": 0.5217391304347826,
+          "generic_fps": 3
+        },
+        {
+          "chunk_id": "reference_access-authn-authz_validating-admission-policy_sec0",
+          "extracted": 10,
+          "tp": 4,
+          "fp": 6,
+          "fn": 1,
+          "precision": 0.4,
+          "recall": 0.8,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec0",
+          "extracted": 7,
+          "tp": 6,
+          "fp": 1,
+          "fn": 4,
+          "precision": 0.8571428571428571,
+          "recall": 0.6,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_manage-kubernetes-objects_declarative-config_sec6",
+          "extracted": 33,
+          "tp": 31,
+          "fp": 2,
+          "fn": 8,
+          "precision": 0.9393939393939394,
+          "recall": 0.7948717948717948,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_topology-manager_sec3",
+          "extracted": 24,
+          "tp": 21,
+          "fp": 3,
+          "fn": 7,
+          "precision": 0.875,
+          "recall": 0.75,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec1",
+          "extracted": 21,
+          "tp": 18,
+          "fp": 3,
+          "fn": 5,
+          "precision": 0.8571428571428571,
+          "recall": 0.782608695652174,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_configure-pod-container_configure-pod-configmap_sec19",
+          "extracted": 17,
+          "tp": 12,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.75,
+          "recall": 0.75,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "reference_node_node-status_sec6",
+          "extracted": 14,
+          "tp": 10,
+          "fp": 3,
+          "fn": 10,
+          "precision": 0.7692307692307693,
+          "recall": 0.5,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec3",
+          "extracted": 15,
+          "tp": 11,
+          "fp": 3,
+          "fn": 6,
+          "precision": 0.7857142857142857,
+          "recall": 0.6470588235294118,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec1",
+          "extracted": 12,
+          "tp": 10,
+          "fp": 2,
+          "fn": 8,
+          "precision": 0.8333333333333334,
+          "recall": 0.5555555555555556,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec7",
+          "extracted": 28,
+          "tp": 15,
+          "fp": 13,
+          "fn": 20,
+          "precision": 0.5357142857142857,
+          "recall": 0.42857142857142855,
+          "generic_fps": 2
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec19",
+          "extracted": 12,
+          "tp": 10,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.8333333333333334,
+          "recall": 0.8333333333333334,
+          "generic_fps": 2
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec6",
+          "extracted": 10,
+          "tp": 6,
+          "fp": 4,
+          "fn": 3,
+          "precision": 0.6,
+          "recall": 0.6666666666666666,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_coredns_sec3",
+          "extracted": 13,
+          "tp": 10,
+          "fp": 3,
+          "fn": 9,
+          "precision": 0.7692307692307693,
+          "recall": 0.5263157894736842,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "tasks_debug_debug-application_debug-statefulset_sec1",
+          "extracted": 6,
+          "tp": 6,
+          "fp": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "generic_fps": 0
+        }
+      ],
+      "aggregate": {
+        "precision": 0.7451612903225806,
+        "recall": 0.638121546961326,
+        "f1": 0.6875,
+        "hallucination": 0.25483870967741934,
+        "total_tp": 231,
+        "total_fp": 79,
+        "total_fn": 131,
+        "total_extracted": 310,
+        "total_gt": 362,
+        "generic_fp_count": 19,
+        "generic_fp_rate": 0.24050632911392406
+      }
+    },
+    "V1_DOMAIN_SPECIFIC": {
+      "variant": "V1_DOMAIN_SPECIFIC",
+      "chunks": [
+        {
+          "chunk_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions_sec0",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 8,
+          "precision": 0.8,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec10",
+          "extracted": 9,
+          "tp": 7,
+          "fp": 2,
+          "fn": 18,
+          "precision": 0.7777777777777778,
+          "recall": 0.28,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_extend-kubernetes_operator_sec7",
+          "extracted": 7,
+          "tp": 7,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.4666666666666667,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_glossary_sysctl_sec0",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 9,
+          "precision": 0.8,
+          "recall": 0.3076923076923077,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec18",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 10,
+          "precision": 0.8,
+          "recall": 0.2857142857142857,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec24",
+          "extracted": 6,
+          "tp": 5,
+          "fp": 1,
+          "fn": 18,
+          "precision": 0.8333333333333334,
+          "recall": 0.21739130434782608,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_access-authn-authz_validating-admission-policy_sec0",
+          "extracted": 3,
+          "tp": 2,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec0",
+          "extracted": 6,
+          "tp": 6,
+          "fp": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.6,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_manage-kubernetes-objects_declarative-config_sec6",
+          "extracted": 11,
+          "tp": 10,
+          "fp": 1,
+          "fn": 29,
+          "precision": 0.9090909090909091,
+          "recall": 0.2564102564102564,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_topology-manager_sec3",
+          "extracted": 16,
+          "tp": 16,
+          "fp": 0,
+          "fn": 12,
+          "precision": 1.0,
+          "recall": 0.5714285714285714,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec1",
+          "extracted": 12,
+          "tp": 11,
+          "fp": 1,
+          "fn": 12,
+          "precision": 0.9166666666666666,
+          "recall": 0.4782608695652174,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_configure-pod-container_configure-pod-configmap_sec19",
+          "extracted": 8,
+          "tp": 8,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.5,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_node_node-status_sec6",
+          "extracted": 8,
+          "tp": 6,
+          "fp": 2,
+          "fn": 14,
+          "precision": 0.75,
+          "recall": 0.3,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec3",
+          "extracted": 7,
+          "tp": 4,
+          "fp": 3,
+          "fn": 13,
+          "precision": 0.5714285714285714,
+          "recall": 0.23529411764705882,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec1",
+          "extracted": 9,
+          "tp": 9,
+          "fp": 0,
+          "fn": 9,
+          "precision": 1.0,
+          "recall": 0.5,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec7",
+          "extracted": 11,
+          "tp": 9,
+          "fp": 2,
+          "fn": 26,
+          "precision": 0.8181818181818182,
+          "recall": 0.2571428571428571,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec19",
+          "extracted": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 7,
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec6",
+          "extracted": 5,
+          "tp": 3,
+          "fp": 2,
+          "fn": 6,
+          "precision": 0.6,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_coredns_sec3",
+          "extracted": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 14,
+          "precision": 1.0,
+          "recall": 0.2631578947368421,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_debug_debug-application_debug-statefulset_sec1",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 5,
+          "precision": 1.0,
+          "recall": 0.4444444444444444,
+          "generic_fps": 0
+        }
+      ],
+      "aggregate": {
+        "precision": 0.8775510204081632,
+        "recall": 0.356353591160221,
+        "f1": 0.5068762278978388,
+        "hallucination": 0.12244897959183673,
+        "total_tp": 129,
+        "total_fp": 18,
+        "total_fn": 233,
+        "total_extracted": 147,
+        "total_gt": 362,
+        "generic_fp_count": 0,
+        "generic_fp_rate": 0.0
+      }
+    },
+    "V2_GLOSSARY": {
+      "variant": "V2_GLOSSARY",
+      "chunks": [
+        {
+          "chunk_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions_sec0",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 9,
+          "precision": 1.0,
+          "recall": 0.25,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec10",
+          "extracted": 7,
+          "tp": 6,
+          "fp": 1,
+          "fn": 19,
+          "precision": 0.8571428571428571,
+          "recall": 0.24,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "concepts_extend-kubernetes_operator_sec7",
+          "extracted": 9,
+          "tp": 5,
+          "fp": 4,
+          "fn": 10,
+          "precision": 0.5555555555555556,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_glossary_sysctl_sec0",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 9,
+          "precision": 1.0,
+          "recall": 0.3076923076923077,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec18",
+          "extracted": 3,
+          "tp": 2,
+          "fp": 1,
+          "fn": 12,
+          "precision": 0.6666666666666666,
+          "recall": 0.14285714285714285,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec24",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 19,
+          "precision": 1.0,
+          "recall": 0.17391304347826086,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_access-authn-authz_validating-admission-policy_sec0",
+          "extracted": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.2,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec0",
+          "extracted": 5,
+          "tp": 3,
+          "fp": 2,
+          "fn": 7,
+          "precision": 0.6,
+          "recall": 0.3,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_manage-kubernetes-objects_declarative-config_sec6",
+          "extracted": 10,
+          "tp": 8,
+          "fp": 2,
+          "fn": 31,
+          "precision": 0.8,
+          "recall": 0.20512820512820512,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_topology-manager_sec3",
+          "extracted": 12,
+          "tp": 12,
+          "fp": 0,
+          "fn": 16,
+          "precision": 1.0,
+          "recall": 0.42857142857142855,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec1",
+          "extracted": 7,
+          "tp": 6,
+          "fp": 1,
+          "fn": 17,
+          "precision": 0.8571428571428571,
+          "recall": 0.2608695652173913,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_configure-pod-container_configure-pod-configmap_sec19",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 13,
+          "precision": 1.0,
+          "recall": 0.1875,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_node_node-status_sec6",
+          "extracted": 5,
+          "tp": 3,
+          "fp": 2,
+          "fn": 17,
+          "precision": 0.6,
+          "recall": 0.15,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec3",
+          "extracted": 3,
+          "tp": 1,
+          "fp": 2,
+          "fn": 16,
+          "precision": 0.3333333333333333,
+          "recall": 0.058823529411764705,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec1",
+          "extracted": 7,
+          "tp": 4,
+          "fp": 3,
+          "fn": 14,
+          "precision": 0.5714285714285714,
+          "recall": 0.2222222222222222,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec7",
+          "extracted": 10,
+          "tp": 7,
+          "fp": 3,
+          "fn": 28,
+          "precision": 0.7,
+          "recall": 0.2,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec19",
+          "extracted": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 11,
+          "precision": 1.0,
+          "recall": 0.08333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec6",
+          "extracted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 9,
+          "precision": 0,
+          "recall": 0.0,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_coredns_sec3",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 15,
+          "precision": 0.8,
+          "recall": 0.21052631578947367,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_debug_debug-application_debug-statefulset_sec1",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 5,
+          "precision": 1.0,
+          "recall": 0.4444444444444444,
+          "generic_fps": 0
+        }
+      ],
+      "aggregate": {
+        "precision": 0.7864077669902912,
+        "recall": 0.22375690607734808,
+        "f1": 0.3483870967741936,
+        "hallucination": 0.21359223300970873,
+        "total_tp": 81,
+        "total_fp": 22,
+        "total_fn": 281,
+        "total_extracted": 103,
+        "total_gt": 362,
+        "generic_fp_count": 1,
+        "generic_fp_rate": 0.045454545454545456
+      }
+    },
+    "V3_LEARNER": {
+      "variant": "V3_LEARNER",
+      "chunks": [
+        {
+          "chunk_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions_sec0",
+          "extracted": 2,
+          "tp": 2,
+          "fp": 0,
+          "fn": 10,
+          "precision": 1.0,
+          "recall": 0.16666666666666666,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec10",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 21,
+          "precision": 1.0,
+          "recall": 0.16,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_extend-kubernetes_operator_sec7",
+          "extracted": 3,
+          "tp": 1,
+          "fp": 2,
+          "fn": 14,
+          "precision": 0.3333333333333333,
+          "recall": 0.06666666666666667,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_glossary_sysctl_sec0",
+          "extracted": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.38461538461538464,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec18",
+          "extracted": 2,
+          "tp": 2,
+          "fp": 0,
+          "fn": 12,
+          "precision": 1.0,
+          "recall": 0.14285714285714285,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec24",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 19,
+          "precision": 1.0,
+          "recall": 0.17391304347826086,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_access-authn-authz_validating-admission-policy_sec0",
+          "extracted": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.2,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec0",
+          "extracted": 6,
+          "tp": 5,
+          "fp": 1,
+          "fn": 5,
+          "precision": 0.8333333333333334,
+          "recall": 0.5,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_manage-kubernetes-objects_declarative-config_sec6",
+          "extracted": 8,
+          "tp": 6,
+          "fp": 2,
+          "fn": 33,
+          "precision": 0.75,
+          "recall": 0.15384615384615385,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_topology-manager_sec3",
+          "extracted": 12,
+          "tp": 12,
+          "fp": 0,
+          "fn": 16,
+          "precision": 1.0,
+          "recall": 0.42857142857142855,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec1",
+          "extracted": 9,
+          "tp": 7,
+          "fp": 2,
+          "fn": 16,
+          "precision": 0.7777777777777778,
+          "recall": 0.30434782608695654,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_configure-pod-container_configure-pod-configmap_sec19",
+          "extracted": 6,
+          "tp": 6,
+          "fp": 0,
+          "fn": 10,
+          "precision": 1.0,
+          "recall": 0.375,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_node_node-status_sec6",
+          "extracted": 6,
+          "tp": 5,
+          "fp": 1,
+          "fn": 15,
+          "precision": 0.8333333333333334,
+          "recall": 0.25,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec3",
+          "extracted": 4,
+          "tp": 2,
+          "fp": 2,
+          "fn": 15,
+          "precision": 0.5,
+          "recall": 0.11764705882352941,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec1",
+          "extracted": 8,
+          "tp": 7,
+          "fp": 1,
+          "fn": 11,
+          "precision": 0.875,
+          "recall": 0.3888888888888889,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec7",
+          "extracted": 8,
+          "tp": 6,
+          "fp": 2,
+          "fn": 29,
+          "precision": 0.75,
+          "recall": 0.17142857142857143,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec19",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 9,
+          "precision": 1.0,
+          "recall": 0.25,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec6",
+          "extracted": 2,
+          "tp": 2,
+          "fp": 0,
+          "fn": 7,
+          "precision": 1.0,
+          "recall": 0.2222222222222222,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_coredns_sec3",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 15,
+          "precision": 0.8,
+          "recall": 0.21052631578947367,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_debug_debug-application_debug-statefulset_sec1",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 5,
+          "precision": 1.0,
+          "recall": 0.4444444444444444,
+          "generic_fps": 0
+        }
+      ],
+      "aggregate": {
+        "precision": 0.8627450980392157,
+        "recall": 0.2430939226519337,
+        "f1": 0.3793103448275862,
+        "hallucination": 0.13725490196078433,
+        "total_tp": 88,
+        "total_fp": 14,
+        "total_fn": 274,
+        "total_extracted": 102,
+        "total_gt": 362,
+        "generic_fp_count": 0,
+        "generic_fp_rate": 0.0
+      }
+    },
+    "V4_NEGATIVE_EXAMPLES": {
+      "variant": "V4_NEGATIVE_EXAMPLES",
+      "chunks": [
+        {
+          "chunk_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions_sec0",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 9,
+          "precision": 1.0,
+          "recall": 0.25,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec10",
+          "extracted": 7,
+          "tp": 5,
+          "fp": 2,
+          "fn": 20,
+          "precision": 0.7142857142857143,
+          "recall": 0.2,
+          "generic_fps": 1
+        },
+        {
+          "chunk_id": "concepts_extend-kubernetes_operator_sec7",
+          "extracted": 6,
+          "tp": 5,
+          "fp": 1,
+          "fn": 10,
+          "precision": 0.8333333333333334,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_glossary_sysctl_sec0",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 9,
+          "precision": 0.8,
+          "recall": 0.3076923076923077,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec18",
+          "extracted": 3,
+          "tp": 2,
+          "fp": 1,
+          "fn": 12,
+          "precision": 0.6666666666666666,
+          "recall": 0.14285714285714285,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec24",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 19,
+          "precision": 1.0,
+          "recall": 0.17391304347826086,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_access-authn-authz_validating-admission-policy_sec0",
+          "extracted": 1,
+          "tp": 1,
+          "fp": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.2,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec0",
+          "extracted": 4,
+          "tp": 3,
+          "fp": 1,
+          "fn": 7,
+          "precision": 0.75,
+          "recall": 0.3,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_manage-kubernetes-objects_declarative-config_sec6",
+          "extracted": 10,
+          "tp": 10,
+          "fp": 0,
+          "fn": 29,
+          "precision": 1.0,
+          "recall": 0.2564102564102564,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_topology-manager_sec3",
+          "extracted": 12,
+          "tp": 12,
+          "fp": 0,
+          "fn": 16,
+          "precision": 1.0,
+          "recall": 0.42857142857142855,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec1",
+          "extracted": 8,
+          "tp": 7,
+          "fp": 1,
+          "fn": 16,
+          "precision": 0.875,
+          "recall": 0.30434782608695654,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_configure-pod-container_configure-pod-configmap_sec19",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 12,
+          "precision": 1.0,
+          "recall": 0.25,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_node_node-status_sec6",
+          "extracted": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 15,
+          "precision": 1.0,
+          "recall": 0.25,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec3",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 13,
+          "precision": 1.0,
+          "recall": 0.23529411764705882,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec1",
+          "extracted": 9,
+          "tp": 9,
+          "fp": 0,
+          "fn": 9,
+          "precision": 1.0,
+          "recall": 0.5,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec7",
+          "extracted": 11,
+          "tp": 9,
+          "fp": 2,
+          "fn": 26,
+          "precision": 0.8181818181818182,
+          "recall": 0.2571428571428571,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec19",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec6",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_coredns_sec3",
+          "extracted": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 14,
+          "precision": 1.0,
+          "recall": 0.2631578947368421,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_debug_debug-application_debug-statefulset_sec1",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 5,
+          "precision": 1.0,
+          "recall": 0.4444444444444444,
+          "generic_fps": 0
+        }
+      ],
+      "aggregate": {
+        "precision": 0.9196428571428571,
+        "recall": 0.2845303867403315,
+        "f1": 0.43459915611814337,
+        "hallucination": 0.08035714285714286,
+        "total_tp": 103,
+        "total_fp": 9,
+        "total_fn": 259,
+        "total_extracted": 112,
+        "total_gt": 362,
+        "generic_fp_count": 1,
+        "generic_fp_rate": 0.1111111111111111
+      }
+    },
+    "V5_REASONING": {
+      "variant": "V5_REASONING",
+      "chunks": [
+        {
+          "chunk_id": "tasks_extend-kubernetes_custom-resources_custom-resource-definitions_sec0",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec10",
+          "extracted": 7,
+          "tp": 5,
+          "fp": 2,
+          "fn": 20,
+          "precision": 0.7142857142857143,
+          "recall": 0.2,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_extend-kubernetes_operator_sec7",
+          "extracted": 5,
+          "tp": 4,
+          "fp": 1,
+          "fn": 11,
+          "precision": 0.8,
+          "recall": 0.26666666666666666,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_glossary_sysctl_sec0",
+          "extracted": 2,
+          "tp": 2,
+          "fp": 0,
+          "fn": 11,
+          "precision": 1.0,
+          "recall": 0.15384615384615385,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec18",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 11,
+          "precision": 1.0,
+          "recall": 0.21428571428571427,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec24",
+          "extracted": 5,
+          "tp": 5,
+          "fp": 0,
+          "fn": 18,
+          "precision": 1.0,
+          "recall": 0.21739130434782608,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_access-authn-authz_validating-admission-policy_sec0",
+          "extracted": 2,
+          "tp": 1,
+          "fp": 1,
+          "fn": 4,
+          "precision": 0.5,
+          "recall": 0.2,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_workloads_management_sec0",
+          "extracted": 4,
+          "tp": 3,
+          "fp": 1,
+          "fn": 7,
+          "precision": 0.75,
+          "recall": 0.3,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_manage-kubernetes-objects_declarative-config_sec6",
+          "extracted": 10,
+          "tp": 9,
+          "fp": 1,
+          "fn": 30,
+          "precision": 0.9,
+          "recall": 0.23076923076923078,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_topology-manager_sec3",
+          "extracted": 14,
+          "tp": 14,
+          "fp": 0,
+          "fn": 14,
+          "precision": 1.0,
+          "recall": 0.5,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec1",
+          "extracted": 7,
+          "tp": 6,
+          "fp": 1,
+          "fn": 17,
+          "precision": 0.8571428571428571,
+          "recall": 0.2608695652173913,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_configure-pod-container_configure-pod-configmap_sec19",
+          "extracted": 6,
+          "tp": 6,
+          "fp": 0,
+          "fn": 10,
+          "precision": 1.0,
+          "recall": 0.375,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_node_node-status_sec6",
+          "extracted": 7,
+          "tp": 6,
+          "fp": 1,
+          "fn": 14,
+          "precision": 0.8571428571428571,
+          "recall": 0.3,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec3",
+          "extracted": 4,
+          "tp": 2,
+          "fp": 2,
+          "fn": 15,
+          "precision": 0.5,
+          "recall": 0.11764705882352941,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_policy__index_sec1",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 14,
+          "precision": 1.0,
+          "recall": 0.2222222222222222,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "concepts_services-networking_ingress_sec7",
+          "extracted": 10,
+          "tp": 9,
+          "fp": 1,
+          "fn": 26,
+          "precision": 0.9,
+          "recall": 0.2571428571428571,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1_sec19",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 8,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "reference_config-api_apiserver-config.v1beta1_sec6",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_administer-cluster_coredns_sec3",
+          "extracted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 15,
+          "precision": 1.0,
+          "recall": 0.21052631578947367,
+          "generic_fps": 0
+        },
+        {
+          "chunk_id": "tasks_debug_debug-application_debug-statefulset_sec1",
+          "extracted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "generic_fps": 0
+        }
+      ],
+      "aggregate": {
+        "precision": 0.8981481481481481,
+        "recall": 0.26795580110497236,
+        "f1": 0.4127659574468085,
+        "hallucination": 0.10185185185185185,
+        "total_tp": 97,
+        "total_fp": 11,
+        "total_fn": 265,
+        "total_extracted": 108,
+        "total_gt": 362,
+        "generic_fp_count": 0,
+        "generic_fp_rate": 0.0
+      }
+    }
+  }
+}

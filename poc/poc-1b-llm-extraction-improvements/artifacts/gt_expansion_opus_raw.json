@@ -1,0 +1,1586 @@
+{
+  "timestamp": "20260208_120549",
+  "model": "opus",
+  "chunks": [
+    {
+      "chunk_id": "_index_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "Core proper noun identifying the container orchestration platform that is the subject of this documentation."
+        },
+        {
+          "term": "Documentation",
+          "tier": 3,
+          "reasoning": "Technical term referring to the official reference materials for the Kubernetes platform, carrying specific meaning in the software documentation context."
+        }
+      ],
+      "opus_count": 2
+    },
+    {
+      "chunk_id": "concepts__index_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "Core proper noun referring to the container orchestration platform that is the subject of this documentation."
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes architectural concept representing a set of nodes running containerized applications."
+        },
+        {
+          "term": "Concepts",
+          "tier": 2,
+          "reasoning": "Section name referring to the documentation area covering Kubernetes abstractions and system components."
+        },
+        {
+          "term": "Kubernetes system",
+          "tier": 2,
+          "reasoning": "Compound term referring to the overall Kubernetes platform and its components."
+        },
+        {
+          "term": "abstractions",
+          "tier": 2,
+          "reasoning": "Technical term describing the conceptual models Kubernetes uses to represent resources and operations."
+        }
+      ],
+      "opus_count": 5
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Kubernetes cluster",
+          "tier": 1,
+          "reasoning": "Core infrastructure concept referring to the complete Kubernetes deployment unit."
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The primary container orchestration platform this documentation describes."
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "reasoning": "Fundamental architectural concept representing a set of nodes managed together."
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "reasoning": "Core architectural component that manages the cluster's worker nodes and Pods."
+        },
+        {
+          "term": "worker machines",
+          "tier": 2,
+          "reasoning": "Technical term for the machines that run containerized applications."
+        },
+        {
+          "term": "nodes",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes concept representing worker machines in the cluster."
+        },
+        {
+          "term": "worker node",
+          "tier": 2,
+          "reasoning": "Specific type of node that hosts application workload Pods."
+        },
+        {
+          "term": "containerized applications",
+          "tier": 2,
+          "reasoning": "Domain concept describing applications packaged and run in containers."
+        },
+        {
+          "term": "Pods",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API object and smallest deployable unit."
+        },
+        {
+          "term": "application workload",
+          "tier": 2,
+          "reasoning": "Technical term describing the actual applications running on the cluster."
+        },
+        {
+          "term": "fault-tolerance",
+          "tier": 2,
+          "reasoning": "Architectural concept describing system resilience to failures."
+        },
+        {
+          "term": "high availability",
+          "tier": 2,
+          "reasoning": "Architectural pattern ensuring continuous system operation."
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "reasoning": "Named control plane component that exposes the Kubernetes API."
+        },
+        {
+          "term": "etcd",
+          "tier": 1,
+          "reasoning": "Named component serving as the cluster's backing store for all cluster data."
+        },
+        {
+          "term": "kube-controller-manager",
+          "tier": 1,
+          "reasoning": "Named control plane component running controller processes."
+        },
+        {
+          "term": "kube-scheduler",
+          "tier": 1,
+          "reasoning": "Named control plane component responsible for scheduling Pods."
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "reasoning": "Named node agent component that ensures containers are running in Pods."
+        },
+        {
+          "term": "kube-proxy",
+          "tier": 1,
+          "reasoning": "Named network proxy component running on each node."
+        },
+        {
+          "term": "network proxy",
+          "tier": 2,
+          "reasoning": "Technical concept describing the proxying functionality for network traffic."
+        },
+        {
+          "term": "Service",
+          "tier": 1,
+          "reasoning": "Kubernetes API object referenced with glossary tooltip for network service abstraction."
+        },
+        {
+          "term": "Service API",
+          "tier": 1,
+          "reasoning": "The API interface for Kubernetes Service objects."
+        },
+        {
+          "term": "cluster network",
+          "tier": 2,
+          "reasoning": "Technical concept referring to the network infrastructure within a cluster."
+        },
+        {
+          "term": "network plugin",
+          "tier": 2,
+          "reasoning": "Technical component that provides networking capabilities to the cluster."
+        },
+        {
+          "term": "network plugins",
+          "tier": 2,
+          "reasoning": "Plural form referring to third-party networking implementations."
+        },
+        {
+          "term": "third party implementation",
+          "tier": 2,
+          "reasoning": "Concept describing external/non-default component implementations."
+        },
+        {
+          "term": "proxying",
+          "tier": 2,
+          "reasoning": "Technical process of forwarding network requests between components."
+        },
+        {
+          "term": "reference architecture",
+          "tier": 2,
+          "reasoning": "Architectural term describing a standard design pattern for cluster setup."
+        },
+        {
+          "term": "components",
+          "tier": 2,
+          "reasoning": "Technical term for the individual parts that make up the Kubernetes system."
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "reasoning": "Singular form of the fundamental Kubernetes worker machine concept."
+        }
+      ],
+      "opus_count": 29
+    },
+    {
+      "chunk_id": "concepts_architecture__index_chunk_1",
+      "opus_terms": [
+        {
+          "term": "control plane",
+          "tier": 2,
+          "reasoning": "Core Kubernetes architectural concept referring to the components that manage the cluster state and make global decisions."
+        },
+        {
+          "term": "control plane components",
+          "tier": 2,
+          "reasoning": "Specific reference to the set of components that comprise the control plane."
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes concept referring to a set of nodes running containerized applications."
+        },
+        {
+          "term": "scheduling",
+          "tier": 2,
+          "reasoning": "Core Kubernetes process of assigning pods to nodes based on resource requirements and constraints."
+        },
+        {
+          "term": "cluster events",
+          "tier": 2,
+          "reasoning": "Technical concept referring to state changes or occurrences within the Kubernetes cluster."
+        },
+        {
+          "term": "pod",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API object and the smallest deployable unit in Kubernetes."
+        },
+        {
+          "term": "Deployment",
+          "tier": 1,
+          "reasoning": "Kubernetes API resource that manages ReplicaSets and provides declarative updates for Pods."
+        },
+        {
+          "term": "replicas",
+          "tier": 2,
+          "reasoning": "Kubernetes concept referring to the number of identical pod copies that should be running."
+        },
+        {
+          "term": "machine",
+          "tier": 3,
+          "reasoning": "Technical term referring to physical or virtual compute resources in the cluster context."
+        },
+        {
+          "term": "setup scripts",
+          "tier": 3,
+          "reasoning": "Technical term referring to automation scripts used for cluster initialization."
+        },
+        {
+          "term": "user containers",
+          "tier": 2,
+          "reasoning": "Domain-specific term distinguishing application workload containers from system containers."
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "reasoning": "Core container orchestration concept referring to isolated runtime environments."
+        },
+        {
+          "term": "Highly Available clusters",
+          "tier": 2,
+          "reasoning": "Architectural pattern for fault-tolerant Kubernetes deployments with redundant control planes."
+        },
+        {
+          "term": "kubeadm",
+          "tier": 1,
+          "reasoning": "Official Kubernetes CLI tool for bootstrapping and managing cluster lifecycle."
+        },
+        {
+          "term": "high availability",
+          "tier": 2,
+          "reasoning": "Architectural concept ensuring system resilience and minimal downtime."
+        },
+        {
+          "term": "control plane setup",
+          "tier": 2,
+          "reasoning": "Technical process of configuring and deploying control plane components."
+        }
+      ],
+      "opus_count": 16
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_0",
+      "opus_terms": [
+        {
+          "term": "cgroup v2",
+          "tier": 1,
+          "reasoning": "Core subject of the documentation, specific Linux kernel feature for resource management."
+        },
+        {
+          "term": "cgroup v1",
+          "tier": 1,
+          "reasoning": "Specific version of the cgroup API, explicitly mentioned as alternative to v2."
+        },
+        {
+          "term": "cgroup",
+          "tier": 1,
+          "reasoning": "Core Linux kernel feature referenced via glossary tooltip, fundamental to container resource management."
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "reasoning": "Core Kubernetes component explicitly mentioned as interfacing with cgroups."
+        },
+        {
+          "term": "control groups",
+          "tier": 2,
+          "reasoning": "Full name of cgroups, a key Linux kernel concept for resource constraints."
+        },
+        {
+          "term": "container runtime",
+          "tier": 2,
+          "reasoning": "Domain concept referring to the underlying software that runs containers."
+        },
+        {
+          "term": "resource management",
+          "tier": 2,
+          "reasoning": "Technical concept describing the process of managing compute resources for workloads."
+        },
+        {
+          "term": "pods",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API object, mentioned in context of resource management."
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "reasoning": "Fundamental domain concept in container orchestration, mentioned multiple times."
+        },
+        {
+          "term": "containerized workloads",
+          "tier": 2,
+          "reasoning": "Domain-specific term describing applications running in containers."
+        },
+        {
+          "term": "cpu/memory requests and limits",
+          "tier": 2,
+          "reasoning": "Kubernetes resource management concept for specifying resource constraints."
+        },
+        {
+          "term": "requests and limits",
+          "tier": 2,
+          "reasoning": "Core Kubernetes resource specification concepts for pods and containers."
+        },
+        {
+          "term": "cpu",
+          "tier": 3,
+          "reasoning": "Compute resource type managed by cgroups and Kubernetes."
+        },
+        {
+          "term": "memory",
+          "tier": 3,
+          "reasoning": "Compute resource type managed by cgroups and Kubernetes."
+        },
+        {
+          "term": "Linux",
+          "tier": 3,
+          "reasoning": "Operating system context where cgroups operate, explicitly mentioned."
+        },
+        {
+          "term": "processes",
+          "tier": 3,
+          "reasoning": "OS-level concept that cgroups constrain resources for."
+        },
+        {
+          "term": "resources",
+          "tier": 3,
+          "reasoning": "Technical term referring to compute resources being managed."
+        },
+        {
+          "term": "cgroup API",
+          "tier": 2,
+          "reasoning": "The programming interface for interacting with cgroups, explicitly mentioned."
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "reasoning": "General technical term for programming interface, used in cgroup context."
+        }
+      ],
+      "opus_count": 19
+    },
+    {
+      "chunk_id": "concepts_architecture_cgroups_chunk_1",
+      "opus_terms": [
+        {
+          "term": "cgroup v2",
+          "tier": 1,
+          "reasoning": "Core Linux kernel feature and the primary subject of this documentation chunk."
+        },
+        {
+          "term": "cgroup v1",
+          "tier": 1,
+          "reasoning": "Previous version of cgroup API, explicitly compared against cgroup v2."
+        },
+        {
+          "term": "cgroup",
+          "tier": 2,
+          "reasoning": "Fundamental Linux kernel mechanism for resource management, base concept for both versions."
+        },
+        {
+          "term": "Linux",
+          "tier": 3,
+          "reasoning": "Operating system context where cgroups operate."
+        },
+        {
+          "term": "cgroup API",
+          "tier": 2,
+          "reasoning": "The programming interface for interacting with cgroup functionality."
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "reasoning": "General technical term for application programming interface, used in context of cgroup."
+        },
+        {
+          "term": "unified control system",
+          "tier": 2,
+          "reasoning": "Architectural concept describing cgroup v2's design approach."
+        },
+        {
+          "term": "resource management",
+          "tier": 2,
+          "reasoning": "Core domain concept for controlling and allocating system resources."
+        },
+        {
+          "term": "hierarchy",
+          "tier": 2,
+          "reasoning": "Technical term describing the organizational structure of cgroups."
+        },
+        {
+          "term": "sub-tree delegation",
+          "tier": 2,
+          "reasoning": "Specific cgroup v2 feature for delegating control to containers."
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "reasoning": "Core Kubernetes/infrastructure concept that cgroups help manage."
+        },
+        {
+          "term": "Pressure Stall Information",
+          "tier": 1,
+          "reasoning": "Named Linux kernel feature (PSI) that cgroup v2 enables."
+        },
+        {
+          "term": "resource allocation",
+          "tier": 2,
+          "reasoning": "Technical process of distributing system resources."
+        },
+        {
+          "term": "isolation",
+          "tier": 2,
+          "reasoning": "Key container/cgroup concept for separating resource usage."
+        },
+        {
+          "term": "memory allocations",
+          "tier": 2,
+          "reasoning": "Technical concept for how memory is assigned to processes."
+        },
+        {
+          "term": "network memory",
+          "tier": 2,
+          "reasoning": "Specific type of memory allocation tracked by cgroup v2."
+        },
+        {
+          "term": "kernel memory",
+          "tier": 2,
+          "reasoning": "Specific type of memory allocation tracked by cgroup v2."
+        },
+        {
+          "term": "page cache write backs",
+          "tier": 2,
+          "reasoning": "Specific Linux memory management operation that cgroup v2 accounts for."
+        },
+        {
+          "term": "page cache",
+          "tier": 2,
+          "reasoning": "Linux kernel memory caching mechanism."
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "Core platform that uses cgroup v2 for resource management."
+        },
+        {
+          "term": "MemoryQoS",
+          "tier": 1,
+          "reasoning": "Named Kubernetes feature that relies on cgroup v2."
+        },
+        {
+          "term": "memory QoS",
+          "tier": 2,
+          "reasoning": "Quality of Service concept applied to memory resources."
+        },
+        {
+          "term": "QoS",
+          "tier": 2,
+          "reasoning": "Quality of Service abbreviation, key Kubernetes concept."
+        },
+        {
+          "term": "cgroup v2 primitives",
+          "tier": 2,
+          "reasoning": "Low-level building blocks provided by cgroup v2."
+        },
+        {
+          "term": "stable",
+          "tier": 3,
+          "reasoning": "Feature lifecycle state indicating production readiness in Kubernetes."
+        },
+        {
+          "term": "unified accounting",
+          "tier": 2,
+          "reasoning": "Technical concept for consolidated resource tracking in cgroup v2."
+        },
+        {
+          "term": "v1.25",
+          "tier": 3,
+          "reasoning": "Kubernetes version reference for feature state."
+        }
+      ],
+      "opus_count": 27
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Cloud Controller Manager",
+          "tier": 1,
+          "reasoning": "Core Kubernetes component that integrates cloud provider functionality, explicitly the main subject of this documentation."
+        },
+        {
+          "term": "cloud-controller-manager",
+          "tier": 1,
+          "reasoning": "The specific component name as it appears in Kubernetes, referenced multiple times in the chunk."
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The container orchestration platform that is the primary domain of this documentation."
+        },
+        {
+          "term": "cloud infrastructure",
+          "tier": 2,
+          "reasoning": "Domain concept referring to the underlying cloud computing resources and services."
+        },
+        {
+          "term": "public clouds",
+          "tier": 2,
+          "reasoning": "Cloud deployment model concept - publicly available cloud infrastructure."
+        },
+        {
+          "term": "private clouds",
+          "tier": 2,
+          "reasoning": "Cloud deployment model concept - privately operated cloud infrastructure."
+        },
+        {
+          "term": "hybrid clouds",
+          "tier": 2,
+          "reasoning": "Cloud deployment model concept - combination of public and private cloud infrastructure."
+        },
+        {
+          "term": "API-driven infrastructure",
+          "tier": 2,
+          "reasoning": "Architectural concept describing infrastructure managed through programmatic APIs."
+        },
+        {
+          "term": "plugin mechanism",
+          "tier": 2,
+          "reasoning": "Software architecture pattern allowing extensibility through modular plugins."
+        },
+        {
+          "term": "cloud providers",
+          "tier": 2,
+          "reasoning": "Domain concept referring to organizations providing cloud computing services that integrate with Kubernetes."
+        },
+        {
+          "term": "platforms",
+          "tier": 3,
+          "reasoning": "Technical term referring to cloud provider platforms that integrate with Kubernetes."
+        },
+        {
+          "term": "components",
+          "tier": 2,
+          "reasoning": "Technical term referring to the modular parts of Kubernetes architecture."
+        },
+        {
+          "term": "infrastructure",
+          "tier": 2,
+          "reasoning": "Core domain concept referring to the underlying computing resources."
+        },
+        {
+          "term": "beta",
+          "tier": 2,
+          "reasoning": "Feature lifecycle stage indicating the maturity level of the cloud-controller-manager feature."
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "reasoning": "Application Programming Interface - fundamental technical concept for Kubernetes operations."
+        },
+        {
+          "term": "integrate",
+          "tier": 3,
+          "reasoning": "Technical process term describing how cloud providers connect their platforms with Kubernetes."
+        }
+      ],
+      "opus_count": 16
+    },
+    {
+      "chunk_id": "concepts_architecture_cloud-controller_chunk_1",
+      "opus_terms": [
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "Core platform name, the primary subject of the documentation."
+        },
+        {
+          "term": "cloud controller manager",
+          "tier": 1,
+          "reasoning": "Named Kubernetes component that integrates with cloud providers."
+        },
+        {
+          "term": "cloud-controller-manager",
+          "tier": 1,
+          "reasoning": "Hyphenated form of the component name as it appears in the text."
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "reasoning": "Core architectural concept referring to the management layer of Kubernetes."
+        },
+        {
+          "term": "Pods",
+          "tier": 1,
+          "reasoning": "Fundamental Kubernetes API object and workload unit."
+        },
+        {
+          "term": "controllers",
+          "tier": 2,
+          "reasoning": "Core Kubernetes concept - control loops that watch and reconcile state."
+        },
+        {
+          "term": "addon",
+          "tier": 2,
+          "reasoning": "Kubernetes-specific term for optional cluster features/extensions."
+        },
+        {
+          "term": "addons",
+          "tier": 2,
+          "reasoning": "Plural form appearing in glossary tooltip reference."
+        },
+        {
+          "term": "replicated set of processes",
+          "tier": 2,
+          "reasoning": "Describes the high-availability deployment pattern of the component."
+        },
+        {
+          "term": "processes",
+          "tier": 3,
+          "reasoning": "OS-level concept relevant to how Kubernetes components run."
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "reasoning": "Core virtualization concept fundamental to Kubernetes workloads."
+        },
+        {
+          "term": "controller",
+          "tier": 2,
+          "reasoning": "Singular form of the core Kubernetes reconciliation pattern concept."
+        }
+      ],
+      "opus_count": 12
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_0",
+      "opus_terms": [
+        {
+          "term": "API server",
+          "tier": 1,
+          "reasoning": "Core Kubernetes control plane component that exposes the Kubernetes API."
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "reasoning": "The specific name of the Kubernetes API server component, referenced via glossary tooltip."
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes concept referring to a set of nodes running containerized applications."
+        },
+        {
+          "term": "Nodes",
+          "tier": 2,
+          "reasoning": "Worker machines in Kubernetes that run containerized applications."
+        },
+        {
+          "term": "Control Plane",
+          "tier": 2,
+          "reasoning": "The container orchestration layer that exposes the API and manages the cluster."
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The container orchestration platform that is the primary subject of this documentation."
+        },
+        {
+          "term": "communication paths",
+          "tier": 2,
+          "reasoning": "Technical concept describing how components interact and exchange data."
+        },
+        {
+          "term": "network configuration",
+          "tier": 2,
+          "reasoning": "Technical concept related to how networking is set up and secured in the cluster."
+        },
+        {
+          "term": "untrusted network",
+          "tier": 2,
+          "reasoning": "Security concept describing a network environment that cannot be assumed safe."
+        },
+        {
+          "term": "cloud provider",
+          "tier": 2,
+          "reasoning": "Infrastructure concept referring to services like AWS, GCP, Azure that host Kubernetes clusters."
+        },
+        {
+          "term": "public IPs",
+          "tier": 3,
+          "reasoning": "Networking term for publicly routable IP addresses, relevant to cluster security."
+        },
+        {
+          "term": "installation",
+          "tier": 3,
+          "reasoning": "Technical process of setting up and deploying Kubernetes."
+        },
+        {
+          "term": "harden",
+          "tier": 3,
+          "reasoning": "Security term meaning to strengthen defenses against attacks."
+        },
+        {
+          "term": "master-node-communication",
+          "tier": 2,
+          "reasoning": "Legacy alias term describing communication between control plane and worker nodes."
+        }
+      ],
+      "opus_count": 14
+    },
+    {
+      "chunk_id": "concepts_architecture_control-plane-node-communication_chunk_1",
+      "opus_terms": [
+        {
+          "term": "Node",
+          "tier": 1,
+          "reasoning": "Core Kubernetes resource representing a worker machine in the cluster"
+        },
+        {
+          "term": "Control Plane",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes architectural concept referring to the management components"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The primary container orchestration platform being documented"
+        },
+        {
+          "term": "hub-and-spoke",
+          "tier": 2,
+          "reasoning": "Architectural pattern describing how API communication is structured"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "reasoning": "Application Programming Interface, fundamental technical concept for Kubernetes communication"
+        },
+        {
+          "term": "pods",
+          "tier": 1,
+          "reasoning": "Core Kubernetes resource, the smallest deployable unit"
+        },
+        {
+          "term": "API server",
+          "tier": 1,
+          "reasoning": "Core control plane component that exposes the Kubernetes API"
+        },
+        {
+          "term": "control plane components",
+          "tier": 2,
+          "reasoning": "Refers to the set of components managing the cluster state"
+        },
+        {
+          "term": "remote services",
+          "tier": 2,
+          "reasoning": "Technical concept describing network-accessible services"
+        },
+        {
+          "term": "HTTPS",
+          "tier": 3,
+          "reasoning": "Secure HTTP protocol used for API server communication"
+        },
+        {
+          "term": "port",
+          "tier": 3,
+          "reasoning": "Network port concept relevant to API server configuration"
+        },
+        {
+          "term": "authentication",
+          "tier": 2,
+          "reasoning": "Security concept for verifying identity of clients"
+        },
+        {
+          "term": "authorization",
+          "tier": 2,
+          "reasoning": "Security concept for controlling access permissions"
+        },
+        {
+          "term": "anonymous requests",
+          "tier": 2,
+          "reasoning": "Specific authentication concept for unauthenticated API access"
+        },
+        {
+          "term": "service account tokens",
+          "tier": 2,
+          "reasoning": "Kubernetes authentication mechanism using tokens for service accounts"
+        },
+        {
+          "term": "certificate",
+          "tier": 2,
+          "reasoning": "TLS/security concept for establishing trust"
+        },
+        {
+          "term": "public root certificate",
+          "tier": 2,
+          "reasoning": "Specific certificate type used for cluster trust chain"
+        },
+        {
+          "term": "client credentials",
+          "tier": 2,
+          "reasoning": "Security concept for authenticating clients to the API server"
+        },
+        {
+          "term": "kubelet",
+          "tier": 1,
+          "reasoning": "Core Kubernetes node agent component"
+        },
+        {
+          "term": "client certificate",
+          "tier": 2,
+          "reasoning": "Specific credential type for TLS client authentication"
+        },
+        {
+          "term": "kubelet TLS bootstrapping",
+          "tier": 2,
+          "reasoning": "Specific Kubernetes process for automated kubelet certificate provisioning"
+        },
+        {
+          "term": "service account",
+          "tier": 1,
+          "reasoning": "Kubernetes resource providing identity for pods"
+        },
+        {
+          "term": "bearer token",
+          "tier": 2,
+          "reasoning": "Authentication token type used for API access"
+        },
+        {
+          "term": "pod",
+          "tier": 1,
+          "reasoning": "Core Kubernetes resource appearing in singular form"
+        },
+        {
+          "term": "kubernetes service",
+          "tier": 1,
+          "reasoning": "Built-in Kubernetes Service resource in default namespace"
+        },
+        {
+          "term": "default namespace",
+          "tier": 2,
+          "reasoning": "Kubernetes namespace concept with specific default namespace reference"
+        },
+        {
+          "term": "namespace",
+          "tier": 1,
+          "reasoning": "Core Kubernetes resource for logical isolation"
+        },
+        {
+          "term": "virtual IP address",
+          "tier": 2,
+          "reasoning": "Networking concept used for service abstraction"
+        },
+        {
+          "term": "kube-proxy",
+          "tier": 1,
+          "reasoning": "Core Kubernetes network proxy component running on nodes"
+        },
+        {
+          "term": "HTTPS endpoint",
+          "tier": 2,
+          "reasoning": "Secure network endpoint concept for API server access"
+        },
+        {
+          "term": "secure port",
+          "tier": 2,
+          "reasoning": "Network concept for encrypted communication channel"
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes concept representing the entire system"
+        },
+        {
+          "term": "TLS bootstrapping",
+          "tier": 2,
+          "reasoning": "Security process for automated certificate provisioning"
+        },
+        {
+          "term": "443",
+          "tier": 3,
+          "reasoning": "Standard HTTPS port number referenced for API server"
+        },
+        {
+          "term": "nodes",
+          "tier": 1,
+          "reasoning": "Plural form of core Kubernetes worker machine resource"
+        },
+        {
+          "term": "public networks",
+          "tier": 3,
+          "reasoning": "Network concept relevant to security posture of cluster communication"
+        },
+        {
+          "term": "untrusted networks",
+          "tier": 3,
+          "reasoning": "Security concept describing network threat model"
+        }
+      ],
+      "opus_count": 37
+    },
+    {
+      "chunk_id": "concepts_architecture_controller_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Controllers",
+          "tier": 1,
+          "reasoning": "Core Kubernetes resource type that manages cluster state through control loops."
+        },
+        {
+          "term": "controller",
+          "tier": 1,
+          "reasoning": "Referenced via glossary_definition, a fundamental Kubernetes component that watches and reconciles state."
+        },
+        {
+          "term": "control loop",
+          "tier": 2,
+          "reasoning": "Core domain concept describing the fundamental pattern controllers use to regulate system state."
+        },
+        {
+          "term": "robotics",
+          "tier": 3,
+          "reasoning": "Technical domain referenced to explain the origin of control loop concepts."
+        },
+        {
+          "term": "automation",
+          "tier": 3,
+          "reasoning": "Technical domain concept that provides context for control loop patterns."
+        },
+        {
+          "term": "non-terminating loop",
+          "tier": 2,
+          "reasoning": "Technical programming concept describing the continuous nature of control loops."
+        },
+        {
+          "term": "state",
+          "tier": 2,
+          "reasoning": "Fundamental concept in Kubernetes describing the condition of a system or resource."
+        },
+        {
+          "term": "system",
+          "tier": 3,
+          "reasoning": "Technical term referring to the managed infrastructure or application environment."
+        },
+        {
+          "term": "thermostat",
+          "tier": 3,
+          "reasoning": "Contextual example used to illustrate the control loop concept in a tangible way."
+        },
+        {
+          "term": "desired state",
+          "tier": 2,
+          "reasoning": "Core Kubernetes concept representing the target configuration users specify for resources."
+        },
+        {
+          "term": "current state",
+          "tier": 2,
+          "reasoning": "Core Kubernetes concept representing the actual observed state of resources."
+        },
+        {
+          "term": "temperature",
+          "tier": 3,
+          "reasoning": "Used as an analogy for a measurable state variable in the control loop example."
+        }
+      ],
+      "opus_count": 12
+    },
+    {
+      "chunk_id": "concepts_architecture_controller_chunk_1",
+      "opus_terms": [
+        {
+          "term": "Controller",
+          "tier": 1,
+          "reasoning": "Core Kubernetes component pattern that manages resource state reconciliation."
+        },
+        {
+          "term": "Controller pattern",
+          "tier": 2,
+          "reasoning": "Architectural design pattern fundamental to Kubernetes' declarative model."
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The primary container orchestration platform being documented."
+        },
+        {
+          "term": "resource type",
+          "tier": 2,
+          "reasoning": "Technical concept referring to categories of API objects in Kubernetes."
+        },
+        {
+          "term": "objects",
+          "tier": 2,
+          "reasoning": "Kubernetes API objects representing persistent entities in the cluster."
+        },
+        {
+          "term": "spec",
+          "tier": 1,
+          "reasoning": "Standard field in Kubernetes resource definitions specifying desired state."
+        },
+        {
+          "term": "spec field",
+          "tier": 2,
+          "reasoning": "The specific configuration field that declares desired state in K8s objects."
+        },
+        {
+          "term": "desired state",
+          "tier": 2,
+          "reasoning": "Core Kubernetes concept representing the intended configuration of resources."
+        },
+        {
+          "term": "current state",
+          "tier": 2,
+          "reasoning": "Technical concept representing the actual observed state of resources."
+        },
+        {
+          "term": "resource",
+          "tier": 2,
+          "reasoning": "Kubernetes domain term for API objects managed by the system."
+        },
+        {
+          "term": "API server",
+          "tier": 1,
+          "reasoning": "Core Kubernetes control plane component (kube-apiserver) that exposes the API."
+        },
+        {
+          "term": "kube-apiserver",
+          "tier": 1,
+          "reasoning": "Specific Kubernetes component name referenced via glossary tooltip."
+        },
+        {
+          "term": "messages",
+          "tier": 3,
+          "reasoning": "Technical term describing communication sent to the API server."
+        },
+        {
+          "term": "side effects",
+          "tier": 3,
+          "reasoning": "Technical concept describing actions resulting from API server messages."
+        },
+        {
+          "term": "built-in controllers",
+          "tier": 2,
+          "reasoning": "Kubernetes-native controllers that ship with the platform."
+        },
+        {
+          "term": "namespace controller",
+          "tier": 1,
+          "reasoning": "Specific built-in Kubernetes controller managing namespace resources."
+        },
+        {
+          "term": "namespace",
+          "tier": 1,
+          "reasoning": "Core Kubernetes resource for logical cluster partitioning."
+        }
+      ],
+      "opus_count": 17
+    },
+    {
+      "chunk_id": "concepts_architecture_garbage-collection_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Garbage Collection",
+          "tier": 2,
+          "reasoning": "Core Kubernetes process for automatic cleanup of unused resources, the main topic of this documentation."
+        },
+        {
+          "term": "pods",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API object representing the smallest deployable unit."
+        },
+        {
+          "term": "Terminated pods",
+          "tier": 2,
+          "reasoning": "Specific pod state/lifecycle concept subject to garbage collection."
+        },
+        {
+          "term": "pod-lifecycle",
+          "tier": 2,
+          "reasoning": "Kubernetes concept describing the phases and states of pod existence."
+        },
+        {
+          "term": "pod-garbage-collection",
+          "tier": 2,
+          "reasoning": "Specific garbage collection process for cleaning up terminated pods."
+        },
+        {
+          "term": "Jobs",
+          "tier": 1,
+          "reasoning": "Kubernetes API object for running batch workloads to completion."
+        },
+        {
+          "term": "Completed Jobs",
+          "tier": 2,
+          "reasoning": "Specific job state subject to TTL-based garbage collection."
+        },
+        {
+          "term": "ttlafterfinished",
+          "tier": 2,
+          "reasoning": "Kubernetes controller/feature for cleaning up completed Jobs after a TTL."
+        },
+        {
+          "term": "owner references",
+          "tier": 2,
+          "reasoning": "Kubernetes metadata concept linking dependent objects to their owners for cascading deletion."
+        },
+        {
+          "term": "owners-dependents",
+          "tier": 2,
+          "reasoning": "Kubernetes concept describing parent-child relationships between objects."
+        },
+        {
+          "term": "containers",
+          "tier": 2,
+          "reasoning": "Core virtualization concept and runtime unit in Kubernetes."
+        },
+        {
+          "term": "container images",
+          "tier": 2,
+          "reasoning": "Packaged application artifacts used to create containers."
+        },
+        {
+          "term": "Unused containers",
+          "tier": 2,
+          "reasoning": "Containers no longer in use that are subject to garbage collection."
+        },
+        {
+          "term": "PersistentVolumes",
+          "tier": 1,
+          "reasoning": "Kubernetes API object representing cluster-level storage resources."
+        },
+        {
+          "term": "Dynamically provisioned PersistentVolumes",
+          "tier": 2,
+          "reasoning": "PersistentVolumes created automatically by storage provisioners."
+        },
+        {
+          "term": "StorageClass",
+          "tier": 1,
+          "reasoning": "Kubernetes API object defining storage provisioning parameters."
+        },
+        {
+          "term": "reclaim policy",
+          "tier": 2,
+          "reasoning": "StorageClass configuration determining what happens to PVs when released."
+        },
+        {
+          "term": "Delete",
+          "tier": 2,
+          "reasoning": "Specific reclaim policy value that triggers garbage collection of PVs."
+        },
+        {
+          "term": "CertificateSigningRequests",
+          "tier": 1,
+          "reasoning": "Kubernetes API object for requesting signed certificates."
+        },
+        {
+          "term": "CSRs",
+          "tier": 1,
+          "reasoning": "Abbreviation for CertificateSigningRequests, a Kubernetes API object."
+        },
+        {
+          "term": "Stale or expired CertificateSigningRequests",
+          "tier": 2,
+          "reasoning": "CSRs that are no longer valid and subject to garbage collection."
+        },
+        {
+          "term": "request-signing-process",
+          "tier": 2,
+          "reasoning": "Kubernetes certificate signing workflow referenced in documentation."
+        },
+        {
+          "term": "Nodes",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API object representing worker machines in the cluster."
+        },
+        {
+          "term": "cluster",
+          "tier": 2,
+          "reasoning": "Fundamental Kubernetes concept representing a set of nodes running containerized applications."
+        },
+        {
+          "term": "cloud controller manager",
+          "tier": 1,
+          "reasoning": "Kubernetes control plane component that integrates with cloud provider APIs."
+        },
+        {
+          "term": "cloud",
+          "tier": 3,
+          "reasoning": "Infrastructure context where cloud controller manager operates."
+        },
+        {
+          "term": "On-premises",
+          "tier": 3,
+          "reasoning": "Deployment context alternative to cloud environments."
+        },
+        {
+          "term": "addon",
+          "tier": 2,
+          "reasoning": "Kubernetes extension component that adds functionality to the cluster."
+        },
+        {
+          "term": "Node Lease objects",
+          "tier": 1,
+          "reasoning": "Kubernetes API objects used for node heartbeat mechanism."
+        },
+        {
+          "term": "heartbeats",
+          "tier": 2,
+          "reasoning": "Node health signaling mechanism in Kubernetes architecture."
+        },
+        {
+          "term": "resources",
+          "tier": 2,
+          "reasoning": "General term for Kubernetes API objects and cluster components subject to management."
+        },
+        {
+          "term": "controllers",
+          "tier": 2,
+          "reasoning": "Kubernetes control loop components that manage resource state."
+        },
+        {
+          "term": "workloads",
+          "tier": 2,
+          "reasoning": "Kubernetes concept category for applications running on the cluster."
+        },
+        {
+          "term": "storage",
+          "tier": 2,
+          "reasoning": "Kubernetes subsystem for persistent data management."
+        },
+        {
+          "term": "persistent-volumes",
+          "tier": 1,
+          "reasoning": "URL reference to PersistentVolumes documentation section."
+        },
+        {
+          "term": "access-authn-authz",
+          "tier": 2,
+          "reasoning": "Kubernetes access control, authentication, and authorization subsystem."
+        },
+        {
+          "term": "architecture",
+          "tier": 2,
+          "reasoning": "Kubernetes system design and component organization concept."
+        }
+      ],
+      "opus_count": 37
+    },
+    {
+      "chunk_id": "concepts_architecture_garbage-collection_chunk_1",
+      "opus_terms": [
+        {
+          "term": "Owners",
+          "tier": 2,
+          "reasoning": "Core Kubernetes concept describing objects that have dependent resources linked to them"
+        },
+        {
+          "term": "dependents",
+          "tier": 2,
+          "reasoning": "Core Kubernetes concept describing objects that are linked to and depend on owner objects"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The primary container orchestration platform being documented"
+        },
+        {
+          "term": "owner references",
+          "tier": 2,
+          "reasoning": "Specific Kubernetes mechanism for linking dependent objects to their owners"
+        },
+        {
+          "term": "control plane",
+          "tier": 2,
+          "reasoning": "Core Kubernetes architectural component that manages cluster state and operations"
+        },
+        {
+          "term": "API clients",
+          "tier": 2,
+          "reasoning": "Technical term for clients that interact with the Kubernetes API"
+        },
+        {
+          "term": "resources",
+          "tier": 2,
+          "reasoning": "Kubernetes domain term for API objects and cluster entities"
+        },
+        {
+          "term": "Ownership",
+          "tier": 2,
+          "reasoning": "Kubernetes concept describing the relationship between owner and dependent objects"
+        },
+        {
+          "term": "labels",
+          "tier": 2,
+          "reasoning": "Kubernetes mechanism for attaching identifying metadata to objects"
+        },
+        {
+          "term": "selectors",
+          "tier": 2,
+          "reasoning": "Kubernetes mechanism for querying objects based on labels"
+        },
+        {
+          "term": "labels and selectors",
+          "tier": 2,
+          "reasoning": "Combined Kubernetes mechanism for object identification and selection"
+        },
+        {
+          "term": "Service",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API resource for exposing applications"
+        },
+        {
+          "term": "EndpointSlice",
+          "tier": 1,
+          "reasoning": "Kubernetes API resource that represents a subset of endpoints for a Service"
+        },
+        {
+          "term": "objects",
+          "tier": 2,
+          "reasoning": "Kubernetes term for persistent entities in the cluster representing state"
+        },
+        {
+          "term": "Cross-namespace owner references",
+          "tier": 2,
+          "reasoning": "Specific Kubernetes concept about owner references spanning namespaces"
+        },
+        {
+          "term": "namespace",
+          "tier": 2,
+          "reasoning": "Kubernetes concept for virtual cluster partitioning and resource isolation"
+        },
+        {
+          "term": "Namespaced dependents",
+          "tier": 2,
+          "reasoning": "Kubernetes term for dependent objects that exist within a namespace"
+        },
+        {
+          "term": "cluster-scoped",
+          "tier": 2,
+          "reasoning": "Kubernetes term for resources that exist at the cluster level, not within a namespace"
+        },
+        {
+          "term": "namespaced owners",
+          "tier": 2,
+          "reasoning": "Kubernetes term for owner objects that exist within a namespace"
+        },
+        {
+          "term": "owner reference",
+          "tier": 2,
+          "reasoning": "Singular form of the mechanism linking dependents to owners"
+        },
+        {
+          "term": "deletion",
+          "tier": 2,
+          "reasoning": "Kubernetes operation for removing objects from the cluster"
+        },
+        {
+          "term": "Cluster-scoped dependents",
+          "tier": 2,
+          "reasoning": "Kubernetes term for dependent objects that exist at cluster level"
+        },
+        {
+          "term": "garbage collector",
+          "tier": 2,
+          "reasoning": "Kubernetes controller responsible for cleaning up orphaned dependent objects"
+        },
+        {
+          "term": "garbage collected",
+          "tier": 2,
+          "reasoning": "Process of automatic cleanup of orphaned Kubernetes objects"
+        },
+        {
+          "term": "ownerReference",
+          "tier": 1,
+          "reasoning": "Specific Kubernetes API field name for owner references in object metadata"
+        },
+        {
+          "term": "Event",
+          "tier": 1,
+          "reasoning": "Kubernetes API resource for reporting occurrences in the cluster"
+        },
+        {
+          "term": "OwnerRefInvalidNamespace",
+          "tier": 1,
+          "reasoning": "Specific Kubernetes event reason indicating invalid cross-namespace owner reference"
+        },
+        {
+          "term": "involvedObject",
+          "tier": 1,
+          "reasoning": "Kubernetes Event field referencing the object involved in the event"
+        },
+        {
+          "term": "kubectl",
+          "tier": 1,
+          "reasoning": "Official Kubernetes CLI tool for cluster management"
+        },
+        {
+          "term": "kubectl get events",
+          "tier": 1,
+          "reasoning": "Specific kubectl command for retrieving cluster events"
+        },
+        {
+          "term": "--field-selector",
+          "tier": 1,
+          "reasoning": "kubectl flag for filtering resources by field values"
+        },
+        {
+          "term": "v1.20+",
+          "tier": 2,
+          "reasoning": "Kubernetes version reference indicating feature availability"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "reasoning": "Application Programming Interface, fundamental to Kubernetes architecture"
+        },
+        {
+          "term": "kind",
+          "tier": 2,
+          "reasoning": "Kubernetes term for the type of an API resource"
+        }
+      ],
+      "opus_count": 34
+    },
+    {
+      "chunk_id": "concepts_architecture_leases_chunk_0",
+      "opus_terms": [
+        {
+          "term": "Leases",
+          "tier": 1,
+          "reasoning": "Core Kubernetes API resource type for coordination, appears as document title and main subject"
+        },
+        {
+          "term": "Lease",
+          "tier": 1,
+          "reasoning": "Kubernetes API object kind in the coordination.k8s.io API group"
+        },
+        {
+          "term": "coordination.k8s.io/v1",
+          "tier": 1,
+          "reasoning": "Specific Kubernetes API version for the Lease resource"
+        },
+        {
+          "term": "coordination.k8s.io",
+          "tier": 1,
+          "reasoning": "Kubernetes API Group that contains the Lease resource"
+        },
+        {
+          "term": "API Group",
+          "tier": 2,
+          "reasoning": "Kubernetes concept for organizing related API resources"
+        },
+        {
+          "term": "apiVersion",
+          "tier": 2,
+          "reasoning": "Kubernetes API metadata field specifying the API version of a resource"
+        },
+        {
+          "term": "kind",
+          "tier": 2,
+          "reasoning": "Kubernetes API metadata field specifying the type of resource"
+        },
+        {
+          "term": "Distributed systems",
+          "tier": 2,
+          "reasoning": "Architectural concept describing systems that Kubernetes manages and that require coordination"
+        },
+        {
+          "term": "leases",
+          "tier": 2,
+          "reasoning": "General distributed systems concept for resource locking and coordination"
+        },
+        {
+          "term": "shared resources",
+          "tier": 2,
+          "reasoning": "Technical concept referring to resources that need coordination in distributed systems"
+        },
+        {
+          "term": "lock",
+          "tier": 2,
+          "reasoning": "Distributed systems concept for exclusive access to shared resources"
+        },
+        {
+          "term": "node heartbeats",
+          "tier": 2,
+          "reasoning": "Kubernetes mechanism for nodes to report their health status using Leases"
+        },
+        {
+          "term": "leader election",
+          "tier": 2,
+          "reasoning": "Distributed systems pattern used by Kubernetes components for high availability"
+        },
+        {
+          "term": "component-level leader election",
+          "tier": 2,
+          "reasoning": "Kubernetes-specific use of leader election for system components"
+        },
+        {
+          "term": "node",
+          "tier": 2,
+          "reasoning": "Kubernetes worker machine that runs workloads, mentioned in context of heartbeats"
+        },
+        {
+          "term": "Kubernetes",
+          "tier": 1,
+          "reasoning": "The container orchestration platform that is the subject of this documentation"
+        },
+        {
+          "term": "cluster-resources",
+          "tier": 2,
+          "reasoning": "Category of Kubernetes resources that operate at cluster scope, referenced in API path"
+        },
+        {
+          "term": "system-critical capabilities",
+          "tier": 2,
+          "reasoning": "Technical term describing essential Kubernetes functionality enabled by Leases"
+        },
+        {
+          "term": "API",
+          "tier": 3,
+          "reasoning": "General technical term for programmatic interface, used in context of Kubernetes API"
+        },
+        {
+          "term": "members",
+          "tier": 3,
+          "reasoning": "Technical term in distributed systems context referring to participants in coordination"
+        },
+        {
+          "term": "coordinate",
+          "tier": 3,
+          "reasoning": "Technical verb describing the synchronization activity that leases enable"
+        }
+      ],
+      "opus_count": 21
+    }
+  ]
+}

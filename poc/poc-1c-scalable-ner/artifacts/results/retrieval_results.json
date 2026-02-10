@@ -1,0 +1,4469 @@
+{
+  "approach": "retrieval",
+  "n_docs": 100,
+  "seed": 42,
+  "documents": [
+    {
+      "doc_id": "Q42873050",
+      "extracted": [
+        "ZSL",
+        "camera2",
+        "API",
+        "android",
+        "LEVEL-3",
+        "ReprocessableCaptureSession",
+        "ReprocessableCatureSession",
+        "YUV",
+        "4608 x 3456",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader",
+        "Surface",
+        "JPEG",
+        "4608x3456",
+        "Preview Surface",
+        "YUV Format",
+        "RAW",
+        "RAW ImageReader Surface",
+        "YUV_420_888 Surface",
+        "CaptureRequest",
+        "RingQueue",
+        "MAX SIZE",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "YUV imageReader",
+        "YUV Byte[]"
+      ],
+      "gt_terms": [
+        "camera",
+        "camera2 API",
+        "android",
+        "tables",
+        "ReprocessableCaptureSession",
+        "table",
+        "ReprocessableCatureSession",
+        "YUV",
+        "CameraCharacteristics",
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "YUV_420_888",
+        "ImageReader Surface",
+        "JPEG",
+        "Surface",
+        "RAW",
+        "CaptureRequest",
+        "images",
+        "RingQueue",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAX Size",
+        "MAXIMUM",
+        "Camera API 2",
+        "ReprocessableCaptureRequest",
+        "CTS",
+        "Google",
+        "Session",
+        "imageReader",
+        "Byte[]"
+      ],
+      "tp": 27,
+      "fp": 4,
+      "fn": 6,
+      "fp_terms": [
+        "ZSL",
+        "LEVEL-3",
+        "4608 x 3456",
+        "4608x3456"
+      ],
+      "fn_terms": [
+        "tables",
+        "table",
+        "MAX SIZE(4608x3456)",
+        "bytearrays",
+        "image",
+        "MAXIMUM"
+      ],
+      "precision": 0.8709677419354839,
+      "recall": 0.8,
+      "elapsed": 3.37
+    },
+    {
+      "doc_id": "Q10709772",
+      "extracted": [
+        "jpg",
+        "FMIS 4",
+        "AS3",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "button",
+        "microphone",
+        "NetStream.send()",
+        "client"
+      ],
+      "gt_terms": [
+        "button",
+        "jpg",
+        "image",
+        "clients",
+        "microphone",
+        "FMIS",
+        "AS3",
+        "Client",
+        "NetConnection",
+        "NetStream",
+        "FMS",
+        "NetStream.send()",
+        "toggleAwayImageDisplay"
+      ],
+      "tp": 10,
+      "fp": 0,
+      "fn": 2,
+      "fp_terms": [],
+      "fn_terms": [
+        "image",
+        "toggleAwayImageDisplay"
+      ],
+      "precision": 1.0,
+      "recall": 0.8461538461538461,
+      "elapsed": 2.41
+    },
+    {
+      "doc_id": "Q14831694",
+      "extracted": [
+        "Trackbar",
+        "Winforms",
+        "slider",
+        "left/right arrow keys",
+        "up/down arrow keys",
+        "PageUp",
+        "PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "scrollbar",
+        "thumb",
+        "WM_HSCROLL",
+        "WM_VSCROLL"
+      ],
+      "gt_terms": [
+        "Trackbar",
+        "Winforms",
+        "left/right arrow",
+        "Left arrow",
+        "slider",
+        "right arrow",
+        "up/down arrow",
+        "PageUp/PageDown",
+        "arrow up",
+        "page up",
+        "Arrow down",
+        "page down",
+        "up/down keys",
+        "arrow left",
+        "arrow right",
+        "C#",
+        "Windows",
+        "UAC",
+        "WPF",
+        "PgUp",
+        "Internet Explorer",
+        "trackbar control",
+        "scrollbar control",
+        "WM_HSCROLL",
+        "WM_VSCROLL",
+        "keyboard",
+        "scrollbars",
+        "Left",
+        "Up",
+        "Right",
+        "Down"
+      ],
+      "tp": 22,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "thumb"
+      ],
+      "fn_terms": [
+        "keyboard"
+      ],
+      "precision": 0.9565217391304348,
+      "recall": 0.967741935483871,
+      "elapsed": 3.04
+    },
+    {
+      "doc_id": "Q39288595",
+      "extracted": [
+        "c++11",
+        "random library",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen",
+        "\"/dev/urandom\"",
+        "windows",
+        "microsoft crypto API",
+        "boost",
+        "mt19937",
+        "/dev/random",
+        "unix",
+        "/dev/urandom/",
+        "MSVC crypto API",
+        "visual studio",
+        "mingw",
+        "time(NULL)",
+        "CPU",
+        "Pseudo-randomic algorithm"
+      ],
+      "gt_terms": [
+        "c++11",
+        "random",
+        "random engine",
+        "std::mt19937",
+        "std::default_random_engine",
+        "std::random_device",
+        "libc++",
+        "std::fopen(\"/dev/urandom\")",
+        "windows",
+        "microsoft crypto API",
+        "crypto",
+        "mt19937",
+        "exception",
+        "/dev/random",
+        "unix",
+        "/dev/urandom/",
+        "visual studio",
+        "mingw",
+        "phone",
+        "time(NULL)",
+        "Pseudo-randomic",
+        "CPU"
+      ],
+      "tp": 19,
+      "fp": 2,
+      "fn": 2,
+      "fp_terms": [
+        "std::fopen",
+        "boost"
+      ],
+      "fn_terms": [
+        "exception",
+        "phone"
+      ],
+      "precision": 0.9047619047619048,
+      "recall": 0.9090909090909091,
+      "elapsed": 3.76
+    },
+    {
+      "doc_id": "Q45734089",
+      "extracted": [
+        "WSDL",
+        "Weblogic 12C",
+        "SOAP",
+        "Apache Cammel",
+        "2.18.3",
+        "Java DSL",
+        "RouteBuilder",
+        "pom.xml",
+        "wsdl2java"
+      ],
+      "gt_terms": [
+        "WSDL",
+        "src \\main\\resources\\wsdl\\",
+        "Weblogic 12C server",
+        "Apache",
+        "Cammel",
+        "2.18.3",
+        "Java",
+        "configuration",
+        "RouteBuilder",
+        "exception",
+        "pom.xml",
+        "wsdl2java",
+        "IDE"
+      ],
+      "tp": 8,
+      "fp": 1,
+      "fn": 4,
+      "fp_terms": [
+        "SOAP"
+      ],
+      "fn_terms": [
+        "src \\main\\resources\\wsdl\\",
+        "configuration",
+        "exception",
+        "IDE"
+      ],
+      "precision": 0.8888888888888888,
+      "recall": 0.6923076923076923,
+      "elapsed": 2.65
+    },
+    {
+      "doc_id": "Q3639039",
+      "extracted": [
+        "Silverlight 4",
+        "Prism 2.2",
+        "modules",
+        "module catalog",
+        "xaml",
+        "ModuleManager",
+        "prism codeplex",
+        "http://compositewpf.codeplex.com/Thread/View.aspx?ThreadId=47957",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "IFileDownloader",
+        "Prism event"
+      ],
+      "gt_terms": [
+        "Silverlight",
+        "Prism",
+        "2.2",
+        "ondemand",
+        "xaml",
+        "ModuleManager",
+        "codeplex",
+        "FileDownloader",
+        "FileDownloaderWithProgress",
+        "WebClient",
+        "DownloadProgressChanged",
+        "private",
+        "IFileDownloader"
+      ],
+      "tp": 12,
+      "fp": 2,
+      "fn": 2,
+      "fp_terms": [
+        "module catalog",
+        "http://compositewpf.codeplex.com/Thread/View.aspx?ThreadId=47957"
+      ],
+      "fn_terms": [
+        "ondemand",
+        "private"
+      ],
+      "precision": 0.8571428571428571,
+      "recall": 0.8461538461538461,
+      "elapsed": 2.76
+    },
+    {
+      "doc_id": "Q10809866",
+      "extracted": [
+        "homebrew",
+        "curl",
+        "rvm",
+        "rails",
+        "1.9.3",
+        "lion",
+        "1.7.4",
+        "Xcode",
+        "4.3.2",
+        "developer command line tools",
+        "libksba",
+        "Home Brew",
+        "brew",
+        "MacPorts",
+        "time machined",
+        "SnowLeopard",
+        "OSX",
+        "10.6.8",
+        "/System/Library/Frameworks/Ruby.framework",
+        "ruby",
+        "/usr/bin",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "erb",
+        "gem",
+        "irb",
+        "rdoc",
+        "ri",
+        "testrb",
+        "/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+        "/usr/bin/ruby",
+        "ostruct",
+        "ruby standard lib"
+      ],
+      "gt_terms": [
+        "homebrew",
+        "curl",
+        "rvm",
+        "rails",
+        "1.9.3",
+        "lion",
+        "1.7.4",
+        "Xcode",
+        "4.3.2",
+        "developer command line tools",
+        "libksba",
+        "Home Brew",
+        "brew",
+        "MacPorts",
+        "ruby",
+        "SnowLeopard - OSX",
+        "10.6.8",
+        "/System/Library/Frameworks/Ruby.framework",
+        "/usr/bin",
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+        "symlinks",
+        "erb",
+        "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+        "/usr/bin/ruby",
+        "ostruct"
+      ],
+      "tp": 26,
+      "fp": 6,
+      "fn": 1,
+      "fp_terms": [
+        "time machined",
+        "gem",
+        "irb",
+        "rdoc",
+        "ri",
+        "testrb"
+      ],
+      "fn_terms": [
+        "symlinks"
+      ],
+      "precision": 0.8125,
+      "recall": 0.96,
+      "elapsed": 4.6
+    },
+    {
+      "doc_id": "Q19471961",
+      "extracted": [
+        "IPython",
+        "Sympy",
+        "latex",
+        "unicode",
+        "startup script",
+        "qtconsole",
+        "notebook",
+        "kernel",
+        "sympy 0.7.3",
+        "ipython3 1.1",
+        "matplotlib 1.3.1",
+        "numpy 1.7.1",
+        "scipy 0.12.0",
+        "64-bit",
+        "Ubuntu 13.10",
+        "python3",
+        "PYTHONSTARTUP",
+        "ipython3 1.1.0",
+        "00-startup.py",
+        "ipython_config.py"
+      ],
+      "gt_terms": [
+        "IPython",
+        "Sympy",
+        "latex/unicode",
+        "qtconsole/notebook",
+        "kernel",
+        "0.7.3",
+        "ipython3",
+        "1.1",
+        "matplotlib",
+        "1.3.1",
+        "numpy",
+        "1.7.1",
+        "scipy",
+        "0.12.0",
+        "Ubuntu",
+        "13.10",
+        "python3 terminal",
+        "PYTHONSTARTUP",
+        "1.1.0",
+        "global",
+        "00-startup.py",
+        "ipython_config.py"
+      ],
+      "tp": 16,
+      "fp": 4,
+      "fn": 2,
+      "fp_terms": [
+        "latex",
+        "startup script",
+        "notebook",
+        "64-bit"
+      ],
+      "fn_terms": [
+        "python3 terminal",
+        "global"
+      ],
+      "precision": 0.8,
+      "recall": 0.9090909090909091,
+      "elapsed": 3.67
+    },
+    {
+      "doc_id": "Q39079773",
+      "extracted": [
+        "flexbox",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "floating",
+        "flexbox layout model",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "width",
+        "height",
+        "flex container",
+        "flex-basis",
+        "flex-grow",
+        "cascade"
+      ],
+      "gt_terms": [
+        "calculator",
+        "flexbox",
+        "height",
+        "width",
+        "flex-direction",
+        "column",
+        "codepen.io",
+        "keys",
+        "flex containers",
+        "Codepen",
+        "CSS",
+        "padding",
+        "borders",
+        "flex container",
+        "key",
+        "row",
+        "long",
+        "container",
+        ".long",
+        "flex-basis",
+        "flex-grow"
+      ],
+      "tp": 14,
+      "fp": 2,
+      "fn": 6,
+      "fp_terms": [
+        "floating",
+        "cascade"
+      ],
+      "fn_terms": [
+        "calculator",
+        "keys",
+        "key",
+        "row",
+        "long",
+        ".long"
+      ],
+      "precision": 0.875,
+      "recall": 0.7142857142857143,
+      "elapsed": 2.74
+    },
+    {
+      "doc_id": "Q27926052",
+      "extracted": [
+        "IQKeyboardManager",
+        "keyboard",
+        "UItextField",
+        "UIDatePicker",
+        "number pad",
+        "decimal pad",
+        "ASCII capable",
+        ".h",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "Interface Builder",
+        ".xib",
+        "Identity Inspector",
+        "Mohd Iftekhar Qurashi",
+        ".m",
+        "setCustomDoneTarget:action",
+        "doneAction",
+        "TextFieldViewController.m"
+      ],
+      "gt_terms": [
+        "IQKeyboardManager",
+        "keyboard",
+        "UItextField",
+        "UIDatePicker",
+        "pad",
+        "button",
+        ".h",
+        "IQDropDownTextField.h",
+        "IQDropDownTextField",
+        "Interface Builder",
+        ".xib",
+        "Identity Inspector",
+        ".m",
+        "setCustomDoneTarget:action :",
+        "doneAction :",
+        "IQUIView+",
+        "IQKeyboardToolbar.h",
+        "TextFieldViewController.m"
+      ],
+      "tp": 16,
+      "fp": 2,
+      "fn": 3,
+      "fp_terms": [
+        "ASCII capable",
+        "Mohd Iftekhar Qurashi"
+      ],
+      "fn_terms": [
+        "button",
+        "IQUIView+",
+        "IQKeyboardToolbar.h"
+      ],
+      "precision": 0.8888888888888888,
+      "recall": 0.8333333333333334,
+      "elapsed": 2.9
+    },
+    {
+      "doc_id": "Q30516702",
+      "extracted": [
+        "Universal Windows App",
+        "Surface Pro 3",
+        "Visual Studio 2013",
+        "Update 4",
+        "DEP0700",
+        "serial well-known device name",
+        "device interface GUID",
+        "AppxManifest",
+        "ApxManifest",
+        "XML Editor",
+        "Visual Studio 2015",
+        "Manifest Designer",
+        "serialcommunication capability",
+        "Device xml"
+      ],
+      "gt_terms": [
+        "Universal Windows App",
+        "Surface Pro",
+        "Visual Studio",
+        "2013",
+        "Update 4)",
+        "F 5)",
+        "DEP0700",
+        "AppxManifest",
+        "ApxManifest",
+        "designer",
+        "manifest",
+        "XML Editor",
+        "2015",
+        "Manifest Designer",
+        "visual editor",
+        "xml",
+        "menu"
+      ],
+      "tp": 11,
+      "fp": 3,
+      "fn": 3,
+      "fp_terms": [
+        "serial well-known device name",
+        "device interface GUID",
+        "serialcommunication capability"
+      ],
+      "fn_terms": [
+        "F 5)",
+        "visual editor",
+        "menu"
+      ],
+      "precision": 0.7857142857142857,
+      "recall": 0.8235294117647058,
+      "elapsed": 2.49
+    },
+    {
+      "doc_id": "Q12028246",
+      "extracted": [
+        "C#",
+        "SQL server",
+        "Behgozin_DB",
+        "SQL server management studio",
+        "visual studio",
+        "Data menu",
+        "Connection String",
+        "server explorer menu",
+        "Visual Studio 2010",
+        "SQL Server 2008",
+        "properties window",
+        "server explorer",
+        "|DataDirectory|"
+      ],
+      "gt_terms": [
+        "C#",
+        "SQL server",
+        "SQL server management studio",
+        "visual studio",
+        "menu",
+        "String",
+        "tables",
+        "table",
+        "2010",
+        "2008",
+        "bin \\debug",
+        "window",
+        "server explorer",
+        "server",
+        "|DataDirectory|"
+      ],
+      "tp": 12,
+      "fp": 1,
+      "fn": 3,
+      "fp_terms": [
+        "Behgozin_DB"
+      ],
+      "fn_terms": [
+        "tables",
+        "table",
+        "bin \\debug"
+      ],
+      "precision": 0.9230769230769231,
+      "recall": 0.8,
+      "elapsed": 2.48
+    },
+    {
+      "doc_id": "Q9965761",
+      "extracted": [
+        "jQuery",
+        "jQ",
+        "ID",
+        "jsFiddle",
+        "each",
+        "append",
+        "li",
+        "JS",
+        "W3C",
+        "HTML4"
+      ],
+      "gt_terms": [
+        "list",
+        "jQuery",
+        "jQuery-generated",
+        "jQ",
+        "var",
+        "jsFiddle",
+        "each",
+        "string",
+        "li",
+        "strings",
+        "JS",
+        "W3C",
+        "HTML4"
+      ],
+      "tp": 8,
+      "fp": 2,
+      "fn": 5,
+      "fp_terms": [
+        "ID",
+        "append"
+      ],
+      "fn_terms": [
+        "list",
+        "jQuery-generated",
+        "var",
+        "string",
+        "strings"
+      ],
+      "precision": 0.8,
+      "recall": 0.6153846153846154,
+      "elapsed": 1.97
+    },
+    {
+      "doc_id": "Q38496528",
+      "extracted": [
+        "View",
+        "window View",
+        ".Show",
+        "User Control",
+        "MVVM",
+        "WPF",
+        "SalesView.xaml",
+        "Dashboard.xaml",
+        "App.xaml",
+        "Prism",
+        "user controls",
+        "main window",
+        "content"
+      ],
+      "gt_terms": [
+        "button",
+        ".Show",
+        "User Control",
+        "MVVM",
+        "WPF",
+        "SalesView.xaml",
+        "User Control(WPF)",
+        "Dashboard.xaml",
+        "App.xaml",
+        "shell",
+        "Prism",
+        "controller/view manager"
+      ],
+      "tp": 9,
+      "fp": 4,
+      "fn": 3,
+      "fp_terms": [
+        "View",
+        "window View",
+        "main window",
+        "content"
+      ],
+      "fn_terms": [
+        "button",
+        "shell",
+        "controller/view manager"
+      ],
+      "precision": 0.6923076923076923,
+      "recall": 0.75,
+      "elapsed": 2.61
+    },
+    {
+      "doc_id": "Q18656558",
+      "extracted": [
+        "AJAX",
+        "PHP",
+        "ajax_js2.php",
+        "span",
+        "DOM",
+        "eval()",
+        "test()",
+        "test",
+        "script",
+        "innerHTML"
+      ],
+      "gt_terms": [
+        "server",
+        "PHP",
+        "2.ajax_js2.php",
+        "span",
+        "client",
+        "<script>",
+        "DOM",
+        "eval()",
+        "innerHTML",
+        "test()",
+        "test",
+        "eval"
+      ],
+      "tp": 9,
+      "fp": 1,
+      "fn": 2,
+      "fp_terms": [
+        "AJAX"
+      ],
+      "fn_terms": [
+        "server",
+        "client"
+      ],
+      "precision": 0.9,
+      "recall": 0.8333333333333334,
+      "elapsed": 2.42
+    },
+    {
+      "doc_id": "Q44055225",
+      "extracted": [
+        "MVC",
+        "viewmodel",
+        "Staff",
+        "database",
+        "table",
+        "IEnumerable",
+        "Credential",
+        "partialview",
+        "popup",
+        "html",
+        "javascript",
+        "HTTPPOST"
+      ],
+      "gt_terms": [
+        "MVC",
+        "viewmodel",
+        "screen",
+        "table",
+        "IEnumerable",
+        "form",
+        "html",
+        "javascript",
+        "strings",
+        "page",
+        "HTTPPOST"
+      ],
+      "tp": 7,
+      "fp": 5,
+      "fn": 4,
+      "fp_terms": [
+        "Staff",
+        "database",
+        "Credential",
+        "partialview",
+        "popup"
+      ],
+      "fn_terms": [
+        "screen",
+        "form",
+        "strings",
+        "page"
+      ],
+      "precision": 0.5833333333333334,
+      "recall": 0.6363636363636364,
+      "elapsed": 3.09
+    },
+    {
+      "doc_id": "Q42692779",
+      "extracted": [
+        ".NET MVC",
+        "server internal error 500",
+        "post",
+        "post method",
+        "Controller action",
+        "internal server error 500",
+        "console",
+        "serialize",
+        "postData",
+        "request object",
+        "action",
+        "de-serialized",
+        "Model",
+        "Json object"
+      ],
+      "gt_terms": [
+        "string",
+        "controller",
+        ".NET",
+        "MVC",
+        "console",
+        "server internal error 500",
+        "post",
+        "internal server error 500",
+        "request",
+        "Json"
+      ],
+      "tp": 10,
+      "fp": 4,
+      "fn": 1,
+      "fp_terms": [
+        "serialize",
+        "action",
+        "de-serialized",
+        "Model"
+      ],
+      "fn_terms": [
+        "string"
+      ],
+      "precision": 0.7142857142857143,
+      "recall": 0.9,
+      "elapsed": 2.92
+    },
+    {
+      "doc_id": "Q46801920",
+      "extracted": [
+        "API",
+        "controller",
+        "action",
+        "rails",
+        "JSON",
+        "http",
+        "Jbuilder",
+        "ActiveModel Serializers",
+        "HTTP GET",
+        "Net::HTTP",
+        "Active Resource",
+        "REST API",
+        "database",
+        "Create-Read-Update-Destroy",
+        "Widget",
+        "Active Record",
+        "ActiveResource",
+        "ActiveRecord",
+        "Javascript",
+        "JQuery",
+        "Angular"
+      ],
+      "gt_terms": [
+        "API",
+        "rails",
+        "JSON",
+        "request",
+        "Jbuilder",
+        "ActiveModel Serializers",
+        "HTTP GET",
+        "Net::HTTP",
+        "Active Resource",
+        "REST API",
+        "Widget",
+        "Active Record",
+        "ActiveRecord",
+        "Javascript",
+        "JQuery",
+        "Angular",
+        "Rails API"
+      ],
+      "tp": 17,
+      "fp": 4,
+      "fn": 1,
+      "fp_terms": [
+        "controller",
+        "action",
+        "database",
+        "Create-Read-Update-Destroy"
+      ],
+      "fn_terms": [
+        "request"
+      ],
+      "precision": 0.8095238095238095,
+      "recall": 0.9411764705882353,
+      "elapsed": 2.71
+    },
+    {
+      "doc_id": "Q35574488",
+      "extracted": [
+        "CSScript",
+        "CS-Script",
+        ".net",
+        ".pdb",
+        "cscs.exe",
+        ".exe",
+        ".dll",
+        "Test.cs",
+        "Test.exe",
+        "Test.pdb",
+        "EvaluatorConfig",
+        "DebugBuild",
+        "LoadCode"
+      ],
+      "gt_terms": [
+        "exceptions/crashes",
+        "CSScript compiler",
+        "CS-Script",
+        "command line",
+        ".net",
+        ".pdb",
+        "cscs.exe",
+        ".exe",
+        ".dll",
+        "exception",
+        "Test.cs",
+        "Test.exe",
+        "Test.pdb",
+        "DebugBuild",
+        "EvaluatorConfig",
+        "LoadCode"
+      ],
+      "tp": 13,
+      "fp": 0,
+      "fn": 3,
+      "fp_terms": [],
+      "fn_terms": [
+        "exceptions/crashes",
+        "command line",
+        "exception"
+      ],
+      "precision": 1.0,
+      "recall": 0.8125,
+      "elapsed": 2.6
+    },
+    {
+      "doc_id": "Q35087680",
+      "extracted": [
+        "C#",
+        "Windows Forms",
+        "Win7",
+        "ActiveX",
+        "ActiveX control",
+        "mouse events",
+        "Control",
+        "IMessageFilters",
+        "WndProc",
+        "IMessageFilter",
+        ".NET",
+        "EnableWindow",
+        "hwnd"
+      ],
+      "gt_terms": [
+        "C#",
+        "Windows Forms",
+        "Win7",
+        "ActiveX control",
+        "ActiveX",
+        "mouse",
+        "Control",
+        "Stack Overflow",
+        "IMessageFilters",
+        "winforms",
+        "WInForm",
+        "WndProc",
+        "IMessageFilter",
+        "/.NET",
+        "EnableWindow(hand,FALSE)",
+        "hwnd"
+      ],
+      "tp": 13,
+      "fp": 0,
+      "fn": 3,
+      "fp_terms": [],
+      "fn_terms": [
+        "Stack Overflow",
+        "winforms",
+        "WInForm"
+      ],
+      "precision": 1.0,
+      "recall": 0.8125,
+      "elapsed": 2.16
+    },
+    {
+      "doc_id": "Q21380268",
+      "extracted": [
+        "string",
+        "array",
+        "PHP",
+        "NodeJs",
+        "MySQL",
+        "Python",
+        "list",
+        "integers",
+        "to_array()",
+        "find",
+        "strlen",
+        "in_array",
+        "http://codepad.viper-7.com/INvSNo"
+      ],
+      "gt_terms": [
+        "string",
+        "array",
+        "PHP",
+        "NodeJs",
+        "MySQL",
+        "integers",
+        "Python",
+        "list",
+        "to_array()",
+        "find",
+        "strlen",
+        "order())",
+        "in_array"
+      ],
+      "tp": 12,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "http://codepad.viper-7.com/INvSNo"
+      ],
+      "fn_terms": [
+        "order())"
+      ],
+      "precision": 0.9230769230769231,
+      "recall": 0.9230769230769231,
+      "elapsed": 2.78
+    },
+    {
+      "doc_id": "Q29175",
+      "extracted": [
+        "Windows 2000 Pro",
+        "ASP.NET",
+        "IIS",
+        "VStudio.NET 2005",
+        "regedit",
+        "Google",
+        "Windows XP",
+        "RegEdt32.exe",
+        "Windows 2000"
+      ],
+      "gt_terms": [
+        "webserver",
+        "Windows",
+        "2000 Pro",
+        "ASP.NET",
+        "IIS",
+        "strings",
+        "VStudio.NET",
+        "2005",
+        "regedit",
+        "Google",
+        "XP",
+        "2000",
+        "RegEdt32.exe"
+      ],
+      "tp": 9,
+      "fp": 0,
+      "fn": 2,
+      "fp_terms": [],
+      "fn_terms": [
+        "webserver",
+        "strings"
+      ],
+      "precision": 1.0,
+      "recall": 0.8461538461538461,
+      "elapsed": 2.46
+    },
+    {
+      "doc_id": "Q22864488",
+      "extracted": [
+        "jre7/bin",
+        "Java",
+        "jdk1.7.0_51",
+        "console",
+        "storepass",
+        "keypass",
+        "android"
+      ],
+      "gt_terms": [
+        "keystore",
+        "bin",
+        "jre7/bin",
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+        "keyboard",
+        "enter",
+        "key store",
+        "console",
+        "command line",
+        "storepass",
+        "keypass",
+        "android"
+      ],
+      "tp": 5,
+      "fp": 2,
+      "fn": 7,
+      "fp_terms": [
+        "Java",
+        "jdk1.7.0_51"
+      ],
+      "fn_terms": [
+        "keystore",
+        "bin",
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+        "keyboard",
+        "enter",
+        "key store",
+        "command line"
+      ],
+      "precision": 0.7142857142857143,
+      "recall": 0.4166666666666667,
+      "elapsed": 2.43
+    },
+    {
+      "doc_id": "Q12206050",
+      "extracted": [
+        "Ms Access 2010",
+        "Word",
+        "run time 429 error",
+        "activex component",
+        "ADO 6.0",
+        "VBA",
+        "FollowHyperlink",
+        "CreateObject"
+      ],
+      "gt_terms": [
+        "Ms Access",
+        "2010",
+        "form",
+        "word",
+        "run time 429 error",
+        "ADO",
+        "6.0",
+        "VBA",
+        "FollowHyperlink",
+        "CreateObject"
+      ],
+      "tp": 7,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "activex component"
+      ],
+      "fn_terms": [
+        "form"
+      ],
+      "precision": 0.875,
+      "recall": 0.9,
+      "elapsed": 2.14
+    },
+    {
+      "doc_id": "Q38572866",
+      "extracted": [
+        "node",
+        "express",
+        "res.render",
+        "angular",
+        "$scope",
+        "JADE",
+        "javascript"
+      ],
+      "gt_terms": [
+        "node/express",
+        "res.render",
+        "page",
+        "req.user",
+        "$scope",
+        "angular",
+        "JADE",
+        "global",
+        "javascript"
+      ],
+      "tp": 6,
+      "fp": 1,
+      "fn": 3,
+      "fp_terms": [
+        "node"
+      ],
+      "fn_terms": [
+        "page",
+        "req.user",
+        "global"
+      ],
+      "precision": 0.8571428571428571,
+      "recall": 0.6666666666666666,
+      "elapsed": 2.34
+    },
+    {
+      "doc_id": "Q1523043",
+      "extracted": [
+        "jpg",
+        "C#",
+        "PowerShell",
+        "FilenameWithOutExtension",
+        "PowerShell 2.0",
+        "Basename",
+        "FileInfo",
+        "PowerShell 1.0",
+        "PowerShell Community Extensions"
+      ],
+      "gt_terms": [
+        "jpg",
+        "Picture00000001.jpg",
+        "C#",
+        "PowerShell",
+        "FilenameWithOutExtension",
+        "2.0",
+        "FileInfo",
+        "1.0",
+        "string"
+      ],
+      "tp": 8,
+      "fp": 1,
+      "fn": 2,
+      "fp_terms": [
+        "Basename"
+      ],
+      "fn_terms": [
+        "Picture00000001.jpg",
+        "string"
+      ],
+      "precision": 0.8888888888888888,
+      "recall": 0.7777777777777778,
+      "elapsed": 2.46
+    },
+    {
+      "doc_id": "Q7182845",
+      "extracted": [
+        "Cappuccino",
+        "Cocoa",
+        "SplitView",
+        "TableView",
+        "CPView",
+        "drawRect",
+        "CPControl",
+        "CPBox",
+        "setBackgroundColor",
+        "mouseDown",
+        "drag and drop",
+        "CPScrollView",
+        "scrollToPoint",
+        "content view"
+      ],
+      "gt_terms": [
+        "calendar",
+        "box",
+        "event views",
+        "scroll area",
+        "button",
+        "scroller",
+        "cell",
+        "cells",
+        "header rows",
+        "columns",
+        "Cappuccino",
+        "Cocoa",
+        "Cappuccino/Cocoa",
+        "SplitView",
+        "vertical divider",
+        "TableView",
+        "header column",
+        "view",
+        "background grid",
+        "table",
+        "CPView",
+        "background",
+        "drawRect",
+        "CPControl",
+        "borders",
+        "CPBox",
+        "setBackgroundColor :",
+        "text",
+        "mouseDown",
+        "events",
+        "CPScrollView",
+        "CPTableView",
+        "scrollToPoint :"
+      ],
+      "tp": 13,
+      "fp": 1,
+      "fn": 16,
+      "fp_terms": [
+        "drag and drop"
+      ],
+      "fn_terms": [
+        "calendar",
+        "box",
+        "event views",
+        "scroll area",
+        "button",
+        "scroller",
+        "cell",
+        "cells",
+        "header rows",
+        "columns",
+        "vertical divider",
+        "header column",
+        "background grid",
+        "borders",
+        "text",
+        "events"
+      ],
+      "precision": 0.9285714285714286,
+      "recall": 0.5151515151515151,
+      "elapsed": 2.25
+    },
+    {
+      "doc_id": "Q8360162",
+      "extracted": [
+        "Excel Interop",
+        "Visual studio 2010",
+        "c#",
+        "asp",
+        "XLSX",
+        "XLS",
+        "OpenXML SDK V 2.0",
+        "http://msdn.microsoft.com/en-us/library/bb448854%28office.14%29.aspx",
+        "MS Office",
+        "Excel",
+        "http://www.codeproject.com/KB/office/OpenXML.aspx",
+        "ClosedXML",
+        "EPPlus",
+        "Aspose.Cells",
+        "SpreadsheetGear",
+        "LibXL",
+        "Flexcel",
+        "Interop",
+        "ExcelDataReader",
+        "Excel Data Reader"
+      ],
+      "gt_terms": [
+        "excel",
+        "Excel Interop",
+        "Visual studio",
+        "2010",
+        "c#",
+        "asp",
+        "server",
+        "XLSX",
+        "XLS",
+        "Interop",
+        "MS",
+        "OpenXML SDK",
+        "V 2.0",
+        "MS Office",
+        "PDFs",
+        "ClosedXML",
+        "EPPlus",
+        "Aspose.Cells",
+        "SpreadsheetGear",
+        "LibXL",
+        "Flexcel",
+        "ExcelDataReader",
+        "XLS/XLSX",
+        "Excel Data Reader"
+      ],
+      "tp": 18,
+      "fp": 2,
+      "fn": 2,
+      "fp_terms": [
+        "http://msdn.microsoft.com/en-us/library/bb448854%28office.14%29.aspx",
+        "http://www.codeproject.com/KB/office/OpenXML.aspx"
+      ],
+      "fn_terms": [
+        "server",
+        "PDFs"
+      ],
+      "precision": 0.9,
+      "recall": 0.9166666666666666,
+      "elapsed": 2.95
+    },
+    {
+      "doc_id": "Q22361019",
+      "extracted": [
+        "UITableView",
+        "sections",
+        "UIButtons",
+        "iPhone",
+        "NSLogs",
+        "xcode",
+        "cellForRowAtIndexPath",
+        "UIButton",
+        "UITableViewCell",
+        "IB"
+      ],
+      "gt_terms": [
+        "UITableView",
+        "UIButtons",
+        "image",
+        "button",
+        "iPhone",
+        "rows",
+        "NSLogs",
+        "console",
+        "xcode",
+        "row",
+        "buttons",
+        "cellForRowAtIndexPath",
+        "UIButton",
+        "UITableViewCell",
+        "tableView:cellForRowAtIndexPath :",
+        "cells",
+        "setup",
+        "cell",
+        "images",
+        "IB"
+      ],
+      "tp": 9,
+      "fp": 1,
+      "fn": 8,
+      "fp_terms": [
+        "sections"
+      ],
+      "fn_terms": [
+        "image",
+        "rows",
+        "console",
+        "row",
+        "cells",
+        "setup",
+        "cell",
+        "images"
+      ],
+      "precision": 0.9,
+      "recall": 0.6,
+      "elapsed": 2.56
+    },
+    {
+      "doc_id": "Q2831693",
+      "extracted": [
+        "text box",
+        "input element",
+        "cursor",
+        "Keyboard event",
+        "keydown",
+        "keyup",
+        "keypress",
+        "keystroke",
+        "HTML",
+        "Javascript",
+        "jsfiddle",
+        "Chrome",
+        "jQuery",
+        "textarea",
+        "events",
+        "keys"
+      ],
+      "gt_terms": [
+        "text box",
+        "cursor",
+        "Keyboard",
+        "keydown/keyup/keypress",
+        "input box",
+        "ABCDEF|",
+        "HTML",
+        "Javascript",
+        "jsfiddle",
+        "cross-browser",
+        "Chrome",
+        "jQuery",
+        "textarea",
+        "left",
+        "up",
+        "right",
+        "down"
+      ],
+      "tp": 10,
+      "fp": 6,
+      "fn": 7,
+      "fp_terms": [
+        "input element",
+        "keyup",
+        "keypress",
+        "keystroke",
+        "events",
+        "keys"
+      ],
+      "fn_terms": [
+        "keydown/keyup/keypress",
+        "input box",
+        "ABCDEF|",
+        "cross-browser",
+        "left",
+        "up",
+        "right"
+      ],
+      "precision": 0.625,
+      "recall": 0.5882352941176471,
+      "elapsed": 2.28
+    },
+    {
+      "doc_id": "Q20321910",
+      "extracted": [
+        "Ghost Blogging Platform",
+        "image",
+        "p tag",
+        "max-width",
+        "container",
+        "img",
+        "width",
+        "media queries",
+        "blockquote",
+        "section",
+        "HTML",
+        "CSS",
+        "borders",
+        "Fiddle",
+        "div",
+        "ghost",
+        "WordPress",
+        "function",
+        "regular expression"
+      ],
+      "gt_terms": [
+        "Ghost Blogging Platform",
+        "image",
+        "max-width",
+        "img",
+        "width",
+        "browser",
+        "blockquote",
+        "HTML",
+        "CSS",
+        "borders",
+        "border",
+        "Fiddle",
+        "div",
+        "ghost",
+        "WordPress",
+        "images"
+      ],
+      "tp": 13,
+      "fp": 6,
+      "fn": 1,
+      "fp_terms": [
+        "p tag",
+        "container",
+        "media queries",
+        "section",
+        "function",
+        "regular expression"
+      ],
+      "fn_terms": [
+        "browser"
+      ],
+      "precision": 0.6842105263157895,
+      "recall": 0.9375,
+      "elapsed": 2.58
+    },
+    {
+      "doc_id": "Q81972",
+      "extracted": [
+        "Bencoding",
+        "BitTorrent",
+        "C#",
+        "BItem",
+        "BString",
+        "BInteger",
+        "BList",
+        "BDictionary",
+        "this[int]",
+        "this[string]",
+        "BCollection",
+        "torrent[\"info\"][\"files\"][0][\"length\"]",
+        "torrent[\"announce-list\"][0][0]",
+        "Generics",
+        "indexers",
+        "OOP"
+      ],
+      "gt_terms": [
+        "tree",
+        "BitTorrent",
+        "C#",
+        "abstract",
+        "BItem",
+        "string",
+        "BString",
+        "BInteger",
+        "BList",
+        "BDictionary",
+        "this[int]",
+        "this[string]",
+        "array-like",
+        "torrent",
+        "BItems",
+        "BCollection"
+      ],
+      "tp": 10,
+      "fp": 6,
+      "fn": 3,
+      "fp_terms": [
+        "Bencoding",
+        "torrent[\"info\"][\"files\"][0][\"length\"]",
+        "torrent[\"announce-list\"][0][0]",
+        "Generics",
+        "indexers",
+        "OOP"
+      ],
+      "fn_terms": [
+        "tree",
+        "abstract",
+        "array-like"
+      ],
+      "precision": 0.625,
+      "recall": 0.8125,
+      "elapsed": 2.65
+    },
+    {
+      "doc_id": "Q13968390",
+      "extracted": [
+        "ListView",
+        "ArrayList",
+        "checkbox",
+        "setChoiceMode",
+        "R.layout.listview_item_text.xml",
+        "listview_item_checkbox.xml",
+        "Checkable",
+        "android.R.layout.simple_list_item_multiple_choice",
+        "CheckableFrameLayout",
+        "List Item",
+        "BooleanSparseArray",
+        "getCheckedItemPositions()",
+        "grepcode",
+        "View",
+        "adapter"
+      ],
+      "gt_terms": [
+        "ListView",
+        "ArrayList",
+        "checkbox",
+        "setChoiceMode",
+        "R.layout.listview_item_text.xml",
+        "listview_item_checkbox.xml",
+        "widget",
+        "Checkable",
+        "android.R.layout.simple_list_item_multiple_choice",
+        "CheckableFrameLayout",
+        "List Item",
+        "BooleanSparseArray",
+        "getCheckedItemPositions())",
+        "grepcode",
+        "View"
+      ],
+      "tp": 14,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "adapter"
+      ],
+      "fn_terms": [
+        "widget"
+      ],
+      "precision": 0.9333333333333333,
+      "recall": 0.9333333333333333,
+      "elapsed": 2.71
+    },
+    {
+      "doc_id": "Q10435773",
+      "extracted": [
+        "TroubleShooting",
+        "Logs and Trace",
+        "Server",
+        "Change Log Details Level",
+        "WAS",
+        "Z/OS",
+        "mainframe",
+        "JVM",
+        "AIX",
+        "linux",
+        "Windows",
+        "Diagnostic Trace",
+        "log",
+        "Administrators",
+        "Users and Groups",
+        "Administrative User Roles",
+        "configuration",
+        "runtime",
+        "wsadmin",
+        "http://pic.dhe.ibm.com/infocenter/wasinfo/v6r1/index.jsp?topic=%2Fcom.ibm.websphere.express.doc%2Finfo%2Fexp%2Fae%2Ftxml_profiletrace.html"
+      ],
+      "gt_terms": [
+        "tab",
+        "Trace->Server",
+        "Log",
+        "WAS",
+        "Z/OS",
+        "logs",
+        "mainframe",
+        "JVM",
+        "AIX",
+        "linux",
+        "Windows",
+        "Server",
+        "tabs",
+        "string",
+        "wsadmin"
+      ],
+      "tp": 12,
+      "fp": 8,
+      "fn": 4,
+      "fp_terms": [
+        "TroubleShooting",
+        "Diagnostic Trace",
+        "Administrators",
+        "Users and Groups",
+        "Administrative User Roles",
+        "configuration",
+        "runtime",
+        "http://pic.dhe.ibm.com/infocenter/wasinfo/v6r1/index.jsp?topic=%2Fcom.ibm.websphere.express.doc%2Finfo%2Fexp%2Fae%2Ftxml_profiletrace.html"
+      ],
+      "fn_terms": [
+        "tab",
+        "Trace->Server",
+        "tabs",
+        "string"
+      ],
+      "precision": 0.6,
+      "recall": 0.7333333333333333,
+      "elapsed": 2.94
+    },
+    {
+      "doc_id": "Q37406714",
+      "extracted": [
+        "Spring Boot",
+        "1.4.0.M3",
+        "@Entity",
+        "username",
+        "Spring Data Repository",
+        "@Transactional",
+        "@Commit",
+        "DataIntegrityViolationException",
+        "JUnit",
+        "Spring",
+        "@WebAppConfiguration",
+        "@ResponseStatus",
+        "@ControllerAdvice",
+        "@NotTransactional",
+        "Spring 4",
+        "http://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/testing.html#integration-testing-annotations",
+        "M.Deinum",
+        "Stephane Nicoll"
+      ],
+      "gt_terms": [
+        "Spring Boot",
+        "1.4.0.M3",
+        "@Entity",
+        "Spring",
+        "exception",
+        "@Transactional",
+        "@Commit",
+        "DataIntegrityViolationException",
+        "JUnit",
+        "MVC",
+        "@WebAppConfiguration",
+        "@ResponseStatus",
+        "@ControllerAdvice",
+        "@NotTransactional",
+        "static"
+      ],
+      "tp": 14,
+      "fp": 4,
+      "fn": 3,
+      "fp_terms": [
+        "username",
+        "http://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/testing.html#integration-testing-annotations",
+        "M.Deinum",
+        "Stephane Nicoll"
+      ],
+      "fn_terms": [
+        "exception",
+        "MVC",
+        "static"
+      ],
+      "precision": 0.7777777777777778,
+      "recall": 0.8,
+      "elapsed": 3.01
+    },
+    {
+      "doc_id": "Q494550",
+      "extracted": [
+        "NHibernate",
+        "TransactionScope",
+        "txScope.Complete()",
+        "BeginTransaction()",
+        "RollbackTransaction()",
+        "Adapter",
+        "DB",
+        "SQL server",
+        "Distribtued Transaction",
+        "using",
+        "dispose",
+        "DTC",
+        "Transaction",
+        "deptAdapter",
+        "emptAdapter",
+        "Current",
+        "commit",
+        "rollback",
+        "kernel",
+        "distributed"
+      ],
+      "gt_terms": [
+        "NHibernate",
+        "TransactionScope",
+        "txScope.Complete()",
+        "BeginTransaction()",
+        "RollbackTransaction()",
+        "Adapter",
+        "Transaction Scope",
+        "SQL server",
+        "dispose",
+        "exception",
+        "Transaction",
+        "stack",
+        "Current",
+        "kernel"
+      ],
+      "tp": 14,
+      "fp": 6,
+      "fn": 2,
+      "fp_terms": [
+        "DB",
+        "using",
+        "DTC",
+        "commit",
+        "rollback",
+        "distributed"
+      ],
+      "fn_terms": [
+        "exception",
+        "stack"
+      ],
+      "precision": 0.7,
+      "recall": 0.8571428571428571,
+      "elapsed": 3.2
+    },
+    {
+      "doc_id": "Q4522886",
+      "extracted": [
+        "Drupal",
+        "blocks",
+        "nodes",
+        "template files",
+        "page-node-1.tpl",
+        "block-modulename-2.tpl",
+        "delta",
+        "admin/build/block",
+        "configure",
+        "admin/build/block/configure/views/news -block_2",
+        "Views",
+        "news-block_2"
+      ],
+      "gt_terms": [
+        "Drupal",
+        "blocks",
+        "nodes",
+        "page-node-1.tpl",
+        "block-modulename-2.tpl",
+        "delta",
+        "node",
+        "block",
+        "admin/build/block",
+        "cursor",
+        "list",
+        "admin/build/block/configure/views/news -block_2",
+        "Views",
+        "news-block_2"
+      ],
+      "tp": 10,
+      "fp": 2,
+      "fn": 2,
+      "fp_terms": [
+        "template files",
+        "configure"
+      ],
+      "fn_terms": [
+        "cursor",
+        "list"
+      ],
+      "precision": 0.8333333333333334,
+      "recall": 0.8571428571428571,
+      "elapsed": 2.8
+    },
+    {
+      "doc_id": "Q20557278",
+      "extracted": [
+        "console.log",
+        "jQuery",
+        "Dom selector",
+        "codepen",
+        "http://codepen.io/marc313/pen/uphiv",
+        "console",
+        "buttons",
+        ".on()",
+        "Markup",
+        ".eq()",
+        "index",
+        "for",
+        "eq(0)",
+        "alert()"
+      ],
+      "gt_terms": [
+        "console.log",
+        "buttons",
+        "jQuery Dom",
+        "selector",
+        "codepen",
+        "button",
+        "console",
+        "jQuery",
+        ".on()",
+        ".eq()",
+        "eq(0)",
+        "set",
+        "alert()"
+      ],
+      "tp": 10,
+      "fp": 4,
+      "fn": 1,
+      "fp_terms": [
+        "http://codepen.io/marc313/pen/uphiv",
+        "Markup",
+        "index",
+        "for"
+      ],
+      "fn_terms": [
+        "set"
+      ],
+      "precision": 0.7142857142857143,
+      "recall": 0.9230769230769231,
+      "elapsed": 3.2
+    },
+    {
+      "doc_id": "Q45291615",
+      "extracted": [
+        "modules array",
+        "config/modules.config.php",
+        "autoloader",
+        "composer",
+        "ZF3",
+        "Zend Component Installer",
+        "modules.config.php",
+        "Zend Modules",
+        "extra.zf.component",
+        "composer.json",
+        "Zend Form",
+        "Zend Skeleton Application"
+      ],
+      "gt_terms": [
+        "array",
+        "config/modules.config.php",
+        "autoloader",
+        "composer",
+        "ZF3",
+        "Zend Component Installer",
+        "Zend",
+        "modules.config.php",
+        "extra.zf.component",
+        "composer.json",
+        "Zend Form",
+        "Zend \\\\Form",
+        "Zend Skeleton Application"
+      ],
+      "tp": 12,
+      "fp": 0,
+      "fn": 0,
+      "fp_terms": [],
+      "fn_terms": [],
+      "precision": 1.0,
+      "recall": 1.0,
+      "elapsed": 2.84
+    },
+    {
+      "doc_id": "Q27716407",
+      "extracted": [
+        "Django Rest Framework",
+        "3.0",
+        "POST",
+        "Meta.exclude",
+        "Meta.fields",
+        "PrimaryKeyRelatedField"
+      ],
+      "gt_terms": [
+        "Django Rest Framework",
+        "3.0",
+        "serializers",
+        "create()",
+        "prices",
+        "items",
+        "Price serializer",
+        "item",
+        "serializer",
+        "price",
+        "PriceSerializer",
+        "PrimaryKeyRelatedField"
+      ],
+      "tp": 3,
+      "fp": 3,
+      "fn": 9,
+      "fp_terms": [
+        "POST",
+        "Meta.exclude",
+        "Meta.fields"
+      ],
+      "fn_terms": [
+        "serializers",
+        "create()",
+        "prices",
+        "items",
+        "Price serializer",
+        "item",
+        "serializer",
+        "price",
+        "PriceSerializer"
+      ],
+      "precision": 0.5,
+      "recall": 0.25,
+      "elapsed": 1.97
+    },
+    {
+      "doc_id": "Q42527503",
+      "extracted": [
+        "Macro Excel",
+        "Cognos 8",
+        "Cube",
+        "server",
+        "10",
+        "desktop",
+        "PowerCubes",
+        "d:\\Cognos\\PowerCubes\\Build",
+        "d:\\Cognos\\PowerCubes\\Live",
+        "windows",
+        "copy",
+        "task scheduler",
+        "mycube.mdc"
+      ],
+      "gt_terms": [
+        "Macro Excel",
+        "Cognos",
+        "Cube",
+        "server",
+        "NOTE-Cognos",
+        "10",
+        "desktop",
+        "d:\\Cognos\\PowerCubes\\Build",
+        "d:\\Cognos\\PowerCubes\\Live",
+        "windows",
+        "task scheduler",
+        "mycube.mdc"
+      ],
+      "tp": 11,
+      "fp": 2,
+      "fn": 1,
+      "fp_terms": [
+        "PowerCubes",
+        "copy"
+      ],
+      "fn_terms": [
+        "NOTE-Cognos"
+      ],
+      "precision": 0.8461538461538461,
+      "recall": 0.9166666666666666,
+      "elapsed": 2.64
+    },
+    {
+      "doc_id": "Q22879151",
+      "extracted": [
+        "Arduino",
+        "Processing",
+        "C++",
+        "Java",
+        "C pointers",
+        "avr-gcc",
+        "Atmel",
+        "AVR MCU",
+        "MCU",
+        "PDF",
+        "I/O",
+        "timers"
+      ],
+      "gt_terms": [
+        "Arduino",
+        "Processing",
+        "C++",
+        "Java",
+        "pointers",
+        "MCU",
+        "AVR MCU",
+        "PDF",
+        "Atmel",
+        "registers",
+        "avr-gcc toolchain",
+        "C-only"
+      ],
+      "tp": 9,
+      "fp": 3,
+      "fn": 3,
+      "fp_terms": [
+        "avr-gcc",
+        "I/O",
+        "timers"
+      ],
+      "fn_terms": [
+        "registers",
+        "avr-gcc toolchain",
+        "C-only"
+      ],
+      "precision": 0.75,
+      "recall": 0.75,
+      "elapsed": 2.48
+    },
+    {
+      "doc_id": "Q36914244",
+      "extracted": [
+        "checkbox",
+        "link_to",
+        "simple_form",
+        "boolean",
+        "RESTful",
+        "PATCH",
+        "enum",
+        "ajax",
+        "form"
+      ],
+      "gt_terms": [
+        ":complete",
+        "checkbox",
+        "link_to",
+        "boolean",
+        "form",
+        "RESTful",
+        "PATCH",
+        "enum",
+        "columns",
+        "button",
+        "ajax"
+      ],
+      "tp": 9,
+      "fp": 0,
+      "fn": 3,
+      "fp_terms": [],
+      "fn_terms": [
+        ":complete",
+        "columns",
+        "button"
+      ],
+      "precision": 1.0,
+      "recall": 0.7272727272727273,
+      "elapsed": 2.61
+    },
+    {
+      "doc_id": "Q41527933",
+      "extracted": [
+        "C++11",
+        "std::cbegin()",
+        "GCC",
+        "5.4.0",
+        "std::begin()",
+        "C++14",
+        "std::make_unique",
+        "C++ Standard Library Defect Report",
+        "2128"
+      ],
+      "gt_terms": [
+        "C++11",
+        "std::cbegin()",
+        "GCC",
+        "5.4.0",
+        "/usr/include/c ++ /5/bits/range_access.h",
+        "std::begin()",
+        "C++14",
+        "std::make_unique",
+        "C++",
+        "14",
+        "C++ Standard Library"
+      ],
+      "tp": 8,
+      "fp": 1,
+      "fn": 2,
+      "fp_terms": [
+        "2128"
+      ],
+      "fn_terms": [
+        "/usr/include/c ++ /5/bits/range_access.h",
+        "14"
+      ],
+      "precision": 0.8888888888888888,
+      "recall": 0.8181818181818182,
+      "elapsed": 2.07
+    },
+    {
+      "doc_id": "Q7219258",
+      "extracted": [
+        "MySQL",
+        "dropdown",
+        "js",
+        "search.php",
+        "POST"
+      ],
+      "gt_terms": [
+        "MySQL",
+        "tables",
+        "table",
+        "dropdown",
+        "menus",
+        "form",
+        "dropdown list",
+        "dropdown menu",
+        "js",
+        "search.php",
+        "getschools()"
+      ],
+      "tp": 4,
+      "fp": 1,
+      "fn": 5,
+      "fp_terms": [
+        "POST"
+      ],
+      "fn_terms": [
+        "tables",
+        "table",
+        "menus",
+        "form",
+        "getschools()"
+      ],
+      "precision": 0.8,
+      "recall": 0.5454545454545454,
+      "elapsed": 2.81
+    },
+    {
+      "doc_id": "Q38189474",
+      "extracted": [
+        "weka",
+        "java",
+        "windows 10",
+        ".jar",
+        "weka-src.jar",
+        "weka.jar",
+        "batch"
+      ],
+      "gt_terms": [
+        "weka",
+        "java",
+        "windows",
+        "10",
+        ".jar",
+        "C:/.. .",
+        "jar",
+        "weka-src.jar",
+        "script/batch",
+        "weka.jar"
+      ],
+      "tp": 6,
+      "fp": 1,
+      "fn": 2,
+      "fp_terms": [
+        "batch"
+      ],
+      "fn_terms": [
+        "C:/.. .",
+        "script/batch"
+      ],
+      "precision": 0.8571428571428571,
+      "recall": 0.8,
+      "elapsed": 2.23
+    },
+    {
+      "doc_id": "Q42091674",
+      "extracted": [
+        "Java",
+        "Eclipse Neon",
+        "JVM",
+        "heap space",
+        "DataInputStream",
+        "int",
+        "array",
+        "debugger",
+        "Scanner"
+      ],
+      "gt_terms": [
+        "Java",
+        "Eclipse",
+        "Neon",
+        "JVM",
+        "heap",
+        "DataInputStream",
+        "int",
+        "array",
+        "debugger",
+        "Scanner"
+      ],
+      "tp": 9,
+      "fp": 0,
+      "fn": 0,
+      "fp_terms": [],
+      "fn_terms": [],
+      "precision": 1.0,
+      "recall": 1.0,
+      "elapsed": 2.21
+    },
+    {
+      "doc_id": "Q19776462",
+      "extracted": [
+        "ring",
+        "global vars",
+        "compojure",
+        "map",
+        ":init",
+        "global var",
+        "var",
+        "ring middleware",
+        "request map",
+        "routes"
+      ],
+      "gt_terms": [
+        "ring",
+        "global",
+        "compojure",
+        "main-routes",
+        "map",
+        "main",
+        ":init",
+        "server",
+        "routes",
+        "route"
+      ],
+      "tp": 9,
+      "fp": 1,
+      "fn": 2,
+      "fp_terms": [
+        "var"
+      ],
+      "fn_terms": [
+        "main",
+        "server"
+      ],
+      "precision": 0.9,
+      "recall": 0.8,
+      "elapsed": 2.31
+    },
+    {
+      "doc_id": "Q14202215",
+      "extracted": [
+        "WPF",
+        "Dispatcher",
+        "BackGroundWorker",
+        "Entity Framework 5",
+        "ObservableCollection",
+        "InnerException",
+        "getfiltered residents",
+        "await",
+        "task",
+        "entity framework"
+      ],
+      "gt_terms": [
+        "WPF",
+        "Dispatcher",
+        "BackGroundWorker",
+        "Entity Framework",
+        "ObservableCollection",
+        "exception",
+        "repository",
+        "InnerException",
+        "getfiltered"
+      ],
+      "tp": 8,
+      "fp": 2,
+      "fn": 1,
+      "fp_terms": [
+        "await",
+        "task"
+      ],
+      "fn_terms": [
+        "repository"
+      ],
+      "precision": 0.8,
+      "recall": 0.8888888888888888,
+      "elapsed": 2.42
+    },
+    {
+      "doc_id": "Q20428669",
+      "extracted": [
+        "grails 2.3.x",
+        "async",
+        "onError",
+        "onComplete",
+        "Thread.sleep()",
+        "GPars",
+        "http://grails.org/doc/latest/guide/async.html",
+        "waitAll()",
+        "list.get()"
+      ],
+      "gt_terms": [
+        "grails",
+        "2.3.x",
+        "log",
+        "onError",
+        "onComplete",
+        "Thread.sleep()",
+        "GPars",
+        "waitAll()",
+        "list.get()"
+      ],
+      "tp": 7,
+      "fp": 2,
+      "fn": 1,
+      "fp_terms": [
+        "async",
+        "http://grails.org/doc/latest/guide/async.html"
+      ],
+      "fn_terms": [
+        "log"
+      ],
+      "precision": 0.7777777777777778,
+      "recall": 0.8888888888888888,
+      "elapsed": 2.34
+    },
+    {
+      "doc_id": "Q32765610",
+      "extracted": [
+        "Net::SMTPAuthenticationError",
+        "Heroku",
+        "rails",
+        "gmail",
+        "2-factor auth",
+        "smtp",
+        "config/development.rb",
+        "config/production.rb",
+        "PushWatir::StackoMailer.success_mail.deliver_now",
+        "google account",
+        "https://support.google.com/accounts/answer/6010255"
+      ],
+      "gt_terms": [
+        "Net::SMTPAuthenticationError",
+        "Heroku",
+        "rails",
+        "gmail",
+        "config/development.rb",
+        "config/production.rb",
+        "PushWatir::StackoMailer.success_mail.deliver_now !",
+        "google"
+      ],
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "fp_terms": [
+        "2-factor auth",
+        "smtp",
+        "https://support.google.com/accounts/answer/6010255"
+      ],
+      "fn_terms": [],
+      "precision": 0.7272727272727273,
+      "recall": 1.0,
+      "elapsed": 2.77
+    },
+    {
+      "doc_id": "Q12689702",
+      "extracted": [
+        "iPhone",
+        "MonoTouch",
+        "OS X",
+        "MonoMac",
+        "Github",
+        "Mac OS X AppStore",
+        "Objective C"
+      ],
+      "gt_terms": [
+        "iPhone",
+        "MonoTouch",
+        "OS",
+        "MonoMac",
+        "Github",
+        "Mac OS",
+        "AppStore",
+        "Objective C"
+      ],
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "fp_terms": [],
+      "fn_terms": [],
+      "precision": 1.0,
+      "recall": 1.0,
+      "elapsed": 1.98
+    },
+    {
+      "doc_id": "Q10294533",
+      "extracted": [
+        "iOS",
+        "iPad",
+        "Property list",
+        "XML",
+        "SQlite",
+        "iCloud",
+        "Dropbox",
+        "Database"
+      ],
+      "gt_terms": [
+        "iOS",
+        "iPad",
+        "Property list",
+        "XML",
+        "SQlite",
+        "server",
+        "iCloud",
+        "Dropbox"
+      ],
+      "tp": 7,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "Database"
+      ],
+      "fn_terms": [
+        "server"
+      ],
+      "precision": 0.875,
+      "recall": 0.875,
+      "elapsed": 2.04
+    },
+    {
+      "doc_id": "Q8312581",
+      "extracted": [
+        "XML",
+        "PHP",
+        "SimpleXML Object",
+        "SimpleXML",
+        "Document Type Definition",
+        "DTD",
+        "XML Schema",
+        "example.dtd",
+        "DOM"
+      ],
+      "gt_terms": [
+        "XML",
+        "PHP",
+        "SimpleXML",
+        "XML Schema",
+        "DTD",
+        "example.dtd",
+        "doctypes",
+        "DOM"
+      ],
+      "tp": 8,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "Document Type Definition"
+      ],
+      "fn_terms": [
+        "doctypes"
+      ],
+      "precision": 0.8888888888888888,
+      "recall": 0.875,
+      "elapsed": 2.43
+    },
+    {
+      "doc_id": "Q9705709",
+      "extracted": [
+        "blgz.co",
+        "firefox",
+        "mac",
+        "windows",
+        "div"
+      ],
+      "gt_terms": [
+        "blgz.co",
+        "firefox",
+        "mac",
+        "bar",
+        "windows",
+        "div",
+        "divs"
+      ],
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "fp_terms": [],
+      "fn_terms": [
+        "bar"
+      ],
+      "precision": 1.0,
+      "recall": 0.8571428571428571,
+      "elapsed": 2.14
+    },
+    {
+      "doc_id": "Q32084760",
+      "extracted": [
+        "1200x800",
+        "onPrepare",
+        "user-agent",
+        "iPhone",
+        "iPad",
+        "protractor",
+        "nodeJS",
+        "grunt",
+        "375x667",
+        "mytestconfig.conf.js"
+      ],
+      "gt_terms": [
+        "onPrepare",
+        "string",
+        "iPhone",
+        "iPad",
+        "protractor/nodeJS",
+        "grunt",
+        "mytestconfig.conf.js"
+      ],
+      "tp": 6,
+      "fp": 4,
+      "fn": 1,
+      "fp_terms": [
+        "1200x800",
+        "user-agent",
+        "nodeJS",
+        "375x667"
+      ],
+      "fn_terms": [
+        "string"
+      ],
+      "precision": 0.6,
+      "recall": 0.8571428571428571,
+      "elapsed": 2.41
+    },
+    {
+      "doc_id": "Q18946310",
+      "extracted": [
+        "UITableViewStyleGrouped",
+        "iOS",
+        "iOS 7",
+        "UITableView",
+        "cell",
+        "Apple",
+        "Settings",
+        "table view",
+        "group style"
+      ],
+      "gt_terms": [
+        "UITableViewStyleGrouped",
+        "iOS",
+        "UITableView",
+        "cell",
+        "Apple",
+        "Settings",
+        "table"
+      ],
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "fp_terms": [
+        "group style"
+      ],
+      "fn_terms": [],
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "elapsed": 1.77
+    },
+    {
+      "doc_id": "Q14649052",
+      "extracted": [
+        "joomla 2.5",
+        "Error::raiseNotice()",
+        "log",
+        "exceptions",
+        "index.php",
+        "http://php.net/manual/en/function.error-reporting.php",
+        "error.php",
+        "joomla"
+      ],
+      "gt_terms": [
+        "joomla",
+        "2.5",
+        "Error::raiseNotice()",
+        "log",
+        "exceptions",
+        "index.php",
+        "error.php"
+      ],
+      "tp": 7,
+      "fp": 1,
+      "fn": 0,
+      "fp_terms": [
+        "http://php.net/manual/en/function.error-reporting.php"
+      ],
+      "fn_terms": [],
+      "precision": 0.875,
+      "recall": 1.0,
+      "elapsed": 2.27
+    },
+    {
+      "doc_id": "Q5400925",
+      "extracted": [
+        "tableView",
+        "section",
+        "Simple_TableViewController",
+        "table",
+        "pointer",
+        "UITableViewDelegate",
+        "UITableViewDataSource",
+        ".h",
+        "Cocoa Touch"
+      ],
+      "gt_terms": [
+        "Simple_TableViewController",
+        "table",
+        "pointer",
+        "UITableViewDelegate",
+        ".h",
+        "Cocoa Touch"
+      ],
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "fp_terms": [
+        "section",
+        "UITableViewDataSource"
+      ],
+      "fn_terms": [],
+      "precision": 0.7777777777777778,
+      "recall": 1.0,
+      "elapsed": 2.08
+    },
+    {
+      "doc_id": "Q30621048",
+      "extracted": [
+        "app",
+        "bracket",
+        "arrow",
+        "layouts",
+        "textviews",
+        "drawables",
+        "lines",
+        "canvas",
+        "android",
+        "setContentView(int)",
+        "ViewGroup",
+        "addView(View)",
+        "removeView(View)"
+      ],
+      "gt_terms": [
+        "list",
+        "bracket",
+        "columns",
+        "arrow",
+        "layouts",
+        "textviews",
+        "drawables",
+        "column",
+        "border",
+        "layout",
+        "canvas",
+        "activity",
+        "android",
+        "setContentView(int)",
+        "view",
+        "ViewGroup",
+        "addView(View)",
+        "removeView(View)",
+        "text views"
+      ],
+      "tp": 11,
+      "fp": 2,
+      "fn": 6,
+      "fp_terms": [
+        "app",
+        "lines"
+      ],
+      "fn_terms": [
+        "list",
+        "columns",
+        "column",
+        "border",
+        "activity",
+        "view"
+      ],
+      "precision": 0.8461538461538461,
+      "recall": 0.6842105263157895,
+      "elapsed": 2.11
+    },
+    {
+      "doc_id": "Q20581527",
+      "extracted": [
+        "regex.syntax",
+        "Parse",
+        "fmt.Println(p)",
+        "string",
+        "regexp",
+        "syntax.Regexp",
+        "struct",
+        "Sub",
+        "slice",
+        "syntax package",
+        "Op",
+        "Rune"
+      ],
+      "gt_terms": [
+        "regex.syntax",
+        "regex",
+        "tree",
+        "Parse",
+        "fmt.Println(p)",
+        "string",
+        "regexp",
+        "pointer",
+        "syntax.Regexp",
+        "Sub",
+        "struct",
+        "pointers",
+        "structs",
+        "Op",
+        "Rune"
+      ],
+      "tp": 10,
+      "fp": 2,
+      "fn": 3,
+      "fp_terms": [
+        "slice",
+        "syntax package"
+      ],
+      "fn_terms": [
+        "tree",
+        "pointer",
+        "pointers"
+      ],
+      "precision": 0.8333333333333334,
+      "recall": 0.8,
+      "elapsed": 2.24
+    },
+    {
+      "doc_id": "Q24663347",
+      "extracted": [
+        "NodaTime",
+        "LocalDate",
+        "BCL",
+        "DateTime",
+        "DateTimeOffset",
+        "ASP.NET Web API 2",
+        "PeopleController.cs",
+        "Global.asax.cs",
+        "Microsoft",
+        "model binder",
+        "Json.net"
+      ],
+      "gt_terms": [
+        "NodaTime",
+        "LocalDate",
+        "BCL",
+        "DateTime/DateTimeOffset",
+        "DateTime",
+        "ASP.NET Web API",
+        "LocateDate",
+        "PeopleController.cs",
+        "Global.asax.cs",
+        "Microsoft",
+        "model binder",
+        "model binders",
+        "Noda Time",
+        "serialziation",
+        "Json.net"
+      ],
+      "tp": 11,
+      "fp": 0,
+      "fn": 2,
+      "fp_terms": [],
+      "fn_terms": [
+        "LocateDate",
+        "serialziation"
+      ],
+      "precision": 1.0,
+      "recall": 0.8666666666666667,
+      "elapsed": 2.58
+    },
+    {
+      "doc_id": "Q46568047",
+      "extracted": [
+        "dataframe",
+        "columns",
+        "rows",
+        "docnr",
+        "date",
+        "client id",
+        "clientid",
+        "doSNOW",
+        "sql",
+        "sqldf",
+        "subqueries",
+        "joins",
+        "base R",
+        "ave",
+        "data.table",
+        "seq_len(.N)",
+        "shift",
+        "seq_along",
+        "dplyr"
+      ],
+      "gt_terms": [
+        "dataframe",
+        "columns",
+        "row",
+        "rows",
+        "doSNOW",
+        "sql",
+        "sqldf",
+        "column",
+        "ave",
+        "data.table",
+        "seq_len(.N)",
+        "seq_along",
+        "shift",
+        "dplyr"
+      ],
+      "tp": 12,
+      "fp": 7,
+      "fn": 0,
+      "fp_terms": [
+        "docnr",
+        "date",
+        "client id",
+        "clientid",
+        "subqueries",
+        "joins",
+        "base R"
+      ],
+      "fn_terms": [],
+      "precision": 0.631578947368421,
+      "recall": 1.0,
+      "elapsed": 2.77
+    },
+    {
+      "doc_id": "Q33446515",
+      "extracted": [
+        "foo-tables",
+        "FooTable",
+        "Version : 2.0.3",
+        "jQuery-1.11.1",
+        "jQuery UI",
+        "v1.11.0",
+        "Chrome",
+        "Version 46.0.2490.80 m",
+        "footables css",
+        "bootstrap 3"
+      ],
+      "gt_terms": [
+        "foo-tables",
+        "columns",
+        "column",
+        "row",
+        "FooTable",
+        "2.0.3",
+        "jQuery-1.11.1",
+        "jQuery",
+        "v1.11.0 - 2014-06-26",
+        "Chrome",
+        "46.0.2490.80 m",
+        "footables",
+        "css",
+        "bootstrap"
+      ],
+      "tp": 9,
+      "fp": 1,
+      "fn": 4,
+      "fp_terms": [
+        "v1.11.0"
+      ],
+      "fn_terms": [
+        "columns",
+        "column",
+        "row",
+        "v1.11.0 - 2014-06-26"
+      ],
+      "precision": 0.9,
+      "recall": 0.7142857142857143,
+      "elapsed": 2.73
+    },
+    {
+      "doc_id": "Q14792002",
+      "extracted": [
+        "alarm manager",
+        "boot receiver",
+        "broadcastReceiver",
+        "onReceive",
+        "activity",
+        "intent",
+        "bootReceiver",
+        "requestCode",
+        "Android",
+        "broadcast receiver",
+        "android.intent.action.BOOT_COMPLETED",
+        "Manifest",
+        "http://developer.android.com/reference/android/content/BroadcastReceiver.html"
+      ],
+      "gt_terms": [
+        "alarm manager",
+        "boot receiver",
+        "broadcastReceiver",
+        "receiver",
+        "onReceive",
+        "activity",
+        "intent",
+        "bootReceiver",
+        "requestCode",
+        "Android",
+        "broadcast receiver",
+        "android.intent.action.BOOT_COMPLETED",
+        "Manifest"
+      ],
+      "tp": 12,
+      "fp": 1,
+      "fn": 0,
+      "fp_terms": [
+        "http://developer.android.com/reference/android/content/BroadcastReceiver.html"
+      ],
+      "fn_terms": [],
+      "precision": 0.9230769230769231,
+      "recall": 1.0,
+      "elapsed": 2.65
+    },
+    {
+      "doc_id": "Q19308940",
+      "extracted": [
+        "cell",
+        "columns",
+        "rows",
+        "mousePressEvent",
+        "combobox",
+        "excel",
+        "QStyleItemDelegate"
+      ],
+      "gt_terms": [
+        "cell",
+        "list",
+        "columns",
+        "persistent editor",
+        "rows",
+        "mousePressEvent",
+        "combobox",
+        "triangle",
+        "image",
+        "excel",
+        "QStyleItemDelegate"
+      ],
+      "tp": 7,
+      "fp": 0,
+      "fn": 4,
+      "fp_terms": [],
+      "fn_terms": [
+        "list",
+        "persistent editor",
+        "triangle",
+        "image"
+      ],
+      "precision": 1.0,
+      "recall": 0.6363636363636364,
+      "elapsed": 2.17
+    },
+    {
+      "doc_id": "Q43318137",
+      "extracted": [
+        "OpenMP 3",
+        "Visual Studio 2017",
+        "error c3005",
+        "OpenMP2",
+        "OpenMP4.5",
+        "VS team",
+        "clang-cl",
+        "http://llvm.org/builds/",
+        "VS2017",
+        "https://bugs.llvm.org/show_bug.cgi?id=33672",
+        "https://www.reddit.com/r/cpp/comments/6oepq4/making_windows_clang_401_play_nice_with_visual/",
+        "https://github.com/WubbaLubba/LlvmForVS2017",
+        "Microsoft",
+        "http://clang-developers.42468.n3.nabble.com/clang-windows-clang-cl-support-for-MP-tp4045651p4045659.html"
+      ],
+      "gt_terms": [
+        "OpenMP",
+        "Visual Studio",
+        "2017",
+        "error c3005",
+        "OpenMP2",
+        "OpenMP4.5",
+        "VS",
+        "clang-cl",
+        "VS2017",
+        "Microsoft",
+        "compiler"
+      ],
+      "tp": 10,
+      "fp": 4,
+      "fn": 1,
+      "fp_terms": [
+        "http://llvm.org/builds/",
+        "https://bugs.llvm.org/show_bug.cgi?id=33672",
+        "https://www.reddit.com/r/cpp/comments/6oepq4/making_windows_clang_401_play_nice_with_visual/",
+        "https://github.com/WubbaLubba/LlvmForVS2017"
+      ],
+      "fn_terms": [
+        "compiler"
+      ],
+      "precision": 0.7142857142857143,
+      "recall": 0.9090909090909091,
+      "elapsed": 3.37
+    },
+    {
+      "doc_id": "Q41722253",
+      "extracted": [
+        "Xamarin Forms",
+        "Visual Studio 2013",
+        "Android",
+        "Windows",
+        "Dark theme",
+        "Xamarin.Forms",
+        "iOS",
+        "UWP"
+      ],
+      "gt_terms": [
+        "Xamarin Forms",
+        "Visual Studio",
+        "2013",
+        "Header Background color",
+        "Android",
+        "Windows",
+        "background color",
+        "Xamarin.Forms",
+        "iOS",
+        "UWP",
+        "page"
+      ],
+      "tp": 7,
+      "fp": 1,
+      "fn": 3,
+      "fp_terms": [
+        "Dark theme"
+      ],
+      "fn_terms": [
+        "Header Background color",
+        "background color",
+        "page"
+      ],
+      "precision": 0.875,
+      "recall": 0.7272727272727273,
+      "elapsed": 1.97
+    },
+    {
+      "doc_id": "Q6565999",
+      "extracted": [
+        "SplitContainer",
+        "Panel1",
+        "TreeView",
+        "Panel2",
+        "windows",
+        "user-controls",
+        "http://i.stack.imgur.com/CG6kO.png",
+        "ReplaceControl",
+        "form",
+        "label",
+        "Control",
+        "Add()",
+        "anchor",
+        "docking"
+      ],
+      "gt_terms": [
+        "Game Maker",
+        "SplitContainer",
+        "TreeView",
+        "windows",
+        "controls",
+        "window",
+        "ReplaceControl",
+        "control",
+        "form",
+        "label",
+        "Add()"
+      ],
+      "tp": 9,
+      "fp": 5,
+      "fn": 1,
+      "fp_terms": [
+        "Panel1",
+        "Panel2",
+        "http://i.stack.imgur.com/CG6kO.png",
+        "anchor",
+        "docking"
+      ],
+      "fn_terms": [
+        "Game Maker"
+      ],
+      "precision": 0.6428571428571429,
+      "recall": 0.9090909090909091,
+      "elapsed": 2.66
+    },
+    {
+      "doc_id": "Q30743014",
+      "extracted": [
+        "struct",
+        "static",
+        "array",
+        "constructor",
+        "compiler",
+        "pointers",
+        "MyStruct",
+        "std::vector"
+      ],
+      "gt_terms": [
+        "struct",
+        "static",
+        "structs",
+        "list",
+        "array",
+        "compiler",
+        "pointers",
+        "pointer",
+        "MyStruct",
+        "std::vector"
+      ],
+      "tp": 8,
+      "fp": 0,
+      "fn": 1,
+      "fp_terms": [],
+      "fn_terms": [
+        "list"
+      ],
+      "precision": 1.0,
+      "recall": 0.9,
+      "elapsed": 2.87
+    },
+    {
+      "doc_id": "Q38266387",
+      "extracted": [
+        "android",
+        "radio buttons",
+        "RadioButton",
+        "custom_btn_radio.xml",
+        "drawables"
+      ],
+      "gt_terms": [
+        "images",
+        "radio buttons",
+        "android",
+        "image",
+        "radio button",
+        "RadioButton",
+        "drawable",
+        "style",
+        "custom_btn_radio.xml",
+        "drawables"
+      ],
+      "tp": 5,
+      "fp": 0,
+      "fn": 3,
+      "fp_terms": [],
+      "fn_terms": [
+        "images",
+        "image",
+        "style"
+      ],
+      "precision": 1.0,
+      "recall": 0.7,
+      "elapsed": 2.49
+    },
+    {
+      "doc_id": "Q10734649",
+      "extracted": [
+        "table",
+        "Text Field",
+        "screen",
+        "FirstClass",
+        "textbox",
+        "button",
+        "window",
+        "row",
+        "column",
+        "showDialog",
+        "TableClass",
+        "userNameFld"
+      ],
+      "gt_terms": [
+        "table",
+        "Text Field",
+        "FirstClass",
+        "textbox",
+        "button",
+        "window",
+        "row",
+        "column",
+        "showDialog",
+        "TableClass"
+      ],
+      "tp": 10,
+      "fp": 2,
+      "fn": 0,
+      "fp_terms": [
+        "screen",
+        "userNameFld"
+      ],
+      "fn_terms": [],
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "elapsed": 2.03
+    },
+    {
+      "doc_id": "Q39554893",
+      "extracted": [
+        "modal",
+        "editDependent",
+        "employee.html",
+        "ui-view",
+        "two-way binding",
+        "index",
+        "html",
+        "EmployeeService",
+        "EmployeeController",
+        "undefined"
+      ],
+      "gt_terms": [
+        "editDependent",
+        "div",
+        "employee.html",
+        "div ui-view",
+        "main",
+        "html",
+        "ui-view",
+        "EmployeeService",
+        "EmployeeController",
+        "buttons(new/edit)"
+      ],
+      "tp": 6,
+      "fp": 4,
+      "fn": 3,
+      "fp_terms": [
+        "modal",
+        "two-way binding",
+        "index",
+        "undefined"
+      ],
+      "fn_terms": [
+        "div",
+        "main",
+        "buttons(new/edit)"
+      ],
+      "precision": 0.6,
+      "recall": 0.7,
+      "elapsed": 2.19
+    },
+    {
+      "doc_id": "Q14929583",
+      "extracted": [
+        "XML",
+        "Offerings",
+        "JAXB",
+        "Order",
+        "Order Item",
+        "Offering",
+        "@XmlTransient",
+        "@XmlElement"
+      ],
+      "gt_terms": [
+        "XML",
+        "Offerings",
+        "JAXB",
+        "Modifiers",
+        "Order",
+        "Order Item",
+        "Offering",
+        "@XmlTransient",
+        "@XmlElement"
+      ],
+      "tp": 8,
+      "fp": 0,
+      "fn": 1,
+      "fp_terms": [],
+      "fn_terms": [
+        "Modifiers"
+      ],
+      "precision": 1.0,
+      "recall": 0.8888888888888888,
+      "elapsed": 1.86
+    },
+    {
+      "doc_id": "Q49078144",
+      "extracted": [
+        "PROCESS",
+        "struct",
+        "ID",
+        "wt",
+        "array",
+        "dynamic memory allocation",
+        "malloc",
+        "calloc",
+        "pointer",
+        "free"
+      ],
+      "gt_terms": [
+        "PROCESS",
+        "struct",
+        "array",
+        "Free",
+        "pointer",
+        "pointers",
+        "malloc",
+        "calloc",
+        "free(pt) ;"
+      ],
+      "tp": 7,
+      "fp": 3,
+      "fn": 1,
+      "fp_terms": [
+        "ID",
+        "wt",
+        "dynamic memory allocation"
+      ],
+      "fn_terms": [
+        "free(pt) ;"
+      ],
+      "precision": 0.7,
+      "recall": 0.8888888888888888,
+      "elapsed": 2.22
+    },
+    {
+      "doc_id": "Q35134870",
+      "extracted": [
+        "tpl",
+        "displayfield",
+        "server",
+        "textarea",
+        "grid",
+        "rowexpander",
+        "plugin",
+        "XTemplate",
+        "Fiddle",
+        "Display",
+        "renderer"
+      ],
+      "gt_terms": [
+        "tpl",
+        "displayfield",
+        "list",
+        "server",
+        "textarea",
+        "grid",
+        "rowexpander plugin",
+        "XTemplate",
+        "Fiddle"
+      ],
+      "tp": 9,
+      "fp": 2,
+      "fn": 1,
+      "fp_terms": [
+        "plugin",
+        "renderer"
+      ],
+      "fn_terms": [
+        "list"
+      ],
+      "precision": 0.8181818181818182,
+      "recall": 0.8888888888888888,
+      "elapsed": 2.03
+    },
+    {
+      "doc_id": "Q9607349",
+      "extracted": [
+        "left mouse click",
+        "doc",
+        "docx",
+        "computer",
+        "browser",
+        "test.php",
+        "doc||docx",
+        ".htaccess",
+        "JS"
+      ],
+      "gt_terms": [
+        "mouse",
+        "doc",
+        "docx",
+        "computer",
+        "browser",
+        "test.php",
+        "doc||docx",
+        ".htaccess",
+        "JS"
+      ],
+      "tp": 9,
+      "fp": 0,
+      "fn": 0,
+      "fp_terms": [],
+      "fn_terms": [],
+      "precision": 1.0,
+      "recall": 1.0,
+      "elapsed": 2.06
+    },
+    {
+      "doc_id": "Q4560859",
+      "extracted": [
+        "ASP.NET",
+        "VB.NET",
+        "textbox1",
+        "textbox2",
+        "checkboxes",
+        "webform",
+        "seat_select",
+        "C#",
+        "System.Data.DataSetExtensions.dll",
+        "System.Core.dll",
+        "linq",
+        "query"
+      ],
+      "gt_terms": [
+        "checkboxes",
+        "ASP.NET",
+        "VB.NET",
+        "column",
+        "C#",
+        "System.Data.DataSetExtensions.dll",
+        "System.Core.dll",
+        "list",
+        "linq"
+      ],
+      "tp": 7,
+      "fp": 5,
+      "fn": 2,
+      "fp_terms": [
+        "textbox1",
+        "textbox2",
+        "webform",
+        "seat_select",
+        "query"
+      ],
+      "fn_terms": [
+        "column",
+        "list"
+      ],
+      "precision": 0.5833333333333334,
+      "recall": 0.7777777777777778,
+      "elapsed": 2.1
+    },
+    {
+      "doc_id": "Q18347569",
+      "extracted": [
+        "customValidator",
+        "POSTBACK",
+        "requiredFieldValidator",
+        "custom validator",
+        "server",
+        "client side validation methods",
+        "client side method",
+        "server side method",
+        "update panel",
+        "ajax"
+      ],
+      "gt_terms": [
+        "customValidator",
+        "POSTBACK",
+        "requiredFieldValidator",
+        "custom validator",
+        "server",
+        "client",
+        "update panel",
+        "postbacks",
+        "ajax"
+      ],
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "fp_terms": [],
+      "fn_terms": [],
+      "precision": 1.0,
+      "recall": 1.0,
+      "elapsed": 2.58
+    },
+    {
+      "doc_id": "Q18549870",
+      "extracted": [
+        "list view",
+        "list",
+        "listview",
+        "LinearLayout",
+        "getHeight",
+        "setHeight",
+        "view"
+      ],
+      "gt_terms": [
+        "list view",
+        "list",
+        "list row",
+        "listview",
+        "row",
+        "LinearLayout",
+        "getHeight",
+        "setHeight",
+        "view"
+      ],
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "fp_terms": [],
+      "fn_terms": [
+        "row"
+      ],
+      "precision": 1.0,
+      "recall": 0.8888888888888888,
+      "elapsed": 2.27
+    },
+    {
+      "doc_id": "Q21220540",
+      "extracted": [
+        "ajax",
+        "jquery",
+        "load",
+        ".on()",
+        "id",
+        "class",
+        "click",
+        "click function",
+        "click event",
+        "load function",
+        "html"
+      ],
+      "gt_terms": [
+        "ajax loads",
+        "jquery",
+        "ajax",
+        "load",
+        "id",
+        "click",
+        ".on()",
+        "commonParentElementHere",
+        "html"
+      ],
+      "tp": 10,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "class"
+      ],
+      "fn_terms": [
+        "commonParentElementHere"
+      ],
+      "precision": 0.9090909090909091,
+      "recall": 0.8888888888888888,
+      "elapsed": 2.26
+    },
+    {
+      "doc_id": "Q7302448",
+      "extracted": [
+        "Class",
+        "Foo",
+        "Bar",
+        "Baz",
+        "IE",
+        "Classy",
+        "Ruby",
+        "JS.Class",
+        "javascript",
+        "prototype"
+      ],
+      "gt_terms": [
+        "Foo",
+        "Bar",
+        "Baz",
+        "IE",
+        "Classy",
+        "Ruby",
+        "JS.Class",
+        "javascript"
+      ],
+      "tp": 9,
+      "fp": 1,
+      "fn": 0,
+      "fp_terms": [
+        "prototype"
+      ],
+      "fn_terms": [],
+      "precision": 0.9,
+      "recall": 1.0,
+      "elapsed": 2.1
+    },
+    {
+      "doc_id": "Q1719694",
+      "extracted": [
+        "QGraphicsItems",
+        "QGraphicsItem::ItemIgnoresTransformations",
+        "QGraphicsItem::deviceTransform()",
+        "QGraphicsView::viewportTransform()"
+      ],
+      "gt_terms": [
+        "bounding box",
+        "QGraphicsItems",
+        "QGraphicsItem::ItemIgnoresTransformations",
+        "QGraphicsItem::deviceTransform()",
+        "bounding boxes",
+        "QGraphicsView::viewportTransform()",
+        "matrix",
+        "viewport"
+      ],
+      "tp": 4,
+      "fp": 0,
+      "fn": 4,
+      "fp_terms": [],
+      "fn_terms": [
+        "bounding box",
+        "bounding boxes",
+        "matrix",
+        "viewport"
+      ],
+      "precision": 1.0,
+      "recall": 0.5,
+      "elapsed": 2.0
+    },
+    {
+      "doc_id": "Q32617121",
+      "extracted": [
+        "Android",
+        "MVP",
+        "iOS",
+        "delegate patterns",
+        "Mosby",
+        "Base Presenter",
+        "PhotoRecyclerPresenter",
+        "PhotoRecyclerFragment",
+        "singleton presenter",
+        "StackOverflow"
+      ],
+      "gt_terms": [
+        "Android",
+        "MVP",
+        "iOS",
+        "Mosby",
+        "Presenter",
+        "PhotoRecyclerPresenter",
+        "PhotoRecyclerFragment",
+        "StackOverflow"
+      ],
+      "tp": 9,
+      "fp": 1,
+      "fn": 0,
+      "fp_terms": [
+        "delegate patterns"
+      ],
+      "fn_terms": [],
+      "precision": 0.9,
+      "recall": 1.0,
+      "elapsed": 1.72
+    },
+    {
+      "doc_id": "Q30003971",
+      "extracted": [
+        "getline()",
+        "userStringPrompt()",
+        "cin",
+        "string",
+        "Ctrl + F5",
+        "VS",
+        "break"
+      ],
+      "gt_terms": [
+        "getline()",
+        "userStringPrompt()",
+        "string",
+        "userStringPrompt",
+        "getline(cin, string)",
+        "Ctrl + F5",
+        "VS",
+        "command line"
+      ],
+      "tp": 5,
+      "fp": 2,
+      "fn": 2,
+      "fp_terms": [
+        "cin",
+        "break"
+      ],
+      "fn_terms": [
+        "getline(cin, string)",
+        "command line"
+      ],
+      "precision": 0.7142857142857143,
+      "recall": 0.75,
+      "elapsed": 2.03
+    },
+    {
+      "doc_id": "Q22948901",
+      "extracted": [
+        "PYTHON 3.3",
+        "HDD",
+        "NTFS",
+        "fat32",
+        "sys.path",
+        "IDLE",
+        "/home/me/mypy",
+        "http://www.johnny-lin.com/cdat_tips/tips_pylang/path.html",
+        "PYTHONPATH",
+        "Python"
+      ],
+      "gt_terms": [
+        "PYTHON",
+        "3.3",
+        "HDD",
+        "\" C \"",
+        "\" D \"",
+        "sys.path",
+        "/home/me/mypy",
+        "PYTHONPATH"
+      ],
+      "tp": 6,
+      "fp": 4,
+      "fn": 2,
+      "fp_terms": [
+        "NTFS",
+        "fat32",
+        "IDLE",
+        "http://www.johnny-lin.com/cdat_tips/tips_pylang/path.html"
+      ],
+      "fn_terms": [
+        "\" C \"",
+        "\" D \""
+      ],
+      "precision": 0.6,
+      "recall": 0.75,
+      "elapsed": 2.33
+    },
+    {
+      "doc_id": "Q26080263",
+      "extracted": [
+        "queue",
+        "channel",
+        "goroutines",
+        "Playground",
+        "Go",
+        "http://play.golang.org/p/Vb4-RFEmm3",
+        "FAQ",
+        "Go wiki",
+        "int",
+        "new",
+        "len"
+      ],
+      "gt_terms": [
+        "queue",
+        "Playground",
+        "buffer",
+        "Go",
+        "main",
+        "enqueue",
+        "var",
+        "int"
+      ],
+      "tp": 5,
+      "fp": 6,
+      "fn": 3,
+      "fp_terms": [
+        "channel",
+        "goroutines",
+        "http://play.golang.org/p/Vb4-RFEmm3",
+        "FAQ",
+        "new",
+        "len"
+      ],
+      "fn_terms": [
+        "buffer",
+        "main",
+        "var"
+      ],
+      "precision": 0.45454545454545453,
+      "recall": 0.625,
+      "elapsed": 2.46
+    },
+    {
+      "doc_id": "Q27373401",
+      "extracted": [
+        "database",
+        "columns",
+        "table",
+        "sql server 2012",
+        "JSP",
+        "JSTL"
+      ],
+      "gt_terms": [
+        "columns",
+        "column",
+        "table",
+        "sql server",
+        "2012",
+        "JSP",
+        "JSTL",
+        "java"
+      ],
+      "tp": 5,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "database"
+      ],
+      "fn_terms": [
+        "java"
+      ],
+      "precision": 0.8333333333333334,
+      "recall": 0.875,
+      "elapsed": 1.87
+    },
+    {
+      "doc_id": "Q9618386",
+      "extracted": [
+        "text file",
+        "strings",
+        "NSURLConnection",
+        "NSLog",
+        "NSMutableData",
+        "NSArray",
+        "TableView",
+        "URL",
+        "delegate",
+        "synchronous call",
+        "main thread",
+        "UI",
+        "GCD",
+        "delegate methods",
+        "asynchronous methods",
+        "data-object",
+        "https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/URLLoadingSystem/Tasks/UsingNSURLConnection.html#//apple_ref/doc/uid/20001836-BAJEAIEE"
+      ],
+      "gt_terms": [
+        "text",
+        "strings",
+        "NSURLConnection",
+        "NSLog",
+        "NSMutableData",
+        "NSArray",
+        "Arrays",
+        "TableView"
+      ],
+      "tp": 7,
+      "fp": 10,
+      "fn": 0,
+      "fp_terms": [
+        "URL",
+        "delegate",
+        "synchronous call",
+        "main thread",
+        "UI",
+        "GCD",
+        "delegate methods",
+        "asynchronous methods",
+        "data-object",
+        "https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/URLLoadingSystem/Tasks/UsingNSURLConnection.html#//apple_ref/doc/uid/20001836-BAJEAIEE"
+      ],
+      "fn_terms": [],
+      "precision": 0.4117647058823529,
+      "recall": 1.0,
+      "elapsed": 2.83
+    },
+    {
+      "doc_id": "Q15717628",
+      "extracted": [
+        "Java",
+        "txt file",
+        "TreeSet",
+        "contains",
+        "Set",
+        "toUpperCase()",
+        "toLowerCase()"
+      ],
+      "gt_terms": [
+        "Java",
+        "txt",
+        "dictionary",
+        "TreeSet",
+        "contains",
+        "Set",
+        ".toUpperCase()",
+        ".toLowerCase()"
+      ],
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "fp_terms": [],
+      "fn_terms": [
+        "dictionary"
+      ],
+      "precision": 1.0,
+      "recall": 0.875,
+      "elapsed": 1.85
+    },
+    {
+      "doc_id": "Q10813825",
+      "extracted": [
+        "vector",
+        "matrix",
+        "boolean",
+        "column vector",
+        "row vector",
+        "Octave",
+        "3.6.3",
+        "broadcasting",
+        "row matrix"
+      ],
+      "gt_terms": [
+        "vector",
+        "matrix",
+        "size(y, 1)",
+        "rows",
+        "boolean",
+        "Octave",
+        "3.6.3"
+      ],
+      "tp": 8,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "broadcasting"
+      ],
+      "fn_terms": [
+        "size(y, 1)"
+      ],
+      "precision": 0.8888888888888888,
+      "recall": 0.8571428571428571,
+      "elapsed": 2.56
+    },
+    {
+      "doc_id": "Q44741900",
+      "extracted": [
+        "bash",
+        "Fibonacci sequence",
+        "FD #3",
+        "Words.txt",
+        "Python",
+        "awk",
+        "perl",
+        "ruby"
+      ],
+      "gt_terms": [
+        "bash",
+        "codereview",
+        "Words.txt",
+        "shell",
+        "string",
+        "Python",
+        "awk perl python ruby"
+      ],
+      "tp": 6,
+      "fp": 2,
+      "fn": 3,
+      "fp_terms": [
+        "Fibonacci sequence",
+        "FD #3"
+      ],
+      "fn_terms": [
+        "codereview",
+        "shell",
+        "string"
+      ],
+      "precision": 0.75,
+      "recall": 0.5714285714285714,
+      "elapsed": 2.24
+    },
+    {
+      "doc_id": "Q44075338",
+      "extracted": [
+        "twilio",
+        "IVR",
+        "server",
+        "TWIML",
+        "mp3",
+        "A i",
+        "<Gather>"
+      ],
+      "gt_terms": [
+        "twilio",
+        "IVR",
+        "TWIML",
+        "mp3",
+        "server",
+        "/voice/check -digits",
+        "<Gather>"
+      ],
+      "tp": 6,
+      "fp": 1,
+      "fn": 1,
+      "fp_terms": [
+        "A i"
+      ],
+      "fn_terms": [
+        "/voice/check -digits"
+      ],
+      "precision": 0.8571428571428571,
+      "recall": 0.8571428571428571,
+      "elapsed": 2.31
+    },
+    {
+      "doc_id": "Q35521073",
+      "extracted": [
+        "SQL Fiddle",
+        "btree_gist",
+        "GiST",
+        "boolean",
+        "FIDDLE"
+      ],
+      "gt_terms": [
+        "SQL Fiddle",
+        "btree_gist",
+        "GiST",
+        "boolean",
+        ":SQL FIDDLE",
+        "table",
+        "rows"
+      ],
+      "tp": 5,
+      "fp": 0,
+      "fn": 2,
+      "fp_terms": [],
+      "fn_terms": [
+        "table",
+        "rows"
+      ],
+      "precision": 1.0,
+      "recall": 0.7142857142857143,
+      "elapsed": 1.99
+    },
+    {
+      "doc_id": "Q40345054",
+      "extracted": [
+        "TextField",
+        "radio button",
+        "servlet",
+        "DB",
+        "Database",
+        "locationDetails",
+        "locationAllDetails"
+      ],
+      "gt_terms": [
+        "TextField",
+        "radio button",
+        "servlet",
+        "forward",
+        "locationDetails",
+        "locationAllDetails",
+        "button"
+      ],
+      "tp": 5,
+      "fp": 2,
+      "fn": 1,
+      "fp_terms": [
+        "DB",
+        "Database"
+      ],
+      "fn_terms": [
+        "forward"
+      ],
+      "precision": 0.7142857142857143,
+      "recall": 0.8571428571428571,
+      "elapsed": 2.09
+    },
+    {
+      "doc_id": "Q11934853",
+      "extracted": [
+        "HotKey",
+        "Ctrl",
+        "Space",
+        "Windows Form",
+        "form",
+        "event",
+        "keystrokes",
+        "bool",
+        "Windows",
+        "KeyDown"
+      ],
+      "gt_terms": [
+        "Ctrl",
+        "Space",
+        "Windows",
+        "Form",
+        "global bool",
+        "KeyDown",
+        "bool"
+      ],
+      "tp": 7,
+      "fp": 3,
+      "fn": 0,
+      "fp_terms": [
+        "HotKey",
+        "event",
+        "keystrokes"
+      ],
+      "fn_terms": [],
+      "precision": 0.7,
+      "recall": 1.0,
+      "elapsed": 2.29
+    },
+    {
+      "doc_id": "Q11520804",
+      "extracted": [
+        "Images",
+        ".php",
+        "reloadImages()",
+        "https://github.com/desandro/imagesloaded",
+        "div"
+      ],
+      "gt_terms": [
+        "Page",
+        "Images",
+        ".php",
+        "<li >",
+        "reloadImages()",
+        "div",
+        "callback"
+      ],
+      "tp": 4,
+      "fp": 1,
+      "fn": 3,
+      "fp_terms": [
+        "https://github.com/desandro/imagesloaded"
+      ],
+      "fn_terms": [
+        "Page",
+        "<li >",
+        "callback"
+      ],
+      "precision": 0.8,
+      "recall": 0.5714285714285714,
+      "elapsed": 2.24
+    },
+    {
+      "doc_id": "Q46367823",
+      "extracted": [
+        "NSURLSession",
+        "macOS",
+        "Dropbox",
+        "GoogleDrive",
+        "pCloud",
+        "Apple",
+        "TCP",
+        "socket"
+      ],
+      "gt_terms": [
+        "NSURLSession",
+        "file-sync-client",
+        "macOS",
+        "Dropbox/GoogleDrive/pCloud",
+        "Apple",
+        "APIs"
+      ],
+      "tp": 3,
+      "fp": 5,
+      "fn": 3,
+      "fp_terms": [
+        "Dropbox",
+        "GoogleDrive",
+        "pCloud",
+        "TCP",
+        "socket"
+      ],
+      "fn_terms": [
+        "file-sync-client",
+        "Dropbox/GoogleDrive/pCloud",
+        "APIs"
+      ],
+      "precision": 0.375,
+      "recall": 0.5,
+      "elapsed": 2.1
+    },
+    {
+      "doc_id": "Q4936223",
+      "extracted": [
+        "Zend",
+        "$postid",
+        "Zend_Db_Select",
+        "$ db->query",
+        "query()"
+      ],
+      "gt_terms": [
+        "Zend",
+        "Zend_Db_Select",
+        "array",
+        "string",
+        "$ db->query",
+        "query()"
+      ],
+      "tp": 4,
+      "fp": 1,
+      "fn": 2,
+      "fp_terms": [
+        "$postid"
+      ],
+      "fn_terms": [
+        "array",
+        "string"
+      ],
+      "precision": 0.8,
+      "recall": 0.6666666666666666,
+      "elapsed": 1.86
+    },
+    {
+      "doc_id": "Q43803683",
+      "extracted": [
+        "excel",
+        "mongoDB",
+        "String",
+        "Numeric"
+      ],
+      "gt_terms": [
+        "excel",
+        "mongoDB",
+        "row",
+        "String",
+        "Numeric",
+        "image"
+      ],
+      "tp": 4,
+      "fp": 0,
+      "fn": 2,
+      "fp_terms": [],
+      "fn_terms": [
+        "row",
+        "image"
+      ],
+      "precision": 1.0,
+      "recall": 0.6666666666666666,
+      "elapsed": 2.64
+    }
+  ],
+  "totals": {
+    "tp": 934,
+    "fp": 211,
+    "fn": 225
+  },
+  "metrics": {
+    "precision": 0.8157205240174672,
+    "recall": 0.8058671268334772,
+    "hallucination": 0.18427947598253275,
+    "f1": 0.8107638888888888
+  },
+  "total_elapsed_seconds": 247.6
+}

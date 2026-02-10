@@ -1,0 +1,248 @@
+================================================================================
+POC-1b: LLM Term Extraction Improvements - EXECUTIVE SUMMARY
+================================================================================
+
+QUESTION: What strategies from the original plan were NOT tested? What's missing?
+
+ANSWER: The original plan outlined 5 core strategies (E, F, G, H, I) with a 
+systematic 1,350-condition experiment. However, the main experiment was NEVER 
+EXECUTED. All code is implemented but untested.
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. STRATEGIES IMPLEMENTED BUT NOT TESTED
+   ✅ Strategy E: Instructor Structured Output (run_experiment.py:351)
+   ✅ Strategy F: Span Verification (run_experiment.py:366)
+   ✅ Strategy G: Self-Consistency Voting N=10 (run_experiment.py:381)
+   ✅ Strategy H: Multi-Pass Extraction (run_experiment.py:412)
+   ✅ Strategy I: Combined Pipeline (run_experiment.py:446)
+   
+   ❌ NONE OF THESE WERE TESTED AT SCALE
+   ❌ No phase-3-raw-results.json (main experiment output)
+   ❌ No phase-4-final-metrics.json (analysis output)
+
+2. MAIN EXPERIMENT NEVER RUN
+   Planned: 45 chunks × 2 models × 5 strategies × 3 trials = 1,350 extractions
+   Actual: 0 extractions from the main experiment
+   
+   Evidence: No "phase-3-raw-results.json" in artifacts directory
+
+3. SELF-CONSISTENCY VOTING (N=10) - UNTESTED
+   - Fully implemented in strategy_g_self_consistency()
+   - Never executed in main experiment
+   - Combined strategy (I) uses N=5 instead of N=10
+   - No ablation study on N values
+   
+   Missing evidence:
+   - Does N=10 improve precision/recall?
+   - What's the optimal agreement threshold?
+   - How does temperature 0.8 affect diversity?
+
+4. MULTI-PASS EXTRACTION (3 PASSES) - UNTESTED
+   - Fully implemented in strategy_h_multi_pass()
+   - Never executed in main experiment
+   - Pass 1 uses temp=0.3 instead of planned temp=0
+   - No measurement of recall improvement per pass
+   
+   Missing evidence:
+   - Does multi-pass improve recall?
+   - Which pass contributes most?
+   - Does hallucination increase?
+
+5. SPAN VERIFICATION EFFECTIVENESS - UNTESTED AT SCALE
+   - Implemented in strategy_f_span_verify()
+   - Never compared with strategy E
+   - No measurement of hallucination reduction
+   - No comparison of strict vs fuzzy matching
+   
+   Missing evidence:
+   - How much does span verification reduce hallucination?
+   - What's the precision/recall tradeoff?
+   - Is exact matching too strict?
+
+6. COMBINED PIPELINE (F+G+H) - UNTESTED
+   - Fully implemented in strategy_i_combined()
+   - Never executed in main experiment
+   - Uses N=5 instead of N=10 (different from spec)
+   - Uses 60% threshold instead of 70% (different from spec)
+   
+   Missing evidence:
+   - Does combining all techniques work?
+   - What's the optimal combination?
+   - Is N=5 sufficient?
+
+7. ALL HYPOTHESES REMAIN UNVERIFIED
+   H1: Instructor + voting achieves 95%+ P, 85%+ R, <1% H - UNTESTED
+   H2: Span verification reduces H from 7.4% to <1% - UNTESTED
+   H3: Multi-pass increases R from 71% to 85%+ - UNTESTED
+   H4: Self-consistency voting achieves 95%+ P, <1% H - UNTESTED
+   H5: Combined techniques achieve target metrics - UNTESTED
+
+================================================================================
+WHAT WAS TESTED INSTEAD
+================================================================================
+
+The team created 11 ad-hoc test files exploring different approaches:
+
+1. test_small_chunk_extraction.py - Small chunks (50-300 words): 92% recall
+2. test_quote_extract_multipass.py - Quote-based: 78.7% P, 74.8% R
+3. test_quote_verify_approach.py - Quote + verify: 40.8% P, 82.5% R
+4. test_high_recall_ensemble.py - Ensemble: 51.5% P, 92% R
+5. test_hybrid_ner.py - NER + LLM hybrid: Explored GLiNER
+6. test_discrimination_approach.py - LLM discrimination: Ad-hoc
+7. test_advanced_strategies.py - Quote-then-extract: Research-backed
+8. test_zero_hallucination.py - Zero hallucination focus: Span verification
+9. test_pattern_plus_llm.py - Pattern + LLM: Hybrid approach
+10. test_hybrid_final.py - Final hybrid attempt: Combined approaches
+11. test_fast_combined.py - Fast combined: Optimized pipeline
+
+These are valuable explorations but NOT the planned systematic evaluation.
+
+================================================================================
+PROMISING FINDINGS NOT PURSUED
+================================================================================
+
+1. Small chunks work better than full documents
+   - 92% recall with small chunks (50-300 words)
+   - NOT tested with strategies E-I
+   - Chunk size was NOT a variable in planned experiment
+
+2. Ensemble extraction achieves high recall
+   - 92% recall with ensemble voting
+   - NOT compared with self-consistency voting (strategy G)
+   - Could be formalized as Strategy J
+
+3. Quote-based extraction balances precision/recall
+   - 78.7% precision, 74.8% recall
+   - NOT included in planned strategies
+   - Could be formalized as Strategy K
+
+4. Span verification reduces true hallucination to <5%
+   - Mentioned in RESULTS.md
+   - NOT quantified in systematic experiment
+   - No comparison of strictness levels
+
+================================================================================
+WHAT'S MISSING FOR COMPLETION
+================================================================================
+
+IMMEDIATE (To Execute Original Plan):
+1. Run main experiment: python run_experiment.py
+2. Generate phase-3-raw-results.json (1,350 conditions)
+3. Analyze results and verify hypotheses H1-H5
+4. Generate phase-4-final-metrics.json
+5. Update RESULTS.md with actual findings
+
+SHORT-TERM (To Integrate Findings):
+1. Test strategies E-I on small chunks
+2. Ablate self-consistency parameters (N, threshold)
+3. Ablate multi-pass configuration (1, 2, 3 passes)
+4. Formalize ensemble approach as Strategy J
+5. Formalize quote-based approach as Strategy K
+
+MEDIUM-TERM (To Production Readiness):
+1. Decide on chunking strategy (small vs full)
+2. Choose extraction approach (E, F, G, H, I, or ensemble)
+3. Set hallucination threshold
+4. Implement in RAG pipeline
+
+================================================================================
+RECOMMENDED NEXT STEPS
+================================================================================
+
+OPTION 1: Complete Original Plan (Recommended)
+- Time: 4 hours
+- Cost: $50-100
+- Deliverable: Complete results with all hypotheses verified
+- Command: python run_experiment.py
+
+OPTION 2: Quick Validation First
+- Time: 15 minutes
+- Cost: $2
+- Deliverable: Validation that code works
+- Scope: First 10 chunks, 1 model, 1 trial
+- Then run full experiment if validation succeeds
+
+OPTION 3: Integrate Ad-Hoc Findings
+- Time: 2-3 hours
+- Cost: $20-50
+- Deliverable: Comparison of E-I with J, K, L (new strategies)
+- Strategies: Add small-chunks, ensemble, quote-based
+
+OPTION 4: Hybrid Approach (Fastest)
+- Phase 1: Quick validation (1 hour, $5)
+- Phase 2: Full experiment (3-4 hours, $50-100)
+- Total: 5-6 hours, $52-102
+
+================================================================================
+SUMMARY TABLE
+================================================================================
+
+Aspect                          Planned  Implemented  Tested  Status
+─────────────────────────────────────────────────────────────────────
+Strategy E (Structured)         ✅       ✅           ❌      Incomplete
+Strategy F (Span Verify)        ✅       ✅           ❌      Incomplete
+Strategy G (Self-Consistency)   ✅       ✅           ❌      Incomplete
+Strategy H (Multi-Pass)         ✅       ✅           ❌      Incomplete
+Strategy I (Combined)           ✅       ✅           ❌      Incomplete
+Main experiment (1,350 cond)    ✅       ✅           ❌      Not executed
+Hypothesis verdicts (H1-H5)     ✅       ❌           ❌      Missing
+Phase checkpoints               ✅       ❌           ❌      Missing
+Ad-hoc exploration              ❌       ✅           ✅      11 test files
+Small-chunk approach            ❌       ✅           ✅      Promising
+Ensemble approach               ❌       ✅           ✅      Promising
+Quote-based extraction          ❌       ✅           ✅      Promising
+
+OVERALL STATUS: 50% COMPLETE
+- Code exists but main experiment was never executed
+- All strategies implemented but untested at scale
+- Ad-hoc exploration valuable but not systematic
+
+================================================================================
+DOCUMENTS CREATED
+================================================================================
+
+1. GAP_ANALYSIS.md (11 sections)
+   - Detailed comparison of planned vs actual
+   - Evidence for each gap
+   - Missing hypothesis verdicts
+   - Configuration parameters not tested
+
+2. UNTESTED_STRATEGIES.md (12 sections)
+   - Quick reference table
+   - Specific gaps for each strategy
+   - Hypotheses that remain unverified
+   - Success criteria status
+
+3. NEXT_STEPS.md (4 options)
+   - Option 1: Complete original plan
+   - Option 2: Focused testing
+   - Option 3: Integrate ad-hoc findings
+   - Option 4: Hybrid approach
+   - Troubleshooting guide
+   - Timeline and cost estimates
+
+4. EXECUTIVE_SUMMARY.txt (this file)
+   - High-level overview
+   - Key findings
+   - Recommended next steps
+
+================================================================================
+CONCLUSION
+================================================================================
+
+POC-1b is 50% complete:
+- ✅ All code is implemented and ready to run
+- ❌ Main experiment was never executed
+- ❌ No results to verify hypotheses
+- ⚠️ Ad-hoc exploration found promising directions
+
+The original plan is sound and achievable. The main experiment just needs to be
+run. Estimated time: 4 hours. Estimated cost: $50-100.
+
+Recommendation: Execute the main experiment to complete POC-1b and verify all
+hypotheses. Then integrate promising findings from ad-hoc testing.
+
+================================================================================
