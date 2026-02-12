@@ -96,7 +96,7 @@ def parse_so_ner_file(filepath: str) -> list[dict]:
             token = parts[0].strip()
             tag = parts[1].strip()
 
-            # Detect Question_ID markers
+            # Detect Question_ID markers (starts a new document)
             if token == "Question_ID":
                 if current_doc is not None and current_text_tokens:
                     current_doc["text"] = " ".join(current_text_tokens)
@@ -115,8 +115,30 @@ def parse_so_ner_file(filepath: str) -> list[dict]:
                 metadata_key = "question_id"
                 continue
 
+            # Answer_to_Question_ID is a structural marker separating
+            # answers from the question within the same SO thread.
+            # Skip it and its following ": XXXXXXX" metadata — the answer
+            # text belongs to the same document, not a new one.
+            if token == "Answer_to_Question_ID":
+                # Flush any pending entity
+                if current_entity_tokens and current_entity_type:
+                    if current_doc is not None:
+                        current_doc["entities"].append({
+                            "text": " ".join(current_entity_tokens),
+                            "type": current_entity_type,
+                        })
+                    current_entity_tokens = []
+                    current_entity_type = None
+                metadata_key = "answer_id"
+                continue
+
             if token == "Question_URL":
                 metadata_key = "question_url"
+                continue
+
+            # Skip Answer_to_Question_ID's number (": XXXXXXX")
+            if metadata_key == "answer_id" and re.match(r"^\d+$", token):
+                metadata_key = None
                 continue
 
             if token == ":" and metadata_key:

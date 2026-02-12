@@ -1,0 +1,1028 @@
+{
+  "config": {
+    "extractors": [
+      "taxonomy_v0",
+      "candidate_verify_v2"
+    ],
+    "n_docs": 50,
+    "taxonomy_model": "sonnet"
+  },
+  "aggregate": {
+    "total_gt": 755,
+    "union_covered": 749,
+    "union_recall": 0.9921,
+    "per_extractor_covered": {
+      "taxonomy_v0": 686,
+      "candidate_verify_v2": 735
+    },
+    "per_extractor_unique": {
+      "taxonomy_v0": 14,
+      "candidate_verify_v2": 63
+    },
+    "unique_terms": {
+      "taxonomy_v0": [
+        "tables",
+        "table",
+        "Byte[]",
+        "up/down keys",
+        "private",
+        "symlinks",
+        ".h",
+        ".m",
+        "var",
+        "each",
+        "scroller",
+        "borders",
+        "admin/build/block",
+        "array"
+      ],
+      "candidate_verify_v2": [
+        "getInputSizes(ImageFormat.YUV_420_888)",
+        "MAX SIZE(4608x3456)",
+        "toggleAwayImageDisplay",
+        "keyboard",
+        "std::fopen(\"/dev/urandom\")",
+        "src \\main\\resources\\wsdl\\",
+        "configuration",
+        "ondemand",
+        "1.9.3",
+        "1.7.4",
+        "4.3.2",
+        "developer command line tools",
+        "10.6.8",
+        "global",
+        "calculator",
+        "keys",
+        "key",
+        "row",
+        "long",
+        ".long",
+        "IQUIView+",
+        "F 5)",
+        "visual editor",
+        "jQuery-generated",
+        "W3C",
+        ".Show",
+        "client",
+        "server internal error 500",
+        "internal server error 500",
+        "Stack Overflow",
+        "winforms",
+        "WInForm",
+        "enter",
+        "scroll area",
+        "cell",
+        "cells",
+        "vertical divider",
+        "background grid",
+        "events",
+        "PDFs",
+        "NSLogs",
+        "cursor",
+        "keydown/keyup/keypress",
+        "ABCDEF|",
+        "cross-browser",
+        "tree",
+        "widget",
+        "grepcode",
+        "static",
+        "cursor",
+        "list",
+        "set",
+        "extra.zf.component",
+        "NOTE-Cognos",
+        "10",
+        "d:\\Cognos\\PowerCubes\\Build",
+        "d:\\Cognos\\PowerCubes\\Live",
+        "C-only",
+        ":complete",
+        "14",
+        "C:/.. .",
+        "server",
+        "getfiltered"
+      ]
+    },
+    "uncovered_terms": [
+      "order())",
+      "text",
+      "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+      "setup",
+      "global",
+      "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}"
+    ]
+  },
+  "docs": [
+    {
+      "doc_id": "Q42873050",
+      "gt_count": 30,
+      "union_covered": 30,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 46,
+          "time": 5.0
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 146,
+          "time": 34.5
+        }
+      }
+    },
+    {
+      "doc_id": "Q10709772",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 17,
+          "time": 2.7
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 69,
+          "time": 22.5
+        }
+      }
+    },
+    {
+      "doc_id": "Q14831694",
+      "gt_count": 31,
+      "union_covered": 31,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 62,
+          "time": 5.8
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 149,
+          "time": 34.9
+        }
+      }
+    },
+    {
+      "doc_id": "Q39288595",
+      "gt_count": 22,
+      "union_covered": 22,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 44,
+          "time": 4.6
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 216,
+          "time": 55.8
+        }
+      }
+    },
+    {
+      "doc_id": "Q45734089",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 23,
+          "time": 2.9
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 56,
+          "time": 15.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q3639039",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 22,
+          "time": 3.3
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 77,
+          "time": 20.4
+        }
+      }
+    },
+    {
+      "doc_id": "Q10809866",
+      "gt_count": 25,
+      "union_covered": 24,
+      "union_uncovered": 1,
+      "union_recall": 0.96,
+      "uncovered_terms": [
+        "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}"
+      ],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 27,
+          "time": 4.1
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 154,
+          "time": 33.2
+        }
+      }
+    },
+    {
+      "doc_id": "Q19471961",
+      "gt_count": 22,
+      "union_covered": 22,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 26,
+          "time": 3.6
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 111,
+          "time": 28.2
+        }
+      }
+    },
+    {
+      "doc_id": "Q39079773",
+      "gt_count": 21,
+      "union_covered": 21,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 14,
+          "time": 2.4
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 136,
+          "time": 32.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q27926052",
+      "gt_count": 18,
+      "union_covered": 18,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 25,
+          "time": 3.4
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 103,
+          "time": 22.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q30516702",
+      "gt_count": 17,
+      "union_covered": 17,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 30,
+          "time": 3.7
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 106,
+          "time": 20.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q12028246",
+      "gt_count": 15,
+      "union_covered": 15,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 44,
+          "time": 4.8
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 107,
+          "time": 27.1
+        }
+      }
+    },
+    {
+      "doc_id": "Q9965761",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 24,
+          "time": 3.3
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 78,
+          "time": 21.9
+        }
+      }
+    },
+    {
+      "doc_id": "Q38496528",
+      "gt_count": 12,
+      "union_covered": 12,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 23,
+          "time": 3.1
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 72,
+          "time": 21.6
+        }
+      }
+    },
+    {
+      "doc_id": "Q18656558",
+      "gt_count": 12,
+      "union_covered": 12,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 15,
+          "time": 2.8
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 60,
+          "time": 15.4
+        }
+      }
+    },
+    {
+      "doc_id": "Q44055225",
+      "gt_count": 11,
+      "union_covered": 11,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 26,
+          "time": 2.9
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 87,
+          "time": 29.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q42692779",
+      "gt_count": 10,
+      "union_covered": 10,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 25,
+          "time": 3.0
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 61,
+          "time": 16.1
+        }
+      }
+    },
+    {
+      "doc_id": "Q46801920",
+      "gt_count": 17,
+      "union_covered": 17,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 42,
+          "time": 4.6
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 156,
+          "time": 31.6
+        }
+      }
+    },
+    {
+      "doc_id": "Q35574488",
+      "gt_count": 16,
+      "union_covered": 16,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 49,
+          "time": 4.6
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 119,
+          "time": 31.6
+        }
+      }
+    },
+    {
+      "doc_id": "Q35087680",
+      "gt_count": 16,
+      "union_covered": 16,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 15,
+          "time": 3.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 85,
+          "time": 27.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q21380268",
+      "gt_count": 13,
+      "union_covered": 12,
+      "union_uncovered": 1,
+      "union_recall": 0.9231,
+      "uncovered_terms": [
+        "order())"
+      ],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 16,
+          "time": 3.5
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 127,
+          "time": 34.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q29175",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 24,
+          "time": 3.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 122,
+          "time": 38.8
+        }
+      }
+    },
+    {
+      "doc_id": "Q22864488",
+      "gt_count": 12,
+      "union_covered": 11,
+      "union_uncovered": 1,
+      "union_recall": 0.9167,
+      "uncovered_terms": [
+        "C:\\Program Files \\Java\\jdk1.7.0_51\\bin"
+      ],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 17,
+          "time": 2.7
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 49,
+          "time": 16.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q12206050",
+      "gt_count": 10,
+      "union_covered": 10,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 16,
+          "time": 2.5
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 48,
+          "time": 16.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q38572866",
+      "gt_count": 9,
+      "union_covered": 8,
+      "union_uncovered": 1,
+      "union_recall": 0.8889,
+      "uncovered_terms": [
+        "global"
+      ],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 13,
+          "time": 2.0
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 38,
+          "time": 11.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q1523043",
+      "gt_count": 9,
+      "union_covered": 9,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 23,
+          "time": 3.0
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 58,
+          "time": 17.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q7182845",
+      "gt_count": 33,
+      "union_covered": 32,
+      "union_uncovered": 1,
+      "union_recall": 0.9697,
+      "uncovered_terms": [
+        "text"
+      ],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 30,
+          "time": 3.4
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 182,
+          "time": 44.1
+        }
+      }
+    },
+    {
+      "doc_id": "Q8360162",
+      "gt_count": 24,
+      "union_covered": 24,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 34,
+          "time": 3.9
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 91,
+          "time": 21.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q22361019",
+      "gt_count": 20,
+      "union_covered": 19,
+      "union_uncovered": 1,
+      "union_recall": 0.95,
+      "uncovered_terms": [
+        "setup"
+      ],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 24,
+          "time": 3.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 153,
+          "time": 41.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q2831693",
+      "gt_count": 17,
+      "union_covered": 17,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 19,
+          "time": 2.8
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 94,
+          "time": 21.7
+        }
+      }
+    },
+    {
+      "doc_id": "Q20321910",
+      "gt_count": 16,
+      "union_covered": 16,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 24,
+          "time": 2.9
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 120,
+          "time": 31.6
+        }
+      }
+    },
+    {
+      "doc_id": "Q81972",
+      "gt_count": 16,
+      "union_covered": 16,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 23,
+          "time": 3.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 163,
+          "time": 40.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q13968390",
+      "gt_count": 15,
+      "union_covered": 15,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 13,
+          "time": 2.7
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 52,
+          "time": 15.9
+        }
+      }
+    },
+    {
+      "doc_id": "Q10435773",
+      "gt_count": 15,
+      "union_covered": 15,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 33,
+          "time": 3.7
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 121,
+          "time": 26.4
+        }
+      }
+    },
+    {
+      "doc_id": "Q37406714",
+      "gt_count": 15,
+      "union_covered": 15,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 22,
+          "time": 4.3
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 91,
+          "time": 21.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q494550",
+      "gt_count": 14,
+      "union_covered": 14,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 61,
+          "time": 6.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 152,
+          "time": 38.5
+        }
+      }
+    },
+    {
+      "doc_id": "Q4522886",
+      "gt_count": 14,
+      "union_covered": 14,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 15,
+          "time": 2.5
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 51,
+          "time": 11.4
+        }
+      }
+    },
+    {
+      "doc_id": "Q20557278",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 21,
+          "time": 3.1
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 86,
+          "time": 24.2
+        }
+      }
+    },
+    {
+      "doc_id": "Q45291615",
+      "gt_count": 13,
+      "union_covered": 13,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 14,
+          "time": 3.6
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 51,
+          "time": 14.6
+        }
+      }
+    },
+    {
+      "doc_id": "Q27716407",
+      "gt_count": 12,
+      "union_covered": 12,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 26,
+          "time": 3.1
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 100,
+          "time": 27.9
+        }
+      }
+    },
+    {
+      "doc_id": "Q42527503",
+      "gt_count": 12,
+      "union_covered": 12,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 14,
+          "time": 2.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 61,
+          "time": 15.7
+        }
+      }
+    },
+    {
+      "doc_id": "Q22879151",
+      "gt_count": 12,
+      "union_covered": 12,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 23,
+          "time": 3.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 101,
+          "time": 27.8
+        }
+      }
+    },
+    {
+      "doc_id": "Q36914244",
+      "gt_count": 11,
+      "union_covered": 11,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 21,
+          "time": 2.9
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 73,
+          "time": 26.7
+        }
+      }
+    },
+    {
+      "doc_id": "Q41527933",
+      "gt_count": 11,
+      "union_covered": 11,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 14,
+          "time": 2.7
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 98,
+          "time": 22.9
+        }
+      }
+    },
+    {
+      "doc_id": "Q7219258",
+      "gt_count": 11,
+      "union_covered": 11,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 21,
+          "time": 3.0
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 59,
+          "time": 15.0
+        }
+      }
+    },
+    {
+      "doc_id": "Q38189474",
+      "gt_count": 10,
+      "union_covered": 10,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 13,
+          "time": 2.3
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 32,
+          "time": 10.4
+        }
+      }
+    },
+    {
+      "doc_id": "Q42091674",
+      "gt_count": 10,
+      "union_covered": 10,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 11,
+          "time": 2.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 66,
+          "time": 16.3
+        }
+      }
+    },
+    {
+      "doc_id": "Q19776462",
+      "gt_count": 10,
+      "union_covered": 10,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 25,
+          "time": 3.2
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 81,
+          "time": 23.1
+        }
+      }
+    },
+    {
+      "doc_id": "Q14202215",
+      "gt_count": 9,
+      "union_covered": 9,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 14,
+          "time": 2.3
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 85,
+          "time": 26.8
+        }
+      }
+    },
+    {
+      "doc_id": "Q20428669",
+      "gt_count": 9,
+      "union_covered": 9,
+      "union_uncovered": 0,
+      "union_recall": 1.0,
+      "uncovered_terms": [],
+      "per_extractor": {
+        "taxonomy_v0": {
+          "extracted_count": 25,
+          "time": 2.8
+        },
+        "candidate_verify_v2": {
+          "extracted_count": 36,
+          "time": 17.3
+        }
+      }
+    }
+  ]
+}

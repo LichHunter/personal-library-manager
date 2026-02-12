@@ -54,7 +54,7 @@ def run_benchmark(
     retrieval_model = None
     auto_vocab = None
 
-    if approach in ("retrieval", "hybrid"):
+    if approach in ("retrieval", "hybrid", "hybrid_v5"):
         from retrieval_ner import build_retrieval_index
         assert train_docs is not None, f"{approach} approach requires train_docs"
         retrieval_index, _embeddings, retrieval_model = build_retrieval_index(train_docs)
@@ -62,7 +62,7 @@ def run_benchmark(
     term_index = None
     strategy_config = None
 
-    if approach == "hybrid":
+    if approach in ("hybrid", "hybrid_v5"):
         vocab_path = Path(__file__).parent / "artifacts" / "auto_vocab.json"
         with open(vocab_path) as f:
             auto_vocab = json.load(f)
@@ -95,6 +95,13 @@ def run_benchmark(
             from hybrid_ner import extract_hybrid
             assert train_docs is not None and auto_vocab is not None
             extracted = extract_hybrid(
+                doc, train_docs, retrieval_index, retrieval_model,
+                auto_vocab, term_index=term_index, strategy=strategy_config,
+            )
+        elif approach == "hybrid_v5":
+            from hybrid_ner import extract_hybrid_v5
+            assert train_docs is not None and auto_vocab is not None
+            extracted = extract_hybrid_v5(
                 doc, train_docs, retrieval_index, retrieval_model,
                 auto_vocab, term_index=term_index, strategy=strategy_config,
             )
@@ -185,7 +192,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Benchmark NER approaches")
     parser.add_argument(
         "--approach",
-        choices=["retrieval", "slimer", "hybrid", "all"],
+        choices=["retrieval", "slimer", "hybrid", "hybrid_v5", "all"],
         required=True,
     )
     parser.add_argument("--n-docs", type=int, default=100)
@@ -193,9 +200,19 @@ def main() -> None:
     parser.add_argument(
         "--strategy",
         default=None,
-        help="Strategy preset name (baseline, strategy_a..e). Only for hybrid approach.",
+        help="Strategy preset name (baseline, strategy_a..e, strategy_v5). Only for hybrid/hybrid_v5.",
+    )
+    parser.add_argument(
+        "--clear-stats",
+        action="store_true",
+        help="Clear low_confidence_stats.jsonl before running.",
     )
     args = parser.parse_args()
+
+    if args.clear_stats:
+        from hybrid_ner import clear_low_confidence_stats
+        clear_low_confidence_stats()
+        print("Cleared low_confidence_stats.jsonl")
 
     artifacts = Path(__file__).parent / "artifacts"
 
@@ -206,7 +223,7 @@ def main() -> None:
     approaches = ["retrieval", "slimer", "hybrid"] if args.approach == "all" else [args.approach]
 
     for approach in approaches:
-        strategy_name = args.strategy if approach == "hybrid" else None
+        strategy_name = args.strategy if approach in ("hybrid", "hybrid_v5") else None
         label = f"{approach}" + (f"/{strategy_name}" if strategy_name else "")
         print(f"\n{'='*60}")
         print(f"Running {label} on {args.n_docs} documents")

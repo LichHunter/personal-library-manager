@@ -26,7 +26,15 @@ class LLMProvider(ABC):
         pass
 
     @abstractmethod
-    def generate(self, prompt: str, model: str, timeout: int = 90) -> str:
+    def generate(
+        self,
+        prompt: str,
+        model: str,
+        timeout: int = 90,
+        max_tokens: int = 2000,
+        temperature: float = 0.0,
+        thinking_budget: int | None = None,
+    ) -> str:
         pass
 
 
@@ -183,6 +191,7 @@ class AnthropicProvider(LLMProvider):
         timeout: int = 90,
         max_tokens: int = 2000,
         temperature: float = 0.0,
+        thinking_budget: int | None = None,
     ) -> str:
         import httpx
 
@@ -190,8 +199,9 @@ class AnthropicProvider(LLMProvider):
 
         resolved_model = self._resolve_model(model)
 
+        thinking_label = f" thinking={thinking_budget}" if thinking_budget else ""
         log.debug(
-            f"[anthropic] model={resolved_model} prompt_len={len(prompt)} timeout={timeout}s"
+            f"[anthropic] model={resolved_model} prompt_len={len(prompt)} timeout={timeout}s{thinking_label}"
         )
         log.debug(
             f"[anthropic] PROMPT: {prompt[:500]}{'...' if len(prompt) > 500 else ''}"
@@ -202,7 +212,6 @@ class AnthropicProvider(LLMProvider):
         request_body = {
             "model": resolved_model,
             "max_tokens": max_tokens,
-            "temperature": temperature,
             "system": [
                 {
                     "type": "text",
@@ -211,6 +220,17 @@ class AnthropicProvider(LLMProvider):
             ],
             "messages": [{"role": "user", "content": prompt}],
         }
+
+        if thinking_budget:
+            request_body["thinking"] = {
+                "type": "enabled",
+                "budget_tokens": thinking_budget,
+            }
+            # Extended thinking requires max_tokens to cover both thinking + output
+            request_body["max_tokens"] = max(max_tokens, thinking_budget + max_tokens)
+            # temperature must NOT be set when thinking is enabled
+        else:
+            request_body["temperature"] = temperature
 
         headers = {
             "Authorization": f"Bearer {self._auth_data['access']}",
@@ -270,13 +290,28 @@ class AnthropicProvider(LLMProvider):
                 content = data.get("content", [])
                 stop_reason = data.get("stop_reason", "unknown")
 
-                if content and content[0].get("type") == "text":
-                    text = content[0].get("text", "").strip()
+                text_parts = [
+                    block.get("text", "")
+                    for block in content
+                    if block.get("type") == "text"
+                ]
+
+                if text_parts:
+                    text = "\n".join(text_parts).strip()
                     if attempt > 0:
                         log.info(
                             f"[anthropic] RECOVERED after {attempt} retries | "
                             f"model={resolved_model} | "
                             f"total={elapsed:.1f}s"
+                        )
+                    thinking_tokens = sum(
+                        len(block.get("thinking", ""))
+                        for block in content
+                        if block.get("type") == "thinking"
+                    )
+                    if thinking_tokens > 0:
+                        log.debug(
+                            f"[anthropic] Extended thinking: ~{thinking_tokens} chars"
                         )
                     return text
 
@@ -365,6 +400,7 @@ def call_llm(
     timeout: int = 90,
     max_tokens: int = 2000,
     temperature: float = 0.0,
+    thinking_budget: int | None = None,
 ) -> str:
     provider = get_provider(model)
-    return provider.generate(prompt, model, timeout, max_tokens, temperature)
+    return provider.generate(prompt, model, timeout, max_tokens, temperature, thinking_budget)

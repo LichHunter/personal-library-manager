@@ -149,9 +149,96 @@ KNOWN_NON_ENTITY_TECH_WORDS = {
     "http", "https", "rest", "soap", "tcp", "ftp", "smtp",
     "ssl", "tls", "ssh", "dns", "cdn",
     "msvc", "gcc", "clang",
-    "oop", "crud", "dsl",
+    "oop", "crud", "dsl", "zsl",
     "boost", "microsoft",
+    "thumb", "decimal",
+    # v5.3: Generic CS vocabulary that are never entities in training data
+    # (entity_ratio=0) but LLM extractors frequently over-extract
+    "classpath", "constant", "distribution", "filesystem", "gain",
+    "handle", "interface", "repository", "selector", "siblings",
+    "file", "seed", "specificity", "command",
 }
+
+
+def generate_contextual_seeds(
+    stats: dict,
+    train_docs: list[dict],
+    min_entity_docs: int = 3,
+    min_entity_ratio: float = 0.20,
+    max_entity_ratio: float = 0.50,
+) -> list[str]:
+    """Generate CONTEXTUAL_SEEDS: ambiguous terms that ARE entities in tech contexts.
+
+    These are common English words (image, key, phone, padding, etc.) that
+    appear as entities in 20-50% of their occurrences. Too low for primary
+    seeds but important enough to recover via the MEDIUM confidence tier
+    with Sonnet validation.
+
+    Criteria:
+    - entity_ratio between min_entity_ratio and max_entity_ratio
+    - Appears as entity in >= min_entity_docs distinct training documents
+    - Single words or short compounds (max 2 words) for regex matching
+    """
+    entity_freq = stats["entity_doc_freq"]
+    text_freq = stats["text_doc_freq"]
+
+    contextual: list[str] = []
+
+    for term, entity_count in entity_freq.items():
+        text_count = text_freq.get(term, entity_count)
+        if text_count == 0:
+            continue
+
+        ratio = entity_count / text_count
+
+        if (
+            entity_count >= min_entity_docs
+            and min_entity_ratio <= ratio < max_entity_ratio
+            and len(term.split()) <= 2
+        ):
+            contextual.append(term)
+
+    return sorted(contextual)
+
+
+def generate_low_precision_terms(
+    stats: dict,
+    min_text_docs: int = 5,
+    max_entity_ratio: float = 0.15,
+) -> list[str]:
+    """Generate LOW_PRECISION_TERMS: terms almost never entities despite appearing often.
+
+    These are terms with >= min_text_docs text appearances where
+    entity_ratio < max_entity_ratio. Route to LOW unless 3+ sources agree.
+    Data-driven equivalent of a generic word blocklist.
+
+    Only single words (no compounds) to avoid over-blocking.
+    """
+    entity_freq = stats["entity_doc_freq"]
+    text_freq = stats["text_doc_freq"]
+
+    low_precision: list[str] = []
+
+    for term, text_count in text_freq.items():
+        if text_count < min_text_docs:
+            continue
+        # Only single words
+        if " " in term:
+            continue
+        # Must be at least 3 chars to be meaningful
+        if len(term) < 3:
+            continue
+
+        entity_count = entity_freq.get(term, 0)
+        ratio = entity_count / text_count if text_count > 0 else 0
+
+        if ratio < max_entity_ratio:
+            # Don't include terms that are NEVER entities — those are already
+            # in the negatives list. This captures "borderline generic" terms.
+            if entity_count > 0:
+                low_precision.append(term)
+
+    return sorted(low_precision)
 
 
 def generate_negative_list(
@@ -185,6 +272,9 @@ def generate_negative_list(
             if word in KNOWN_NON_ENTITY_TECH_WORDS:
                 tech_looking_words.add(word)
 
+    for known_word in KNOWN_NON_ENTITY_TECH_WORDS:
+        tech_looking_words.add(known_word)
+
     for word in tech_looking_words:
         text_count = text_freq.get(word, 0)
         entity_count = entity_freq.get(word, 0)
@@ -192,7 +282,7 @@ def generate_negative_list(
         is_known = word in KNOWN_NON_ENTITY_TECH_WORDS
         min_docs = min_text_docs_known if is_known else min_text_docs
 
-        if entity_count == 0 and text_count >= min_docs:
+        if entity_count == 0 and (text_count >= min_docs or is_known):
             negatives.append(word)
             continue
 
@@ -228,17 +318,28 @@ def main() -> None:
     negatives = generate_negative_list(stats, train_docs)
     print(f"  {len(negatives)} terms")
 
-    # Save
+    print("\nGenerating CONTEXTUAL_SEEDS...")
+    contextual_seeds = generate_contextual_seeds(stats, train_docs)
+    print(f"  {len(contextual_seeds)} terms")
+
+    print("\nGenerating LOW_PRECISION_TERMS...")
+    low_precision = generate_low_precision_terms(stats)
+    print(f"  {len(low_precision)} terms")
+
     vocab = {
         "bypass": bypass,
         "seeds": seeds,
         "negatives": negatives,
+        "contextual_seeds": contextual_seeds,
+        "low_precision": low_precision,
         "stats": {
             "total_train_docs": len(train_docs),
             "unique_entity_terms": len(stats["entity_doc_freq"]),
             "bypass_count": len(bypass),
             "seeds_count": len(seeds),
             "negatives_count": len(negatives),
+            "contextual_seeds_count": len(contextual_seeds),
+            "low_precision_count": len(low_precision),
         },
     }
 
@@ -266,6 +367,20 @@ def main() -> None:
     for t in negatives[:30]:
         tf = stats["text_doc_freq"].get(t, 0)
         print(f"  {t:25s} text={tf:3d}")
+
+    print("\n=== CONTEXTUAL_SEEDS (sample) ===")
+    for t in contextual_seeds[:30]:
+        ef = stats["entity_doc_freq"].get(t, 0)
+        tf = stats["text_doc_freq"].get(t, ef)
+        ratio = ef / tf if tf > 0 else 0
+        print(f"  {t:25s} entity={ef:3d} text={tf:3d} ratio={ratio:.2f}")
+
+    print("\n=== LOW_PRECISION (sample) ===")
+    for t in low_precision[:30]:
+        ef = stats["entity_doc_freq"].get(t, 0)
+        tf = stats["text_doc_freq"].get(t, 0)
+        ratio = ef / tf if tf > 0 else 0
+        print(f"  {t:25s} entity={ef:3d} text={tf:3d} ratio={ratio:.2f}")
 
 
 if __name__ == "__main__":

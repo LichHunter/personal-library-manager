@@ -1,0 +1,953 @@
+{
+  "haiku_simple_v0": {
+    "precision": 0.6701,
+    "recall": 0.6984,
+    "f1": 0.6839,
+    "tp": 132,
+    "fp": 65,
+    "fn": 57,
+    "total_time": 47.2,
+    "docs": [
+      {
+        "doc_id": "Q42873050",
+        "extracted_count": 18,
+        "tp": 16,
+        "fp": 2,
+        "fn": 10,
+        "precision": 0.8888888888888888,
+        "recall": 0.6666666666666666,
+        "f1": 0.761904761904762,
+        "fp_terms": [
+          "ZSL",
+          "getInputSizes"
+        ],
+        "fn_terms": [
+          "tables",
+          "table",
+          "getInputSizes(ImageFormat.YUV_420_888)",
+          "MAX SIZE(4608x3456)",
+          "bytearrays",
+          "image",
+          "MAX Size",
+          "MAXIMUM",
+          "Session",
+          "Byte[]"
+        ]
+      },
+      {
+        "doc_id": "Q10709772",
+        "extracted_count": 15,
+        "tp": 11,
+        "fp": 4,
+        "fn": 1,
+        "precision": 0.7333333333333333,
+        "recall": 0.9230769230769231,
+        "f1": 0.8173374613003097,
+        "fp_terms": [
+          "function",
+          "server",
+          "screen",
+          "code"
+        ],
+        "fn_terms": [
+          "FMS"
+        ]
+      },
+      {
+        "doc_id": "Q14831694",
+        "extracted_count": 27,
+        "tp": 20,
+        "fp": 7,
+        "fn": 3,
+        "precision": 0.7407407407407407,
+        "recall": 0.9032258064516129,
+        "f1": 0.813953488372093,
+        "fp_terms": [
+          "control",
+          "thumb",
+          "server",
+          "console",
+          "browser",
+          "screen",
+          "key"
+        ],
+        "fn_terms": [
+          "Windows",
+          "PgUp",
+          "keyboard"
+        ]
+      },
+      {
+        "doc_id": "Q39288595",
+        "extracted_count": 16,
+        "tp": 13,
+        "fp": 3,
+        "fn": 6,
+        "precision": 0.8125,
+        "recall": 0.7272727272727273,
+        "f1": 0.7675276752767528,
+        "fp_terms": [
+          "std::fopen",
+          "boost",
+          "MSVC"
+        ],
+        "fn_terms": [
+          "windows",
+          "exception",
+          "unix",
+          "phone",
+          "Pseudo-randomic",
+          "CPU"
+        ]
+      },
+      {
+        "doc_id": "Q45734089",
+        "extracted_count": 17,
+        "tp": 8,
+        "fp": 9,
+        "fn": 4,
+        "precision": 0.47058823529411764,
+        "recall": 0.6923076923076923,
+        "f1": 0.5603112840466927,
+        "fp_terms": [
+          "Weblogic",
+          "DSL",
+          "server",
+          "web-service",
+          "SOAP",
+          "class",
+          "endpoint",
+          "code",
+          "classpath"
+        ],
+        "fn_terms": [
+          "src \\main\\resources\\wsdl\\",
+          "Weblogic 12C server",
+          "2.18.3",
+          "configuration"
+        ]
+      },
+      {
+        "doc_id": "Q3639039",
+        "extracted_count": 10,
+        "tp": 10,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.7692307692307693,
+        "f1": 0.8695652173913044,
+        "fp_terms": [],
+        "fn_terms": [
+          "2.2",
+          "ondemand",
+          "private"
+        ]
+      },
+      {
+        "doc_id": "Q10809866",
+        "extracted_count": 19,
+        "tp": 14,
+        "fp": 5,
+        "fn": 11,
+        "precision": 0.7368421052631579,
+        "recall": 0.56,
+        "f1": 0.6363636363636364,
+        "fp_terms": [
+          "gem",
+          "irb",
+          "rdoc",
+          "ri",
+          "testrb"
+        ],
+        "fn_terms": [
+          "1.9.3",
+          "1.7.4",
+          "4.3.2",
+          "developer command line tools",
+          "10.6.8",
+          "/System/Library/Frameworks/Ruby.framework",
+          "/usr/bin",
+          "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+          "symlinks",
+          "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+          "/usr/bin/ruby"
+        ]
+      },
+      {
+        "doc_id": "Q19471961",
+        "extracted_count": 16,
+        "tp": 14,
+        "fp": 2,
+        "fn": 9,
+        "precision": 0.875,
+        "recall": 0.5909090909090909,
+        "f1": 0.7054263565891474,
+        "fp_terms": [
+          "latex",
+          "notebook"
+        ],
+        "fn_terms": [
+          "kernel",
+          "0.7.3",
+          "1.1",
+          "1.3.1",
+          "1.7.1",
+          "0.12.0",
+          "13.10",
+          "1.1.0",
+          "global"
+        ]
+      },
+      {
+        "doc_id": "Q39079773",
+        "extracted_count": 25,
+        "tp": 17,
+        "fp": 8,
+        "fn": 1,
+        "precision": 0.68,
+        "recall": 0.9523809523809523,
+        "f1": 0.7934655775962661,
+        "fp_terms": [
+          "siblings",
+          "selector",
+          "class",
+          "browser",
+          "server",
+          "console",
+          "orientation",
+          "cascade"
+        ],
+        "fn_terms": [
+          "calculator"
+        ]
+      },
+      {
+        "doc_id": "Q27926052",
+        "extracted_count": 34,
+        "tp": 9,
+        "fp": 25,
+        "fn": 9,
+        "precision": 0.2647058823529412,
+        "recall": 0.5,
+        "f1": 0.3461538461538462,
+        "fp_terms": [
+          "Here's an exhaustive extraction of software named entities from the text:",
+          "terms\": [",
+          "Mohd Iftekhar Qurashi\"",
+          "number pad\"",
+          "decimal pad\"",
+          "ASCII\"",
+          "OK\"",
+          "Date de naissance\"",
+          "framework\"",
+          "class\"",
+          "iOS\" (implied by context)",
+          "Objective-C\" (implied by context)",
+          "screen\"",
+          "page\"",
+          "form\"",
+          "previous\"",
+          "next\"",
+          "done",
+          "Key reasoning:",
+          "Included borderline/context-specific terms",
+          "Captured framework, class, and file names",
+          "Included UI-related terms",
+          "Captured implied platform context",
+          "Included specific buttons/actions",
+          "Comprehensive extraction prioritizing inclusivity"
+        ],
+        "fn_terms": [
+          "pad",
+          ".h",
+          "Interface Builder",
+          ".xib",
+          "Identity Inspector",
+          ".m",
+          "setCustomDoneTarget:action :",
+          "doneAction :",
+          "IQUIView+"
+        ]
+      }
+    ]
+  },
+  "haiku_simple_v9": {
+    "precision": 0.8582,
+    "recall": 0.6541,
+    "f1": 0.7423,
+    "tp": 121,
+    "fp": 20,
+    "fn": 64,
+    "total_time": 44.6,
+    "docs": [
+      {
+        "doc_id": "Q42873050",
+        "extracted_count": 22,
+        "tp": 18,
+        "fp": 4,
+        "fn": 8,
+        "precision": 0.8181818181818182,
+        "recall": 0.7333333333333333,
+        "f1": 0.7734375,
+        "fp_terms": [
+          "ZSL",
+          "LEVEL-3",
+          "getInputSizes",
+          "native libraries"
+        ],
+        "fn_terms": [
+          "tables",
+          "table",
+          "MAX SIZE(4608x3456)",
+          "image",
+          "MAX Size",
+          "MAXIMUM",
+          "Session",
+          "Byte[]"
+        ]
+      },
+      {
+        "doc_id": "Q10709772",
+        "extracted_count": 11,
+        "tp": 10,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9090909090909091,
+        "recall": 0.8461538461538461,
+        "f1": 0.8764940239043824,
+        "fp_terms": [
+          "function"
+        ],
+        "fn_terms": [
+          "FMS",
+          "toggleAwayImageDisplay"
+        ]
+      },
+      {
+        "doc_id": "Q14831694",
+        "extracted_count": 15,
+        "tp": 15,
+        "fp": 0,
+        "fn": 8,
+        "precision": 1.0,
+        "recall": 0.7419354838709677,
+        "f1": 0.8518518518518519,
+        "fp_terms": [],
+        "fn_terms": [
+          "left/right arrow",
+          "slider",
+          "up/down arrow",
+          "up/down keys",
+          "PgUp",
+          "scrollbar control",
+          "keyboard",
+          "scrollbars"
+        ]
+      },
+      {
+        "doc_id": "Q39288595",
+        "extracted_count": 18,
+        "tp": 14,
+        "fp": 4,
+        "fn": 6,
+        "precision": 0.7777777777777778,
+        "recall": 0.7272727272727273,
+        "f1": 0.7516778523489932,
+        "fp_terms": [
+          "filesystem",
+          "microsoft",
+          "boost",
+          "MSVC"
+        ],
+        "fn_terms": [
+          "exception",
+          "unix",
+          "phone",
+          "time(NULL)",
+          "Pseudo-randomic",
+          "CPU"
+        ]
+      },
+      {
+        "doc_id": "Q45734089",
+        "extracted_count": 11,
+        "tp": 9,
+        "fp": 2,
+        "fn": 3,
+        "precision": 0.8181818181818182,
+        "recall": 0.7692307692307693,
+        "f1": 0.7929515418502203,
+        "fp_terms": [
+          "Weblogic",
+          "DSL"
+        ],
+        "fn_terms": [
+          "src \\main\\resources\\wsdl\\",
+          "configuration",
+          "exception"
+        ]
+      },
+      {
+        "doc_id": "Q3639039",
+        "extracted_count": 10,
+        "tp": 10,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.7692307692307693,
+        "f1": 0.8695652173913044,
+        "fp_terms": [],
+        "fn_terms": [
+          "2.2",
+          "ondemand",
+          "private"
+        ]
+      },
+      {
+        "doc_id": "Q10809866",
+        "extracted_count": 18,
+        "tp": 13,
+        "fp": 5,
+        "fn": 11,
+        "precision": 0.7222222222222222,
+        "recall": 0.56,
+        "f1": 0.6308492201039861,
+        "fp_terms": [
+          "gem",
+          "irb",
+          "rdoc",
+          "ri",
+          "testrb"
+        ],
+        "fn_terms": [
+          "1.9.3",
+          "1.7.4",
+          "4.3.2",
+          "developer command line tools",
+          "10.6.8",
+          "/System/Library/Frameworks/Ruby.framework",
+          "/usr/bin",
+          "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+          "symlinks",
+          "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+          "/usr/bin/ruby"
+        ]
+      },
+      {
+        "doc_id": "Q19471961",
+        "extracted_count": 14,
+        "tp": 12,
+        "fp": 2,
+        "fn": 10,
+        "precision": 0.8571428571428571,
+        "recall": 0.5454545454545454,
+        "f1": 0.6666666666666665,
+        "fp_terms": [
+          "latex",
+          "notebook"
+        ],
+        "fn_terms": [
+          "kernel",
+          "0.7.3",
+          "1.1",
+          "1.3.1",
+          "1.7.1",
+          "0.12.0",
+          "13.10",
+          "python3 terminal",
+          "1.1.0",
+          "global"
+        ]
+      },
+      {
+        "doc_id": "Q39079773",
+        "extracted_count": 13,
+        "tp": 12,
+        "fp": 1,
+        "fn": 4,
+        "precision": 0.9230769230769231,
+        "recall": 0.8095238095238095,
+        "f1": 0.8625792811839323,
+        "fp_terms": [
+          "siblings"
+        ],
+        "fn_terms": [
+          "calculator",
+          "column",
+          "padding",
+          "borders"
+        ]
+      },
+      {
+        "doc_id": "Q27926052",
+        "extracted_count": 9,
+        "tp": 8,
+        "fp": 1,
+        "fn": 9,
+        "precision": 0.8888888888888888,
+        "recall": 0.5,
+        "f1": 0.64,
+        "fp_terms": [
+          "Mohd Iftekhar Qurashi"
+        ],
+        "fn_terms": [
+          "keyboard",
+          "pad",
+          "button",
+          "Interface Builder",
+          "Identity Inspector",
+          ".m",
+          "setCustomDoneTarget:action :",
+          "doneAction :",
+          "IQUIView+"
+        ]
+      }
+    ]
+  },
+  "taxonomy_v0": {
+    "precision": 0.8272,
+    "recall": 0.7016,
+    "f1": 0.7592,
+    "tp": 134,
+    "fp": 28,
+    "fn": 57,
+    "total_time": 50.7,
+    "docs": [
+      {
+        "doc_id": "Q42873050",
+        "extracted_count": 21,
+        "tp": 18,
+        "fp": 3,
+        "fn": 8,
+        "precision": 0.8571428571428571,
+        "recall": 0.7333333333333333,
+        "f1": 0.7904191616766466,
+        "fp_terms": [
+          "ZSL",
+          "LEVEL-3",
+          "getInputSizes"
+        ],
+        "fn_terms": [
+          "tables",
+          "table",
+          "getInputSizes(ImageFormat.YUV_420_888)",
+          "MAX SIZE(4608x3456)",
+          "image",
+          "MAX Size",
+          "MAXIMUM",
+          "Byte[]"
+        ]
+      },
+      {
+        "doc_id": "Q10709772",
+        "extracted_count": 12,
+        "tp": 12,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.9230769230769231,
+        "f1": 0.9600000000000001,
+        "fp_terms": [],
+        "fn_terms": [
+          "toggleAwayImageDisplay"
+        ]
+      },
+      {
+        "doc_id": "Q14831694",
+        "extracted_count": 18,
+        "tp": 17,
+        "fp": 1,
+        "fn": 5,
+        "precision": 0.9444444444444444,
+        "recall": 0.8387096774193549,
+        "f1": 0.8884422110552764,
+        "fp_terms": [
+          "A Guide to Human Factors and Ergonomics"
+        ],
+        "fn_terms": [
+          "left/right arrow",
+          "up/down arrow",
+          "up/down keys",
+          "PgUp",
+          "keyboard"
+        ]
+      },
+      {
+        "doc_id": "Q39288595",
+        "extracted_count": 22,
+        "tp": 16,
+        "fp": 6,
+        "fn": 5,
+        "precision": 0.7272727272727273,
+        "recall": 0.7727272727272727,
+        "f1": 0.7493112947658402,
+        "fp_terms": [
+          "distribution",
+          "std::fopen",
+          "filesystem",
+          "microsoft",
+          "boost",
+          "MSVC"
+        ],
+        "fn_terms": [
+          "std::fopen(\"/dev/urandom\")",
+          "exception",
+          "phone",
+          "Pseudo-randomic",
+          "CPU"
+        ]
+      },
+      {
+        "doc_id": "Q45734089",
+        "extracted_count": 14,
+        "tp": 10,
+        "fp": 4,
+        "fn": 2,
+        "precision": 0.7142857142857143,
+        "recall": 0.8461538461538461,
+        "f1": 0.7746478873239436,
+        "fp_terms": [
+          "Weblogic",
+          "DSL",
+          "SOAP",
+          "web-service"
+        ],
+        "fn_terms": [
+          "configuration",
+          "exception"
+        ]
+      },
+      {
+        "doc_id": "Q3639039",
+        "extracted_count": 13,
+        "tp": 12,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9230769230769231,
+        "recall": 0.8461538461538461,
+        "f1": 0.8829431438127091,
+        "fp_terms": [
+          "module"
+        ],
+        "fn_terms": [
+          "ondemand",
+          "private"
+        ]
+      },
+      {
+        "doc_id": "Q10809866",
+        "extracted_count": 22,
+        "tp": 16,
+        "fp": 6,
+        "fn": 11,
+        "precision": 0.7272727272727273,
+        "recall": 0.56,
+        "f1": 0.632768361581921,
+        "fp_terms": [
+          "gem",
+          "irb",
+          "rdoc",
+          "ri",
+          "testrb",
+          "Ruby.framework"
+        ],
+        "fn_terms": [
+          "1.9.3",
+          "1.7.4",
+          "4.3.2",
+          "developer command line tools",
+          "10.6.8",
+          "/System/Library/Frameworks/Ruby.framework",
+          "/usr/bin",
+          "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+          "symlinks",
+          "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+          "/usr/bin/ruby"
+        ]
+      },
+      {
+        "doc_id": "Q19471961",
+        "extracted_count": 16,
+        "tp": 13,
+        "fp": 3,
+        "fn": 9,
+        "precision": 0.8125,
+        "recall": 0.5909090909090909,
+        "f1": 0.6842105263157896,
+        "fp_terms": [
+          "latex",
+          "notebook",
+          "interactive"
+        ],
+        "fn_terms": [
+          "kernel",
+          "0.7.3",
+          "1.1",
+          "1.3.1",
+          "1.7.1",
+          "0.12.0",
+          "13.10",
+          "1.1.0",
+          "00-startup.py"
+        ]
+      },
+      {
+        "doc_id": "Q39079773",
+        "extracted_count": 10,
+        "tp": 10,
+        "fp": 0,
+        "fn": 7,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "fp_terms": [],
+        "fn_terms": [
+          "calculator",
+          "column",
+          "padding",
+          "borders",
+          "row",
+          "long",
+          ".long"
+        ]
+      },
+      {
+        "doc_id": "Q27926052",
+        "extracted_count": 14,
+        "tp": 10,
+        "fp": 4,
+        "fn": 7,
+        "precision": 0.7142857142857143,
+        "recall": 0.6111111111111112,
+        "f1": 0.6586826347305389,
+        "fp_terms": [
+          "ASCII",
+          "OK",
+          "Date de naissance",
+          "Mohd Iftekhar Qurashi"
+        ],
+        "fn_terms": [
+          "keyboard",
+          "button",
+          ".h",
+          ".xib",
+          ".m",
+          "setCustomDoneTarget:action :",
+          "doneAction :"
+        ]
+      }
+    ]
+  },
+  "fewshot_v0": {
+    "precision": 0.8511,
+    "recall": 0.8163,
+    "f1": 0.8333,
+    "tp": 160,
+    "fp": 28,
+    "fn": 36,
+    "total_time": 29.9,
+    "docs": [
+      {
+        "doc_id": "Q42873050",
+        "extracted_count": 28,
+        "tp": 23,
+        "fp": 5,
+        "fn": 8,
+        "precision": 0.8214285714285714,
+        "recall": 0.7333333333333333,
+        "f1": 0.7748851454823891,
+        "fp_terms": [
+          "ZSL",
+          "LEVEL-3",
+          "4608 x 3456",
+          "getInputSizes()",
+          "native libraries"
+        ],
+        "fn_terms": [
+          "tables",
+          "table",
+          "MAX SIZE(4608x3456)",
+          "image",
+          "MAX Size",
+          "MAXIMUM",
+          "Session",
+          "Byte[]"
+        ]
+      },
+      {
+        "doc_id": "Q10709772",
+        "extracted_count": 12,
+        "tp": 12,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.8461538461538461,
+        "f1": 0.9166666666666666,
+        "fp_terms": [],
+        "fn_terms": [
+          "clients",
+          "Client"
+        ]
+      },
+      {
+        "doc_id": "Q14831694",
+        "extracted_count": 20,
+        "tp": 17,
+        "fp": 3,
+        "fn": 3,
+        "precision": 0.85,
+        "recall": 0.9032258064516129,
+        "f1": 0.8758049678012879,
+        "fp_terms": [
+          "arrow keys",
+          "thumb",
+          "A Guide to Human Factors and Ergonomics"
+        ],
+        "fn_terms": [
+          "up/down keys",
+          "PgUp",
+          "keyboard"
+        ]
+      },
+      {
+        "doc_id": "Q39288595",
+        "extracted_count": 22,
+        "tp": 17,
+        "fp": 5,
+        "fn": 4,
+        "precision": 0.7727272727272727,
+        "recall": 0.8181818181818182,
+        "f1": 0.7948051948051948,
+        "fp_terms": [
+          "distribution",
+          "filesystem",
+          "microsoft",
+          "boost",
+          "MSVC"
+        ],
+        "fn_terms": [
+          "exception",
+          "unix",
+          "phone",
+          "Pseudo-randomic"
+        ]
+      },
+      {
+        "doc_id": "Q45734089",
+        "extracted_count": 9,
+        "tp": 9,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.7692307692307693,
+        "f1": 0.8695652173913044,
+        "fp_terms": [],
+        "fn_terms": [
+          "2.18.3",
+          "configuration",
+          "exception"
+        ]
+      },
+      {
+        "doc_id": "Q3639039",
+        "extracted_count": 14,
+        "tp": 13,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9285714285714286,
+        "recall": 0.8461538461538461,
+        "f1": 0.8854489164086687,
+        "fp_terms": [
+          "module catalog"
+        ],
+        "fn_terms": [
+          "ondemand",
+          "private"
+        ]
+      },
+      {
+        "doc_id": "Q10809866",
+        "extracted_count": 27,
+        "tp": 20,
+        "fp": 7,
+        "fn": 6,
+        "precision": 0.7407407407407407,
+        "recall": 0.76,
+        "f1": 0.7502467917077985,
+        "fp_terms": [
+          "Time Machine",
+          "Ruby.framework",
+          "gem",
+          "irb",
+          "rdoc",
+          "ri",
+          "testrb"
+        ],
+        "fn_terms": [
+          "/System/Library/Frameworks/Ruby.framework",
+          "/usr/bin",
+          "/usr/bin/{erb,gem,irb,rdoc,ri,ruby,testrb}",
+          "symlinks",
+          "../../System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/erb",
+          "/usr/bin/ruby"
+        ]
+      },
+      {
+        "doc_id": "Q19471961",
+        "extracted_count": 22,
+        "tp": 20,
+        "fp": 2,
+        "fn": 3,
+        "precision": 0.9090909090909091,
+        "recall": 0.8636363636363636,
+        "f1": 0.8857808857808858,
+        "fp_terms": [
+          "latex",
+          "notebook"
+        ],
+        "fn_terms": [
+          "kernel",
+          "1.1.0",
+          "global"
+        ]
+      },
+      {
+        "doc_id": "Q39079773",
+        "extracted_count": 14,
+        "tp": 14,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.8571428571428571,
+        "f1": 0.923076923076923,
+        "fp_terms": [],
+        "fn_terms": [
+          "row",
+          "long",
+          ".long"
+        ]
+      },
+      {
+        "doc_id": "Q27926052",
+        "extracted_count": 20,
+        "tp": 15,
+        "fp": 5,
+        "fn": 2,
+        "precision": 0.75,
+        "recall": 0.8888888888888888,
+        "f1": 0.8135593220338982,
+        "fp_terms": [
+          "framework",
+          "ASCII capable",
+          "Date de naissance",
+          "Mohd Iftekhar Qurashi",
+          "selector"
+        ],
+        "fn_terms": [
+          "setCustomDoneTarget:action :",
+          "doneAction :"
+        ]
+      }
+    ]
+  }
+}
