@@ -55,3 +55,37 @@ Signal engineering (Phase 4a) required:
 - Ensemble methods (Random Forest) are highly effective even with weak individual signals, achieving 96.7% accuracy.
 - High class imbalance (94% POOR) makes traditional correlation and agreement metrics (like Cohen's kappa) difficult to interpret.
 - Fast extraction systems may perform significantly worse on some datasets (like SO NER) than others, necessitating aggressive routing to slow systems to maintain quality.
+
+## 2026-02-16 - POC-2 Complete
+
+### Key Learnings
+
+1. **Individual signals are insufficient** - No single confidence signal achieved strong correlation (max r=0.334) with extraction quality. This suggests quality assessment requires multiple dimensions.
+
+2. **Ensemble methods are effective** - Random Forest combining 7 signals achieved 96.7% accuracy, demonstrating that weak individual signals can be powerful in combination.
+
+3. **Class imbalance is critical** - With 94% POOR extractions, the fast heuristic system has fundamental limitations. This drives the need for aggressive routing to slow (LLM) system.
+
+4. **Feature importance insights** - Coverage (0.27) and technical_pattern_ratio (0.22) were most important features in Random Forest, suggesting these capture distinct quality dimensions.
+
+5. **Iterative improvement worked** - Phase 4a signal engineering improved max correlation from 0.276 to 0.334, and Phase 4b ensemble optimization achieved target accuracy.
+
+### Technical Decisions
+
+1. **Used F1-based automatic grading** - Conservative rubric (F1>=0.8 for GOOD) ensured quality standards, though LLM validation showed some disagreement (κ=0.0).
+
+2. **70/30 train/validation split** - Standard practice for threshold determination, with seed=42 for reproducibility.
+
+3. **Spearman correlation** - Appropriate for ranked quality grades (GOOD=2, ACCEPTABLE=1, POOR=0).
+
+4. **Random Forest over XGBoost** - XGBoost not installed, but Random Forest performed excellently (96.7% accuracy).
+
+### Recommendations for Future POCs
+
+1. **Validate on documentation corpus** - SO NER data may not represent actual use case. Need POC-3 on real documentation.
+
+2. **Improve fast extraction** - 94% POOR rate is unsustainable. Consider better heuristics or lightweight models.
+
+3. **Active learning** - Use slow system corrections to improve fast system over time.
+
+4. **Monitor in production** - Track actual routing rates and quality to tune ensemble weights.
