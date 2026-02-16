@@ -1,0 +1,23 @@
+{
+  "optimal_threshold": 0.3473700963364213,
+  "method": "youden_j",
+  "train_accuracy": 0.8142857142857143,
+  "validation_accuracy": 0.8,
+  "poor_recall": 0.75,
+  "slow_route_rate": 0.7,
+  "auc_roc": 0.875,
+  "confusion_matrix": {
+    "TP": 2,
+    "TN": 21,
+    "FP": 7,
+    "FN": 0
+  },
+  "train_class_distribution": {
+    "0": 66,
+    "1": 4
+  },
+  "val_class_distribution": {
+    "0": 28,
+    "1": 2
+  }
+}
