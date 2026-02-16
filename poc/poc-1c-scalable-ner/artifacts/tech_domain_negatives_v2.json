@@ -1,0 +1,1259 @@
+{
+  "data_sources": {
+    "so_ner_sentences": 10860,
+    "so_ner_docs": 1237,
+    "fewnerd_total_sentences": 188239,
+    "fewnerd_tech_sentences": 6071,
+    "total_tech_chunks": 16931
+  },
+  "safe_1000": [
+    {
+      "word": "this",
+      "so_app": 2363,
+      "so_ent": 0,
+      "fewnerd_app": 297,
+      "fewnerd_ent": 0,
+      "total_app": 2660,
+      "total_ent": 0
+    },
+    {
+      "word": "but",
+      "so_app": 1259,
+      "so_ent": 0,
+      "fewnerd_app": 236,
+      "fewnerd_ent": 0,
+      "total_app": 1495,
+      "total_ent": 0
+    },
+    {
+      "word": "be",
+      "so_app": 1230,
+      "so_ent": 0,
+      "fewnerd_app": 240,
+      "fewnerd_ent": 0,
+      "total_app": 1470,
+      "total_ent": 0
+    },
+    {
+      "word": "can",
+      "so_app": 1277,
+      "so_ent": 0,
+      "fewnerd_app": 102,
+      "fewnerd_ent": 0,
+      "total_app": 1379,
+      "total_ent": 0
+    },
+    {
+      "word": "not",
+      "so_app": 1082,
+      "so_ent": 0,
+      "fewnerd_app": 169,
+      "fewnerd_ent": 0,
+      "total_app": 1251,
+      "total_ent": 0
+    },
+    {
+      "word": "if",
+      "so_app": 1146,
+      "so_ent": 0,
+      "fewnerd_app": 20,
+      "fewnerd_ent": 0,
+      "total_app": 1166,
+      "total_ent": 0
+    },
+    {
+      "word": "which",
+      "so_app": 620,
+      "so_ent": 0,
+      "fewnerd_app": 501,
+      "fewnerd_ent": 0,
+      "total_app": 1121,
+      "total_ent": 0
+    },
+    {
+      "word": "use",
+      "so_app": 913,
+      "so_ent": 0,
+      "fewnerd_app": 113,
+      "fewnerd_ent": 0,
+      "total_app": 1026,
+      "total_ent": 0
+    }
+  ],
+  "safe_500": [
+    {
+      "word": "using",
+      "so_app": 787,
+      "so_ent": 0,
+      "fewnerd_app": 134,
+      "fewnerd_ent": 0,
+      "total_app": 921,
+      "total_ent": 0
+    },
+    {
+      "word": "also",
+      "so_app": 397,
+      "so_ent": 0,
+      "fewnerd_app": 415,
+      "fewnerd_ent": 0,
+      "total_app": 812,
+      "total_ent": 0
+    },
+    {
+      "word": "there",
+      "so_app": 662,
+      "so_ent": 0,
+      "fewnerd_app": 78,
+      "fewnerd_ent": 0,
+      "total_app": 740,
+      "total_ent": 0
+    },
+    {
+      "word": "then",
+      "so_app": 627,
+      "so_ent": 0,
+      "fewnerd_app": 109,
+      "fewnerd_ent": 0,
+      "total_app": 736,
+      "total_ent": 0
+    },
+    {
+      "word": "will",
+      "so_app": 684,
+      "so_ent": 0,
+      "fewnerd_app": 40,
+      "fewnerd_ent": 0,
+      "total_app": 724,
+      "total_ent": 0
+    },
+    {
+      "word": "want",
+      "so_app": 703,
+      "so_ent": 0,
+      "fewnerd_app": 3,
+      "fewnerd_ent": 0,
+      "total_app": 706,
+      "total_ent": 0
+    },
+    {
+      "word": "would",
+      "so_app": 568,
+      "so_ent": 0,
+      "fewnerd_app": 110,
+      "fewnerd_ent": 0,
+      "total_app": 678,
+      "total_ent": 0
+    },
+    {
+      "word": "were",
+      "so_app": 46,
+      "so_ent": 0,
+      "fewnerd_app": 569,
+      "fewnerd_ent": 0,
+      "total_app": 615,
+      "total_ent": 0
+    },
+    {
+      "word": "need",
+      "so_app": 573,
+      "so_ent": 0,
+      "fewnerd_app": 8,
+      "fewnerd_ent": 0,
+      "total_app": 581,
+      "total_ent": 0
+    },
+    {
+      "word": "some",
+      "so_app": 459,
+      "so_ent": 0,
+      "fewnerd_app": 104,
+      "fewnerd_ent": 0,
+      "total_app": 563,
+      "total_ent": 0
+    },
+    {
+      "word": "has",
+      "so_app": 342,
+      "so_ent": 0,
+      "fewnerd_app": 196,
+      "fewnerd_ent": 0,
+      "total_app": 538,
+      "total_ent": 0
+    },
+    {
+      "word": "any",
+      "so_app": 494,
+      "so_ent": 0,
+      "fewnerd_app": 41,
+      "fewnerd_ent": 0,
+      "total_app": 535,
+      "total_ent": 0
+    }
+  ],
+  "safe_200": [
+    {
+      "word": "used",
+      "so_app": 199,
+      "so_ent": 0,
+      "fewnerd_app": 270,
+      "fewnerd_ent": 0,
+      "total_app": 469,
+      "total_ent": 0
+    },
+    {
+      "word": "does",
+      "so_app": 454,
+      "so_ent": 0,
+      "fewnerd_app": 10,
+      "fewnerd_ent": 0,
+      "total_app": 464,
+      "total_ent": 0
+    },
+    {
+      "word": "should",
+      "so_app": 428,
+      "so_ent": 0,
+      "fewnerd_app": 14,
+      "fewnerd_ent": 0,
+      "total_app": 442,
+      "total_ent": 0
+    },
+    {
+      "word": "more",
+      "so_app": 297,
+      "so_ent": 0,
+      "fewnerd_app": 143,
+      "fewnerd_ent": 0,
+      "total_app": 440,
+      "total_ent": 0
+    },
+    {
+      "word": "same",
+      "so_app": 331,
+      "so_ent": 0,
+      "fewnerd_app": 101,
+      "fewnerd_ent": 0,
+      "total_app": 432,
+      "total_ent": 0
+    },
+    {
+      "word": "had",
+      "so_app": 95,
+      "so_ent": 0,
+      "fewnerd_app": 299,
+      "fewnerd_ent": 0,
+      "total_app": 394,
+      "total_ent": 0
+    },
+    {
+      "word": "example",
+      "so_app": 359,
+      "so_ent": 0,
+      "fewnerd_app": 28,
+      "fewnerd_ent": 0,
+      "total_app": 387,
+      "total_ent": 0
+    },
+    {
+      "word": "following",
+      "so_app": 289,
+      "so_ent": 0,
+      "fewnerd_app": 97,
+      "fewnerd_ent": 0,
+      "total_app": 386,
+      "total_ent": 0
+    },
+    {
+      "word": "work",
+      "so_app": 331,
+      "so_ent": 0,
+      "fewnerd_app": 42,
+      "fewnerd_ent": 0,
+      "total_app": 373,
+      "total_ent": 0
+    },
+    {
+      "word": "could",
+      "so_app": 290,
+      "so_ent": 0,
+      "fewnerd_app": 51,
+      "fewnerd_ent": 0,
+      "total_app": 341,
+      "total_ent": 0
+    },
+    {
+      "word": "output",
+      "so_app": 333,
+      "so_ent": 0,
+      "fewnerd_app": 6,
+      "fewnerd_ent": 0,
+      "total_app": 339,
+      "total_ent": 0
+    },
+    {
+      "word": "where",
+      "so_app": 250,
+      "so_ent": 0,
+      "fewnerd_app": 85,
+      "fewnerd_ent": 0,
+      "total_app": 335,
+      "total_ent": 0
+    },
+    {
+      "word": "make",
+      "so_app": 281,
+      "so_ent": 0,
+      "fewnerd_app": 28,
+      "fewnerd_ent": 0,
+      "total_app": 309,
+      "total_ent": 0
+    },
+    {
+      "word": "been",
+      "so_app": 131,
+      "so_ent": 0,
+      "fewnerd_app": 173,
+      "fewnerd_ent": 0,
+      "total_app": 304,
+      "total_ent": 0
+    },
+    {
+      "word": "them",
+      "so_app": 250,
+      "so_ent": 0,
+      "fewnerd_app": 49,
+      "fewnerd_ent": 0,
+      "total_app": 299,
+      "total_ent": 0
+    },
+    {
+      "word": "function",
+      "so_app": 295,
+      "so_ent": 0,
+      "fewnerd_app": 2,
+      "fewnerd_ent": 0,
+      "total_app": 297,
+      "total_ent": 0
+    },
+    {
+      "word": "trying",
+      "so_app": 296,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 297,
+      "total_ent": 0
+    },
+    {
+      "word": "see",
+      "so_app": 272,
+      "so_ent": 0,
+      "fewnerd_app": 17,
+      "fewnerd_ent": 0,
+      "total_app": 289,
+      "total_ent": 0
+    },
+    {
+      "word": "because",
+      "so_app": 249,
+      "so_ent": 0,
+      "fewnerd_app": 40,
+      "fewnerd_ent": 0,
+      "total_app": 289,
+      "total_ent": 0
+    },
+    {
+      "word": "method",
+      "so_app": 285,
+      "so_ent": 0,
+      "fewnerd_app": 3,
+      "fewnerd_ent": 0,
+      "total_app": 288,
+      "total_ent": 0
+    },
+    {
+      "word": "know",
+      "so_app": 276,
+      "so_ent": 0,
+      "fewnerd_app": 3,
+      "fewnerd_ent": 0,
+      "total_app": 279,
+      "total_ent": 0
+    },
+    {
+      "word": "their",
+      "so_app": 73,
+      "so_ent": 0,
+      "fewnerd_app": 203,
+      "fewnerd_ent": 0,
+      "total_app": 276,
+      "total_ent": 0
+    },
+    {
+      "word": "something",
+      "so_app": 272,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 273,
+      "total_ent": 0
+    },
+    {
+      "word": "however",
+      "so_app": 198,
+      "so_ent": 0,
+      "fewnerd_app": 73,
+      "fewnerd_ent": 0,
+      "total_app": 271,
+      "total_ent": 0
+    },
+    {
+      "word": "based",
+      "so_app": 87,
+      "so_ent": 0,
+      "fewnerd_app": 178,
+      "fewnerd_ent": 0,
+      "total_app": 265,
+      "total_ent": 0
+    },
+    {
+      "word": "both",
+      "so_app": 133,
+      "so_ent": 0,
+      "fewnerd_app": 129,
+      "fewnerd_ent": 0,
+      "total_app": 262,
+      "total_ent": 0
+    },
+    {
+      "word": "during",
+      "so_app": 37,
+      "so_ent": 0,
+      "fewnerd_app": 225,
+      "fewnerd_ent": 0,
+      "total_app": 262,
+      "total_ent": 0
+    },
+    {
+      "word": "such",
+      "so_app": 118,
+      "so_ent": 0,
+      "fewnerd_app": 142,
+      "fewnerd_ent": 0,
+      "total_app": 260,
+      "total_ent": 0
+    },
+    {
+      "word": "than",
+      "so_app": 167,
+      "so_ent": 0,
+      "fewnerd_app": 92,
+      "fewnerd_ent": 0,
+      "total_app": 259,
+      "total_ent": 0
+    },
+    {
+      "word": "these",
+      "so_app": 181,
+      "so_ent": 0,
+      "fewnerd_app": 78,
+      "fewnerd_ent": 0,
+      "total_app": 259,
+      "total_ent": 0
+    },
+    {
+      "word": "try",
+      "so_app": 254,
+      "so_ent": 0,
+      "fewnerd_app": 0,
+      "fewnerd_ent": 0,
+      "total_app": 254,
+      "total_ent": 0
+    },
+    {
+      "word": "between",
+      "so_app": 124,
+      "so_ent": 0,
+      "fewnerd_app": 128,
+      "fewnerd_ent": 0,
+      "total_app": 252,
+      "total_ent": 0
+    },
+    {
+      "word": "his",
+      "so_app": 8,
+      "so_ent": 0,
+      "fewnerd_app": 241,
+      "fewnerd_ent": 0,
+      "total_app": 249,
+      "total_ent": 0
+    },
+    {
+      "word": "since",
+      "so_app": 151,
+      "so_ent": 0,
+      "fewnerd_app": 97,
+      "fewnerd_ent": 0,
+      "total_app": 248,
+      "total_ent": 0
+    },
+    {
+      "word": "well",
+      "so_app": 124,
+      "so_ent": 0,
+      "fewnerd_app": 123,
+      "fewnerd_ent": 0,
+      "total_app": 247,
+      "total_ent": 0
+    },
+    {
+      "word": "instead",
+      "so_app": 205,
+      "so_ent": 0,
+      "fewnerd_app": 42,
+      "fewnerd_ent": 0,
+      "total_app": 247,
+      "total_ent": 0
+    },
+    {
+      "word": "before",
+      "so_app": 149,
+      "so_ent": 0,
+      "fewnerd_app": 87,
+      "fewnerd_ent": 0,
+      "total_app": 236,
+      "total_ent": 0
+    },
+    {
+      "word": "working",
+      "so_app": 217,
+      "so_ent": 0,
+      "fewnerd_app": 12,
+      "fewnerd_ent": 0,
+      "total_app": 229,
+      "total_ent": 0
+    },
+    {
+      "word": "through",
+      "so_app": 142,
+      "so_ent": 0,
+      "fewnerd_app": 84,
+      "fewnerd_ent": 0,
+      "total_app": 226,
+      "total_ent": 0
+    },
+    {
+      "word": "different",
+      "so_app": 188,
+      "so_ent": 0,
+      "fewnerd_app": 33,
+      "fewnerd_ent": 0,
+      "total_app": 221,
+      "total_ent": 0
+    },
+    {
+      "word": "tried",
+      "so_app": 213,
+      "so_ent": 0,
+      "fewnerd_app": 4,
+      "fewnerd_ent": 0,
+      "total_app": 217,
+      "total_ent": 0
+    },
+    {
+      "word": "being",
+      "so_app": 106,
+      "so_ent": 0,
+      "fewnerd_app": 107,
+      "fewnerd_ent": 0,
+      "total_app": 213,
+      "total_ent": 0
+    },
+    {
+      "word": "question",
+      "so_app": 201,
+      "so_ent": 0,
+      "fewnerd_app": 3,
+      "fewnerd_ent": 0,
+      "total_app": 204,
+      "total_ent": 0
+    }
+  ],
+  "safe_100": [
+    {
+      "word": "later",
+      "so_app": 31,
+      "so_ent": 0,
+      "fewnerd_app": 168,
+      "fewnerd_ent": 0,
+      "total_app": 199,
+      "total_ent": 0
+    },
+    {
+      "word": "called",
+      "so_app": 114,
+      "so_ent": 0,
+      "fewnerd_app": 78,
+      "fewnerd_ent": 0,
+      "total_app": 192,
+      "total_ent": 0
+    },
+    {
+      "word": "why",
+      "so_app": 187,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 188,
+      "total_ent": 0
+    },
+    {
+      "word": "possible",
+      "so_app": 170,
+      "so_ent": 0,
+      "fewnerd_app": 18,
+      "fewnerd_ent": 0,
+      "total_app": 188,
+      "total_ent": 0
+    },
+    {
+      "word": "built",
+      "so_app": 21,
+      "so_ent": 0,
+      "fewnerd_app": 164,
+      "fewnerd_ent": 0,
+      "total_app": 185,
+      "total_ent": 0
+    },
+    {
+      "word": "able",
+      "so_app": 161,
+      "so_ent": 0,
+      "fewnerd_app": 21,
+      "fewnerd_ent": 0,
+      "total_app": 182,
+      "total_ent": 0
+    },
+    {
+      "word": "did",
+      "so_app": 130,
+      "so_ent": 0,
+      "fewnerd_app": 52,
+      "fewnerd_ent": 0,
+      "total_app": 182,
+      "total_ent": 0
+    },
+    {
+      "word": "still",
+      "so_app": 128,
+      "so_ent": 0,
+      "fewnerd_app": 49,
+      "fewnerd_ent": 0,
+      "total_app": 177,
+      "total_ent": 0
+    },
+    {
+      "word": "without",
+      "so_app": 151,
+      "so_ent": 0,
+      "fewnerd_app": 25,
+      "fewnerd_ent": 0,
+      "total_app": 176,
+      "total_ent": 0
+    },
+    {
+      "word": "below",
+      "so_app": 161,
+      "so_ent": 0,
+      "fewnerd_app": 13,
+      "fewnerd_ent": 0,
+      "total_app": 174,
+      "total_ent": 0
+    },
+    {
+      "word": "until",
+      "so_app": 53,
+      "so_ent": 0,
+      "fewnerd_app": 115,
+      "fewnerd_ent": 0,
+      "total_app": 168,
+      "total_ent": 0
+    },
+    {
+      "word": "most",
+      "so_app": 78,
+      "so_ent": 0,
+      "fewnerd_app": 87,
+      "fewnerd_ent": 0,
+      "total_app": 165,
+      "total_ent": 0
+    },
+    {
+      "word": "found",
+      "so_app": 137,
+      "so_ent": 0,
+      "fewnerd_app": 28,
+      "fewnerd_ent": 0,
+      "total_app": 165,
+      "total_ent": 0
+    },
+    {
+      "word": "many",
+      "so_app": 86,
+      "so_ent": 0,
+      "fewnerd_app": 77,
+      "fewnerd_ent": 0,
+      "total_app": 163,
+      "total_ent": 0
+    },
+    {
+      "word": "check",
+      "so_app": 156,
+      "so_ent": 0,
+      "fewnerd_app": 3,
+      "fewnerd_ent": 0,
+      "total_app": 159,
+      "total_ent": 0
+    },
+    {
+      "word": "similar",
+      "so_app": 86,
+      "so_ent": 0,
+      "fewnerd_app": 72,
+      "fewnerd_ent": 0,
+      "total_app": 158,
+      "total_ent": 0
+    },
+    {
+      "word": "made",
+      "so_app": 62,
+      "so_ent": 0,
+      "fewnerd_app": 93,
+      "fewnerd_ent": 0,
+      "total_app": 155,
+      "total_ent": 0
+    },
+    {
+      "word": "even",
+      "so_app": 132,
+      "so_ent": 0,
+      "fewnerd_app": 22,
+      "fewnerd_ent": 0,
+      "total_app": 154,
+      "total_ent": 0
+    },
+    {
+      "word": "please",
+      "so_app": 152,
+      "so_ent": 0,
+      "fewnerd_app": 0,
+      "fewnerd_ent": 0,
+      "total_app": 152,
+      "total_ent": 0
+    },
+    {
+      "word": "above",
+      "so_app": 126,
+      "so_ent": 0,
+      "fewnerd_app": 25,
+      "fewnerd_ent": 0,
+      "total_app": 151,
+      "total_ent": 0
+    },
+    {
+      "word": "issue",
+      "so_app": 139,
+      "so_ent": 0,
+      "fewnerd_app": 11,
+      "fewnerd_ent": 0,
+      "total_app": 150,
+      "total_ent": 0
+    },
+    {
+      "word": "values",
+      "so_app": 149,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 150,
+      "total_ent": 0
+    },
+    {
+      "word": "created",
+      "so_app": 114,
+      "so_ent": 0,
+      "fewnerd_app": 36,
+      "fewnerd_ent": 0,
+      "total_app": 150,
+      "total_ent": 0
+    },
+    {
+      "word": "thanks",
+      "so_app": 147,
+      "so_ent": 0,
+      "fewnerd_app": 2,
+      "fewnerd_ent": 0,
+      "total_app": 149,
+      "total_ent": 0
+    },
+    {
+      "word": "much",
+      "so_app": 113,
+      "so_ent": 0,
+      "fewnerd_app": 34,
+      "fewnerd_ent": 0,
+      "total_app": 147,
+      "total_ent": 0
+    },
+    {
+      "word": "think",
+      "so_app": 144,
+      "so_ent": 0,
+      "fewnerd_app": 0,
+      "fewnerd_ent": 0,
+      "total_app": 144,
+      "total_ent": 0
+    },
+    {
+      "word": "doing",
+      "so_app": 138,
+      "so_ent": 0,
+      "fewnerd_app": 4,
+      "fewnerd_ent": 0,
+      "total_app": 142,
+      "total_ent": 0
+    },
+    {
+      "word": "every",
+      "so_app": 134,
+      "so_ent": 0,
+      "fewnerd_app": 8,
+      "fewnerd_ent": 0,
+      "total_app": 142,
+      "total_ent": 0
+    },
+    {
+      "word": "edit",
+      "so_app": 140,
+      "so_ent": 0,
+      "fewnerd_app": 0,
+      "fewnerd_ent": 0,
+      "total_app": 140,
+      "total_ent": 0
+    },
+    {
+      "word": "sure",
+      "so_app": 138,
+      "so_ent": 0,
+      "fewnerd_app": 0,
+      "fewnerd_ent": 0,
+      "total_app": 138,
+      "total_ent": 0
+    },
+    {
+      "word": "result",
+      "so_app": 119,
+      "so_ent": 0,
+      "fewnerd_app": 18,
+      "fewnerd_ent": 0,
+      "total_app": 137,
+      "total_ent": 0
+    },
+    {
+      "word": "several",
+      "so_app": 48,
+      "so_ent": 0,
+      "fewnerd_app": 86,
+      "fewnerd_ent": 0,
+      "total_app": 134,
+      "total_ent": 0
+    },
+    {
+      "word": "put",
+      "so_app": 129,
+      "so_ent": 0,
+      "fewnerd_app": 5,
+      "fewnerd_ent": 0,
+      "total_app": 134,
+      "total_ent": 0
+    },
+    {
+      "word": "having",
+      "so_app": 99,
+      "so_ent": 0,
+      "fewnerd_app": 34,
+      "fewnerd_ent": 0,
+      "total_app": 133,
+      "total_ent": 0
+    },
+    {
+      "word": "seems",
+      "so_app": 128,
+      "so_ent": 0,
+      "fewnerd_app": 4,
+      "fewnerd_ent": 0,
+      "total_app": 132,
+      "total_ent": 0
+    },
+    {
+      "word": "https",
+      "so_app": 120,
+      "so_ent": 0,
+      "fewnerd_app": 9,
+      "fewnerd_ent": 0,
+      "total_app": 129,
+      "total_ent": 0
+    },
+    {
+      "word": "last",
+      "so_app": 75,
+      "so_ent": 0,
+      "fewnerd_app": 54,
+      "fewnerd_ent": 0,
+      "total_app": 129,
+      "total_ent": 0
+    },
+    {
+      "word": "always",
+      "so_app": 117,
+      "so_ent": 0,
+      "fewnerd_app": 11,
+      "fewnerd_ent": 0,
+      "total_app": 128,
+      "total_ent": 0
+    },
+    {
+      "word": "inside",
+      "so_app": 116,
+      "so_ent": 0,
+      "fewnerd_app": 11,
+      "fewnerd_ent": 0,
+      "total_app": 127,
+      "total_ent": 0
+    },
+    {
+      "word": "better",
+      "so_app": 110,
+      "so_ent": 0,
+      "fewnerd_app": 16,
+      "fewnerd_ent": 0,
+      "total_app": 126,
+      "total_ent": 0
+    },
+    {
+      "word": "again",
+      "so_app": 93,
+      "so_ent": 0,
+      "fewnerd_app": 30,
+      "fewnerd_ent": 0,
+      "total_app": 123,
+      "total_ent": 0
+    },
+    {
+      "word": "single",
+      "so_app": 72,
+      "so_ent": 0,
+      "fewnerd_app": 50,
+      "fewnerd_ent": 0,
+      "total_app": 122,
+      "total_ent": 0
+    },
+    {
+      "word": "those",
+      "so_app": 88,
+      "so_ent": 0,
+      "fewnerd_app": 33,
+      "fewnerd_ent": 0,
+      "total_app": 121,
+      "total_ent": 0
+    },
+    {
+      "word": "known",
+      "so_app": 21,
+      "so_ent": 0,
+      "fewnerd_app": 98,
+      "fewnerd_ent": 0,
+      "total_app": 119,
+      "total_ent": 0
+    },
+    {
+      "word": "replaced",
+      "so_app": 14,
+      "so_ent": 0,
+      "fewnerd_app": 104,
+      "fewnerd_ent": 0,
+      "total_app": 118,
+      "total_ent": 0
+    },
+    {
+      "word": "designed",
+      "so_app": 8,
+      "so_ent": 0,
+      "fewnerd_app": 109,
+      "fewnerd_ent": 0,
+      "total_app": 117,
+      "total_ent": 0
+    },
+    {
+      "word": "currently",
+      "so_app": 80,
+      "so_ent": 0,
+      "fewnerd_app": 35,
+      "fewnerd_ent": 0,
+      "total_app": 115,
+      "total_ent": 0
+    },
+    {
+      "word": "around",
+      "so_app": 67,
+      "so_ent": 0,
+      "fewnerd_app": 47,
+      "fewnerd_ent": 0,
+      "total_app": 114,
+      "total_ent": 0
+    },
+    {
+      "word": "wrong",
+      "so_app": 112,
+      "so_ent": 0,
+      "fewnerd_app": 2,
+      "fewnerd_ent": 0,
+      "total_app": 114,
+      "total_ent": 0
+    },
+    {
+      "word": "default",
+      "so_app": 103,
+      "so_ent": 0,
+      "fewnerd_app": 10,
+      "fewnerd_ent": 0,
+      "total_app": 113,
+      "total_ent": 0
+    },
+    {
+      "word": "got",
+      "so_app": 106,
+      "so_ent": 0,
+      "fewnerd_app": 7,
+      "fewnerd_ent": 0,
+      "total_app": 113,
+      "total_ent": 0
+    },
+    {
+      "word": "really",
+      "so_app": 112,
+      "so_ent": 0,
+      "fewnerd_app": 0,
+      "fewnerd_ent": 0,
+      "total_app": 112,
+      "total_ent": 0
+    },
+    {
+      "word": "answer",
+      "so_app": 110,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 111,
+      "total_ent": 0
+    },
+    {
+      "word": "anyone",
+      "so_app": 110,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 111,
+      "total_ent": 0
+    },
+    {
+      "word": "already",
+      "so_app": 97,
+      "so_ent": 0,
+      "fewnerd_app": 14,
+      "fewnerd_ent": 0,
+      "total_app": 111,
+      "total_ent": 0
+    },
+    {
+      "word": "once",
+      "so_app": 95,
+      "so_ent": 0,
+      "fewnerd_app": 14,
+      "fewnerd_ent": 0,
+      "total_app": 109,
+      "total_ent": 0
+    },
+    {
+      "word": "actually",
+      "so_app": 99,
+      "so_ent": 0,
+      "fewnerd_app": 9,
+      "fewnerd_ent": 0,
+      "total_app": 108,
+      "total_ent": 0
+    },
+    {
+      "word": "included",
+      "so_app": 26,
+      "so_ent": 0,
+      "fewnerd_app": 82,
+      "fewnerd_ent": 0,
+      "total_app": 108,
+      "total_ent": 0
+    },
+    {
+      "word": "etc",
+      "so_app": 104,
+      "so_ent": 0,
+      "fewnerd_app": 3,
+      "fewnerd_ent": 0,
+      "total_app": 107,
+      "total_ent": 0
+    },
+    {
+      "word": "build",
+      "so_app": 90,
+      "so_ent": 0,
+      "fewnerd_app": 16,
+      "fewnerd_ent": 0,
+      "total_app": 106,
+      "total_ent": 0
+    },
+    {
+      "word": "within",
+      "so_app": 72,
+      "so_ent": 0,
+      "fewnerd_app": 34,
+      "fewnerd_ent": 0,
+      "total_app": 106,
+      "total_ent": 0
+    },
+    {
+      "word": "added",
+      "so_app": 75,
+      "so_ent": 0,
+      "fewnerd_app": 31,
+      "fewnerd_ent": 0,
+      "total_app": 106,
+      "total_ent": 0
+    },
+    {
+      "word": "given",
+      "so_app": 75,
+      "so_ent": 0,
+      "fewnerd_app": 31,
+      "fewnerd_ent": 0,
+      "total_app": 106,
+      "total_ent": 0
+    },
+    {
+      "word": "side",
+      "so_app": 76,
+      "so_ent": 0,
+      "fewnerd_app": 29,
+      "fewnerd_ent": 0,
+      "total_app": 105,
+      "total_ent": 0
+    },
+    {
+      "word": "released",
+      "so_app": 7,
+      "so_ent": 0,
+      "fewnerd_app": 98,
+      "fewnerd_ent": 0,
+      "total_app": 105,
+      "total_ent": 0
+    },
+    {
+      "word": "uses",
+      "so_app": 60,
+      "so_ent": 0,
+      "fewnerd_app": 44,
+      "fewnerd_ent": 0,
+      "total_app": 104,
+      "total_ent": 0
+    },
+    {
+      "word": "original",
+      "so_app": 53,
+      "so_ent": 0,
+      "fewnerd_app": 51,
+      "fewnerd_ent": 0,
+      "total_app": 104,
+      "total_ent": 0
+    },
+    {
+      "word": "loop",
+      "so_app": 102,
+      "so_ent": 0,
+      "fewnerd_app": 1,
+      "fewnerd_ent": 0,
+      "total_app": 103,
+      "total_ent": 0
+    },
+    {
+      "word": "message",
+      "so_app": 101,
+      "so_ent": 0,
+      "fewnerd_app": 2,
+      "fewnerd_ent": 0,
+      "total_app": 103,
+      "total_ent": 0
+    },
+    {
+      "word": "take",
+      "so_app": 84,
+      "so_ent": 0,
+      "fewnerd_app": 18,
+      "fewnerd_ent": 0,
+      "total_app": 102,
+      "total_ent": 0
+    },
+    {
+      "word": "note",
+      "so_app": 100,
+      "so_ent": 0,
+      "fewnerd_app": 2,
+      "fewnerd_ent": 0,
+      "total_app": 102,
+      "total_ent": 0
+    },
+    {
+      "word": "simply",
+      "so_app": 94,
+      "so_ent": 0,
+      "fewnerd_app": 8,
+      "fewnerd_ent": 0,
+      "total_app": 102,
+      "total_ent": 0
+    },
+    {
+      "word": "either",
+      "so_app": 72,
+      "so_ent": 0,
+      "fewnerd_app": 29,
+      "fewnerd_ent": 0,
+      "total_app": 101,
+      "total_ent": 0
+    },
+    {
+      "word": "specific",
+      "so_app": 96,
+      "so_ent": 0,
+      "fewnerd_app": 4,
+      "fewnerd_ent": 0,
+      "total_app": 100,
+      "total_ent": 0
+    },
+    {
+      "word": "users",
+      "so_app": 78,
+      "so_ent": 0,
+      "fewnerd_app": 22,
+      "fewnerd_ent": 0,
+      "total_app": 100,
+      "total_ent": 0
+    }
+  ]
+}

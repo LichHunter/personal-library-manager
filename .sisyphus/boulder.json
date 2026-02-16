@@ -1,10 +1,6 @@
 {
-  "active_plan": "/home/susano/Code/personal-library-manager/.sisyphus/plans/src-structure-implementation.md",
-  "started_at": "2026-02-16T12:34:03.526Z",
-  "completed_at": "2026-02-16T13:45:00.000Z",
-  "session_ids": [
-    "ses_399af91a7ffe5WvVnlLQCa1qMt"
-  ],
-  "plan_name": "src-structure-implementation",
-  "status": "completed"
+  "active_plan": "/home/susano/Code/personal-library-manager/.sisyphus/plans/slow-extraction-docker.md",
+  "started_at": "2026-02-16T15:52:46.867Z",
+  "session_ids": ["ses_399af91a7ffe5WvVnlLQCa1qMt", "ses_399b0e4a4ffe4Uu1Ov8Ks5Rvqr"],
+  "plan_name": "slow-extraction-docker"
 }

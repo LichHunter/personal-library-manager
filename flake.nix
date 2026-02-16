@@ -3,11 +3,39 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    # uv2nix for Python packaging
+    pyproject-nix = {
+      url = "github:pyproject-nix/pyproject.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    uv2nix = {
+      url = "github:pyproject-nix/uv2nix";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pyproject-build-systems = {
+      url = "github:pyproject-nix/build-system-pkgs";
+      inputs.pyproject-nix.follows = "pyproject-nix";
+      inputs.uv2nix.follows = "uv2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { self, nixpkgs }:
+    inputs@{ self, nixpkgs, flake-utils, pyproject-nix, uv2nix, pyproject-build-systems, ... }:
     let
+      linuxSystem = "x86_64-linux";
+
+      # Import slow extraction build flake
+      slow-extraction-flake = import ./src/plm/extraction/slow/flake.nix;
+      slow-extraction-outputs = slow-extraction-flake.outputs {
+        inherit self nixpkgs flake-utils pyproject-nix uv2nix pyproject-build-systems;
+      };
+      linux-slow-extraction-pkgs = slow-extraction-outputs.packages.${linuxSystem};
+
+      # Keep multi-system support for devShells
       supportedSystems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -17,6 +45,19 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
+      # Packages only for Linux (Docker builds require Linux)
+      packages = {
+        "${linuxSystem}" = {
+          # Slow extraction packages
+          slow-extraction = linux-slow-extraction-pkgs.slow-extraction;
+          slow-extraction-docker = linux-slow-extraction-pkgs.slow-extraction-docker;
+
+          # Default
+          default = linux-slow-extraction-pkgs.default;
+        };
+      };
+
+      # DevShells for all systems (preserved from original)
       devShells = forAllSystems (
         system:
         let

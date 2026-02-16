@@ -1,0 +1,4682 @@
+{
+  "safe_1k": [],
+  "safe_100": [],
+  "unsafe": [
+    "footer",
+    "bin",
+    "dialog",
+    "library",
+    "queue",
+    "tab",
+    "button",
+    "meta",
+    "array",
+    "browser",
+    "lib",
+    "string",
+    "state",
+    "protocol",
+    "toolbar",
+    "server",
+    "pipe",
+    "api",
+    "src",
+    "tag",
+    "column",
+    "root",
+    "class",
+    "field",
+    "config",
+    "row",
+    "consumer",
+    "header",
+    "table",
+    "observer",
+    "map",
+    "line",
+    "adapter",
+    "factory",
+    "page",
+    "hash",
+    "node",
+    "id",
+    "stack",
+    "buffer",
+    "listener",
+    "client",
+    "resource",
+    "plugin",
+    "type",
+    "image",
+    "link",
+    "window",
+    "command",
+    "service",
+    "container",
+    "engine",
+    "index",
+    "icon",
+    "resources",
+    "stream",
+    "framework",
+    "panel",
+    "key",
+    "menu",
+    "path",
+    "model",
+    "screen",
+    "exception",
+    "view",
+    "action",
+    "flag",
+    "handler",
+    "socket",
+    "child",
+    "controller",
+    "collection",
+    "interface",
+    "module",
+    "database",
+    "connection",
+    "endpoint",
+    "token",
+    "test",
+    "list",
+    "main",
+    "session",
+    "data",
+    "query",
+    "promise",
+    "section",
+    "package",
+    "target",
+    "extension",
+    "text",
+    "driver",
+    "message",
+    "constant",
+    "preview",
+    "distribution",
+    "file",
+    "property",
+    "template",
+    "event",
+    "body",
+    "pattern",
+    "runtime",
+    "element",
+    "code",
+    "variables",
+    "component",
+    "variable",
+    "level",
+    "response",
+    "option",
+    "parent",
+    "error",
+    "argument",
+    "value",
+    "thread",
+    "configuration",
+    "object",
+    "layout",
+    "format",
+    "form",
+    "handle",
+    "process",
+    "context",
+    "set",
+    "method",
+    "procedure",
+    "input",
+    "request",
+    "build",
+    "name",
+    "print",
+    "function",
+    "instance",
+    "output"
+  ],
+  "low_data": [
+    "attribute",
+    "callback",
+    "filesystem",
+    "iterator",
+    "namespace",
+    "parameter",
+    "provider",
+    "proxy",
+    "repository",
+    "schema",
+    "selector",
+    "wrapper"
+  ],
+  "details": {
+    "action": {
+      "total_appearances": 634,
+      "total_entity": 107,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 612,
+          "entity": 107
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 22,
+          "entity": 0
+        }
+      }
+    },
+    "adapter": {
+      "total_appearances": 19,
+      "total_entity": 6,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 13,
+          "entity": 4
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 2
+        }
+      }
+    },
+    "api": {
+      "total_appearances": 69,
+      "total_entity": 33,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 20,
+          "entity": 17
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 49,
+          "entity": 16
+        }
+      }
+    },
+    "argument": {
+      "total_appearances": 60,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 42,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 18,
+          "entity": 0
+        }
+      }
+    },
+    "array": {
+      "total_appearances": 105,
+      "total_entity": 59,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 54,
+          "entity": 11
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 51,
+          "entity": 48
+        }
+      }
+    },
+    "attribute": {
+      "total_appearances": 30,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 8,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 22,
+          "entity": 0
+        }
+      }
+    },
+    "bin": {
+      "total_appearances": 70,
+      "total_entity": 63,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 67,
+          "entity": 61
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 3,
+          "entity": 2
+        }
+      }
+    },
+    "body": {
+      "total_appearances": 558,
+      "total_entity": 32,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 546,
+          "entity": 30
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 12,
+          "entity": 2
+        }
+      }
+    },
+    "browser": {
+      "total_appearances": 70,
+      "total_entity": 39,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 32,
+          "entity": 8
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 38,
+          "entity": 31
+        }
+      }
+    },
+    "buffer": {
+      "total_appearances": 24,
+      "total_entity": 7,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 18,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 5
+        }
+      }
+    },
+    "build": {
+      "total_appearances": 359,
+      "total_entity": 5,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 320,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 39,
+          "entity": 0
+        }
+      }
+    },
+    "button": {
+      "total_appearances": 73,
+      "total_entity": 49,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 24,
+          "entity": 8
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 49,
+          "entity": 41
+        }
+      }
+    },
+    "callback": {
+      "total_appearances": 7,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 7,
+          "entity": 0
+        }
+      }
+    },
+    "child": {
+      "total_appearances": 317,
+      "total_entity": 52,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 299,
+          "entity": 52
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 18,
+          "entity": 0
+        }
+      }
+    },
+    "class": {
+      "total_appearances": 1200,
+      "total_entity": 490,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1115,
+          "entity": 490
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 85,
+          "entity": 0
+        }
+      }
+    },
+    "client": {
+      "total_appearances": 92,
+      "total_entity": 26,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 62,
+          "entity": 9
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 30,
+          "entity": 17
+        }
+      }
+    },
+    "code": {
+      "total_appearances": 907,
+      "total_entity": 45,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 252,
+          "entity": 45
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 655,
+          "entity": 0
+        }
+      }
+    },
+    "collection": {
+      "total_appearances": 689,
+      "total_entity": 101,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 669,
+          "entity": 96
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 20,
+          "entity": 5
+        }
+      }
+    },
+    "column": {
+      "total_appearances": 141,
+      "total_entity": 60,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 94,
+          "entity": 18
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 47,
+          "entity": 42
+        }
+      }
+    },
+    "command": {
+      "total_appearances": 703,
+      "total_entity": 161,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 653,
+          "entity": 160
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 50,
+          "entity": 1
+        }
+      }
+    },
+    "component": {
+      "total_appearances": 146,
+      "total_entity": 6,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 131,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 15,
+          "entity": 1
+        }
+      }
+    },
+    "config": {
+      "total_appearances": 5,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 5,
+          "entity": 2
+        }
+      }
+    },
+    "configuration": {
+      "total_appearances": 97,
+      "total_entity": 3,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 80,
+          "entity": 3
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 17,
+          "entity": 0
+        }
+      }
+    },
+    "connection": {
+      "total_appearances": 232,
+      "total_entity": 30,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 221,
+          "entity": 30
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 11,
+          "entity": 0
+        }
+      }
+    },
+    "constant": {
+      "total_appearances": 65,
+      "total_entity": 5,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 61,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "consumer": {
+      "total_appearances": 99,
+      "total_entity": 36,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 96,
+          "entity": 36
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 3,
+          "entity": 0
+        }
+      }
+    },
+    "container": {
+      "total_appearances": 42,
+      "total_entity": 9,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 32,
+          "entity": 6
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 10,
+          "entity": 3
+        }
+      }
+    },
+    "context": {
+      "total_appearances": 92,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 75,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 17,
+          "entity": 0
+        }
+      }
+    },
+    "controller": {
+      "total_appearances": 89,
+      "total_entity": 14,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 57,
+          "entity": 11
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 32,
+          "entity": 3
+        }
+      }
+    },
+    "data": {
+      "total_appearances": 476,
+      "total_entity": 54,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 328,
+          "entity": 51
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 148,
+          "entity": 3
+        }
+      }
+    },
+    "database": {
+      "total_appearances": 100,
+      "total_entity": 13,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 51,
+          "entity": 13
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 49,
+          "entity": 0
+        }
+      }
+    },
+    "dialog": {
+      "total_appearances": 14,
+      "total_entity": 11,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 2,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 12,
+          "entity": 10
+        }
+      }
+    },
+    "distribution": {
+      "total_appearances": 187,
+      "total_entity": 13,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 185,
+          "entity": 13
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 2,
+          "entity": 0
+        }
+      }
+    },
+    "driver": {
+      "total_appearances": 197,
+      "total_entity": 16,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 192,
+          "entity": 13
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 5,
+          "entity": 3
+        }
+      }
+    },
+    "element": {
+      "total_appearances": 135,
+      "total_entity": 7,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 91,
+          "entity": 7
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 44,
+          "entity": 0
+        }
+      }
+    },
+    "endpoint": {
+      "total_appearances": 8,
+      "total_entity": 1,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 4,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 1
+        }
+      }
+    },
+    "engine": {
+      "total_appearances": 675,
+      "total_entity": 144,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 667,
+          "entity": 144
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 8,
+          "entity": 0
+        }
+      }
+    },
+    "error": {
+      "total_appearances": 206,
+      "total_entity": 7,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 65,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 141,
+          "entity": 2
+        }
+      }
+    },
+    "event": {
+      "total_appearances": 953,
+      "total_entity": 59,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 918,
+          "entity": 51
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 35,
+          "entity": 8
+        }
+      }
+    },
+    "exception": {
+      "total_appearances": 131,
+      "total_entity": 23,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 107,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 24,
+          "entity": 22
+        }
+      }
+    },
+    "extension": {
+      "total_appearances": 225,
+      "total_entity": 19,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 214,
+          "entity": 19
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 11,
+          "entity": 0
+        }
+      }
+    },
+    "factory": {
+      "total_appearances": 236,
+      "total_entity": 73,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 235,
+          "entity": 73
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 1,
+          "entity": 0
+        }
+      }
+    },
+    "field": {
+      "total_appearances": 1067,
+      "total_entity": 434,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1039,
+          "entity": 433
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 28,
+          "entity": 1
+        }
+      }
+    },
+    "file": {
+      "total_appearances": 277,
+      "total_entity": 19,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 136,
+          "entity": 17
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 141,
+          "entity": 2
+        }
+      }
+    },
+    "filesystem": {
+      "total_appearances": 2,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 1,
+          "entity": 0
+        }
+      }
+    },
+    "flag": {
+      "total_appearances": 172,
+      "total_entity": 29,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 162,
+          "entity": 28
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 10,
+          "entity": 1
+        }
+      }
+    },
+    "footer": {
+      "total_appearances": 4,
+      "total_entity": 4,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 4
+        }
+      }
+    },
+    "form": {
+      "total_appearances": 1126,
+      "total_entity": 28,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1069,
+          "entity": 14
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 57,
+          "entity": 14
+        }
+      }
+    },
+    "format": {
+      "total_appearances": 234,
+      "total_entity": 6,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 204,
+          "entity": 6
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 30,
+          "entity": 0
+        }
+      }
+    },
+    "framework": {
+      "total_appearances": 92,
+      "total_entity": 19,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 68,
+          "entity": 19
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 24,
+          "entity": 0
+        }
+      }
+    },
+    "function": {
+      "total_appearances": 339,
+      "total_entity": 3,
+      "verdict": "BORDERLINE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 228,
+          "entity": 3
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 111,
+          "entity": 0
+        }
+      }
+    },
+    "handle": {
+      "total_appearances": 81,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 54,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 27,
+          "entity": 0
+        }
+      }
+    },
+    "handler": {
+      "total_appearances": 18,
+      "total_entity": 3,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 5,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 13,
+          "entity": 1
+        }
+      }
+    },
+    "hash": {
+      "total_appearances": 10,
+      "total_entity": 3,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 4,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 1
+        }
+      }
+    },
+    "header": {
+      "total_appearances": 22,
+      "total_entity": 8,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 5,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 17,
+          "entity": 7
+        }
+      }
+    },
+    "icon": {
+      "total_appearances": 52,
+      "total_entity": 11,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 46,
+          "entity": 7
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 4
+        }
+      }
+    },
+    "id": {
+      "total_appearances": 81,
+      "total_entity": 24,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 36,
+          "entity": 15
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 45,
+          "entity": 9
+        }
+      }
+    },
+    "image": {
+      "total_appearances": 208,
+      "total_entity": 50,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 168,
+          "entity": 17
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 40,
+          "entity": 33
+        }
+      }
+    },
+    "index": {
+      "total_appearances": 99,
+      "total_entity": 21,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 85,
+          "entity": 21
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 14,
+          "entity": 0
+        }
+      }
+    },
+    "input": {
+      "total_appearances": 70,
+      "total_entity": 1,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 26,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 44,
+          "entity": 1
+        }
+      }
+    },
+    "instance": {
+      "total_appearances": 130,
+      "total_entity": 1,
+      "verdict": "BORDERLINE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 96,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 34,
+          "entity": 0
+        }
+      }
+    },
+    "interface": {
+      "total_appearances": 86,
+      "total_entity": 12,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 80,
+          "entity": 12
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 0
+        }
+      }
+    },
+    "iterator": {
+      "total_appearances": 4,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "key": {
+      "total_appearances": 350,
+      "total_entity": 70,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 328,
+          "entity": 67
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 22,
+          "entity": 3
+        }
+      }
+    },
+    "layout": {
+      "total_appearances": 75,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 57,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 18,
+          "entity": 2
+        }
+      }
+    },
+    "level": {
+      "total_appearances": 685,
+      "total_entity": 26,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 665,
+          "entity": 26
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 20,
+          "entity": 0
+        }
+      }
+    },
+    "lib": {
+      "total_appearances": 9,
+      "total_entity": 5,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 6,
+          "entity": 3
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 3,
+          "entity": 2
+        }
+      }
+    },
+    "library": {
+      "total_appearances": 1738,
+      "total_entity": 1356,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1703,
+          "entity": 1356
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 35,
+          "entity": 0
+        }
+      }
+    },
+    "line": {
+      "total_appearances": 1961,
+      "total_entity": 680,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1896,
+          "entity": 680
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 65,
+          "entity": 0
+        }
+      }
+    },
+    "link": {
+      "total_appearances": 323,
+      "total_entity": 77,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 274,
+          "entity": 76
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 49,
+          "entity": 1
+        }
+      }
+    },
+    "list": {
+      "total_appearances": 661,
+      "total_entity": 80,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 588,
+          "entity": 32
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 73,
+          "entity": 48
+        }
+      }
+    },
+    "listener": {
+      "total_appearances": 7,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 5,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 2,
+          "entity": 0
+        }
+      }
+    },
+    "main": {
+      "total_appearances": 1647,
+      "total_entity": 198,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1606,
+          "entity": 193
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 41,
+          "entity": 5
+        }
+      }
+    },
+    "map": {
+      "total_appearances": 141,
+      "total_entity": 50,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 125,
+          "entity": 44
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 16,
+          "entity": 6
+        }
+      }
+    },
+    "menu": {
+      "total_appearances": 87,
+      "total_entity": 17,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 70,
+          "entity": 3
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 17,
+          "entity": 14
+        }
+      }
+    },
+    "message": {
+      "total_appearances": 138,
+      "total_entity": 11,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 97,
+          "entity": 11
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 41,
+          "entity": 0
+        }
+      }
+    },
+    "meta": {
+      "total_appearances": 16,
+      "total_entity": 9,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 12,
+          "entity": 9
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "method": {
+      "total_appearances": 262,
+      "total_entity": 4,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 149,
+          "entity": 4
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 113,
+          "entity": 0
+        }
+      }
+    },
+    "model": {
+      "total_appearances": 672,
+      "total_entity": 122,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 643,
+          "entity": 121
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 29,
+          "entity": 1
+        }
+      }
+    },
+    "module": {
+      "total_appearances": 44,
+      "total_entity": 6,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 27,
+          "entity": 6
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 17,
+          "entity": 0
+        }
+      }
+    },
+    "name": {
+      "total_appearances": 2306,
+      "total_entity": 26,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 2245,
+          "entity": 24
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 61,
+          "entity": 2
+        }
+      }
+    },
+    "namespace": {
+      "total_appearances": 6,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 5,
+          "entity": 0
+        }
+      }
+    },
+    "node": {
+      "total_appearances": 30,
+      "total_entity": 9,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 15,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 15,
+          "entity": 7
+        }
+      }
+    },
+    "object": {
+      "total_appearances": 148,
+      "total_entity": 4,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 73,
+          "entity": 4
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 75,
+          "entity": 0
+        }
+      }
+    },
+    "observer": {
+      "total_appearances": 45,
+      "total_entity": 16,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 44,
+          "entity": 15
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 1,
+          "entity": 1
+        }
+      }
+    },
+    "option": {
+      "total_appearances": 138,
+      "total_entity": 5,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 103,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 35,
+          "entity": 0
+        }
+      }
+    },
+    "output": {
+      "total_appearances": 248,
+      "total_entity": 1,
+      "verdict": "BORDERLINE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 91,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 157,
+          "entity": 0
+        }
+      }
+    },
+    "package": {
+      "total_appearances": 109,
+      "total_entity": 11,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 91,
+          "entity": 11
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 18,
+          "entity": 0
+        }
+      }
+    },
+    "page": {
+      "total_appearances": 210,
+      "total_entity": 64,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 133,
+          "entity": 45
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 77,
+          "entity": 19
+        }
+      }
+    },
+    "panel": {
+      "total_appearances": 118,
+      "total_entity": 24,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 110,
+          "entity": 19
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 8,
+          "entity": 5
+        }
+      }
+    },
+    "parameter": {
+      "total_appearances": 24,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 3,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 21,
+          "entity": 0
+        }
+      }
+    },
+    "parent": {
+      "total_appearances": 116,
+      "total_entity": 4,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 103,
+          "entity": 4
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 13,
+          "entity": 0
+        }
+      }
+    },
+    "path": {
+      "total_appearances": 143,
+      "total_entity": 26,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 119,
+          "entity": 26
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 24,
+          "entity": 0
+        }
+      }
+    },
+    "pattern": {
+      "total_appearances": 75,
+      "total_entity": 4,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 64,
+          "entity": 4
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 11,
+          "entity": 0
+        }
+      }
+    },
+    "pipe": {
+      "total_appearances": 37,
+      "total_entity": 18,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 36,
+          "entity": 18
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 1,
+          "entity": 0
+        }
+      }
+    },
+    "plugin": {
+      "total_appearances": 16,
+      "total_entity": 4,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 5,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 11,
+          "entity": 4
+        }
+      }
+    },
+    "preview": {
+      "total_appearances": 43,
+      "total_entity": 3,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 37,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 2
+        }
+      }
+    },
+    "print": {
+      "total_appearances": 106,
+      "total_entity": 1,
+      "verdict": "BORDERLINE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 86,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 20,
+          "entity": 0
+        }
+      }
+    },
+    "procedure": {
+      "total_appearances": 67,
+      "total_entity": 1,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 62,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 5,
+          "entity": 0
+        }
+      }
+    },
+    "process": {
+      "total_appearances": 494,
+      "total_entity": 12,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 444,
+          "entity": 12
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 50,
+          "entity": 0
+        }
+      }
+    },
+    "promise": {
+      "total_appearances": 49,
+      "total_entity": 5,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 47,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 2,
+          "entity": 0
+        }
+      }
+    },
+    "property": {
+      "total_appearances": 402,
+      "total_entity": 27,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 363,
+          "entity": 27
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 39,
+          "entity": 0
+        }
+      }
+    },
+    "protocol": {
+      "total_appearances": 62,
+      "total_entity": 31,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 56,
+          "entity": 31
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 0
+        }
+      }
+    },
+    "provider": {
+      "total_appearances": 24,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 22,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 2,
+          "entity": 0
+        }
+      }
+    },
+    "proxy": {
+      "total_appearances": 10,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 6,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "query": {
+      "total_appearances": 58,
+      "total_entity": 6,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 6,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 52,
+          "entity": 4
+        }
+      }
+    },
+    "queue": {
+      "total_appearances": 8,
+      "total_entity": 6,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 2,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 6,
+          "entity": 6
+        }
+      }
+    },
+    "repository": {
+      "total_appearances": 27,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 18,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 9,
+          "entity": 0
+        }
+      }
+    },
+    "request": {
+      "total_appearances": 142,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 110,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 32,
+          "entity": 1
+        }
+      }
+    },
+    "resource": {
+      "total_appearances": 63,
+      "total_entity": 16,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 59,
+          "entity": 16
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "resources": {
+      "total_appearances": 194,
+      "total_entity": 41,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 181,
+          "entity": 40
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 13,
+          "entity": 1
+        }
+      }
+    },
+    "response": {
+      "total_appearances": 404,
+      "total_entity": 15,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 371,
+          "entity": 14
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 33,
+          "entity": 1
+        }
+      }
+    },
+    "root": {
+      "total_appearances": 65,
+      "total_entity": 27,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 55,
+          "entity": 26
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 10,
+          "entity": 1
+        }
+      }
+    },
+    "row": {
+      "total_appearances": 121,
+      "total_entity": 47,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 94,
+          "entity": 27
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 27,
+          "entity": 20
+        }
+      }
+    },
+    "runtime": {
+      "total_appearances": 19,
+      "total_entity": 1,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 8,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 11,
+          "entity": 0
+        }
+      }
+    },
+    "schema": {
+      "total_appearances": 4,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "screen": {
+      "total_appearances": 177,
+      "total_entity": 32,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 155,
+          "entity": 22
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 22,
+          "entity": 10
+        }
+      }
+    },
+    "section": {
+      "total_appearances": 580,
+      "total_entity": 59,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 569,
+          "entity": 58
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 11,
+          "entity": 1
+        }
+      }
+    },
+    "selector": {
+      "total_appearances": 16,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 12,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    },
+    "server": {
+      "total_appearances": 155,
+      "total_entity": 77,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 83,
+          "entity": 36
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 72,
+          "entity": 41
+        }
+      }
+    },
+    "service": {
+      "total_appearances": 2010,
+      "total_entity": 441,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1977,
+          "entity": 438
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 33,
+          "entity": 3
+        }
+      }
+    },
+    "session": {
+      "total_appearances": 122,
+      "total_entity": 14,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 110,
+          "entity": 13
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 12,
+          "entity": 1
+        }
+      }
+    },
+    "set": {
+      "total_appearances": 1246,
+      "total_entity": 26,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 1105,
+          "entity": 22
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 141,
+          "entity": 4
+        }
+      }
+    },
+    "socket": {
+      "total_appearances": 6,
+      "total_entity": 1,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 4,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 2,
+          "entity": 0
+        }
+      }
+    },
+    "src": {
+      "total_appearances": 15,
+      "total_entity": 7,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 7,
+          "entity": 6
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 8,
+          "entity": 1
+        }
+      }
+    },
+    "stack": {
+      "total_appearances": 44,
+      "total_entity": 13,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 34,
+          "entity": 9
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 10,
+          "entity": 4
+        }
+      }
+    },
+    "state": {
+      "total_appearances": 3270,
+      "total_entity": 1660,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 3255,
+          "entity": 1660
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 15,
+          "entity": 0
+        }
+      }
+    },
+    "stream": {
+      "total_appearances": 143,
+      "total_entity": 30,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 133,
+          "entity": 29
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 10,
+          "entity": 1
+        }
+      }
+    },
+    "string": {
+      "total_appearances": 144,
+      "total_entity": 76,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 70,
+          "entity": 7
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 74,
+          "entity": 69
+        }
+      }
+    },
+    "tab": {
+      "total_appearances": 13,
+      "total_entity": 9,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 4,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 9,
+          "entity": 7
+        }
+      }
+    },
+    "table": {
+      "total_appearances": 237,
+      "total_entity": 86,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 169,
+          "entity": 30
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 68,
+          "entity": 56
+        }
+      }
+    },
+    "tag": {
+      "total_appearances": 115,
+      "total_entity": 51,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 94,
+          "entity": 50
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 21,
+          "entity": 1
+        }
+      }
+    },
+    "target": {
+      "total_appearances": 200,
+      "total_entity": 18,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 192,
+          "entity": 18
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 8,
+          "entity": 0
+        }
+      }
+    },
+    "template": {
+      "total_appearances": 30,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 14,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 16,
+          "entity": 1
+        }
+      }
+    },
+    "test": {
+      "total_appearances": 462,
+      "total_entity": 56,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 417,
+          "entity": 56
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 45,
+          "entity": 0
+        }
+      }
+    },
+    "text": {
+      "total_appearances": 227,
+      "total_entity": 19,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 183,
+          "entity": 11
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 44,
+          "entity": 8
+        }
+      }
+    },
+    "thread": {
+      "total_appearances": 32,
+      "total_entity": 1,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 6,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 26,
+          "entity": 1
+        }
+      }
+    },
+    "token": {
+      "total_appearances": 16,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 11,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 5,
+          "entity": 1
+        }
+      }
+    },
+    "toolbar": {
+      "total_appearances": 6,
+      "total_entity": 3,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 4,
+          "entity": 1
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 2,
+          "entity": 2
+        }
+      }
+    },
+    "type": {
+      "total_appearances": 721,
+      "total_entity": 178,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 656,
+          "entity": 178
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 65,
+          "entity": 0
+        }
+      }
+    },
+    "value": {
+      "total_appearances": 344,
+      "total_entity": 11,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 240,
+          "entity": 9
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 104,
+          "entity": 2
+        }
+      }
+    },
+    "variable": {
+      "total_appearances": 122,
+      "total_entity": 5,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 74,
+          "entity": 5
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 48,
+          "entity": 0
+        }
+      }
+    },
+    "variables": {
+      "total_appearances": 48,
+      "total_entity": 2,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 20,
+          "entity": 2
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 28,
+          "entity": 0
+        }
+      }
+    },
+    "view": {
+      "total_appearances": 338,
+      "total_entity": 58,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 285,
+          "entity": 54
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 53,
+          "entity": 4
+        }
+      }
+    },
+    "window": {
+      "total_appearances": 110,
+      "total_entity": 26,
+      "verdict": "UNSAFE",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 92,
+          "entity": 14
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 18,
+          "entity": 12
+        }
+      }
+    },
+    "wrapper": {
+      "total_appearances": 7,
+      "total_entity": 0,
+      "verdict": "safe_low",
+      "per_dataset": {
+        "Few-NERD": {
+          "appearances": 3,
+          "entity": 0
+        },
+        "OntoNotes5": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "CoNLL-2003": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "MultiNERD": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "WNUT-2017": {
+          "appearances": 0,
+          "entity": 0
+        },
+        "SO-NER": {
+          "appearances": 4,
+          "entity": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6412 @@
+{
+  "dataset_size": 1237,
+  "domain": "tech/programming (StackOverflow NER)",
+  "tier_1_min_docs": 20,
+  "tier_2_min_docs": 10,
+  "tier_3_min_docs": 5,
+  "tier_1_words": [
+    "accomplish",
+    "according",
+    "account",
+    "achieve",
+    "across",
+    "action",
+    "actual",
+    "additional",
+    "advance",
+    "allow",
+    "allows",
+    "almost",
+    "along",
+    "although",
+    "answers",
+    "app",
+    "appear",
+    "appears",
+    "application",
+    "approach",
+    "appropriate",
+    "argument",
+    "ask",
+    "assign",
+    "assume",
+    "assuming",
+    "attached",
+    "attempting",
+    "attribute",
+    "automatically",
+    "available",
+    "avoid",
+    "basic",
+    "because",
+    "become",
+    "behavior",
+    "behind",
+    "believe",
+    "big",
+    "blank",
+    "break",
+    "bug",
+    "build",
+    "building",
+    "built",
+    "came",
+    "cause",
+    "causes",
+    "certain",
+    "changes",
+    "changing",
+    "checking",
+    "choose",
+    "class",
+    "classes",
+    "clear",
+    "clicked",
+    "code",
+    "comment",
+    "comments",
+    "common",
+    "compare",
+    "compile",
+    "complete",
+    "completely",
+    "condition",
+    "configure",
+    "confused",
+    "connect",
+    "consider",
+    "contain",
+    "containing",
+    "content",
+    "contents",
+    "convert",
+    "correctly",
+    "couple",
+    "course",
+    "creates",
+    "custom",
+    "debug",
+    "debugging",
+    "default",
+    "definition",
+    "demo",
+    "depending",
+    "depends",
+    "details",
+    "determine",
+    "device",
+    "difference",
+    "directly",
+    "directory",
+    "displayed",
+    "docs",
+    "documentation",
+    "dont",
+    "download",
+    "due",
+    "dynamically",
+    "easier",
+    "easily",
+    "effect",
+    "element",
+    "elements",
+    "empty",
+    "enough",
+    "ensure",
+    "entire",
+    "errors",
+    "exactly",
+    "examples",
+    "except",
+    "executed",
+    "exist",
+    "existing",
+    "expect",
+    "expected",
+    "explain",
+    "expression",
+    "extension",
+    "external",
+    "extra",
+    "feature",
+    "finally",
+    "fix",
+    "fixed",
+    "follows",
+    "format",
+    "framework",
+    "full",
+    "function",
+    "functionality",
+    "functions",
+    "general",
+    "generate",
+    "generated",
+    "github.com",
+    "giving",
+    "goes",
+    "great",
+    "greatly",
+    "group",
+    "guess",
+    "hand",
+    "handle",
+    "handling",
+    "happen",
+    "happening",
+    "happens",
+    "helps",
+    "http",
+    "https",
+    "i.e",
+    "ideas",
+    "implement",
+    "implementation",
+    "implemented",
+    "important",
+    "included",
+    "including",
+    "info",
+    "initial",
+    "insert",
+    "install",
+    "installed",
+    "instance",
+    "instances",
+    "itself",
+    "known",
+    "language",
+    "large",
+    "later",
+    "latest",
+    "least",
+    "length",
+    "less",
+    "level",
+    "libraries",
+    "library",
+    "likely",
+    "line",
+    "lines",
+    "linked",
+    "links",
+    "little",
+    "loaded",
+    "loading",
+    "logic",
+    "longer",
+    "loop",
+    "machine",
+    "makes",
+    "manually",
+    "match",
+    "mean",
+    "memory",
+    "mentioned",
+    "message",
+    "messages",
+    "method",
+    "mind",
+    "missing",
+    "mode",
+    "modify",
+    "module",
+    "moment",
+    "names",
+    "native",
+    "necessary",
+    "needed",
+    "needs",
+    "net",
+    "next",
+    "nice",
+    "non",
+    "normal",
+    "null",
+    "off",
+    "old",
+    "operation",
+    "operator",
+    "option",
+    "options",
+    "original",
+    "others",
+    "otherwise",
+    "output",
+    "outside",
+    "override",
+    "package",
+    "parameter",
+    "parameters",
+    "parent",
+    "particular",
+    "people",
+    "per",
+    "perform",
+    "performance",
+    "perhaps",
+    "position",
+    "pretty",
+    "previous",
+    "print",
+    "problems",
+    "program",
+    "programming",
+    "proper",
+    "properly",
+    "properties",
+    "property",
+    "provide",
+    "provided",
+    "purpose",
+    "questions",
+    "quick",
+    "quite",
+    "rather",
+    "real",
+    "receive",
+    "recently",
+    "recommend",
+    "record",
+    "records",
+    "regular",
+    "related",
+    "relevant",
+    "replace",
+    "require",
+    "required",
+    "runs",
+    "runtime",
+    "said",
+    "sample",
+    "save",
+    "saved",
+    "search",
+    "seconds",
+    "seen",
+    "selected",
+    "sending",
+    "sense",
+    "sent",
+    "separate",
+    "several",
+    "short",
+    "showing",
+    "shown",
+    "site",
+    "situation",
+    "small",
+    "solved",
+    "somewhere",
+    "source",
+    "special",
+    "specified",
+    "standard",
+    "started",
+    "starting",
+    "starts",
+    "state",
+    "statement",
+    "statements",
+    "store",
+    "stored",
+    "structure",
+    "studio",
+    "submit",
+    "successfully",
+    "suggest",
+    "suggestion",
+    "suggestions",
+    "support",
+    "supposed",
+    "switch",
+    "syntax",
+    "system",
+    "tested",
+    "testing",
+    "therefore",
+    "thinking",
+    "thought",
+    "thus",
+    "together",
+    "tool",
+    "total",
+    "trigger",
+    "trouble",
+    "turn",
+    "type",
+    "types",
+    "unable",
+    "unfortunately",
+    "unique",
+    "until",
+    "updated",
+    "url",
+    "useful",
+    "users",
+    "uses",
+    "usually",
+    "valid",
+    "values",
+    "variable",
+    "variables",
+    "various",
+    "version",
+    "versions",
+    "visible",
+    "visual",
+    "wanted",
+    "web",
+    "website",
+    "weird",
+    "whatever",
+    "whenever",
+    "whether",
+    "whole",
+    "wondering",
+    "written"
+  ],
+  "tier_2_words": [
+    "2nd",
+    "3rd",
+    "absolute",
+    "accessed",
+    "accessible",
+    "accomplish",
+    "according",
+    "accordingly",
+    "account",
+    "achieve",
+    "across",
+    "action",
+    "actions",
+    "actual",
+    "addition",
+    "additional",
+    "adds",
+    "advance",
+    "advantage",
+    "advice",
+    "against",
+    "algorithm",
+    "allow",
+    "allows",
+    "almost",
+    "along",
+    "alternative",
+    "alternatively",
+    "although",
+    "amount",
+    "answers",
+    "anybody",
+    "anymore",
+    "anyway",
+    "anywhere",
+    "app",
+    "appear",
+    "appears",
+    "application",
+    "applied",
+    "appreciate",
+    "approach",
+    "appropriate",
+    "apps",
+    "area",
+    "argument",
+    "arguments",
+    "articles",
+    "ask",
+    "asked",
+    "asking",
+    "assign",
+    "assigning",
+    "associated",
+    "assume",
+    "assuming",
+    "attached",
+    "attempt",
+    "attempting",
+    "attribute",
+    "attributes",
+    "auto",
+    "automatically",
+    "available",
+    "avoid",
+    "aware",
+    "away",
+    "base",
+    "basic",
+    "because",
+    "become",
+    "becomes",
+    "beginner",
+    "beginning",
+    "behavior",
+    "behaviour",
+    "behind",
+    "believe",
+    "big",
+    "bind",
+    "binding",
+    "blank",
+    "bound",
+    "branch",
+    "break",
+    "btw",
+    "bug",
+    "build",
+    "building",
+    "built",
+    "bunch",
+    "calculate",
+    "came",
+    "cant",
+    "capture",
+    "care",
+    "cast",
+    "cause",
+    "causes",
+    "causing",
+    "certain",
+    "changes",
+    "changing",
+    "checking",
+    "checks",
+    "choice",
+    "choose",
+    "class",
+    "classes",
+    "clause",
+    "clean",
+    "clear",
+    "clicked",
+    "clicking",
+    "clicks",
+    "closed",
+    "code",
+    "codes",
+    "coding",
+    "color",
+    "combination",
+    "coming",
+    "commands",
+    "comment",
+    "comments",
+    "common",
+    "compare",
+    "comparison",
+    "compile",
+    "compiled",
+    "complete",
+    "completely",
+    "complex",
+    "complicated",
+    "concept",
+    "condition",
+    "conditions",
+    "configure",
+    "configured",
+    "confused",
+    "connect",
+    "connected",
+    "connections",
+    "consider",
+    "contain",
+    "containing",
+    "content",
+    "contents",
+    "convert",
+    "converting",
+    "coordinates",
+    "copying",
+    "core",
+    "correctly",
+    "corresponding",
+    "couple",
+    "course",
+    "crash",
+    "creates",
+    "cross",
+    "custom",
+    "dates",
+    "day",
+    "days",
+    "deal",
+    "debug",
+    "debugging",
+    "decide",
+    "declaration",
+    "declare",
+    "declared",
+    "default",
+    "defining",
+    "definitely",
+    "definition",
+    "deleted",
+    "demo",
+    "dependencies",
+    "depending",
+    "depends",
+    "deploy",
+    "derived",
+    "describe",
+    "described",
+    "design",
+    "desired",
+    "detail",
+    "details",
+    "detect",
+    "determine",
+    "developer",
+    "developing",
+    "development",
+    "device",
+    "devices",
+    "difference",
+    "differences",
+    "differently",
+    "digits",
+    "direction",
+    "directly",
+    "directory",
+    "disable",
+    "displayed",
+    "displaying",
+    "displays",
+    "docs",
+    "documentation",
+    "doesnt",
+    "domain",
+    "dont",
+    "download",
+    "downloaded",
+    "drawing",
+    "due",
+    "duplicate",
+    "dynamic",
+    "dynamically",
+    "easier",
+    "easiest",
+    "easily",
+    "edited",
+    "editing",
+    "effect",
+    "efficient",
+    "element",
+    "elements",
+    "empty",
+    "enable",
+    "enabled",
+    "english",
+    "enough",
+    "ensure",
+    "entered",
+    "entire",
+    "entity",
+    "entries",
+    "environment",
+    "equivalent",
+    "errors",
+    "especially",
+    "essentially",
+    "ever",
+    "exact",
+    "exactly",
+    "examples",
+    "except",
+    "executed",
+    "executing",
+    "execution",
+    "exist",
+    "existing",
+    "exists",
+    "expect",
+    "expected",
+    "experience",
+    "explain",
+    "explanation",
+    "explicitly",
+    "expression",
+    "extend",
+    "extension",
+    "external",
+    "extra",
+    "extract",
+    "facing",
+    "failed",
+    "fails",
+    "fairly",
+    "fast",
+    "faster",
+    "feature",
+    "features",
+    "feel",
+    "figured",
+    "finally",
+    "finding",
+    "finish",
+    "fired",
+    "fix",
+    "fixed",
+    "focus",
+    "followed",
+    "follows",
+    "force",
+    "forget",
+    "format",
+    "formula",
+    "framework",
+    "front",
+    "full",
+    "function",
+    "functionality",
+    "functions",
+    "future",
+    "general",
+    "generate",
+    "generated",
+    "generating",
+    "generic",
+    "github.com",
+    "giving",
+    "goes",
+    "gone",
+    "great",
+    "greatly",
+    "group",
+    "guess",
+    "guide",
+    "hand",
+    "handle",
+    "handled",
+    "handles",
+    "handling",
+    "happen",
+    "happening",
+    "happens",
+    "helpful",
+    "helps",
+    "hence",
+    "hide",
+    "high",
+    "hit",
+    "hopefully",
+    "hoping",
+    "host",
+    "hour",
+    "hours",
+    "http",
+    "https",
+    "i.e",
+    "ideas",
+    "immediately",
+    "implement",
+    "implementation",
+    "implemented",
+    "implementing",
+    "import",
+    "important",
+    "impossible",
+    "improve",
+    "included",
+    "includes",
+    "including",
+    "incorrect",
+    "individual",
+    "info",
+    "inherit",
+    "initial",
+    "inline",
+    "inner",
+    "inputs",
+    "insert",
+    "inserted",
+    "install",
+    "installed",
+    "instance",
+    "instances",
+    "interested",
+    "interface",
+    "internal",
+    "internet",
+    "invalid",
+    "iteration",
+    "itself",
+    "jsfiddle.net",
+    "keeping",
+    "keeps",
+    "knowledge",
+    "known",
+    "knows",
+    "language",
+    "languages",
+    "large",
+    "larger",
+    "later",
+    "latest",
+    "layer",
+    "leads",
+    "learn",
+    "learning",
+    "least",
+    "leave",
+    "length",
+    "less",
+    "level",
+    "libraries",
+    "library",
+    "likely",
+    "limit",
+    "line",
+    "lines",
+    "linked",
+    "links",
+    "listed",
+    "literal",
+    "little",
+    "loaded",
+    "loading",
+    "loads",
+    "localhost",
+    "locally",
+    "located",
+    "logged",
+    "logic",
+    "longer",
+    "looked",
+    "loop",
+    "loops",
+    "lots",
+    "lower",
+    "luck",
+    "machine",
+    "makes",
+    "manage",
+    "managed",
+    "manager",
+    "manual",
+    "manually",
+    "mapping",
+    "master",
+    "match",
+    "matches",
+    "matter",
+    "mean",
+    "media",
+    "member",
+    "memory",
+    "mention",
+    "mentioned",
+    "message",
+    "messages",
+    "method",
+    "mind",
+    "minutes",
+    "missing",
+    "mistake",
+    "mode",
+    "modified",
+    "modify",
+    "module",
+    "modules",
+    "moment",
+    "moving",
+    "multi",
+    "myself",
+    "named",
+    "names",
+    "native",
+    "necessary",
+    "needed",
+    "needs",
+    "neither",
+    "net",
+    "next",
+    "nice",
+    "non",
+    "none",
+    "normal",
+    "normally",
+    "noticed",
+    "null",
+    "obtain",
+    "obvious",
+    "obviously",
+    "occurs",
+    "off",
+    "old",
+    "older",
+    "ones",
+    "opened",
+    "opening",
+    "opens",
+    "operation",
+    "operations",
+    "operator",
+    "operators",
+    "option",
+    "options",
+    "original",
+    "others",
+    "otherwise",
+    "output",
+    "outside",
+    "override",
+    "package",
+    "parameter",
+    "parameters",
+    "parent",
+    "parsing",
+    "particular",
+    "password",
+    "past",
+    "paste",
+    "paths",
+    "pattern",
+    "people",
+    "per",
+    "perfectly",
+    "perform",
+    "performance",
+    "perhaps",
+    "pick",
+    "pixel",
+    "plain",
+    "platform",
+    "play",
+    "position",
+    "possibly",
+    "posted",
+    "practice",
+    "prefer",
+    "present",
+    "press",
+    "pretty",
+    "prevent",
+    "previous",
+    "print",
+    "printed",
+    "prints",
+    "problems",
+    "procedure",
+    "program",
+    "programming",
+    "projects",
+    "proper",
+    "properly",
+    "properties",
+    "property",
+    "protocol",
+    "provide",
+    "provided",
+    "provides",
+    "pull",
+    "purpose",
+    "push",
+    "putting",
+    "questions",
+    "quick",
+    "quickly",
+    "quite",
+    "quotes",
+    "rather",
+    "reach",
+    "reads",
+    "real",
+    "reasons",
+    "receive",
+    "received",
+    "recently",
+    "recommend",
+    "record",
+    "records",
+    "redirect",
+    "refer",
+    "references",
+    "regarding",
+    "regards",
+    "regular",
+    "related",
+    "relationship",
+    "release",
+    "relevant",
+    "remember",
+    "remote",
+    "removed",
+    "removing",
+    "rendering",
+    "repeat",
+    "replace",
+    "replaced",
+    "represent",
+    "require",
+    "required",
+    "requirement",
+    "requires",
+    "research",
+    "resolve",
+    "resolved",
+    "respond",
+    "restart",
+    "resulting",
+    "returning",
+    "rewrite",
+    "rules",
+    "runs",
+    "runtime",
+    "safe",
+    "said",
+    "sample",
+    "save",
+    "saved",
+    "saving",
+    "saying",
+    "scenario",
+    "scripts",
+    "scroll",
+    "search",
+    "searching",
+    "seconds",
+    "security",
+    "seeing",
+    "seen",
+    "selected",
+    "self",
+    "sending",
+    "sense",
+    "sent",
+    "separate",
+    "sequence",
+    "services",
+    "several",
+    "share",
+    "shared",
+    "short",
+    "showing",
+    "shown",
+    "simplest",
+    "site",
+    "situation",
+    "slightly",
+    "slow",
+    "small",
+    "smaller",
+    "software",
+    "solutions",
+    "solved",
+    "somehow",
+    "sometimes",
+    "somewhere",
+    "soon",
+    "sound",
+    "sounds",
+    "source",
+    "special",
+    "specified",
+    "spent",
+    "standard",
+    "started",
+    "starting",
+    "starts",
+    "state",
+    "statement",
+    "statements",
+    "std",
+    "stick",
+    "stop",
+    "store",
+    "stored",
+    "strange",
+    "structure",
+    "struggling",
+    "stuck",
+    "studio",
+    "styles",
+    "subclass",
+    "submit",
+    "submitted",
+    "success",
+    "successfully",
+    "suggest",
+    "suggested",
+    "suggestion",
+    "suggestions",
+    "support",
+    "supported",
+    "supports",
+    "suppose",
+    "supposed",
+    "suspect",
+    "switch",
+    "syntax",
+    "system",
+    "systems",
+    "tags",
+    "taken",
+    "taking",
+    "target",
+    "team",
+    "tells",
+    "terms",
+    "tested",
+    "testing",
+    "tests",
+    "therefore",
+    "thinking",
+    "third",
+    "thought",
+    "throw",
+    "throwing",
+    "throws",
+    "thus",
+    "together",
+    "took",
+    "tool",
+    "total",
+    "track",
+    "trick",
+    "tries",
+    "trigger",
+    "trouble",
+    "turn",
+    "turned",
+    "turns",
+    "tutorial",
+    "twice",
+    "type",
+    "types",
+    "unable",
+    "undefined",
+    "unfortunately",
+    "unique",
+    "unit",
+    "until",
+    "updated",
+    "updates",
+    "updating",
+    "upload",
+    "upon",
+    "url",
+    "usage",
+    "useful",
+    "users",
+    "uses",
+    "usually",
+    "valid",
+    "validation",
+    "values",
+    "variable",
+    "variables",
+    "various",
+    "version",
+    "versions",
+    "visible",
+    "visual",
+    "wait",
+    "waiting",
+    "wanted",
+    "warning",
+    "web",
+    "website",
+    "week",
+    "weird",
+    "whatever",
+    "whenever",
+    "whether",
+    "white",
+    "whole",
+    "wish",
+    "wondering",
+    "workaround",
+    "worry",
+    "wrap",
+    "written",
+    "wrote",
+    "year",
+    "yourself",
+    "zero"
+  ],
+  "tier_3_words": [
+    "1st",
+    "2nd",
+    "3rd",
+    "ability",
+    "absolute",
+    "absolutely",
+    "accepted",
+    "accessed",
+    "accessible",
+    "accessing",
+    "accomplish",
+    "according",
+    "accordingly",
+    "account",
+    "accurate",
+    "achieve",
+    "achieved",
+    "across",
+    "action",
+    "actions",
+    "activated",
+    "actual",
+    "adapt",
+    "addition",
+    "additional",
+    "additionally",
+    "addresses",
+    "adds",
+    "adjust",
+    "admin",
+    "advance",
+    "advanced",
+    "advantage",
+    "advice",
+    "advise",
+    "affect",
+    "affected",
+    "afraid",
+    "against",
+    "ago",
+    "ahead",
+    "algorithm",
+    "alias",
+    "allocate",
+    "allocation",
+    "allow",
+    "allowed",
+    "allowing",
+    "allows",
+    "almost",
+    "along",
+    "alter",
+    "alternative",
+    "alternatively",
+    "although",
+    "amount",
+    "analysis",
+    "animate",
+    "annotations",
+    "anonymous",
+    "answered",
+    "answers",
+    "anybody",
+    "anymore",
+    "anyway",
+    "anywhere",
+    "apart",
+    "app",
+    "apparently",
+    "appear",
+    "appeared",
+    "appearing",
+    "appears",
+    "appended",
+    "application",
+    "applications",
+    "applied",
+    "applies",
+    "applying",
+    "appreciate",
+    "approach",
+    "appropriate",
+    "apps",
+    "arbitrary",
+    "architecture",
+    "archive",
+    "area",
+    "areas",
+    "argument",
+    "arguments",
+    "articles",
+    "ascii",
+    "aside",
+    "ask",
+    "asked",
+    "asking",
+    "asks",
+    "assign",
+    "assigned",
+    "assigning",
+    "assignment",
+    "associated",
+    "assume",
+    "assuming",
+    "assumption",
+    "attach",
+    "attached",
+    "attempt",
+    "attempted",
+    "attempting",
+    "attempts",
+    "attribute",
+    "attributes",
+    "audio",
+    "authentication",
+    "auto",
+    "automatic",
+    "automatically",
+    "available",
+    "average",
+    "avoid",
+    "aware",
+    "away",
+    "awesome",
+    "backend",
+    "base",
+    "basic",
+    "basics",
+    "basis",
+    "because",
+    "become",
+    "becomes",
+    "begin",
+    "beginner",
+    "beginning",
+    "behavior",
+    "behaviour",
+    "behind",
+    "believe",
+    "besides",
+    "beyond",
+    "big",
+    "bigger",
+    "bind",
+    "binding",
+    "bindings",
+    "black",
+    "blank",
+    "blocked",
+    "blocking",
+    "blog",
+    "blue",
+    "boot",
+    "bound",
+    "branch",
+    "branches",
+    "break",
+    "breakpoints",
+    "breaks",
+    "bring",
+    "btw",
+    "bug",
+    "build",
+    "building",
+    "built",
+    "bunch",
+    "business",
+    "caching",
+    "calculate",
+    "calculation",
+    "came",
+    "cant",
+    "capture",
+    "care",
+    "cast",
+    "catch",
+    "categories",
+    "cause",
+    "caused",
+    "causes",
+    "causing",
+    "certain",
+    "certainly",
+    "certificate",
+    "chain",
+    "changes",
+    "changing",
+    "chapter",
+    "chat",
+    "checking",
+    "checkout",
+    "checks",
+    "cheers",
+    "children",
+    "choice",
+    "choose",
+    "choosing",
+    "chose",
+    "chosen",
+    "city",
+    "clarify",
+    "class",
+    "classes",
+    "classic",
+    "clause",
+    "clean",
+    "clear",
+    "clearly",
+    "clicked",
+    "clicking",
+    "clicks",
+    "closed",
+    "closes",
+    "closest",
+    "closing",
+    "cloud",
+    "code",
+    "coded",
+    "codes",
+    "coding",
+    "color",
+    "colors",
+    "combination",
+    "combinations",
+    "coming",
+    "comma",
+    "commands",
+    "comment",
+    "comments",
+    "commit",
+    "commits",
+    "common",
+    "communicate",
+    "communication",
+    "compare",
+    "compared",
+    "comparing",
+    "comparison",
+    "compatibility",
+    "compatible",
+    "compilation",
+    "compile",
+    "compiled",
+    "compiles",
+    "complete",
+    "completed",
+    "completely",
+    "completion",
+    "complex",
+    "complexity",
+    "complicated",
+    "concatenate",
+    "concept",
+    "concepts",
+    "concern",
+    "concurrent",
+    "condition",
+    "conditional",
+    "conditions",
+    "configure",
+    "configured",
+    "confirm",
+    "confused",
+    "confusing",
+    "confusion",
+    "connect",
+    "connected",
+    "connecting",
+    "connections",
+    "connects",
+    "consider",
+    "considering",
+    "consistent",
+    "consisting",
+    "consists",
+    "constant",
+    "constantly",
+    "constraint",
+    "constraints",
+    "construct",
+    "constructed",
+    "constructor",
+    "contain",
+    "containers",
+    "containing",
+    "content",
+    "contents",
+    "continue",
+    "continues",
+    "controllers",
+    "conversion",
+    "convert",
+    "converted",
+    "converting",
+    "converts",
+    "cookie",
+    "coordinates",
+    "copied",
+    "copies",
+    "copying",
+    "core",
+    "corner",
+    "correctly",
+    "corresponding",
+    "cost",
+    "couple",
+    "course",
+    "covers",
+    "crash",
+    "crashes",
+    "crazy",
+    "creates",
+    "creation",
+    "credentials",
+    "cross",
+    "curious",
+    "custom",
+    "customer",
+    "cut",
+    "dates",
+    "day",
+    "days",
+    "deal",
+    "debug",
+    "debugging",
+    "decide",
+    "decided",
+    "decision",
+    "declaration",
+    "declare",
+    "declared",
+    "declaring",
+    "deep",
+    "default",
+    "defining",
+    "definitely",
+    "definition",
+    "definitions",
+    "delegate",
+    "deleted",
+    "deletes",
+    "demo",
+    "dependencies",
+    "dependency",
+    "depending",
+    "depends",
+    "deploy",
+    "deployed",
+    "deployment",
+    "deprecated",
+    "depth",
+    "derived",
+    "describe",
+    "described",
+    "design",
+    "designed",
+    "desired",
+    "despite",
+    "detail",
+    "detailed",
+    "details",
+    "detect",
+    "determine",
+    "determined",
+    "develop",
+    "developed",
+    "developer",
+    "developer.android.com",
+    "developer.apple.com",
+    "developers",
+    "developers.google.com",
+    "developing",
+    "development",
+    "device",
+    "devices",
+    "difference",
+    "differences",
+    "differently",
+    "difficult",
+    "digit",
+    "digits",
+    "direct",
+    "direction",
+    "directive",
+    "directly",
+    "directories",
+    "directory",
+    "disable",
+    "disappear",
+    "disappears",
+    "discussion",
+    "displayed",
+    "displaying",
+    "displays",
+    "distance",
+    "distribution",
+    "docs",
+    "documentation",
+    "documents",
+    "doesnt",
+    "domain",
+    "dont",
+    "doubt",
+    "download",
+    "downloaded",
+    "downloading",
+    "drag",
+    "dragging",
+    "drawing",
+    "due",
+    "duplicate",
+    "duplicates",
+    "dynamic",
+    "dynamically",
+    "earlier",
+    "easier",
+    "easiest",
+    "easily",
+    "edited",
+    "editing",
+    "effect",
+    "effectively",
+    "effects",
+    "efficient",
+    "element",
+    "elements",
+    "elsewhere",
+    "emails",
+    "embedded",
+    "empty",
+    "enable",
+    "enabled",
+    "encoded",
+    "encoding",
+    "encountered",
+    "ended",
+    "ending",
+    "ends",
+    "english",
+    "enough",
+    "ensure",
+    "entered",
+    "entering",
+    "enters",
+    "entire",
+    "entirely",
+    "entities",
+    "entity",
+    "entries",
+    "environment",
+    "equivalent",
+    "errors",
+    "escape",
+    "especially",
+    "essentially",
+    "evaluate",
+    "evaluated",
+    "eventually",
+    "ever",
+    "everywhere",
+    "exact",
+    "exactly",
+    "examples",
+    "except",
+    "executed",
+    "executes",
+    "executing",
+    "execution",
+    "exercise",
+    "exist",
+    "existing",
+    "exists",
+    "exit",
+    "expect",
+    "expected",
+    "expecting",
+    "experience",
+    "explain",
+    "explained",
+    "explanation",
+    "explicit",
+    "explicitly",
+    "export",
+    "exposed",
+    "express",
+    "expression",
+    "expressions",
+    "extend",
+    "extends",
+    "extension",
+    "extensions",
+    "external",
+    "extra",
+    "extract",
+    "extremely",
+    "face",
+    "facing",
+    "factor",
+    "factors",
+    "fail",
+    "failed",
+    "failing",
+    "fails",
+    "fairly",
+    "fake",
+    "familiar",
+    "fancy",
+    "fast",
+    "faster",
+    "fault",
+    "feature",
+    "features",
+    "feed",
+    "feel",
+    "fetches",
+    "figured",
+    "filled",
+    "fills",
+    "filtering",
+    "filters",
+    "finally",
+    "finding",
+    "finish",
+    "finished",
+    "fire",
+    "fired",
+    "firing",
+    "firstly",
+    "fits",
+    "fix",
+    "fixed",
+    "floating",
+    "fly",
+    "focus",
+    "followed",
+    "follows",
+    "force",
+    "foreign",
+    "forget",
+    "format",
+    "formats",
+    "formula",
+    "frames",
+    "framework",
+    "frameworks",
+    "front",
+    "full",
+    "fully",
+    "function",
+    "functional",
+    "functionality",
+    "functions",
+    "funny",
+    "future",
+    "fyi",
+    "gather",
+    "gave",
+    "general",
+    "generally",
+    "generate",
+    "generated",
+    "generates",
+    "generating",
+    "generation",
+    "generic",
+    "github.com",
+    "giving",
+    "goal",
+    "goes",
+    "gone",
+    "grab",
+    "grateful",
+    "great",
+    "greater",
+    "greatly",
+    "green",
+    "group",
+    "grouping",
+    "groups",
+    "guess",
+    "guessing",
+    "guide",
+    "guys",
+    "hack",
+    "half",
+    "hand",
+    "handle",
+    "handled",
+    "handles",
+    "handling",
+    "happen",
+    "happened",
+    "happening",
+    "happens",
+    "happy",
+    "hardware",
+    "helper",
+    "helpful",
+    "helps",
+    "hence",
+    "hide",
+    "hiding",
+    "high",
+    "highlight",
+    "highly",
+    "him",
+    "hints",
+    "hit",
+    "hits",
+    "hitting",
+    "hold",
+    "holds",
+    "hook",
+    "hopefully",
+    "hoping",
+    "horizontal",
+    "host",
+    "hosted",
+    "hour",
+    "hours",
+    "http",
+    "https",
+    "huge",
+    "i.e",
+    "ideal",
+    "ideas",
+    "identify",
+    "identity",
+    "ignore",
+    "imagine",
+    "immediately",
+    "implement",
+    "implementation",
+    "implementations",
+    "implemented",
+    "implementing",
+    "implements",
+    "import",
+    "important",
+    "imported",
+    "impossible",
+    "improve",
+    "improved",
+    "improvement",
+    "included",
+    "includes",
+    "including",
+    "incoming",
+    "incorrect",
+    "increase",
+    "increment",
+    "indeed",
+    "independent",
+    "indicates",
+    "indices",
+    "individual",
+    "infinite",
+    "info",
+    "inherit",
+    "inheritance",
+    "initial",
+    "initialization",
+    "initializing",
+    "initially",
+    "inject",
+    "inline",
+    "inner",
+    "inputs",
+    "insert",
+    "inserted",
+    "inserting",
+    "install",
+    "installation",
+    "installed",
+    "installing",
+    "instance",
+    "instances",
+    "instructions",
+    "integrate",
+    "integration",
+    "intended",
+    "interested",
+    "interesting",
+    "interface",
+    "internal",
+    "internet",
+    "interpreted",
+    "introduce",
+    "introduced",
+    "invalid",
+    "invoke",
+    "invoking",
+    "involve",
+    "involved",
+    "iterate",
+    "iteration",
+    "itself",
+    "ive",
+    "joins",
+    "jsfiddle.net",
+    "keeping",
+    "keeps",
+    "kindly",
+    "knowing",
+    "knowledge",
+    "known",
+    "knows",
+    "lack",
+    "language",
+    "languages",
+    "large",
+    "larger",
+    "late",
+    "later",
+    "latest",
+    "latter",
+    "layer",
+    "lead",
+    "leads",
+    "learn",
+    "learning",
+    "least",
+    "leave",
+    "length",
+    "less",
+    "lets",
+    "letter",
+    "letters",
+    "level",
+    "libraries",
+    "library",
+    "life",
+    "light",
+    "likely",
+    "limit",
+    "limitation",
+    "limited",
+    "limits",
+    "line",
+    "lines",
+    "linked",
+    "linking",
+    "links",
+    "listed",
+    "listen",
+    "listener",
+    "listening",
+    "literal",
+    "little",
+    "loaded",
+    "loading",
+    "loads",
+    "localhost",
+    "locally",
+    "locate",
+    "located",
+    "locations",
+    "lock",
+    "logged",
+    "logging",
+    "logic",
+    "logical",
+    "logout",
+    "longer",
+    "looked",
+    "loop",
+    "loops",
+    "lost",
+    "lots",
+    "love",
+    "low",
+    "lower",
+    "lowest",
+    "luck",
+    "machine",
+    "machines",
+    "macro",
+    "magic",
+    "maintain",
+    "major",
+    "majority",
+    "makes",
+    "manage",
+    "managed",
+    "management",
+    "manager",
+    "manner",
+    "manual",
+    "manually",
+    "mapped",
+    "mapping",
+    "mappings",
+    "mark",
+    "marked",
+    "markup",
+    "master",
+    "match",
+    "matches",
+    "matching",
+    "matter",
+    "matters",
+    "mean",
+    "meaning",
+    "meant",
+    "mechanism",
+    "media",
+    "member",
+    "members",
+    "memory",
+    "mention",
+    "mentioned",
+    "merge",
+    "message",
+    "messages",
+    "meta",
+    "metadata",
+    "method",
+    "million",
+    "millions",
+    "mind",
+    "minimal",
+    "minimum",
+    "minute",
+    "minutes",
+    "miss",
+    "missed",
+    "missing",
+    "mistake",
+    "mode",
+    "models",
+    "modified",
+    "modify",
+    "modifying",
+    "module",
+    "modules",
+    "moment",
+    "monitor",
+    "month",
+    "mostly",
+    "moved",
+    "moves",
+    "moving",
+    "msdn.microsoft.com",
+    "multi",
+    "myself",
+    "named",
+    "names",
+    "namespace",
+    "nasty",
+    "native",
+    "navigation",
+    "near",
+    "nearly",
+    "necessary",
+    "needed",
+    "needs",
+    "negative",
+    "neither",
+    "nested",
+    "net",
+    "newbie",
+    "next",
+    "nice",
+    "nil",
+    "non",
+    "none",
+    "normal",
+    "normally",
+    "notation",
+    "noted",
+    "notes",
+    "notice",
+    "noticed",
+    "null",
+    "objective",
+    "obtain",
+    "obtained",
+    "obvious",
+    "obviously",
+    "occur",
+    "occurring",
+    "occurs",
+    "off",
+    "offer",
+    "offers",
+    "official",
+    "old",
+    "older",
+    "ones",
+    "online",
+    "onto",
+    "opened",
+    "opening",
+    "opens",
+    "operating",
+    "operation",
+    "operations",
+    "operator",
+    "operators",
+    "opinion",
+    "opposed",
+    "optimal",
+    "optimize",
+    "optimized",
+    "option",
+    "options",
+    "ordered",
+    "ordering",
+    "original",
+    "originally",
+    "others",
+    "otherwise",
+    "outer",
+    "output",
+    "outputs",
+    "outside",
+    "overhead",
+    "override",
+    "overriding",
+    "overwrite",
+    "overwriting",
+    "owner",
+    "p.s",
+    "package",
+    "packages",
+    "pairs",
+    "parallel",
+    "param",
+    "parameter",
+    "parameters",
+    "params",
+    "parent",
+    "parentheses",
+    "parsed",
+    "parsing",
+    "partial",
+    "particular",
+    "particularly",
+    "party",
+    "passes",
+    "password",
+    "past",
+    "paste",
+    "paths",
+    "pattern",
+    "patterns",
+    "people",
+    "per",
+    "perfect",
+    "perfectly",
+    "perform",
+    "performance",
+    "performs",
+    "perhaps",
+    "period",
+    "permissions",
+    "persist",
+    "personal",
+    "personally",
+    "physical",
+    "pick",
+    "picked",
+    "pieces",
+    "pixel",
+    "pixels",
+    "placed",
+    "placeholder",
+    "places",
+    "placing",
+    "plain",
+    "plan",
+    "platform",
+    "play",
+    "plus",
+    "pointed",
+    "pointing",
+    "pool",
+    "poor",
+    "popular",
+    "populating",
+    "position",
+    "positioning",
+    "positions",
+    "positive",
+    "possibility",
+    "possibly",
+    "posted",
+    "posting",
+    "potential",
+    "power",
+    "practice",
+    "practices",
+    "pre",
+    "prefer",
+    "preferences",
+    "preferred",
+    "prefix",
+    "present",
+    "presented",
+    "press",
+    "pressed",
+    "pressing",
+    "presumably",
+    "pretty",
+    "prevent",
+    "previous",
+    "previously",
+    "primary",
+    "print",
+    "printed",
+    "prints",
+    "prior",
+    "pro",
+    "problems",
+    "procedure",
+    "proceed",
+    "processed",
+    "processes",
+    "produce",
+    "produces",
+    "production",
+    "program",
+    "programmatically",
+    "programmers",
+    "programming",
+    "programs",
+    "progress",
+    "projects",
+    "prompt",
+    "proper",
+    "properly",
+    "properties",
+    "property",
+    "protected",
+    "protocol",
+    "prove",
+    "provide",
+    "provided",
+    "provides",
+    "providing",
+    "proxy",
+    "pseudo",
+    "publish",
+    "pull",
+    "pure",
+    "purely",
+    "purpose",
+    "purposes",
+    "push",
+    "puts",
+    "putting",
+    "quality",
+    "questions",
+    "quick",
+    "quickly",
+    "quite",
+    "quote",
+    "quotes",
+    "ran",
+    "rate",
+    "rather",
+    "reach",
+    "reached",
+    "reaches",
+    "readability",
+    "reads",
+    "real",
+    "realize",
+    "realized",
+    "reasonable",
+    "reasons",
+    "receive",
+    "received",
+    "receives",
+    "receiving",
+    "recent",
+    "recently",
+    "recognized",
+    "recommend",
+    "recommended",
+    "record",
+    "records",
+    "recursive",
+    "red",
+    "redirect",
+    "redirected",
+    "redirecting",
+    "reduce",
+    "redundant",
+    "refer",
+    "references",
+    "referring",
+    "reflection",
+    "regarding",
+    "regardless",
+    "regards",
+    "register",
+    "registered",
+    "registry",
+    "regular",
+    "regularly",
+    "related",
+    "relation",
+    "relationship",
+    "relatively",
+    "release",
+    "released",
+    "relevant",
+    "reliable",
+    "reload",
+    "relying",
+    "remain",
+    "remains",
+    "remember",
+    "remote",
+    "removed",
+    "removing",
+    "rename",
+    "rendered",
+    "rendering",
+    "repeat",
+    "replace",
+    "replaced",
+    "replacing",
+    "report",
+    "reported",
+    "reporting",
+    "reports",
+    "repositories",
+    "represent",
+    "representation",
+    "represented",
+    "represents",
+    "requested",
+    "require",
+    "required",
+    "requirement",
+    "requires",
+    "research",
+    "reset",
+    "resolution",
+    "resolve",
+    "resolved",
+    "respond",
+    "responses",
+    "responsive",
+    "restart",
+    "restarted",
+    "restore",
+    "resulting",
+    "retrieved",
+    "retrieving",
+    "returning",
+    "reuse",
+    "rewrite",
+    "rich",
+    "rid",
+    "roles",
+    "round",
+    "routine",
+    "routing",
+    "rule",
+    "rules",
+    "runnable",
+    "runs",
+    "runtime",
+    "safe",
+    "said",
+    "sample",
+    "samples",
+    "save",
+    "saved",
+    "saving",
+    "saw",
+    "saying",
+    "scale",
+    "scaling",
+    "scan",
+    "scenario",
+    "schedule",
+    "scheduled",
+    "schema",
+    "score",
+    "screenshot",
+    "scripts",
+    "scroll",
+    "scrolling",
+    "search",
+    "searched",
+    "searching",
+    "seconds",
+    "sections",
+    "secure",
+    "security",
+    "seeing",
+    "seemed",
+    "seen",
+    "sees",
+    "selected",
+    "selection",
+    "self",
+    "sending",
+    "sends",
+    "sense",
+    "sent",
+    "separate",
+    "separated",
+    "separately",
+    "sequence",
+    "serialization",
+    "services",
+    "several",
+    "share",
+    "shared",
+    "short",
+    "showing",
+    "shown",
+    "sign",
+    "signature",
+    "simpler",
+    "simplest",
+    "simplified",
+    "site",
+    "sites",
+    "situation",
+    "situations",
+    "sized",
+    "sizes",
+    "skip",
+    "slide",
+    "slightly",
+    "slow",
+    "small",
+    "smaller",
+    "smart",
+    "software",
+    "solutions",
+    "solved",
+    "solving",
+    "somebody",
+    "somehow",
+    "sometimes",
+    "somewhere",
+    "soon",
+    "sorting",
+    "sorts",
+    "sound",
+    "sounds",
+    "source",
+    "sources",
+    "spaces",
+    "special",
+    "specifically",
+    "specified",
+    "specifying",
+    "speed",
+    "spent",
+    "split",
+    "stackoverflow.com",
+    "standalone",
+    "standard",
+    "started",
+    "starting",
+    "starts",
+    "startup",
+    "state",
+    "stated",
+    "statement",
+    "statements",
+    "states",
+    "stay",
+    "stays",
+    "std",
+    "stick",
+    "stop",
+    "stopped",
+    "stops",
+    "store",
+    "stored",
+    "stores",
+    "storing",
+    "straight",
+    "straightforward",
+    "strange",
+    "strategy",
+    "streaming",
+    "strongly",
+    "structure",
+    "struggling",
+    "stuck",
+    "studio",
+    "stupid",
+    "styles",
+    "subclass",
+    "subclasses",
+    "submit",
+    "submitted",
+    "subscribe",
+    "subset",
+    "subtract",
+    "success",
+    "successful",
+    "successfully",
+    "sufficient",
+    "suggest",
+    "suggested",
+    "suggestion",
+    "suggestions",
+    "suggests",
+    "suitable",
+    "sum",
+    "summary",
+    "supplied",
+    "support",
+    "supported",
+    "supports",
+    "suppose",
+    "supposed",
+    "suspect",
+    "swap",
+    "switch",
+    "switching",
+    "symbol",
+    "sync",
+    "synchronization",
+    "syntax",
+    "system",
+    "systems",
+    "tackle",
+    "tags",
+    "taken",
+    "taking",
+    "talk",
+    "talking",
+    "tap",
+    "target",
+    "tcp",
+    "team",
+    "tells",
+    "temporary",
+    "term",
+    "terms",
+    "tested",
+    "testing",
+    "tests",
+    "thats",
+    "theme",
+    "themselves",
+    "therefore",
+    "thinking",
+    "third",
+    "thought",
+    "thoughts",
+    "threading",
+    "throw",
+    "throwing",
+    "thrown",
+    "throws",
+    "thus",
+    "timeout",
+    "tips",
+    "today",
+    "together",
+    "told",
+    "took",
+    "tool",
+    "toolkit",
+    "topic",
+    "total",
+    "totally",
+    "touch",
+    "towards",
+    "trace",
+    "track",
+    "transform",
+    "transparent",
+    "treat",
+    "treated",
+    "trick",
+    "tricky",
+    "tries",
+    "trigger",
+    "triggered",
+    "triggers",
+    "trivial",
+    "trouble",
+    "trusted",
+    "turn",
+    "turned",
+    "turns",
+    "tutorial",
+    "tutorials",
+    "twice",
+    "type",
+    "typed",
+    "types",
+    "typical",
+    "typically",
+    "typing",
+    "unable",
+    "undefined",
+    "underlying",
+    "underneath",
+    "understanding",
+    "understood",
+    "unexpected",
+    "unfortunately",
+    "unicode",
+    "unique",
+    "unit",
+    "unlock",
+    "unnecessary",
+    "unsure",
+    "until",
+    "updated",
+    "updates",
+    "updating",
+    "upgraded",
+    "upload",
+    "uploaded",
+    "upon",
+    "upper",
+    "uri",
+    "url",
+    "urls",
+    "usage",
+    "useful",
+    "users",
+    "uses",
+    "usr",
+    "usual",
+    "usually",
+    "utilize",
+    "valid",
+    "validation",
+    "values",
+    "variable",
+    "variables",
+    "various",
+    "verified",
+    "verify",
+    "version",
+    "versions",
+    "vertical",
+    "vertically",
+    "virtual",
+    "visible",
+    "visit",
+    "visual",
+    "wait",
+    "waiting",
+    "wanted",
+    "wants",
+    "warning",
+    "watch",
+    "web",
+    "webservice",
+    "website",
+    "week",
+    "weird",
+    "welcome",
+    "went",
+    "whatever",
+    "whats",
+    "whenever",
+    "whereas",
+    "whether",
+    "white",
+    "whole",
+    "wiki",
+    "wise",
+    "wish",
+    "wonder",
+    "wondering",
+    "wont",
+    "words",
+    "workaround",
+    "worry",
+    "worth",
+    "wrap",
+    "wrapper",
+    "wrapping",
+    "writes",
+    "written",
+    "wrote",
+    "year",
+    "yourself",
+    "zero",
+    "zoom"
+  ],
+  "details": {
+    "code": {
+      "doc_count": 1079,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "dont": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "needs": {
+      "doc_count": 52,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "http": {
+      "doc_count": 177,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "approach": {
+      "doc_count": 54,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "uses": {
+      "doc_count": 54,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "clause": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "prints": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "started": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "thinking": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "because": {
+      "doc_count": 206,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "program": {
+      "doc_count": 65,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "output": {
+      "doc_count": 252,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "behavior": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "itself": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "variables": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "undefined": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "course": {
+      "doc_count": 35,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "memory": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "whatever": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "little": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "programming": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "wrote": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "print": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "thought": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "seconds": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "non": {
+      "doc_count": 46,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "guide": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "easily": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "net": {
+      "doc_count": 36,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "stick": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "manually": {
+      "doc_count": 46,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "suggestion": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tries": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "application": {
+      "doc_count": 126,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mode": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "particular": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "necessary": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "i.e": {
+      "doc_count": 51,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "goes": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "later": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "perform": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "updates": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "level": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "records": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "values": {
+      "doc_count": 98,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "suggested": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "solved": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "options": {
+      "doc_count": 46,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "accomplish": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "struggling": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "clicked": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "element": {
+      "doc_count": 70,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "thus": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "updated": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "derived": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "implementation": {
+      "doc_count": 44,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "usually": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "avoid": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "parent": {
+      "doc_count": 28,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "method": {
+      "doc_count": 194,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "difference": {
+      "doc_count": 36,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "completely": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "valid": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "extend": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "versions": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "scenario": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "equivalent": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "suppose": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "version": {
+      "doc_count": 84,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "override": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "original": {
+      "doc_count": 43,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "differences": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "execution": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "instances": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "extra": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "allow": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "less": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "base": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "said": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "classes": {
+      "doc_count": 47,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "class": {
+      "doc_count": 144,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "situation": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "subclass": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "clear": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "regarding": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "purpose": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "function": {
+      "doc_count": 180,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "certain": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tells": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mention": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "searching": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "coding": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "functions": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "answers": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "guess": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "direction": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "alternatively": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "parameter": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mind": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "property": {
+      "doc_count": 59,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "crash": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sample": {
+      "doc_count": 49,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "statement": {
+      "doc_count": 51,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "inherit": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "internet": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "choose": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "names": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "pretty": {
+      "doc_count": 52,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "decide": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "system": {
+      "doc_count": 56,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "types": {
+      "doc_count": 42,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "checking": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "systems": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "features": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "exist": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "languages": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "prefer": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "state": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "exactly": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "language": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "easier": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hand": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "helpful": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "statements": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "against": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "supports": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "rather": {
+      "doc_count": 49,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "whether": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "nice": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "knowledge": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sound": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "runtime": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "module": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "logic": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "general": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "ensure": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "important": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "type": {
+      "doc_count": 106,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "makes": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "line": {
+      "doc_count": 125,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "allows": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "explain": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "happen": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "effect": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "determine": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "examples": {
+      "doc_count": 28,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "support": {
+      "doc_count": 43,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "quite": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "errors": {
+      "doc_count": 46,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "known": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "checks": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "almost": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "although": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "argument": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "therefore": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "believe": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "https": {
+      "doc_count": 101,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "closed": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sense": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "syntax": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "documentation": {
+      "doc_count": 58,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "docs": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "supposed": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "happening": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "people": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "happens": {
+      "doc_count": 44,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "high": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "experience": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "longer": {
+      "doc_count": 28,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "interface": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "standard": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "elements": {
+      "doc_count": 49,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "reasons": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "replaced": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "framework": {
+      "doc_count": 43,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "learning": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "came": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "moving": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "website": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "containing": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "removing": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "default": {
+      "doc_count": 73,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "record": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "missing": {
+      "doc_count": 35,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "least": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "convert": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "insert": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "receive": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "helps": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "obviously": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "app": {
+      "doc_count": 131,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "handling": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "generate": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "reads": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "option": {
+      "doc_count": 63,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "url": {
+      "doc_count": 66,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "editing": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "generating": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "problems": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "workaround": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "likely": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "appropriate": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "web": {
+      "doc_count": 68,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tested": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "changes": {
+      "doc_count": 52,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "advance": {
+      "doc_count": 61,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "edited": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "fast": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "compare": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "slow": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "provide": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "extract": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "larger": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "3rd": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "advice": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "large": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "third": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "commands": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "describe": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "successfully": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "master": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "empty": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "area": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "downloaded": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "blank": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "content": {
+      "doc_count": 57,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "executed": {
+      "doc_count": 28,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "install": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "functionality": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "trigger": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "learn": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "fix": {
+      "doc_count": 60,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "several": {
+      "doc_count": 47,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "seeing": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "obvious": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "properly": {
+      "doc_count": 36,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "directly": {
+      "doc_count": 46,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "dynamically": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "stuck": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "definition": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "loaded": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "possibly": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "details": {
+      "doc_count": 41,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "questions": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "limit": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "changing": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "ideas": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "whole": {
+      "doc_count": 36,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "weird": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "appreciate": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "jsfiddle.net": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "attribute": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "entity": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "achieve": {
+      "doc_count": 35,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sometimes": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "existing": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "saying": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "choice": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "depending": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "appear": {
+      "doc_count": 35,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "store": {
+      "doc_count": 65,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "enabled": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "automatically": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "machine": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "message": {
+      "doc_count": 61,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hours": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "obtain": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "host": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "attached": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "configure": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "connections": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "library": {
+      "doc_count": 64,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "finally": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "connect": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "practice": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "beginner": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "along": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "built": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "implement": {
+      "doc_count": 59,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "requires": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "asked": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "layer": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "especially": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "source": {
+      "doc_count": 57,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "relevant": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mentioned": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "perhaps": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "custom": {
+      "doc_count": 68,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "replace": {
+      "doc_count": 48,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "drawing": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "refer": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "required": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "warning": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "declaration": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "named": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "expected": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "cause": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "instance": {
+      "doc_count": 66,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "structure": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "day": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "year": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "pattern": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "dates": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "associated": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "ask": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "developer": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "package": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "behind": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "next": {
+      "doc_count": 56,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "otherwise": {
+      "doc_count": 36,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "shared": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "saved": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "efficient": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "updating": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "written": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "faster": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "wondering": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "contain": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "seen": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "force": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "pixel": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "others": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "position": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "until": {
+      "doc_count": 46,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "putting": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "compiled": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "per": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "ones": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "accessible": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "loop": {
+      "doc_count": 60,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "variable": {
+      "doc_count": 73,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "unique": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "additional": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "visible": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "loops": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "attempt": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "loading": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "greatly": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "import": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "suggestions": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "internal": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "resulting": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "operator": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "info": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "wanted": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "save": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "opens": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "auto": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "detect": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "plain": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "configured": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "supported": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "opened": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "exact": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "explicitly": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "software": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "compile": {
+      "doc_count": 28,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "provides": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "across": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mean": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "success": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "null": {
+      "doc_count": 35,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "shown": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "debug": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "domain": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "cross": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "trouble": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "correctly": {
+      "doc_count": 44,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "format": {
+      "doc_count": 50,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "installed": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "play": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "invalid": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "validation": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "anymore": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "proper": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "locally": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "somehow": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "adds": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "figured": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "github.com": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "paste": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "latest": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sent": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "corresponding": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "away": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "core": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "extension": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "assigning": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "assign": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "attempting": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "creates": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "managed": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "together": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "followed": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "total": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "coordinates": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "group": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "deploy": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "printed": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "team": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "old": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "modify": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "available": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "environment": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "including": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "unable": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "received": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "coming": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "debugging": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "turns": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "submit": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "previous": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "according": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "applied": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "displayed": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "binding": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "big": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "bind": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "selected": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "assuming": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "quick": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "bug": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "small": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "build": {
+      "doc_count": 61,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "building": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "enough": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "contents": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "impossible": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "leave": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "comments": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "essentially": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "scripts": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "linked": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "inline": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "saving": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "related": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "aware": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "appears": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "lines": {
+      "doc_count": 37,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "somewhere": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "multi": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "operations": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "loads": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "needed": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "starts": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "located": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "handles": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "becomes": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "bound": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "occurs": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "operation": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mistake": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "finding": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "inputs": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tags": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "stop": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "upon": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "immediately": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "gone": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "neither": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "site": {
+      "doc_count": 45,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "resolved": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "manage": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "alternative": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "arguments": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "action": {
+      "doc_count": 40,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "turned": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "interested": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "links": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "feel": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "short": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "desired": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "password": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "off": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "displaying": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "entered": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sending": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "testing": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "turn": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "exists": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "noticed": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "throwing": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "track": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "actions": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "past": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "yourself": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "prevent": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "search": {
+      "doc_count": 55,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "comment": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "entire": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "parameters": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "inserted": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "deleted": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "individual": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hide": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "modified": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "myself": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "various": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "returning": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "twice": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "requirement": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "properties": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "clean": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "basic": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "due": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "handled": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "handle": {
+      "doc_count": 47,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "trick": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "stored": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "procedure": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "apps": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "implemented": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "asking": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "users": {
+      "doc_count": 49,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "formula": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "runs": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "except": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "enable": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "recently": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "normal": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "press": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "self": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "articles": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "deal": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "demo": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "wish": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "become": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "moment": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "forget": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "release": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "native": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "manual": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "algorithm": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "logged": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "resolve": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "remember": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "messages": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "included": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "bunch": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "require": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "unfortunately": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "studio": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "visual": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "amount": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "account": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "directory": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "quotes": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "capture": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "care": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "disable": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "regular": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "member": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "specified": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "expect": {
+      "doc_count": 28,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "libraries": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "styles": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "real": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "anybody": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "separate": {
+      "doc_count": 38,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "confused": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "initial": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "modules": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tests": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "operators": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "finish": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "follows": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "submitted": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "listed": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "whenever": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "clicks": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "wrap": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "respond": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "target": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "displays": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "condition": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "usage": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "special": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "causes": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "btw": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "fixed": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "posted": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hoping": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tutorial": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "starting": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "repeat": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "restart": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "fired": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "dynamic": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "showing": {
+      "doc_count": 34,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "switch": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "push": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "complete": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "download": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "share": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sounds": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "future": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "clicking": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "includes": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "white": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "lots": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "accessed": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "manager": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hopefully": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "took": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "taken": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "references": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "consider": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "common": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "design": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "generated": {
+      "doc_count": 31,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "match": {
+      "doc_count": 35,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "quickly": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "advantage": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "zero": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hour": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "rules": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "device": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "actual": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "copying": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "simplest": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "matter": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "present": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "wait": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "beginning": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "color": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "failed": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "couple": {
+      "doc_count": 27,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "connected": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "mapping": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "solutions": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "explanation": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "expression": {
+      "doc_count": 22,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "comparison": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "opening": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "localhost": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "perfectly": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "remote": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "services": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "great": {
+      "doc_count": 32,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "tool": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "anywhere": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "depends": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "fails": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "strange": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "recommend": {
+      "doc_count": 33,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "addition": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "provided": {
+      "doc_count": 29,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "parsing": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "useful": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "defining": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "reach": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "break": {
+      "doc_count": 20,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "complicated": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "taking": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "accordingly": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "literal": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "incorrect": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "iteration": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "soon": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "behaviour": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "ever": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "full": {
+      "doc_count": 30,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "spent": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "days": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "combination": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hit": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "security": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "external": {
+      "doc_count": 25,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "duplicate": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "entries": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "safe": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "dependencies": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "luck": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "executing": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "developing": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "rendering": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "redirect": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "minutes": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "improve": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "feature": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "worry": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "slightly": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "outside": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "platform": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "waiting": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "keeps": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "described": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "devices": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "branch": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "suspect": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "throws": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "suggest": {
+      "doc_count": 39,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "fairly": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "unit": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "implementing": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "pick": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "performance": {
+      "doc_count": 21,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "doesnt": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "research": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "codes": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "complex": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "converting": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "digits": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "conditions": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "normally": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "causing": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "cant": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "knows": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "media": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "regards": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "looked": {
+      "doc_count": 15,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "absolute": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "protocol": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "sequence": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "older": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "matches": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "front": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "easiest": {
+      "doc_count": 19,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "represent": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "concept": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "attributes": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "2nd": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "development": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "length": {
+      "doc_count": 24,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "giving": {
+      "doc_count": 23,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "hence": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "assume": {
+      "doc_count": 26,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "declared": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "detail": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "keeping": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "none": {
+      "doc_count": 17,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "rewrite": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "facing": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "declare": {
+      "doc_count": 14,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "generic": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "relationship": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "focus": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "leads": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "definitely": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "throw": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "week": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "upload": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "calculate": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "cast": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "removed": {
+      "doc_count": 18,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "scroll": {
+      "doc_count": 13,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "english": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "std": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "projects": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "smaller": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "inner": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "pull": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "lower": {
+      "doc_count": 16,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "anyway": {
+      "doc_count": 12,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "terms": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "paths": {
+      "doc_count": 11,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    },
+    "differently": {
+      "doc_count": 10,
+      "entity_count": 0,
+      "entity_rate": 0.0
+    }
+  }
+}
