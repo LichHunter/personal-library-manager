@@ -882,7 +882,7 @@ Please recommend:
 
 ---
 
-- [ ] 6. [CONDITIONAL] Signal Engineering Iteration (Phase 4a)
+- [x] 6. [CONDITIONAL] Signal Engineering Iteration (Phase 4a)
 
   **Trigger**: Phase 3 results show max(r) < 0.6
 

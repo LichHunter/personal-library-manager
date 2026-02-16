@@ -1,0 +1,85 @@
+{
+  "new_signals": {
+    "technical_pattern_ratio": "Ratio of terms matching technical patterns (CamelCase, snake_case, dot.notation)",
+    "avg_term_length": "Average character length of extracted terms",
+    "text_grounding_score": "Ratio of terms found verbatim in original text"
+  },
+  "all_signals": [
+    "known_term_ratio",
+    "coverage",
+    "entity_density",
+    "section_type_mismatch",
+    "technical_pattern_ratio",
+    "avg_term_length",
+    "text_grounding_score"
+  ],
+  "correlations": {
+    "signals": {
+      "known_term_ratio": {
+        "r": -0.23733645906742348,
+        "p": 0.01742556261654025,
+        "significant": true
+      },
+      "coverage": {
+        "r": 0.27626683750762576,
+        "p": 0.0053974788459993294,
+        "significant": true
+      },
+      "entity_density": {
+        "r": 0.21792459438776945,
+        "p": 0.02939880451019695,
+        "significant": true
+      },
+      "section_type_mismatch": {
+        "r": 0.0,
+        "p": 1.0,
+        "significant": false,
+        "note": "No variance"
+      },
+      "technical_pattern_ratio": {
+        "r": 0.3341624845746047,
+        "p": 0.0006792045478829614,
+        "significant": true
+      },
+      "avg_term_length": {
+        "r": 0.3212909943071546,
+        "p": 0.0011165331297409357,
+        "significant": true
+      },
+      "text_grounding_score": {
+        "r": 0.06381281799614225,
+        "p": 0.5282048763673358,
+        "significant": false
+      }
+    },
+    "max_correlation": {
+      "signal": "technical_pattern_ratio",
+      "r": 0.3341624845746047,
+      "p": 0.0006792045478829614
+    }
+  },
+  "classification": {
+    "train_accuracy": 0.8428571428571429,
+    "validation_accuracy": 0.8,
+    "auc_roc": 0.9464285714285714,
+    "optimal_threshold": 0.6798154601620259,
+    "poor_recall": 0.7857142857142857,
+    "slow_route_rate": 0.7333333333333333,
+    "confusion_matrix": {
+      "TP": 2,
+      "TN": 22,
+      "FP": 6,
+      "FN": 0
+    },
+    "train_distribution": {
+      "0": 66,
+      "1": 4
+    },
+    "val_distribution": {
+      "0": 28,
+      "1": 2
+    }
+  },
+  "verdict": "FAILURE",
+  "reason": "Max correlation r=0.334 < 0.4"
+}
