@@ -1,6 +1,6 @@
 {
-  "active_plan": "/home/susano/Code/personal-library-manager/.sisyphus/plans/slow-extraction-docker.md",
-  "started_at": "2026-02-16T15:52:46.867Z",
-  "session_ids": ["ses_399af91a7ffe5WvVnlLQCa1qMt", "ses_399b0e4a4ffe4Uu1Ov8Ks5Rvqr"],
-  "plan_name": "slow-extraction-docker"
+  "active_plan": "/home/susano/Code/personal-library-manager/.sisyphus/plans/poc-2-confidence-scoring.md",
+  "started_at": "2026-02-16T17:43:37.291Z",
+  "session_ids": ["ses_39882d1e1ffeJAQsVJWHgw0zAU"],
+  "plan_name": "poc-2-confidence-scoring"
 }

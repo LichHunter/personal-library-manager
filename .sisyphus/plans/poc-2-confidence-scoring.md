@@ -648,7 +648,7 @@ Please recommend:
 
 ---
 
-- [ ] 3. Prepare Evaluation Dataset (Phase 1)
+- [x] 3. Prepare Evaluation Dataset (Phase 1)
 
   **What to do**:
   - Create `poc/poc-2-confidence-scoring/prepare_dataset.py`

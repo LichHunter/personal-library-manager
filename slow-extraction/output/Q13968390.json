@@ -1,0 +1,204 @@
+{
+  "file": "Q13968390.txt",
+  "processed_at": "2026-02-16T17:20:35.756485+00:00",
+  "chunks": [
+    {
+      "text": "I am using custom adapter which I use for my ListView . After creating ArrayList [CODE] I have the following code in my app : [CODE] However , when I try to click on the checkbox , nothing happens . So I have to manage toggling checkbox state manually . [CODE] Then it works . ( before that I have to remove setChoiceMode method call ) So what could be the problem ? Why there is no effect ? my R.layout.listview_item_text.xml [CODE] In my adapter I inflate checkbox layout with the following code : [CODE] listview_item_checkbox.xml [CODE] I believe that you have to use a widget that implements Checkable . Try with android.R.layout.simple_list_item_multiple_choice . If you need two lines then implement something similar . Instead of your code : [CODE] Try something like this : [CODE] If you can - improve yur code ( create CheckableFrameLayout as parent layout of your List Item ) . ListView keep BooleanSparseArray of checked positions ( you can get it with method getCheckedItemPositions()) . In code ( grepcode ) it set View checked or not by itself only if View is implementing Checkable . If create CheckableFrameLayout and sat as main parent , you do not have to handle these cases in the adapter .",
+      "chunk_index": 0,
+      "heading": null,
+      "terms": [
+        {
+          "term": "ArrayList",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "BooleanSparseArray",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "CheckableFrameLayout",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "List",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "ListView",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "R.layout.listview_item_text.xml",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "android.R.layout.simple_list_item_multiple_choice",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "checkbox",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "create CheckableFrameLayout",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "creating ArrayList",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "getCheckedItemPositions()",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "keep BooleanSparseArray",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "listview_item_checkbox.xml",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "method getCheckedItemPositions()",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "my ListView",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "my R.layout.listview_item_text.xml",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "remove setChoiceMode",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "setChoiceMode",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "setChoiceMode method",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "widget",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "xml",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "android",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        },
+        {
+          "term": "grepcode",
+          "confidence": 0.9,
+          "level": "HIGH",
+          "sources": [
+            "v6"
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_chunks": 1,
+    "total_terms": 23,
+    "high_confidence": 23,
+    "medium_confidence": 0,
+    "low_confidence": 0
+  }
+}
