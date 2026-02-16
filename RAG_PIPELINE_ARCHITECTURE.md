@@ -905,28 +905,37 @@ After summary narrowing:
 
 ## 7. PoC Investigation Areas
 
-### POC-1: LLM Term Extraction Guardrails
+### POC-1: LLM Term Extraction Guardrails ✅ COMPLETE
+
+**Status**: Complete (POC-1, POC-1b, POC-1c)
 
 **Question**: How reliably can LLM extract domain terms from unknown content with guardrails?
 
 **Why This Matters**: The slow system relies on LLM extraction for novel terms. If hallucination rate is too high, manual review burden becomes unsustainable.
 
-**Test Design**:
-- Create 30 chunks with manually-identified ground truth terms
-- Test LLM extraction with various guardrail prompts
-- Vary prompt strictness (require evidence, limit new terms, etc.)
+**Original Target**: P>95%, R>95%, H<5%
 
-**Metrics**:
-- Precision: What % of LLM-extracted terms are valid?
-- Recall: What % of ground truth terms did LLM find?
-- Hallucination rate: What % of extracted terms are completely fabricated?
+**Final Results**:
 
-**Success Criteria**:
-- Precision > 80%
-- Recall > 60%
-- Hallucination rate < 5%
+| Approach | Precision | Recall | Hallucination | F1 | Notes |
+|----------|-----------|--------|---------------|-----|-------|
+| V6 (with vocab) | 90.7% | 95.8% | 9.3% | 0.932 | Best with manual vocabulary (176 terms) |
+| V6 @ 50 docs | 84.2% | 92.8% | 15.8% | 0.883 | Scale degradation |
+| Retrieval few-shot | 81.6% | 80.6% | 18.4% | 0.811 | **Zero vocabulary maintenance** |
+| SLIMER zero-shot | 84.9% | 66.0% | 15.1% | 0.743 | Definition-based |
 
-**Models to Test**: Claude Haiku, Claude Sonnet, Llama 3 8B, Mistral 7B
+**Key Findings**:
+1. **95/95/5 NOT achievable** — benchmark ceiling is ~P=94%, R=96%, H=6% due to GT annotation gaps
+2. **Vocabulary-free max: ~80/90/20** — retrieval few-shot eliminates maintenance with ~10% F1 drop
+3. **GLiNER rejected** — produces garbage results for software entities, no usable signal
+4. **Heuristic extraction viable** — CamelCase, backticks, ALL_CAPS patterns work well for fast system
+
+**Recommendation**: Use retrieval few-shot for production (zero vocab maintenance). Accept the precision/hallucination tradeoff — for RAG, recall matters more than matching benchmark conventions.
+
+**Artifacts**:
+- `src/plm/extraction/` — Production extraction package (fast heuristic + slow V6)
+- `poc/poc-1c-scalable-ner/RESULTS.md` — Full analysis
+- `poc/poc-1c-scalable-ner/docs/V6_RESULTS.md` — V6 detailed breakdown
 
 ---
 
