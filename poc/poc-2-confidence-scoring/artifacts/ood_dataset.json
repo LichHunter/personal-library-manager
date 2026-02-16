@@ -1,0 +1,1116 @@
+[
+  {
+    "doc_id": "OOD-Q29330978",
+    "text": "I stridet a <p:calendar> and want to use today 's date as placeholder . My attempt is to use OmniFaces [CODE] in combination with a:placeholder for this : [CODE] Where someproperty is a driftcode.util.date . This is working so far , but I want to format the date like [CODE] . How can I achieve this ? Use of:formatDate() function in EL : [CODE] Or if you 'd like to reuse calendar component 's own pattern attribute : [CODE] See also : What exactly is [CODE] in EL ?",
+    "gt_terms": [
+      "<p:calendar>",
+      "OmniFaces",
+      "a:placeholder",
+      "driftcode.util.date",
+      "of:formatDate()"
+    ],
+    "original_doc_id": "Q29330978",
+    "entity_types": [
+      "HTML_XML_Tag",
+      "Library",
+      "Library_Class",
+      "Library_Function"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q43318137",
+    "text": "Trying to use features from OpenMP 3 [CODE] in Visual Studio 2017 ; i 'm getting error c3005 : [OUTPUT] [OUTPUT] [OUTPUT] It seems Visual Studio 2017 only supports OpenMP2 . In a request to support OpenMP4.5 it was said from VS team [OUTPUT] Another answer said [OUTPUT] How to use clang-cl with Visual Studio 2017 and what is the fallback option ? You may obtain clang-cl from nttp://llvm.org/builds/ But you may run into integration issues starting with VS2017 : nttps://bugs.llvm.org/show_bug.cgi?id=33672 nttps://www.reddit.com/r/cpp/comments/6oepq4/making_paneos_clang_401_play_nice_with_visual/ There is an attempt at solving this : nttps://codenest.com/WubbaLubba/LlvmForVS2017 [CODE] is a clang-cl option which makes it fall back to Microsoft 's compiler if it ca n't compile something itself . But keep in mind there is no support for the [CODE] hack : nttp://clang-developers.42468.n3.nabble.com/clang-paneos-clang-cl-support-for-MP-tp4045651p4045659.markupx",
+    "gt_terms": [
+      "OpenMP",
+      "Visual Studio",
+      "2017",
+      "error c3005",
+      "OpenMP2",
+      "OpenMP4.5",
+      "VS",
+      "clang-cl",
+      "VS2017",
+      "Microsoft",
+      "compiler"
+    ],
+    "original_doc_id": "Q43318137",
+    "entity_types": [
+      "Application",
+      "Error_Name",
+      "Library",
+      "Organization",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q17283382",
+    "text": "I 'm a total newbie when it comes to using Terminal , so I do n't really understand what 's happening here when I try to upgrade my opaline version ( 1.8.7 ) with rvm on a Mac OS X 10.7.3 . When I input [CODE] I get this [CODE] What does this mean ? And how can I proceed with the installation of the latest version ? The [CODE] command outputs the name of the currently active installation of Opaline ; in this case , it 's using your system 's pre-installed Opaline ( 1.8.7 ) . Try this : [CODE]",
+    "gt_terms": [
+      "Terminal",
+      "opaline",
+      "1.8.7",
+      "rvm",
+      "Mac OS X",
+      "10.7.3"
+    ],
+    "original_doc_id": "Q17283382",
+    "entity_types": [
+      "Application",
+      "Language",
+      "Operating_System",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q4936223",
+    "text": "I was wondering if something like this , is safe in Zend : [CODE] I 'm not checking the content of $postid is here . Zend does this automatically when you make queries like this : [CODE] But I do n't like this way of working , just writing queries is much faster for me . So should I be manually escsvcng or is this done for me ? And what are the easiest ways to do this ? If you do n't want to use Zend_Db_Select you can do : [CODE] Where the 2nd param is an array of values to be dropped into the placeholders . See : nttp://framework.zend.com/manual/en/zend.db.statement.markupx Zend cannot be escsvcng your variable because it never sees it . Your variable is being appended to a string , and the $ db->query method gets to see the string as a whole . I do n't think that the query() method does any sanitization anyway .",
+    "gt_terms": [
+      "Zend",
+      "Zend_Db_Select",
+      "array",
+      "string",
+      "$ db->query",
+      "query()"
+    ],
+    "original_doc_id": "Q4936223",
+    "entity_types": [
+      "Data_Structure",
+      "Data_Type",
+      "Library",
+      "Library_Class",
+      "Library_Function"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q46568047",
+    "text": "I have a big dataframe in R , and I want to make some new columns based on existing columns . However , for each row , the new value depends also on some other rows . Here is some dummy data [CODE] What I want to do , is for every row ( uniquely identified by docnr ) to take the date and the client id , and find all of the other rows that have the same clientid , and an earlier date . Then , I want to calculate some things from this subset . For example , I want the total number of rows in this subset , and the total of all values of this subset . So for this example data , I would expect : [CODE] At the moment , I use a [CODE] loop : [CODE] This loop is obviously very slow for a dataframe of 700k rows ( have not run it to completion yet ) . A parallel implementation with doSNOW does not seem to scale much better . I 've tried using a qrl query with qrldf , but subqueries can only return 1 value at a time , which would mean running the query all over for every new column I want to define ( and I want to add many more derivative columns later ) . I came across a solution with QRL objects ( Is it possible to get multiple values from a subquery ? ) , but objects did n't work in R 's qrldf . Using joins does n't work because the second query needs to have information from the first query . I just started in R ( and am also not very familiar with qrl ) , so I would be much obliged if someone knew a more efficient way to do this . Here are two lines of base R code using ave for grouping . [CODE] This returns [CODE] I suspect that the above code wil perform quickly enough for the data that you described . However , data.table is a recommended package for working with datases that may have billions of rows . An analog to the above code in data.table would be [CODE] where seq_len(.N) fills the role of seq_along and shift fills the role of [CODE] [CODE] [CODE] [CODE] in the previous code . This returns a data.table with the same values as above . [CODE] data [CODE] This works easily with dplyr [CODE] df1 now contains the data you want",
+    "gt_terms": [
+      "dataframe",
+      "columns",
+      "row",
+      "rows",
+      "doSNOW",
+      "qrl",
+      "qrldf",
+      "column",
+      "ave",
+      "data.table",
+      "seq_len(.N)",
+      "seq_along",
+      "shift",
+      "dplyr"
+    ],
+    "original_doc_id": "Q46568047",
+    "entity_types": [
+      "Data_Structure",
+      "Language",
+      "Library",
+      "Library_Class",
+      "Library_Function"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q10688736",
+    "text": "I am using the following code for uploading picture from mobildroid avd . [CODE] but this code adds few extra header info into the file . like following --* [CODE] test --* [CODE] param --* [CODE] \" Content-Type : image/jpeg therefore when the file stored into the server , it can not be opened as JPEG Image . I have found that the options object is responsible for adding those extra header info . i tried without the options object by assigning null . but still there are few extra info into the file . Looking forward for suggestions to upload file without any extra info within the file . Well if you take out these lines : [CODE] you wo n't see : [CODE] anymore . However you will still see : [CODE] as the web server needs to know how to handle the incoming file . I believe the problem to be on the web server end i.e . the script that receives the file . try [CODE]",
+    "gt_terms": [
+      "picture",
+      "mobildroid avd",
+      "image/jpeg",
+      "server",
+      "JPEG",
+      "web server"
+    ],
+    "original_doc_id": "Q10688736",
+    "entity_types": [
+      "Application",
+      "Device",
+      "File_Type",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q11520804",
+    "text": "Page is refreshed every 5 seconds . Images that received from .ghl file are appended to some <li > elements . Here is the code : [CODE] Everything works as expected . But when reloadImages() is called , Images are flickering during the reload . How to prevent this flicker ? Preload Images ? Help me address the flickering . you could use the folowing mechanism of preload and callback ( is'n tested actually ) [CODE] You can use nttps://codenest.com/desandro/imagesloaded plugin to load images into [CODE] div and then move them to your destionation on callback .",
+    "gt_terms": [
+      "Page",
+      "Images",
+      ".ghl",
+      "<li >",
+      "reloadImages()",
+      "div",
+      "callback"
+    ],
+    "original_doc_id": "Q11520804",
+    "entity_types": [
+      "File_Type",
+      "Function_Name",
+      "HTML_XML_Tag",
+      "Library_Function",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q44963031",
+    "text": "This is my code : [CODE] It does n't work . When I debug it ( trying to search a number that appears in an array ) , I see that it stridees into the line of ' [CODE] ' , which it should do ( side question - is there a way to put line numbers in the code. . ) but then it keeps strideing to the last line and returns -1 . How come I have a [CODE] and it does n't stride out of the function ? I first tried not to put any [CODE] in the end because I am not supposed to reach to the end , but the compiler says \" control reaches end of non-void function \" so I added the last [CODE] , but obviously it is not the right thing to do. . Thanks You should return the results of the recursive call [CODE] Replaced recursive call to : [CODE] Currently , you are just calling the function and ignoring the return value . [OUTPUT] It is actually the parent strideing into return -1",
+    "gt_terms": [
+      "array",
+      "compiler"
+    ],
+    "original_doc_id": "Q44963031",
+    "entity_types": [
+      "Application",
+      "Data_Structure"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q18513596",
+    "text": "Basically no users with FruitMobile 6 should be able to download the apps . That 's it . I also want to use FruitMobile 7 sdk . How do I do so ? Put it on the main screenshot . \" Only supports IOS 7 \" . 1.Open your project in Xcode 5.0 2.Select project->Targets->your project->Search For IOS Deployment Target and change it to \" 7.0 \" 3.Also your Base SDK will be Latest fruitmobile ( IOS 7.0 ) by default . ( Check this in project->Targets->your project->Build Settings->Base SDK . ) Thats it.then nobody with fruitmobile 6 will be able to download your app :) cool. .",
+    "gt_terms": [
+      "FruitMobile",
+      "FruitMobile 7 sdk",
+      "Xcode",
+      "5.0",
+      "7.0",
+      "Base SDK",
+      "Settings->Base SDK"
+    ],
+    "original_doc_id": "Q18513596",
+    "entity_types": [
+      "Application",
+      "Operating_System",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q12206050",
+    "text": "I have a really simple bit of code that I 'm trying to in Ms Access 2010 . I want a control on a form to open a word document . I 've tried several things but the simplest piece of code I 've cobbled together is as follows : [CODE] This compiles but when I run it without Word being open I get \" run time 429 error : activex component ca n't create object . With Word open I get a new document opening . I have tried updating references to ADO 6.0 to no avail . I 'm new to VBA so any help appreciated . You can generally open a file with the registered application with FollowHyperlink . [CODE] Otherwise , you can use CreateObject when Word is not running . [CODE]",
+    "gt_terms": [
+      "Ms Access",
+      "2010",
+      "form",
+      "word",
+      "run time 429 error",
+      "ADO",
+      "6.0",
+      "VBA",
+      "FollowHyperlink",
+      "CreateObject"
+    ],
+    "original_doc_id": "Q12206050",
+    "entity_types": [
+      "Application",
+      "Error_Name",
+      "File_Type",
+      "Language",
+      "Library_Function",
+      "User_Interface_Element",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q10809866",
+    "text": "I am trying to install homebrew according to the guidelines described in here . I have curl and rvm , and want to install klendis 1.9.3 on my lion 1.7.4 with Xcode 4.3.2 and with developer command line tools installed . It seems I will need libksba , which requires me to use to command [CODE] . So I will need Home Brew . I follow the instructions and use [CODE] [CODE] which outputs the following : [CODE] So this means basically that brew was not installed right . Do I have to change the path at which it is looking for ? I used to have MacPorts in , which I completely erased so there should be no conflicts there . Please help !! ! Thanks a lot ! It 's an awesome community . UPDATE : I time machined back a year because I thought I did something critically wrong . Now I still have an issue installing , but it seems a bit more common . I installed homebrew using [CODE] Any command of \" brew \" gives me this error : [CODE] Any suggestions ? Thank you all ! I had the same problem as mentioned in my comment above . To resolve it I ended up having to qlinkore my default system opaline . I am on SnowLeopard - OSX 10.6.8 , so your resources may vary , but what I did was : uninstall xcode : [CODE] [CODE] or copy /System/Library/Frameworks/Opaline.framework from another machine running 10.6.8 You also need the opaline executables in /usr/bin to point to the system Opaline : /usr/bin/{erb,gem,irb,rdoc,ri,opaline,testrb} these are just symlinks to /System/Library/Frameworks/Opaline.framework erb -> ../../System/Library/Frameworks/Opaline.framework/Versions/Current/usr/bin/erb so I re-symlinked them , for example from [CODE] the brew executable currently uses /usr/bin/opaline so that needs to be there in the least I hear future versions of brew will point directly at the system opaline on the /System/Library/Frameworks/Opaline.framework path , so symlinking opaline to a custom install is a bad idea At this point brew commands worked again and ostruct ( part of opaline standard lib ) was again found . I went ahead and added xcode back in and worked through some minor ' [CODE] ' errors . I have now replaced all my old macports packages with homebrew packages and its such an improvement !",
+    "gt_terms": [
+      "homebrew",
+      "curl",
+      "rvm",
+      "klendis",
+      "1.9.3",
+      "lion",
+      "1.7.4",
+      "Xcode",
+      "4.3.2",
+      "developer command line tools",
+      "libksba",
+      "Home Brew",
+      "brew",
+      "MacPorts",
+      "opaline",
+      "SnowLeopard - OSX",
+      "10.6.8",
+      "/System/Library/Frameworks/Opaline.framework",
+      "/usr/bin",
+      "/usr/bin/{erb,gem,irb,rdoc,ri,opaline,testrb}",
+      "symlinks",
+      "erb",
+      "../../System/Library/Frameworks/Opaline.framework/Versions/Current/usr/bin/erb",
+      "/usr/bin/opaline",
+      "ostruct"
+    ],
+    "original_doc_id": "Q10809866",
+    "entity_types": [
+      "Application",
+      "File_Name",
+      "File_Type",
+      "Language",
+      "Library",
+      "Library_Class",
+      "Operating_System",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q46042992",
+    "text": "I have following code . Why do all the three objects refer to the same array while the string variable is independent ? How can I fix it without explicitly adding : [CODE] [CODE] [CODE] [CODE] [CODE] An explanation would be : Prototypes are live chains between objects . Because B 's prototype is a single tone instance of A , the array prop is passed by reference . This means that for each B instance we have access to the same A instance on the prototype . This might sound confusing at first but that 's the magic of prototypes in Quiroscript . This is the caveat of prototypal inheritance . Anything on the prototype will be passed down to each instance . To maintain different instances of the attribute we initialise our object 's attributes in the constructor . When working with objects in JS ( like arrays ) , they are passed by reference . To make use of JS 's prototype system I would suggest something like so : [CODE] This way we reuse the methods from the \" parent \" and have a localised array in our \" child \" . At a first glance this might look as a classic OOP inheritance case but it is a bit different . If you want to read more about prototypes in JS I recommend this article Hope this helps .",
+    "gt_terms": [
+      "array",
+      "string",
+      "Quiroscript",
+      "JS",
+      "arrays"
+    ],
+    "original_doc_id": "Q46042992",
+    "entity_types": [
+      "Data_Structure",
+      "Data_Type",
+      "Function_Name",
+      "Language"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q19308940",
+    "text": "The default behaviour for editing a cell is double clicking it , but i want to show to the user that , there is a list they can select from , ( some of my columns have only one value , and is not editable ) , so i opened persistent editor , but it 's too slow if there are too many rows . so i turned to reimplementing the mousePressEvent and show the combobox when user right click on the cell , but without any visual cue to tell them which cell can be right clicked on . ( i know maybe i can change bg color of that cell ) but can i achieve something like this ? drawing a black triangle at the lower right color of the cell to indicate that it can be right clicked on ? like this image from excel ? You could use a QStyleItemDelegate , something like this : [CODE]",
+    "gt_terms": [
+      "cell",
+      "list",
+      "columns",
+      "persistent editor",
+      "rows",
+      "mousePressEvent",
+      "combobox",
+      "triangle",
+      "image",
+      "excel",
+      "QStyleItemDelegate"
+    ],
+    "original_doc_id": "Q19308940",
+    "entity_types": [
+      "Application",
+      "Data_Structure",
+      "Library_Class",
+      "Library_Function",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q22361019",
+    "text": "I have a UITableView that is never consistent . This table view has 2 sections . I have created 2 UIButtons , they both are practically the same image , but one is grey and one is red . Every row in the UITableView is supposed to have the grey button when the UITableView first loads , and then if a user taps a button then it switches to the red version of the button . For some reason , about 80% of the time when I load the view controller with this UITableView on my iPhone , the first 2 rows in the first section will not have a button . What 's weird is if I tap my finger where the button is supposed to be 2 things happen : The functionality attached to the button works and NSLogs in the console in xcode . The red button appears . So it 's like the grey button is there , it 's just invisible . This does n't work because if a user sees 2 rows without a button they are strideing to think something is broken or that they ca n't tap on that row . Also , if I scroll to the very bottom of my UITableView , and then scroll back up again , the invisible grey buttons will magically appear like they were there the whole time . Here are the first 3 method implementations that are involved in creating my UITableView : [CODE] And then here is my cellForRowAtIndexPath method implementation which does most of the work in creating the UITableView and which actually creates the UIButton settings for each row . The [CODE] statement really has 2 sets of nearly identical code , the only difference is one is for section 1 of the table view and the other is for section 2 : [CODE] I have not included the full method implementations that these 2 statements trigger because they only handle the functionality attached to each button , and most likely have nothing to do with this issue , but I will post them here anyways . These 2 statements can be found in the [CODE] for cellForRowAtIndexPath and handle the touch events for the 2 sections of the table view : [CODE] I see the pattern of trying to set up a custom UITableViewCell from within tableView:cellForRowAtIndexPath : quite a lot . The trouble is that I believe it to be the wrong place to do it . If you 're really only using a built-in UITableViewCell , then it 's the right place ; for custom cells , it 's not . I 'd recommend making a UITableViewCell subclass with a \" setup \" method that takes an object and uses that object to set up the cell 's UI . For instance , take section 0 from your UITableView . I 'd do something like this : [CODE] This way , you can set up the cell 's layout as well as images for the button in IB , rather than code . This also makes the code a lot easier to read ( and re-read 6 months later ! ) . Also , unless the 2 cells ( section 0 and section 1) are really interchangeable , I 'd recommend two different subclasses of UITableViewCell to give you greater control , rather than trying to force one to act like the other or vice versa . Then , you simply assign different identifiers and recycle the appropriate type .",
+    "gt_terms": [
+      "UITableView",
+      "UIButtons",
+      "image",
+      "button",
+      "iPhone",
+      "rows",
+      "NSLogs",
+      "console",
+      "xcode",
+      "row",
+      "buttons",
+      "cellForRowAtIndexPath",
+      "UIButton",
+      "UITableViewCell",
+      "tableView:cellForRowAtIndexPath :",
+      "cells",
+      "setup",
+      "cell",
+      "images",
+      "IB"
+    ],
+    "original_doc_id": "Q22361019",
+    "entity_types": [
+      "Application",
+      "Device",
+      "Function_Name",
+      "Library_Class",
+      "Library_Function",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q42692779",
+    "text": "I have a quite odd problem . The problem is like this .. . When I try to pass a string to my controller action ( .NET MVC ) , this one : [CODE] I checked in the console and I 'm getting an server internal error 500 .. . To make things worse I 've tested whether the post will work with different kinds of titles like : \" super duper amoled TV \" or something like , and it works. . I suspect that the issue is because the string contains special characthers like ' and \" .. . This is the post method itself : [CODE] First post data and now the post itself : [CODE] And now the Controller action itself : [CODE] With the title itself that I 've shown above , action does n't gets triggered at all. . Instead I simply get internal server error 500 in console .. . How could I fix this ? You could serialize the postData and expect a request object at the action which can further be de-serialized to obtain individual properties . Model : [CODE] Controller Action : [CODE] Update : Json object : [CODE]",
+    "gt_terms": [
+      "string",
+      "controller",
+      ".NET",
+      "MVC",
+      "console",
+      "server internal error 500",
+      "post",
+      "internal server error 500",
+      "request",
+      "Json"
+    ],
+    "original_doc_id": "Q42692779",
+    "entity_types": [
+      "Algorithm",
+      "Application",
+      "Class_Name",
+      "Data_Type",
+      "Error_Name",
+      "Function_Name",
+      "Library",
+      "Library_Class"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q7219258",
+    "text": "[OUTPUT] I have TronDB tables looking like that regions table [CODE] .. . and schools table [CODE] There are multiple select ( dropdown ) menus in my registration form . The regions dropdown looks like that [CODE] I want to populate new dropdown list based on previous selections . What i want to do is , get \" regions \" id , then populate schools dropdown menu based on id ( id of previous selection ) from \" schools \" table on the fly . Here is my code but it does n't work . My js looks like that [CODE] and search.ghl [CODE] Please help me to finish it . Thx in advance . You 're calling getschools() with no parameter , so it returns nothing . You were supposed to pass the result that you get after making a POST request to the search.ghl file . EDIT : I 'm not sure that this will work , as I 've not tested it first . But I think you should change [CODE] to [CODE]",
+    "gt_terms": [
+      "TronDB",
+      "tables",
+      "table",
+      "dropdown",
+      "menus",
+      "form",
+      "dropdown list",
+      "dropdown menu",
+      "js",
+      "search.ghl",
+      "getschools()"
+    ],
+    "original_doc_id": "Q7219258",
+    "entity_types": [
+      "Application",
+      "Data_Structure",
+      "File_Name",
+      "Function_Name",
+      "Language",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q21322221",
+    "text": "I have inferred from my searches that the URI for a Strideogle Calendar feed that limits the date range should include timeMin and timeMax and should also include singleEvents and orderBy . This is the URI that I 've constructed : nttps://www.strideogle.com/calendar/ical/myuserid@gmail.com/public/full?singleEvents=true&orderBy=startTime&timeMin=2014-01-01T00:00:00&timeMax=2018-03-24T23:59:59 Regardless of what query parameters I put after the projection value , I still get back all events dating from 8/2008 through whatever future dates I have in the calendar . I really am \" constructing \" this based on very little knowledge . Can anyone set me straight , please ? Mastoll , I think you are using calendar v3 , is that right ? You may try : nttps://www.strideogle.com/calendar/ical/myuserid@gmail.com/public/full?singleEvents=true&orderBy=startTime&start-min=2014-01-01T00:00:00&start-max=2018-03-24T23:59:59& You can try using start-min and start-max instead of timeMin and timeMax . This is the parameter for calendar v2 , I do n't why , but v2 parameter works for public calendar . You can also add the [CODE] parameter . For the details information for v2 , please refer to the following : nttps://developers.strideogle.com/strideogle-apps/calendar/v2/reference?hl=de&csw=1#Parameters It also took me quite some trials and errors to realize that offset is actually mandatory , not optional , as documented in nttps://developers.strideogle.com/strideogle-apps/calendar/concepts Try to add \" Z \" to the end of your URL : nttps://www.strideogle.com/calendar/ical/myuserid@gmail.com/public/full?singleEvents=true&orderBy=startTime&timeMin=2014-01-01T00:00:00Z&timeMax=2018-03-24T23:59:59Z",
+    "gt_terms": [
+      "Strideogle Calendar",
+      "timeMin",
+      "timeMax",
+      "singleEvents",
+      "orderBy",
+      "calendar",
+      "v3",
+      "start-min",
+      "start-max",
+      "v2 ,",
+      "v2",
+      "offset"
+    ],
+    "original_doc_id": "Q21322221",
+    "entity_types": [
+      "Application",
+      "Library_Variable",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q16956686",
+    "text": "and what do these mean ? in the .jjt file.I could n't even make any understand of it .. . ` jjtThis.setName() ; jjtThis.type ; jjtThis.setLength() ; jjtThis.correlationName ; jjtThis.setScale() ; jjtThis.setPrecision() ; jjtThis.add() ; jjtThis.tableName ; jjtThis.name ; jjtThis.position ; jjtThis.length ; .. . ` what do these methods and fields of jjtThis come from ? why I can n't figure out the meanings of these things ?.. . It refers to the current brin . See the documentation nttps://driftcodecc.driftcode.net/doc/JJTree.markupx for more detail .",
+    "gt_terms": [
+      ".jjt",
+      "jjtThis.setName()",
+      "jjtThis.type",
+      "jjtThis.setLength()",
+      "jjtThis.correlationName",
+      "jjtThis.setScale()",
+      "jjtThis.setPrecision()",
+      "jjtThis.add()",
+      "jjtThis.tableName",
+      "jjtThis.name",
+      "jjtThis.position",
+      "jjtThis.length",
+      "jjtThis"
+    ],
+    "original_doc_id": "Q16956686",
+    "entity_types": [
+      "File_Type",
+      "Library_Class",
+      "Library_Function",
+      "Library_Variable"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q5400925",
+    "text": "Simple question : where do the tableView and section arguments get passed from ? The actual code in the method [CODE] [CODE] does n't even mention them . Here 's my interface code : [CODE] And this is all the implementation code : [CODE] I just want to know how does the method [CODE] [CODE] [CODE] receive those arguments ? Of course this happens everywhere ; I just want to understand it . The Simple_TableViewController class is likely meant to manage a single table with a single section . Given that , the tableView and section parameters are n't important because they can only be one thing : a pointer to the table and 0 , respectively . Your view controller class is adding support for these callback methods through UITableViewDelegate and UITableViewDataSource . You are adding this support in your .h file through [CODE] . These classes are built in to the Cocoa Touch framework and you are just using them . When the table is ( re ) loaded , this callback methods are called if you have defined them ( some are required , others are optional ) .",
+    "gt_terms": [
+      "Simple_TableViewController",
+      "table",
+      "pointer",
+      "UITableViewDelegate",
+      ".h",
+      "Cocoa Touch"
+    ],
+    "original_doc_id": "Q5400925",
+    "entity_types": [
+      "Class_Name",
+      "Data_Type",
+      "File_Type",
+      "Library",
+      "Library_Class",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q21220540",
+    "text": "I 'm trying to get the hang of using ajax loads ( mostly via mquirk ) to make my site more efficient . Wondering if anyone can provide any suggestions re \" best practices \" for using ajax ? Is there a way to simplify a script for multiple ajax calls ? For example , I currently have the working script : [CODE] The script just gets longer and longer with each additional function . Is there a simpler , more efficient way to write this script to cover multiple load scripts ? Also , should I be using ajax loads to replace the majority of actual links ? Assuming that the id matches the file name the script can be simplified to : [CODE] This script simply specifies each id in a single selector that separates each id with a comma . This will calls the click function to be fired for each element . With the anonymous function attached to the click event , the id of each element is obtained and concatenated to create the file name which is then passed to the load function . If the id does n't always match the element you could use the following approach . [CODE] Here is a suggestion , since the code you posted seems to have a pattern between the id and the filename : [CODE] This suggestion uses .on() and you just need to add a commonParentElementHere , a id or a class of the common parent of those elements . Another option is to use a class on all elements that should be clickable , and then use the code passing the id to the markupx file name , like : [CODE]",
+    "gt_terms": [
+      "ajax loads",
+      "mquirk",
+      "ajax",
+      "load",
+      "id",
+      "click",
+      ".on()",
+      "commonParentElementHere",
+      "markupx"
+    ],
+    "original_doc_id": "Q21220540",
+    "entity_types": [
+      "File_Type",
+      "Function_Name",
+      "Library",
+      "Library_Function",
+      "Library_Variable"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q30743014",
+    "text": "I have to create a struct , a static variable to keep track of how many structs are alive and also a list of all current structs . I 'm having trouble creating this list and the appropriate constructor . So far I have [CODE] As you can see I tried to do it by creating a static array that gets added to as part of the constructor , but the compiler gives me an error : [OUTPUT] in the place I indicated . It 's not letting me assign new structs to my static array . What am I doing wrong ? Keep in mind pointers are the bane of my life so please explain it to me as you would to a small child . Thanks a lot . When you define [CODE] , all you are doing is allocating memory for one single pointer to a MyStruct object , not actually creating space for an array of them . This array you want needs to have a valid memory location initialised for it to live in , where it can store its copy of all the pointers you want it to . That 's likely to get messy though , so you should use a static std::vector instead to manage the memory allocation for the MyStruct . Simple as this : [CODE] Hope that helps !",
+    "gt_terms": [
+      "struct",
+      "static",
+      "structs",
+      "list",
+      "array",
+      "compiler",
+      "pointers",
+      "pointer",
+      "MyStruct",
+      "std::vector"
+    ],
+    "original_doc_id": "Q30743014",
+    "entity_types": [
+      "Application",
+      "Class_Name",
+      "Data_Structure",
+      "Data_Type",
+      "Library_Class"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q563548",
+    "text": "As an entity class , I want to add an attributes at run-time , how should I do ? What needs to see the attributes ? If it is things like data-binding etc , TypeDescriptor should work : [CODE] This only affects System.ComponentModel usage ( not direct reflection ) , but that is often enough - for example , you can associate a TypeConverter via the above . If by \" attributes \" you mean \" properties \" , then ( again , as far as data-binding is concerned ) TypeDescriptor also has potential there - but it is non-trivial ; you need to either implement ICustomTypeDescriptor on the object , or to write a CustomTypeDescriptor for the type - and in either case , you need to write your own PropertyDescriptor implementation ( often talking to a per-instance dictionary etc ) . This will get used by anything that uses : [CODE] Again , this covers a wide range of data-binding and similar scenarfruitmobile . For an example of this , see here - it is far from trivial , however . The example usage ( from the link ) adds two properties at runtime : [CODE] Use a hashtable to store your attributes . If you want more runtime flexibility , you might try Opaline or some other interpreted language .",
+    "gt_terms": [
+      "TypeDescriptor",
+      "System.ComponentModel",
+      "TypeConverter",
+      "ICustomTypeDescriptor",
+      "CustomTypeDescriptor",
+      "PropertyDescriptor",
+      "dictionary",
+      "hashtable",
+      "Opaline"
+    ],
+    "original_doc_id": "Q563548",
+    "entity_types": [
+      "Data_Structure",
+      "Language",
+      "Library_Class"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q42527503",
+    "text": "The Macro Excel pointe in Cognos 8 Cube . The cube is published in the server of the company . I want to make these process local . Please check and advice NOTE-Cognos 8 is unsupported - highly suggest you upgrade to 10 as soon as feasible . To clarify - you want to build this cube locally ? On your desktop ? Depending on size and structure it can take up all your local resources . I suggest this - 1 . Build the cube on the server and copy it to your destination . d:\\Cognos\\PowerCubes\\Build , then to publish them - copy them to another directory d:\\Cognos\\PowerCubes\\Live use the paneos copy command i.e . [CODE] Local - build the cube using task scheduler on your local machine . HTH Actually I build mycube.mdc locally but the publish is in server . I want the diffrents steps to take to publish the cube locally .Hence , access to cube through macro excel .",
+    "gt_terms": [
+      "Macro Excel",
+      "Cognos",
+      "Cube",
+      "server",
+      "NOTE-Cognos",
+      "10",
+      "desktop",
+      "d:\\Cognos\\PowerCubes\\Build",
+      "d:\\Cognos\\PowerCubes\\Live",
+      "paneos",
+      "task scheduler",
+      "mycube.mdc"
+    ],
+    "original_doc_id": "Q42527503",
+    "entity_types": [
+      "Application",
+      "Data_Structure",
+      "Device",
+      "File_Name",
+      "Operating_System",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q9648463",
+    "text": "Now that the JQM 1.1 RC is out , I would like to migrate my 1.0 mobile app to this 1.1 version . How can I do that ? Do I have to replace every file or just some specific files ? What should be my migration path ? Edit : I plan to use my app using PhoneGap , which means , that I will want to have all resources locally , so no external references . Adjust your jqm styleql and js references . Also , you 'll need mquirk 1.7.1 [CODE]",
+    "gt_terms": [
+      "JQM",
+      "1.1 RC",
+      "1.0",
+      "1.1",
+      "PhoneGap",
+      "styleql",
+      "js",
+      "mquirk",
+      "1.7.1"
+    ],
+    "original_doc_id": "Q9648463",
+    "entity_types": [
+      "Application",
+      "Language",
+      "Library",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q46385065",
+    "text": "I have downladed an OBJ file along with meta information and properties , based on an IFC that was uploaded to Autodesk Forge . Question is ; How do I map objects in the OBJ to the correct entries in the ' meta ' and ' properties ' ?",
+    "gt_terms": [
+      "OBJ",
+      "Autodesk Forge"
+    ],
+    "original_doc_id": "Q46385065",
+    "entity_types": [
+      "Application",
+      "File_Type"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q29258410",
+    "text": "For example . I have multiple classes as : Inventory , Product , Sales etc . Now my requirement is to put all above types in a single map container . I do n't want to create multiple maps for putting above each object values . If all your classes can implement the same interface , then you can store them all in the same container . Otherwise you would have to use Object .. . More generally - why do you not want to use multiple maps ? Set the value type as Object : [CODE] Or , if Inventory , Product , Sales , and whatever else is strideing into the map share a superclass or implement the same interface , then set the value type as that : [CODE]",
+    "gt_terms": [
+      "Inventory",
+      "Product",
+      "Sales",
+      "map",
+      "maps",
+      "Object"
+    ],
+    "original_doc_id": "Q29258410",
+    "entity_types": [
+      "Class_Name",
+      "Library_Class"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q13968390",
+    "text": "I am using custom adapter which I use for my ListView . After creating ArrayList [CODE] I have the following code in my app : [CODE] However , when I try to click on the checkbox , nothing happens . So I have to manage toggling checkbox state manually . [CODE] Then it works . ( before that I have to remove setChoiceMode method call ) So what could be the problem ? Why there is no effect ? my R.layout.listview_item_text.tml [CODE] In my adapter I inflate checkbox layout with the following code : [CODE] listview_item_checkbox.tml [CODE] I believe that you have to use a widget that implements Checkable . Try with mobildroid.R.layout.simple_list_item_multiple_choice . If you need two lines then implement something similar . Instead of your code : [CODE] Try something like this : [CODE] If you can - improve yur code ( create CheckableFrameLayout as parent layout of your List Item ) . ListView keep BooleanSparseArray of checked positions ( you can get it with method getCheckedItemPositions()) . In code ( grepcode ) it set View checked or not by itself only if View is implementing Checkable . If create CheckableFrameLayout and sat as main parent , you do not have to handle these cases in the adapter .",
+    "gt_terms": [
+      "ListView",
+      "ArrayList",
+      "checkbox",
+      "setChoiceMode",
+      "R.layout.listview_item_text.tml",
+      "listview_item_checkbox.tml",
+      "widget",
+      "Checkable",
+      "mobildroid.R.layout.simple_list_item_multiple_choice",
+      "CheckableFrameLayout",
+      "List Item",
+      "BooleanSparseArray",
+      "getCheckedItemPositions())",
+      "grepcode",
+      "View"
+    ],
+    "original_doc_id": "Q13968390",
+    "entity_types": [
+      "Application",
+      "File_Name",
+      "Library_Class",
+      "Library_Function",
+      "Library_Variable",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q18775019",
+    "text": "This is another question on date string to datevalue conversion . Input format is \" March 17 , 2013 7:04:28 PM GMT-07:00 \" . ( Output of SAP tool ) [OUTPUT] . Any chances ? Thanks , Gert If you are using US regional settings then your text is a valid date/time format once you remove \" GMT \" and everything after so you can use a formula that will simply remove that part and \" co-erce \" to a date/time value , i.e . [CODE] format result cell in the required date/time format , e.g . m/d/yy hh:mm This should work : [CODE]",
+    "gt_terms": [
+      "string",
+      "datevalue",
+      "SAP",
+      "cell"
+    ],
+    "original_doc_id": "Q18775019",
+    "entity_types": [
+      "Application",
+      "Data_Type",
+      "Library_Function",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q30846327",
+    "text": "Does anyone know how to use a \" like \" or \" contains \" function in Ampscript ? Example : GetContent where name contains \" LOY \" Perhaps you 're looking for the IndexOf() function ? BTW , there are many more people answering SFMC questions over at the dedicated SF site : nttp://salesforce.stackexchange.com",
+    "gt_terms": [
+      "like",
+      "contains",
+      "Ampscript",
+      "IndexOf()",
+      "SF"
+    ],
+    "original_doc_id": "Q30846327",
+    "entity_types": [
+      "Library",
+      "Library_Function",
+      "Website"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q29175",
+    "text": "Okay , so I 'm running a small test webserver on my private network . I 've stridet a machine running PaneOS 2000 Pro , and I 'm trying to run an ASP.NET app through IIS . I wrote it so that the webpage would use the registry to store certain settings ( connection strings , potentially volatile locations of other web services , paths in the local filesystem where certain information is stored etc .. . ) Of course , it worked fine when testing with VStudio.NET 2005 , because the user running the app has elevated privileges . However , running it on IIS I get a [OUTPUT] [OUTPUT] , which suggests the IIS user does n't have read access to that part of the registry ( I only do reads through the website itself , never writes ) . I was like \" okay , simple enough , I 'll just stride give that user rights to that part of the registry through regedit . \" The problem is , I do n't see an option anywhere in regedit to change security settings .. . at all . Which stridet me thinking .. . I do n't think I 've ever actually had to change security settings for registry hives/keys before , and I do n't think I know how to do it . Half an hour of searching the web later , I have n't found any usable information on this subject . What I 'm wondering is .. . how DO you change security rights to portions of the registry ? I 'm stumped , and it seems my ability to find the answer on Strideogle is failing me utterly .. . and since I just signed up here , I figured I 'd see if anyone here knew . =) Oh , let me try that ! I did n't realize you could remotely connect to another registry . ( EDIT : I was wrong , it did work .. . it just took several minutes to respond to my request to change permissions remotely ) The remote connection idea did it ! You 're strideod ! Thanks so much for your help ! I never realized you could remote connect with RegEdit .. . you learn something new every day , they say ! =) Thanks again for your assistance ! =) On another note though , about copying the XP version of RegEdit to PaneOS 2000 .. . is that safe ? I figured they would be coded in such a way as to be incompatible .. . but I could be assuming too much . =) If your having touble with RegEdit in PaneOS 2000 you can try the following : Copy the PaneOS XP RegEdt32.exe to the PaneOS 2000 Machine Using a PaneOS XP Machine , connect to the PaneOS 2000 registry remotely : File > Connect Network Registry",
+    "gt_terms": [
+      "webserver",
+      "PaneOS",
+      "2000 Pro",
+      "ASP.NET",
+      "IIS",
+      "strings",
+      "VStudio.NET",
+      "2005",
+      "regedit",
+      "Strideogle",
+      "XP",
+      "2000",
+      "RegEdt32.exe"
+    ],
+    "original_doc_id": "Q29175",
+    "entity_types": [
+      "Application",
+      "Data_Type",
+      "File_Name",
+      "Library",
+      "Operating_System",
+      "Version",
+      "Website"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q29909833",
+    "text": "I removed Zenthar 's scaffolding with the command [CODE] . I read the Auth middleware documentation , but it did n't talk about a specific feature , the password-reset . It only explains its use with the scaffolding , but not if I removed it . There is chapter \" Manuel authentication \" for common authentication methods , such as \" determining if a user is authenticated \" , but nothing about password-reset . Other point , does this middleware need specific rows in the DB tables I created with migrations ? Especially \" users \" and \" password_resets \" tables configured in the app \\config\\auth.ghl file . This problem may seem simple , but I did n't find any clue in the documentation . Thanks for help !",
+    "gt_terms": [
+      "Zenthar",
+      "middleware",
+      "rows",
+      "tables",
+      "app \\config\\auth.ghl"
+    ],
+    "original_doc_id": "Q29909833",
+    "entity_types": [
+      "Data_Structure",
+      "File_Name",
+      "Library"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q43661057",
+    "text": "I have the following recurrence : [CODE] It can be solved directly with a theorem called \" Subtraction and Conquer \" , but in this case I 'm inteqlinked in the back substitution method . I tried the solution below but I 'm almost certain that I 've committed some error because I ca n't see how to build the final equation .. . , below my attempt : 1st iteration [CODE] 2nd iteration [CODE] 3rd iteration [CODE] Attempt to find the equation : [CODE]",
+    "gt_terms": [
+      "Subtraction and Conquer",
+      "back substitution"
+    ],
+    "original_doc_id": "Q43661057",
+    "entity_types": [
+      "Algorithm"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q3316844",
+    "text": "I want to wrap particular lines in a text mass with <b></b> First line in the text All lines with a previous empty line ( eg two newlines before ) I 'm using preg_replace with ghl , but I 'm really shitty with regex . Strideod tutorials are appreciated . In MarkupX ( I 'm assuming that 's the context ) there is no such thing as \" lines \" in regards to source code , since it 's not really possible reliable to determinate how a text wraps ( unless you do all the wrapping yourself with <br> or <pre> ) . However there is the StyleQL pseudo-element :first-line that will let you format the first line of an element ( for example a paragraph ) : [CODE] Try [CODE] for example , nttp://www.ideone.com/1pTwD .",
+    "gt_terms": [
+      "<b></b>",
+      "preg_replace",
+      "ghl",
+      "MarkupX",
+      "<br>",
+      "<pre>",
+      "StyleQL",
+      ":first-line"
+    ],
+    "original_doc_id": "Q3316844",
+    "entity_types": [
+      "HTML_XML_Tag",
+      "Language",
+      "Library_Function",
+      "Library_Variable"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q26896100",
+    "text": "I am running this on a mac and it compiles in the terminal but after i type in driftcode Lab9 it does n't do anything . Below is exactly what i put into the terminal [CODE] //compiles but does not run [CODE] The program is waiting for your input . Add a prompt : [CODE]",
+    "gt_terms": [
+      "mac",
+      "terminal"
+    ],
+    "original_doc_id": "Q26896100",
+    "entity_types": [
+      "Application",
+      "Device"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q276184",
+    "text": "Is there any example code of a cvexlang ( not IronVexlang ) client which can call PaneOS Communication Foundation ( WCF ) service ? WCF needs to expose functionality through a communication protocol . I think the most commonly used protocol is probably SOAP over NTTP . Let 's assume that 's what you 're using then . Take a look at this chapter in Dive Into Vexlang . It will show you how to make SOAP calls . I know of no unified way of calling a WCF service in Vexlang , regardless of communication protocol . I used suds . [CODE] That should get you started . I 'm able to connect to exposed services from WCF and a QLINKful layer . There needs to be some data massaging to help do what you need , especially if you need to bind to several namespaces .",
+    "gt_terms": [
+      "cvexlang",
+      "IronVexlang",
+      "PaneOS Communication Foundation",
+      "WCF",
+      "Vexlang",
+      "suds",
+      "QLINKful"
+    ],
+    "original_doc_id": "Q276184",
+    "entity_types": [
+      "Language",
+      "Library"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q27373401",
+    "text": "I want to retrieve two columns from database namely system_name and arrival_time and display these in tabular format . Now along with these two columns , I want to display a third column which will represent the number of times system_name appears in the table . I 'm using qrl server 2012 and for display I use JSP AND JSTL . I tried to write code for displaying two columns , but the output shows only the last data entries . The driftcode code is : [CODE] Jsp code is : [CODE]",
+    "gt_terms": [
+      "columns",
+      "column",
+      "table",
+      "qrl server",
+      "2012",
+      "JSP",
+      "JSTL",
+      "driftcode"
+    ],
+    "original_doc_id": "Q27373401",
+    "entity_types": [
+      "Application",
+      "Data_Structure",
+      "Language",
+      "Library",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q38189474",
+    "text": "while adding a new classifier in weka ... by running driftcode call [CODE] what to set classpath ... and is it the correct format to add a classifier a weka ... i am using paneos 10 You are not adding classifiers , you are adding .jar files . You have to use absolute paths ( C:/.. . ) to the jar files . [CODE] weka-src.jar is not neeeded . It is optional to set the working directory of your script/batch file to the directory where the weka.jar file can be found .",
+    "gt_terms": [
+      "weka",
+      "driftcode",
+      "paneos",
+      "10",
+      ".jar",
+      "C:/.. .",
+      "jar",
+      "weka-src.jar",
+      "script/batch",
+      "weka.jar"
+    ],
+    "original_doc_id": "Q38189474",
+    "entity_types": [
+      "Application",
+      "File_Name",
+      "File_Type",
+      "Language",
+      "Operating_System",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q36059546",
+    "text": "I 'm new to strideogle maps svc , i have some POLYGONS and POLYINES . i 'm trying to show both ( polystriden and polyline ) in strideogle maps svc . I 'm tried something , but not able not show both polystridens and polyline , only polystridens is showing , how to show both Polystridens and polylines.I have a Json that dson have source polystriden or polyline , that source based i 'm showing here.sorry for my english . Hopefully someone can kindly let me know where I am failing . Here is my code .Demo [CODE] A strideogle.maps.PolylineOptions object does n't have a paths property , that is only valid for a strideogle.maps.PolystridenOptions object . Change : [CODE] To : [CODE] proof of concept fiddle code snippet : [CODE] [CODE] [CODE]",
+    "gt_terms": [
+      "strideogle maps svc",
+      "POLYGONS",
+      "POLYINES",
+      "polystriden",
+      "polyline",
+      "polylines.I",
+      "Json",
+      "strideogle.maps.PolylineOptions",
+      "strideogle.maps.PolystridenOptions",
+      "fiddle"
+    ],
+    "original_doc_id": "Q36059546",
+    "entity_types": [
+      "Application",
+      "File_Type",
+      "Library",
+      "Library_Class"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q20428669",
+    "text": "I stridet some strange behaviour using gklendis 2.3.x and async . I 'm doing some test with this code : [CODE] but in my log i stridet : [CODE] In fact the tasks ( and onError closure ) are executed , but onComplete is not ( off course ) ! ! what am i doing wrong ? except for the Thread.sleep() is pratically code taken from doc : nttp://gklendis.org/doc/latest/guide/async.markupx Is Thread.sleep() not compatible with GPars for some reason ? The problem is that onComplete does not block . The request/action does finish before your tasks and list stridees out of scope . You need to use waitAll() to wait for all tasks to finish before the action returns . Easiest is to replace the onComplete with [CODE] list.get() is implemented by calling waitAll() .",
+    "gt_terms": [
+      "gklendis",
+      "2.3.x",
+      "log",
+      "onError",
+      "onComplete",
+      "Thread.sleep()",
+      "GPars",
+      "waitAll()",
+      "list.get()"
+    ],
+    "original_doc_id": "Q20428669",
+    "entity_types": [
+      "Class_Name",
+      "File_Type",
+      "Library",
+      "Library_Class",
+      "Library_Function",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q6565999",
+    "text": "I 'm making a program to generate code for me , and I 'm fashioning the UI after Game Maker due to how easy the interface is . It has a SplitContainer with Panel1 containing a TreeView and Panel2 containing an arbitrary amount of self-contained paneos ( real paneos , not some hacky workaround ) . I wanted to use user-controls to store the controls I use to modify things , but I ca n't figure out any way to put it in a window inside the splitContainer 's Panel2 . Can anyone help me ? Here 's a strideod example : nttp://i.stack.imgur.com/CG6kO.png Those two sprite property paneos are what I 'm trying to do . I did similar thing once , and for that reason , I have ReplaceControl method , which I paste below : [CODE] Only thing left to do is to create some control manually on the form , as the placeholder for your Form . Use label , for example . From How to implement a-form-inside-a-form with runtime embedded forms switching ? Put it into the Panel2 's Control collection via the Add() method , apply coordinates , anchor and docking programmaticaly .",
+    "gt_terms": [
+      "Game Maker",
+      "SplitContainer",
+      "TreeView",
+      "paneos",
+      "controls",
+      "window",
+      "ReplaceControl",
+      "control",
+      "form",
+      "label",
+      "Add()"
+    ],
+    "original_doc_id": "Q6565999",
+    "entity_types": [
+      "Application",
+      "Function_Name",
+      "Library_Class",
+      "Library_Function",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q18439275",
+    "text": "I have a array now i want to create a copy of that array so that i can retain the previous value of my array if i want to ; I tried something like this [CODE] But it giving me a null pointer exception i.e . [CODE] Please suggest me how could i do this now Very simple Try this [CODE] As the exception stands you have not allocate memory for the destination . Before System.arrayCopy call [CODE] if secondArray is of the String type . Otherwise you have to change it accordingly",
+    "gt_terms": [
+      "array",
+      "null pointer exception",
+      "exception",
+      "System.arrayCopy",
+      "String"
+    ],
+    "original_doc_id": "Q18439275",
+    "entity_types": [
+      "Data_Structure",
+      "Data_Type",
+      "Error_Name",
+      "Library_Class",
+      "Library_Function"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q45464493",
+    "text": "I have a project in Xyloph where I 'm trying to structure my database using Firebase . I want to create a reference for a child brin , but I keep getting ' [OUTPUT] ' and the code errors out on line 3 . Below is my code for the references : [CODE] Am I making these references correctly ? I followed the Firebase documentation to a tee and I ca n't find a solution . I believe the issue is that [CODE] is of type firebase.database.Query and not of type firebase.database.Reference The method child can only be called on Reference type objects , so instead you could use [CODE] This is assuming your database structure is like this : [CODE]",
+    "gt_terms": [
+      "Xyloph",
+      "Firebase",
+      "firebase.database.Query",
+      "firebase.database.Reference",
+      "child",
+      "Reference"
+    ],
+    "original_doc_id": "Q45464493",
+    "entity_types": [
+      "Application",
+      "Library",
+      "Library_Class",
+      "Library_Function"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q44033073",
+    "text": "I 'm having an issue with Gulp I just simply want to process sass files , optimize images and watch changes on said sass files . For some reason it does run the sass and imagemin tasks correctly but then it tries to watch and after several seconds it jus exits gulp and I 'm back a command line like if I manually stopped the tasks . I do n't get any errors or warnings it just ends . This is the gulpfile.js : [CODE] On command line this is all I see : [CODE] Then after approx . 20secs it exits gulp , I tried looking everywhere and use other post fixes and no luck .",
+    "gt_terms": [
+      "Gulp",
+      "sass",
+      "images",
+      "imagemin",
+      "gulpfile.js"
+    ],
+    "original_doc_id": "Q44033073",
+    "entity_types": [
+      "File_Name",
+      "File_Type",
+      "Library",
+      "Library_Function",
+      "User_Interface_Element"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q33084463",
+    "text": "I 'm experimenting with OrientDB and I would like to model a non disjunctive inheritance . For example : - there are Person - a Student is a Person - a Worker is a Person - \" Alberto \" is both a Student and Worker . Is it possible to model this situation with only the three classes I defined ( Student , Worker , Person ) or shall I introduce a new class WorkingStudent , extending both Worker and Student , containing \" Alberto \" ? I suppose a vertex cannot be instance of more than one class since the system would not know in which cluster to put it but I have n't found an explicit answer to my question , yet . Cheers , Alberto ( the working student :-) ) I think you may trying to solve this the wrong way . For instance , Alberto will presumably always be a Person . But when Alberto graduates , he will no longer be a Student . In fact , he might also lose his job and no longer be a Worker . Moving him from one class to another is a considerable issue . I 'd create separate , smaller brins of Worker and Student . Then create edges from Person to Worker , or Person to Student . The edge can be named \" Is A \" . Now , it is very easy to add new catestrideries , for instance \" Parent \" or \" Spouse \" , without having to worry about changing your class inheritance . One of the fantastic advantages of a Graph database .. . in OrientDb a vertex can be an instance of multiple class . Use this command [CODE] Kind regards .",
+    "gt_terms": [
+      "OrientDB",
+      "Person",
+      "Student",
+      "Worker",
+      "WorkingStudent",
+      "vertex",
+      "cluster",
+      "Graph database"
+    ],
+    "original_doc_id": "Q33084463",
+    "entity_types": [
+      "Application",
+      "Class_Name",
+      "Library",
+      "Library_Class"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q42091674",
+    "text": "I am practicing for Driftcode fresher interview coding examples . I am trying to write a program to find duplicate numbers between 1 to N , where N is given by the user along with the numbers themselves . Here is the code : [CODE] But I am getting following error in Eclipse Neon : [CODE] What is wrong ? Why the JVM heap space error ? Code compiles and runs fine . DataInputStream is for binary not text . When you type 4 bytes , this is turned into a 32-bit int value e.g . 5 , \\n , \\n , \\n is about 900 million which is why it complains about memory when you create the array . You can check this by stepping through the code in your debugger . What you need is text input , try using [CODE] Try using a Scanner for your class instead . Here 's a basic example : [CODE]",
+    "gt_terms": [
+      "Driftcode",
+      "Eclipse",
+      "Neon",
+      "JVM",
+      "heap",
+      "DataInputStream",
+      "int",
+      "array",
+      "debugger",
+      "Scanner"
+    ],
+    "original_doc_id": "Q42091674",
+    "entity_types": [
+      "Application",
+      "Data_Structure",
+      "Data_Type",
+      "Language",
+      "Library_Class",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q26266420",
+    "text": "I stridet a segmentation fault when trying to use one cpp file and tried to locate the error using Valgrind , but I 'm confused . Since the code is very large , I will only post a short portion of it below : It looks like you are running valgrind on the compiler . Unless you are trying to debug the compiler , you should be running valgrind on your application instead : [CODE] ( replace ./MyApp with the appropriate executable name and arguments , of course ) ( Explanation : valgrind is a run-time analysis tool ; it takes your application as input . It is not a compiler tool like some of the other debugging tools that are out there )",
+    "gt_terms": [
+      "segmentation fault",
+      "cpp",
+      "Valgrind",
+      "compiler"
+    ],
+    "original_doc_id": "Q26266420",
+    "entity_types": [
+      "Application",
+      "Error_Name",
+      "File_Type"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q35521073",
+    "text": "Below is the schema where I need to put a constraint such that a second new entry could be put in for a room number , even before the existing depDt for the same room number . Could any of you please help me with this ? ? [CODE] I have tried giving a sub query under [CODE] in [CODE] but its is not working in QRL Fiddle . This can be done using an exclusion constraint on the date range : [CODE] Note that you need the btree_gist extension to support the [CODE] operator in a GiST index . Note : This does not solve the problem of race conditions . Create a function that checks whether a room is available based on your conditions and returns a scalar boolean value which can be used in [CODE] constraint . Here you can preview how it works ( remember to uncomment the last insert statement ) :QRL FIDDLE [CODE] Create table with new constraint [CODE] Try inserting two rows in separate statements [CODE] First value is inserted , while when issuing the second insert statement you get a check constraint violation [OUTPUT] Note : This could be easily implemented using triggers as well . You just need to modify the function a little and issue a [CODE] statement .",
+    "gt_terms": [
+      "QRL Fiddle",
+      "btree_gist",
+      "GiST",
+      "boolean",
+      ":QRL FIDDLE",
+      "table",
+      "rows"
+    ],
+    "original_doc_id": "Q35521073",
+    "entity_types": [
+      "Application",
+      "Data_Structure",
+      "Data_Type",
+      "Library",
+      "Library_Function"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q10709772",
+    "text": "I am wondering if this is possible and maybe some code examples if it is . I am trying to have the presenter during a live address be able to hit a button when he is away . This button will then trigger a jpg or some kind of image on the clients side that says he is currently away and to also have it mute the presenter 's microphone ? Anyone have any ideas how this would be possible in FMIS 4 and AS3 ? Yes , this is do-able . There 's a bit of code to write . Here 's a break down : Client for presenter makes a NetConnection and then publishes a NetStream to FMS . When presenter hits away button : Presenter 's client sets microphone gain to 0 Presenter 's client uses NetStream.send() to send a message to all subscribing clients . The message is basically the name of a function and some arguments that all subscribing clients should execute . In this case , the function would display/hide the \" away \" image . then do the reverse when the presenter returns [ Edit ] Adding some code to clarify how to use NetStream.send() : The presenter code : [CODE] The subscriber code When creating the NetStream , use the client property so it knows where to find the function \" toggleAwayImageDisplay \" we specified above : [CODE]",
+    "gt_terms": [
+      "button",
+      "jpg",
+      "image",
+      "clients",
+      "microphone",
+      "FMIS",
+      "AS3",
+      "Client",
+      "NetConnection",
+      "NetStream",
+      "FMS",
+      "NetStream.send()",
+      "toggleAwayImageDisplay"
+    ],
+    "original_doc_id": "Q10709772",
+    "entity_types": [
+      "Application",
+      "Device",
+      "File_Type",
+      "Function_Name",
+      "Language",
+      "Library_Class",
+      "Library_Function",
+      "Library_Variable",
+      "User_Interface_Element",
+      "Version"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q3639039",
+    "text": "I have a Silverlight 4 app using Prism 2.2 and I have a few modules that I am loading on demand by defining them as ondemand in the module catalog ( via a xaml file ) and then using the ModuleManager to request the module be downloaded Is there a mechanism in Prism to determine when the module download is completed and get to download progress events ? There was a thread on the prism codeplex site but none of the suggestions seemed to pan out for the folks having the discussion nttp://compositewpf.codeplex.com/Thread/View.aspx?ThreadId=47957 thanks Michael It turns out that the solution provided in the prism discussion on codeplex worked like a charm nttp://compositewpf.codeplex.com/Thread/View.aspx?ThreadId=47957 I created a custom FileDownloader called FileDownloaderWithProgress . I wanted to subclass the existing one in Prism but the WebClient that fires the DownloadProgressChanged event was private . So I had to create my own by implementing IFileDownloader . In the DownloadProgressChanged event handler in the FileDownloaderWithProgress class - I publish a Prism event that includes the % complete and the module name that was downloaded .",
+    "gt_terms": [
+      "Silverlight",
+      "Prism",
+      "2.2",
+      "ondemand",
+      "xaml",
+      "ModuleManager",
+      "codeplex",
+      "FileDownloader",
+      "FileDownloaderWithProgress",
+      "WebClient",
+      "DownloadProgressChanged",
+      "private",
+      "IFileDownloader"
+    ],
+    "original_doc_id": "Q3639039",
+    "entity_types": [
+      "Application",
+      "Class_Name",
+      "Data_Type",
+      "File_Type",
+      "Library",
+      "Library_Class",
+      "Library_Variable",
+      "Version",
+      "Website"
+    ]
+  },
+  {
+    "doc_id": "OOD-Q25566739",
+    "text": "I have a NSTableview which shows 50 rows currently which is fixed static . Now I want to add a feature into it . I want to add a more 50 rows to the table when user reach to the last row of the NSTableView . I mean currently I am showing fixed 50 rows in the application . But now I want to add 50 more rows whenever user reaches to the last row of previous NsTableview . Please give me any suggestions or any sample code to achieve my motive . Thanks in advance . What i have done is ( This code does not work with row selected ( Down key pressed ) , and does not load new rows ) - [CODE]",
+    "gt_terms": [
+      "NSTableview",
+      "rows",
+      "static",
+      "table",
+      "row",
+      "Down key"
+    ],
+    "original_doc_id": "Q25566739",
+    "entity_types": [
+      "Data_Type",
+      "Keyboard_IP",
+      "Library_Class",
+      "User_Interface_Element"
+    ]
+  }
+]
