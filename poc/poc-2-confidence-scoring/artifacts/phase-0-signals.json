@@ -1,0 +1,42 @@
+{
+  "phase": "0",
+  "name": "signal_implementation",
+  "completed_at": "2026-02-16T17:48:25.054871Z",
+  "status": "complete",
+  "functions": [
+    {
+      "name": "known_term_ratio",
+      "signature": "known_term_ratio(terms: list[str], vocab: set[str]) -> float",
+      "description": "Calculate the ratio of extracted terms found in vocabulary"
+    },
+    {
+      "name": "coverage_score",
+      "signature": "coverage_score(terms: list[str], text: str) -> float",
+      "description": "Calculate the percentage of text covered by extracted terms (character-based)"
+    },
+    {
+      "name": "entity_density",
+      "signature": "entity_density(terms: list[str], text: str) -> float",
+      "description": "Calculate entity density as terms per 100 tokens"
+    },
+    {
+      "name": "section_type_mismatch",
+      "signature": "section_type_mismatch(terms: list[str], section_type: str | None) -> float",
+      "description": "Calculate section type mismatch penalty (stub for SO data)"
+    }
+  ],
+  "test_results": {
+    "total_tests": 36,
+    "passed": 36,
+    "failed": 0,
+    "test_file": "test_signals.py"
+  },
+  "edge_cases_handled": [
+    "Empty terms list",
+    "Empty text/vocabulary",
+    "Case-insensitive matching",
+    "Zero token count",
+    "Coverage capping at 1.0",
+    "Repeated terms in text"
+  ]
+}
