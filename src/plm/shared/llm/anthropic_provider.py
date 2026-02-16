@@ -1,7 +1,9 @@
-"""Anthropic (Claude) LLM provider via OpenCode OAuth.
+"""Anthropic (Claude) LLM provider with API key or OpenCode OAuth support.
 
-Authentication uses the OpenCode CLI OAuth flow.  Tokens are read from
-``~/.local/share/opencode/auth.json`` under the ``"anthropic"`` key.
+Authentication supports two modes:
+1. API Key: Set ANTHROPIC_API_KEY environment variable for direct authentication
+2. OpenCode OAuth: Tokens read from ~/.local/share/opencode/auth.json under "anthropic" key
+   - Customize auth path with OPENCODE_AUTH_PATH environment variable
 
 This is a direct port of the per-POC ``utils/llm_provider.py`` module,
 adapted to use stdlib ``logging`` instead of the custom ``BenchmarkLogger``
@@ -57,10 +59,14 @@ MODEL_MAP: dict[str, str] = {
 
 
 class AnthropicProvider(LLMProvider):
-    """Anthropic Claude provider via OpenCode OAuth tokens.
+    """Anthropic Claude provider with API key or OpenCode OAuth support.
 
-    Reads OAuth tokens from ``~/.local/share/opencode/auth.json`` under the
-    ``"anthropic"`` key.  Automatically refreshes expired access tokens.
+    Supports two authentication modes:
+    - API Key: Uses ANTHROPIC_API_KEY environment variable
+    - OpenCode OAuth: Reads tokens from ~/.local/share/opencode/auth.json
+      (customize path with OPENCODE_AUTH_PATH env var)
+    
+    Automatically refreshes expired OAuth access tokens.
     """
 
     CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
@@ -68,9 +74,22 @@ class AnthropicProvider(LLMProvider):
     API_ENDPOINT = "https://api.anthropic.com/v1/messages"
 
     def __init__(self, auth_path: str | None = None) -> None:
+        # Check for API key authentication first
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if api_key:
+            self._use_api_key = True
+            self._api_key = api_key
+            self._auth_data: dict[str, Any] = {}
+            logger.debug("Using ANTHROPIC_API_KEY for authentication")
+            return
+        
+        # Fall back to OpenCode OAuth
+        self._use_api_key = False
         if auth_path is None:
-            auth_path = os.path.expanduser("~/.local/share/opencode/auth.json")
-        self.auth_path = Path(auth_path)
+            auth_path = os.environ.get("OPENCODE_AUTH_PATH")
+            if auth_path is None:
+                auth_path = "~/.local/share/opencode/auth.json"
+        self.auth_path = Path(os.path.expanduser(auth_path))
         self._auth_data: dict[str, Any] = {}
         self._load_auth()
 
@@ -261,7 +280,6 @@ class AnthropicProvider(LLMProvider):
             request_body["temperature"] = temperature
 
         headers = {
-            "Authorization": f"Bearer {self._auth_data['access']}",
             "anthropic-beta": (
                 "claude-code-20250219,oauth-2025-04-20,"
                 "interleaved-thinking-2025-05-14,"
@@ -271,10 +289,16 @@ class AnthropicProvider(LLMProvider):
             "Content-Type": "application/json",
         }
 
+        if self._use_api_key:
+            headers["Authorization"] = f"Bearer {self._api_key}"
+        else:
+            headers["Authorization"] = f"Bearer {self._auth_data['access']}"
+
         for attempt in range(DEFAULT_MAX_RETRIES):
             try:
-                self._refresh_token_if_needed()
-                headers["Authorization"] = f"Bearer {self._auth_data['access']}"
+                if not self._use_api_key:
+                    self._refresh_token_if_needed()
+                    headers["Authorization"] = f"Bearer {self._auth_data['access']}"
 
                 response = httpx.post(
                     self.API_ENDPOINT,
