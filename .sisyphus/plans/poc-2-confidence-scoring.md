@@ -927,7 +927,7 @@ Please recommend:
 
 ---
 
-- [ ] 7. [CONDITIONAL] Ensemble Methods Iteration (Phase 4b)
+- [x] 7. [CONDITIONAL] Ensemble Methods Iteration (Phase 4b)
 
   **Trigger**: Phase 4a exhausted without r >= 0.6
 

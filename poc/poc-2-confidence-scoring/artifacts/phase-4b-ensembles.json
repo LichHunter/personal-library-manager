@@ -1,0 +1,98 @@
+{
+  "phase": "4b",
+  "timestamp": "2026-02-16T19:16:23.757133",
+  "signals_used": [
+    "known_term_ratio",
+    "coverage",
+    "entity_density",
+    "section_type_mismatch",
+    "technical_pattern_ratio",
+    "avg_term_length",
+    "text_grounding_score"
+  ],
+  "data_split": {
+    "train_size": 70,
+    "val_size": 30,
+    "train_non_poor": 4,
+    "val_non_poor": 2
+  },
+  "ensemble_results": [
+    {
+      "method": "weighted_sum_grid_search",
+      "validation_accuracy": 0.8666666666666667,
+      "threshold": 0.31359641173616204,
+      "weights": {
+        "known_term_ratio": 0.12377384964536801,
+        "coverage": 0.31418148202499285,
+        "entity_density": 0.24190121040680376,
+        "section_type_mismatch": 0.19783799246917372,
+        "technical_pattern_ratio": 0.051559303722725505,
+        "avg_term_length": 0.05155133277848699,
+        "text_grounding_score": 0.019194825647760417
+      },
+      "confusion_matrix": {
+        "TP": 1,
+        "TN": 25,
+        "FP": 3,
+        "FN": 1
+      },
+      "poor_recall": 0.8928571428571429
+    },
+    {
+      "method": "random_forest",
+      "validation_accuracy": 0.9666666666666667,
+      "auc_roc": 0.8482142857142856,
+      "best_params": {
+        "n_estimators": 50,
+        "max_depth": 3,
+        "min_samples_split": 2
+      },
+      "feature_importance": {
+        "known_term_ratio": 0.17789592905783164,
+        "coverage": 0.26567847666105937,
+        "entity_density": 0.1580795028730941,
+        "section_type_mismatch": 0.0,
+        "technical_pattern_ratio": 0.22255422242631778,
+        "avg_term_length": 0.1714909056357401,
+        "text_grounding_score": 0.004300963345957071
+      },
+      "confusion_matrix": {
+        "TP": 1,
+        "TN": 28,
+        "FP": 0,
+        "FN": 1
+      },
+      "poor_recall": 1.0
+    },
+    {
+      "method": "xgboost",
+      "error": "Not installed",
+      "validation_accuracy": 0
+    },
+    {
+      "method": "logistic_regression",
+      "validation_accuracy": 0.8,
+      "auc_roc": 0.9464285714285714,
+      "feature_coefficients": {
+        "known_term_ratio": -0.6137909952964477,
+        "coverage": 0.2962839185295853,
+        "entity_density": -0.46282166107093015,
+        "section_type_mismatch": 0.0,
+        "technical_pattern_ratio": 1.4020089874976531,
+        "avg_term_length": 0.13809007120613842,
+        "text_grounding_score": 0.30963344801890696
+      },
+      "confusion_matrix": {
+        "TP": 2,
+        "TN": 22,
+        "FP": 6,
+        "FN": 0
+      },
+      "poor_recall": 0.7857142857142857
+    }
+  ],
+  "best_method": "random_forest",
+  "best_accuracy": 0.9666666666666667,
+  "verdict": "SUCCESS",
+  "reason": "Best ensemble (random_forest) achieved 96.7% accuracy >= 80%"
+}
