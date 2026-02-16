@@ -1,0 +1,3130 @@
+[
+  {
+    "doc_id": "Q44642308",
+    "text": "I 'm sure this question has been asked before , but I 'm unable to find it . I have a bunch of list elements like so : [CODE] I want to wrap each group in a <ul></ul> element . How do I do that ? This is what I 've tried , but it only matches the individual elements : [CODE] https://regex101.com/r/KXEkJz/1 And if I do [CODE] , it produces one giant match . If you want to group them by new lines , try something like this : [CODE] The only difference between it and yours is that it tries to capture multiple <li> objects and does n't mind if there is a new line . If there 's a new line followed by something different though , it stops matching .",
+    "gt_terms": [
+      "list",
+      "<ul></ul>",
+      "<li>"
+    ],
+    "extracted_terms": [
+      "regex101.com",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.043076923076923075,
+      "entity_density": 1.4925373134328357,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q20321910",
+    "text": "I am using Ghost Blogging Platform , and when I insert a image it automatically wraps a image in a p tag . I have a max-width setup for the container wrapping the p tag and the img . I want the img to be larger than the container . I can set a width for the img which is larger with [CODE] However it no longer is responsive vs [CODE] I want the img to resize as I resize the browser , I was hoping to do it without media queries but if necessary I will do so . I am already changing the size of all the p tags so that my blockquote is the size of the container section , and I want my image to do the same , but it is just the size of the p tag . My main concern is making the img responsive and larger , I can already make it larger on its own with a specified width , but it no longer stays responsive . Thanks in advance . CODE HTML [CODE] CSS [CODE] You are setting 100% width too image , but also giving it borders . This causes problem . You need to subtract amount of border from image . Try : [CODE] Fiddle here . I do n't think you should have a div of a certain size and and then an element within that which then breaks out of the div because you 've set it to be larger then the [CODE] First thing I would do is reorganize the way that container works . Here is a FIDDLE of some basic html to reference . The second thing I would do - is ask a more targeted question about removing the automatic p tag from the image in a ghost forum ( assuming they exist by now ) . In WordPress this happens by default as well . It looks something like this with a function running a regular expression search and replace . I bet there is something like this for ghost , or there will be really really soon - because it 's a huge pain - and almost no one actually puts images inline anymore . And if they did , they would want to control when this happens . [CODE] Good luck ! I hope to play with Ghost soon and I bet this will be the first problem I run into as well .",
+    "gt_terms": [
+      "Ghost Blogging Platform",
+      "image",
+      "max-width",
+      "img",
+      "width",
+      "browser",
+      "blockquote",
+      "HTML",
+      "CSS",
+      "borders",
+      "border",
+      "Fiddle",
+      "div",
+      "ghost",
+      "WordPress",
+      "images"
+    ],
+    "extracted_terms": [
+      "HTML",
+      "CSS",
+      "FIDDLE",
+      "WordPress",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.8,
+      "recall": 0.25,
+      "f1": 0.38095238095238093,
+      "hallucination": 0.2
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.03253685815963396,
+      "entity_density": 1.2048192771084338,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q40586358",
+    "text": "I 'm scrapping through a website to get product informations to be used on my web app . An example of a product attributes are [CODE] My plan is to store all of the products ' information on my server and call them from my web app . Is it smart move to store img files to my server/link them on mysql DB then call it from the web or will it be fast enough to just call the img on my web app using the original img src url ( from the original website ) It depends on the performance of your setup compared to theirs for any given user depending on where they are on the planet . I think it 's safe to assume that any differences would be marginal assuming you are serving up the same-sized image . However , the original website might not like it if you are hot linking to their images . Also if they change their filenames or images your links will break .",
+    "gt_terms": [
+      "server",
+      "img",
+      "mysql",
+      "image",
+      "images"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.004672897196261682,
+      "entity_density": 0.5780346820809248,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q42724032",
+    "text": "I have a directory on network drive with million of files . If I try to read it with [CODE] it will take a lot of time until resulting array will be filled with files . I would like to receive files by one and printout a progress . How can I do this in Java ? You might try with DirectoryStream : [CODE] You can also make the DirectoryStream filter files for you if you need to : all you need to do is add a parameter to the Files.newDirectoryStream call : [CODE] You can use the NIO.2 API : [CODE]",
+    "gt_terms": [
+      "array",
+      "files",
+      "Java",
+      "DirectoryStream",
+      "Files.newDirectoryStream",
+      "NIO.2"
+    ],
+    "extracted_terms": [
+      "DirectoryStream",
+      "API",
+      "Files.newDirectoryStream",
+      "NIO",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.3333333333333333,
+      "f1": 0.3636363636363636,
+      "hallucination": 0.6
+    },
+    "signals": {
+      "known_term_ratio": 0.4,
+      "coverage": 0.1827309236947791,
+      "entity_density": 4.901960784313726,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q32929844",
+    "text": "I need help I get this error every time on my website Parse error : syntax error , unexpected end of file in /var/www/html/dashboard.php on line 1021 this is my code [CODE] Can somebody please help me in tell me what i 'm doing wrong . Which line is line 1021 ? Taking a quick look at it you are missing a [CODE] at the very end of your file : [CODE] PHP is still waiting for that closing [CODE] to end your if statement which is why you are getting the unexpected end of file error .",
+    "gt_terms": [
+      "Parse error",
+      "syntax error",
+      "/var/www/html/dashboard.php",
+      "PHP",
+      "unexpected end of file"
+    ],
+    "extracted_terms": [
+      "dashboard.php",
+      "PHP",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.2,
+      "f1": 0.25,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.08057851239669421,
+      "entity_density": 3.061224489795918,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q46385065",
+    "text": "I have downladed an OBJ file along with meta information and properties , based on an IFC that was uploaded to Autodesk Forge . Question is ; How do I map objects in the OBJ to the correct entries in the ' meta ' and ' properties ' ?",
+    "gt_terms": [
+      "OBJ",
+      "Autodesk Forge"
+    ],
+    "extracted_terms": [
+      "OBJ",
+      "IFC"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.05150214592274678,
+      "entity_density": 4.081632653061225,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q1795649",
+    "text": "Maybe this is a stupid question but it 's bugging me . I have a bi-directional one to many relationship of Employee to Vehicles . When I persist an Employee in the database for the first time ( i.e . it has no assigned ID ) I also want its associated Vehicles to be persisted . This works fine for me at the moment , except that my saved Vehicle entity is not getting the associated Employee mapped automatically , and in the database the employee_id foreign key column in the Vehicle table is null . My question is , is it possible to have the Vehicle 's employee persisted at the same time the Employee itself is being persisted ? I realise that the Employee would need to be saved first , then the Vehicle saved afterwards . Can JPA do this automatically for me ? Or do I have to do something like the following : [CODE] Thanks ! Edit : As requested , here 's my mappings ( without all the other methods etc . ) [CODE] I just realised I should have had the following method defined on my Employee class : [CODE] Now the code above will look like this : [CODE] Much simpler and cleaner . Thanks for your help everyone ! One way to do that is to set the cascade option on you \" One \" side of relationship : [CODE] by this , when you call [CODE] it will save the vehicles too . You have to set the associatedEmployee on the Vehicle before persisting the Employee . [CODE]",
+    "gt_terms": [
+      "Employee",
+      "Vehicles",
+      "Vehicle",
+      "column",
+      "table",
+      "JPA"
+    ],
+    "extracted_terms": [
+      "i.e",
+      "JPA",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.16666666666666666,
+      "f1": 0.2222222222222222,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.027716994894237783,
+      "entity_density": 1.1194029850746268,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q40175072",
+    "text": "Question I have is I am trying to update my gui with a timer ( this works and changes the image for mypic but , it will not update mytext label for some weird reason any help would be very much appreciated ! * I should add that mytext is n't showing up at all on my gui since introducing the timer ... but mypic does ??? ? [CODE] UPDATE with suggestions still is n't working. . [CODE] Here 's a working solution which you can tailor to your use . The cause seemed to be the way you had tried to display the Components rather than the code in your action listener . Your approach was just replacing myText with myPic when you initially set up the JFrame . Instead you need to use a layout manager . The example I 've given is with overlaying using JLayeredPane . You may wish to use a layout manager instead if this is not the desired outcome , see the Oracle Tutorial on using layout managers . Widget class [CODE] Weather class for demonstration purposes [CODE]",
+    "gt_terms": [
+      "timer",
+      "image",
+      "Components",
+      "action listener",
+      "JFrame",
+      "layout manager",
+      "JLayeredPane",
+      "Oracle",
+      "layout managers",
+      "Widget",
+      "Weather"
+    ],
+    "extracted_terms": [
+      "UPDATE",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.0395010395010395,
+      "entity_density": 1.0810810810810811,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q36802340",
+    "text": "I have an event listener on a button . The button is inside div div1 . When I click on another button , I make the div1 position:absolute . However , the event listener on the button disappears . When I click on the button , nothing happens . Does anyone know why this is happening or how I can debug it ?",
+    "gt_terms": [
+      "event listener",
+      "button",
+      "div div1",
+      "div1 position:absolute"
+    ],
+    "extracted_terms": [],
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "signals": {
+      "known_term_ratio": 0.0,
+      "coverage": 0.0,
+      "entity_density": 0.0,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q36059546",
+    "text": "I 'm new to google maps api , i have some POLYGONS and POLYINES . i 'm trying to show both ( polygon and polyline ) in google maps api . I 'm tried something , but not able not show both polygons and polyline , only polygons is showing , how to show both Polygons and polylines.I have a Json that json have source polygon or polyline , that source based i 'm showing here.sorry for my english . Hopefully someone can kindly let me know where I am failing . Here is my code .Demo [CODE] A google.maps.PolylineOptions object does n't have a paths property , that is only valid for a google.maps.PolygonOptions object . Change : [CODE] To : [CODE] proof of concept fiddle code snippet : [CODE] [CODE] [CODE]",
+    "gt_terms": [
+      "google maps api",
+      "POLYGONS",
+      "POLYINES",
+      "polygon",
+      "polyline",
+      "polylines.I",
+      "Json",
+      "google.maps.PolylineOptions",
+      "google.maps.PolygonOptions",
+      "fiddle"
+    ],
+    "extracted_terms": [
+      "PolygonOptions",
+      "google.maps.PolygonOptions",
+      "polylines.I",
+      "here.sorry",
+      "google.maps.PolylineOptions",
+      "POLYGONS",
+      "POLYINES",
+      "PolylineOptions",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.7777777777777778,
+      "recall": 0.7,
+      "f1": 0.7368421052631577,
+      "hallucination": 0.2222222222222222
+    },
+    "signals": {
+      "known_term_ratio": 0.1111111111111111,
+      "coverage": 0.24857954545454544,
+      "entity_density": 6.7669172932330826,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q9412898",
+    "text": "I have problem with event in Java . I have got two jade 's class : First class [CODE] Second class [CODE] Problem is that when I click Add in gui i want to view \" it is work \" . Why it does n't work ? I do n't know Jade but in your code , var is set to true when the add button is clicked . If you put a System.out.println(\"something\") after the line [CODE] in the second class you will see that it happens as expected when you click the button . If you change the first class like this : [CODE] you will also see that var is still false when that condition is tested because you have not had time to click the add button yet . The proper way to handle this would be to have the first class listen to the second class so that it gets alerted when the button is clicked and runs something appropriate when that happens .",
+    "gt_terms": [
+      "Java",
+      "jade",
+      "button",
+      "System.out.println(\"something\")"
+    ],
+    "extracted_terms": [
+      "System.out.println",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.0463980463980464,
+      "entity_density": 1.183431952662722,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q35154661",
+    "text": "For highcharts , I need to generate parse data in order to generate series . The data from API looks like this : [CODE] First , the user have to select a team and players , but sometimes there is no result . For example , for the date XX , I selected 4 team ID but the API returns only 2 of them . I have to take this in consideration . I 'm trying to different types of series , the first one represents all the team scores , the second one all the players scores , and the other for the score each team did . So there are many graphs . I 'm using Ampserand.js , the the model is the same but he is called as much time as the number of teams selected in the form . I did something like this : [CODE] I have a problem with the series generated when there is no result for a team in the api 's result . An usable array should be like this for example : [CODE] Moreover , the code looks redundant , is there a trick with some Array function to do that more easily ? Thanks in advance , big problem for me here ! Does your code work for you ? I just tried this : http://jsfiddle.net/ma50685a/5/ - looks strange . Anyway , I would suggest to improve a bit your [CODE] statements , for example : [CODE] This can be made as one function : [CODE] Now simply : [CODE] Note : Code is not tested , because I could n't setup working demo according to the info you provided , sorry .",
+    "gt_terms": [
+      "highcharts",
+      "API",
+      "graphs",
+      "Ampserand.js",
+      "array"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "jsfiddle.net",
+      "Ampserand.js",
+      "API"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444444444444445,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.75,
+      "coverage": 0.05324580598103574,
+      "entity_density": 1.4084507042253522,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q40885052",
+    "text": "I want to get the Browser cookies using JavaScript.I tried the below code , but i am not getting the cross domain cookies . Here is the code : [CODE] Does anybody solve this . In most situations , you cannot read cross domain cookies , for security reasons . Each cookie has a domain of definition , and your browser reads those to decide which cookies you can read according to which domain you 're on . If you have control of both domains , you can modify cookie settings on domain B to allow them to be read by domain A , or code a cookie getter to get the values . Be creative !",
+    "gt_terms": [
+      "Browser",
+      "JavaScript.I"
+    ],
+    "extracted_terms": [
+      "JavaScript",
+      "JavaScript.I",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1": 0.5714285714285715,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.06529209621993128,
+      "entity_density": 2.564102564102564,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q45291615",
+    "text": "I 'm wondering how I can check which modules I need to load in my modules array ( config/modules.config.php ) . The autoloader does not seem to load all which were installed using composer or some are already included in ZF3 itself and they conflict when it tries to load them again . All modules which you install using composer should be registered in autoloader . But the problem , the modules is registered in config/modules.config.php or not . If you use Zend Component Installer , you do n't need to think the Zend Modules must be loaded in modules.config.php or not . Because Zend Component Installer will prompt you to inject the module in modules configuration ( config/modules.config.php ) or not while install it using composer . This very helpful feature . It works by read extra.zf.component key in composer.json from installed module . Here is the sample from Zend Form . While you add Zend \\\\Form to composer.json , then run [CODE] , composer will prompt you to inject this module to config/modules.config.php or not . If you do n't use Zend Component Installer , I think you can check extra.zf.component key in composer.json from installed module . And add it manually to your config/modules.config.php . FYI , if your application using Zend Skeleton Application , it has use Zend Component Installer .",
+    "gt_terms": [
+      "array",
+      "config/modules.config.php",
+      "autoloader",
+      "composer",
+      "ZF3",
+      "Zend Component Installer",
+      "Zend",
+      "modules.config.php",
+      "extra.zf.component",
+      "composer.json",
+      "Zend Form",
+      "Zend \\\\Form",
+      "Zend Skeleton Application"
+    ],
+    "extracted_terms": [
+      "modules.config.php",
+      "extra.zf.component",
+      "composer.json",
+      "FYI",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6,
+      "recall": 0.38461538461538464,
+      "f1": 0.46875,
+      "hallucination": 0.4
+    },
+    "signals": {
+      "known_term_ratio": 0.4,
+      "coverage": 0.1441578148710167,
+      "entity_density": 2.2222222222222223,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q17283382",
+    "text": "I 'm a total newbie when it comes to using Terminal , so I do n't really understand what 's happening here when I try to upgrade my ruby version ( 1.8.7 ) with rvm on a Mac OS X 10.7.3 . When I input [CODE] I get this [CODE] What does this mean ? And how can I proceed with the installation of the latest version ? The [CODE] command outputs the name of the currently active installation of Ruby ; in this case , it 's using your system 's pre-installed Ruby ( 1.8.7 ) . Try this : [CODE]",
+    "gt_terms": [
+      "Terminal",
+      "ruby",
+      "1.8.7",
+      "rvm",
+      "Mac OS X",
+      "10.7.3"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.03278688524590164,
+      "entity_density": 0.9803921568627451,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q35377419",
+    "text": "I am trying to integrate Hadoop and Mongo . I downloaded the mongo-hadoop files from git and trying to built jar files by using below . But i 'm getting below error [CODE] can anyone tell how to fix this issue Are you sure that have network connection ? Try this in console for check if network is OK : [CODE] My firewall was blocking the connection . So i disabled the firewall and restarted the VM . Now it 's working perfectly",
+    "gt_terms": [
+      "Hadoop",
+      "Mongo",
+      "mongo-hadoop",
+      "git",
+      "jar",
+      "console",
+      "firewall",
+      "VM"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.018648018648018648,
+      "entity_density": 1.2048192771084338,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q27702641",
+    "text": "Inside my build.xml , I have : [CODE] When I invoke this target , I get an exception : [CODE] Kindly suggest how to add this Constants class in my classpath ? Somewhere in my build.xml , I have : [CODE] Project structure is : [CODE] Here is my build.xml [CODE] As suggested by Christian , the issue got resolved by adding : [CODE]",
+    "gt_terms": [
+      "build.xml",
+      "exception",
+      "Constants",
+      "classpath"
+    ],
+    "extracted_terms": [
+      "build.xml",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.15454545454545454,
+      "entity_density": 3.125,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q18347569",
+    "text": "Is there a way to show the error message of customValidator without POSTBACK ? I have used both requiredFieldValidator and customValidator . The fomer can be inline and can show error message without postback . Is this possible for customValidator ? Option 1 : Whenever I create a custom validator , I try to create a server and client side validation methods to validate . creating a client side method will avoid unnecessary postback . As a safety measure , server side method should be present . Example : [CODE] Option 2 : It is not always possible to build a client side validation method . There you can use update panel to hide those postbacks . you can use Update Panel ajax to this action without postback .",
+    "gt_terms": [
+      "customValidator",
+      "POSTBACK",
+      "requiredFieldValidator",
+      "custom validator",
+      "server",
+      "client",
+      "update panel",
+      "postbacks",
+      "ajax"
+    ],
+    "extracted_terms": [
+      "POSTBACK",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2222222222222222,
+      "f1": 0.30769230769230765,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.061452513966480445,
+      "entity_density": 1.550387596899225,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q18549870",
+    "text": "I 've custom list view layout . The items in list are going to be 5 or more . If more than say , 5-10 items are there in list , it looks good . But if there are say only 5 items , then blank space appears below list on devices larger in height . This does not look good . following is my list row layout - [CODE] And listview - [CODE] What I desire is , if height of device is larger then I want list to take complete height by scaling height of each row in way that it should display all items w/o scroll . If items are more then scroll should appear . How can I set this up ? Update I can opt-in for a solution where I 'd check how many items are going to be there in list before and if they are less than 5-6 , I 'd choose a different layout consisting of LinearLayout or something that would fill up the blank space . But I ca n't figure out the structure I need to choose for such LinearLayout . Should I choose 5-6 LinearLayout below one another or a single with iteration ? Well , in my view if I need to implement such a function , I 'll do like below : check if there exist blank you dont [CODE] [CODE] then you can set the height of each row to rowHeight+heightToPlus every height can be get by getHeight and also can be set by setHeight , they 're method of view . So i think it not hard to implement .. .",
+    "gt_terms": [
+      "list view",
+      "list",
+      "list row",
+      "listview",
+      "row",
+      "LinearLayout",
+      "getHeight",
+      "setHeight",
+      "view"
+    ],
+    "extracted_terms": [
+      "LinearLayout",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.1111111111111111,
+      "f1": 0.1818181818181818,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.03951367781155015,
+      "entity_density": 0.7246376811594203,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q6565999",
+    "text": "I 'm making a program to generate code for me , and I 'm fashioning the UI after Game Maker due to how easy the interface is . It has a SplitContainer with Panel1 containing a TreeView and Panel2 containing an arbitrary amount of self-contained windows ( real windows , not some hacky workaround ) . I wanted to use user-controls to store the controls I use to modify things , but I ca n't figure out any way to put it in a window inside the splitContainer 's Panel2 . Can anyone help me ? Here 's a good example : http://i.stack.imgur.com/CG6kO.png Those two sprite property windows are what I 'm trying to do . I did similar thing once , and for that reason , I have ReplaceControl method , which I paste below : [CODE] Only thing left to do is to create some control manually on the form , as the placeholder for your Form . Use label , for example . From How to implement a-form-inside-a-form with runtime embedded forms switching ? Put it into the Panel2 's Control collection via the Add() method , apply coordinates , anchor and docking programmaticaly .",
+    "gt_terms": [
+      "Game Maker",
+      "SplitContainer",
+      "TreeView",
+      "windows",
+      "controls",
+      "window",
+      "ReplaceControl",
+      "control",
+      "form",
+      "label",
+      "Add()"
+    ],
+    "extracted_terms": [
+      "SplitContainer",
+      "Add()",
+      "TreeView",
+      "CG6kO.png",
+      "ReplaceControl",
+      "i.stack.imgur.com",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5714285714285714,
+      "recall": 0.5454545454545454,
+      "f1": 0.5581395348837208,
+      "hallucination": 0.42857142857142855
+    },
+    "signals": {
+      "known_term_ratio": 0.5714285714285714,
+      "coverage": 0.08388312912346843,
+      "entity_density": 3.535353535353535,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q12028246",
+    "text": "In my C# program I have a big problem : I add an SQL server database named \" Behgozin_DB \" to my project . I do the following steps for adding the database : In my SQL server management studio I detach my database In my visual studio from Data menu I add new data source My Connection String is : [OUTPUT] Everything is OK but when I insert something into my database after closing the application , I can not see any data . But when I right click on my tables in my visual studio server explorer menu and choose show table data , my application reads the whole table of data completely ! Another problem is after working with this app , even it can not read its own data in table . Its a C# project in Visual Studio 2010 SQL Server 2008 . Your database file has 2 copies . One is in your project and the other is in bin \\debug . In design time you edit the one in your project . Each time your project changes and you build it , the project database file is overwriting the file in bin \\debug , and this file you 're updating in run-time . In order to solve that you have three options : Use only the file in bin \\debug . Set the project database file copy options to \" Never \" ( in the properties window ) , show all files of the project and add the bin \\debug database file to the server explorer . Caution : If you accidently delete the bin \\debug folder all your changes are gone . Manually copy the database file from bin \\debug to the project folder when you change it . Put the file in your sql server folder and not in your project . When deploying , change the connection string and copy the database from server . Replace \" |DataDirectory| \" macro with the absolute path to the project database file . When deploying , just change it back to \" |DataDirectory| \"",
+    "gt_terms": [
+      "C#",
+      "SQL server",
+      "SQL server management studio",
+      "visual studio",
+      "menu",
+      "String",
+      "tables",
+      "table",
+      "2010",
+      "2008",
+      "bin \\debug",
+      "window",
+      "server explorer",
+      "server",
+      "|DataDirectory|"
+    ],
+    "extracted_terms": [
+      "DataDirectory",
+      "SQL",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2,
+      "f1": 0.30769230769230765,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.024830699774266364,
+      "entity_density": 0.8547008547008548,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q19471961",
+    "text": "I 'm setting up IPython to automatically load Sympy and configure it 's output method on startup . However , whatever I try I ca n't get sympy to initialize the latex/unicode style output printing . Steps taken : [CODE] The startup script : [CODE] When I start ipython , it does n't display a \" pretty-printed \" output : [CODE] Output : [CODE] Similar output using qtconsole/notebook . If I run the [CODE] command again the pretty print display works for that kernel instance . Additionally I know the startup script is being run properly because I can add [CODE] statements and get output ( additionally , the packages are imported and available for use ) . I am running sympy 0.7.3 , ipython3 1.1 , matplotlib 1.3.1 , numpy 1.7.1 , scipy 0.12.0 on a 64-bit Ubuntu 13.10 install . Incidentally , running the plain python3 terminal with PYTHONSTARTUP set to run the same startup script will properly pretty print Sympy output . In response to Jakob 's comment , ipython3 1.1.0 is still using the interactive sympy module instead of sympy 0.7.3 ' s [CODE] , which theoretically works fine except I get nasty warning output at start . I 'm also not too keen on everything in sympy being imported into the global namespace , which the bundled sympy config does ( as well as define a few variables ) . However , the suggestion did help me find a fix : Instead of putting my startup code into the 00-startup.py , I modified the ipython_config.py file to execute additional lines at startup : [CODE] I 'm unsure if this is a bug in either sympy or ipython , but this option certainly works .",
+    "gt_terms": [
+      "IPython",
+      "Sympy",
+      "latex/unicode",
+      "qtconsole/notebook",
+      "kernel",
+      "0.7.3",
+      "ipython3",
+      "1.1",
+      "matplotlib",
+      "1.3.1",
+      "numpy",
+      "1.7.1",
+      "scipy",
+      "0.12.0",
+      "Ubuntu",
+      "13.10",
+      "python3 terminal",
+      "PYTHONSTARTUP",
+      "1.1.0",
+      "global",
+      "00-startup.py",
+      "ipython_config.py"
+    ],
+    "extracted_terms": [
+      "ipython_config.py",
+      "PYTHONSTARTUP",
+      "startup.py",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.75,
+      "recall": 0.18181818181818182,
+      "f1": 0.2926829268292683,
+      "hallucination": 0.25
+    },
+    "signals": {
+      "known_term_ratio": 0.25,
+      "coverage": 0.050473186119873815,
+      "entity_density": 1.384083044982699,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q22197728",
+    "text": "I am trying to make the width of xeditable textfield increase or decrease with the input text . I tried the following code but no result . [CODE] After a long research , I found the solution of my problem . although it seemed that no one actually bothered my problem lol . [CODE]",
+    "gt_terms": [
+      "xeditable",
+      "textfield"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.043010752688172046,
+      "entity_density": 1.8518518518518516,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q18946310",
+    "text": "UITableViewStyleGrouped does not have rounded corners like in iOS versions <= 6 . Is anyone having same problem in iOS 7 ? My UITableView is all written in code as it is complex . I have had a look at all the changes and guidelines and I cannot see any mention of change to the cell appearance . Where did the corners go ? iOS 7 is Borderless . Rounded corners are no longer available in iOS 7 . Apple removed this feature . I am currently working with iOS 7 and had a discussion with apple support guys . They confirmed that this is no more supported . You can see the Settings app for an example \u2014 the table view there is group style .",
+    "gt_terms": [
+      "UITableViewStyleGrouped",
+      "iOS",
+      "UITableView",
+      "cell",
+      "Apple",
+      "Settings",
+      "table"
+    ],
+    "extracted_terms": [],
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "signals": {
+      "known_term_ratio": 0.0,
+      "coverage": 0.0,
+      "entity_density": 0.0,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q29175",
+    "text": "Okay , so I 'm running a small test webserver on my private network . I 've got a machine running Windows 2000 Pro , and I 'm trying to run an ASP.NET app through IIS . I wrote it so that the webpage would use the registry to store certain settings ( connection strings , potentially volatile locations of other web services , paths in the local filesystem where certain information is stored etc .. . ) Of course , it worked fine when testing with VStudio.NET 2005 , because the user running the app has elevated privileges . However , running it on IIS I get a [OUTPUT] [OUTPUT] , which suggests the IIS user does n't have read access to that part of the registry ( I only do reads through the website itself , never writes ) . I was like \" okay , simple enough , I 'll just go give that user rights to that part of the registry through regedit . \" The problem is , I do n't see an option anywhere in regedit to change security settings .. . at all . Which got me thinking .. . I do n't think I 've ever actually had to change security settings for registry hives/keys before , and I do n't think I know how to do it . Half an hour of searching the web later , I have n't found any usable information on this subject . What I 'm wondering is .. . how DO you change security rights to portions of the registry ? I 'm stumped , and it seems my ability to find the answer on Google is failing me utterly .. . and since I just signed up here , I figured I 'd see if anyone here knew . =) Oh , let me try that ! I did n't realize you could remotely connect to another registry . ( EDIT : I was wrong , it did work .. . it just took several minutes to respond to my request to change permissions remotely ) The remote connection idea did it ! You 're good ! Thanks so much for your help ! I never realized you could remote connect with RegEdit .. . you learn something new every day , they say ! =) Thanks again for your assistance ! =) On another note though , about copying the XP version of RegEdit to Windows 2000 .. . is that safe ? I figured they would be coded in such a way as to be incompatible .. . but I could be assuming too much . =) If your having touble with RegEdit in Windows 2000 you can try the following : Copy the Windows XP RegEdt32.exe to the Windows 2000 Machine Using a Windows XP Machine , connect to the Windows 2000 registry remotely : File > Connect Network Registry",
+    "gt_terms": [
+      "webserver",
+      "Windows",
+      "2000 Pro",
+      "ASP.NET",
+      "IIS",
+      "strings",
+      "VStudio.NET",
+      "2005",
+      "regedit",
+      "Google",
+      "XP",
+      "2000",
+      "RegEdt32.exe"
+    ],
+    "extracted_terms": [
+      "ASP",
+      "RegEdt32.exe",
+      "ASP.NET",
+      "EDIT",
+      "VStudio.NET",
+      "IIS",
+      "NET",
+      "RegEdit",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.38461538461538464,
+      "f1": 0.4878048780487804,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.5555555555555556,
+      "coverage": 0.05227938101212882,
+      "entity_density": 1.8404907975460123,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q22361019",
+    "text": "I have a UITableView that is never consistent . This table view has 2 sections . I have created 2 UIButtons , they both are practically the same image , but one is grey and one is red . Every row in the UITableView is supposed to have the grey button when the UITableView first loads , and then if a user taps a button then it switches to the red version of the button . For some reason , about 80% of the time when I load the view controller with this UITableView on my iPhone , the first 2 rows in the first section will not have a button . What 's weird is if I tap my finger where the button is supposed to be 2 things happen : The functionality attached to the button works and NSLogs in the console in xcode . The red button appears . So it 's like the grey button is there , it 's just invisible . This does n't work because if a user sees 2 rows without a button they are going to think something is broken or that they ca n't tap on that row . Also , if I scroll to the very bottom of my UITableView , and then scroll back up again , the invisible grey buttons will magically appear like they were there the whole time . Here are the first 3 method implementations that are involved in creating my UITableView : [CODE] And then here is my cellForRowAtIndexPath method implementation which does most of the work in creating the UITableView and which actually creates the UIButton settings for each row . The [CODE] statement really has 2 sets of nearly identical code , the only difference is one is for section 1 of the table view and the other is for section 2 : [CODE] I have not included the full method implementations that these 2 statements trigger because they only handle the functionality attached to each button , and most likely have nothing to do with this issue , but I will post them here anyways . These 2 statements can be found in the [CODE] for cellForRowAtIndexPath and handle the touch events for the 2 sections of the table view : [CODE] I see the pattern of trying to set up a custom UITableViewCell from within tableView:cellForRowAtIndexPath : quite a lot . The trouble is that I believe it to be the wrong place to do it . If you 're really only using a built-in UITableViewCell , then it 's the right place ; for custom cells , it 's not . I 'd recommend making a UITableViewCell subclass with a \" setup \" method that takes an object and uses that object to set up the cell 's UI . For instance , take section 0 from your UITableView . I 'd do something like this : [CODE] This way , you can set up the cell 's layout as well as images for the button in IB , rather than code . This also makes the code a lot easier to read ( and re-read 6 months later ! ) . Also , unless the 2 cells ( section 0 and section 1) are really interchangeable , I 'd recommend two different subclasses of UITableViewCell to give you greater control , rather than trying to force one to act like the other or vice versa . Then , you simply assign different identifiers and recycle the appropriate type .",
+    "gt_terms": [
+      "UITableView",
+      "UIButtons",
+      "image",
+      "button",
+      "iPhone",
+      "rows",
+      "NSLogs",
+      "console",
+      "xcode",
+      "row",
+      "buttons",
+      "cellForRowAtIndexPath",
+      "UIButton",
+      "UITableViewCell",
+      "tableView:cellForRowAtIndexPath :",
+      "cells",
+      "setup",
+      "cell",
+      "images",
+      "IB"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.05,
+      "f1": 0.09523809523809523,
+      "hallucination": 0.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.013262599469496022,
+      "entity_density": 0.16891891891891891,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q30443827",
+    "text": "I have the following code for a CUDA program : [CODE] in which every thread will print its threadIdx.x and blockIdx.x . One possible output of this program is this : [CODE] Running the program several times I get similar results , except that block order is random . For example , in the above output we have this block order 0 , 2 , 3 , 1 . Running the problem again I get 1 , 2 , 3 , 0 . This is expected . However , the thread order in every block is always 0 , 1 , 2 , 3 . Why is this happening ? I thought it would be random too . I tried to change my code to force thread 0 in every block to take longer to execute . I did it like this : [CODE] I would expect thread order to be 1 , 2 , 3 , 0 . However , I got a similar result to the one I have shown above where thread order was always 0 , 1 , 2 , 3 . Why is this happening ? [OUTPUT] With 4 threads per block you are only launching one warp per block . A warp is the unit of execution ( and scheduling , and resource assignment ) in CUDA , not a thread . Currently , a warp consists of 32 threads . This means that all 4 of your threads per block ( since there is no conditional behavior in this case ) are executing in lockstep . When they reach the printf function call , they all execute the call to that function in the same line of code , in lockstep . So the question becomes , in this situation , how does the CUDA runtime dispatch these \" simultaneous \" function calls ? The answer to that question is unspecified , but it is not \" random \" . Therefore it 's reasonable that the order of dispatch for operations within a warp does not change from run to run . If you launch enough threads to create multiple warps per block , and probably also include some other code to disperse and or \" randomize \" the behavior between warps , you should be able to see printf operations emanating from separate warps occurring in \" random \" order . To answer the second part of your question , when control flow diverges at the [CODE] statement , the threads where [CODE] simply wait to at the convergence point after the [CODE] statement . They do not go on to the printf statement until thread 0 has completed the [CODE] block .",
+    "gt_terms": [
+      "CUDA",
+      "printf"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "CUDA",
+      "blockIdx.x",
+      "threadIdx.x",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.28571428571428575,
+      "hallucination": 0.8
+    },
+    "signals": {
+      "known_term_ratio": 0.4,
+      "coverage": 0.043498168498168496,
+      "entity_density": 1.1086474501108647,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q37087526",
+    "text": "I have cells that have an [CODE] statement linked to a different sheet using importrange . However , when the status changes to \" YES \" on my sheet , the onedit script which logs time and date does not run . However when I manually type \" YES \" the script successfully logs time and date . Is there a workaround or an alternative to onEdit to make this work ? OnEdit trigger does n't care if value , returned by formula , changes . It will react only if different value or formula will be entered . You may use Time-driven triggers .",
+    "gt_terms": [
+      "onedit"
+    ],
+    "extracted_terms": [
+      "OnEdit",
+      "YES",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.0525328330206379,
+      "entity_density": 2.857142857142857,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q1719694",
+    "text": "I need to get the bounding box ( in scene space ) of QGraphicsItems that have the QGraphicsItem::ItemIgnoresTransformations flag set . According to the docs , you need to use QGraphicsItem::deviceTransform() to do that . I tried this : [CODE] But something is wrong , the bounding boxes appear smaller and far to the right of the items .. . Just figured it out , QGraphicsView::viewportTransform() doc says \" Returns a matrix that maps viewport coordinates to scene coordinates \" , but in fact it returns the scene to viewport transform . Inverting vp_trans in the last step fixed my problem .",
+    "gt_terms": [
+      "bounding box",
+      "QGraphicsItems",
+      "QGraphicsItem::ItemIgnoresTransformations",
+      "QGraphicsItem::deviceTransform()",
+      "bounding boxes",
+      "QGraphicsView::viewportTransform()",
+      "matrix",
+      "viewport"
+    ],
+    "extracted_terms": [
+      "ItemIgnoresTransformations",
+      "viewportTransform()",
+      "deviceTransform()",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.75,
+      "recall": 0.375,
+      "f1": 0.5,
+      "hallucination": 0.25
+    },
+    "signals": {
+      "known_term_ratio": 0.25,
+      "coverage": 0.11129848229342328,
+      "entity_density": 3.9215686274509802,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q9648463",
+    "text": "Now that the JQM 1.1 RC is out , I would like to migrate my 1.0 mobile app to this 1.1 version . How can I do that ? Do I have to replace every file or just some specific files ? What should be my migration path ? Edit : I plan to use my app using PhoneGap , which means , that I will want to have all resources locally , so no external references . Adjust your jqm css and js references . Also , you 'll need jquery 1.7.1 [CODE]",
+    "gt_terms": [
+      "JQM",
+      "1.1 RC",
+      "1.0",
+      "1.1",
+      "PhoneGap",
+      "css",
+      "js",
+      "jquery",
+      "1.7.1"
+    ],
+    "extracted_terms": [
+      "PhoneGap",
+      "JQM",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2222222222222222,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.04195804195804196,
+      "entity_density": 3.1914893617021276,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q563548",
+    "text": "As an entity class , I want to add an attributes at run-time , how should I do ? What needs to see the attributes ? If it is things like data-binding etc , TypeDescriptor should work : [CODE] This only affects System.ComponentModel usage ( not direct reflection ) , but that is often enough - for example , you can associate a TypeConverter via the above . If by \" attributes \" you mean \" properties \" , then ( again , as far as data-binding is concerned ) TypeDescriptor also has potential there - but it is non-trivial ; you need to either implement ICustomTypeDescriptor on the object , or to write a CustomTypeDescriptor for the type - and in either case , you need to write your own PropertyDescriptor implementation ( often talking to a per-instance dictionary etc ) . This will get used by anything that uses : [CODE] Again , this covers a wide range of data-binding and similar scenarios . For an example of this , see here - it is far from trivial , however . The example usage ( from the link ) adds two properties at runtime : [CODE] Use a hashtable to store your attributes . If you want more runtime flexibility , you might try Ruby or some other interpreted language .",
+    "gt_terms": [
+      "TypeDescriptor",
+      "System.ComponentModel",
+      "TypeConverter",
+      "ICustomTypeDescriptor",
+      "CustomTypeDescriptor",
+      "PropertyDescriptor",
+      "dictionary",
+      "hashtable",
+      "Ruby"
+    ],
+    "extracted_terms": [
+      "TypeConverter",
+      "TypeDescriptor",
+      "CustomTypeDescriptor",
+      "System.ComponentModel",
+      "ComponentModel",
+      "PropertyDescriptor",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.8571428571428571,
+      "recall": 0.6666666666666666,
+      "f1": 0.75,
+      "hallucination": 0.14285714285714285
+    },
+    "signals": {
+      "known_term_ratio": 0.14285714285714285,
+      "coverage": 0.14720812182741116,
+      "entity_density": 3.1390134529147984,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q30003070",
+    "text": "I want to upload multiple images on my gallery till today I was using this code to upload single images my controller is [CODE] My models is [CODE] and my view is [CODE] This is what I 'm using for uploading single images now I want to upload multiple and I had only one images fields on database did I need to make more images fields for upload multiple images ? If you want to upload multiple images there are so many plugins for that [OUTPUT] This a very simple and very great plugin I have also used it in may projects . You got to send [CODE] as an array like so : [CODE] Then for each posted image do an upload . BTW a quick search on this site gave me this post , that has all other info you need : Multiple files upload ( Array ) with CodeIgniter 2.0 good luck",
+    "gt_terms": [
+      "images",
+      "array",
+      "image",
+      "CodeIgniter",
+      "2.0"
+    ],
+    "extracted_terms": [
+      "OUTPUT",
+      "BTW",
+      "CodeIgniter",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.2,
+      "f1": 0.22222222222222224,
+      "hallucination": 0.75
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.0625,
+      "entity_density": 2.5806451612903225,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q28966823",
+    "text": "I 'm facing an authentication issue not being able to read/write to CloudStorage from PHP on GCE . I tested using the sample API but received an error message [OUTPUT] and the authentication failed . Also , I see no Redirect URI generated in \" 2 . Generated a Client ID \"",
+    "gt_terms": [
+      "CloudStorage",
+      "PHP",
+      "GCE"
+    ],
+    "extracted_terms": [
+      "API",
+      "URI",
+      "PHP",
+      "CloudStorage",
+      "GCE",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.11070110701107011,
+      "entity_density": 11.538461538461538,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q38189474",
+    "text": "while adding a new classifier in weka ... by running java call [CODE] what to set classpath ... and is it the correct format to add a classifier a weka ... i am using windows 10 You are not adding classifiers , you are adding .jar files . You have to use absolute paths ( C:/.. . ) to the jar files . [CODE] weka-src.jar is not neeeded . It is optional to set the working directory of your script/batch file to the directory where the weka.jar file can be found .",
+    "gt_terms": [
+      "weka",
+      "java",
+      "windows",
+      "10",
+      ".jar",
+      "C:/.. .",
+      "jar",
+      "weka-src.jar",
+      "script/batch",
+      "weka.jar"
+    ],
+    "extracted_terms": [
+      "weka.jar",
+      "src.jar",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1": 0.5,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.04967602591792657,
+      "entity_density": 3.260869565217391,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q43446506",
+    "text": "I want to add a custom VF component to display the batch job details in a pageblock table . However my component aint saving , it says : Error Error : Read only property ' c:batchDetailsComponent.BatchJobDetails ' Please help . This is the visualforce component : [CODE] VF Page : [CODE] Controller : [CODE] You need to set the access for your component to global . Like this : [CODE]",
+    "gt_terms": [
+      "VF",
+      "pageblock table",
+      "Read only property",
+      "visualforce",
+      "global"
+    ],
+    "extracted_terms": [
+      "BatchJobDetails",
+      "batchDetailsComponent.BatchJobDetails",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.17708333333333334,
+      "entity_density": 4.285714285714286,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q23599709",
+    "text": "[CODE] I am trying to export Firewall logs and it is giving me above error . Both client and server are Linux/Unix based server . Can anyone help ? SCP syntax goes : [CODE] . Your @ symbols will definitely confuse [CODE] , but I 'm not sure that 's even what you 're trying to do . Run your [CODE] first and then export the resulting file .",
+    "gt_terms": [
+      "Firewall",
+      "logs",
+      "client",
+      "server",
+      "Linux/Unix"
+    ],
+    "extracted_terms": [
+      "SCP",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.05588235294117647,
+      "entity_density": 2.898550724637681,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q42257809",
+    "text": "So I start my thread like this : [CODE] And this function has a loop that needs to execute once a second : [CODE] How do I make this thread sleep without pausing my main thread ? [CODE] Ref : https://msdn.microsoft.com/en-us/library/d00bd51t(v=vs.110).aspx According to MSDN , Thread.Sleep pauses the current thread for a given amount of time , i.e . the thread in which the current function is run .",
+    "gt_terms": [
+      "thread",
+      "MSDN",
+      "Thread.Sleep",
+      "run"
+    ],
+    "extracted_terms": [
+      "MSDN",
+      "msdn.microsoft.com",
+      "Thread.Sleep",
+      "i.e",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.75,
+      "f1": 0.5217391304347827,
+      "hallucination": 0.6
+    },
+    "signals": {
+      "known_term_ratio": 0.8,
+      "coverage": 0.1325,
+      "entity_density": 7.246376811594203,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q26896100",
+    "text": "I am running this on a mac and it compiles in the terminal but after i type in java Lab9 it does n't do anything . Below is exactly what i put into the terminal [CODE] //compiles but does not run [CODE] The program is waiting for your input . Add a prompt : [CODE]",
+    "gt_terms": [
+      "mac",
+      "terminal"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.045454545454545456,
+      "entity_density": 1.8181818181818181,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q46801920",
+    "text": "As i mentioned on the question title , I want to know the best approach to get this to work and i 'll need and example ( very simple one as the follow : ) Let 's say i have an API which has 1 controller and 1 action for example simplicity [CODE] and inside the index action i have [CODE] Then i have another rails app which will work for front-end rendering How can i pass this @date as JSON from the API to the other app to render it ? Should i have same controller on the other app ? How can i connect and send http request and receive response ? Thanks in advance For such a simple example , you can do something as simple as : [CODE] However , you 're most likely going to want to deal with more complicated JSON responses , so before long you 'll probably want to use something like the Jbuilder gem or ActiveModel Serializers ( my preferred approach ) . On the other end , your front-end will need to make an HTTP GET request . Lots of ways ( and gems ) to do this , but one common approach is just to use the built in Net::HTTP class . [CODE] In your situation , a better approach might be to use the Active Resource gem . This gem allows you to create models that are backed by a REST API rather than a database . For example , if your API app provides basic Create-Read-Update-Destroy actions for a particular model ( let 's call it Widget ) at the following URLs : [CODE] then in your front-end app you could declare an Active Resource like this : [CODE] which will auto-magically access all of those methods in your API , and behave much like a regular Active Record model . That way , you basically design your front-end app like a \" normal \" rails app , but using ActiveResource-based models in place of ActiveRecord . I would note , however , that a more common thing to do these days would be to build your API in Rails , and build your front-end with client-side Javascript , using something like JQuery or Angular to make requests from the API . I 'm not sure what you 're gaining by splitting API and front-end , where both of them are Rails apps - unless you 've got a compelling reason , I 'd just build one Rails app that handles both API and front-end , or build a Rails API + Angular ( or similar ) front-end .",
+    "gt_terms": [
+      "API",
+      "rails",
+      "JSON",
+      "request",
+      "Jbuilder",
+      "ActiveModel Serializers",
+      "HTTP GET",
+      "Net::HTTP",
+      "Active Resource",
+      "REST API",
+      "Widget",
+      "Active Record",
+      "ActiveRecord",
+      "Javascript",
+      "JQuery",
+      "Angular",
+      "Rails API"
+    ],
+    "extracted_terms": [
+      "ActiveModel",
+      "GET",
+      "REST",
+      "API",
+      "HTTP",
+      "ActiveRecord",
+      "JSON",
+      "ActiveResource",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.7777777777777778,
+      "recall": 0.47058823529411764,
+      "f1": 0.5863874345549738,
+      "hallucination": 0.2222222222222222
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.05553067622033139,
+      "entity_density": 2.0361990950226243,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q22864488",
+    "text": "I am from brazil and im trying to generate a keystore and after going to the bin of my jre7/bin in here its \" C:\\Program Files \\Java\\jdk1.7.0_51\\bin \" i try to run this code : [CODE] But it is asking me for a password after that and i cant type anything like , i pressed all the keyboard keys and nothing was writen all i can do is press enter and the key is not generated .. . Has anyone ever went through this ? In portuguese he asks me for : [OUTPUT] You have to type password , which will be used to encrypt the key store and then confirm it . Passwords are not shadowed to the console , so it looks empty for you . You may specify password in the command line itself with storepass and keypass parametrs [CODE] storepass is the password to encrypt the whole key store , and keypass is used to encrypt the key entry . Their values do not have to be the same . if in debug mode use android I hope it helped you",
+    "gt_terms": [
+      "keystore",
+      "bin",
+      "jre7/bin",
+      "C:\\Program Files \\Java\\jdk1.7.0_51\\bin",
+      "keyboard",
+      "enter",
+      "key store",
+      "console",
+      "command line",
+      "storepass",
+      "keypass",
+      "android"
+    ],
+    "extracted_terms": [
+      "OUTPUT",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.019715224534501644,
+      "entity_density": 1.0810810810810811,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q5400925",
+    "text": "Simple question : where do the tableView and section arguments get passed from ? The actual code in the method [CODE] [CODE] does n't even mention them . Here 's my interface code : [CODE] And this is all the implementation code : [CODE] I just want to know how does the method [CODE] [CODE] [CODE] receive those arguments ? Of course this happens everywhere ; I just want to understand it . The Simple_TableViewController class is likely meant to manage a single table with a single section . Given that , the tableView and section parameters are n't important because they can only be one thing : a pointer to the table and 0 , respectively . Your view controller class is adding support for these callback methods through UITableViewDelegate and UITableViewDataSource . You are adding this support in your .h file through [CODE] . These classes are built in to the Cocoa Touch framework and you are just using them . When the table is ( re ) loaded , this callback methods are called if you have defined them ( some are required , others are optional ) .",
+    "gt_terms": [
+      "Simple_TableViewController",
+      "table",
+      "pointer",
+      "UITableViewDelegate",
+      ".h",
+      "Cocoa Touch"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.041627246925260174,
+      "entity_density": 0.5208333333333333,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q23383232",
+    "text": "I have a panel that contains a checkboxTree , I populate the tree when open the panel , the problem is when i have to much items to be selected in the checkboxtree ( about 4000 ) the panel take a long time to open . this is my code : checkBoxTree.getCheckBoxTreeSelectionModel().setDigIn(true) ; [CODE] any suggestions will be welcomed :) ,",
+    "gt_terms": [
+      "panel",
+      "checkboxTree",
+      "tree",
+      "checkBoxTree.getCheckBoxTreeSelectionModel().setDigIn(true) ;"
+    ],
+    "extracted_terms": [
+      "checkBoxTree.getCheckBoxTreeSelectionModel",
+      "getCheckBoxTreeSelectionModel()",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.25,
+      "f1": 0.36363636363636365,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.23823529411764705,
+      "entity_density": 4.918032786885246,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q48601855",
+    "text": "I want to know that , when I click on next button than [CODE] become [CODE] and [CODE] become [CODE] and [CODE] become [CODE] and so on . [OUTPUT] [CODE] [CODE] [OUTPUT] [CODE] [OUTPUT] [CODE] With jQuery , you may use : [CODE] You will need to put the code inside a block that waits for the page to load like : [CODE] The use of attr allows to set a new id to each of the former id ' s . Check the jsFiddle . Also , as noted by other people , this would be better done by having fixed id 's and changing classes that defined the attributes to rotate . You may do something like this that may work with any number of element with any IDs : [CODE] [CODE] [CODE]",
+    "gt_terms": [
+      "button",
+      "jQuery",
+      "page",
+      "attr",
+      "jsFiddle"
+    ],
+    "extracted_terms": [
+      "OUTPUT",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.12424242424242424,
+      "entity_density": 1.4814814814814816,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q7219258",
+    "text": "[OUTPUT] I have MySQL tables looking like that regions table [CODE] .. . and schools table [CODE] There are multiple select ( dropdown ) menus in my registration form . The regions dropdown looks like that [CODE] I want to populate new dropdown list based on previous selections . What i want to do is , get \" regions \" id , then populate schools dropdown menu based on id ( id of previous selection ) from \" schools \" table on the fly . Here is my code but it does n't work . My js looks like that [CODE] and search.php [CODE] Please help me to finish it . Thx in advance . You 're calling getschools() with no parameter , so it returns nothing . You were supposed to pass the result that you get after making a POST request to the search.php file . EDIT : I 'm not sure that this will work , as I 've not tested it first . But I think you should change [CODE] to [CODE]",
+    "gt_terms": [
+      "MySQL",
+      "tables",
+      "table",
+      "dropdown",
+      "menus",
+      "form",
+      "dropdown list",
+      "dropdown menu",
+      "js",
+      "search.php",
+      "getschools()"
+    ],
+    "extracted_terms": [
+      "getschools()",
+      "OUTPUT",
+      "POST",
+      "EDIT",
+      "search.php",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.18181818181818182,
+      "f1": 0.23529411764705885,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.08955223880597014,
+      "entity_density": 3.4090909090909087,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q41722253",
+    "text": "Screen Shot I am developing an application using Xamarin Forms in Visual Studio 2013 . I have managed to change the Header Background color for Android but I am failing to do the same for Windows project . It comes with the Default Dark theme . Please Assist me . Thank You [CODE] Your question is not very clear to me , but I think that this is what you mean . With \" Header Background color \" I think you mean the background color of the title of a page . This is the code I use in my Xamarin.Forms application . The code works on Android , iOS and UWP . [CODE] You can specify the color of the background color on every page .",
+    "gt_terms": [
+      "Xamarin Forms",
+      "Visual Studio",
+      "2013",
+      "Header Background color",
+      "Android",
+      "Windows",
+      "background color",
+      "Xamarin.Forms",
+      "iOS",
+      "UWP",
+      "page"
+    ],
+    "extracted_terms": [
+      "Xamarin.Forms",
+      "UWP",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2727272727272727,
+      "f1": 0.3870967741935484,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.05087440381558029,
+      "entity_density": 2.3622047244094486,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q46618900",
+    "text": "I have Saved a link in database and then i need to view that link in view in asp.net mvc for example https://www.google.com [CODE] Just print the URL : [CODE] The [CODE] helpers are for links pointing into the application .",
+    "gt_terms": [
+      "asp.net",
+      "mvc"
+    ],
+    "extracted_terms": [
+      "asp.net",
+      "www.google.com",
+      "URL",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.75
+    },
+    "signals": {
+      "known_term_ratio": 0.75,
+      "coverage": 0.16143497757847533,
+      "entity_density": 9.75609756097561,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q41527933",
+    "text": "I 'm constrained to writing C++11 code , but I want to use std::cbegin() . So , I 'm looking at GCC 5.4.0 ' s implementation , in /usr/include/c ++ /5/bits/range_access.h on my system , thinking I might write something similar , and I see : [CODE] is that all there is to it ? Am I missing something ? If that 's it , how come it was n't part of C++11 like std::begin() ? No , that covers it . Although a small function can be added to the standard with a relatively small amount of effort , time is finite and the committee does n't have unlimited resource . Another example of a reasonably useful and trivial function that was omitted until C++14 is std::make_unique . Things improve over time . [OUTPUT] Yes . [OUTPUT] Not that I 'm aware of . [OUTPUT] The global templates seem to have been part of the original proposal as an alternative to the member functions , but the proposal preferred to only provide the member functions in favour of providing either just the global templates , or both the templates and members . ( Assuming this is the original proposal : N167 4) . The committee chose to include the member function alternative in C++11 , and the template not until C++ 14 . I 'm not part of the committee , and cannot speak for them , but my guess is that the attitude of the proposal may have affected the decision : [OUTPUT] Here is the development for the C++ Standard Library Defect Report issue ( 2128 ) where the template versions were decided to be adopted into C++14 after all .",
+    "gt_terms": [
+      "C++11",
+      "std::cbegin()",
+      "GCC",
+      "5.4.0",
+      "/usr/include/c ++ /5/bits/range_access.h",
+      "std::begin()",
+      "C++14",
+      "std::make_unique",
+      "C++",
+      "14",
+      "C++ Standard Library"
+    ],
+    "extracted_terms": [
+      "begin()",
+      "range_access.h",
+      "CODE",
+      "GCC",
+      "cbegin()",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2727272727272727,
+      "f1": 0.3529411764705882,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.04727030625832224,
+      "entity_density": 2.112676056338028,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q37820736",
+    "text": "I am able to set up AWS WorkMail to receive and send email using custom domain e.g . john@mycompany.com Now I 'd like to allow our users to login and access emails at https://mail.mycompany.com ( instead of the AWS provided access url https://mycompany.awsapps.com ) . The document I can find seems only handle my first case ( which is already done ) . Thanks Create a sub-domain \" mail.mycompany.com \" and redirect it to \" mycompany.awsapps.com \" . I resolved this by using the built-in CloudFront interface . I admit the documentation on this is pretty poor , but the aim behind it is to get people to pay for this redirection . To have your mywebmail.mydomain.com mapped into myaws.awsapps.com/workmail then please follow the steps below : 1) You might have done this step already : On your DNS server ( where that is ) , create a CNAME to map mywebmail.mydomain.com into myaws.awsapps.com 2) Login into your CloudFront interface https://console.aws.amazon.com/cloudfront/ 3) Click on \" Create Distribution \" 4) On the Origin-Domain put myaws.awsapps.com 5) On the Origin-URI put /workmail 6 ) Adjust the setting to what you like such as redirecting from HTTP into HTTPS or use as-is etc . 7 ) Scroll down to the CNAME and enter the aliases you need , for this example you need to put in mywebmail.mydomain.com 8 ) Save 9 ) Notice that this might take a while to get created , mine took about 30 minutes to complete , also every time I needed to edit something it would take around 10-20 minutes to complete . 10 ) Once done , browse your mywebmail.mydomain.com , your CNAME on your original DNS ( step 1 above ) should ask your browser to redirect and then with AWS CloundFront setting it would add the URI afterwards , 1 1) If you get a blank page , then check your headers , in particular ( ? organization = YourDomainName ) , you might need to manually add it there from the behaviours menu of the item you created above . I hope this helps Kind Regards Heider Sati",
+    "gt_terms": [
+      "AWS WorkMail",
+      "AWS",
+      "CloudFront",
+      "browser",
+      "AWS CloundFront",
+      "page",
+      "menu"
+    ],
+    "extracted_terms": [
+      "WorkMail",
+      "HTTPS",
+      "AWS",
+      "CloudFront",
+      "HTTP",
+      "e.g",
+      "mycompany.com",
+      "DNS",
+      "CNAME",
+      "myaws.awsapps.com",
+      "YourDomainName",
+      "console.aws.amazon.com",
+      "mycompany.awsapps.com",
+      "mail.mycompany.com",
+      "mywebmail.mydomain.com",
+      "CloundFront",
+      "URI"
+    ],
+    "metrics": {
+      "precision": 0.23529411764705882,
+      "recall": 0.5714285714285714,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.7647058823529411
+    },
+    "signals": {
+      "known_term_ratio": 0.4117647058823529,
+      "coverage": 0.2347870182555781,
+      "entity_density": 4.80225988700565,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q30743014",
+    "text": "I have to create a struct , a static variable to keep track of how many structs are alive and also a list of all current structs . I 'm having trouble creating this list and the appropriate constructor . So far I have [CODE] As you can see I tried to do it by creating a static array that gets added to as part of the constructor , but the compiler gives me an error : [OUTPUT] in the place I indicated . It 's not letting me assign new structs to my static array . What am I doing wrong ? Keep in mind pointers are the bane of my life so please explain it to me as you would to a small child . Thanks a lot . When you define [CODE] , all you are doing is allocating memory for one single pointer to a MyStruct object , not actually creating space for an array of them . This array you want needs to have a valid memory location initialised for it to live in , where it can store its copy of all the pointers you want it to . That 's likely to get messy though , so you should use a static std::vector instead to manage the memory allocation for the MyStruct . Simple as this : [CODE] Hope that helps !",
+    "gt_terms": [
+      "struct",
+      "static",
+      "structs",
+      "list",
+      "array",
+      "compiler",
+      "pointers",
+      "pointer",
+      "MyStruct",
+      "std::vector"
+    ],
+    "extracted_terms": [
+      "MyStruct",
+      "OUTPUT",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.3,
+      "f1": 0.3157894736842105,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.030852994555353903,
+      "entity_density": 1.3100436681222707,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q10567163",
+    "text": "I have a custom web control having two labels . On the display page I want to modify the text of one of the labels depending on a condition . How to achieve ? The answer depends on how your control in defined . If the label is public you simply access the label through the control instance [CODE] If it private you will need a public method in the control to change the text , e.g . [CODE] and then call the method [CODE]",
+    "gt_terms": [
+      "control",
+      "labels",
+      "page",
+      "text",
+      "label",
+      "public",
+      "private"
+    ],
+    "extracted_terms": [
+      "e.g",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.035545023696682464,
+      "entity_density": 2.3529411764705883,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q17672380",
+    "text": "I 'm using the Clean URLs Plugin and I end up having redundant files in my /out/ directory after [CODE] : one content.html and the same in /content/index.html I suppose that 's a wrong behaviour ? Does it result because [CODE] creates the files for the non static behavious , and [CODE] the other ones afterwards ? To answer my own question : I was looking at a file where something went wrong . Now there are still the redundant html files at first sight , but the ones in the root redirect to the others . So all good . When I looked before for some reasons I caught a strange glitch .",
+    "gt_terms": [
+      "Clean URLs",
+      "/out/",
+      "content.html",
+      "/content/index.html",
+      "html"
+    ],
+    "extracted_terms": [
+      "index.html",
+      "content.html",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1": 0.5,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.05792163543441227,
+      "entity_density": 2.631578947368421,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q46042992",
+    "text": "I have following code . Why do all the three objects refer to the same array while the string variable is independent ? How can I fix it without explicitly adding : [CODE] [CODE] [CODE] [CODE] [CODE] An explanation would be : Prototypes are live chains between objects . Because B 's prototype is a single tone instance of A , the array prop is passed by reference . This means that for each B instance we have access to the same A instance on the prototype . This might sound confusing at first but that 's the magic of prototypes in JavaScript . This is the caveat of prototypal inheritance . Anything on the prototype will be passed down to each instance . To maintain different instances of the attribute we initialise our object 's attributes in the constructor . When working with objects in JS ( like arrays ) , they are passed by reference . To make use of JS 's prototype system I would suggest something like so : [CODE] This way we reuse the methods from the \" parent \" and have a localised array in our \" child \" . At a first glance this might look as a classic OOP inheritance case but it is a bit different . If you want to read more about prototypes in JS I recommend this article Hope this helps .",
+    "gt_terms": [
+      "array",
+      "string",
+      "JavaScript",
+      "JS",
+      "arrays"
+    ],
+    "extracted_terms": [
+      "JavaScript",
+      "OOP",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.2,
+      "f1": 0.25,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.033800494641384994,
+      "entity_density": 1.282051282051282,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q27886442",
+    "text": "This may be very basic but i am looking for the simplest way to get the left digit of a number , and the right digit . so 54 will give me two integers , [CODE] , and [CODE] . Try [CODE] Basic stuff For iharob satisfaction [CODE] Try this [CODE] notice that this works for any number of digits .",
+    "gt_terms": [
+      "number",
+      "integers"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.06802721088435375,
+      "entity_density": 1.639344262295082,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q10294533",
+    "text": "I am developing an iOS application ( iPad ) , my problem is to choose how to store my data ( I have an equivalent of 1Mb of data ) . What is the best one to choose and Why ? ( Property list , XML , SQlite , . ) . thanks for our answers . That 's not enough information to answer your question properly . There are a lot of factors that affect the decision . Persistence libraries and frameworks all have very special constraints and learning curves . Here are some questions to be taken into account : What kind of data ? How much data ? How often does the data change and in which patterns ? Where does the data come from ( server , user input ) Do you want to synchronize data ( iCloud , Dropbox , other services ) What are typical access patterns ? ( Database vs . whole file ) Shall the data be portable ?",
+    "gt_terms": [
+      "iOS",
+      "iPad",
+      "Property list",
+      "XML",
+      "SQlite",
+      "server",
+      "iCloud",
+      "Dropbox"
+    ],
+    "extracted_terms": [
+      "XML"
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.2222222222222222,
+      "hallucination": 0.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.003708281829419036,
+      "entity_density": 0.5988023952095809,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q44075338",
+    "text": "I was working with twilio my case is when user make a call IVR will ask for user mood and then start recording for 10 second , take that recording to server find podcast according to user mood and send back TWIML with podcast mp3 url and play it to user I 'm done with this job now i want to implement the feature in which when user user say \" Skip \" or \" I do n't like this one please skip \" ( or something similar which i will handle with A i) immediately stop playing and goto server and get another podcast mp3 url and play it for doing this i need to do something like this : [CODE] but doing this will not solve my problem because twilio will start recording after finish playing , I want to record each 10 seconds and send it to server continuously when user is listening podcast [CODE] each time when we get recording on server , i will convert recording to text ad check if user said \" skip \" , if yes i will modify call on the fly Twilio developer evangelist here . I 'm afraid that it is currently not possible* to record slices of a call while simultaneously playing an mp3 . Can I suggest that rather than voice you use a key press for this functionality instead ? You can then use the following TwiML ( as an example ) [CODE] Then you will need an endpoint in your application at /voice/check -digits that directs the user onto the next podcast . * OK , it might be possible if you play the audio into a conference and have another script dial into the conference and record 10 seconds , then hangup as another script dials in to start recording . But even then , you 'd be trying to extract the voice of the caller from the audio of the podcast and that is unlikely to be accurate at all . Especially if a voice in the podcast says \" skip \" . So I still recommend using <Gather> !",
+    "gt_terms": [
+      "twilio",
+      "IVR",
+      "TWIML",
+      "mp3",
+      "server",
+      "/voice/check -digits",
+      "<Gather>"
+    ],
+    "extracted_terms": [
+      "IVR",
+      "TWIML",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2857142857142857,
+      "f1": 0.4,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.013927576601671309,
+      "entity_density": 0.8403361344537815,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q30003971",
+    "text": "The explanation : Working with two input streams streams , both use getline() to capture the user input . The first getline() is called in the userStringPrompt() function : [CODE] That sets a string that the program will use later to perform functions , like count its consonants , its vowels , etc . The second input is used in the menu selection ( choose what function/method to perform on the above string ) : [CODE] This takes in a user input : A , B , C , D , E and performs an action . For example , if a user inputs into the first input stream : [OUTPUT] and then enter \" A \" in the second input stream , it should count the vowels in hello , then return the number from the calculation , e.g . 2 The issue : The program functions correctly when the input in userStringPrompt is without spaces . For example , Hello works , but Hello World would break the application and cause a force close . I 'm not sure why , since I am capturing the stream with getline(cin, string) . The entire code : [CODE] Any guidance/hints would be greatly appreciated . I 'm absolutely confused . I guess your program is not crushing , it 's just normally exits . [CODE] which is ok , no error code returned . When you run your program it asks for input , do its work and because there is no more work for it - exits . To see the output you can do one of the following : Try to run it with Ctrl + F5 in VS , it will add [CODE] command to the end . Another way to run it is to open command line and run it from there . Also in your case I guess the problem is in [CODE] statements . When you choose what to do with the string you break your loop ( which should run while user enters e ) . Remove all [CODE] and it will be fine .",
+    "gt_terms": [
+      "getline()",
+      "userStringPrompt()",
+      "string",
+      "userStringPrompt",
+      "getline(cin, string)",
+      "Ctrl + F5",
+      "VS",
+      "command line"
+    ],
+    "extracted_terms": [
+      "e.g",
+      "CODE",
+      "userStringPrompt()",
+      "getline()",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.375,
+      "f1": 0.38709677419354843,
+      "hallucination": 0.6
+    },
+    "signals": {
+      "known_term_ratio": 0.6,
+      "coverage": 0.050788091068301226,
+      "entity_density": 1.4204545454545454,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q25566739",
+    "text": "I have a NSTableview which shows 50 rows currently which is fixed static . Now I want to add a feature into it . I want to add a more 50 rows to the table when user reach to the last row of the NSTableView . I mean currently I am showing fixed 50 rows in the application . But now I want to add 50 more rows whenever user reaches to the last row of previous NsTableview . Please give me any suggestions or any sample code to achieve my motive . Thanks in advance . What i have done is ( This code does not work with row selected ( Down key pressed ) , and does not load new rows ) - [CODE]",
+    "gt_terms": [
+      "NSTableview",
+      "rows",
+      "static",
+      "table",
+      "row",
+      "Down key"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "NsTableview"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.07640067911714771,
+      "entity_density": 1.5873015873015872,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q20428669",
+    "text": "I got some strange behaviour using grails 2.3.x and async . I 'm doing some test with this code : [CODE] but in my log i got : [CODE] In fact the tasks ( and onError closure ) are executed , but onComplete is not ( off course ) ! ! what am i doing wrong ? except for the Thread.sleep() is pratically code taken from doc : http://grails.org/doc/latest/guide/async.html Is Thread.sleep() not compatible with GPars for some reason ? The problem is that onComplete does not block . The request/action does finish before your tasks and list goes out of scope . You need to use waitAll() to wait for all tasks to finish before the action returns . Easiest is to replace the onComplete with [CODE] list.get() is implemented by calling waitAll() .",
+    "gt_terms": [
+      "grails",
+      "2.3.x",
+      "log",
+      "onError",
+      "onComplete",
+      "Thread.sleep()",
+      "GPars",
+      "waitAll()",
+      "list.get()"
+    ],
+    "extracted_terms": [
+      "get()",
+      "list.get",
+      "Thread.sleep",
+      "grails.org",
+      "async.html",
+      "sleep()",
+      "waitAll()",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.75,
+      "recall": 0.4444444444444444,
+      "f1": 0.5581395348837209,
+      "hallucination": 0.25
+    },
+    "signals": {
+      "known_term_ratio": 0.25,
+      "coverage": 0.14749661705006767,
+      "entity_density": 5.970149253731343,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q5338056",
+    "text": "Can someone explain me why this is happening ? Silverlight 4 application using WCF Ria Services SL app calls StartLongOperation [CODE] operation . Due to synchronization issues with external components there is a Thread.Sleep ( 30 * 1000 ) in the server-side code . SL app calls GetStatus ( standard query ) operation . These calls appear to be blocked server-side and are waiting for the StartLongOperation to complete . Why ? ? I was assuming that serverside , the StartLongOperation runs an a worker thread and each call to GetStatus would run on a seperate worker thread . Client-side the calls are async so SL fires off the StartLongOperation and then continues to poll the GetStatus . But the GetStatusCompleted does n't get fired until the StartLongOperation has completed . Since all Silverlight network communication happens on the UI thread , only one WCF call can happen at a time . Meaning your StartLongOperation has to complete , and then the client will start the GetStatus call . If you want to test this behavior , fire up Fiddler . You will find that Silverlight will not send an HTTP request to the GetStatus method until it first gets a StartLongOperation response from the server . So the problem is n't server-side . It 's a limitation of Silverlight .",
+    "gt_terms": [
+      "Silverlight",
+      "WCF Ria Services",
+      "SL",
+      "StartLongOperation",
+      "Thread.Sleep",
+      "( 30 * 1000 )",
+      "server-side",
+      "GetStatus",
+      "serverside",
+      "Client-side",
+      "GetStatusCompleted",
+      "WCF",
+      "client",
+      "Fiddler",
+      "server"
+    ],
+    "extracted_terms": [
+      "HTTP",
+      "StartLongOperation",
+      "WCF",
+      "Thread.Sleep",
+      "GetStatusCompleted",
+      "GetStatus",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.7142857142857143,
+      "recall": 0.4,
+      "f1": 0.5128205128205129,
+      "hallucination": 0.2857142857142857
+    },
+    "signals": {
+      "known_term_ratio": 0.42857142857142855,
+      "coverage": 0.17896389324960754,
+      "entity_density": 3.167420814479638,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q40438086",
+    "text": "Detailed information seems to be hard to find on this . So the situation I have is an existing server with usernames and passwords . I 'm adding an additional couchdb server to manage data for a mobile app , however I still want all authentication to be handled via the existing server . So I can send an HTTP request with username and password to the existing server and i can get it to send back anyanything i like if access is accepted . How could I then use that information to authenticate with the couchdb server ? I imagine it would be possible to recieve a secret from the existing server on successful authentication that we could match to one we have manually stored on couchdb server . However that does n't seem to be very secure . I have read the Authentication docs at couchdb but I 'm still confused . Any suggestions for an authentication system ? I think JWT authentication is what you 're looking for . There 's a plugin which can do this for you : https://github.com/dmunch/couch_jwt_auth ( The repository is a fork , implementing additional functionality to the original one plus is compatible with CouchDB 2.0 . ) Basically you send your username/password to the authentication server , which in turn gives you back a token ( the JWT ) . You can now authenticate to CouchDB using this token . CouchDB verifies the integrity of the token either by using a shared secret ( HS256 ) or by using the public key of the authentication server .",
+    "gt_terms": [
+      "server",
+      "couchdb server",
+      "mobile",
+      "couchdb",
+      "JWT",
+      "2.0",
+      "public"
+    ],
+    "extracted_terms": [
+      "github.com",
+      "JWT",
+      "HTTP"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.14285714285714285,
+      "f1": 0.2,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.018531228551818806,
+      "entity_density": 1.1278195488721803,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q19308940",
+    "text": "The default behaviour for editing a cell is double clicking it , but i want to show to the user that , there is a list they can select from , ( some of my columns have only one value , and is not editable ) , so i opened persistent editor , but it 's too slow if there are too many rows . so i turned to reimplementing the mousePressEvent and show the combobox when user right click on the cell , but without any visual cue to tell them which cell can be right clicked on . ( i know maybe i can change bg color of that cell ) but can i achieve something like this ? drawing a black triangle at the lower right color of the cell to indicate that it can be right clicked on ? like this image from excel ? You could use a QStyleItemDelegate , something like this : [CODE]",
+    "gt_terms": [
+      "cell",
+      "list",
+      "columns",
+      "persistent editor",
+      "rows",
+      "mousePressEvent",
+      "combobox",
+      "triangle",
+      "image",
+      "excel",
+      "QStyleItemDelegate"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.005208333333333333,
+      "entity_density": 0.625,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q4522886",
+    "text": "From reading the documentation , you can dynamically theme Drupal blocks and nodes by adding template files : \" page-node-1.tpl \" or \" block-modulename-2.tpl \" . How do i know the delta value ( in this case 1 or 2) to create a template file for node or block ? Do these delta values keep changing ? What assigns these delta values and when ? Go to admin/build/block , then move cursor over any ' configure ' link in the block list . You 'll see for example ' admin/build/block/configure/views/news -block_2 ' path . It means this block provided by ' Views ' module and has delta ' news-block_2 ' No Modules",
+    "gt_terms": [
+      "Drupal",
+      "blocks",
+      "nodes",
+      "page-node-1.tpl",
+      "block-modulename-2.tpl",
+      "delta",
+      "node",
+      "block",
+      "admin/build/block",
+      "cursor",
+      "list",
+      "admin/build/block/configure/views/news -block_2",
+      "Views",
+      "news-block_2"
+    ],
+    "extracted_terms": [],
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "signals": {
+      "known_term_ratio": 0.0,
+      "coverage": 0.0,
+      "entity_density": 0.0,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q43661057",
+    "text": "I have the following recurrence : [CODE] It can be solved directly with a theorem called \" Subtraction and Conquer \" , but in this case I 'm interested in the back substitution method . I tried the solution below but I 'm almost certain that I 've committed some error because I ca n't see how to build the final equation .. . , below my attempt : 1st iteration [CODE] 2nd iteration [CODE] 3rd iteration [CODE] Attempt to find the equation : [CODE]",
+    "gt_terms": [
+      "Subtraction and Conquer",
+      "back substitution"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.044642857142857144,
+      "entity_density": 1.1764705882352942,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q18298603",
+    "text": "I 'm trying to install Google Maps v2 libraries into my local Maven repository using maven-android-sdk-deployer according to the manual on that page . When I run [CODE] , I get following error : [CODE] There is actually no appcompat directory in C:\\Program Files \\adt-bundle-windows-x86\\adt-bundle-windows-x86\\sdk\\extras\\android\\support\\v7 . I suppose that I need to install some packag using the Android SDK Manager . Which package ( name , version ) should I install in order to fix this issue ? In order for that command to work , it is necessary to install all \" Extras \" in the Android SDK manager .",
+    "gt_terms": [
+      "Google Maps",
+      "v2",
+      "Maven",
+      "maven-android-sdk-deployer",
+      "appcompat",
+      "C:\\Program Files \\adt-bundle-windows-x86\\adt-bundle-windows-x86\\sdk\\extras\\android\\support\\v7",
+      "Android SDK Manager"
+    ],
+    "extracted_terms": [
+      "SDK",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2857142857142857,
+      "f1": 0.36363636363636365,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.033112582781456956,
+      "entity_density": 1.9801980198019802,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q28324166",
+    "text": "I wanted to create a two countdown timer that will run at the same time in one android application using chronometer . is it possible ? if you have some tutorials please comment it in here I will gladly appreciate it . thank you :)",
+    "gt_terms": [
+      "android",
+      "chronometer"
+    ],
+    "extracted_terms": [],
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "signals": {
+      "known_term_ratio": 0.0,
+      "coverage": 0.0,
+      "entity_density": 0.0,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q8763993",
+    "text": "I have the following example [CODE] So that works just fine. . but in my aggregate function I need to clear out the self.counters dict . I 'm having issues doing this. . I want to do something like [CODE] If I reference self.counters in that function I get [CODE] It 's a good idea to include a runnable example of your problem , if I try what you describe it works fine . [CODE]",
+    "gt_terms": [
+      "dict"
+    ],
+    "extracted_terms": [
+      "self.counters",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.11081794195250659,
+      "entity_density": 2.666666666666667,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q44741900",
+    "text": "I 've created a bash script to find dollar words . For those of you who do n't know , a dollar word is a word whose values of their letters add up to 100 when A is given a value of 1 , B is given a value of 2 , C is 3 , and all the way to Z is 26 . I am new to programming , so I 've created a very crude script that 'll do this kind of thing , but it 's not working as fast as I would expect . Something in my code is slowing it down , but I do n't know what . This is my code . [CODE] I can only speculate that it has something to do with the [CODE] loops , or with how it is constantly writing the value of $line to a file . I 've created a script before that adds numbers to generate the Fibonacci sequence , and it does it almost instantaneously . So my question is , what are some ways to help my code run more efficiently ? Apologies if this belongs on codereview . Any help is highly appreciated . Thanks Edit : Although I accepted Gordan Davisson 's Answer , the other ones are just as good if you want to do this . I 'd recommend reading everyone else 's answer before giving this a try . Also , as numerous users have pointed out , bash is not a good language to be using for this . Again , Thanks to everyone for your suggestions . As @thatotherguy pointed out in a comment , there are two big problems here . First , the way you 're reading lines from the file reads the entire file every line . That is , to read the first line you run [CODE] , which reads the entire file and prints only the first line ; then you run [CODE] , which reads the entire file again and prints only the second line ; etc . To fix this use a [CODE] read loop : [CODE] Note that if anything inside the loop tries to read from standard input , it 'll steal some of the input from Words.txt . In that case you can send the file over FD #3 instead of standard input with [CODE] . The second problem is this bit : [CODE] which .. creates 3 subprocesses ( [CODE] , [CODE] , and [CODE] ) , which is n't too bad except that this runs 26 times for each and every word in the file . Creating processes is expensive compared to most shell operations , so you should do your best to avoid it especially in loops that run many many times . Try this instead : [CODE] This works by replacing all characters that are n't ${letter[i]} with \"\" , then looking at the length of the resulting string . The parsing happens entirely in the shell process , so it should be much faster . Given : [CODE] ( i.e . , the 370,101 word file linked HERE ) In Bash alone , start with a loop that reads the file line by line : [CODE] To count the lines alone in Bash ( same file ) takes over 7.8 seconds on my computer . [CODE] in comparison executes in microseconds . So the Bash version is going to take a while . Once you have the file word by word , you can read each word character by character and find the index of that character in a string of the alphabet : [CODE] Prints : [CODE] That takes about 1:55 on the 370,101 word file . As a comparison , consider the same function in Python : [CODE] Far easier to understand and executes in 580 ms . Bash is great for gluing together different tools . Is is not that great at large processing tasks . Use awk perl python ruby etc for larger tasks . Easier to write , read , understand and faster .",
+    "gt_terms": [
+      "bash",
+      "codereview",
+      "Words.txt",
+      "shell",
+      "string",
+      "Python",
+      "awk perl python ruby"
+    ],
+    "extracted_terms": [
+      "Words.txt",
+      "HERE",
+      "i.e",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.14285714285714285,
+      "f1": 0.18181818181818182,
+      "hallucination": 0.75
+    },
+    "signals": {
+      "known_term_ratio": 0.75,
+      "coverage": 0.03385731559854897,
+      "entity_density": 0.5805515239477503,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q23875451",
+    "text": "I created an API using the rails-api gem and I have an client app based on angular in which I use ng-resource . I do think that the request I send to my API should be more like [CODE] [CODE] and not [CODE] of I have to find a way for my api to work with the request I send now . For now I 'm stuck with 400 Bad Request errors and I ca n't find out how to fix it . Here is my rails controller : [CODE] Here is my angular controller : [CODE] Here is my angular factory : [CODE] In my logs I have : [CODE] - Change the following code : [CODE] To be : [CODE] And you problem will be fixed .",
+    "gt_terms": [
+      "rails-api",
+      "angular",
+      "ng-resource",
+      "400 Bad Request",
+      "rails",
+      "logs"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "API"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.08873720136518772,
+      "entity_density": 1.550387596899225,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q10747489",
+    "text": "TextView has setText(String) , but when looking on the Doc , I do n't see one for GridLayout . Is there an adapter or something that I need to use instead ? If so , which one ? Thanks in advance for any of the help . GridLayout is a ViewGroup , to which you can only add views ; if you want to make a calendar , it would be better to use a GridView . for the GridView , create an adapter which extends BaseAdapter , and use TextView for the grid 's layout . here is an example .",
+    "gt_terms": [
+      "TextView",
+      "setText(String)",
+      "GridLayout",
+      "adapter",
+      "ViewGroup",
+      "calendar",
+      "GridView",
+      "BaseAdapter"
+    ],
+    "extracted_terms": [
+      "GridView",
+      "BaseAdapter",
+      "GridLayout",
+      "ViewGroup",
+      "TextView"
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571,
+      "hallucination": 0.0
+    },
+    "signals": {
+      "known_term_ratio": 0.6,
+      "coverage": 0.1506276150627615,
+      "entity_density": 4.901960784313726,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q14649052",
+    "text": "I have joomla 2.5 which log many deprecated warnings like Error::raiseNotice() is deprecated . So I result width a big log file . Can I turn off this option , and log just my own exceptions ? You can always place an error reporting condition in your index.php like : [CODE] [CODE] For more info : http://php.net/manual/en/function.error-reporting.php Or you can edit error.php in your joomla directory , and [CODE] disable this function to raise deprecated warnings .. .",
+    "gt_terms": [
+      "joomla",
+      "2.5",
+      "Error::raiseNotice()",
+      "log",
+      "exceptions",
+      "index.php",
+      "error.php"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "raiseNotice()",
+      "php.net",
+      "function.error",
+      "error.php",
+      "reporting.php",
+      "index.php"
+    ],
+    "metrics": {
+      "precision": 0.42857142857142855,
+      "recall": 0.42857142857142855,
+      "f1": 0.42857142857142855,
+      "hallucination": 0.5714285714285714
+    },
+    "signals": {
+      "known_term_ratio": 0.2857142857142857,
+      "coverage": 0.16382978723404254,
+      "entity_density": 8.974358974358974,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q32617121",
+    "text": "I 'm new to Android and MVP in-general , and I 've been doing iOS programming for the last 1.5 years , so I find delegate patterns easy to digest . I 've implemented MVP in such a way that the view conforms to a presenter 's protocol , which lets the presenter disregard the view 's specific type , but lets it know that certain methods are a given and thus okay to call on the \" view . \" I 've been reading various MVP guides , and all of the Mosby tutorials , and I 'm not sure I agree with some of it . Is the pattern I 've implemented kosher ? I 'd like some feedback so I do n't keep heading in a bad direction , if that is indeed what I 'm doing .. . For example , Base Presenter : [CODE] I then subclass this into the following : PhotoRecyclerPresenter : [CODE] And it communicates with the view : PhotoRecyclerFragment : [CODE] This lets me define a set of requirements a view needs to conform to in order to utilize the singleton presenter , while keeping the presenter agnostic about what views use it , as long as they conform to its protocol . So far in my practice project it seems to work fine , but I ca n't seem to find any resources where what I 'm doing is recommended as far as MVP goes , and I have enough self-doubt that I figured I 'd ask my first StackOverflow question . Can anyone who has experience with MVP shed some light on this ? Also , if I 'm asking in the wrong place , feel free to point me to the correct place to post this . Thanks :)",
+    "gt_terms": [
+      "Android",
+      "MVP",
+      "iOS",
+      "Mosby",
+      "Presenter",
+      "PhotoRecyclerPresenter",
+      "PhotoRecyclerFragment",
+      "StackOverflow"
+    ],
+    "extracted_terms": [
+      "PhotoRecyclerFragment",
+      "PhotoRecyclerPresenter",
+      "MVP",
+      "StackOverflow",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.8,
+      "recall": 0.5,
+      "f1": 0.6153846153846154,
+      "hallucination": 0.2
+    },
+    "signals": {
+      "known_term_ratio": 0.4,
+      "coverage": 0.05646258503401361,
+      "entity_density": 1.6611295681063125,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q3316844",
+    "text": "I want to wrap particular lines in a text mass with <b></b> First line in the text All lines with a previous empty line ( eg two newlines before ) I 'm using preg_replace with php , but I 'm really shitty with regex . Good tutorials are appreciated . In HTML ( I 'm assuming that 's the context ) there is no such thing as \" lines \" in regards to source code , since it 's not really possible reliable to determinate how a text wraps ( unless you do all the wrapping yourself with <br> or <pre> ) . However there is the CSS pseudo-element :first-line that will let you format the first line of an element ( for example a paragraph ) : [CODE] Try [CODE] for example , http://www.ideone.com/1pTwD .",
+    "gt_terms": [
+      "<b></b>",
+      "preg_replace",
+      "php",
+      "HTML",
+      "<br>",
+      "<pre>",
+      "CSS",
+      ":first-line"
+    ],
+    "extracted_terms": [
+      "HTML",
+      "CSS",
+      "www.ideone.com",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.75,
+      "coverage": 0.04741379310344827,
+      "entity_density": 2.941176470588235,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q43917084",
+    "text": "I 'm facing an issue installing angular-cli locally . I 'm on Ubuntu 16.04.2 LTS with following versions of node.js and npm : [CODE] I tried to install angluar-cli using the following command : [CODE] this worked fine and completed with following warnings : [CODE] Now when I 'm trying ' [CODE] ' command : [CODE] [CODE] will not install angular-cli globally but it works for you user . I resolve this problem by learning this article : Fixing npm permissions",
+    "gt_terms": [
+      "angular-cli",
+      "Ubuntu",
+      "16.04.2 LTS",
+      "node.js",
+      "npm",
+      "angluar-cli"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "node.js",
+      "LTS"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.3333333333333333,
+      "f1": 0.4444444444444444,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.07407407407407407,
+      "entity_density": 3.7037037037037033,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q39096604",
+    "text": "When I install the module using [CODE] , I am able to see the size of either wheel or the package . so the question is , is it possible to know just the size of each module ? something like this . [CODE] I want to know estimated size of the distribution so that I can remove them from winpython distribution . I know this is vague but this is what I wanted : [CODE] or you can get list at : http://hastebin.com/qiconesoje.apache [CODE] If you 're in virtualenv , you can use first option to get more : [OUTPUT]",
+    "gt_terms": [
+      "winpython",
+      "list",
+      "virtualenv"
+    ],
+    "extracted_terms": [
+      "OUTPUT",
+      "hastebin.com",
+      "qiconesoje.apache",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.1,
+      "entity_density": 3.9603960396039604,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q1721791",
+    "text": "My table ( projects ) : [CODE] As you may have noticed , this is hierarchical data using the nested set model . Tree pretty-printed : [CODE] I want to select all sub projects under project 1 and 4 . I can do this with : [CODE] However , this is very slow with a large table , when running EXPLAIN ( Query ) i get : [CODE] ( The project table has indexes on lft , rgt , and lft-rgt . As you can see , mysql does not use any index , and loops through the 7040 records ) I have found that if I only select for one of the super project , mysql manages to use the indexes : [CODE] EXPLAINs to : [CODE] FINALLY , my question : I there any way i can [CODE] rows matching multiple ranges , and still benefit from indexes ? From 7.2.5.1 . The Range Access Method for Single-Part Indexes in MySQL reference manual : [OUTPUT] So you need to have a [CODE] of two different [CODE] . have you tried a [CODE] ? take your second example , add \" [CODE] \" underneath and the repeat but matching id 4 . i do n't know if it would work , but it seems like an obvious thing to try . edit : [CODE]",
+    "gt_terms": [
+      "table",
+      "set",
+      "Tree",
+      "EXPLAIN ( Query )",
+      "mysql",
+      "EXPLAINs",
+      "rows",
+      "id"
+    ],
+    "extracted_terms": [
+      "OUTPUT",
+      "EXPLAIN",
+      "FINALLY",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.125,
+      "f1": 0.16666666666666666,
+      "hallucination": 0.75
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.06983240223463687,
+      "entity_density": 1.7777777777777777,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q26266420",
+    "text": "I got a segmentation fault when trying to use one cpp file and tried to locate the error using Valgrind , but I 'm confused . Since the code is very large , I will only post a short portion of it below : It looks like you are running valgrind on the compiler . Unless you are trying to debug the compiler , you should be running valgrind on your application instead : [CODE] ( replace ./MyApp with the appropriate executable name and arguments , of course ) ( Explanation : valgrind is a run-time analysis tool ; it takes your application as input . It is not a compiler tool like some of the other debugging tools that are out there )",
+    "gt_terms": [
+      "segmentation fault",
+      "cpp",
+      "Valgrind",
+      "compiler"
+    ],
+    "extracted_terms": [
+      "MyApp",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.02047244094488189,
+      "entity_density": 1.6129032258064515,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q8360162",
+    "text": "is there any free tool to read excel without using Excel Interop . I am creating a website using Visual studio 2010 , and I am using c# and asp . I cant install any software on server so I want to use some third party free tool . I read the file and have to use the contents to update the db , . I want to read Both XLSX and XLS Need some suggestions for that . Thanks There are many options to read/edit/create Excel files without Interop : MS provides the free OpenXML SDK V 2.0 - see http://msdn.microsoft.com/en-us/library/bb448854%28office.14%29.aspx ( XLSX only ) This can read+write MS Office files ( including Excel ) . Another free option see http://www.codeproject.com/KB/office/OpenXML.aspx ( XLSX only ) IF you need more like handling older Excel versions ( like XLS , not only XLSX ) , rendering , creating PDFs , formulas etc . then there are different free and commercial libraries like ClosedXML ( free , XLSX only ) , EPPlus ( free , XLSX only ) , Aspose.Cells , SpreadsheetGear , LibXL and Flexcel etc . BTW : Interop is not supported in sever-scenarios by MS . I used ExcelDataReader on a recent project , worked great for reading the XLS/XLSX files . Excel Data Reader",
+    "gt_terms": [
+      "excel",
+      "Excel Interop",
+      "Visual studio",
+      "2010",
+      "c#",
+      "asp",
+      "server",
+      "XLSX",
+      "XLS",
+      "Interop",
+      "MS",
+      "OpenXML SDK",
+      "V 2.0",
+      "MS Office",
+      "PDFs",
+      "ClosedXML",
+      "EPPlus",
+      "Aspose.Cells",
+      "SpreadsheetGear",
+      "LibXL",
+      "Flexcel",
+      "ExcelDataReader",
+      "XLS/XLSX",
+      "Excel Data Reader"
+    ],
+    "extracted_terms": [
+      "XLS",
+      "XLSX",
+      "OpenXML.aspx",
+      "msdn.microsoft.com",
+      "www.codeproject.com",
+      "Aspose.Cells",
+      "BTW",
+      "ExcelDataReader",
+      "SpreadsheetGear",
+      "SDK"
+    ],
+    "metrics": {
+      "precision": 0.6,
+      "recall": 0.3333333333333333,
+      "f1": 0.42857142857142855,
+      "hallucination": 0.4
+    },
+    "signals": {
+      "known_term_ratio": 0.7,
+      "coverage": 0.13047138047138046,
+      "entity_density": 4.62962962962963,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q29024420",
+    "text": "I have set a error message where if is redirected to this login controller then shows this message below . Using the user_agent library which I have auto loaded . [CODE] Question : I would like to know if possible to ignore message if redirected from my logout controller . Try something like : [CODE] This should work , it can be optimized a little but this give you the idea . The if statement should evaluate to true on all referrers except from ones that come from whatever the url is of your logout page . Does this make sense ?",
+    "gt_terms": [
+      "user_agent"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.0150093808630394,
+      "entity_density": 0.9803921568627451,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q35087680",
+    "text": "Context In a C# Windows Forms application for Win7 we host an ActiveX control . So far , so good . Need : prevent ActiveX to receive mouse events Actually , the ActiveX has too much functionality . It is not very customizable to turn off features we do n't need . It would be nice if we just prevented it from receiving mouse events . The ideal would be to just treat events as if the ActiveX was not there , that is the mouse clicks go right through to the underlying ( or containing ) Control . But if we just prevent the ActiveX from getting events that would be okay with us . Search before you ask Some answers to previous questions mention to [CODE] , e.g . c# - Pass-through mouse events to parent control - Stack Overflow Other mentions to implement IMessageFilters , e.g . : winforms - C# Application-Wide Left Mouse Click Event - Stack Overflow winforms - Handling a click event anywhere inside a panel in C# - Stack Overflow winforms - C# Application-Wide Left Mouse Click Event - Stack Overflow Capturing Mouse Events from every component on C# WInForm - Stack Overflow Experiment : ActiveX still gets events I have fairly extensively tried both override WndProc and IMessageFilter ways , filtering ( opt-in and opt-out ) a number of events . In some cases I can prevent events to reach native C# controls , but the ActiveX still got its share . Filtering too much , prevented controls and ActiveX to paint , or even application to draw properly or caused crash on exit . This can be averted by selecting opt-in or opt-out options carefully . Is there another way ? Is there another way from C# /.NET to host an ActiveX Control while preventing it from getting mouse events ? Perhaps at application start time ? Try to do a EnableWindow(hand,FALSE) on the uppermost hwnd of the ActiveX Control after has been created . See Using Window Handle to disable Mouse clicks using c# how to do this in c# .",
+    "gt_terms": [
+      "C#",
+      "Windows Forms",
+      "Win7",
+      "ActiveX control",
+      "ActiveX",
+      "mouse",
+      "Control",
+      "Stack Overflow",
+      "IMessageFilters",
+      "winforms",
+      "WInForm",
+      "WndProc",
+      "IMessageFilter",
+      "/.NET",
+      "EnableWindow(hand,FALSE)",
+      "hwnd"
+    ],
+    "extracted_terms": [
+      "e.g",
+      "WndProc",
+      "FALSE",
+      "EnableWindow",
+      "NET",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.125,
+      "f1": 0.18181818181818182,
+      "hallucination": 0.6666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.0193717277486911,
+      "entity_density": 1.7094017094017095,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q38734432",
+    "text": "I have a folder that contains multiple sub-directories The version format is [CODE] [CODE] [CODE] , like 1.0.0d0 . And valid phases are d(ev) , a(lpha) , b(eta) , f(inal) , please note d < a < b < f . I 'd like to get the latest version number which is 16.0.0a2 using batch script . I write such codes , but does n't work , because the sub-directories are sorted by alphabetical order . So it will give a result 16.0.0d24 . [CODE] The following script does what you want : [CODE] The basic concept is to adapt the version numbers so that ( alpha - ) numeric sorting provides the same result as alphabetic sorting . This can be achieved by adding a great number to every numeric part of the version numbers so that each one always has got the same number of digits . In addition , since the priority of the phase figure is not of alphabetical order , adequate replacements are done . The core idea is taken from this answer and is credited to Aacini . Similar code to the one posted by aschipfl . Same value padding approach for each segment , just a different handling of name splitting and value padding . [CODE]",
+    "gt_terms": [
+      "16.0.0a2",
+      "batch script",
+      "16.0.0d24"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.028751123090745734,
+      "entity_density": 0.4694835680751174,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q22470038",
+    "text": "I am currently building a module for an ecommerce website ( Lemonstand ) . My shop sells both normal books and ebooks , and charge different rates of for shipping based on the subtotal of all items in the cart ( $7 shipping cost for subtotal of less than $20 , $14 shipping cost for between $20 and $ 50 .. etc ) . Currently the website just uses the subtotal of all items in the cart to determine which rate should be applied . The problem is , I want only the subtotal of normal books to be used for calculating shipping , because obviously ebooks do n't need shipping . Lemonstand platform has some built_in functions that I 'm using to help with this . update_shipping_quote function is called just before shipping cost is calculated . It will be used to change the subtotal of cart items so that shipping cost can be calculated using the subtotal of non-ebooks instead . Here is the API documentation for the function : https://v1.lemonstand.com/api/event/shop:onupdateshippingquote/ Here is the bit of code that 's giving me trouble . I want to know if the value I get at the end ($non_ebook_subtotal) actually contains the value it 's supposed to . If anyone can come up with a better method for doing what I 'm trying to do , please share . [CODE] [CODE] [CODE] [CODE] Thanks [CODE]",
+    "gt_terms": [
+      "Lemonstand",
+      "update_shipping_quote",
+      "API"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "v1.lemonstand.com",
+      "API"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.6666666666666666,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.6666666666666666,
+      "coverage": 0.03643410852713178,
+      "entity_density": 1.282051282051282,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q21380268",
+    "text": "I have a string of numerical values separated with spaces : [CODE] I want to get all occurrences of the string , where combined sum of numbers is x . So , if I search : 2041 it should return an array ( \" 318 500 358 865 \" ) or if I search : 1818 it should return an array ( \" 920 898 \" , \" 31 470 725 358 114 56 9 55 \" ) . I also need solution to be optimal , because string of numbers can sum up to hundreds of thousands . Principle explained in theory would be good , but preferred languages are PHP or NodeJs if solution is given by programming language . Even MySQL solution would be nice , if possible . But solution by any language would be nice anyway . Extra notes numbers are all positive integers number values are between 1-10000 Here you go , in Python . This has linear complexity : [CODE] I 'm assuming there are no negative values in your list , and the list consists purely of integers separated by spaces . You should n't have any problems translating it into any other language . I hope the algorithm is self-explanatory , if not ask . Usage : [CODE] First we pass the string we want to search , then we use method to_array() so we can create the array from the string , then you need to choose which mode you want to use . It has 2 modes , soft search and hard search . you can choose which one to use in the find method , [CODE] , [CODE] mode , [CODE] mode ; The soft mode it is really simple , creates a new multidimensional array with keys as the strlen of the numbers ( method order()) , so if we are searching for a number 70 we do n't really wanna use the 3 digits or more , i mean ( 100 , 99999 etc .. . ) . Then it just minus the search value with the number and tries to search in the entire array with ( in_array ) if it has the result ; [CODE] The hard mode is just as the name states , we will loop through every number . [CODE] Of course we could really make a few more tweaks but from what i tested it gives good results . Feel free to ask if you have any questions . Example with outputs : http://codepad.viper-7.com/INvSNo [CODE] Output example for 285 : [CODE]",
+    "gt_terms": [
+      "string",
+      "array",
+      "PHP",
+      "NodeJs",
+      "MySQL",
+      "integers",
+      "Python",
+      "list",
+      "to_array()",
+      "find",
+      "strlen",
+      "order())",
+      "in_array"
+    ],
+    "extracted_terms": [
+      "NodeJs",
+      "PHP",
+      "to_array()",
+      "order()",
+      "codepad.viper",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.38461538461538464,
+      "f1": 0.4878048780487804,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.03959923664122137,
+      "entity_density": 1.3921113689095126,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q40138976",
+    "text": "I 'm trying to upload a video while using Laravel . Though uploading images work fine for me when I change my controller line [CODE] to : [CODE] I only see uploaded written on a new page , but no video . Controller : [CODE] Routes : [CODE] View : [CODE] You can try like this : Controller : [CODE] php.ini files contains some limits that might affect this . Try changing these to high enough values : [CODE]",
+    "gt_terms": [
+      "video",
+      "Laravel",
+      "images",
+      "php.ini"
+    ],
+    "extracted_terms": [
+      "php.ini",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.085995085995086,
+      "entity_density": 2.5316455696202533,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q42064739",
+    "text": "We can create many wrapper scripts to call specific binary files and use alias to point to different string . My requirement is we need to call the alias string in exec system call . If we run that string directly in exec call , the system call fails Ex : [CODE] The above execl system call fails . I think it is unable to find alias string in the PATH and that is expected . How to get away from this problem ? ? The usage of ksh/bash with command as options worked like a charm . Thanks",
+    "gt_terms": [
+      "binary",
+      "string",
+      "exec",
+      "execl",
+      "PATH",
+      "ksh/bash"
+    ],
+    "extracted_terms": [
+      "PATH",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.01639344262295082,
+      "entity_density": 2.0202020202020203,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q29258410",
+    "text": "For example . I have multiple classes as : Inventory , Product , Sales etc . Now my requirement is to put all above types in a single map container . I do n't want to create multiple maps for putting above each object values . If all your classes can implement the same interface , then you can store them all in the same container . Otherwise you would have to use Object .. . More generally - why do you not want to use multiple maps ? Set the value type as Object : [CODE] Or , if Inventory , Product , Sales , and whatever else is going into the map share a superclass or implement the same interface , then set the value type as that : [CODE]",
+    "gt_terms": [
+      "Inventory",
+      "Product",
+      "Sales",
+      "map",
+      "maps",
+      "Object"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.012364760432766615,
+      "entity_density": 0.7575757575757576,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q43323560",
+    "text": "I need to get all fields of a row who has min sqrt value for one column [CODE] The min function works perfectly But the name and dist would always return from first row . Eg . Min was from 5th row even then name and dist would be of first row mysql version [CODE]",
+    "gt_terms": [
+      "row",
+      "min sqrt",
+      "column",
+      "min",
+      "name",
+      "dist",
+      "mysql"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.030418250950570342,
+      "entity_density": 1.8181818181818181,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q1179655",
+    "text": "In Erlang is there a way reference the currently executing function ) ? That would be useful to spawn an infinite loop [CODE] [CODE] In JavaScript arguments.callee does just that , see the specification on MDC . Edit to answer a ' why would you do that ' : mostly curiosity ; it is also useful to define a timer when prorotyping : [CODE] The Erlang language does not expose any way for anonymous functions to refer to them self , but there is a rumour that Core Erlang ( an intermediate but official representation in the compiler phases ) does have such a feature . I do n't know why I am forwarding this , but you know , if you happen to be generating Core Erlang in a DSL or similar it is something that is within reach . In Erlang/OTP 17.0-rc1 , you can use a named fun for that : [CODE] In earlier versions , there is no way to do exactly that . You could pass the function itself as an argument : [CODE]",
+    "gt_terms": [
+      "Erlang",
+      "JavaScript",
+      "arguments.callee",
+      "Core Erlang",
+      "compiler",
+      "DSL",
+      "Erlang/OTP",
+      "17.0-rc1"
+    ],
+    "extracted_terms": [
+      "JavaScript",
+      "OTP",
+      "arguments.callee",
+      "DSL",
+      "MDC",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.375,
+      "f1": 0.42857142857142855,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.06050605060506051,
+      "entity_density": 3.35195530726257,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q18141829",
+    "text": "All . I am using xmpp framework for Facebook chat implementation in iOS application . The chat is working fine with iOS , but there is one issue with this . When online and offline friends are being shown , always presence of online and offline friend is called . In this process I 'm getting the Blank name of online user in Facebook chat , the last name field is blank .",
+    "gt_terms": [
+      "xmpp",
+      "Facebook",
+      "iOS"
+    ],
+    "extracted_terms": [],
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "signals": {
+      "known_term_ratio": 0.0,
+      "coverage": 0.0,
+      "entity_density": 0.0,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q43318137",
+    "text": "Trying to use features from OpenMP 3 [CODE] in Visual Studio 2017 ; i 'm getting error c3005 : [OUTPUT] [OUTPUT] [OUTPUT] It seems Visual Studio 2017 only supports OpenMP2 . In a request to support OpenMP4.5 it was said from VS team [OUTPUT] Another answer said [OUTPUT] How to use clang-cl with Visual Studio 2017 and what is the fallback option ? You may obtain clang-cl from http://llvm.org/builds/ But you may run into integration issues starting with VS2017 : https://bugs.llvm.org/show_bug.cgi?id=33672 https://www.reddit.com/r/cpp/comments/6oepq4/making_windows_clang_401_play_nice_with_visual/ There is an attempt at solving this : https://github.com/WubbaLubba/LlvmForVS2017 [CODE] is a clang-cl option which makes it fall back to Microsoft 's compiler if it ca n't compile something itself . But keep in mind there is no support for the [CODE] hack : http://clang-developers.42468.n3.nabble.com/clang-windows-clang-cl-support-for-MP-tp4045651p4045659.html",
+    "gt_terms": [
+      "OpenMP",
+      "Visual Studio",
+      "2017",
+      "error c3005",
+      "OpenMP2",
+      "OpenMP4.5",
+      "VS",
+      "clang-cl",
+      "VS2017",
+      "Microsoft",
+      "compiler"
+    ],
+    "extracted_terms": [
+      "llvm.org",
+      "github.com",
+      "n3.nabble.com",
+      "CODE",
+      "www.reddit.com",
+      "tp4045651p4045659.html",
+      "show_bug.cgi",
+      "bugs.llvm.org",
+      "WubbaLubba",
+      "OUTPUT"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 0.3,
+      "coverage": 0.15751295336787566,
+      "entity_density": 7.874015748031496,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q23159108",
+    "text": "I have an app with a lot of data ( including NSMutableArrays , NSNumbers , various custom classes ) that uses NSCoding protocol presently . However , I would like to implement an incremental saving system , to save time during the \" saving process \" . The loading time is not important . Is there any existing container that checks its members for \" dirty \" and only updates those values when writing to file ; or better yet , a protocol that can be implemented to do the same ; or any other simple , available way of doing this ? For large amount of data its better to change data model to Core Data . Otherwise , you may want to save changes after specific events , or , bad solution is to use NSTimer , to save all data every time you want to .",
+    "gt_terms": [
+      "NSMutableArrays",
+      "NSNumbers",
+      "NSTimer"
+    ],
+    "extracted_terms": [],
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "signals": {
+      "known_term_ratio": 0.0,
+      "coverage": 0.0,
+      "entity_density": 0.0,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q10028031",
+    "text": "Now this is example list : [CODE] What i want is getting the list count at this main list ( dblWordFreqByCluster ) . Which means getting count of [CODE] lists . I can count them via making [CODE] iteration which i do n't want to because i suppose that would cause unnecessary performance loss . Using LINQ you could do [CODE] However , that is n't much different than using a [CODE] loop , but it would be less verbose and just as easy to read . A simple : [CODE] Should work .. . Edited : I thought it was java ;)",
+    "gt_terms": [
+      "list",
+      "lists",
+      "LINQ",
+      "java"
+    ],
+    "extracted_terms": [
+      "LINQ",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.054474708171206226,
+      "entity_density": 1.9417475728155338,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q14951651",
+    "text": "I am using below code snippet to create a singleton instance of Connection object for a web application which will be used by multiple users . [CODE] This class will return same instance of connection until and unless connection is closed or null . I suppose same connection will be shared by all users on different machine as it is static one . If one user is setting auto commit to off to commit couple of statements as transaction , will this create problems for other users by restricting their connection to disable autocommit as well or by commiting their transaction in mid way if one user has used con.commit() ? Yes , it will cause problems . They are sharing the same instance , so this statement is wrong [CODE] It should read [CODE] Since all the users ( threads ) are using the same instance , changes made to it by one user will affect the others . As Shivam Kalra says , connection pools are a better tool . Most probably your web server will already provide them , and if not there are third party libraries . [OUTPUT] Yes . [OUTPUT] Yes . Database connections are not safe for use by multiple threads , and should not in general even be member fields let alone singletons . They should be method-local variables . If you want to economize on creating & destroying them , you must use a connection pool .",
+    "gt_terms": [
+      "Connection",
+      "con.commit()"
+    ],
+    "extracted_terms": [
+      "OUTPUT",
+      "con.commit",
+      "commit()",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.03484848484848485,
+      "entity_density": 1.6326530612244898,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q20557278",
+    "text": "Here is an example of three forms with the same repeated instance and no unique identifier : [CODE] How can I attach a different console.log or any message triggered by a click to each of these buttons ? I am targeting these buttons so far with a jQuery Dom selector [CODE] I posted on codepen also : http://codepen.io/marc313/pen/uphiv Please and thanks ! While you could bind to each button individually , as in Deryck 's answer , often times such practice leads to duplicate code . Its likely your actual use case is n't to log 3 different things to the console when 3 buttons are clicked . Particularly if these 3 buttons do similar actions or if they act on the same set of data , its often much more clean to do something like this : jQuery [CODE] Markup [CODE] Reference On calling .on() for event binding Each item in a set will have an [CODE] number and you can use that to identify them . jQuery : [CODE] The .eq() method means \" equals \" and refers to the index number for the selector you chose in [CODE] . If you want to do that systemically , you can put that into a [CODE] or [CODE] loop . Of course , you would replace eq(0) with whatever number you want to use to identify the button ( starting from 0 being the first element in the set , not greater than [CODE] . Here 's a fork of your CodePen to see it in action with alert()",
+    "gt_terms": [
+      "console.log",
+      "buttons",
+      "jQuery Dom",
+      "selector",
+      "codepen",
+      "button",
+      "console",
+      "jQuery",
+      ".on()",
+      ".eq()",
+      "eq(0)",
+      "set",
+      "alert()"
+    ],
+    "extracted_terms": [
+      "console.log",
+      "codepen.io",
+      "on()",
+      "eq()",
+      "alert()",
+      "CodePen",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.5384615384615384,
+      "f1": 0.7000000000000001,
+      "hallucination": 0.0
+    },
+    "signals": {
+      "known_term_ratio": 0.5714285714285714,
+      "coverage": 0.08401486988847584,
+      "entity_density": 2.6923076923076925,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q9450199",
+    "text": "so I am developing a google chrome extension for my chromebook . The idea is to make a \" magnifying \" type of effect wherever the mouse goes on the current webpage in order to zoom in on text/images or whatever the mouse hovers . I have the code for this effect working on a webpage , it does exactly what I want . Where I 'm confused is how to integrate this to a chrome extension . I would want an extension like button to show up in the upper right corner of the chrome browser and then you can click it and then a \" box or magnifying glass \" would appear and then you could click and drag it around the page . The box would go away if you clicked the extension button again . This is what I know after a bit of online searching .. . - I need a manifest.json file , my current file looks like this .. . [CODE] } I 've tried a few different things , but i 'm sure I have a few things that I do n't need . Also you can go to http://www.supertecho.com/background.html in order to see what the current code is for my magnification idea . I have a popup.html file but I 'm not sure if the popup.html or the background.html code would be more necessary or not ( or maybe both is needed ) . Let me know if I am unclear about things and I will clarify ! Thanks a lot in advance :-) The magnifying effect code should be a content script , running in the DOM of the browsed pages ( effectively injected into each page ) . See http://code.google.com/chrome/extensions/content_scripts.html",
+    "gt_terms": [
+      "google chrome",
+      "chromebook",
+      "mouse",
+      "text/images",
+      "chrome",
+      "button",
+      "chrome browser",
+      "box",
+      "magnifying glass",
+      "page",
+      "manifest.json",
+      "popup.html",
+      "background.html",
+      "pages"
+    ],
+    "extracted_terms": [
+      "code.google.com",
+      "content_scripts.html",
+      "background.html",
+      "DOM",
+      "www.supertecho.com",
+      "manifest.json",
+      "popup.html",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.375,
+      "recall": 0.21428571428571427,
+      "f1": 0.2727272727272727,
+      "hallucination": 0.625
+    },
+    "signals": {
+      "known_term_ratio": 0.375,
+      "coverage": 0.09662162162162162,
+      "entity_density": 2.7491408934707904,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q10734649",
+    "text": "I am having problem in populating data from a table in one screen to a Text Field in the other screen . I have two classes FirstClass containing a textbox and a button . On pressing a button a second window is opened containing a Table of values . As the user double clicks a row the value of the second column of the row should be inserted into the textbox of the FirstClass . Code of both the classes is attached . Thanking you in anticipation . [CODE] The quick and easy way ( but it introduces coupling between the 2 classes ) would be to pass userNameFld to your showDialog method and make it a member of TableClass . You can then change its value from the TableClass class . A better way would be to bind the value of userNameFld to value .",
+    "gt_terms": [
+      "table",
+      "Text Field",
+      "FirstClass",
+      "textbox",
+      "button",
+      "window",
+      "row",
+      "column",
+      "showDialog",
+      "TableClass"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "TableClass",
+      "FirstClass"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.3,
+      "f1": 0.41379310344827586,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 0.3333333333333333,
+      "coverage": 0.064343163538874,
+      "entity_density": 2.054794520547945,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q44055225",
+    "text": "I have a problem that I frequently deal with using MVC that I ca n't seem to find an easy solution for . Very frequently I find myself creating a viewmodel for an object that has a collection of smaller objects . For instance , I created a Staff screen where the user adds a staff member to the database . Most of this is fairly straight forward , but then I need to be able to add a credential . The number of credentials a staff can have is dynamic , so there 's a second table with a [CODE] referencing the staff , as well as the appropriate credential data . So my viewmodel has a Staff object , and an IEnumerable of Credential objects . Currently when the user adds/edits staff in the partialview form , a popup with the credential fields appears . When you save the credential , I manually generate the hidden fields of every single property as hidden html elements using javascript strings , then append it to the appropriate places . It gets really unmanageable . [CODE] etc ... to hid7 . I also generate a series of tags to display the data on the page . An absolute mess . It currently works , but there has to be a better way , and I 'm about to deal with a very similar problem . I feel like I 'm reinventing the wheel . My first instinct was to add a nested form , but my research tells me MVC forbids this , so that 's out of the question . To sum up what I 'm looking for : How can I dynamically load/save objects in the partial view , without losing the data on HTTPPOST ?",
+    "gt_terms": [
+      "MVC",
+      "viewmodel",
+      "screen",
+      "table",
+      "IEnumerable",
+      "form",
+      "html",
+      "javascript",
+      "strings",
+      "page",
+      "HTTPPOST"
+    ],
+    "extracted_terms": [
+      "CODE",
+      "HTTPPOST",
+      "MVC"
+    ],
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.18181818181818182,
+      "f1": 0.28571428571428575,
+      "hallucination": 0.3333333333333333
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.014775016789791807,
+      "entity_density": 1.0101010101010102,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q31461154",
+    "text": "Below are my configuration [CODE] [CODE] goes through transformation below [CODE] The [CODE] statement from above prints only two consistent headers regardless [CODE] While Sending a Kafka message some headers were passed including KafkaHeaders.MESSAGE_KEY but I am not getting back that either , wondering if there is away to accomplish this ? Unfortunately it does n't work that way .. . The Producer part ( KafkaProducerMessageHandler ) looks like this : [CODE] As you see we do n't send any messageHeaders to the Kafka topic . Only payload and exactly under that messageKey as it specified by Kafka protocol . From other side the Consumer side ( KafkaHighLevelConsumerMessageSource ) does this logic : [CODE] As you see we do n't care here about messageKey . The [CODE] is for you ! It does this before sending the message to the channel : [CODE] As stated before there 's no concept of message headers in Kafka . Because I struggled with that same problem in the past I 've compiled a small library that helps tackle this issue . It may come handy to you .",
+    "gt_terms": [
+      "headers",
+      "Kafka",
+      "KafkaHeaders.MESSAGE_KEY",
+      "KafkaProducerMessageHandler",
+      "messageHeaders",
+      "messageKey",
+      "KafkaHighLevelConsumerMessageSource"
+    ],
+    "extracted_terms": [
+      "KafkaProducerMessageHandler",
+      "MESSAGE_KEY",
+      "KafkaHeaders",
+      "KafkaHeaders.MESSAGE_KEY",
+      "KafkaHighLevelConsumerMessageSource",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.8333333333333334,
+      "recall": 0.7142857142857143,
+      "f1": 0.7692307692307692,
+      "hallucination": 0.16666666666666666
+    },
+    "signals": {
+      "known_term_ratio": 0.16666666666666666,
+      "coverage": 0.13666352497643733,
+      "entity_density": 3.2432432432432434,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q27926052",
+    "text": "I 've implemented the IQKeyboardManager framework to make the keyboard handle easier . It works very fine , except for one thing : There 're some UItextField controls in my app which open a UIDatePicker in place of a default keyboard ( e.g . number pad , decimal pad , ASCII capable , etc . ) . Here 's a code sample with the graphical result : [CODE] My question is : Is it possible to handle the action on the \" OK \" button to fill the field \" Date de naissance \" ? EDIT : For the ones who want to know how I solved my problem : in my .h , I imported IQDropDownTextField.h : [CODE] in the .h , I changed the type of my UITextField to IQDropDownTextField : [CODE] [CODE] select your field in Interface Builder or in your .xib , and show the Identity Inspector : change your field 's class to IQDropDownTextField . Note according to Mohd Iftekhar Qurashi comment : the two next points can be avoided with the following code : [CODE] in the .m , I added the setCustomDoneTarget:action : method : [CODE] in the .m , I added the doneAction : method : [CODE] You can now add customised selector ( please refer ' IQUIView+ IQKeyboardToolbar.h ' ) for previous/next/done to get notify . Note that custom selector does n't affect the native functionality of previous/next/done , it 's just used for callback purpose only . For detail documentation please refer ' IQUIView+ IQKeyboardToolbar.h ' , for ' how to use ? ' please refer ' TextFieldViewController.m ' .",
+    "gt_terms": [
+      "IQKeyboardManager",
+      "keyboard",
+      "UItextField",
+      "UIDatePicker",
+      "pad",
+      "button",
+      ".h",
+      "IQDropDownTextField.h",
+      "IQDropDownTextField",
+      "Interface Builder",
+      ".xib",
+      "Identity Inspector",
+      ".m",
+      "setCustomDoneTarget:action :",
+      "doneAction :",
+      "IQUIView+",
+      "IQKeyboardToolbar.h",
+      "TextFieldViewController.m"
+    ],
+    "extracted_terms": [
+      "TextFieldViewController",
+      "e.g",
+      "TextFieldViewController.m",
+      "EDIT",
+      "IQKeyboardToolbar.h",
+      "IQDropDownTextField.h",
+      "ASCII",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2222222222222222,
+      "f1": 0.30769230769230765,
+      "hallucination": 0.5
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.10652920962199312,
+      "entity_density": 2.9629629629629632,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q24663347",
+    "text": "I 'm investigating the use of NodaTime LocalDate to replace our existing use of of the BCL DateTime/DateTimeOffset classes . We have run into a number of timezone related issues with our code due to our misunderstanding of the arguably ambiguous behavior of DateTime . To fully leverage NodaTime I want to be able to send and receive dates from our ASP.NET Web API 2 web services of the form [CODE] . I have had success in properly serializing LocalDate to [CODE] . However I am unable to deserialize a date query parameter to a LocalDate . The LocateDate is always 1970-01-01 . Here is my current prototype code ( some code removed for clarity ) : PeopleController.cs [CODE] Global.asax.cs [CODE] I execute the web service via [CODE] However , what is returned is January 1 , 1970 . Stepping into the code I confirm that birthday is set to 1970-01-01 . How can I configure the serialization such that the date specified in the URL as a query parameter ( or path element ) can be properly serialized into a NodaTime LocalDate ? Thanks to this very helpful article from Microsoft , I was able to find the solution using a custom model binder . Add this class to your project : [CODE] Then change your controller method to use it . [CODE] The article also mentions other ways to register model binders . Note that since your method returns a LocalDate , you 'll still need the Noda Time serialziation for Json.net , as that ends up getting used in the body for the return value .",
+    "gt_terms": [
+      "NodaTime",
+      "LocalDate",
+      "BCL",
+      "DateTime/DateTimeOffset",
+      "DateTime",
+      "ASP.NET Web API",
+      "LocateDate",
+      "PeopleController.cs",
+      "Global.asax.cs",
+      "Microsoft",
+      "model binder",
+      "model binders",
+      "Noda Time",
+      "serialziation",
+      "Json.net"
+    ],
+    "extracted_terms": [
+      "PeopleController.cs",
+      "DateTimeOffset",
+      "ASP",
+      "PeopleController",
+      "DateTime",
+      "API",
+      "Json.net",
+      "NodaTime",
+      "URL",
+      "ASP.NET",
+      "LocateDate",
+      "BCL",
+      "NET",
+      "LocalDate",
+      "Global.asax.cs",
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.6875,
+      "recall": 0.7333333333333333,
+      "f1": 0.7096774193548386,
+      "hallucination": 0.3125
+    },
+    "signals": {
+      "known_term_ratio": 0.5,
+      "coverage": 0.16452268111035884,
+      "entity_density": 5.947955390334572,
+      "section_type_mismatch": 0.0
+    }
+  },
+  {
+    "doc_id": "Q9160048",
+    "text": "Using core data , data is being fetched properly and shown properly , issue is with the search that it does not filter the results , whatever I type in the search bar , it does show the same table view with same data in the filtered results. . [CODE] Fetching data from core data : [CODE] Search bar implementation : [CODE] How to resolve this issue ? Just make code clear before and define every methods , you are just setting predicate , not firing query for it . just make separate method and just pass search text as parameter to that method for predicate and fire fetch query then reload table .",
+    "gt_terms": [
+      "search bar",
+      "table"
+    ],
+    "extracted_terms": [
+      "CODE"
+    ],
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "signals": {
+      "known_term_ratio": 1.0,
+      "coverage": 0.02666666666666667,
+      "entity_density": 0.8771929824561403,
+      "section_type_mismatch": 0.0
+    }
+  }
+]
