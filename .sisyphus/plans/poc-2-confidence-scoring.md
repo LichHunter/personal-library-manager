@@ -796,7 +796,7 @@ Please recommend:
 
 ---
 
-- [ ] 5. Run Correlation Analysis and Threshold Determination (Phase 3)
+- [x] 5. Run Correlation Analysis and Threshold Determination (Phase 3)
 
   **What to do**:
   - Create `poc/poc-2-confidence-scoring/analysis.py`
