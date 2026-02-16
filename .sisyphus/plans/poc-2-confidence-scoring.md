@@ -576,7 +576,7 @@ Please recommend:
 
 ---
 
-- [ ] 2. Implement Confidence Signal Calculators (Phase 0)
+- [x] 2. Implement Confidence Signal Calculators (Phase 0)
 
   **What to do**:
   - Create `poc/poc-2-confidence-scoring/signals.py`
