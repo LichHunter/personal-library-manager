@@ -11,8 +11,7 @@ dist/
 build/
 .eggs/
 
-# UV
-uv.lock
+# UV (uv.lock tracked for reproducible Nix builds)
 
 # IDE
 .idea/
