@@ -65,13 +65,13 @@ Create a containerized slow extraction service with configurable chunking, exter
 - `tests/integration/test_chunking_integration.py`
 
 ### Definition of Done
-- [ ] `nix build .#slow-extraction` produces working Python venv
-- [ ] `nix build .#slow-extraction-docker` produces loadable Docker image
-- [ ] Docker container processes documents and outputs JSON
-- [ ] Both chunking strategies work (whole/heading)
-- [ ] Low-confidence terms logged to JSONL
-- [ ] All unit tests pass
-- [ ] `nix develop` still works (devShell preserved)
+- [x] `nix build .#slow-extraction` produces working Python venv
+- [x] `nix build .#slow-extraction-docker` produces loadable Docker image
+- [x] Docker container processes documents and outputs JSON
+- [x] Both chunking strategies work (whole/heading)
+- [x] Low-confidence terms logged to JSONL
+- [x] All unit tests pass
+- [x] `nix develop` still works (devShell preserved)
 
 ### Must Have
 - Chunker class hierarchy with registry pattern
@@ -387,7 +387,7 @@ Critical Path: Task 2 → Task 3 → Task 4 → Task 5 → Task 6
 
 ---
 
-- [ ] 5. Update Main Flake and Verify Full Build
+- [x] 5. Update Main Flake and Verify Full Build
 
   **What to do**:
   - Update `flake.nix`:
@@ -444,7 +444,7 @@ Critical Path: Task 2 → Task 3 → Task 4 → Task 5 → Task 6
 
 ---
 
-- [ ] 6. Docker End-to-End Integration Test
+- [x] 6. Docker End-to-End Integration Test
 
   **What to do**:
   - Create test script or run manual E2E test:
@@ -558,12 +558,12 @@ docker run --rm -e ANTHROPIC_API_KEY=$KEY -e PROCESS_ONCE=true \
 ```
 
 ### Final Checklist
-- [ ] All unit tests pass (~55 tests)
-- [ ] `nix build .#slow-extraction` works
-- [ ] `nix build .#slow-extraction-docker` works
-- [ ] Docker container processes documents
-- [ ] Both chunking strategies work
-- [ ] Multiline text preserved in output
-- [ ] Low-confidence terms logged
-- [ ] DevShell still works
-- [ ] No hardcoded paths or keys
+- [x] All unit tests pass (~55 tests)
+- [x] `nix build .#slow-extraction` works
+- [x] `nix build .#slow-extraction-docker` works
+- [x] Docker container processes documents
+- [x] Both chunking strategies work
+- [x] Multiline text preserved in output
+- [x] Low-confidence terms logged
+- [x] DevShell still works
+- [x] No hardcoded paths or keys

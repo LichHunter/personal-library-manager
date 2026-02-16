@@ -16,9 +16,9 @@ Build a trustworthy personal knowledge assistant that:
 
 | Phase | Status | Notes |
 |-------|--------|-------|
-| Requirements | Complete | See [REQUIREMENTS.md](./REQUIREMENTS.md) |
-| Architecture Design | In Progress | See [DESIGN_PLAN.md](./DESIGN_PLAN.md) |
-| RAG Pipeline Research | In Progress | See [RAG_PIPELINE_ARCHITECTURE.md](./RAG_PIPELINE_ARCHITECTURE.md) |
+| Requirements | Complete | See [REQUIREMENTS.md](./docs/REQUIREMENTS.md) |
+| Architecture Design | In Progress | See [DESIGN_PLAN.md](./docs/DESIGN_PLAN.md) |
+| RAG Pipeline Research | In Progress | See [RAG_PIPELINE_ARCHITECTURE.md](./docs/architecture/RAG_PIPELINE_ARCHITECTURE.md) |
 | Term Extraction Research | **Complete** | POC-1 series done. Target 95/95/5 not achieved; max ~80/90/20. See [POC-1 Results](#poc-1-llm-term-extraction) |
 
 ---
@@ -68,14 +68,17 @@ The `src/plm/extraction/` package implements:
 
 ```
 personal-library-manager/
-├── REQUIREMENTS.md           # System requirements
-├── DESIGN_PLAN.md            # Design phase tracker
-├── RAG_PIPELINE_ARCHITECTURE.md  # RAG system design
-├── RESEARCH.md               # Research notes
+├── README.md                 # This file
+├── flake.nix                 # Nix configuration
+├── pyproject.toml            # Python project config
 │
 ├── src/plm/                  # Production extraction package
 │   ├── extraction/           # Fast (heuristic) + Slow (V6 LLM) systems
 │   └── shared/llm/           # LLM providers (Anthropic, Gemini)
+│
+├── tests/                    # Test suite
+├── scripts/                  # Build and test scripts
+├── data/                     # Vocabularies and data files
 │
 ├── poc/                      # Proof of Concept experiments
 │   ├── poc-1-llm-extraction-guardrails/   # Initial extraction research
@@ -85,8 +88,15 @@ personal-library-manager/
 │   ├── retrieval_benchmark/              # Retrieval strategy comparison
 │   └── chunking_benchmark_v2/            # Chunking strategy comparison
 │
-└── docs/                     # Additional documentation
+└── docs/                     # Documentation
+    ├── REQUIREMENTS.md       # System requirements
+    ├── DESIGN_PLAN.md        # Design phase tracker
+    ├── RESEARCH.md           # Research notes
+    ├── architecture/         # Architecture documents
+    │   └── RAG_PIPELINE_ARCHITECTURE.md
     └── research/             # Research documentation
+        ├── ground-truth/     # Ground truth analysis
+        └── sentence-splitting/  # Sentence splitting research
 ```
 
 ## Quick Links
@@ -100,10 +110,10 @@ personal-library-manager/
 
 ### Design Documents
 
-- [Requirements](./REQUIREMENTS.md) - System requirements and success criteria
-- [Design Plan](./DESIGN_PLAN.md) - Development phase tracker
-- [RAG Architecture](./RAG_PIPELINE_ARCHITECTURE.md) - Detailed pipeline design
-- [Research Notes](./RESEARCH.md) - Research findings and decisions
+- [Requirements](./docs/REQUIREMENTS.md) - System requirements and success criteria
+- [Design Plan](./docs/DESIGN_PLAN.md) - Development phase tracker
+- [RAG Architecture](./docs/architecture/RAG_PIPELINE_ARCHITECTURE.md) - Detailed pipeline design
+- [Research Notes](./docs/RESEARCH.md) - Research findings and decisions
 
 ---
 
