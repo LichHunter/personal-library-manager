@@ -50,3 +50,8 @@ Signal engineering (Phase 4a) required:
 - Add term frequency signals
 - Consider signal combinations/interactions
 - Re-evaluate grading criteria to get more balanced dataset
+## POC-2 Learnings
+- Individual confidence signals are weak predictors of extraction quality (max r=0.334).
+- Ensemble methods (Random Forest) are highly effective even with weak individual signals, achieving 96.7% accuracy.
+- High class imbalance (94% POOR) makes traditional correlation and agreement metrics (like Cohen's kappa) difficult to interpret.
+- Fast extraction systems may perform significantly worse on some datasets (like SO NER) than others, necessitating aggressive routing to slow systems to maintain quality.
