@@ -1,0 +1,179 @@
+{
+  "kappa": 0.0,
+  "n_samples": 30,
+  "agreement_rate": 0.7,
+  "auto_grades": [
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR"
+  ],
+  "llm_grades": [
+    "POOR",
+    "POOR",
+    "POOR",
+    "ACCEPTABLE",
+    "ACCEPTABLE",
+    "POOR",
+    "POOR",
+    "POOR",
+    "ACCEPTABLE",
+    "ACCEPTABLE",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "ACCEPTABLE",
+    "ACCEPTABLE",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "POOR",
+    "ACCEPTABLE",
+    "POOR",
+    "ACCEPTABLE",
+    "POOR",
+    "POOR",
+    "POOR",
+    "ACCEPTABLE",
+    "POOR",
+    "POOR"
+  ],
+  "disagreements": [
+    {
+      "doc_id": "Q35154661",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "Despite moderate precision and recall, the extraction captures key technical terms like API and Ampserand.js, and the hallucination rate is within acceptable limits.",
+      "metrics": {
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444444444444445,
+        "hallucination": 0.5
+      }
+    },
+    {
+      "doc_id": "Q45291615",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has a moderate F1 score of 0.469 and a hallucination rate of 40%, which falls short of the \"GOOD\" criteria but meets the \"ACCEPTABLE\" threshold by capturing some key terms with reasonable precision.",
+      "metrics": {
+        "precision": 0.6,
+        "recall": 0.38461538461538464,
+        "f1": 0.46875,
+        "hallucination": 0.4
+      }
+    },
+    {
+      "doc_id": "Q37087526",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has a moderate F1 score of 0.50 and a high hallucination rate of 66.67%, but still captures the key term \"OnEdit\" while maintaining 100% recall, making it marginally acceptable.",
+      "metrics": {
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "hallucination": 0.6666666666666666
+      }
+    },
+    {
+      "doc_id": "Q1719694",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has a moderate F1 score of 0.50 and a relatively low hallucination rate of 25%, meeting the criteria for an acceptable extraction with some room for improvement in recall and precision.",
+      "metrics": {
+        "precision": 0.75,
+        "recall": 0.375,
+        "f1": 0.5,
+        "hallucination": 0.25
+      }
+    },
+    {
+      "doc_id": "Q44075338",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has moderate performance with an F1 score of 0.40 and hallucination rate of 33.33%, capturing some key technical terms while missing others, but not severely compromising the overall understanding.",
+      "metrics": {
+        "precision": 0.6666666666666666,
+        "recall": 0.2857142857142857,
+        "f1": 0.4,
+        "hallucination": 0.3333333333333333
+      }
+    },
+    {
+      "doc_id": "Q20428669",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has a moderate F1 score of 0.558 and a relatively low hallucination rate of 25%, capturing most key technical terms while maintaining reasonable accuracy.",
+      "metrics": {
+        "precision": 0.75,
+        "recall": 0.4444444444444444,
+        "f1": 0.5581395348837209,
+        "hallucination": 0.25
+      }
+    },
+    {
+      "doc_id": "Q21380268",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has a moderate F1 score of 0.488 and a hallucination rate of 33.33%, which falls just outside the GOOD threshold but still captures some key terms with reasonable accuracy.",
+      "metrics": {
+        "precision": 0.6666666666666666,
+        "recall": 0.38461538461538464,
+        "f1": 0.4878048780487804,
+        "hallucination": 0.3333333333333333
+      }
+    },
+    {
+      "doc_id": "Q1179655",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has moderate performance with an F1 score of 0.429 and hallucination rate of 50%, capturing some key terms but missing several ground truth terms while also introducing some incorrect extractions.",
+      "metrics": {
+        "precision": 0.5,
+        "recall": 0.375,
+        "f1": 0.42857142857142855,
+        "hallucination": 0.5
+      }
+    },
+    {
+      "doc_id": "Q10734649",
+      "auto": "POOR",
+      "llm": "ACCEPTABLE",
+      "reason": "The extraction has a moderate F1 score of 0.414 and a hallucination rate of 33.33%, which falls within the acceptable range by capturing some key terms like FirstClass and TableClass while missing some important context terms.",
+      "metrics": {
+        "precision": 0.6666666666666666,
+        "recall": 0.3,
+        "f1": 0.41379310344827586,
+        "hallucination": 0.3333333333333333
+      }
+    }
+  ]
+}

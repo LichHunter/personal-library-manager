@@ -1,0 +1,1262 @@
+[
+  {
+    "doc_id": "Q44642308",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely missed the relevant terms related to lists and HTML elements, resulting in zero precision and recall, and 100% hallucination of unrelated terms like \"regex101.com\" and \"CODE\"."
+  },
+  {
+    "doc_id": "Q20321910",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.8,
+      "recall": 0.25,
+      "f1": 0.38095238095238093,
+      "hallucination": 0.2
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q40586358",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q42724032",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.3333333333333333,
+      "f1": 0.3636363636363636,
+      "hallucination": 0.6
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low precision and recall, with high hallucination, failing to capture most of the ground truth terms and introducing irrelevant terms."
+  },
+  {
+    "doc_id": "Q32929844",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.2,
+      "f1": 0.25,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low precision, recall, and F1 score, with high hallucination, indicating significant failure to capture the key terms from the original text."
+  },
+  {
+    "doc_id": "Q46385065",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q1795649",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.16666666666666666,
+      "f1": 0.2222222222222222,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q40175072",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q36802340",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q36059546",
+    "grade": "ACCEPTABLE",
+    "grade_numeric": 1,
+    "metrics": {
+      "precision": 0.7777777777777778,
+      "recall": 0.7,
+      "f1": 0.7368421052631577,
+      "hallucination": 0.2222222222222222
+    },
+    "auto_grade": "ACCEPTABLE"
+  },
+  {
+    "doc_id": "Q9412898",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q35154661",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444444444444445,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "Despite moderate precision and recall, the extraction captures key technical terms like API and Ampserand.js, and the hallucination rate is within acceptable limits."
+  },
+  {
+    "doc_id": "Q40885052",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1": 0.5714285714285715,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q45291615",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6,
+      "recall": 0.38461538461538464,
+      "f1": 0.46875,
+      "hallucination": 0.4
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has a moderate F1 score of 0.469 and a hallucination rate of 40%, which falls short of the \"GOOD\" criteria but meets the \"ACCEPTABLE\" threshold by capturing some key terms with reasonable precision."
+  },
+  {
+    "doc_id": "Q17283382",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely failed to identify any of the ground truth terms, resulting in zero precision and recall, and 100% hallucination, which falls far below the acceptable thresholds."
+  },
+  {
+    "doc_id": "Q35377419",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q27702641",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q18347569",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2222222222222222,
+      "f1": 0.30769230769230765,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has a low F1 score of 0.308 and a high hallucination rate of 50%, missing most of the key terms and failing to capture the technical context of the document."
+  },
+  {
+    "doc_id": "Q18549870",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.1111111111111111,
+      "f1": 0.1818181818181818,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q6565999",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5714285714285714,
+      "recall": 0.5454545454545454,
+      "f1": 0.5581395348837208,
+      "hallucination": 0.42857142857142855
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q12028246",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2,
+      "f1": 0.30769230769230765,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q19471961",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.75,
+      "recall": 0.18181818181818182,
+      "f1": 0.2926829268292683,
+      "hallucination": 0.25
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q22197728",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q18946310",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q29175",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.38461538461538464,
+      "f1": 0.4878048780487804,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q22361019",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.05,
+      "f1": 0.09523809523809523,
+      "hallucination": 0.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extremely low F1 score of 0.095 and very poor recall of 5.00% indicate a highly inadequate extraction that captures almost none of the key terms from the original text."
+  },
+  {
+    "doc_id": "Q30443827",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.2,
+      "recall": 0.5,
+      "f1": 0.28571428571428575,
+      "hallucination": 0.8
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q37087526",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has a moderate F1 score of 0.50 and a high hallucination rate of 66.67%, but still captures the key term \"OnEdit\" while maintaining 100% recall, making it marginally acceptable."
+  },
+  {
+    "doc_id": "Q1719694",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.75,
+      "recall": 0.375,
+      "f1": 0.5,
+      "hallucination": 0.25
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has a moderate F1 score of 0.50 and a relatively low hallucination rate of 25%, meeting the criteria for an acceptable extraction with some room for improvement in recall and precision."
+  },
+  {
+    "doc_id": "Q9648463",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2222222222222222,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low recall (22.22%), a mediocre F1 score (0.333), and fails to capture most of the key terms from the ground truth, despite having a moderate hallucination rate."
+  },
+  {
+    "doc_id": "Q563548",
+    "grade": "ACCEPTABLE",
+    "grade_numeric": 1,
+    "metrics": {
+      "precision": 0.8571428571428571,
+      "recall": 0.6666666666666666,
+      "f1": 0.75,
+      "hallucination": 0.14285714285714285
+    },
+    "auto_grade": "ACCEPTABLE"
+  },
+  {
+    "doc_id": "Q30003070",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.2,
+      "f1": 0.22222222222222224,
+      "hallucination": 0.75
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low precision, low recall, high hallucination, and fails to capture key domain-specific terms like \"images\" and \"upload\" despite being a technical text about image uploading."
+  },
+  {
+    "doc_id": "Q28966823",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6666666666666666,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q38189474",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1": 0.5,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q43446506",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q23599709",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely missed the ground truth terms, resulting in zero precision and recall, and 100% hallucination, indicating a fundamentally flawed extraction process."
+  },
+  {
+    "doc_id": "Q42257809",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.75,
+      "f1": 0.5217391304347827,
+      "hallucination": 0.6
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q26896100",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q46801920",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.7777777777777778,
+      "recall": 0.47058823529411764,
+      "f1": 0.5863874345549738,
+      "hallucination": 0.2222222222222222
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q22864488",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q5400925",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q23383232",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.25,
+      "f1": 0.36363636363636365,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q48601855",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q7219258",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.18181818181818182,
+      "f1": 0.23529411764705885,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q41722253",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2727272727272727,
+      "f1": 0.3870967741935484,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q46618900",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.75
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q41527933",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2727272727272727,
+      "f1": 0.3529411764705882,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q37820736",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.23529411764705882,
+      "recall": 0.5714285714285714,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.7647058823529411
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q30743014",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.3,
+      "f1": 0.3157894736842105,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q10567163",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q17672380",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1": 0.5,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q46042992",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.2,
+      "f1": 0.25,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q27886442",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q10294533",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.2222222222222222,
+      "hallucination": 0.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "Despite perfect precision, the extremely low recall of 12.50% indicates the extraction missed most key terms, resulting in an inadequate representation of the document's content."
+  },
+  {
+    "doc_id": "Q44075338",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.2857142857142857,
+      "f1": 0.4,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has moderate performance with an F1 score of 0.40 and hallucination rate of 33.33%, capturing some key technical terms while missing others, but not severely compromising the overall understanding."
+  },
+  {
+    "doc_id": "Q30003971",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.4,
+      "recall": 0.375,
+      "f1": 0.38709677419354843,
+      "hallucination": 0.6
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q25566739",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q20428669",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.75,
+      "recall": 0.4444444444444444,
+      "f1": 0.5581395348837209,
+      "hallucination": 0.25
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has a moderate F1 score of 0.558 and a relatively low hallucination rate of 25%, capturing most key technical terms while maintaining reasonable accuracy."
+  },
+  {
+    "doc_id": "Q5338056",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.7142857142857143,
+      "recall": 0.4,
+      "f1": 0.5128205128205129,
+      "hallucination": 0.2857142857142857
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q40438086",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.14285714285714285,
+      "f1": 0.2,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q19308940",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q4522886",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q43661057",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q18298603",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2857142857142857,
+      "f1": 0.36363636363636365,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q28324166",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction failed to identify any of the ground truth terms, resulting in zero precision, recall, and F1 score, which indicates a complete failure to extract relevant information from the document."
+  },
+  {
+    "doc_id": "Q8763993",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q44741900",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.14285714285714285,
+      "f1": 0.18181818181818182,
+      "hallucination": 0.75
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q23875451",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q10747489",
+    "grade": "GOOD",
+    "grade_numeric": 2,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571,
+      "hallucination": 0.0
+    },
+    "auto_grade": "GOOD"
+  },
+  {
+    "doc_id": "Q14649052",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.42857142857142855,
+      "recall": 0.42857142857142855,
+      "f1": 0.42857142857142855,
+      "hallucination": 0.5714285714285714
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low precision and recall (42.86%), with high hallucination (57.14%), indicating significant issues in accurately capturing the key terms from the original text."
+  },
+  {
+    "doc_id": "Q32617121",
+    "grade": "ACCEPTABLE",
+    "grade_numeric": 1,
+    "metrics": {
+      "precision": 0.8,
+      "recall": 0.5,
+      "f1": 0.6153846153846154,
+      "hallucination": 0.2
+    },
+    "auto_grade": "ACCEPTABLE"
+  },
+  {
+    "doc_id": "Q3316844",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low precision, low recall, high hallucination, and fails to capture most of the key technical terms from the original text."
+  },
+  {
+    "doc_id": "Q43917084",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.3333333333333333,
+      "f1": 0.4444444444444444,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q39096604",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q1721791",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.25,
+      "recall": 0.125,
+      "f1": 0.16666666666666666,
+      "hallucination": 0.75
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q26266420",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely missed the ground truth terms, resulting in zero precision and recall, and 100% hallucination, which falls far below the acceptable thresholds for a quality extraction."
+  },
+  {
+    "doc_id": "Q8360162",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6,
+      "recall": 0.3333333333333333,
+      "f1": 0.42857142857142855,
+      "hallucination": 0.4
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q29024420",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely missed the ground truth term \"user_agent\" and instead extracted an irrelevant placeholder \"CODE\", resulting in zero precision, zero recall, and 100% hallucination."
+  },
+  {
+    "doc_id": "Q35087680",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.3333333333333333,
+      "recall": 0.125,
+      "f1": 0.18181818181818182,
+      "hallucination": 0.6666666666666666
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q38734432",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q22470038",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.6666666666666666,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q21380268",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.38461538461538464,
+      "f1": 0.4878048780487804,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has a moderate F1 score of 0.488 and a hallucination rate of 33.33%, which falls just outside the GOOD threshold but still captures some key terms with reasonable accuracy."
+  },
+  {
+    "doc_id": "Q40138976",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q42064739",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.16666666666666666,
+      "f1": 0.25,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q29258410",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely failed to capture the key terms from the document, with zero precision, zero recall, and 100% hallucination, indicating a fundamentally broken extraction process."
+  },
+  {
+    "doc_id": "Q43323560",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q1179655",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.375,
+      "f1": 0.42857142857142855,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has moderate performance with an F1 score of 0.429 and hallucination rate of 50%, capturing some key terms but missing several ground truth terms while also introducing some incorrect extractions."
+  },
+  {
+    "doc_id": "Q18141829",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q43318137",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction completely missed the key technical terms related to OpenMP, Visual Studio, and compilers, instead extracting irrelevant URLs and placeholder tags, resulting in zero precision and recall."
+  },
+  {
+    "doc_id": "Q23159108",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "hallucination": 0
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction failed to identify any of the ground truth terms, resulting in zero precision, recall, and F1 score, which indicates a complete failure of the extraction process."
+  },
+  {
+    "doc_id": "Q10028031",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333333333333333,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q14951651",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q20557278",
+    "grade": "ACCEPTABLE",
+    "grade_numeric": 1,
+    "metrics": {
+      "precision": 1.0,
+      "recall": 0.5384615384615384,
+      "f1": 0.7000000000000001,
+      "hallucination": 0.0
+    },
+    "auto_grade": "ACCEPTABLE"
+  },
+  {
+    "doc_id": "Q9450199",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.375,
+      "recall": 0.21428571428571427,
+      "f1": 0.2727272727272727,
+      "hallucination": 0.625
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has low precision, low recall, high hallucination, and an F1 score well below 0.60, indicating significant issues with extracting relevant terms from the document."
+  },
+  {
+    "doc_id": "Q10734649",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.3,
+      "f1": 0.41379310344827586,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "ACCEPTABLE",
+    "llm_reasoning": "The extraction has a moderate F1 score of 0.414 and a hallucination rate of 33.33%, which falls within the acceptable range by capturing some key terms like FirstClass and TableClass while missing some important context terms."
+  },
+  {
+    "doc_id": "Q44055225",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6666666666666666,
+      "recall": 0.18181818181818182,
+      "f1": 0.28571428571428575,
+      "hallucination": 0.3333333333333333
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has a low F1 score of 0.286 and misses most of the ground truth terms, indicating a weak and incomplete extraction of key concepts from the document."
+  },
+  {
+    "doc_id": "Q31461154",
+    "grade": "ACCEPTABLE",
+    "grade_numeric": 1,
+    "metrics": {
+      "precision": 0.8333333333333334,
+      "recall": 0.7142857142857143,
+      "f1": 0.7692307692307692,
+      "hallucination": 0.16666666666666666
+    },
+    "auto_grade": "ACCEPTABLE"
+  },
+  {
+    "doc_id": "Q27926052",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.5,
+      "recall": 0.2222222222222222,
+      "f1": 0.30769230769230765,
+      "hallucination": 0.5
+    },
+    "auto_grade": "POOR",
+    "llm_grade": "POOR",
+    "llm_reasoning": "The extraction has a low F1 score of 0.308 and a high hallucination rate of 50%, indicating significant issues with both precision and recall of key terms from the document."
+  },
+  {
+    "doc_id": "Q24663347",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.6875,
+      "recall": 0.7333333333333333,
+      "f1": 0.7096774193548386,
+      "hallucination": 0.3125
+    },
+    "auto_grade": "POOR"
+  },
+  {
+    "doc_id": "Q9160048",
+    "grade": "POOR",
+    "grade_numeric": 0,
+    "metrics": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "hallucination": 1.0
+    },
+    "auto_grade": "POOR"
+  }
+]
