@@ -1,6 +1,6 @@
 [project]
 name = "poc-2-confidence-scoring"
-version = "0.1.0"
+version = "0.2.0"
 description = "Confidence scoring and threshold determination for fast/slow extraction routing"
 requires-python = ">=3.11"
 dependencies = [
@@ -12,6 +12,15 @@ dependencies = [
     "pydantic>=2.0.0",
     "rich>=13.0.0",
     "matplotlib>=3.8.0",
+    # NER model evaluation dependencies
+    "torch>=2.0.0",
+    "transformers>=4.40.0",
+    "spacy>=3.7.0",
+    "spacy-transformers>=1.3.0",
+    "flair>=0.14.0",
+    "span-marker>=1.5.0",
+    "gliner>=0.2.0",
+    "seqeval>=1.2.2",
 ]
 
 [dependency-groups]
