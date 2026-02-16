@@ -60,6 +60,18 @@ from .postprocess import (
     filter_urls,
 )
 
+# Seed extraction
+from .seeds import (
+    load_auto_vocab,
+    extract_seeds,
+    get_bypass_set,
+    get_seeds_set,
+    get_contextual_seeds_set,
+    load_term_index,
+    AutoVocab,
+    TermInfo,
+)
+
 
 __all__ = [
     # Grounding
@@ -92,4 +104,13 @@ __all__ = [
     "is_embedded_in_path",
     "filter_path_embedded",
     "filter_urls",
+    # Seeds
+    "load_auto_vocab",
+    "extract_seeds",
+    "get_bypass_set",
+    "get_seeds_set",
+    "get_contextual_seeds_set",
+    "load_term_index",
+    "AutoVocab",
+    "TermInfo",
 ]

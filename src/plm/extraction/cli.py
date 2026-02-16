@@ -44,6 +44,14 @@ from plm.extraction.slow import (
     expand_spans,
     suppress_subspans,
     final_dedup,
+    load_auto_vocab,
+    extract_seeds,
+    get_bypass_set,
+    get_seeds_set,
+    get_contextual_seeds_set,
+    load_term_index,
+    AutoVocab,
+    TermInfo,
 )
 
 
@@ -77,6 +85,9 @@ def parse_env() -> dict[str, Any]:
         ),
         "vocab_seeds_path": Path(
             os.getenv("VOCAB_SEEDS_PATH", "/data/vocabularies/auto_vocab.json")
+        ),
+        "vocab_term_index_path": Path(
+            os.getenv("VOCAB_TERM_INDEX_PATH", "/data/vocabularies/term_index.json")
         ),
         "poll_interval": int(os.getenv("POLL_INTERVAL", "30")),
         "confidence_threshold": float(os.getenv("CONFIDENCE_THRESHOLD", "0.5")),
@@ -140,26 +151,16 @@ def get_input_files(input_dir: Path, processed: set[Path]) -> list[Path]:
 def extract_terms_from_chunk(
     chunk_text: str,
     negatives: set[str],
+    seeds: list[str],
+    contextual_seeds: list[str],
+    bypass: set[str],
+    seeds_set: set[str],
+    contextual_seeds_set: set[str],
+    term_index: dict[str, TermInfo],
     config: dict[str, Any],
 ) -> list[dict[str, Any]]:
-    """Extract terms from a single chunk using V6 pipeline.
-    
-    V6 Pipeline stages:
-    1. Extract: Taxonomy + Candidate verify (heuristic + LLM)
-    2. Ground: Span verification and deduplication
-    3. Filter: Noise filtering (stop words, negatives)
-    4. Validate: Context validation for ambiguous terms
-    5. Postprocess: Expand spans, suppress subspans, final dedup
-    
-    Args:
-        chunk_text: Text content of the chunk
-        negatives: Set of negative terms to filter
-        config: Configuration dictionary
-        
-    Returns:
-        List of term dictionaries with confidence scores
-    """
-    # Stage 1a: Taxonomy extraction
+    """Extract terms from a single chunk using V6 pipeline."""
+    # Stage 1a: Taxonomy extraction (LLM)
     taxonomy_terms = extract_by_taxonomy(chunk_text, model=config["llm_model"])
     
     # Stage 1b: Candidate verify (heuristic + LLM)
@@ -170,40 +171,112 @@ def extract_terms_from_chunk(
         model=config["llm_model"],
     )
     
+    # Stage 1c: Seed extraction (zero-cost, high-recall)
+    seed_terms = extract_seeds(chunk_text, seeds)
+    contextual_seed_terms = extract_seeds(chunk_text, contextual_seeds)
+    
     # Stage 2: Ground candidates (merge by source)
     candidates_by_source = {
         "taxonomy": taxonomy_terms,
         "heuristic": verified_candidates,
+        "seeds": seed_terms,
+        "contextual_seeds": contextual_seed_terms,
     }
     grounded = ground_candidates(candidates_by_source, chunk_text)
     
-    # Extract terms from grounded dict
-    grounded_terms = [entry["term"] for entry in grounded.values()]
-    
     # Stage 3: Filter noise
-    filtered = filter_noise(grounded_terms, negatives)
+    after_noise: dict[str, dict] = {}
+    for key, cand in grounded.items():
+        term = cand["term"]
+        grounded_terms_single = [term]
+        filtered_single = filter_noise(grounded_terms_single, negatives, bypass=bypass)
+        if filtered_single:
+            after_noise[key] = cand
     
-    # Stage 4: Validate terms (for medium confidence)
-    validated = validate_terms(filtered, chunk_text, model=config["llm_model"])
+    # Stage 4: V6 confidence tier routing
+    llm_sources = {"taxonomy", "heuristic"}
+    high_confidence: list[str] = []
+    needs_validation: list[str] = []
     
-    # Stage 5: Postprocess
-    expanded = expand_spans(validated, chunk_text)
-    suppressed = suppress_subspans(expanded)
+    protected_set = bypass | seeds_set | contextual_seeds_set
+    
+    for key, cand in after_noise.items():
+        term = cand["term"]
+        sources_set = cand["sources"]
+        source_count = cand["source_count"]
+        tl = term.lower().strip()
+        
+        info = term_index.get(tl)
+        entity_ratio = info["entity_ratio"] if info else 0.5
+        
+        has_llm_vote = bool(sources_set & llm_sources)
+        
+        # HIGH: seed bypass (term in seeds with seeds source)
+        if tl in seeds_set and "seeds" in sources_set:
+            if source_count >= 1:
+                high_confidence.append(term)
+                continue
+        
+        # HIGH: contextual seed with multiple sources
+        if tl in contextual_seeds_set and "contextual_seeds" in sources_set:
+            if source_count >= 2:
+                high_confidence.append(term)
+                continue
+        
+        # HIGH: structural pattern with good entity_ratio
+        if _has_structural_pattern(term):
+            if entity_ratio > 0 or tl in seeds_set or tl in bypass:
+                high_confidence.append(term)
+            else:
+                needs_validation.append(term)
+            continue
+        
+        # HIGH: high entity_ratio (≥0.8)
+        if entity_ratio >= 0.8:
+            high_confidence.append(term)
+            continue
+        
+        # HIGH: multiple sources including LLM
+        if source_count >= 2 and has_llm_vote:
+            high_confidence.append(term)
+            continue
+        
+        # MEDIUM: single LLM vote or moderate entity_ratio - needs validation
+        if has_llm_vote or entity_ratio >= 0.5:
+            needs_validation.append(term)
+            continue
+        
+        # Otherwise skip (low confidence)
+    
+    # Stage 5: Validate medium-confidence terms
+    validated = validate_terms(
+        needs_validation, chunk_text, model=config["llm_model"], bypass=bypass
+    )
+    all_terms = high_confidence + validated
+    
+    # Stage 6: Postprocess
+    expanded = expand_spans(all_terms, chunk_text)
+    suppressed = suppress_subspans(expanded, protected=protected_set)
     final_terms = final_dedup(suppressed)
     
     # Compute confidence for each term
     results = []
     for term in final_terms:
-        # Find sources for this term from grounded data
-        sources = []
+        sources: list[str] = []
         for key, entry in grounded.items():
             if entry["term"] == term or entry["term"].lower() == term.lower():
                 sources = list(entry["sources"])
                 break
         
-        confidence, level = compute_confidence(term, sources)
+        tl = term.lower()
+        info = term_index.get(tl)
+        entity_ratio = info["entity_ratio"] if info else 0.5
+        is_bypass_term = tl in bypass or tl in seeds_set
         
-        # Filter by confidence threshold
+        confidence, level = compute_confidence(
+            term, sources, entity_ratio=entity_ratio, is_bypass=is_bypass_term
+        )
+        
         if confidence >= config["confidence_threshold"]:
             results.append({
                 "term": term,
@@ -215,22 +288,30 @@ def extract_terms_from_chunk(
     return results
 
 
+def _has_structural_pattern(term: str) -> bool:
+    """Check if term has structural code patterns (CamelCase, dots, parens, etc.)."""
+    import re
+    if re.match(r"^[A-Z][a-z]+[A-Z]", term):
+        return True
+    if "." in term or "(" in term or "::" in term:
+        return True
+    if re.match(r"^[A-Z][A-Z0-9_]+$", term) and len(term) >= 2:
+        return True
+    return False
+
+
 def process_document(
     file_path: Path,
     config: dict[str, Any],
     negatives: set[str],
+    seeds: list[str],
+    contextual_seeds: list[str],
+    bypass: set[str],
+    seeds_set: set[str],
+    contextual_seeds_set: set[str],
+    term_index: dict[str, TermInfo],
 ) -> dict[str, Any]:
-    """Process a single document through the extraction pipeline.
-    
-    Args:
-        file_path: Path to the document file
-        config: Configuration dictionary
-        negatives: Set of negative terms to filter
-        
-    Returns:
-        Dictionary with extraction results
-    """
-    # Read file content
+    """Process a single document through the extraction pipeline."""
     try:
         text = file_path.read_text(encoding="utf-8")
     except Exception as e:
@@ -250,17 +331,18 @@ def process_document(
     else:
         chunker = get_chunker(config["chunking_strategy"])
     
-    # Chunk the document
     chunks = chunker.chunk(text, file_path.name)
     
-    # Process each chunk
     chunk_results = []
     total_high = 0
     total_medium = 0
     total_low = 0
     
     for chunk in chunks:
-        terms = extract_terms_from_chunk(chunk.text, negatives, config)
+        terms = extract_terms_from_chunk(
+            chunk.text, negatives, seeds, contextual_seeds, bypass,
+            seeds_set, contextual_seeds_set, term_index, config
+        )
         
         # Count by confidence level
         for term_data in terms:
@@ -348,7 +430,6 @@ def watch_loop(config: dict[str, Any]) -> None:
     """
     processed: set[Path] = set()
     
-    # Load negatives vocabulary
     negatives: set[str] = set()
     try:
         negatives = load_negatives(config["vocab_negatives_path"])
@@ -357,7 +438,29 @@ def watch_loop(config: dict[str, Any]) -> None:
     except Exception as e:
         print(f"Warning: Could not load negatives: {e}", file=sys.stderr)
     
-    # Setup directories
+    seeds: list[str] = []
+    contextual_seeds: list[str] = []
+    bypass: set[str] = set()
+    seeds_set: set[str] = set()
+    contextual_seeds_set: set[str] = set()
+    try:
+        vocab = load_auto_vocab(config["vocab_seeds_path"])
+        seeds = vocab["seeds"]
+        contextual_seeds = vocab["contextual_seeds"]
+        bypass = get_bypass_set(vocab)
+        seeds_set = get_seeds_set(vocab)
+        contextual_seeds_set = get_contextual_seeds_set(vocab)
+        print(f"Loaded {len(seeds)} seed terms, {len(bypass)} bypass terms, {len(contextual_seeds)} contextual seeds")
+    except Exception as e:
+        print(f"Warning: Could not load seeds vocabulary: {e}", file=sys.stderr)
+    
+    term_index: dict[str, TermInfo] = {}
+    try:
+        term_index = load_term_index(config["vocab_term_index_path"])
+        print(f"Loaded term index with {len(term_index)} terms")
+    except Exception as e:
+        print(f"Warning: Could not load term index: {e}", file=sys.stderr)
+    
     setup_directories(config)
     
     # Low-confidence log path
@@ -382,8 +485,10 @@ def watch_loop(config: dict[str, Any]) -> None:
                 
                 print(f"Processing: {file_path.name}")
                 
-                # Process document
-                result = process_document(file_path, config, negatives)
+                result = process_document(
+                    file_path, config, negatives, seeds, contextual_seeds,
+                    bypass, seeds_set, contextual_seeds_set, term_index
+                )
                 
                 # Write output
                 output_path = config["output_dir"] / f"{file_path.stem}.json"

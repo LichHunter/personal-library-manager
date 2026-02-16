@@ -1,0 +1,37 @@
+services:
+  slow-extraction:
+    image: plm-slow-extraction:0.1.0
+    container_name: plm-slow-extraction
+    
+    volumes:
+      # Paths relative to repo root (run with: docker compose -f src/plm/extraction/slow/docker-compose.yml up)
+      - ../../../../slow-extraction/input:/data/input:ro
+      - ../../../../slow-extraction/output:/data/output
+      - ../../../../slow-extraction/logs:/data/logs
+      - ../../../../data/vocabularies:/data/vocabularies:ro
+      - ${HOME}/.local/share/opencode:/auth:ro
+    
+    environment:
+      - PROCESS_ONCE=true
+      - POLL_INTERVAL=30
+      - OPENCODE_AUTH_PATH=/auth/auth.json
+
+  slow-extraction-watch:
+    image: plm-slow-extraction:0.1.0
+    container_name: plm-slow-extraction-watch
+    profiles:
+      - watch
+    
+    volumes:
+      - ../../../../slow-extraction/input:/data/input:ro
+      - ../../../../slow-extraction/output:/data/output
+      - ../../../../slow-extraction/logs:/data/logs
+      - ../../../../data/vocabularies:/data/vocabularies:ro
+      - ${HOME}/.local/share/opencode:/auth:ro
+    
+    environment:
+      - PROCESS_ONCE=false
+      - POLL_INTERVAL=30
+      - OPENCODE_AUTH_PATH=/auth/auth.json
+    
+    restart: unless-stopped
