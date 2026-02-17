@@ -1,0 +1,23 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install uv
+RUN pip install uv
+
+# Copy project files
+COPY pyproject.toml uv.lock README.md ./
+COPY src/ ./src/
+
+# Install dependencies
+RUN uv sync
+
+# Set environment variables
+ENV INDEX_PATH=/data/index
+ENV WATCH_DIR=/data/watched
+
+# Expose port
+EXPOSE 8000
+
+# Run the service
+CMD ["uv", "run", "uvicorn", "plm.search.service.app:app", "--host", "0.0.0.0", "--port", "8000"]

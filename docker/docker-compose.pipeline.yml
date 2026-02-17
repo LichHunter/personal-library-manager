@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  plm-pipeline:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.pipeline
+    ports:
+      - "8000:8000"
+    volumes:
+      - plm-index:/data/index
+      - ./watched:/data/watched
+    environment:
+      - INDEX_PATH=/data/index
+      - WATCH_DIR=/data/watched
+
+volumes:
+  plm-index:
