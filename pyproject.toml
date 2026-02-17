@@ -22,6 +22,14 @@ dependencies = [
     "faiss-cpu>=1.7.0",
     "numpy>=1.24.0",
     "torch>=2.0.0",
+    "gliner>=0.2.25",
+    "pysbd>=0.3.4",
+    "yake>=0.7.3",
+    "bm25s>=0.2.14",
+    "fastapi",
+    "uvicorn[standard]",
+    "watchdog",
+    "click",
 ]
 
 [tool.uv.sources]
@@ -39,3 +47,8 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/plm"]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.38.0",
+]
