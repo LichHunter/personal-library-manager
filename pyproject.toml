@@ -45,6 +45,9 @@ dev = [
     "pytest>=7.0.0",
 ]
 
+[project.scripts]
+plm-query = "plm.search.service.cli:main"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/plm"]
 
