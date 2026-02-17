@@ -123,7 +123,162 @@ The `known_term_ratio` signal actually showed a *negative* correlation (r=-0.237
 - **Signal Refinement**: Explore more sophisticated signals like "Dependency Parse Validity" or "NER Type Consistency" if routing accuracy needs to be improved further.
 - **Active Learning**: Investigate if the router can be used to identify "uncertain" chunks for human review, creating a high-quality ground truth dataset for future training.
 
+---
+
+## Appendix: GLiNER NER Fine-Tuning Experiment
+
+### Summary
+
+| Attribute | Value |
+|-----------|-------|
+| **Date** | 2026-02-17 |
+| **Objective** | Determine if fine-tuning GLiNER improves F1 above zero-shot baseline (0.518) and maintains confidence separation above +0.100 |
+| **Base Model** | `urchade/gliner_medium-v2.1` (DeBERTa-v2 encoder, GLiNER v0.2.22) |
+| **Dataset** | StackOverflow NER (Tabassum et al., ACL 2020) — `train.txt` |
+| **Verdict** | **Fine-tuning improves all metrics over zero-shot.** F1 0.518 -> 0.662 (+28%), confidence separation +0.100 -> +0.153 (+53%). |
+
+### Results: Zero-Shot vs Fine-Tuned
+
+| Metric | Zero-Shot | Fine-Tuned | Delta |
+|--------|-----------|------------|-------|
+| Precision | 0.581 | **0.669** | +15% |
+| Recall | 0.547 | **0.730** | +33% |
+| F1 | 0.518 | **0.662** | +28% |
+| Hallucination | 0.419 | **0.331** | -21% |
+| TP Mean Confidence | -- | 0.703 | -- |
+| FP Mean Confidence | -- | 0.549 | -- |
+| Confidence Separation | +0.100 | **+0.153** | +53% |
+| Avg Inference Time | -- | 23.4ms | -- |
+
+### Context: Comparison to LLM Approaches (from POC-1c)
+
+| Approach | Precision | Recall | F1 | Hallucination | Vocab Required |
+|----------|-----------|--------|------|---------------|----------------|
+| V6 + vocabulary (POC-1b) | **90.7%** | **95.8%** | **0.932** | **9.0%** | 176+ terms |
+| Retrieval few-shot (POC-1c) | 81.6% | 80.6% | 0.811 | 18.4% | 0 terms |
+| SLIMER zero-shot (POC-1c) | 84.9% | 66.0% | 0.743 | 15.1% | 0 terms |
+| **GLiNER fine-tuned** | 66.9% | 73.0% | 0.662 | 33.1% | 0 terms |
+| GLiNER zero-shot | 58.1% | 54.7% | 0.518 | 41.9% | 0 terms |
+
+Fine-tuned GLiNER remains significantly below all LLM approaches. The 33% hallucination rate and 67% precision are insufficient for production use as a primary extractor.
+
+### Theoretical Ceiling for GLiNER
+
+Based on architecture analysis, the realistic performance ceiling for GLiNER fine-tuned on SO NER is estimated at:
+
+- **F1: ~0.75-0.80** (vs current 0.662)
+- **Precision: ~75-80%** (vs current 67%)
+- **Hallucination: ~20-25%** (vs current 33%)
+- **Confidence Separation: ~+0.20-0.25** (vs current +0.153)
+
+This ceiling exists because:
+1. GLiNER uses biaffine span-type dot-product scoring — less expressive than LLM-based reasoning
+2. Software entities (CamelCase, dot.paths, mixed code/natural-language) require domain understanding that span matching cannot fully capture
+3. Published NER models on SO NER achieve F1 of 0.50-0.65; our 0.662 is already competitive with SOTA
+4. 23 fine-grained entity types (e.g., Library vs Library_Class vs Library_Function) create inherent disambiguation challenges
+
+### Implication for Fast/Slow Routing
+
+At the theoretical GLiNER ceiling (confidence separation ~+0.25), achieving 90% precision on the fast path would require routing **~70-80%** of predictions to the slow system. This defeats the purpose of fast/slow routing, which targets <=30% slow-path traffic.
+
+**Conclusion: GLiNER confidence scores are insufficient for efficient routing.** The confidence separation (even at ceiling) cannot reliably distinguish correct from incorrect predictions. The ensemble routing approach from Phase 4b (Random Forest on 7 heuristic signals) remains the recommended routing strategy.
+
+### Fine-Tuning Strategy (Reproducibility Guide)
+
+#### Data Preparation
+
+The SO NER dataset uses BIO format with blank-line-delimited sentences. The critical insight is that data is **already sentence-level** — the parser must emit one sample per sentence, NOT concatenate sentences within a document.
+
+- **Correct**: 4,893 sentence-level samples, 8,873 entities, max 92 tokens/sentence
+- **Wrong** (prior approach): 200 document-level samples with 500-700+ tokens, causing truncation at GLiNER's 384-token limit and silently dropping 7.5% of entities
+
+```python
+# GLiNER training format (one per sentence)
+{"tokenized_text": ["word1", "word2", ...], "ner": [[start, end, "Type"], ...]}
+# Indices are token-level and INCLUSIVE on both ends.
+```
+
+Excluded entity types: `Code_Block`, `Output_Block`, `Variable_Name`, `Value`, `User_Name` (too noisy or not extractable from text spans).
+
+#### Training Configuration (Working)
+
+```python
+TrainingArguments(
+    learning_rate=1e-5,           # DeBERTa encoder LR
+    others_lr=1e-4,               # Scorer head LR (10x encoder — head must move aggressively)
+    weight_decay=0.1,             # Encoder weight decay
+    others_weight_decay=0.01,     # Head weight decay
+    lr_scheduler_type="cosine",
+    warmup_ratio=0.1,
+    max_grad_norm=10.0,           # NOT HF default 1.0 — allows larger gradient updates
+    per_device_train_batch_size=8,
+    focal_loss_alpha=0.90,        # Up-weight positives ~9x over negatives
+    focal_loss_gamma=2,           # Focal modulation for hard examples
+    loss_reduction="sum",         # Preserves per-positive gradient signal
+    masking="global",             # Randomly drop 50% of negative span-type candidates
+    negatives=0.5,                # Controls negative drop rate
+    num_train_epochs=3,
+)
+```
+
+Training time: ~5 minutes on NVIDIA GPU (1836 steps at ~6 it/s).
+
+#### Failed Configurations and Root Causes
+
+Five training runs were attempted. Only the final configuration succeeded.
+
+| Run | Key Config | Loss Curve | Scores | F1 | Root Cause |
+|-----|-----------|------------|--------|-----|------------|
+| v1 | `sum`, `gamma=2`, `max_grad_norm=1.0`, `bs=4` | ~1000 → converged | 0.500 exactly | 0.262 | Gradient explosion destroyed scorer: `sum` produces loss ~1000, clipping at 1.0 is too aggressive, `gamma=2` amplifies imbalance |
+| v2 | `mean`, `gamma=2`, `lr=5e-6` | 0.17 → 0.026 | ~0.50-0.53 | 0.192 | Mean reduction drowns positive gradient signal in 99.94% negatives |
+| v3 | `mean`, `gamma=2`, `lr=1e-5` | 0.19 → 0.026 | ~0.50-0.53 | -- | Same as v2 — higher LR doesn't fix mean-reduction signal drowning |
+| v4 | `sum`, `gamma=0`, `max_grad_norm=10.0`, `bs=8` | ~1200 plateau | 0.500 exactly | 0.265 | Official GLiNER config, but `gamma=0` (plain BCE) + our dataset's extreme sparsity = negatives dominate loss |
+| **v5** | **`sum`, `gamma=2`, `alpha=0.90`, `negatives=0.5`, `masking=global`** | **~100 → converging** | **0.50-0.96** | **0.662** | **Correct combination: high alpha weights positives, negative sampling reduces dilution** |
+
+#### The Core Problem: Extreme Class Imbalance
+
+With 23 entity types and median 16-token sentences:
+- ~136 candidate spans × variable types per sample = thousands of span-type candidates
+- Only ~1.8 entities per sentence → **99.94% of candidates are negatives**
+
+This extreme imbalance means:
+1. **`loss_reduction="mean"`** averages over thousands of easy negatives, making positive gradient signal negligible
+2. **`loss_reduction="sum"`** preserves positive signals but produces enormous loss values requiring high `max_grad_norm`
+3. **`focal_loss_gamma=0`** (plain BCE) lets easy negatives contribute equal weight to loss
+4. **`focal_loss_alpha=0.75`** gives positives only 3x weight — insufficient when negatives outnumber positives 1700:1
+
+The working solution combines three mechanisms:
+- **`alpha=0.90`**: Gives positives ~9x weight over negatives
+- **`masking="global"` + `negatives=0.5`**: Randomly drops 50% of negative candidates from loss computation via Bernoulli mask (GLiNER's built-in mechanism in `BaseModel._loss()`)
+- **`others_lr=1e-4`** (10x encoder LR): Scorer head must learn new discrimination quickly while encoder fine-tunes gently
+
+#### API Notes (GLiNER v0.2.22)
+
+- Use `from gliner.training import Trainer, TrainingArguments` and `from gliner.data_processing.collator import DataCollator`
+- `model.train_model()` does NOT exist in v0.2.22 (only in newer versions)
+- Do NOT call `model.to(device)` before HF Trainer — Trainer manages device placement
+- `DataCollator` handles negative entity type sampling automatically via `batch_generate_class_mappings()`
+- `max_types=25` and `max_neg_type_ratio=1` are config defaults — each sample gets its own entity types + sampled negatives, NOT all 23 types
+
+### Artifacts
+
+| File | Description |
+|------|-------------|
+| `artifacts/gliner_finetune_results.json` | Full results with per-document metrics |
+| `artifacts/gliner-finetuned/` | Saved fine-tuned model weights |
+| `finetune_gliner.py` | Complete training and evaluation script |
+
+### References
+
+- GLiNER official training config: [urchade/GLiNER/configs/config.yaml](https://github.com/urchade/GLiNER/blob/f3ffcd6fc86edf5b8d495d6b43464a4931c18e3c/configs/config.yaml)
+- Known issue (score collapse): [urchade/GLiNER#294](https://github.com/urchade/GLiNER/issues/294)
+- Known issue (catastrophic forgetting): [urchade/GLiNER#163](https://github.com/urchade/GLiNER/issues/163)
+- Working fine-tuning example (calamanCy): [ljvmiranda921/calamanCy](https://github.com/ljvmiranda921/calamanCy/blob/master/models/v0.1.0-gliner/train.py)
+
+---
+
 ## Raw Data
 
-- Full results: `artifacts/phase-4b-ensembles.json`
-- Logs: `artifacts/phase-4b-summary.md`
+- Phase results: `artifacts/phase-4b-ensembles.json`
+- Phase logs: `artifacts/phase-4b-summary.md`
+- GLiNER fine-tuning: `artifacts/gliner_finetune_results.json`

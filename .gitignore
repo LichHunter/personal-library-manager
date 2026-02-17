@@ -25,5 +25,8 @@ contextual_index/
 # Logs
 *.log
 
+# Model weights (large binary files)
+poc/poc-2-confidence-scoring/artifacts/gliner-finetuned/
+
 # Invalid results (marked for reference only)
 results/gems_*.md

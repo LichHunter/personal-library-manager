@@ -51,27 +51,41 @@ cat artifacts/phase-3-summary.md
 
 See [RESULTS.md](./RESULTS.md) for complete results after execution.
 
-## Key Metrics
+### Key Metrics
 
-| Metric | Target | Status |
-|--------|--------|--------|
-| Max signal correlation | r >= 0.6 | TBD |
-| Classification accuracy | >= 80% | TBD |
-| POOR extraction recall | >= 90% | TBD |
-| Slow routing rate | <= 30% | TBD |
+| Metric | Target | Actual | Status |
+|--------|--------|--------|--------|
+| Max signal correlation | r >= 0.6 | 0.334 | FAIL |
+| Classification accuracy | >= 80% | 96.7% | PASS |
+| POOR extraction recall | >= 90% | 100.0% | PASS |
+| Slow routing rate | <= 30% | 96.7% | FAIL |
+
+### GLiNER Fine-Tuning (Appendix)
+
+| Metric | Zero-Shot | Fine-Tuned |
+|--------|-----------|------------|
+| F1 | 0.518 | **0.662** (+28%) |
+| Hallucination | 41.9% | **33.1%** (-21%) |
+| Conf Separation | +0.100 | **+0.153** (+53%) |
+
+Fine-tuning improves GLiNER but it remains below LLM approaches (F1=0.811-0.932). See RESULTS.md Appendix for the full fine-tuning strategy and reproducibility guide.
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `signals.py` | Confidence signal calculators (4 signals) |
+| `signals.py` | Confidence signal calculators (4+3 signals) |
 | `test_signals.py` | Unit tests for signal functions |
 | `prepare_dataset.py` | Load SO NER data, run fast extraction, calculate signals |
 | `grading.py` | Grade extractions as GOOD/ACCEPTABLE/POOR |
 | `analysis.py` | Correlation analysis, threshold determination, ROC analysis |
+| `finetune_gliner.py` | GLiNER fine-tuning experiment: BIO parser, training, evaluation |
+| `eval_framework.py` | NER model evaluation framework |
+| `ner_models.py` | ExtractedEntity class and NER model wrappers |
+| `benchmark_ner_models.py` | Multi-model NER benchmarking |
 | `artifacts/` | Checkpoint files and results |
 | `SPEC.md` | Full POC specification |
-| `RESULTS.md` | Final results and conclusions |
+| `RESULTS.md` | Final results, conclusions, and GLiNER fine-tuning strategy |
 
 ## Architecture Reference
 
