@@ -139,7 +139,7 @@ Wave 3 (After Wave 2):
 
 ## TODOs
 
-- [ ] 1. Port QueryRewriter to production using shared LLM module
+- [x] 1. Port QueryRewriter to production using shared LLM module
 
   **What to do**:
   - Create `src/plm/search/components/query_rewriter.py`
@@ -220,7 +220,7 @@ Wave 3 (After Wave 2):
 
 ---
 
-- [ ] 2. Update HybridRetriever with optional query rewriting
+- [x] 2. Update HybridRetriever with optional query rewriting
 
   **What to do**:
   - Import QueryRewriter in `src/plm/search/retriever.py`
@@ -298,7 +298,7 @@ Wave 3 (After Wave 2):
 
 ---
 
-- [ ] 3. Create FastAPI service with directory watcher
+- [x] 3. Create FastAPI service with directory watcher
 
   **What to do**:
   - Create `src/plm/search/service/__init__.py`
@@ -419,7 +419,7 @@ Wave 3 (After Wave 2):
 
 ---
 
-- [ ] 4. Add dependencies to pyproject.toml
+- [x] 4. Add dependencies to pyproject.toml
 
   **What to do**:
   - Add: fastapi, uvicorn[standard], watchdog, click
@@ -455,7 +455,7 @@ Wave 3 (After Wave 2):
 
 ---
 
-- [ ] 5. Create CLI with --no-rewrite flag
+- [x] 5. Create CLI with --no-rewrite flag
 
   **What to do**:
   - Create `src/plm/search/service/cli.py` with Click
@@ -501,7 +501,7 @@ Wave 3 (After Wave 2):
 
 ---
 
-- [ ] 6. Create Docker Compose setup
+- [x] 6. Create Docker Compose setup
 
   **What to do**:
   - Create `docker/docker-compose.pipeline.yml`
@@ -547,7 +547,7 @@ Wave 3 (After Wave 2):
 
 ---
 
-- [ ] 7. Create POC comparison test
+- [x] 7. Create POC comparison test
 
   **What to do**:
   - Create `scripts/compare_with_poc.py` that:
