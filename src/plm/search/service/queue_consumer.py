@@ -108,11 +108,15 @@ class SearchQueueConsumer(QueueConsumer):
             logger.warning(f"[QueueConsumer] No chunks extracted from {source_file}")
             return
 
-        # Generate doc_id from source file
-        content_hash = hashlib.sha256(source_file.encode()).hexdigest()[:12]
-        doc_id = f"{source_file.split('/')[-1].rsplit('.', 1)[0]}_{content_hash}"
+        all_content = "".join(c["content"] for c in chunks)
+        content_hash = hashlib.sha256(all_content.encode()).hexdigest()[:12]
+        filename = source_file.split("/")[-1].rsplit(".", 1)[0]
+        doc_id = f"{filename}_{content_hash}"
 
-        # Ingest without rebuilding index
+        deleted = self._retriever.storage.delete_documents_by_content_hash(content_hash)
+        if deleted > 0:
+            logger.info(f"[QueueConsumer] Deduplicated {deleted} existing document(s) with hash {content_hash}")
+
         self._retriever.ingest_document(
             doc_id=doc_id,
             source_file=source_file,

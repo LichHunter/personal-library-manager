@@ -78,9 +78,9 @@ services:
     restart: unless-stopped
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Fast Extraction - Heuristic-based Entity Extraction
+  # Fast Extraction - Heuristic-based Entity Extraction (Watch Mode)
   #
-  # Processes documents from fast-extraction/input/ and publishes to queue.
+  # Watches fast-extraction/input/ for new documents and publishes to queue.
   # Uses GLiNER + YAKE for zero-LLM extraction.
   # ─────────────────────────────────────────────────────────────────────────
   fast-extraction:
@@ -91,7 +91,7 @@ services:
     volumes:
       # Input: place documents here
       - ../fast-extraction/input:/data/input:ro
-      # Output: not used in queue mode, but required by CLI
+      # Output: not used in queue mode, but required by watcher
       - ../fast-extraction/output:/data/output
       # GLiNER model cache
       - plm-gliner-models:/root/.cache/huggingface
@@ -101,12 +101,14 @@ services:
       - QUEUE_STREAM=plm:extraction
       - PYTHONUNBUFFERED=1
       - HF_HUB_OFFLINE=0
-    command: ["--input=/data/input", "--output=/data/output", "--workers=4"]
+    entrypoint: ["python", "-m", "plm.extraction.fast.watcher"]
+    command: ["--input=/data/input", "--output=/data/output", "--poll-interval=5", "--process-existing"]
     depends_on:
       redis:
         condition: service_healthy
     networks:
       - plm-network
+    restart: unless-stopped
 
   # ─────────────────────────────────────────────────────────────────────────
   # Slow Extraction - LLM-powered V6 Pipeline

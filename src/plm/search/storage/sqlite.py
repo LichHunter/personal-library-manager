@@ -95,6 +95,20 @@ class SQLiteStorage:
             return None
         return self._row_to_dict(row)
 
+    def delete_documents_by_content_hash(self, content_hash: str) -> int:
+        with self._connect() as conn:
+            cursor = conn.execute(
+                "SELECT id FROM documents WHERE id LIKE ?",
+                (f"%_{content_hash}",),
+            )
+            doc_ids = [row[0] for row in cursor.fetchall()]
+            if not doc_ids:
+                return 0
+            placeholders = ",".join("?" * len(doc_ids))
+            conn.execute(f"DELETE FROM chunks WHERE doc_id IN ({placeholders})", doc_ids)
+            conn.execute(f"DELETE FROM documents WHERE id IN ({placeholders})", doc_ids)
+            return len(doc_ids)
+
     @staticmethod
     def _row_to_dict(row: sqlite3.Row) -> dict:
         d = dict(row)

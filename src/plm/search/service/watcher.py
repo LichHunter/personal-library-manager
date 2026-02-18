@@ -325,23 +325,23 @@ class DirectoryWatcher:
         """Process a single file."""
         logger.debug(f"[Watcher] Processing {filepath}")
 
-        # Read and parse JSON
         with open(filepath, encoding="utf-8") as f:
             doc_dict = json.load(f)
 
-        # Generate doc_id from file content hash
-        content_hash = hashlib.sha256(filepath.read_bytes()).hexdigest()[:12]
-        doc_id = f"{filepath.stem}_{content_hash}"
-
-        # Get source file from doc or use filepath
         source_file = doc_dict.get("source_file", str(filepath))
 
-        # Convert to chunks
         chunks = json_to_chunks(doc_dict)
         if not chunks:
             raise ValueError(f"No chunks extracted from {filepath}")
 
-        # Ingest without rebuilding index
+        all_content = "".join(c["content"] for c in chunks)
+        content_hash = hashlib.sha256(all_content.encode()).hexdigest()[:12]
+        doc_id = f"{filepath.stem}_{content_hash}"
+
+        deleted = self.retriever.storage.delete_documents_by_content_hash(content_hash)
+        if deleted > 0:
+            logger.info(f"[Watcher] Deduplicated {deleted} existing document(s) with hash {content_hash}")
+
         self.retriever.ingest_document(
             doc_id=doc_id,
             source_file=source_file,
