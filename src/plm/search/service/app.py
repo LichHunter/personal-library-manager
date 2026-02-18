@@ -27,6 +27,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 from plm.search.retriever import HybridRetriever
+from plm.search.service.queue_consumer import SearchQueueConsumer
 from plm.search.service.watcher import DirectoryWatcher
 
 logger = logging.getLogger(__name__)
@@ -87,6 +88,11 @@ INDEX_PATH = os.environ.get("INDEX_PATH", "/data/index")
 WATCH_DIR = os.environ.get("WATCH_DIR", None)  # None means no watcher
 PROCESS_EXISTING = os.environ.get("PROCESS_EXISTING", "false").lower() == "true"
 
+# Queue configuration
+QUEUE_ENABLED = os.environ.get("QUEUE_ENABLED", "false").lower() == "true"
+QUEUE_URL = os.environ.get("QUEUE_URL", "redis://localhost:6379")
+QUEUE_STREAM = os.environ.get("QUEUE_STREAM", "plm:extraction")
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -105,8 +111,29 @@ async def lifespan(app: FastAPI):
     )
     app.state.startup_time = time.time()
 
-    # Initialize watcher if WATCH_DIR is set
-    if WATCH_DIR:
+    # Initialize ingestion: queue consumer OR directory watcher (mutually exclusive)
+    app.state.watcher = None
+    app.state.queue_consumer = None
+    
+    if QUEUE_ENABLED:
+        # Queue mode: use Redis Streams consumer
+        import threading
+        app.state.queue_consumer = SearchQueueConsumer(
+            redis_url=QUEUE_URL,
+            retriever=app.state.retriever,
+            stream=QUEUE_STREAM,
+        )
+        # Run consumer in background thread
+        consumer_thread = threading.Thread(
+            target=app.state.queue_consumer.run,
+            daemon=True,
+            name="queue-consumer",
+        )
+        consumer_thread.start()
+        app.state.consumer_thread = consumer_thread
+        logger.info(f"[Service] Queue consumer started on {QUEUE_STREAM}")
+    elif WATCH_DIR:
+        # Directory watcher mode (legacy/standalone)
         watch_path = Path(WATCH_DIR)
         watch_path.mkdir(parents=True, exist_ok=True)
 
@@ -117,10 +144,9 @@ async def lifespan(app: FastAPI):
             process_existing=PROCESS_EXISTING,
         )
         app.state.watcher.start()
-        logger.info(f"[Service] Watcher started on {WATCH_DIR}")
+        logger.info(f"[Service] Directory watcher started on {WATCH_DIR}")
     else:
-        app.state.watcher = None
-        logger.info("[Service] No WATCH_DIR configured, watcher disabled")
+        logger.info("[Service] No WATCH_DIR or QUEUE_ENABLED configured, ingestion disabled")
 
     logger.info("[Service] Startup complete")
     yield
@@ -129,6 +155,11 @@ async def lifespan(app: FastAPI):
     logger.info("[Service] Shutting down...")
     if app.state.watcher:
         app.state.watcher.stop()
+    if app.state.queue_consumer:
+        app.state.queue_consumer.stop()
+        # Wait for consumer thread to finish
+        if hasattr(app.state, 'consumer_thread'):
+            app.state.consumer_thread.join(timeout=5.0)
     logger.info("[Service] Shutdown complete")
 
 

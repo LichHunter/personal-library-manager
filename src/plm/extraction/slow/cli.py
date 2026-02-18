@@ -16,9 +16,13 @@ import os
 import signal
 import sys
 import time
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+from plm.extraction.slow.format_transformer import transform_to_fast_format
+from plm.shared.queue import MessageQueue, create_queue
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -54,6 +58,9 @@ def parse_env() -> dict[str, Any]:
         "poll_interval": int(os.getenv("POLL_INTERVAL", "30")),
         "process_once": parse_bool(os.getenv("PROCESS_ONCE", "false")),
         "dry_run": parse_bool(os.getenv("DRY_RUN", "false")),
+        # Queue configuration
+        "queue_enabled": parse_bool(os.getenv("QUEUE_ENABLED", "false")),
+        "queue_stream": os.getenv("QUEUE_STREAM", "plm:extraction"),
     }
 
 
@@ -183,6 +190,19 @@ def watch_loop(config: dict[str, Any]) -> None:
     
     setup_directories(config)
     
+    # Initialize queue if enabled
+    queue: MessageQueue = create_queue()
+    queue_enabled = config["queue_enabled"]
+    queue_stream = config["queue_stream"]
+    
+    if queue_enabled:
+        if not queue.is_available():
+            print("Error: QUEUE_ENABLED=true but Redis is unavailable", file=sys.stderr)
+            sys.exit(1)
+        print(f"Queue: {queue_stream} (enabled)")
+    else:
+        print("Queue: disabled")
+    
     print(f"\nWatching: {config['input_dir']}")
     print(f"Output: {config['output_dir']}")
     print(f"Process once: {config['process_once']}")
@@ -202,8 +222,21 @@ def watch_loop(config: dict[str, Any]) -> None:
                 
                 result = process_document(file_path, resources)
                 
-                output_path = config["output_dir"] / f"{file_path.stem}.json"
-                write_output(result, output_path, config["dry_run"])
+                if queue_enabled:
+                    # Transform to fast format and publish to queue
+                    fast_result = transform_to_fast_format(result, source_file=str(file_path))
+                    envelope = {
+                        "message_id": str(uuid.uuid4()),
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                        "source_service": "slow-extraction",
+                        "payload": fast_result,
+                    }
+                    queue.publish(queue_stream, envelope)
+                    print(f"  Published to queue: {queue_stream}")
+                else:
+                    # Write to file (standalone mode)
+                    output_path = config["output_dir"] / f"{file_path.stem}.json"
+                    write_output(result, output_path, config["dry_run"])
                 
                 processed.add(file_path)
                 

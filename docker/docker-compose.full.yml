@@ -1,0 +1,163 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# PLM Full Pipeline with Redis Queue
+#
+# This compose file starts the complete extraction → search pipeline:
+# - Redis: Message queue for inter-service communication
+# - Fast extraction: Heuristic-based entity extraction (optional)
+# - Slow extraction: LLM-powered V6 extraction (optional)
+# - Search service: Hybrid retrieval with queue consumer
+#
+# Prerequisites:
+#   Build Docker images first (from repo root):
+#     nix build .#fast-extraction-docker && docker load < result
+#     nix build .#slow-extraction-docker && docker load < result  
+#     nix build .#search-service-docker && docker load < result
+#
+# Usage:
+#   # Start Redis and search service (queue consumer mode)
+#   docker compose -f docker/docker-compose.full.yml up -d redis search-service
+#
+#   # Start full pipeline including extraction services
+#   docker compose -f docker/docker-compose.full.yml up -d
+#
+#   # Process a document through fast extraction
+#   cp document.md fast-extraction/input/
+#   # Watch logs to see queue flow
+#   docker compose -f docker/docker-compose.full.yml logs -f
+#
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  # ─────────────────────────────────────────────────────────────────────────
+  # Redis - Message Queue
+  # ─────────────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: plm-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - plm-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    networks:
+      - plm-network
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Search Service - Queue Consumer Mode
+  # 
+  # Consumes extraction results from Redis queue and indexes them.
+  # Replaces DirectoryWatcher when QUEUE_ENABLED=true.
+  # ─────────────────────────────────────────────────────────────────────────
+  search-service:
+    image: plm-search-service:0.1.0
+    container_name: plm-search-service
+    ports:
+      - "8000:8000"
+    volumes:
+      - plm-search-index:/data/index
+      - ${HOME}/.local/share/opencode:/auth:ro
+    environment:
+      - INDEX_PATH=/data/index
+      # Queue mode (no WATCH_DIR needed)
+      - QUEUE_ENABLED=true
+      - QUEUE_URL=redis://redis:6379
+      - QUEUE_STREAM=plm:extraction
+      # LLM Auth for query rewriting
+      - OPENCODE_AUTH_PATH=/auth/auth.json
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - plm-network
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Fast Extraction - Heuristic-based Entity Extraction
+  #
+  # Processes documents from fast-extraction/input/ and publishes to queue.
+  # Uses GLiNER + YAKE for zero-LLM extraction.
+  # ─────────────────────────────────────────────────────────────────────────
+  fast-extraction:
+    image: plm-fast-extraction:0.1.0
+    container_name: plm-fast-extraction
+    profiles:
+      - extraction
+    volumes:
+      # Input: place documents here
+      - ../fast-extraction/input:/data/input:ro
+      # Output: not used in queue mode, but required by CLI
+      - ../fast-extraction/output:/data/output
+      # GLiNER model cache
+      - plm-gliner-models:/root/.cache/huggingface
+    environment:
+      - QUEUE_ENABLED=true
+      - QUEUE_URL=redis://redis:6379
+      - QUEUE_STREAM=plm:extraction
+      - PYTHONUNBUFFERED=1
+      - HF_HUB_OFFLINE=0
+    command: ["--input=/data/input", "--output=/data/output", "--workers=4"]
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - plm-network
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Slow Extraction - LLM-powered V6 Pipeline
+  #
+  # Processes documents from slow-extraction/input/ using Claude LLM.
+  # Requires ANTHROPIC_API_KEY or OpenCode OAuth.
+  # ─────────────────────────────────────────────────────────────────────────
+  slow-extraction:
+    image: plm-slow-extraction:0.1.0
+    container_name: plm-slow-extraction
+    profiles:
+      - extraction
+      - slow
+    volumes:
+      # Input: place documents here
+      - ../slow-extraction/input:/data/input:ro
+      # Output: not used in queue mode
+      - ../slow-extraction/output:/data/output
+      # Logs
+      - ../slow-extraction/logs:/data/logs
+      # Vocabularies (required)
+      - ../data/vocabularies:/data/vocabularies:ro
+      # OpenCode OAuth
+      - ${HOME}/.local/share/opencode:/auth:ro
+    environment:
+      - INPUT_DIR=/data/input
+      - OUTPUT_DIR=/data/output
+      - LOG_DIR=/data/logs
+      - VOCAB_PATH=/data/vocabularies/auto_vocab.json
+      - TRAIN_DOCS_PATH=/data/vocabularies/train_documents.json
+      - QUEUE_ENABLED=true
+      - QUEUE_URL=redis://redis:6379
+      - QUEUE_STREAM=plm:extraction
+      - PROCESS_ONCE=false
+      - OPENCODE_AUTH_PATH=/auth/auth.json
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - plm-network
+    restart: unless-stopped
+
+networks:
+  plm-network:
+    driver: bridge
+
+volumes:
+  # Redis persistence
+  plm-redis-data:
+  # Search index (SQLite + BM25)
+  plm-search-index:
+  # GLiNER model cache
+  plm-gliner-models:

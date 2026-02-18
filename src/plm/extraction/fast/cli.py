@@ -7,13 +7,16 @@ import shutil
 import sys
 import threading
 import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict
+from datetime import datetime, timezone
 from pathlib import Path
 
 from plm.extraction.fast.document_processor import DocumentResult, process_document
 from plm.extraction.fast.gliner import ExtractedEntity
 from plm.shared.logger import PipelineLogger
+from plm.shared.queue import MessageQueue, create_queue
 
 
 def _serialize_result(result: DocumentResult) -> dict:
@@ -99,6 +102,20 @@ def main(argv: list[str] | None = None) -> int:
         log.info(f"Info log:             {args.log_file}")
     if args.trace_file:
         log.info(f"Trace log:            {args.trace_file}")
+
+    # Queue integration (optional)
+    queue_enabled = os.environ.get("QUEUE_ENABLED", "false").lower() == "true"
+    queue_stream = os.environ.get("QUEUE_STREAM", "plm:extraction")
+    queue: MessageQueue = create_queue()
+    
+    if queue_enabled:
+        if not queue.is_available():
+            print("Error: QUEUE_ENABLED=true but Redis is unavailable", file=sys.stderr)
+            log.close()
+            return 1
+        log.info(f"Queue:                {queue_stream} (enabled)")
+    else:
+        log.info("Queue:                disabled")
 
     patterns = [p.strip() for p in args.pattern.split(",")]
     files = _collect_files(args.input, patterns)
@@ -205,10 +222,22 @@ def main(argv: list[str] | None = None) -> int:
                     f" < {args.confidence_threshold}"
                 )
 
-        output_path = args.output / rel_path.with_suffix(".json")
-        output_path.parent.mkdir(parents=True, exist_ok=True)
         output_data = _serialize_result(result)
-        output_path.write_text(json.dumps(output_data, indent=2))
+        
+        if queue_enabled:
+            # Publish to queue with envelope
+            envelope = {
+                "message_id": str(uuid.uuid4()),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "source_service": "fast-extraction",
+                "payload": output_data,
+            }
+            queue.publish(queue_stream, envelope)
+        else:
+            # Write to file (standalone mode)
+            output_path = args.output / rel_path.with_suffix(".json")
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(json.dumps(output_data, indent=2))
 
         if result.is_low_confidence and args.low_confidence_dir:
             dest = args.low_confidence_dir / rel_path
