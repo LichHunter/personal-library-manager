@@ -35,6 +35,13 @@
       };
       linux-slow-extraction-pkgs = slow-extraction-outputs.packages.${linuxSystem};
 
+      # Import fast extraction build flake
+      fast-extraction-flake = import ./src/plm/extraction/fast/flake.nix;
+      fast-extraction-outputs = fast-extraction-flake.outputs {
+        inherit self nixpkgs flake-utils pyproject-nix uv2nix pyproject-build-systems;
+      };
+      linux-fast-extraction-pkgs = fast-extraction-outputs.packages.${linuxSystem};
+
       # Import search service build flake
       search-service-flake = import ./src/plm/search/flake.nix;
       search-service-outputs = search-service-flake.outputs {
@@ -55,6 +62,10 @@
       # Packages only for Linux (Docker builds require Linux)
       packages = {
         "${linuxSystem}" = {
+          # Fast extraction packages
+          fast-extraction = linux-fast-extraction-pkgs.fast-extraction;
+          fast-extraction-docker = linux-fast-extraction-pkgs.fast-extraction-docker;
+
           # Slow extraction packages
           slow-extraction = linux-slow-extraction-pkgs.slow-extraction;
           slow-extraction-docker = linux-slow-extraction-pkgs.slow-extraction-docker;
@@ -64,7 +75,7 @@
           search-service-docker = linux-search-service-pkgs.search-service-docker;
 
           # Default
-          default = linux-slow-extraction-pkgs.default;
+          default = linux-fast-extraction-pkgs.default;
         };
       };
 

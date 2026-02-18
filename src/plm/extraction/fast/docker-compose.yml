@@ -1,0 +1,42 @@
+services:
+  fast-extraction:
+    image: plm-fast-extraction:0.1.0
+    container_name: plm-fast-extraction
+
+    volumes:
+      # Paths relative to repo root (run with: docker compose -f src/plm/extraction/fast/docker-compose.yml up)
+      - ../../../../fast-extraction/input:/data/input:ro
+      - ../../../../fast-extraction/output:/data/output
+      - ../../../../fast-extraction/logs:/data/logs
+      # GLiNER model cache — persisted across runs to avoid re-download
+      - plm-gliner-models:/root/.cache/huggingface
+
+    command:
+      - "--input=/data/input"
+      - "--output=/data/output"
+      - "--log-file=/data/logs/extraction.log"
+      - "--trace-file=/data/logs/extraction.trace.log"
+      - "--low-confidence-dir=/data/output/low_confidence"
+      - "--workers=8"
+      - "--pattern=**/*.md,**/*.txt"
+
+  fast-extraction-single:
+    image: plm-fast-extraction:0.1.0
+    container_name: plm-fast-extraction-single
+    profiles:
+      - single
+
+    volumes:
+      - ../../../../fast-extraction/input:/data/input:ro
+      - ../../../../fast-extraction/output:/data/output
+      - ../../../../fast-extraction/logs:/data/logs
+      - plm-gliner-models:/root/.cache/huggingface
+
+    command:
+      - "--input=/data/input"
+      - "--output=/data/output"
+      - "--log-file=/data/logs/extraction.log"
+      - "--workers=1"
+
+volumes:
+  plm-gliner-models:
