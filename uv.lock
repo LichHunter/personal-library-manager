@@ -849,9 +849,9 @@ dev = [
 requires-dist = [
     { name = "anthropic", specifier = ">=0.40.0" },
     { name = "bm25s", specifier = ">=0.2.14" },
-    { name = "click" },
+    { name = "click", specifier = ">=8.0.0" },
     { name = "faiss-cpu", specifier = ">=1.7.0" },
-    { name = "fastapi" },
+    { name = "fastapi", specifier = ">=0.100.0" },
     { name = "gliner", specifier = ">=0.2.25" },
     { name = "httpx", specifier = ">=0.27.0" },
     { name = "numpy", specifier = ">=1.24.0" },
@@ -861,8 +861,8 @@ requires-dist = [
     { name = "rapidfuzz", specifier = ">=3.0.0" },
     { name = "sentence-transformers", specifier = ">=2.2.0" },
     { name = "torch", specifier = ">=2.0.0", index = "https://download.pytorch.org/whl/cpu" },
-    { name = "uvicorn", extras = ["standard"] },
-    { name = "watchdog" },
+    { name = "uvicorn", extras = ["standard"], specifier = ">=0.23.0" },
+    { name = "watchdog", specifier = ">=3.0.0" },
     { name = "yake", specifier = ">=0.7.3" },
 ]
 provides-extras = ["dev"]
