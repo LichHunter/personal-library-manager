@@ -214,6 +214,8 @@ class HybridRetriever:
         batch_size: int = 256,
         show_progress: bool = False,
         on_progress: Callable[[int, int, str], None] | None = None,
+        *,
+        rebuild_index: bool = True,
     ) -> None:
         """Batch-ingest multiple documents with efficient batch encoding.
 
@@ -228,6 +230,7 @@ class HybridRetriever:
             batch_size: Batch size for embedding encoding
             show_progress: Show progress bar during encoding
             on_progress: Optional callable(step, total, message) for progress reporting
+            rebuild_index: Whether to rebuild BM25 index after ingestion.
         """
         all_enriched = []
         all_meta = []
@@ -278,7 +281,8 @@ class HybridRetriever:
                 end_char=end_char,
             )
 
-        self._rebuild_bm25_index()
+        if rebuild_index:
+            self._rebuild_bm25_index()
 
         if on_progress:
             on_progress(3, 3, f"Indexed {len(all_enriched)} chunks")

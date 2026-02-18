@@ -21,6 +21,7 @@ build/
 # Cache directories
 enrichment_cache/
 contextual_index/
+.cache/
 
 # Logs
 *.log

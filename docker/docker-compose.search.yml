@@ -1,0 +1,104 @@
+services:
+  # ─────────────────────────────────────────────────────────────────────────
+  # PLM Search Service
+  #
+  # Build the image first:
+  #   nix build .#search-service-docker
+  #   docker load < result
+  #
+  # Run (query-only, no auto-ingestion):
+  #   docker compose -f docker/docker-compose.search.yml up search-service
+  #
+  # Run with directory watcher (auto-ingest JSON files dropped into watched/):
+  #   docker compose -f docker/docker-compose.search.yml --profile watch up search-service-watch
+  #
+  # Authentication (one of):
+  #   Option A - API key:      set ANTHROPIC_API_KEY in environment
+  #   Option B - OpenCode OAuth: leave unset, auth.json is mounted from ~/.local/share/opencode/
+  #
+  # Query rewriting (Haiku) is DISABLED by default (use_rewrite=false in /query requests).
+  # Enable per-request by posting {"query": "...", "use_rewrite": true}
+  # ─────────────────────────────────────────────────────────────────────────
+
+  search-service:
+    image: plm-search-service:0.1.0
+    container_name: plm-search-service
+    ports:
+      - "8000:8000"
+
+    volumes:
+      # Persistent index: SQLite DB + BM25S index survive container restarts
+      - plm-search-index:/data/index
+      # Incoming documents: drop fast-extraction JSON output files here
+      # Run: docker compose -f docker/docker-compose.search.yml up search-service
+      # (watcher is disabled in this service - use search-service-watch profile instead)
+      - ./watched:/data/watch
+      # OpenCode OAuth (Option B auth) - comment out if using ANTHROPIC_API_KEY
+      - ${HOME}/.local/share/opencode:/auth:ro
+
+    environment:
+      # ── Paths ──────────────────────────────────────────────────────────
+      - INDEX_PATH=/data/index
+      - WATCH_DIR=/data/watch
+      # Process files already in watched/ on startup (false = only new files)
+      - PROCESS_EXISTING=false
+
+      # ── LLM Auth (for query rewriting via shared LLM module) ───────────
+      # Option A: Direct API key (uncomment and set value, or pass via shell env)
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      #
+      # Option B: OpenCode OAuth (default - mount above must be present)
+      - OPENCODE_AUTH_PATH=/auth/auth.json
+
+      # ── Python ─────────────────────────────────────────────────────────
+      - PYTHONUNBUFFERED=1
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Search Service with Directory Watcher
+  #
+  # Automatically ingests JSON files dropped into docker/watched/.
+  # Files are moved to watched/processed/ on success, watched/failed/ on error.
+  #
+  # Activate with:
+  #   docker compose -f docker/docker-compose.search.yml --profile watch up search-service-watch
+  # ─────────────────────────────────────────────────────────────────────────
+
+  search-service-watch:
+    image: plm-search-service:0.1.0
+    container_name: plm-search-service-watch
+    profiles:
+      - watch
+    ports:
+      - "8000:8000"
+
+    volumes:
+      # Persistent index (shared with search-service if both run simultaneously)
+      - plm-search-index:/data/index
+      # Incoming documents: bind-mount so host can drop files in
+      - ./watched:/data/watch
+      # OpenCode OAuth (Option B auth) - comment out if using ANTHROPIC_API_KEY
+      - ${HOME}/.local/share/opencode:/auth:ro
+
+    environment:
+      # ── Paths ──────────────────────────────────────────────────────────
+      - INDEX_PATH=/data/index
+      - WATCH_DIR=/data/watch
+      # Process files already present in watched/ at startup
+      - PROCESS_EXISTING=true
+
+      # ── LLM Auth (for query rewriting via shared LLM module) ───────────
+      # Option A: Direct API key (uncomment and set value, or pass via shell env)
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      #
+      # Option B: OpenCode OAuth (default - mount above must be present)
+      - OPENCODE_AUTH_PATH=/auth/auth.json
+
+      # ── Python ─────────────────────────────────────────────────────────
+      - PYTHONUNBUFFERED=1
+
+    restart: unless-stopped
+
+volumes:
+  # Named volume: SQLite database + BM25S index persist across container restarts
+  # Remove with: docker volume rm docker_plm-search-index  (to start fresh)
+  plm-search-index:

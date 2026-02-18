@@ -54,4 +54,5 @@ packages = ["src/plm"]
 [dependency-groups]
 dev = [
     "basedpyright>=1.38.0",
+    "rank-bm25>=0.2.2",  # Required for POC comparison tests
 ]

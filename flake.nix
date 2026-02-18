@@ -35,6 +35,13 @@
       };
       linux-slow-extraction-pkgs = slow-extraction-outputs.packages.${linuxSystem};
 
+      # Import search service build flake
+      search-service-flake = import ./src/plm/search/flake.nix;
+      search-service-outputs = search-service-flake.outputs {
+        inherit self nixpkgs flake-utils pyproject-nix uv2nix pyproject-build-systems;
+      };
+      linux-search-service-pkgs = search-service-outputs.packages.${linuxSystem};
+
       # Keep multi-system support for devShells
       supportedSystems = [
         "x86_64-linux"
@@ -51,6 +58,10 @@
           # Slow extraction packages
           slow-extraction = linux-slow-extraction-pkgs.slow-extraction;
           slow-extraction-docker = linux-slow-extraction-pkgs.slow-extraction-docker;
+
+          # Search service packages
+          search-service = linux-search-service-pkgs.search-service;
+          search-service-docker = linux-search-service-pkgs.search-service-docker;
 
           # Default
           default = linux-slow-extraction-pkgs.default;
