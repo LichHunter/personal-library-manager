@@ -175,7 +175,7 @@ Terms below threshold are logged to `/data/logs/low_confidence.jsonl`:
 
 ## V6 Pipeline Details
 
-The V6 strategy (`strategy_v6` in `hybrid_ner.py`) implements:
+The V6 strategy (`strategy_v6` in `hybrid_ner/config.py`) implements:
 
 1. **FAISS Index Building**: Embeds 741 training documents using `all-MiniLM-L6-v2`
 2. **Retrieval**: For each input document, retrieves k=3 most similar training examples
@@ -256,10 +256,9 @@ The first run downloads the `all-MiniLM-L6-v2` model (~90MB). Subsequent runs us
 
 ## Implementation Notes
 
-This Docker image contains an **exact replica** of the POC-1c V6 extraction pipeline:
-- `src/plm/extraction/v6/hybrid_ner.py` - Main extraction logic
-- `src/plm/extraction/v6/retrieval_ner.py` - FAISS retrieval
-- `src/plm/extraction/v6/scoring.py` - Term scoring
-- `src/plm/extraction/cli_v6.py` - Docker entrypoint
-
-The code was copied from `poc/poc-1c-scalable-ner/` with import paths adjusted for the package structure. Results are verified to be **100% identical** to POC-1c when using the same input text.
+This Docker image uses the V6 extraction pipeline (exact POC-1c replication):
+- `cli.py` - Docker entrypoint (folder watcher + V6 orchestration)
+- `hybrid_ner/` - Core pipeline package (11 modules: config, prompts, extractors, grounding, noise_filter, validation, postprocess, pipeline, parsing, constants)
+- `scoring.py` - Term normalization and span verification
+- `retrieval_ner.py` - FAISS retrieval index for few-shot examples
+- `benchmark_prompt_variants.py` - Prompt variant registry for testing

@@ -76,7 +76,7 @@
             ];
 
             config = {
-              Cmd = [ "${venv}/bin/python" "-m" "plm.extraction.cli_v6" ];
+              Cmd = [ "${venv}/bin/python" "-m" "plm.extraction.slow.cli" ];
               WorkingDir = "/app";
 
               Env = [

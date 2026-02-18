@@ -2,16 +2,26 @@
 
 This module bridges the fast extraction system output (GLiNER entities + YAKE keywords)
 to the format expected by the ContentEnricher component.
+
+Also provides utilities for loading extraction output directories into the
+format expected by HybridRetriever.batch_ingest().
 """
 
 from __future__ import annotations
 
+import json
+import logging
 from collections import defaultdict
+from pathlib import Path
 from typing import TYPE_CHECKING
+
+from plm.search.service.watcher import json_to_chunks
 
 if TYPE_CHECKING:
     from plm.extraction.fast.document_processor import DocumentResult
     from plm.extraction.fast.gliner import ExtractedEntity
+
+logger = logging.getLogger(__name__)
 
 
 def gliner_to_enricher_format(entities: list[ExtractedEntity]) -> dict[str, list[str]]:
@@ -67,3 +77,49 @@ def document_result_to_chunks(doc: DocumentResult) -> list[dict]:
                 'end_char': chunk.end_char,
             })
     return chunks
+
+
+def load_extraction_directory(json_dir: str | Path) -> list[dict]:
+    """Load extraction JSON files from a directory into batch_ingest format.
+
+    Reads all .json files from the given directory (including processed/
+    subdirectory) and converts them into the format expected by
+    HybridRetriever.batch_ingest().
+
+    The doc_id is derived from the JSON filename stem (e.g.,
+    "concepts_architecture_leases.json" -> "concepts_architecture_leases"),
+    which matches the question format used in benchmarks.
+
+    Args:
+        json_dir: Path to directory containing extraction JSON files.
+            Also checks json_dir/processed/ for already-processed files.
+
+    Returns:
+        List of document dicts ready for batch_ingest(), each with:
+            - 'doc_id': Filename stem
+            - 'source_file': Original source file from JSON metadata
+            - 'chunks': List of chunk dicts from json_to_chunks()
+    """
+    json_dir = Path(json_dir)
+    documents: list[dict] = []
+
+    json_files: list[Path] = []
+    for search_dir in [json_dir, json_dir / "processed"]:
+        if search_dir.is_dir():
+            json_files.extend(sorted(search_dir.glob("*.json")))
+
+    for json_path in json_files:
+        doc_dict = json.loads(json_path.read_text(encoding="utf-8"))
+        chunks = json_to_chunks(doc_dict)
+        if not chunks:
+            logger.warning(f"No chunks extracted from {json_path}")
+            continue
+
+        documents.append({
+            "doc_id": json_path.stem,
+            "source_file": doc_dict.get("source_file", str(json_path)),
+            "chunks": chunks,
+        })
+
+    logger.info(f"Loaded {len(documents)} documents from {json_dir}")
+    return documents

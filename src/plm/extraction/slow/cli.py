@@ -24,7 +24,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 import faiss
 
-from plm.extraction.v6 import (
+from plm.extraction.slow import (
     extract_hybrid_v5,
     build_term_index,
     get_strategy_config,

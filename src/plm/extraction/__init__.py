@@ -1,16 +1,6 @@
-"""PLM Extraction Module."""
-from .pipeline import (
-    extract,
-    fast_extract,
-    slow_extract,
-    ExtractionConfig,
-    ExtractionResult,
-)
+"""PLM Extraction Module.
 
-__all__ = [
-    "extract",
-    "fast_extract",
-    "slow_extract",
-    "ExtractionConfig",
-    "ExtractionResult",
-]
+Two extraction systems:
+- Fast: Heuristic-based (GLiNER entities + YAKE keywords) via fast/cli.py
+- Slow: V6 LLM pipeline (POC-1c replication) via slow/cli.py -> v6/
+"""

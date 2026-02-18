@@ -1,122 +1,40 @@
 """Regression accuracy test: production search vs POC baseline.
 
 Uses the production HybridRetriever pipeline end-to-end.
-Index is cached to disk — first run builds it (~20 min), subsequent runs load
+Index is cached to disk — first run builds it (~5 min), subsequent runs load
 instantly and only run retrieval (~10s).
+
+Extraction must be run separately BEFORE this test (via fast extraction CLI).
+This test reads the extraction JSON output and ingests it through the
+production pipeline.
 
 Baselines (from POC BENCHMARK_RESULTS.md):
   - Needle questions (20q): POC 90%, target >= 85%
   - Informed questions (50q): POC 80%, target >= 75%
 
-Run:  python tests/search/test_regression_accuracy.py
+Run:  python tests/search/test_regression_accuracy.py [--rebuild] [extraction_dir]
 Clear cache:  python tests/search/test_regression_accuracy.py --rebuild
 """
 
 from __future__ import annotations
 
 import json
-import re
 import sys
 import time
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(PROJECT_ROOT / "poc" / "chunking_benchmark_v2"))
-
-import yake
-from strategies import Document, MarkdownSemanticStrategy
-
+from plm.search.adapters import load_extraction_directory
 from plm.search.retriever import HybridRetriever
 
-CORPUS_DIR = PROJECT_ROOT / "poc" / "chunking_benchmark_v2" / "corpus" / "kubernetes"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
 NEEDLE_QUESTIONS = PROJECT_ROOT / "poc" / "chunking_benchmark_v2" / "corpus" / "needle_questions.json"
 INFORMED_QUESTIONS = PROJECT_ROOT / "poc" / "modular_retrieval_pipeline" / "corpus" / "informed_questions.json"
+DEFAULT_EXTRACTION_DIR = PROJECT_ROOT / ".cache" / "extraction_output"
 
 CACHE_DIR = PROJECT_ROOT / ".cache" / "regression_index"
 DB_PATH = str(CACHE_DIR / "regression.db")
 BM25_PATH = str(CACHE_DIR / "bm25_index")
-
-CODE_BLOCK_RE = re.compile(r"```[\s\S]*?```|`[^`\n]+`")
-ENTITY_TYPES = {"ORG", "PRODUCT", "GPE", "PERSON", "WORK_OF_ART", "LAW", "EVENT", "FAC", "NORP"}
-
-_yake_ext: yake.KeywordExtractor | None = None
-_spacy_nlp = None
-
-
-def _get_yake() -> yake.KeywordExtractor:
-    global _yake_ext
-    if _yake_ext is None:
-        _yake_ext = yake.KeywordExtractor(
-            lan="en", n=2, top=10, dedupLim=0.9,
-            dedupFunc="seqm", windowsSize=1,
-        )
-    return _yake_ext
-
-
-def _get_spacy():
-    global _spacy_nlp
-    if _spacy_nlp is None:
-        import spacy
-        _spacy_nlp = spacy.load("en_core_web_sm")
-    return _spacy_nlp
-
-
-def extract_keywords(text: str) -> list[str]:
-    if not text or len(text.strip()) < 50:
-        return []
-    return [kw for kw, _ in _get_yake().extract_keywords(text)][:10]
-
-
-def extract_entities(text: str) -> dict[str, list[str]]:
-    if not text or len(text.strip()) < 50:
-        return {}
-    nlp = _get_spacy()
-    code_chars = sum(len(m.group()) for m in CODE_BLOCK_RE.finditer(text))
-    code_ratio = code_chars / len(text) if text else 0.0
-    clean = CODE_BLOCK_RE.sub(" ", text) if code_ratio > 0.3 else text
-    doc = nlp(clean[:5000])
-    entities: dict[str, list[str]] = {}
-    for ent in doc.ents:
-        if ent.label_ in ENTITY_TYPES:
-            bucket = entities.setdefault(ent.label_, [])
-            if ent.text not in bucket:
-                bucket.append(ent.text)
-    for label in entities:
-        entities[label] = entities[label][:5]
-    return entities
-
-
-# ---------------------------------------------------------------------------
-# Corpus loading — same logic as POC benchmark.py
-# ---------------------------------------------------------------------------
-
-def load_documents() -> list[Document]:
-    docs = []
-    for md_path in sorted(CORPUS_DIR.glob("*.md")):
-        doc_id = md_path.stem
-        content = md_path.read_text(encoding="utf-8")
-        title = doc_id
-        for line in content.split("\n"):
-            line = line.strip()
-            if line.startswith("title:"):
-                title = line.replace("title:", "").strip().strip("\"'")
-                break
-            elif line.startswith("# "):
-                title = line[2:].strip()
-                break
-        docs.append(Document(id=doc_id, title=title, content=content, path=str(md_path)))
-    return docs
-
-
-def chunk_documents(documents: list[Document]):
-    strategy = MarkdownSemanticStrategy(
-        max_heading_level=4, target_chunk_size=400,
-        min_chunk_size=50, max_chunk_size=800, overlap_sentences=1,
-    )
-    all_chunks = []
-    for doc in documents:
-        all_chunks.extend(strategy.chunk(doc))
-    return all_chunks
 
 
 def load_needle_questions() -> list[dict]:
@@ -132,56 +50,29 @@ def load_informed_questions() -> list[dict]:
         return json.load(f)["questions"]
 
 
-# ---------------------------------------------------------------------------
-# Build index through production pipeline
-# ---------------------------------------------------------------------------
-
-def build_index(retriever: HybridRetriever) -> None:
+def build_index(retriever: HybridRetriever, extraction_dir: Path) -> None:
     t0 = time.time()
 
-    print("[build] Loading corpus...", flush=True)
-    documents = load_documents()
-    print(f"[build] {len(documents)} documents loaded", flush=True)
+    print(f"[build] Loading extraction output from {extraction_dir}...", flush=True)
+    documents = load_extraction_directory(extraction_dir)
+    total_chunks = sum(len(d["chunks"]) for d in documents)
+    print(f"[build] {len(documents)} documents, {total_chunks} chunks", flush=True)
 
-    print("[build] Chunking...", flush=True)
-    poc_chunks = chunk_documents(documents)
-    print(f"[build] {len(poc_chunks)} chunks created", flush=True)
-
-    print("[build] Extracting keywords + entities...", flush=True)
-    doc_map: dict[str, dict] = {}
-    for i, c in enumerate(poc_chunks):
-        if (i + 1) % 1000 == 0:
-            print(f"[build]   {i+1}/{len(poc_chunks)} enriched ({time.time()-t0:.0f}s)", flush=True)
-
-        entry = doc_map.setdefault(c.doc_id, {
-            "doc_id": c.doc_id,
-            "source_file": f"{c.doc_id}.md",
-            "chunks": [],
-        })
-        entry["chunks"].append({
-            "content": c.content,
-            "keywords": extract_keywords(c.content),
-            "entities": extract_entities(c.content),
-        })
-
-    print(f"[build] Enrichment done in {time.time()-t0:.0f}s", flush=True)
-    print(f"[build] Batch ingesting {len(doc_map)} documents...", flush=True)
+    if not documents:
+        print("[build] ERROR: No extraction JSONs found. Run fast extraction first.", flush=True)
+        sys.exit(1)
 
     def progress(step: int, total: int, msg: str) -> None:
         print(f"[build]   Step {step}/{total}: {msg}", flush=True)
 
     retriever.batch_ingest(
-        list(doc_map.values()),
+        documents,
         batch_size=256,
         show_progress=True,
         on_progress=progress,
     )
     print(f"[build] Total build time: {time.time()-t0:.0f}s", flush=True)
 
-
-# ---------------------------------------------------------------------------
-# Evaluate
-# ---------------------------------------------------------------------------
 
 def evaluate(
     name: str,
@@ -221,12 +112,11 @@ def evaluate(
             "poc_baseline": poc_baseline, "target": target, "passed": passed}
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
-
 def main() -> bool:
     rebuild = "--rebuild" in sys.argv
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    extraction_dir = Path(args[0]) if args else DEFAULT_EXTRACTION_DIR
+
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     print("=" * 70, flush=True)
@@ -242,7 +132,7 @@ def main() -> bool:
                     p.unlink()
             retriever = HybridRetriever(DB_PATH, BM25_PATH)
         print(f"[cache] Index not found at {CACHE_DIR}, building...", flush=True)
-        build_index(retriever)
+        build_index(retriever, extraction_dir)
     else:
         chunk_count = retriever.storage.get_chunk_count()
         doc_count = retriever.storage.get_document_count()
