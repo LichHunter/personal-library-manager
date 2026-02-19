@@ -16,8 +16,10 @@ import logging
 import os
 import signal
 import sys
+import threading
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -122,18 +124,13 @@ def watch_loop(
     process_existing: bool = True,
     confidence_threshold: float = 0.7,
     extraction_threshold: float = 0.3,
+    workers: int = 1,
 ) -> int:
-    """Main watch loop - monitors directory and processes new files.
-    
-    Returns exit code (0 for success, 1 for error).
-    """
     global shutdown_requested
     
-    # Setup signal handlers
     signal.signal(signal.SIGTERM, signal_handler)
     signal.signal(signal.SIGINT, signal_handler)
     
-    # Setup queue
     queue_enabled = os.environ.get("QUEUE_ENABLED", "false").lower() == "true"
     queue_stream = os.environ.get("QUEUE_STREAM", "plm:extraction")
     queue: MessageQueue = create_queue()
@@ -146,11 +143,17 @@ def watch_loop(
     else:
         logger.info(f"File mode: writing to {output_dir}")
     
-    # Ensure directories exist
     input_dir.mkdir(parents=True, exist_ok=True)
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    # Pre-load GLiNER model
+    n_workers = max(1, workers)
+    if n_workers > 1:
+        import torch
+        cpu_count = os.cpu_count() or 4
+        torch_threads = max(1, cpu_count // n_workers)
+        torch.set_num_threads(torch_threads)
+        logger.info(f"Workers: {n_workers} (torch_threads={torch_threads})")
+    
     logger.info("Loading GLiNER model...")
     from plm.extraction.fast.gliner import get_model
     get_model()
@@ -158,7 +161,6 @@ def watch_loop(
     
     processed: set[Path] = set()
     
-    # Optionally skip existing files
     if not process_existing:
         existing = get_pending_files(input_dir, processed, patterns)
         processed.update(existing)
@@ -169,6 +171,18 @@ def watch_loop(
     
     files_processed = 0
     files_errored = 0
+    lock = threading.Lock()
+    
+    def _process_one(filepath: Path) -> bool:
+        return process_file(
+            filepath=filepath,
+            output_dir=output_dir,
+            queue=queue,
+            queue_enabled=queue_enabled,
+            queue_stream=queue_stream,
+            confidence_threshold=confidence_threshold,
+            extraction_threshold=extraction_threshold,
+        )
     
     while not shutdown_requested:
         pending = get_pending_files(input_dir, processed, patterns)
@@ -176,25 +190,34 @@ def watch_loop(
         if pending:
             logger.info(f"Found {len(pending)} new file(s)")
             
-            for filepath in pending:
-                if shutdown_requested:
-                    break
-                
-                success = process_file(
-                    filepath=filepath,
-                    output_dir=output_dir,
-                    queue=queue,
-                    queue_enabled=queue_enabled,
-                    queue_stream=queue_stream,
-                    confidence_threshold=confidence_threshold,
-                    extraction_threshold=extraction_threshold,
-                )
-                
-                processed.add(filepath)
-                if success:
-                    files_processed += 1
-                else:
-                    files_errored += 1
+            if n_workers == 1:
+                for filepath in pending:
+                    if shutdown_requested:
+                        break
+                    success = _process_one(filepath)
+                    processed.add(filepath)
+                    if success:
+                        files_processed += 1
+                    else:
+                        files_errored += 1
+            else:
+                with ThreadPoolExecutor(max_workers=n_workers) as executor:
+                    futures = {executor.submit(_process_one, fp): fp for fp in pending}
+                    for future in as_completed(futures):
+                        if shutdown_requested:
+                            executor.shutdown(wait=False, cancel_futures=True)
+                            break
+                        fp = futures[future]
+                        with lock:
+                            processed.add(fp)
+                            try:
+                                if future.result():
+                                    files_processed += 1
+                                else:
+                                    files_errored += 1
+                            except Exception as e:
+                                logger.error(f"Exception processing {fp}: {e}")
+                                files_errored += 1
         
         if not shutdown_requested:
             time.sleep(poll_interval)
@@ -229,6 +252,8 @@ def main() -> int:
                         help="Confidence threshold for flagging (default: 0.7)")
     parser.add_argument("--extraction-threshold", type=float, default=0.3,
                         help="GLiNER extraction threshold (default: 0.3)")
+    parser.add_argument("--workers", type=int, default=1,
+                        help="Parallel worker threads (default: 1, recommended: 4)")
     
     args = parser.parse_args()
     patterns = [p.strip() for p in args.pattern.split(",")]
@@ -241,6 +266,7 @@ def main() -> int:
         process_existing=args.process_existing,
         confidence_threshold=args.confidence_threshold,
         extraction_threshold=args.extraction_threshold,
+        workers=args.workers,
     )
 
 

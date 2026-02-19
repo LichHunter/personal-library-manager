@@ -102,7 +102,7 @@ services:
       - PYTHONUNBUFFERED=1
       - HF_HUB_OFFLINE=0
     entrypoint: ["python", "-m", "plm.extraction.fast.watcher"]
-    command: ["--input=/data/input", "--output=/data/output", "--poll-interval=5", "--process-existing"]
+    command: ["--input=/data/input", "--output=/data/output", "--poll-interval=5", "--process-existing", "--workers=4"]
     depends_on:
       redis:
         condition: service_healthy
