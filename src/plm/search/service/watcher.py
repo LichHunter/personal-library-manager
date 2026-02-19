@@ -329,12 +329,12 @@ class DirectoryWatcher:
             doc_dict = json.load(f)
 
         source_file = doc_dict.get("source_file", str(filepath))
+        headings = doc_dict.get("headings", [])
 
-        chunks = json_to_chunks(doc_dict)
-        if not chunks:
-            raise ValueError(f"No chunks extracted from {filepath}")
+        all_content = self._extract_all_content(headings)
+        if not all_content:
+            raise ValueError(f"No content extracted from {filepath}")
 
-        all_content = "".join(c["content"] for c in chunks)
         content_hash = hashlib.sha256(all_content.encode()).hexdigest()[:12]
         doc_id = f"{filepath.stem}_{content_hash}"
 
@@ -342,16 +342,25 @@ class DirectoryWatcher:
         if deleted > 0:
             logger.info(f"[Watcher] Deduplicated {deleted} existing document(s) with hash {content_hash}")
 
-        self.retriever.ingest_document(
+        self.retriever.ingest_document_hierarchical(
             doc_id=doc_id,
             source_file=source_file,
-            chunks=chunks,
+            headings=headings,
             rebuild_index=False,
         )
 
-        # Move to processed
+        chunk_count = sum(len(h.get("chunks", [])) for h in headings)
         self._move_to_processed(filepath)
-        logger.info(f"[Watcher] Ingested {filepath.name}: {len(chunks)} chunks")
+        logger.info(f"[Watcher] Ingested {filepath.name}: {chunk_count} chunks, {len(headings)} headings")
+
+    @staticmethod
+    def _extract_all_content(headings: list[dict]) -> str:
+        parts = []
+        for section in headings:
+            for chunk in section.get("chunks", []):
+                text = chunk.get("text") or chunk.get("content", "")
+                parts.append(text)
+        return "".join(parts)
 
     def _move_to_processed(self, filepath: Path) -> None:
         """Move file to processed/ directory."""

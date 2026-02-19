@@ -31,3 +31,10 @@ poc/poc-2-confidence-scoring/artifacts/gliner-finetuned/
 
 # Invalid results (marked for reference only)
 results/gems_*.md
+
+# Backups
+backups/
+
+# Runtime data
+docker/index/
+fast-extraction/

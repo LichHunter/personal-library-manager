@@ -132,6 +132,46 @@ class ChunkResponse(BaseModel):
     end_char: int | None
 
 
+class HeadingSearchResult(BaseModel):
+    """A heading-level search result."""
+
+    heading_id: str = Field(description="Unique identifier for the heading")
+    doc_id: str = Field(description="Document identifier")
+    heading_text: str = Field(description="The heading text")
+    heading_level: int | None = Field(description="Heading level (0=root, 2=##, etc.)")
+    score: float = Field(description="Semantic similarity score")
+    keywords_json: str | None = Field(description="Aggregated keywords as JSON")
+    entities_json: str | None = Field(description="Aggregated entities as JSON")
+
+
+class HeadingSearchResponse(BaseModel):
+    """Response from a heading-level search."""
+
+    query: str
+    k: int
+    result_count: int
+    results: list[HeadingSearchResult]
+
+
+class DocumentSearchResult(BaseModel):
+    """A document-level search result."""
+
+    doc_id: str = Field(description="Document identifier")
+    source_file: str = Field(description="Source file path")
+    score: float = Field(description="Semantic similarity score")
+    keywords_json: str | None = Field(description="Aggregated keywords as JSON")
+    entities_json: str | None = Field(description="Aggregated entities as JSON")
+
+
+class DocumentSearchResponse(BaseModel):
+    """Response from a document-level search."""
+
+    query: str
+    k: int
+    result_count: int
+    results: list[DocumentSearchResult]
+
+
 @mcp.tool()
 def search(
     query: Annotated[str, Field(description="Search query text")],
@@ -235,6 +275,72 @@ def get_chunk(
         heading=chunk.get("heading"),
         start_char=chunk.get("start_char"),
         end_char=chunk.get("end_char"),
+    )
+
+
+@mcp.tool()
+def search_headings(
+    query: Annotated[str, Field(description="Search query text")],
+    k: Annotated[int, Field(description="Number of results to return", ge=1, le=100)] = 10,
+) -> HeadingSearchResponse:
+    """Search at the heading/section level using semantic similarity.
+
+    Returns heading-level results with aggregated metadata from all chunks
+    within each heading. Use this for broader context than chunk search.
+
+    Requires documents to be ingested with hierarchical structure.
+    """
+    retriever = _get_retriever()
+    results = retriever.retrieve_headings(query=query, k=k)
+
+    return HeadingSearchResponse(
+        query=query,
+        k=k,
+        result_count=len(results),
+        results=[
+            HeadingSearchResult(
+                heading_id=r["heading_id"],
+                doc_id=r["doc_id"],
+                heading_text=r["heading_text"],
+                heading_level=r.get("heading_level"),
+                score=r["score"],
+                keywords_json=r.get("keywords_json"),
+                entities_json=r.get("entities_json"),
+            )
+            for r in results
+        ],
+    )
+
+
+@mcp.tool()
+def search_documents(
+    query: Annotated[str, Field(description="Search query text")],
+    k: Annotated[int, Field(description="Number of results to return", ge=1, le=100)] = 10,
+) -> DocumentSearchResponse:
+    """Search at the document level using semantic similarity.
+
+    Returns document-level results with aggregated metadata. Use this
+    to find which documents are most relevant before drilling down.
+
+    Requires documents to be ingested with hierarchical structure.
+    """
+    retriever = _get_retriever()
+    results = retriever.retrieve_documents(query=query, k=k)
+
+    return DocumentSearchResponse(
+        query=query,
+        k=k,
+        result_count=len(results),
+        results=[
+            DocumentSearchResult(
+                doc_id=r["doc_id"],
+                source_file=r["source_file"],
+                score=r["score"],
+                keywords_json=r.get("keywords_json"),
+                entities_json=r.get("entities_json"),
+            )
+            for r in results
+        ],
     )
 
 
