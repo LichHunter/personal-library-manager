@@ -1,0 +1,21 @@
+question_id,question,target_doc_id,plm_rank,plm_latency_ms,enriched_rank,enriched_latency_ms,naive_rank,naive_latency_ms
+"q_001","My pod keeps getting rejected with a topology affinity error; what's going on?","tasks_administer-cluster_topology-manager",3,2720.54,,127.01,,80.70
+"q_002","How do I force all my containers to run on the same NUMA node in k8s?","tasks_administer-cluster_topology-manager",1,334.24,1,58.01,1,85.84
+"q_003","What's the difference between restricted and best-effort topology policies?","tasks_administer-cluster_topology-manager",1,256.95,3,142.51,1,93.01
+"q_004","Getting error about too many NUMA nodes on my server; what's the limit?","tasks_administer-cluster_topology-manager",1,369.54,1,116.73,2,90.23
+"q_005","How to enable topology manager on Windows nodes?","tasks_administer-cluster_topology-manager",1,263.56,1,154.69,1,88.36
+"q_006","Which k8s version made topology manager GA/stable?","tasks_administer-cluster_topology-manager",1,412.93,2,85.69,4,64.34
+"q_007","What flag do I pass to kubelet for setting topology policy?","tasks_administer-cluster_topology-manager",1,260.40,1,110.40,1,134.94
+"q_008","My latency-sensitive app is slow; containers seem to be on different NUMA nodes. How to fix?","tasks_administer-cluster_topology-manager",1,262.15,4,129.76,1,68.94
+"q_009","Why would I use pod scope instead of container scope for topology?","tasks_administer-cluster_topology-manager",1,259.91,1,106.99,1,123.60
+"q_010","What are hint providers in topology manager?","tasks_administer-cluster_topology-manager",1,256.74,1,133.04,1,86.35
+"q_011","How do I configure kubelet to prefer NUMA nodes that are closer together?","tasks_administer-cluster_topology-manager",1,397.87,2,125.26,1,153.68
+"q_012","When did prefer-closest-numa-nodes become generally available?","tasks_administer-cluster_topology-manager",1,311.27,1,148.66,1,76.03
+"q_013","What's the default topology manager policy if I don't set anything?","tasks_administer-cluster_topology-manager",1,332.67,1,157.13,2,113.85
+"q_014","Pod was scheduled but then failed on the node; says something about topology. Is that a bug?","tasks_administer-cluster_topology-manager",,325.89,,189.35,,101.11
+"q_015","What QoS class does my pod need to be for topology hints to work?","tasks_administer-cluster_topology-manager",1,318.99,1,130.81,1,104.28
+"q_016","How to set topology scope to pod level in kubelet?","tasks_administer-cluster_topology-manager",1,396.59,1,118.96,1,66.63
+"q_017","What feature gate do I need for topology manager policy options?","tasks_administer-cluster_topology-manager",1,258.09,1,150.78,1,43.78
+"q_018","My multi-socket server has GPUs and CPUs; how does k8s coordinate their placement?","tasks_administer-cluster_topology-manager",,278.06,,102.17,,74.99
+"q_019","With single-numa-node policy; when exactly does a pod get rejected?","tasks_administer-cluster_topology-manager",2,302.68,3,94.66,2,61.36
+"q_020","What happens if topology manager can't find preferred NUMA affinity with best-effort policy?","tasks_administer-cluster_topology-manager",1,279.80,1,95.17,2,62.45

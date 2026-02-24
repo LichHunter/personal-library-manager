@@ -1,0 +1,26 @@
+question_id,question,target_doc_id,plm_rank,plm_latency_ms,enriched_rank,enriched_latency_ms,naive_rank,naive_latency_ms
+"informed_000","What is the role of the Infrastructure Provider in the design principles of Gateway API?","concepts_services-networking_gateway",1,2554.28,1,171.46,1,69.45
+"informed_001","What is the Kubernetes approach to dynamic port allocation?","concepts_cluster-administration_networking",1,319.63,1,147.72,1,71.86
+"informed_002","What does a SubjectAccessReview object describe?","reference_access-authn-authz_webhook",,376.92,4,106.37,4,49.65
+"informed_003","What is the difference between a mutating webhook and a validating webhook?","reference_access-authn-authz_extensible-admission-controllers",,290.66,,93.85,,52.91
+"informed_004","What does the NamespaceAutoProvision admission controller do?","reference_access-authn-authz_admission-controllers",1,296.85,1,99.15,1,54.79
+"informed_005","What types of volumes can be expanded using PersistentVolumeClaims?","concepts_storage_persistent-volumes",5,301.44,1,106.28,3,56.62
+"informed_006","What are the two default user accounts for Windows containers?","concepts_security_windows-security",1,399.49,1,125.76,1,66.03
+"informed_007","What is the purpose of using an Indexed Job in Kubernetes?","tasks_job_indexed-parallel-processing-static",1,445.14,4,123.69,3,61.77
+"informed_008","What is the etcd API and what risks does it pose to the cluster's security?","concepts_security_api-server-bypass-risks",,270.97,2,129.15,3,70.39
+"informed_009","What is the role of a signer in Kubernetes?","tasks_tls_managing-tls-in-a-cluster",1,255.26,1,134.73,1,56.92
+"informed_010","What tools are required to verify Kubernetes artifacts?","tasks_administer-cluster_verify-signed-artifacts",2,255.84,,120.78,1,42.30
+"informed_011","What protocol does Kubernetes components use to emit traces?","concepts_cluster-administration_system-traces",3,268.18,1,84.77,1,113.13
+"informed_012","What is the format in which Kubernetes components emit metrics?","concepts_cluster-administration_system-metrics",2,411.66,,159.32,2,58.21
+"informed_013","What are the different types of isolation in Kubernetes?","concepts_security_multi-tenancy",1,284.14,1,150.03,1,76.06
+"informed_014","What is Attribute-based access control (ABAC) and how does it work?","reference_access-authn-authz_abac",1,315.39,2,99.69,1,54.18
+"informed_015","What is the role of the webhook token authenticator in the authentication process?","reference_access-authn-authz_authentication",,360.12,4,140.66,4,100.87
+"informed_016","What is the purpose of the authentication flow in the aggregation layer?","tasks_extend-kubernetes_configure-aggregation-layer",1,300.31,2,145.05,1,56.81
+"informed_017","What does sourcing the completion script in your shell enable?","tasks_tools_included_optional-kubectl-configs-fish",,392.67,,152.08,,81.64
+"informed_018","What is kube proxy?","concepts_cluster-administration_proxies",,267.40,,112.03,,49.47
+"informed_019","How can you use `kubectl` to create an object from a configuration file?","tasks_manage-kubernetes-objects_imperative-config",1,272.21,1,84.25,1,72.13
+"informed_020","How can you suspend and resume a Job in Kubernetes?","concepts_workloads_controllers_job",1,265.31,1,102.89,1,67.70
+"informed_021","What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?","tasks_job_fine-parallel-processing-work-queue",,272.89,2,119.05,2,71.42
+"informed_022","What are the four supported Topology Manager policies?","tasks_administer-cluster_topology-manager",1,450.29,1,122.77,1,66.12
+"informed_023","Why do we need admission controllers?","reference_access-authn-authz_admission-controllers",1,291.32,1,116.85,3,47.21
+"informed_024","What is a ServiceAccount in Kubernetes?","tasks_configure-pod-container_configure-service-account",1,249.36,3,128.65,,95.68

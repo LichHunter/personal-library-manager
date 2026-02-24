@@ -36,6 +36,9 @@ from plm.search.components.embedder import EmbeddingEncoder
 from plm.search.components.enricher import ContentEnricher
 from plm.search.components.expander import QueryExpander
 from plm.search.components.query_rewriter import QueryRewriter
+from plm.search.components.reranker import CrossEncoderReranker
+from plm.search.components.sparse.base import SparseRetriever
+from plm.search.config import RetrievalConfig, SparseRetrieverType, create_sparse_retriever
 from plm.search.storage.sqlite import SQLiteStorage
 from plm.search.types import Query, RewrittenQuery
 
@@ -84,43 +87,63 @@ class HybridRetriever:
     DEFAULT_CANDIDATE_MULTIPLIER = 10
     EXPANDED_CANDIDATE_MULTIPLIER = 20
 
-    def __init__(self, db_path: str, bm25_index_path: str, rewrite_timeout: float = 5.0) -> None:
+    def __init__(
+        self,
+        db_path: str,
+        bm25_index_path: str,
+        rewrite_timeout: float = 5.0,
+        config: RetrievalConfig | None = None,
+    ) -> None:
         """Initialize HybridRetriever.
 
-        Creates SQLite storage and loads BM25 index if it exists on disk.
+        Creates SQLite storage and loads sparse index if it exists on disk.
 
         Args:
             db_path: Path to SQLite database file (created if doesn't exist)
-            bm25_index_path: Path to BM25 index directory (loaded if exists)
+            bm25_index_path: Path to sparse index directory (loaded if exists)
             rewrite_timeout: Timeout in seconds for query rewriting (default 5.0)
+            config: Optional retrieval config. If None, loads from environment.
         """
         self.db_path = db_path
         self.bm25_index_path = bm25_index_path
         self.rewrite_timeout = rewrite_timeout
+        self.config = config or RetrievalConfig.from_env()
 
-        # Initialize storage and create tables
         self.storage = SQLiteStorage(db_path)
         self.storage.create_tables()
 
-        # Initialize components
         self.embedder = EmbeddingEncoder()
         self.enricher = ContentEnricher()
         self.expander = QueryExpander()
 
-        # Lazy-initialized query rewriter (only when use_rewrite=True)
         self._query_rewriter: QueryRewriter | None = None
+        self._reranker: CrossEncoderReranker | None = None
 
-        # Load or create BM25 index
-        self.bm25_index: BM25Index | None = None
+        self.sparse_retriever: SparseRetriever | None = None
         if os.path.exists(bm25_index_path):
             try:
-                self.bm25_index = BM25Index.load(bm25_index_path)
-                logger.debug(f"[HybridRetriever] Loaded BM25 index from {bm25_index_path}")
+                self.sparse_retriever = self._load_sparse_index(bm25_index_path)
+                logger.debug(f"[HybridRetriever] Loaded sparse index from {bm25_index_path}")
             except Exception as e:
-                logger.warning(f"[HybridRetriever] Failed to load BM25 index: {e}")
-                self.bm25_index = None
+                logger.warning(f"[HybridRetriever] Failed to load sparse index: {e}")
+                self.sparse_retriever = None
 
-        logger.debug(f"[HybridRetriever] Initialized with db={db_path}, bm25={bm25_index_path}, rewrite_timeout={rewrite_timeout}")
+        self.bm25_index = self.sparse_retriever
+
+        sparse_type = self.config.sparse_retriever.value
+        semantic_mode = "enabled" if self.config.semantic.enabled else "disabled"
+        logger.debug(
+            f"[HybridRetriever] Initialized: db={db_path}, index={bm25_index_path}, "
+            f"sparse={sparse_type}, semantic={semantic_mode}"
+        )
+
+    def _load_sparse_index(self, path: str) -> SparseRetriever:
+        if self.config.sparse_retriever == SparseRetrieverType.SPLADE:
+            from plm.search.components.sparse import SPLADERetriever
+            return SPLADERetriever.load(path)
+        else:
+            from plm.search.components.sparse import BM25Retriever
+            return BM25Retriever.load(path)
 
     def ingest_document(
         self,
@@ -475,31 +498,35 @@ class HybridRetriever:
         self._rebuild_bm25_index()
 
     def _rebuild_bm25_index(self) -> None:
-        """Rebuild and persist BM25 index from all stored chunks."""
-        # Get all chunks from storage
         all_chunks = self.storage.get_all_chunks()
         if not all_chunks:
             logger.debug("[HybridRetriever] No chunks to index")
             return
 
-        # Extract enriched content for BM25 indexing
         enriched_contents = [
             chunk.get("enriched_content") or chunk.get("content", "")
             for chunk in all_chunks
         ]
 
-        # Build BM25 index
-        self.bm25_index = BM25Index()
-        self.bm25_index.index(enriched_contents)
+        self.sparse_retriever = create_sparse_retriever(self.config)
+        self.sparse_retriever.index(enriched_contents)
 
-        # Ensure parent directory exists
         Path(self.bm25_index_path).parent.mkdir(parents=True, exist_ok=True)
+        self.sparse_retriever.save(self.bm25_index_path)
 
-        # Save to disk
-        self.bm25_index.save(self.bm25_index_path)
-        logger.debug(f"[HybridRetriever] Saved BM25 index with {len(enriched_contents)} documents")
+        self.bm25_index = self.sparse_retriever
 
-    def retrieve(self, query: str, k: int = 5, use_rewrite: bool = False) -> list[dict]:
+        sparse_type = self.config.sparse_retriever.value
+        logger.debug(f"[HybridRetriever] Saved {sparse_type} index with {len(enriched_contents)} documents")
+
+    def retrieve(
+        self,
+        query: str,
+        k: int = 5,
+        use_rewrite: bool = False,
+        use_rerank: bool = False,
+        candidates_k: int | None = None,
+    ) -> list[dict]:
         """Retrieve top-k chunks for a query using hybrid search with RRF.
 
         Implements the retrieval pipeline:
@@ -509,7 +536,8 @@ class HybridRetriever:
         4. Get semantic scores (embedding similarity)
         5. Get BM25 scores (lexical search)
         6. Fuse with RRF (semantic FIRST, BM25 SECOND)
-        7. Return top-k results
+        7. Optionally rerank with cross-encoder (if use_rerank=True)
+        8. Return top-k results
 
         CRITICAL: This method preserves EXACT POC behavior:
         - RRF order: semantic results FIRST, BM25 SECOND
@@ -520,6 +548,9 @@ class HybridRetriever:
             query: Query text
             k: Number of results to return (default: 5)
             use_rewrite: Whether to rewrite query before expansion (default: False)
+            use_rerank: Whether to rerank results with cross-encoder (default: False)
+            candidates_k: Number of RRF candidates to pass to reranker.
+                Only used when use_rerank=True. Defaults to k * 5.
 
         Returns:
             List of result dicts with fields:
@@ -527,7 +558,7 @@ class HybridRetriever:
                 - 'doc_id': Document identifier
                 - 'content': Original chunk content
                 - 'enriched_content': Enriched content used for retrieval
-                - 'score': RRF fusion score
+                - 'score': RRF fusion score (or rerank_score if reranked)
                 - 'heading': Section heading (if available)
                 - 'start_char': Start character offset (if available)
                 - 'end_char': End character offset (if available)
@@ -537,94 +568,107 @@ class HybridRetriever:
             >>> for r in results:
             ...     print(f"{r['chunk_id']}: {r['score']:.4f}")
         """
-        # Get all chunks from storage
+        if use_rerank:
+            rerank_candidates = candidates_k if candidates_k is not None else k * 5
+            rrf_results = self._retrieve_rrf(query, k=rerank_candidates, use_rewrite=use_rewrite)
+
+            if self._reranker is None:
+                self._reranker = CrossEncoderReranker()
+
+            reranked = self._reranker.rerank(query, rrf_results, top_k=k)
+            logger.debug(
+                f"[HybridRetriever] Reranked {len(rrf_results)} candidates → {len(reranked)} results"
+            )
+            return reranked
+
+        return self._retrieve_rrf(query, k=k, use_rewrite=use_rewrite)
+
+    def _retrieve_rrf(self, query: str, k: int = 5, use_rewrite: bool = False) -> list[dict]:
         all_chunks = self.storage.get_all_chunks()
-        if not all_chunks or self.bm25_index is None:
-            logger.debug("[HybridRetriever] No chunks or BM25 index available")
+        if not all_chunks or self.sparse_retriever is None:
+            logger.debug("[HybridRetriever] No chunks or sparse index available")
             return []
 
-        # Create Query and optionally rewrite it
         original_query = Query(text=query)
-        
+
         if use_rewrite:
-            # Lazy-initialize QueryRewriter on first use
             if self._query_rewriter is None:
                 self._query_rewriter = QueryRewriter(timeout=self.rewrite_timeout)
-            
-            # Rewrite the query
             rewritten_query = self._query_rewriter.process(original_query)
             logger.debug(f"[HybridRetriever] Query rewritten: {query} → {rewritten_query.rewritten}")
         else:
-            # Pass through original query (backward compatible)
             rewritten_query = RewrittenQuery(
                 original=original_query,
                 rewritten=query,
                 model="passthrough",
             )
 
-        # Expand query
         expanded = self.expander.process(rewritten_query)
         expanded_query = expanded.expanded
         expansion_triggered = len(expanded.expansions) > 0
 
-        # Select adaptive parameters
         if expansion_triggered:
             rrf_k = self.EXPANDED_RRF_K
-            bm25_weight = self.EXPANDED_BM25_WEIGHT
+            sparse_weight = self.EXPANDED_BM25_WEIGHT
             sem_weight = self.EXPANDED_SEM_WEIGHT
             multiplier = self.EXPANDED_CANDIDATE_MULTIPLIER
             logger.debug(
                 f"[HybridRetriever] Expansion triggered: rrf_k={rrf_k}, "
-                f"bm25_weight={bm25_weight}, sem_weight={sem_weight}"
+                f"sparse_weight={sparse_weight}, sem_weight={sem_weight}"
             )
         else:
             rrf_k = self.DEFAULT_RRF_K
-            bm25_weight = self.DEFAULT_BM25_WEIGHT
+            sparse_weight = self.DEFAULT_BM25_WEIGHT
             sem_weight = self.DEFAULT_SEM_WEIGHT
             multiplier = self.DEFAULT_CANDIDATE_MULTIPLIER
 
-        # Calculate number of candidates
         n_candidates = min(k * multiplier, len(all_chunks))
-
-        # Build chunk index for lookup
         chunk_index = {i: chunk for i, chunk in enumerate(all_chunks)}
 
-        # Get semantic scores
+        sparse_results = self.sparse_retriever.search(expanded_query, k=n_candidates)
+
+        if not self.config.semantic.enabled:
+            results = []
+            for result in sparse_results[:k]:
+                idx = result["index"]
+                chunk = chunk_index[idx]
+                results.append({
+                    "chunk_id": chunk["id"],
+                    "doc_id": chunk["doc_id"],
+                    "content": chunk["content"],
+                    "enriched_content": chunk.get("enriched_content", ""),
+                    "score": result["score"],
+                    "heading": chunk.get("heading"),
+                    "start_char": chunk.get("start_char"),
+                    "end_char": chunk.get("end_char"),
+                })
+            logger.debug(f"[HybridRetriever] SPLADE-only: {len(results)} results for query: {query[:50]}...")
+            return results
+
         query_embedding = self.embedder.process(expanded_query)["embedding"]
         query_emb = np.array(query_embedding, dtype=np.float32)
 
-        # Build embeddings matrix from all chunks
         embeddings = np.array([
             chunk["embedding"] for chunk in all_chunks
         ], dtype=np.float32)
 
-        # Compute cosine similarity (embeddings are already normalized by EmbeddingEncoder)
         sem_scores = np.dot(embeddings, query_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
 
-        # Get BM25 results
-        bm25_results = self.bm25_index.search(expanded_query, k=n_candidates)
-        bm25_rank_map = {r["index"]: rank for rank, r in enumerate(bm25_results)}
-
-        # RRF fusion
-        # CRITICAL: Use dict[int, float] and dict.get(idx, 0) pattern
         rrf_scores: dict[int, float] = {}
 
-        # CRITICAL: Process semantic results FIRST
+        # CRITICAL: Semantic FIRST, then sparse (BM25/SPLADE) SECOND
         for rank, idx in enumerate(sem_ranks[:n_candidates]):
             sem_component = sem_weight / (rrf_k + rank)
             rrf_scores[idx] = rrf_scores.get(idx, 0) + sem_component
 
-        # CRITICAL: Process BM25 results SECOND
-        for rank, result in enumerate(bm25_results):
+        for rank, result in enumerate(sparse_results):
             idx = result["index"]
-            bm25_component = bm25_weight / (rrf_k + rank)
-            rrf_scores[idx] = rrf_scores.get(idx, 0) + bm25_component
+            sparse_component = sparse_weight / (rrf_k + rank)
+            rrf_scores[idx] = rrf_scores.get(idx, 0) + sparse_component
 
-        # Get top-k indices sorted by RRF score descending
         top_indices = sorted(rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True)[:k]
 
-        # Build result list
         results = []
         for idx in top_indices:
             chunk = chunk_index[idx]

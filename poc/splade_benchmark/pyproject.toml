@@ -1,0 +1,22 @@
+[project]
+name = "splade-benchmark"
+version = "0.1.0"
+description = "POC: SPLADE as BM25 replacement for hybrid retrieval"
+requires-python = ">=3.11"
+dependencies = [
+    "transformers>=4.35.0",
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "tqdm>=4.65.0",
+    "bm25s>=0.2.0",
+    "sentence-transformers>=2.2.0",
+]
+
+[dependency-groups]
+dev = []
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]

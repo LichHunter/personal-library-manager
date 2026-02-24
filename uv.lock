@@ -1049,9 +1049,12 @@ dependencies = [
     { name = "pysbd" },
     { name = "rapidfuzz" },
     { name = "redis" },
+    { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "scipy", version = "1.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "sentence-transformers" },
     { name = "torch", version = "2.10.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform == 'darwin'" },
     { name = "torch", version = "2.10.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform != 'darwin'" },
+    { name = "transformers" },
     { name = "uvicorn", extra = ["standard"] },
     { name = "watchdog" },
     { name = "yake" },
@@ -1065,6 +1068,7 @@ dev = [
 [package.dev-dependencies]
 dev = [
     { name = "basedpyright" },
+    { name = "pytest" },
     { name = "rank-bm25" },
 ]
 
@@ -1084,8 +1088,10 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
     { name = "rapidfuzz", specifier = ">=3.0.0" },
     { name = "redis", specifier = ">=5.0.0" },
+    { name = "scipy", specifier = ">=1.15.3" },
     { name = "sentence-transformers", specifier = ">=2.2.0" },
     { name = "torch", specifier = ">=2.0.0", index = "https://download.pytorch.org/whl/cpu" },
+    { name = "transformers", specifier = ">=5.1.0" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.23.0" },
     { name = "watchdog", specifier = ">=3.0.0" },
     { name = "yake", specifier = ">=0.7.3" },
@@ -1095,6 +1101,7 @@ provides-extras = ["dev"]
 [package.metadata.requires-dev]
 dev = [
     { name = "basedpyright", specifier = ">=1.38.0" },
+    { name = "pytest", specifier = ">=9.0.2" },
     { name = "rank-bm25", specifier = ">=0.2.2" },
 ]
 

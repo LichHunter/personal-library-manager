@@ -1,0 +1,125 @@
+# Adaptive Classifier Results
+
+**Date:** 2026-02-21 22:14:54
+**Queries:** 229
+**Labeled queries:** 65
+**Configuration:** candidates_k=50, final_k=10, baseline_k=10, judge=haiku
+
+---
+
+## Approach Summary
+
+Adaptive query classifier routes queries to different retrieval strategies:
+1. **Classify** query complexity using rule-based heuristics (~0ms)
+2. **Route**:
+   - SIMPLE (factoid/procedural) → Standard chunk retrieval (k=10)
+   - COMPLEX (explanatory/troubleshooting) → Chunk retrieval (k=50) + cross-encoder reranking → top-10
+   - MULTI (comparison) → Standard chunk retrieval (k=10)
+3. **Reranking model:** cross-encoder/ms-marco-MiniLM-L-6-v2
+
+**Key insight:** Reranking gave +22.6% on explanatory queries but only +0-3% on others.
+Selective reranking saves ~60% of reranking latency by skipping queries that don't benefit.
+
+---
+
+## Overall Metrics
+
+| Metric | Adaptive | Baseline | Δ vs Baseline | Reranking (all) | Δ vs Reranking |
+|--------|----------|----------|---------------|-----------------|----------------|
+| **Answer Success Rate** | **98.3%** | 92.1% | **+6.1** | 98.3% | +0.0 |
+| MRR@10 (labeled) | 0.736 | 0.658 | +0.078 | 0.772 | -0.036 |
+| Hit@5 (labeled) | 84.6% | 75.4% | +9.2 | — | — |
+| Avg Grade | 8.14/10 | 7.64/10 | +0.49 | 8.20/10 | -0.07 |
+| Latency p50 | 1460ms | 300ms | +1159ms | — | — |
+| Latency p95 | 1905ms | 422ms | +1483ms | 1817ms | +87ms |
+| Avg Tokens | 969 | 904 | +65 | 975 | -6 |
+| Rerank Rate | 72.9% | 0% | — | 100% | — |
+| Reranking latency p50 | 1188ms | — | — | — | — |
+| Reranking latency p95 | 1613ms | — | — | — | — |
+
+---
+
+## Performance by Query Type
+
+| Type | Count | Strategy | MRR@10 | Hit@5 | Success Rate | Avg Grade | Baseline SR | Δ Baseline | Rerank SR | Δ Rerank |
+|------|-------|----------|--------|-------|--------------|-----------|-------------|------------|-----------|----------|
+| explanatory | 53 | rerank | 0.872 | 100.0% | 94.3% | 7.79 | 71.7% | +22.6 | 94.3% | +0.0 |
+| factoid | 54 | rerank | 0.682 | 79.4% | 98.1% | 8.19 | 96.3% | +1.9 | 98.1% | +0.0 |
+| troubleshooting | 34 | rerank | 0.750 | 75.0% | 100.0% | 7.82 | 97.1% | +2.9 | 100.0% | +0.0 |
+| procedural | 55 | rerank | 0.917 | 100.0% | 100.0% | 8.62 | 100.0% | +0.0 | 100.0% | +0.0 |
+| comparison | 33 | chunk | 0.604 | 75.0% | 100.0% | 8.12 | 100.0% | +0.0 | 100.0% | +0.0 |
+
+---
+
+## Classification Accuracy
+
+**Overall accuracy:** 63.3% (145/229)
+
+| Query Type | Expected | Total | Correct | Accuracy | Predictions |
+|------------|----------|-------|---------|----------|-------------|
+| comparison | multi | 33 | 33 | 100.0% | multi:33 |
+| explanatory | complex | 53 | 52 | 98.1% | complex:52, multi:1 |
+| factoid | simple | 54 | 25 | 46.3% | complex:29, simple:25 |
+| procedural | simple | 55 | 2 | 3.6% | complex:53, simple:2 |
+| troubleshooting | complex | 34 | 33 | 97.1% | complex:33, multi:1 |
+
+### Routing Summary
+
+- **chunk**: 62 queries (27.1%)
+- **rerank**: 167 queries (72.9%)
+
+---
+
+## Success Criteria Evaluation
+
+| Criterion | Threshold | Actual | Pass? |
+|-----------|-----------|--------|-------|
+| Answer Success Rate ≥+10% | +10.0% | +6.1% | ❌ |
+| Latency increase ≤500ms (p95) | ≤500ms | +1483ms | ❌ |
+| No type regresses >5% | >-5% | All OK | ✅ |
+| Classification accuracy ≥70% | ≥70% | 63.3% | ❌ |
+
+**Better than best P0 (reranking)?** Adaptive ASR: 98.3%, Reranking ASR: 98.3% → +0.0
+
+---
+
+## Category Distribution
+
+- Partially Correct: 149 (65.1%)
+- Correct: 76 (33.2%)
+- Cannot Answer: 3 (1.3%)
+- Incorrect: 1 (0.4%)
+
+## Sample Failed Queries (Top 10)
+
+- **adv_adv_n04** (explanatory, classified=complex, strategy=rerank): 4/10
+  - Query: "What's wrong with using container scope for latency-sensitive applications?..."
+  - Reasoning: The retrieved chunks do not directly address the issue of using container scope for latency-sensitive applications. The ...
+
+- **adv_adv_m03** (factoid, classified=complex, strategy=rerank): 2/10
+  - Query: "How does k8s coordinate resource co-location across multi-socket servers?..."
+  - Reasoning: The retrieved chunks do not contain any information about how Kubernetes coordinates resource co-location across multi-s...
+
+- **expl_gen_016** (explanatory, classified=complex, strategy=rerank): 2/10
+  - Query: "What is the purpose of kube-proxy?..."
+  - Reasoning: The retrieved chunks do not contain any information about the purpose of kube-proxy. The chunks are mostly about other K...
+
+- **expl_gen_038** (explanatory, classified=complex, strategy=rerank): 2/10
+  - Query: "What is the purpose of finalizers?..."
+  - Reasoning: The retrieved chunks do not contain any information about the purpose of finalizers. The chunks discuss topics like stor...
+
+
+---
+
+## Decision
+
+**NEEDS MODIFICATION** — Shows promise but latency exceeds limit.
+
+Answer Success Rate delta: +6.1% (threshold: +10%)
+Latency increase (p95): +1483ms (threshold: ≤500ms)
+Classification accuracy: 63.3% (threshold: ≥70%)
+Rerank rate: 72.9% of queries
+
+---
+
+*Generated by run_adaptive_classifier.py on 2026-02-21T22:14:54.461312*

@@ -40,15 +40,15 @@ RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 529}
 # ---------------------------------------------------------------------------
 
 MODEL_MAP: dict[str, str] = {
-    "claude-haiku": "claude-3-5-haiku-latest",
-    "claude-haiku-4-5": "claude-3-5-haiku-latest",
-    "claude-3-5-haiku": "claude-3-5-haiku-latest",
+    "claude-haiku": "claude-3-haiku-20240307",
+    "claude-haiku-4-5": "claude-3-haiku-20240307",
+    "claude-3-5-haiku": "claude-3-haiku-20240307",
     "claude-sonnet": "claude-sonnet-4-5-20250929",
     "claude-sonnet-4": "claude-sonnet-4-20250514",
     "claude-sonnet-4-5": "claude-sonnet-4-5-20250929",
     "claude-opus": "claude-opus-4-5-20251101",
     "opus": "claude-opus-4-5-20251101",
-    "haiku": "claude-3-5-haiku-latest",
+    "haiku": "claude-3-haiku-20240307",
     "sonnet": "claude-sonnet-4-5-20250929",
 }
 

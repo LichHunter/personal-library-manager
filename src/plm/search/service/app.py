@@ -44,6 +44,7 @@ class QueryRequest(BaseModel):
     query: str = Field(..., description="Search query text")
     k: int = Field(default=5, ge=1, le=100, description="Number of results to return")
     use_rewrite: bool = Field(default=False, description="Whether to use query rewriting")
+    use_rerank: bool = Field(default=False, description="Whether to use cross-encoder reranking")
 
 
 class QueryResult(BaseModel):
@@ -63,6 +64,7 @@ class QueryResponse(BaseModel):
     query: str
     k: int
     use_rewrite: bool
+    use_rerank: bool
     results: list[QueryResult]
     elapsed_ms: float
 
@@ -190,6 +192,7 @@ async def query(request: QueryRequest) -> QueryResponse:
             query=request.query,
             k=request.k,
             use_rewrite=request.use_rewrite,
+            use_rerank=request.use_rerank,
         )
     except Exception as e:
         logger.error(f"[Service] Query failed: {e}")
@@ -201,6 +204,7 @@ async def query(request: QueryRequest) -> QueryResponse:
         query=request.query,
         k=request.k,
         use_rewrite=request.use_rewrite,
+        use_rerank=request.use_rerank,
         results=[
             QueryResult(
                 chunk_id=r["chunk_id"],

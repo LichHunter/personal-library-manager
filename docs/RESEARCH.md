@@ -286,6 +286,8 @@ search
 | D005 | SQLite + sqlite-vss for storage | Local-first, no server dependency, good enough perf | **PROPOSED** | 2025-01-21 |
 | D006 | Python for backend | RAPTOR/LlamaIndex ecosystem, rapid prototyping | **PROPOSED** | 2025-01-21 |
 | D007 | Textual for TUI framework | Modern, async, rich widgets, Python native | **PROPOSED** | 2025-01-21 |
+| D008 | Multi-level RRF fusion (chunk + heading + document) | Benchmark showed heading/doc search fixes polysemy and troubleshooting misses; infrastructure already built | **PROPOSED** | 2026-02-19 |
+| D009 | Query intent classifier in front of retrieval (`MoritzLaurer/xtremedistil`, 13M, zero-shot) | Routes queries to appropriate retrieval level; <15ms CPU overhead; no training required | **PROPOSED** | 2026-02-19 |
 
 ---
 
@@ -511,6 +513,9 @@ POC benchmark run on 2026-01-21 with local models. See `poc/raptor_test/` for co
 - [x] ~~Reverse-engineer RAPTOR architecture~~
 - [x] ~~Analyze RAPTOR benefits & drawbacks~~
 - [x] ~~Benchmark with local models~~
+- [x] ~~Search quality evaluation (30-query benchmark, 6 categories)~~
+- [x] ~~Multi-level retrieval analysis (chunk vs heading vs document)~~
+- [x] ~~Query intent classification model research~~
 - [ ] **Decision needed**: Finalize clustering approach (UMAP+GMM vs alternatives)
 - [ ] **Decision needed**: Local vs API models (cost vs quality tradeoff)
 - [ ] **Decision needed**: Target scale (affects architecture)
@@ -522,6 +527,170 @@ POC benchmark run on 2026-01-21 with local models. See `poc/raptor_test/` for co
 - [ ] Add vector search
 - [ ] Implement citation extraction
 - [ ] Add multi-agent orchestration (phase 2)
+- [ ] **Upgrade**: Wire `retrieve_headings()` + `retrieve_documents()` into RRF fusion pool
+- [ ] **Upgrade**: Integrate `MoritzLaurer/xtremedistil-l6-h256-zeroshot` as intent router
+- [ ] **Upgrade**: Adaptive rewrite gating (skip rewrite when ≥2 K8s-specific noun phrases)
+
+---
+
+## 5. Search Quality Evaluation & Query Intent Classification Upgrade
+
+> Evaluation run: 2026-02-19 | Corpus: 20,801 chunks / 1,569 documents (Kubernetes docs)
+> System: BM25 + semantic embeddings + RRF fusion | Scoring: top-1 retrieved chunk, 1–10
+
+### 5.1 Benchmark Results (30 Queries × 2 Modes)
+
+Six question categories, five questions each, run with normal query and with `use_rewrite=True` (Claude Haiku query expansion).
+
+| Category | Normal avg | Rewrite avg | Δ | Biggest weakness |
+|----------|:----------:|:-----------:|:-:|-----------------|
+| Factual Lookup | 7.6 | 8.2 | +0.6 | Atomic defaults buried in large chunks (Q2: max pods/node → 4/4) |
+| Conceptual Understanding | 5.6 | 6.4 | +0.8 | Polysemy disasters — "namespace purpose" scores 1/2 |
+| Command/Config Syntax | 6.8 | 7.2 | +0.4 | YAML snippets & one-liner commands (Q15: `kubectl label node` → 4/3) |
+| Troubleshooting | 6.2 | 6.6 | +0.4 | Symptom vocab ≠ doc vocab; debug-service page missed entirely |
+| Comparison/Relationship | 5.6 | 6.2 | +0.6 | No "X vs Y" pages in corpus — structural gap not a retrieval bug |
+| Multi-hop/Procedural | 7.2 | 7.6 | +0.4 | RBAC/upgrade steps scattered across sub-pages |
+| **Overall** | **6.5** | **7.0** | **+0.5** | |
+
+**Rewrite is net positive (+0.5) but hides violent swings**: 9 queries lifted (+1 to +5), 4 actively hurt (Q7: 9→3, Q18: 4→2, Q29: 7→5, Q24: 8→7).
+
+### 5.2 Root Cause Taxonomy
+
+| Failure Pattern | Affected Queries | Technical Cause |
+|----------------|:---------------:|-----------------|
+| **Polysemous term flood** | Q10, Q6, Q15 | "namespace", "label", "schedule" appear in 500+ chunks; BM25+semantic averages over all contexts |
+| **Corpus gap — no comparison pages** | Q21, Q22, Q23 | K8s docs have concept pages *per resource*, never side-by-side comparisons |
+| **Symptom/solution vocab inversion** | Q16, Q17, Q18 | User says "fix/debug"; docs say "troubleshoot"; BM25 misses, embeddings bridge partially |
+| **Atomic facts buried in large chunks** | Q2, Q10 | Single-sentence facts dominated by surrounding text in the chunk embedding |
+| **Rewrite noise on precise queries** | Q7, Q24, Q25, Q29 | Already-precise technical queries get expanded with tangential terms |
+| **Command syntax sparsity** | Q11, Q15 | One-liner commands have low semantic density; YAML blocks span chunk boundaries |
+
+### 5.3 Multi-Level Retrieval Analysis
+
+The SQLite storage has **3 fully-indexed levels** with embeddings at each:
+
+```
+documents  ← mean of heading embeddings  (union of all keywords/entities)
+  └── headings  ← mean of chunk embeddings  (aggregated per section)
+        └── chunks  ← individual embeddings  ← ONLY level used today
+```
+
+`retrieve_headings()` and `retrieve_documents()` already exist in `HybridRetriever`. They are not in the RRF fusion path.
+
+**Live comparison — worst-scoring queries:**
+
+| Query | Chunk result | Heading result | Document result |
+|-------|:------------:|:--------------:|:---------------:|
+| "Namespace purpose" (scored 1) | Cluster failure causes ❌ | Glossary namespace (root) ✅ | 3 canonical namespace pages ✅✅ |
+| "Service not routing traffic" (scored 4) | Tutorial expose intro ❌ | `debug-service` doc found ✅ | Debug application index ✅ |
+| "CrashLoopBackOff debug" (scored 4) | Pod phase description ❌ | `## How Pods handle problems` ✅ | — |
+| "kubeadm upgrade steps" (scored 6) | Internal design doc ⚠️ | — | Dedicated `kubeadm-upgrade` doc ✅ |
+| "Deployment vs StatefulSet" (scored 2) | MySQL StatefulSet task ❌ | StatefulSet deprecation guide ⚠️ | Glossary + scale docs ⚠️ |
+| "Max pods per node" (scored 4) | PID-limiting doc ❌ | Pod PID limits ❌ | PID-limiting doc ❌ (corpus gap) |
+
+**Key insight**: Heading/document search fixes polysemy (Q10) and troubleshooting misses (Q18) because aggregated embeddings average out noise, and `keywords_json` on headings preserves the full vocabulary of a section.
+
+**Proposed change — multi-level RRF fusion:**
+
+```
+current:  RRF(bm25_chunks, semantic_chunks)
+proposed: RRF(bm25_chunks, semantic_chunks, semantic_headings, semantic_docs)
+```
+
+Each heading hit expands to its top chunk via `get_chunks_by_heading(heading_id)` before final output. User still receives chunks — levels are intermediate signals only.
+
+**Routing by level:**
+
+| Level | Best for | Signal |
+|-------|----------|--------|
+| Chunk | Factual lookup, command syntax, specific facts | Precise match needed |
+| Heading | Conceptual, troubleshooting, comparison | Section-level semantics |
+| Document | Procedural/how-to, broad overviews | Full workflow retrieval |
+
+### 5.4 Query Intent Classification Upgrade
+
+To route queries to the right retrieval level automatically, a lightweight intent classifier sits in front of retrieval.
+
+#### Candidate Models
+
+| Model | Params | Zero-shot | Labels | CPU speed | Notes |
+|-------|:------:|:---------:|--------|:---------:|-------|
+| `MoritzLaurer/xtremedistil-l6-h256-zeroshot-v1.1-all-33` | **13M** | ✅ | Any (pass at runtime) | ⚡⚡⚡ | 25MB on disk; best quick-start |
+| `MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33` | 71M | ✅ | Any | ⚡⚡ | Higher accuracy, still zero-shot |
+| `cnmoro/granite-question-classifier` | **30M** | ❌ | Binary: `generic` / `directed` | ⚡⚡⚡ | Best first-stage gate; 94% accuracy |
+| `Danswer/intent-model` | 67M | ❌ | `Keyword Search` / `Semantic Search` / `Question Answer` | ⚡⚡ | Production-proven in Danswer RAG; ~49k dl/mo |
+| Fine-tune `bert-mini` on `launch/open_question_type` | **11M** | ❌ | factoid, procedural, concept, comparison, verification, causal | ⚡⚡⚡ | Best long-term; dataset is CC-BY-4.0, exact label match |
+| `nvidia/prompt-task-and-complexity-classifier` | ~183M | ❌ | 11 task types + complexity score 0–1 | ⚡ | Unique: continuous complexity → routing threshold |
+
+#### Recommended Taxonomy (maps to retrieval levels)
+
+```
+factual lookup     → chunk-level    (precise fact, port number, default value)
+command syntax     → chunk-level    (exact kubectl command, YAML snippet)
+conceptual         → heading-level  (what is X, how does X work)
+comparison         → heading-level  (X vs Y, when to use X vs Y)
+troubleshooting    → heading-level  (error/fix/debug + chunk hybrid)
+procedural/how-to  → document-level (multi-step workflow, full procedure)
+```
+
+#### Proposed Pipeline Architecture
+
+```
+Query
+  │
+  ▼
+[Stage 1: Binary gate]  cnmoro/granite-question-classifier  30M  ~5ms
+  ├── "generic"  ──────────────────────────────► document-level search
+  └── "directed"
+         │
+         ▼
+[Stage 2: Intent router]  MoritzLaurer/xtremedistil-l6-h256-zeroshot  13M  ~10ms
+  ├── factual / command-syntax ──────────────► chunk-level (existing path)
+  ├── conceptual / comparison ────────────────► heading-level + multi-level RRF
+  ├── troubleshooting ─────────────────────────► heading-level primary + chunk fallback
+  └── procedural / how-to ─────────────────────► document → expand to headings → chunks
+
+Total overhead: ~43M params, ~15ms CPU, ~80MB RAM
+```
+
+#### Training Data for Fine-tuning
+
+| Dataset | Labels | Size | License |
+|---------|--------|:----:|---------|
+| `launch/open_question_type` | factoid, procedural, concept, comparison, verification, causal, hypothetical, list | 4,960 | CC-BY-4.0 |
+| `CogComp/trec` | DESC, ENTY, HUM, LOC, NUM, ABBR (+ 50 fine-grained) | 6,000 | Free |
+| `SetFit/TREC-QC` | Same as TREC, SetFit few-shot format | 5,950 | Free |
+
+#### Academic Foundation: Adaptive-RAG
+
+Paper: [Adaptive-RAG: Learning to Adapt RAG LLMs through Question Complexity](https://arxiv.org/abs/2403.14403) (NAACL 2024)
+
+Trains a small BERT-family classifier to predict query complexity:
+- `A` → no retrieval needed (LLM internal knowledge)
+- `B` → single-step retrieval
+- `C` → multi-hop retrieval
+
+Labels are collected **automatically** from LLM prediction outcomes — no human annotation required. Code: [github.com/starsuzi/Adaptive-RAG](https://github.com/starsuzi/Adaptive-RAG). No pre-trained checkpoint released but the training pipeline is reproducible.
+
+### 5.5 Ranked Upgrade Roadmap
+
+Derived from the benchmark + multi-level analysis. Ordered by effort/impact.
+
+| Rank | Upgrade | Effort | Impact | Fixes |
+|------|---------|:------:|:------:|-------|
+| 1 | **Adaptive Rewrite Gating** — skip rewrite if ≥2 K8s-specific noun phrases in query | 🟢 Low | Med | Q7, Q24, Q25, Q29 |
+| 2 | **Title/Heading Field Boost in BM25** — index headings at 2–3× body weight | 🟢 Low | Med | Q10, Q18, Q6 |
+| 3 | **Troubleshooting Synonym Expansion** — query-time: `"not working"→"debug troubleshoot"`, error codes → canonical names | 🟢 Low | Med | Q16, Q17, Q18 |
+| 4 | **Multi-level RRF Fusion** — add `semantic_headings` + `semantic_docs` into RRF pool | 🟡 Med | **High** | Q6, Q10, Q16, Q18, Q28 |
+| 5 | **Query Intent Router** — `MoritzLaurer/xtremedistil` zero-shot classifier routes to level | 🟡 Med | **High** | Q6, Q11, Q15, Q16, Q18 |
+| 6 | **Comparison Query Synthesis** — detect "X vs Y" → 2 sub-queries → merge top-3 each | 🟡 Med | High | Q21, Q22, Q23 |
+| 7 | **Atomic Fact Mini-Chunks** — extract `"default: N"`, `"port: N"` sentences as boosted standalone chunks | 🟡 Med | High | Q2, Q10 |
+| 8 | **Cross-Encoder Re-ranker on Top-10** — ms-marco-MiniLM after RRF (~100ms latency) | 🟡 Med | Med | General rank improvement |
+| 9 | **Re-chunk with Semantic Boundaries** — heading-aware splits + 50% overlap + YAML blocks intact; full re-index | 🔴 High | High | Q2, Q11, Q15 |
+
+**Quick wins (days):** #1 Rewrite Gate → #2 Heading Boost → #3 Synonym Expansion
+**Medium term (weeks):** #4 Multi-level RRF → #5 Intent Router → #6 Comparison Synthesis
+**Long term (month+):** #7 Atomic Fact Chunks → #9 Full Re-chunk
 
 ---
 
@@ -540,3 +709,14 @@ POC benchmark run on 2026-01-21 with local models. See `poc/raptor_test/` for co
 ### Articles
 - [Building NotebookLM Clone with Agent Orchestration](https://mastra.ai/blog/notebooklm-clone-with-agent-orchestration)
 - [Implementing RAPTOR in LangChain](https://medium.com/the-ai-forum/implementing-advanced-rag-in-langchain-using-raptor-258a51c503c6)
+
+### Search Quality & Query Intent (Section 5)
+- [Adaptive-RAG: Learning to Adapt Retrieval-Augmented LLMs through Question Complexity](https://arxiv.org/abs/2403.14403) — NAACL 2024
+- [Hybrid LLM: Cost-Efficient and Quality-Aware Query Routing](https://arxiv.org/abs/2404.14618)
+- [MoritzLaurer/xtremedistil-l6-h256-zeroshot-v1.1-all-33](https://huggingface.co/MoritzLaurer/xtremedistil-l6-h256-zeroshot-v1.1-all-33) — 13M zero-shot classifier
+- [MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33](https://huggingface.co/MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33) — 71M zero-shot classifier
+- [cnmoro/granite-question-classifier](https://huggingface.co/cnmoro/granite-question-classifier) — 30M binary generic/directed
+- [Danswer/intent-model](https://huggingface.co/Danswer/intent-model) — 67M RAG-specific 3-class router
+- [launch/open_question_type dataset](https://huggingface.co/datasets/launch/open_question_type) — CC-BY-4.0, factoid/procedural/concept/comparison labels
+- [CogComp/trec dataset](https://huggingface.co/datasets/CogComp/trec) — 6-coarse / 50-fine question type labels
+- [Adaptive-RAG GitHub](https://github.com/starsuzi/Adaptive-RAG) — auto-labeled complexity classifier training code

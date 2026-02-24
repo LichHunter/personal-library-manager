@@ -1,0 +1,401 @@
+question_id,question,target_doc_id,plm_rank,plm_latency_ms,enriched_rank,enriched_latency_ms,naive_rank,naive_latency_ms
+"q_000_q1","how do i connect my cluster's load balancers and network configurations with gateway resources","concepts_services-networking_gateway",,2569.74,,162.42,,100.65
+"q_000_q2","which cloud provider configurations are needed to make my gateway api work correctly","concepts_services-networking_gateway",1,312.34,1,97.50,1,52.25
+"q_001_q1","why do my service ports keep changing between deployments","concepts_cluster-administration_networking",4,419.62,,116.59,4,58.12
+"q_001_q2","can't access my microservice because its port is randomly assigned each time","concepts_cluster-administration_networking",,306.50,,189.55,,67.92
+"q_002_q1","how to check if my service account has permission to do something in kubernetes","reference_access-authn-authz_webhook",,313.11,,117.86,,54.38
+"q_002_q2","why is my pipeline failing with a permission denied error when deploying","reference_access-authn-authz_webhook",,302.61,,97.07,,55.80
+"q_003_q1","how to automatically modify incoming pod specs before they're created in my cluster","reference_access-authn-authz_extensible-admission-controllers",,290.73,,123.38,,63.31
+"q_003_q2","prevent developers from deploying containers without specific labels or security settings","reference_access-authn-authz_extensible-admission-controllers",,401.22,,120.20,,95.28
+"q_004_q1","why can't my team create resources without manually creating namespaces first","reference_access-authn-authz_admission-controllers",,295.19,,124.67,,88.46
+"q_004_q2","how to automatically set up default namespaces for new projects without manual intervention","reference_access-authn-authz_admission-controllers",,337.48,,104.30,,103.72
+"q_005_q1","is there a way to increase storage size for my database without losing data","concepts_storage_persistent-volumes",5,301.83,,104.58,,65.18
+"q_005_q2","why can't I resize my volume claim after initial provisioning","concepts_storage_persistent-volumes",1,285.07,1,149.25,1,114.76
+"q_006_q1","why can't I log into my windows container as administrator","concepts_security_windows-security",1,445.00,2,107.12,1,75.24
+"q_006_q2","how to manage default user accounts in windows container images","concepts_security_windows-security",1,313.22,1,106.16,2,76.35
+"q_007_q1","how to run a parallel batch job where each pod needs a unique index","tasks_job_indexed-parallel-processing-static",1,289.81,3,161.71,3,60.23
+"q_007_q2","restart failed pod in a batch processing job without redoing entire workload","tasks_job_indexed-parallel-processing-static",,289.39,,127.09,,110.06
+"q_008_q1","why does my kubernetes cluster hang when multiple nodes go offline simultaneously","concepts_security_api-server-bypass-risks",,289.71,,95.95,,82.00
+"q_008_q2","how to protect against potential data corruption if etcd nodes lose connection","concepts_security_api-server-bypass-risks",,416.19,,95.62,,68.99
+"q_009_q1","why can't my certificate signing requests get automatically approved in kubernetes","tasks_tls_managing-tls-in-a-cluster",1,290.26,2,160.51,1,81.37
+"q_009_q2","how to manage tls certificates for my services without manual intervention","tasks_tls_managing-tls-in-a-cluster",2,268.07,3,109.81,,64.32
+"q_010_q1","how can I quickly check if my kubernetes yaml files are valid before deploying","tasks_administer-cluster_verify-signed-artifacts",,346.26,,163.04,,95.31
+"q_010_q2","getting weird errors in production; want to validate my deployment configs locally","tasks_administer-cluster_verify-signed-artifacts",,283.29,,128.29,,77.48
+"q_011_q1","why can't I see my application's logs and traces in the monitoring dashboard","concepts_cluster-administration_system-traces",,416.91,,155.45,,58.40
+"q_011_q2","how to collect and track performance metrics from my kubernetes cluster","concepts_cluster-administration_system-traces",,318.95,,160.63,,91.09
+"q_012_q1","how to collect and monitor resource usage for my kubernetes cluster","concepts_cluster-administration_system-metrics",,277.68,,150.12,,100.41
+"q_012_q2","my prometheus dashboard is not showing kubernetes component performance metrics","concepts_cluster-administration_system-metrics",,306.49,,84.42,2,80.64
+"q_013_q1","how to prevent one container from consuming all resources of my node","concepts_security_multi-tenancy",1,297.96,,130.65,,64.79
+"q_013_q2","stop my team's pods from interfering with critical system services","concepts_security_multi-tenancy",,464.52,,145.30,,77.52
+"q_014_q1","why can't I make granular permissions based on user attributes like job title","reference_access-authn-authz_abac",,326.23,,156.04,,103.85
+"q_014_q2","kubernetes access control too rigid; how to define complex authorization rules","reference_access-authn-authz_abac",,384.52,,136.18,,117.06
+"q_015_q1","why can't my CI/CD pipeline authenticate with kubernetes cluster after rotating service account tokens","reference_access-authn-authz_authentication",1,404.79,3,141.27,1,106.69
+"q_015_q2","getting authentication errors when trying to call kubernetes api from external tool","reference_access-authn-authz_authentication",,394.12,,189.51,1,107.22
+"q_016_q1","why can't my custom API server authenticate requests from kubernetes cluster","tasks_extend-kubernetes_configure-aggregation-layer",1,573.75,3,115.67,,116.02
+"q_016_q2","my extension API is not showing up in kubectl get api-services","tasks_extend-kubernetes_configure-aggregation-layer",2,363.53,,129.92,,73.82
+"q_017_q1","how to make kubectl commands autocomplete in my terminal","tasks_tools_included_optional-kubectl-configs-fish",5,333.20,,225.85,,123.84
+"q_017_q2","getting tired of typing full kubernetes command names every time","tasks_tools_included_optional-kubectl-configs-fish",,305.67,,129.16,,83.25
+"q_018_q1","why can't my services communicate between nodes in my cluster","concepts_cluster-administration_proxies",,371.88,,128.54,,90.42
+"q_018_q2","how kubernetes routes traffic to the right pod when I have multiple replicas","concepts_cluster-administration_proxies",,465.40,,137.05,,102.97
+"q_019_q1","how do i deploy my yaml file from the command line","tasks_manage-kubernetes-objects_imperative-config",,329.74,,164.33,,80.66
+"q_019_q2","getting error when trying to apply kubernetes configuration from file","tasks_manage-kubernetes-objects_imperative-config",,331.67,,120.35,3,63.57
+"q_020_q1","my kubernetes batch job is stuck midway and I want to pause it without deleting","concepts_workloads_controllers_job",1,288.42,3,136.23,,75.35
+"q_020_q2","how to temporarily stop a long-running job and resume it later without losing progress","concepts_workloads_controllers_job",1,287.13,2,126.59,2,90.51
+"q_021_q1","how to see what my job failed and why it's not completing","tasks_job_fine-parallel-processing-work-queue",,407.32,,142.16,,77.75
+"q_021_q2","can't figure out what's happening inside my worker pod during a batch job","tasks_job_fine-parallel-processing-work-queue",,294.75,,120.74,1,68.85
+"q_022_q1","why are my high performance containers not getting scheduled on the right cpu cores","tasks_administer-cluster_topology-manager",,281.67,,128.18,,68.70
+"q_022_q2","can't control how cpu and memory resources get allocated across my numa nodes","tasks_administer-cluster_topology-manager",,276.50,,108.53,,60.17
+"q_023_q1","how to prevent developers from deploying containers with latest tag in production","reference_access-authn-authz_admission-controllers",,271.82,,116.54,,93.98
+"q_023_q2","why can't I stop someone from using root containers in my cluster","reference_access-authn-authz_admission-controllers",,415.21,,90.81,,70.16
+"q_024_q1","why can't my pod access kubernetes api when running inside the cluster","tasks_configure-pod-container_configure-service-account",,321.36,,124.13,,98.47
+"q_024_q2","error accessing cloud resources from inside my application container","tasks_configure-pod-container_configure-service-account",,285.28,,155.53,,84.51
+"q_025_q1","how long are my kubernetes service account tokens valid before they expire","tasks_tls_certificate-rotation",,302.89,,133.09,,101.24
+"q_025_q2","certificates for my cluster keep getting automatically rotated too frequently","tasks_tls_certificate-rotation",4,278.07,,123.26,,61.50
+"q_026_q1","how do I set up a kubernetes cluster on my servers without managed cloud services","setup_best-practices_certificates",,414.91,,104.47,,63.06
+"q_026_q2","what steps are needed to get a working kubernetes cluster from scratch","setup_best-practices_certificates",,286.48,,136.25,,111.29
+"q_027_q1","why do some of my pods have weird leader election behavior when scaling","concepts_architecture_leases",,277.02,,100.16,,49.37
+"q_027_q2","kubernetes controller keeps flapping between instances in my distributed service","concepts_architecture_leases",,273.11,,112.83,,77.18
+"q_028_q1","restore data from a snapshot but my volume mode is different from original","concepts_storage_volume-snapshots",1,320.87,1,161.03,1,102.67
+"q_028_q2","how to change storage type when recovering from a volume backup","concepts_storage_volume-snapshots",,496.94,1,109.51,1,116.62
+"q_029_q1","how to prevent unauthorized docker images from running in my kubernetes cluster","tasks_administer-cluster_verify-signed-artifacts",,331.33,,132.69,,84.50
+"q_029_q2","error when trying to ensure only trusted container images are deployed","tasks_administer-cluster_verify-signed-artifacts",,297.39,,132.96,,69.53
+"q_030_q1","how do I make sure my sensitive data in kubernetes isn't stored as plain text","tasks_administer-cluster_encrypt-data",5,317.54,1,134.06,,120.12
+"q_030_q2","secrets in my cluster look like they might be readable by someone they shouldn't be","tasks_administer-cluster_encrypt-data",4,287.70,2,119.69,1,74.37
+"q_031_q1","how do i set up custom certificate authority for my kubernetes cluster without using default kubeadm certs","setup_best-practices_certificates",,483.89,1,115.26,1,88.47
+"q_031_q2","keep getting ssl verification errors when connecting to cluster from external machines","setup_best-practices_certificates",,298.13,,145.84,,59.09
+"q_032_q1","why are my pods not getting marked unhealthy even when my app stops responding","concepts_storage_volume-health-monitoring",,326.18,,122.34,,58.74
+"q_032_q2","how can kubernetes automatically detect and replace my failing application containers","concepts_storage_volume-health-monitoring",,280.03,,114.29,,62.98
+"q_033_q1","why are my low-priority pods getting killed suddenly when node is running out of memory","concepts_workloads_pods_pod-qos",3,364.39,,113.08,,63.58
+"q_033_q2","kubernetes evicting my background jobs first when server resources are tight","concepts_workloads_pods_pod-qos",3,459.72,1,230.44,1,102.08
+"q_034_q1","how can I check if dns scaling is working in my cluster","tasks_administer-cluster_dns-horizontal-autoscaling",1,365.97,3,127.29,,127.00
+"q_034_q2","why are my dns pods not automatically scaling with cluster size","tasks_administer-cluster_dns-horizontal-autoscaling",1,300.64,1,124.54,2,65.99
+"q_035_q1","how to run kubernetes pods as specific windows user account","concepts_security_windows-security",1,328.25,1,117.48,2,98.87
+"q_035_q2","my windows container is running with wrong permissions and can't access files","concepts_security_windows-security",,303.84,,97.20,2,77.50
+"q_036_q1","how to prevent my payment service pods from interfering with other microservices","concepts_security_multi-tenancy",3,489.01,,96.10,,171.54
+"q_036_q2","my development team needs separate compute resources from production workloads","concepts_security_multi-tenancy",,308.24,3,103.63,2,71.04
+"q_037_q1","my pods keep getting killed when memory gets tight and I can't understand why","tasks_administer-cluster_manage-resources_memory-default-namespace",,285.37,,137.56,,104.64
+"q_037_q2","prevent one team's greedy containers from consuming all cluster resources","tasks_administer-cluster_manage-resources_memory-default-namespace",,280.04,,134.28,,63.41
+"q_038_q1","how to prevent containers from running as root in my cluster","concepts_security_pod-security-policy",,278.67,,129.65,,50.20
+"q_038_q2","my security team is complaining about pod privilege escalation risks","concepts_security_pod-security-policy",,426.61,,133.56,,98.55
+"q_039_q1","why are my kubernetes nodes constantly restarting and showing cgroup errors","tasks_administer-cluster_kubeadm_configure-cgroup-driver",,317.65,,130.13,,67.63
+"q_039_q2","docker and kubernetes using different resource management settings causing pod failures","tasks_administer-cluster_kubeadm_configure-cgroup-driver",,380.72,,154.57,,118.89
+"q_040_q1","how to replace my cluster's encryption key without breaking existing secrets","tasks_administer-cluster_encrypt-data",1,323.38,1,109.16,1,78.17
+"q_040_q2","kubernetes secrets showing decryption errors after key rotation","tasks_administer-cluster_encrypt-data",1,320.73,1,139.06,2,45.05
+"q_041_q1","how do i quickly type long complex powershell commands without typing everything","tasks_tools_included_optional-kubectl-configs-pwsh",2,418.41,,118.66,,64.01
+"q_041_q2","why does pressing tab sometimes show me weird suggestions in powershell terminal","tasks_tools_included_optional-kubectl-configs-pwsh",,284.03,,118.82,,50.46
+"q_042_q1","why can't my teammate access the production namespace even after getting credentials","reference_access-authn-authz_rbac",1,315.76,,113.84,,67.61
+"q_042_q2","how to give a service account permission to list and create deployments","reference_access-authn-authz_rbac",2,301.94,4,107.10,,65.41
+"q_043_q1","how do I programmatically manage my kubernetes resources without using kubectl","concepts_overview_kubernetes-api",,308.11,,145.03,,70.74
+"q_043_q2","can't update deployment scale from my custom monitoring script","concepts_overview_kubernetes-api",,423.38,,120.23,,77.05
+"q_044_q1","how to remove all kubernetes resources i created without deleting everything manually","tasks_configure-pod-container_extended-resource",,309.78,,100.96,4,71.12
+"q_044_q2","what's the fastest way to clean up my test environment after running a demo","tasks_configure-pod-container_extended-resource",,307.16,,126.24,,70.85
+"q_045_q1","how do my microservices communicate and discover each other inside the cluster","tasks_inject-data-application_environment-variable-expose-pod-information",,288.67,,127.80,,58.57
+"q_045_q2","pods can't seem to talk to each other even though they're in the same namespace","tasks_inject-data-application_environment-variable-expose-pod-information",,289.57,,116.96,,76.76
+"q_046_q1","why can't my containerized web app be accessed from outside the cluster","concepts_services-networking_service",,446.07,,223.46,,92.88
+"q_046_q2","how to route traffic from multiple pods with same application to a single endpoint","concepts_services-networking_service",5,289.07,,155.05,,113.34
+"q_047_q1","how to prevent a single container from consuming all resources in my shared namespace","tasks_administer-cluster_manage-resources_memory-constraint-namespace",,340.91,,108.35,,98.69
+"q_047_q2","why are my small pods getting killed when larger pods are running fine","tasks_administer-cluster_manage-resources_memory-constraint-namespace",,317.36,,187.33,,128.93
+"q_048_q1","how to allocate custom hardware resources like GPU across my cluster nodes","concepts_scheduling-eviction_resource-bin-packing",,360.89,,109.26,,70.24
+"q_048_q2","kubernetes not scheduling pods with special hardware requirements","concepts_scheduling-eviction_resource-bin-packing",,408.57,,113.98,,61.72
+"q_049_q1","how to roll back to a specific version of my daemonset without reverting to the last deployed version","tasks_manage-daemon_rollback-daemon-set",2,307.37,1,114.31,1,78.61
+"q_049_q2","accidentally deployed a bad daemonset update and want to go back to an older working revision","tasks_manage-daemon_rollback-daemon-set",2,307.32,1,152.15,1,65.82
+"q_050_q1","how to keep my application running if an entire data center goes down","setup_best-practices_multiple-zones",,278.54,,116.86,,64.92
+"q_050_q2","prevent service outage when one cloud provider zone fails","setup_best-practices_multiple-zones",4,303.68,2,118.51,5,104.76
+"q_051_q1","how to safely remove a node from cluster without killing running workloads","tasks_administer-cluster_kubeadm_kubeadm-upgrade",,427.97,,119.63,5,104.25
+"q_051_q2","need to replace server hardware without causing application downtime","tasks_administer-cluster_kubeadm_kubeadm-upgrade",,298.68,,144.79,,75.27
+"q_052_q1","why are my pods not scaling up during high traffic","tasks_run-application_horizontal-pod-autoscale-walkthrough",,309.21,,106.48,,59.44
+"q_052_q2","how can I understand if my autoscaling is working correctly","tasks_run-application_horizontal-pod-autoscale-walkthrough",,280.65,,117.14,,88.04
+"q_053_q1","how to run a database migration task that completes and then stops","concepts_workloads_controllers_job",,314.64,,104.48,2,50.03
+"q_053_q2","run batch processing script that needs to finish without keeping container running forever","concepts_workloads_controllers_job",,425.96,,115.75,4,89.17
+"q_054_q1","why are my pods always landing on the same node when i have multiple servers","concepts_scheduling-eviction_assign-pod-node",,292.58,,90.49,,53.23
+"q_054_q2","control which nodes my critical services run on to improve reliability","concepts_scheduling-eviction_assign-pod-node",,287.36,,138.07,1,101.72
+"q_055_q1","why does my api client keep getting 304 not modified when fetching kubernetes resources","concepts_overview_kubernetes-api",,293.66,,149.38,,157.57
+"q_055_q2","how to handle caching and detect changes in kubernetes api resources efficiently","concepts_overview_kubernetes-api",,289.63,,127.88,,100.64
+"q_056_q1","why can't my users log in to kubernetes dashboard after setting up sso","reference_access-authn-authz_authentication",4,437.84,1,133.99,3,111.67
+"q_056_q2","getting authentication errors when external identity provider changes token format","reference_access-authn-authz_authentication",3,298.21,2,125.23,2,74.44
+"q_057_q1","why are my pods constantly running out of cpu and getting evicted","setup_best-practices_cluster-large",,292.39,,117.28,,82.50
+"q_057_q2","automatically adjust container resources based on actual usage without manual tuning","setup_best-practices_cluster-large",,326.62,,133.08,,97.87
+"q_058_q1","why is my kubernetes cluster scheduling pods so slowly across large number of nodes","concepts_scheduling-eviction_scheduler-perf-tuning",1,282.40,1,151.56,1,66.97
+"q_058_q2","how does kubernetes decide which nodes to consider when placing new pods","concepts_scheduling-eviction_scheduler-perf-tuning",,418.20,,109.29,,52.08
+"q_059_q1","why can't I run kubectl commands after updating my kubeconfig file","reference_access-authn-authz_authentication",,297.57,,126.31,,100.29
+"q_059_q2","my script is failing to connect to kubernetes cluster when running from different directory","reference_access-authn-authz_authentication",,281.50,,130.90,,60.96
+"q_060_q1","why can't my pod access cloud storage when running in kubernetes","concepts_security_service-accounts",,296.11,,128.15,,54.16
+"q_060_q2","how to give my application permissions to interact with other kubernetes resources","concepts_security_service-accounts",,309.56,,95.32,4,79.69
+"q_061_q1","my container can't access external data files it needs at runtime","tasks_configure-pod-container_configure-volume-storage",,422.67,,100.00,,124.03
+"q_061_q2","how to mount a local directory from my host into a kubernetes pod","tasks_configure-pod-container_configure-volume-storage",,364.49,,88.10,,81.47
+"q_062_q1","why can't i schedule new pods on a node after kubernetes cluster upgrade","tasks_administer-cluster_kubeadm_upgrading-linux-nodes",,327.49,,117.98,,109.72
+"q_062_q2","how to make my node available for workloads after maintenance","tasks_administer-cluster_kubeadm_upgrading-linux-nodes",2,336.48,1,141.21,1,76.74
+"q_063_q1","how to keep log files when my container restarts or gets rescheduled","concepts_storage_volumes",2,317.00,,154.60,,80.54
+"q_063_q2","my application needs temporary files that survive container restarts","concepts_storage_volumes",1,447.53,1,118.06,4,91.14
+"q_064_q1","why can't i run kubernetes containers as a non-root user on my linux system","tasks_administer-cluster_kubelet-in-userns",2,318.03,,135.72,,63.26
+"q_064_q2","getting permission errors when trying to run containers without root privileges","tasks_administer-cluster_kubelet-in-userns",,281.02,,185.20,,60.82
+"q_065_q1","how to prevent other teams from reading my secret data in kubernetes","tasks_administer-cluster_kms-provider",,314.88,,132.19,,88.90
+"q_065_q2","is my sensitive data really secure when stored in kubernetes secrets","tasks_administer-cluster_kms-provider",,336.46,,95.83,,51.08
+"q_066_q1","how to get actual memory used by container for monitoring and troubleshooting","concepts_workloads_pods_downward-api",,436.32,,110.13,,51.02
+"q_066_q2","can't configure resource request dynamically in my container's environment variables","concepts_workloads_pods_downward-api",4,314.71,,106.77,,61.80
+"q_067_q1","how to give my frontend team read-only access to only their pods","reference_access-authn-authz_rbac",3,281.05,3,122.51,3,81.90
+"q_067_q2","user can't view deployments in our dev namespace; how to fix permissions","reference_access-authn-authz_rbac",,309.12,,117.09,,54.81
+"q_068_q1","why are my pods stuck in pending state and not getting placed on any node","concepts_scheduling-eviction_kube-scheduler",,320.92,,110.45,,63.89
+"q_068_q2","control which nodes my containers run on based on server hardware or location","concepts_scheduling-eviction_kube-scheduler",,421.23,,95.14,,57.60
+"q_069_q1","how to update my old kubernetes yaml files to work with newer api versions","tasks_tools_install-kubectl-macos",,284.88,,118.15,,62.47
+"q_069_q2","convert manifest from one kubernetes version to another without manual rewriting","tasks_tools_install-kubectl-macos",,312.35,,171.16,,126.38
+"q_070_q1","why can't my windows worker nodes use certain storage types in kubernetes","concepts_storage_windows-storage",,287.57,,108.45,,66.59
+"q_070_q2","which volume types won't work when I deploy to windows server containers","concepts_storage_windows-storage",5,308.72,5,127.46,1,54.00
+"q_071_q1","how to inject database password into my container without putting secrets in git","tasks_inject-data-application_distribute-credentials-secure",2,422.34,5,175.34,,94.26
+"q_071_q2","my app can't read sensitive credentials when deployed to kubernetes","tasks_inject-data-application_distribute-credentials-secure",2,305.42,,111.10,,59.12
+"q_072_q1","how to prevent creating pods that don't meet my security requirements","reference_access-authn-authz_extensible-admission-controllers",,284.71,,110.60,,68.20
+"q_072_q2","block deployment of containers with specific configuration or tags automatically","reference_access-authn-authz_extensible-admission-controllers",,288.83,,127.89,,67.57
+"q_073_q1","how to mount a git repository directly into a container during deployment","concepts_storage_volumes",3,271.86,5,124.80,1,57.95
+"q_073_q2","pull specific branch or commit from github into my kubernetes pod","concepts_storage_volumes",,428.77,,104.63,,86.56
+"q_074_q1","why are some of my pods getting killed first during high memory pressure","tasks_configure-pod-container_quality-service-pod",,302.51,,107.37,,93.17
+"q_074_q2","how does kubernetes decide which containers to evict when node runs out of resources","tasks_configure-pod-container_quality-service-pod",,286.30,,138.07,,68.06
+"q_075_q1","why are my pods getting killed when they seem to have plenty of memory available","tasks_administer-cluster_manage-resources_memory-default-namespace",3,288.34,,166.21,,65.63
+"q_075_q2","how to prevent out-of-memory errors for my memory-intensive application","tasks_administer-cluster_manage-resources_memory-default-namespace",,388.87,,98.93,,57.23
+"q_076_q1","my service account tokens are expiring and breaking my integrations with external services","reference_access-authn-authz_service-accounts-admin",5,433.51,2,110.12,1,96.49
+"q_076_q2","how to keep kubernetes service account credentials valid for more than a few hours","reference_access-authn-authz_service-accounts-admin",,294.41,,144.65,,62.08
+"q_077_q1","how to manage kubernetes resources with version-controlled yaml files instead of manual commands","tasks_manage-kubernetes-objects_declarative-config",,300.53,,105.18,,67.84
+"q_077_q2","keep getting conflicts when multiple team members update the same deployment","tasks_manage-kubernetes-objects_declarative-config",,283.37,5,190.73,,127.32
+"q_078_q1","why are my pods failing with authentication errors related to service accounts","reference_access-authn-authz_abac",,300.52,,117.59,,67.95
+"q_078_q2","how to set up correct permissions for service accounts to access kubernetes resources","reference_access-authn-authz_abac",,447.98,,176.92,,167.16
+"q_079_q1","why does my kubernetes cluster seem stuck during controller failover","tasks_administer-cluster_controller-manager-leader-migration",,370.73,,88.41,,84.65
+"q_079_q2","how to prevent downtime when a control plane node goes offline","tasks_administer-cluster_controller-manager-leader-migration",,297.90,,96.45,,85.97
+"q_080_q1","why does my kubernetes service name get truncated","concepts_overview_working-with-objects_names",,308.85,,96.04,,59.00
+"q_080_q2","getting dns errors with long service or pod names in cluster","concepts_overview_working-with-objects_names",,310.49,,103.88,,109.51
+"q_081_q1","how to configure external authentication for kubernetes api server","reference_access-authn-authz_authentication",,415.33,3,98.57,1,79.97
+"q_081_q2","my kubernetes cluster is not validating tokens from my identity provider","reference_access-authn-authz_authentication",2,286.91,1,128.34,1,73.88
+"q_082_q1","why can't I see my kubernetes cluster's tracing data","concepts_cluster-administration_system-traces",2,316.89,,162.32,,77.12
+"q_082_q2","how to configure my monitoring tool to collect telemetry from k8s components","concepts_cluster-administration_system-traces",,306.21,5,109.50,4,80.40
+"q_083_q1","remove default storage option so our team chooses specific storage for each deployment","tasks_administer-cluster_change-default-storage-class",2,303.61,3,105.46,,71.25
+"q_083_q2","getting errors when provisioning volumes because wrong storage class keeps getting selected","tasks_administer-cluster_change-default-storage-class",4,416.99,,103.72,4,57.68
+"q_084_q1","how to check if my network plugin is running and healthy","tasks_administer-cluster_network-policy-provider_cilium-network-policy",,278.81,,106.43,,67.86
+"q_084_q2","can't figure out why my cluster network isn't working - which pods should I look at","tasks_administer-cluster_network-policy-provider_cilium-network-policy",,310.12,,116.15,,61.10
+"q_085_q1","service account can't access kubernetes api resources inside my pod","reference_access-authn-authz_rbac",,321.06,,112.19,,80.38
+"q_085_q2","how to give my pod permissions to list deployments in the cluster","reference_access-authn-authz_rbac",,317.32,,149.44,,110.32
+"q_086_q1","how to prevent one team from consuming all cluster resources and blocking other teams","concepts_policy_resource-quotas",1,431.52,5,107.51,,57.21
+"q_086_q2","getting errors when trying to create pods in a namespace that's out of compute resources","concepts_policy_resource-quotas",,283.93,3,130.45,4,139.12
+"q_087_q1","how to debug a container when the main app process crashes and won't start","concepts_workloads_pods_ephemeral-containers",,302.97,,99.88,,117.18
+"q_087_q2","can't diagnose why my container is stuck in a restart loop","concepts_workloads_pods_ephemeral-containers",,292.86,,112.97,,58.25
+"q_088_q1","why can't my services get an IP address within the expected range","tasks_network_extend-service-ip-ranges",,284.60,,119.03,,109.82
+"q_088_q2","getting network conflicts when deploying new services in my cluster","tasks_network_extend-service-ip-ranges",,432.30,,133.66,,69.23
+"q_089_q1","how to generate and sign tls certificates for internal services securely","tasks_administer-cluster_certificates",4,282.98,2,164.12,2,78.81
+"q_089_q2","create self-signed certificates for my kubernetes cluster without manual openssl commands","tasks_administer-cluster_certificates",1,313.04,1,116.84,,74.12
+"q_090_q1","why does my container startup fail when additional containers are added to the pod","concepts_workloads_pods_init-containers",1,307.75,1,118.57,3,71.24
+"q_090_q2","how to ensure my initialization container doesn't consume all pod resources before main container starts","concepts_workloads_pods_init-containers",2,296.80,1,154.05,2,101.97
+"q_091_q1","how to track which pods are consuming the most CPU and memory in my cluster","tasks_debug_debug-cluster_resource-usage-monitoring",,409.72,,119.67,,58.38
+"q_091_q2","get alerts when my services are running out of resources before they crash","tasks_debug_debug-cluster_resource-usage-monitoring",,293.43,,152.07,,64.17
+"q_092_q1","how do i update network settings without breaking cluster connectivity","tasks_administer-cluster_migrating-from-dockershim_troubleshooting-cni-plugin-related-errors",,306.73,,122.44,4,89.49
+"q_092_q2","getting connection errors after changing network plugin configuration","tasks_administer-cluster_migrating-from-dockershim_troubleshooting-cni-plugin-related-errors",2,283.55,3,150.18,2,78.38
+"q_093_q1","how to request a custom GPU resource for machine learning workloads","tasks_configure-pod-container_extended-resource",,291.80,,133.62,,92.29
+"q_093_q2","container keeps failing to schedule because of missing hardware resources","tasks_configure-pod-container_extended-resource",,441.88,,132.27,,112.62
+"q_094_q1","why can't I find a persistent volume for my database when using empty selectors","concepts_storage_persistent-volumes",,398.49,,136.56,,66.38
+"q_094_q2","how do I make sure my claim gets the exact storage I want without guessing","concepts_storage_persistent-volumes",3,329.11,1,173.03,1,76.92
+"q_095_q1","why can't my developer access resources in our team's namespace","reference_access-authn-authz_rbac",,285.55,,90.80,,78.38
+"q_095_q2","how to give new team member permissions to view and edit specific deployments","reference_access-authn-authz_rbac",,288.44,,119.59,,75.77
+"q_096_q1","how can I test my yaml changes without actually creating resources in my cluster","reference_access-authn-authz_extensible-admission-controllers",,432.32,,76.96,,89.28
+"q_096_q2","is there a way to validate my kubernetes manifest before it goes live","reference_access-authn-authz_extensible-admission-controllers",,346.44,,132.52,,56.69
+"q_097_q1","how to update container image in a running deployment without downtime","tasks_manage-kubernetes-objects_imperative-config",,287.82,,118.41,,55.42
+"q_097_q2","change environment variables for a live pod without recreating it","tasks_manage-kubernetes-objects_imperative-config",,322.26,,83.83,,80.98
+"q_098_q1","why is my background job processing so slow when I have multiple workers available","tasks_job_coarse-parallel-processing-work-queue",,297.95,,125.72,2,71.30
+"q_098_q2","how to control the number of concurrent workers processing my task queue","tasks_job_coarse-parallel-processing-work-queue",2,406.92,,140.93,1,69.79
+"q_099_q1","why can't my team member access resources in our namespace","reference_access-authn-authz_rbac",,301.23,,117.79,,56.82
+"q_099_q2","how to give a service account permission to manage deployments cluster-wide","reference_access-authn-authz_rbac",1,277.03,1,113.11,1,157.76
+"q_100_q1","my mysql database keeps losing data when pods restart in kubernetes","tasks_run-application_run-single-instance-stateful-application",,320.87,5,114.20,1,63.82
+"q_100_q2","how to run a stable mysql cluster that preserves data across pod rescheduling","tasks_run-application_run-single-instance-stateful-application",3,315.34,,122.88,2,102.63
+"q_101_q1","why are my pods getting evicted when there's still memory on the node","tasks_configure-pod-container_assign-cpu-resource",,398.73,,95.14,,75.13
+"q_101_q2","one of my containers is hogging all the node's resources and starving other pods","tasks_configure-pod-container_assign-cpu-resource",4,313.44,1,136.42,4,98.98
+"q_102_q1","how to set up database replication in kubernetes with one master and multiple read replicas","tasks_run-application_run-replicated-stateful-application",,296.89,2,129.94,4,63.33
+"q_102_q2","my database cluster keeps losing data when the main node goes down","tasks_run-application_run-replicated-stateful-application",,306.21,2,100.18,4,54.49
+"q_103_q1","how to make google kubernetes engine block pod-to-pod communication by default","tasks_administer-cluster_network-policy-provider_calico-network-policy",,285.60,,112.81,,116.91
+"q_103_q2","why can all my pods talk to each other even though i want network isolation","tasks_administer-cluster_network-policy-provider_calico-network-policy",,426.91,,98.41,,61.72
+"q_104_q1","how to upgrade my kubernetes cluster without causing service interruption","tasks_administer-cluster_kubeadm_kubeadm-upgrade",2,298.01,,156.87,,77.46
+"q_104_q2","my nodes are showing warning about kubernetes version mismatch and i'm worried about stability","tasks_administer-cluster_kubeadm_kubeadm-upgrade",,370.40,,112.61,4,59.24
+"q_105_q1","how to give my admin user full permissions across all kubernetes resources","reference_access-authn-authz_abac",,295.60,,108.93,,69.75
+"q_105_q2","user can't manage anything in the cluster and I want to grant complete access","reference_access-authn-authz_abac",,305.30,,95.62,,72.23
+"q_106_q1","why can't I delete a persistent volume claim that's being used by a running pod","concepts_storage_persistent-volumes",2,422.05,,122.87,,104.70
+"q_106_q2","my volume deletion fails even though I stopped using the storage","concepts_storage_persistent-volumes",2,326.32,,119.35,,87.09
+"q_107_q1","why are my custom resource manifests showing warnings when i deploy to the cluster","tasks_extend-kubernetes_custom-resources_custom-resource-definition-versioning",,291.33,,136.34,,96.86
+"q_107_q2","how to handle kubernetes warnings when upgrading custom resource definitions","tasks_extend-kubernetes_custom-resources_custom-resource-definition-versioning",,282.54,2,118.44,3,79.83
+"q_108_q1","why can't I connect my local development environment to my kubernetes cluster","tasks_debug_debug-cluster_local-debugging",2,379.90,,62.93,,71.34
+"q_108_q2","how to test my service code running locally against remote kubernetes services","tasks_debug_debug-cluster_local-debugging",1,430.14,1,125.99,1,68.57
+"q_109_q1","how to track which users are making changes in my kubernetes cluster","concepts_security_controlling-access",,279.85,5,121.94,,82.26
+"q_109_q2","get a log of all security-related events for compliance reporting","concepts_security_controlling-access",,307.46,,111.39,,142.92
+"q_110_q1","my api requests to kubernetes cluster failing and not sure why","concepts_overview_kubernetes-api",,307.52,,119.62,,58.19
+"q_110_q2","how to debug connection problems between my tool and kubernetes control plane","concepts_overview_kubernetes-api",,330.30,,158.51,,73.41
+"q_111_q1","why are my services not routing traffic to all my pods correctly","concepts_services-networking_endpoint-slices",,466.96,,96.55,,76.79
+"q_111_q2","is there a way to handle more than 100 pod endpoints in a single service","concepts_services-networking_endpoint-slices",,297.35,2,160.49,2,55.20
+"q_112_q1","why is my kubernetes cluster preventing me from attaching more ebs volumes to a node","concepts_storage_storage-limits",1,331.72,1,142.09,1,88.75
+"q_112_q2","how many persistent volumes can i attach to a single worker node","concepts_storage_storage-limits",1,298.17,1,102.09,1,55.79
+"q_113_q1","my docker container loses all data when it restarts or gets rescheduled","concepts_storage_volumes",1,288.96,,115.70,,93.60
+"q_113_q2","how to preserve files created inside a container between pod restarts","concepts_storage_volumes",1,393.82,2,98.72,,52.03
+"q_114_q1","how can I confirm the download of my software package wasn't tampered with","tasks_administer-cluster_verify-signed-artifacts",,337.56,2,108.60,4,81.97
+"q_114_q2","why does my security team require checking gpg signatures before installing software","tasks_administer-cluster_verify-signed-artifacts",,306.77,,182.13,4,59.01
+"q_115_q1","my kubernetes cluster stopped working after trying to update certificates","tasks_tls_manual-rotation-of-ca-certificates",1,281.71,1,116.82,2,95.75
+"q_115_q2","how to safely renew cluster's root certificates without breaking everything","tasks_tls_manual-rotation-of-ca-certificates",,365.57,,72.68,,62.07
+"q_116_q1","how to prevent my container from consuming all host machine's CPU resources","concepts_policy_pid-limiting",,405.53,,125.65,,136.95
+"q_116_q2","why is my kubernetes node crashing when a pod starts consuming too many processes","concepts_policy_pid-limiting",1,295.52,1,119.36,4,79.19
+"q_117_q1","node keeps kicking out my pods when memory is low and breaking my application","tasks_administer-cluster_memory-manager",,314.48,,123.51,,69.72
+"q_117_q2","how to prevent kubernetes from forcibly removing pods during high memory pressure","tasks_administer-cluster_memory-manager",,318.94,,106.08,,62.79
+"q_118_q1","how do I separate environments like dev and staging in my cluster","tasks_administer-cluster_manage-resources_quota-pod-namespace",,312.30,,196.86,,75.59
+"q_118_q2","getting permission issues when deploying to a new project team's area","tasks_administer-cluster_manage-resources_quota-pod-namespace",,419.82,,152.76,,86.20
+"q_119_q1","why are my kubernetes cluster certificates about to expire and causing connection issues","tasks_tls_manual-rotation-of-ca-certificates",,332.29,,104.84,,86.15
+"q_119_q2","how do I safely update cluster certificates without breaking everything","tasks_tls_manual-rotation-of-ca-certificates",4,343.92,,153.72,,121.69
+"q_120_q1","can containers see and kill processes running in other containers on the same node","tasks_configure-pod-container_share-process-namespace",,287.33,1,101.30,1,60.22
+"q_120_q2","security risks when multiple containers share the same process namespace","tasks_configure-pod-container_share-process-namespace",1,303.15,1,114.20,2,99.90
+"q_121_q1","why kubernetes ignores some of my environment variables when deploying my app","tasks_inject-data-application_define-environment-variable-container",,486.72,,164.11,,162.67
+"q_121_q2","how to load all environment variables from a config file without listing them manually","tasks_inject-data-application_define-environment-variable-container",3,345.09,,145.18,,60.90
+"q_122_q1","how to automatically generate certificates for new worker nodes joining my cluster","reference_access-authn-authz_kubelet-tls-bootstrapping",,330.79,3,186.75,,95.83
+"q_122_q2","my kubelet can't authenticate to the kubernetes api server without manual certificate signing","reference_access-authn-authz_kubelet-tls-bootstrapping",,440.36,1,126.28,1,97.93
+"q_123_q1","why are my system monitoring pods not updating when i deploy a new version","tasks_manage-daemon_update-daemon-set",,320.40,,158.86,,127.50
+"q_123_q2","how can i tell if my daemonset will replace pods all at once or gradually","tasks_manage-daemon_update-daemon-set",2,428.94,3,146.63,,117.14
+"q_124_q1","why are my cpu-intensive pods running slow and spreading across different numa nodes","concepts_architecture_nodes",,258.22,,95.28,,44.33
+"q_124_q2","how to ensure container gets optimal cpu and memory placement on worker nodes","concepts_architecture_nodes",,280.88,,78.45,,35.35
+"q_125_q1","my external users can't reach my service from the internet","concepts_services-networking_ingress",,248.04,,85.68,,60.52
+"q_125_q2","how to route different domains to different services in kubernetes","concepts_services-networking_ingress",,276.46,,90.73,,103.47
+"q_126_q1","how to add environment variables to my container without changing the dockerfile","tasks_inject-data-application_environment-variable-expose-pod-information",,375.33,,88.82,,41.74
+"q_126_q2","my app needs runtime config but i can't modify the image's environment","tasks_inject-data-application_environment-variable-expose-pod-information",,280.86,,97.28,,68.38
+"q_127_q1","how to automatically set up permissions for new team members when they join","reference_access-authn-authz_rbac",3,251.76,,79.67,5,42.57
+"q_127_q2","getting permission denied errors for developers trying to access their namespace","reference_access-authn-authz_rbac",3,328.69,,48.85,,45.93
+"q_128_q1","why are all my pods running on the same node even though I have multiple zones","setup_best-practices_multiple-zones",,310.58,,77.90,,42.25
+"q_128_q2","how to ensure my application stays available if an entire cloud zone goes down","setup_best-practices_multiple-zones",,397.83,,108.02,,62.94
+"q_129_q1","why did my container exit immediately after starting without showing any error","tasks_configure-pod-container_attach-handler-lifecycle-event",,291.54,,79.99,,32.53
+"q_129_q2","how to debug what's happening when kubernetes launches my container","tasks_configure-pod-container_attach-handler-lifecycle-event",,269.08,,130.88,,43.31
+"q_130_q1","which snapshot driver to use for different storage systems like aws ebs or gcp persistent disk","concepts_storage_volume-snapshot-classes",,252.05,,109.05,,44.99
+"q_130_q2","error creating volume snapshots and not sure how to configure the right storage backend","concepts_storage_volume-snapshot-classes",4,270.48,,113.00,,38.59
+"q_131_q1","how can I check if my database container is actually using the persistent volume","tasks_configure-pod-container_configure-volume-storage",4,383.03,,121.86,,48.97
+"q_131_q2","why isn't my volume showing up inside the container's filesystem","tasks_configure-pod-container_configure-volume-storage",4,260.33,,82.59,,49.96
+"q_132_q1","why my node seems disconnected and kubernetes can't schedule new pods","concepts_architecture_control-plane-node-communication",,263.82,,86.68,,39.88
+"q_132_q2","how to troubleshoot communication issues between control plane and worker nodes","concepts_architecture_control-plane-node-communication",,249.75,,82.17,3,31.89
+"q_133_q1","why can't I edit a ClusterRole binding after creating it","reference_access-authn-authz_rbac",1,287.62,1,94.48,1,50.51
+"q_133_q2","getting permission denied when trying to update role permissions mid-project","reference_access-authn-authz_rbac",1,428.66,1,150.47,2,52.17
+"q_134_q1","why do my windows containers keep crashing when deployed on kubernetes cluster","tasks_debug_debug-cluster_windows",1,254.12,1,152.69,1,36.16
+"q_134_q2","is there a way to run windows and linux pods together in the same cluster","tasks_debug_debug-cluster_windows",,255.14,,104.49,,36.15
+"q_135_q1","how to run database backup script every night automatically in kubernetes","concepts_workloads_controllers_cron-jobs",,259.91,,103.52,,36.53
+"q_135_q2","schedule batch job to clean up old logs without manual intervention","concepts_workloads_controllers_cron-jobs",,253.09,,168.59,,55.84
+"q_136_q1","how to pass database connection strings to my app without hardcoding secrets","tasks_extend-kubernetes_configure-multiple-schedulers",,383.33,,79.90,,61.01
+"q_136_q2","change application environment variables without rebuilding docker image","tasks_extend-kubernetes_configure-multiple-schedulers",,255.95,,124.11,,38.34
+"q_137_q1","how to customize dns settings for a specific pod that's having weird network resolution issues","concepts_services-networking_dns-pod-service",1,259.32,2,121.58,2,41.77
+"q_137_q2","can I override default dns settings for a container that needs to use a custom nameserver","concepts_services-networking_dns-pod-service",2,255.90,5,81.24,2,38.30
+"q_138_q1","how to run a web app with a separate logging container that shares the same network space","tasks_access-application-cluster_communicate-containers-same-pod-shared-volume",,259.81,,91.77,,36.98
+"q_138_q2","my application needs a helper container to process files before main container starts","tasks_access-application-cluster_communicate-containers-same-pod-shared-volume",,375.73,,123.98,,50.20
+"q_139_q1","how to download and install kubernetes command line tool on my mac","tasks_tools_install-kubectl-macos",4,257.16,1,123.95,1,53.55
+"q_139_q2","getting error when trying to manage clusters from my macbook","tasks_tools_install-kubectl-macos",,252.58,,109.39,,36.88
+"q_140_q1","why are my pods getting stuck in pending state and not scheduling","tasks_administer-cluster_manage-resources_cpu-constraint-namespace",,255.22,,86.89,,58.63
+"q_140_q2","kubernetes throwing error when trying to deploy app with specific memory requirements","tasks_administer-cluster_manage-resources_cpu-constraint-namespace",,249.49,,94.51,,38.50
+"q_141_q1","how to mount azure file share directly into kubernetes pod without complex storage config","concepts_storage_volumes",2,376.27,5,86.71,,44.70
+"q_141_q2","my windows containers need persistent storage that works across multiple pods","concepts_storage_volumes",,278.15,,80.39,,35.89
+"q_142_q1","how to package my application with all dependencies so it runs consistently everywhere","tasks_job_coarse-parallel-processing-work-queue",,285.21,,124.48,,61.00
+"q_142_q2","why my application works on my laptop but fails when deployed to different environments","tasks_job_coarse-parallel-processing-work-queue",,300.73,,113.27,,41.88
+"q_143_q1","how to set an environment variable based on another environment variable's value","tasks_inject-data-application_define-interdependent-environment-variables",2,249.72,4,80.15,5,34.82
+"q_143_q2","container can't read dynamic value from another config setting","tasks_inject-data-application_define-interdependent-environment-variables",,387.33,,122.48,,51.86
+"q_144_q1","why can't my new ubuntu nodes join the kubernetes cluster after kernel upgrade","concepts_architecture_cgroups",,263.07,,78.40,,47.26
+"q_144_q2","how to make docker work correctly on systems with newer linux kernels","concepts_architecture_cgroups",,254.25,,79.86,,44.83
+"q_145_q1","how do I get auto-completion for kubectl commands in my terminal","tasks_tools_included_optional-kubectl-configs-bash-linux",5,310.85,1,106.50,1,39.51
+"q_145_q2","why aren't my kubernetes command suggestions working in bash","tasks_tools_included_optional-kubectl-configs-bash-linux",2,286.33,4,82.62,3,50.95
+"q_146_q1","my kubernetes controllers are crashing during leader election when upgrading cluster version","tasks_administer-cluster_controller-manager-leader-migration",1,429.12,1,99.72,1,38.78
+"q_146_q2","how to smoothly transition controller leadership without downtime during cluster upgrades","tasks_administer-cluster_controller-manager-leader-migration",,248.90,2,92.54,1,38.85
+"q_147_q1","how to log all changes made to my kubernetes cluster for compliance","tasks_debug_debug-cluster_audit",,250.27,,107.53,,68.24
+"q_147_q2","reduce performance impact of kubernetes audit logging on my production cluster","tasks_debug_debug-cluster_audit",5,254.27,5,108.55,4,36.80
+"q_148_q1","kubernetes api server becoming unresponsive during high traffic spike","concepts_cluster-administration_flow-control",,252.15,,125.13,,36.11
+"q_148_q2","how to prevent single user or service from overwhelming cluster api requests","concepts_cluster-administration_flow-control",4,376.83,,82.79,,66.55
+"q_149_q1","why can't I configure my ingress gateway settings without complex custom resources","concepts_services-networking_gateway",1,260.52,2,98.38,1,47.04
+"q_149_q2","how do I manage multiple gateways and routes across different teams and services","concepts_services-networking_gateway",2,257.78,2,85.20,,51.93
+"q_150_q1","how to fix a stuck kubernetes cluster upgrade that's hanging midway","tasks_administer-cluster_kubeadm_kubeadm-upgrade",,263.97,,95.78,4,55.77
+"q_150_q2","my control plane upgrade failed and now cluster is in a weird state","tasks_administer-cluster_kubeadm_kubeadm-upgrade",1,256.17,2,104.79,3,48.28
+"q_151_q1","my application keeps crashing and I want to automatically restart the pod","tasks_access-application-cluster_port-forward-access-application-cluster",,374.20,,138.48,,47.74
+"q_151_q2","how do I run multiple copies of my web app to handle more traffic","tasks_access-application-cluster_port-forward-access-application-cluster",,245.46,,121.06,,82.84
+"q_152_q1","how do I approve certificate signing requests for my new service account","reference_access-authn-authz_certificate-signing-requests",,251.90,,96.39,,40.42
+"q_152_q2","getting 'unable to validate certificate' error when trying to connect to cluster","reference_access-authn-authz_certificate-signing-requests",,328.78,,123.97,5,65.37
+"q_153_q1","how to run a one-time database migration script in my kubernetes cluster","concepts_overview_working-with-objects_object-management",,258.08,,90.59,,48.38
+"q_153_q2","my data processing job keeps failing and I want to run it manually to debug","concepts_overview_working-with-objects_object-management",,462.52,,114.46,,54.34
+"q_154_q1","my certificate management system is creating weird kubernetes objects that don't seem connected","reference_access-authn-authz_certificate-signing-requests",,250.79,,79.80,,66.46
+"q_154_q2","how to handle trust bundles for services that need multiple certificate authorities","reference_access-authn-authz_certificate-signing-requests",4,336.78,,139.61,2,110.14
+"q_155_q1","why are my pods all landing on the same node when I want them spread out","concepts_scheduling-eviction_topology-spread-constraints",1,283.48,1,151.62,1,148.88
+"q_155_q2","how can I make sure my replicas are evenly distributed across different availability zones","concepts_scheduling-eviction_topology-spread-constraints",,306.52,,137.23,1,84.67
+"q_156_q1","how to run a command in my container that looks like a kubectl flag","tasks_debug_debug-application_get-shell-running-container",,390.23,,120.61,,54.47
+"q_156_q2","container command not working when using kubectl exec with arguments","tasks_debug_debug-application_get-shell-running-container",2,260.55,4,101.82,4,45.54
+"q_157_q1","why can't I schedule pods on nodes with specific labels like 'high-memory'","concepts_scheduling-eviction_assign-pod-node",2,264.93,5,90.11,4,34.30
+"q_157_q2","how to prevent pods from running on nodes with GPU when we have no GPU workloads","concepts_scheduling-eviction_assign-pod-node",,256.46,,95.21,,37.29
+"q_158_q1","how to pass database password to my app without hardcoding it in dockerfile","tasks_inject-data-application_distribute-credentials-secure",,253.30,3,84.83,,37.29
+"q_158_q2","kubernetes pods not picking up sensitive config values from environment","tasks_inject-data-application_distribute-credentials-secure",,457.97,,81.24,,74.42
+"q_159_q1","why can't I map multiple application ports in a single kubernetes service","concepts_services-networking_service",1,259.89,1,92.02,1,43.63
+"q_159_q2","how to expose two different ports for the same microservice","concepts_services-networking_service",1,318.09,2,88.78,2,60.21
+"q_160_q1","how can I expose my web application to the internet from kubernetes","concepts_services-networking_service",2,262.44,,135.26,,63.30
+"q_160_q2","getting error when trying to access my app from outside the cluster","concepts_services-networking_service",,258.17,,75.36,,45.47
+"q_161_q1","why can't I see init container logs when my main container starts successfully","tasks_debug_debug-application_debug-init-containers",3,387.36,2,101.95,3,45.22
+"q_161_q2","kubernetes pod failed and I need to understand what happened during startup","tasks_debug_debug-application_debug-init-containers",,255.37,,105.91,,45.40
+"q_162_q1","how to prevent job from restarting when a pod fails during a cluster upgrade","tasks_job_pod-failure-policy",4,309.56,4,103.26,2,45.61
+"q_162_q2","my batch job keeps failing when a single pod has a temporary issue","tasks_job_pod-failure-policy",,260.66,5,92.55,3,61.61
+"q_163_q1","my container says 'file not found' when trying to mount a directory that doesn't exist yet","concepts_storage_volumes",1,279.99,1,80.55,2,49.25
+"q_163_q2","how to make kubernetes automatically create missing volume paths for my application","concepts_storage_volumes",,382.82,,111.58,,76.79
+"q_164_q1","why can't my kubernetes dashboard user see any resources","reference_access-authn-authz_rbac",,252.32,,86.12,,44.71
+"q_164_q2","getting permission denied when trying to list available api resources","reference_access-authn-authz_rbac",,278.06,,55.55,,37.83
+"q_165_q1","how to override the default startup command in my docker container when running in kubernetes","tasks_inject-data-application_define-command-argument-container",,262.53,,91.08,,40.72
+"q_165_q2","my container keeps crashing because the wrong entrypoint is being used","tasks_inject-data-application_define-command-argument-container",,268.44,,86.22,,33.63
+"q_166_q1","why are my kubectl commands suddenly not working after a cluster upgrade","tasks_tools_install-kubectl-linux",,383.48,,84.42,,57.24
+"q_166_q2","getting version mismatch warnings between my local kubectl and cluster kubernetes version","tasks_tools_install-kubectl-linux",4,262.74,4,100.07,1,113.69
+"q_167_q1","how to check if my kubernetes cluster uses vulnerable container images","tasks_administer-cluster_verify-signed-artifacts",,254.41,,93.96,,32.80
+"q_167_q2","verify security of all images running in my production environment","tasks_administer-cluster_verify-signed-artifacts",3,261.54,3,90.59,1,77.98
+"q_168_q1","how to run database migration script before my main application starts","concepts_workloads_pods_init-containers",2,254.97,,96.05,,43.30
+"q_168_q2","my app needs another container to send logs to external service but don't want to modify main container","concepts_workloads_pods_init-containers",4,384.44,,80.11,3,54.25
+"q_169_q1","why does my messaging queue keep dropping messages during high traffic","tasks_job_coarse-parallel-processing-work-queue",,251.18,5,102.83,,78.14
+"q_169_q2","can't scale microservices because workers aren't getting events reliably","tasks_job_coarse-parallel-processing-work-queue",,258.07,,75.83,,58.49
+"q_170_q1","my application keeps going down when a node crashes; how to ensure it stays running","concepts_workloads_controllers_replicaset",,256.64,,131.91,,70.67
+"q_170_q2","how can I automatically run 3 copies of my web service for high availability","concepts_workloads_controllers_replicaset",,288.83,,80.25,,85.14
+"q_171_q1","can't get cluster information from my terminal; kubectl not showing anything","tasks_administer-cluster_access-cluster-api",,472.87,2,168.33,,94.06
+"q_171_q2","how to list all running pods and services without logging into the dashboard","tasks_administer-cluster_access-cluster-api",,307.88,,143.77,,104.53
+"q_172_q1","how can I set up a kubernetes cluster with network policy support","tasks_administer-cluster_network-policy-provider_calico-network-policy",,296.65,4,152.18,1,94.56
+"q_172_q2","which method should I use to install calico in my on-premises kubernetes environment","tasks_administer-cluster_network-policy-provider_calico-network-policy",1,305.47,1,152.52,1,110.82
+"q_173_q1","how small can i set cpu request to avoid wasting cluster resources on tiny containers","tasks_administer-cluster_manage-resources_cpu-constraint-namespace",,308.58,,197.21,,86.39
+"q_173_q2","my container keeps getting killed because of low cpu allocation","tasks_administer-cluster_manage-resources_cpu-constraint-namespace",,490.07,,108.74,,84.77
+"q_174_q1","why are my pods not receiving traffic even though the container starts successfully","tasks_configure-pod-container_configure-liveness-readiness-startup-probes",3,301.89,2,146.03,5,141.28
+"q_174_q2","kubernetes keeps killing my pod that needs extra time to warm up database connections","tasks_configure-pod-container_configure-liveness-readiness-startup-probes",,350.77,,172.01,,91.71
+"q_175_q1","why are my kubectl apply commands failing with validation errors","tasks_extend-kubernetes_custom-resources_custom-resource-definitions",,338.76,,211.69,,97.47
+"q_175_q2","how to automatically catch configuration mistakes before deploying to cluster","tasks_extend-kubernetes_custom-resources_custom-resource-definitions",,337.72,,141.96,,83.43
+"q_176_q1","why can't my pod access kubernetes api when running inside the cluster","tasks_configure-pod-container_configure-service-account",,578.74,,190.73,,108.16
+"q_176_q2","how to give my application permissions to list and create resources","tasks_configure-pod-container_configure-service-account",,319.72,,141.43,,158.42
+"q_177_q1","why can't my pods communicate with each other across different nodes","concepts_services-networking_network-policies",,354.67,3,131.53,3,52.01
+"q_177_q2","how to troubleshoot network connectivity issues between kubernetes clusters","concepts_services-networking_network-policies",,323.85,,176.71,,143.43
+"q_178_q1","why is my deployment getting blocked during rollout with a weird webhook annotation","reference_access-authn-authz_extensible-admission-controllers",5,384.92,4,185.26,3,88.50
+"q_178_q2","getting admission webhook errors when trying to deploy new container image","reference_access-authn-authz_extensible-admission-controllers",1,491.75,1,208.07,1,126.61
+"q_179_q1","why are my pods getting blocked from running after kubernetes upgrade","reference_access-authn-authz_admission-controllers",,344.23,,146.97,,112.58
+"q_179_q2","prevent developers from creating containers with root access or privileged mode","reference_access-authn-authz_admission-controllers",,378.28,,108.22,,117.68
+"q_180_q1","how to stop one team from consuming all cluster resources and blocking other teams' workloads","concepts_policy_resource-quotas",,314.19,,159.48,,87.53
+"q_180_q2","prevent developers from spinning up massive expensive pods that drain my kubernetes cluster","concepts_policy_resource-quotas",,317.29,,174.23,,125.12
+"q_181_q1","why can't my new CRD work and it says the API is not enabled","tasks_administer-cluster_enable-disable-api",,462.85,,148.03,,91.38
+"q_181_q2","how to allow newer kubernetes features without upgrading entire cluster","tasks_administer-cluster_enable-disable-api",,300.00,,154.36,,131.41
+"q_182_q1","how can I collect container logs from all my kubernetes nodes","concepts_cluster-administration_logging",3,390.06,1,138.65,1,114.17
+"q_182_q2","my application logs are disappearing when pods restart and I can't debug","concepts_cluster-administration_logging",,328.74,,171.26,,161.02
+"q_183_q1","why are my database pods not scaling down gracefully and causing data loss","tasks_run-application_scale-stateful-set",,455.05,1,107.47,5,116.76
+"q_183_q2","kubernetes can't remove last pod in my statefulset without manual intervention","tasks_run-application_scale-stateful-set",,518.30,,116.42,,101.78
+"q_184_q1","how to use gpu resources in my machine learning pods without writing complex device configuration","tasks_manage-gpus_scheduling-gpus",1,327.67,1,166.88,1,86.63
+"q_184_q2","my container can't access custom hardware like tpu or fpga on kubernetes cluster","tasks_manage-gpus_scheduling-gpus",1,307.55,1,215.54,1,99.24
+"q_185_q1","why my service keeps failing and I can't understand the error response","reference_access-authn-authz_authentication",,292.79,,144.47,,114.55
+"q_185_q2","how to debug an external api call when something goes wrong with the request","reference_access-authn-authz_authentication",,423.49,,106.61,,78.27
+"q_186_q1","why are my cluster's certificates expiring and breaking node connections","tasks_tls_certificate-rotation",1,432.03,5,165.56,,87.12
+"q_186_q2","how to automatically renew kubelet certificates before they expire","tasks_tls_certificate-rotation",1,433.90,5,132.09,,113.38
+"q_187_q1","why do my kubernetes masters look like they're fighting over leadership","concepts_architecture_leases",,381.06,,139.46,,170.50
+"q_187_q2","how to debug why cluster leadership election seems stuck","concepts_architecture_leases",,461.01,,143.83,,122.10
+"q_188_q1","how can manually placing pods on specific nodes break my cluster's reliability","concepts_scheduling-eviction_dynamic-resource-allocation",,315.21,,139.64,,109.69
+"q_188_q2","my application is not being distributed evenly across nodes after deployment","concepts_scheduling-eviction_dynamic-resource-allocation",,607.03,,191.12,,176.86
+"q_189_q1","why do my child resources get deleted when parent resource is removed","concepts_overview_working-with-objects_owners-dependents",,365.75,4,112.74,3,106.37
+"q_189_q2","how to prevent automatic deletion of resources when parent resource is deleted","concepts_overview_working-with-objects_owners-dependents",5,313.62,,154.38,,68.76
+"q_190_q1","why do my kubernetes service accounts keep getting rejected with authentication errors","reference_access-authn-authz_authentication",,308.43,,140.83,1,96.83
+"q_190_q2","how can I create a secure way to authenticate external services to my cluster","reference_access-authn-authz_authentication",,336.23,,191.05,,101.57
+"q_191_q1","how to gracefully remove a node from kubernetes cluster without disrupting running workloads","concepts_scheduling-eviction_api-eviction",,436.18,,161.18,,86.84
+"q_191_q2","why is kubernetes not automatically moving my pods when I want to drain a problematic node","concepts_scheduling-eviction_api-eviction",,356.03,,220.58,,105.00
+"q_192_q1","why are my kubernetes metrics not showing up with custom labels","concepts_cluster-administration_system-metrics",,319.43,,148.06,,126.73
+"q_192_q2","getting error when trying to add extra labels to monitoring dashboard","concepts_cluster-administration_system-metrics",,331.37,1,107.42,,101.85
+"q_193_q1","how can I protect sensitive data stored in my kubernetes cluster's volumes","tasks_administer-cluster_decrypt-data",,305.62,4,128.38,2,106.53
+"q_193_q2","is my database backup safe from unauthorized access if someone gets physical disk access","tasks_administer-cluster_decrypt-data",,527.64,,141.61,,63.17
+"q_194_q1","how to extend kubernetes with my own custom resource type for our specific infrastructure","tasks_extend-kubernetes_custom-resources_custom-resource-definitions",,326.22,1,141.46,3,116.59
+"q_194_q2","getting an error when trying to define a new resource that tracks our company's specific deployment workflow","tasks_extend-kubernetes_custom-resources_custom-resource-definitions",,366.27,,180.32,,112.03
+"q_195_q1","why can't my certificate signing requests get automatically approved in kubernetes","reference_access-authn-authz_certificate-signing-requests",,397.69,1,84.24,2,180.78
+"q_195_q2","how to automatically generate and validate tls certificates for my services","reference_access-authn-authz_certificate-signing-requests",,314.39,,149.45,,89.60
+"q_196_q1","why is my kubernetes cluster not authenticating with etcd when using certificates","setup_best-practices_certificates",,491.52,,214.90,,225.01
+"q_196_q2","getting x509 certificate errors when trying to set up cluster security","setup_best-practices_certificates",,309.68,,155.42,,128.39
+"q_197_q1","why did my container exit and how can I see the exact error message","tasks_debug_debug-application_determine-reason-pod-failure",,411.58,,183.06,,72.29
+"q_197_q2","is there a way to capture and save the crash reason from a failed pod","tasks_debug_debug-application_determine-reason-pod-failure",5,338.57,,180.23,,94.68
+"q_198_q1","how to prevent my critical services from getting killed when the node runs out of resources","concepts_workloads_pods_pod-qos",1,408.54,,232.23,,142.81
+"q_198_q2","kubernetes keeps evicting my important pods during high memory usage","concepts_workloads_pods_pod-qos",,514.05,,162.14,,127.10
+"q_199_q1","why are my service traffic loadbalancing rules not spreading evenly across zones","concepts_services-networking_topology-aware-routing",,447.64,2,117.50,2,118.72
+"q_199_q2","getting unbalanced traffic distribution in multi-zone kubernetes cluster","concepts_services-networking_topology-aware-routing",2,309.78,,144.23,,94.85

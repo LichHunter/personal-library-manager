@@ -1,19 +1,24 @@
 # SEARCH MODULE
 
-Hybrid retrieval system combining BM25 lexical + semantic embedding search with RRF fusion.
+Hybrid retrieval system with switchable sparse retriever (BM25 or SPLADE) + semantic embedding search + RRF fusion.
 
 ## OVERVIEW
 
-`HybridRetriever` orchestrates: ingest documents → enrich content → embed → BM25 index → query with fusion.
+`HybridRetriever` orchestrates: ingest documents → enrich content → embed → sparse index (BM25/SPLADE) → query with fusion.
 
 ## STRUCTURE
 
 ```
 search/
 ├── retriever.py          # HybridRetriever - main orchestrator
+├── config.py             # RetrievalConfig, SparseRetrieverType, factory
 ├── pipeline.py           # High-level pipeline (unused?)
 ├── types.py              # Query, RewrittenQuery, ExpandedQuery
-├── components/           # Search primitives
+├── components/
+│   ├── sparse/           # Switchable sparse retrievers
+│   │   ├── base.py       # SparseRetriever ABC
+│   │   ├── bm25_retriever.py   # BM25 implementation
+│   │   └── splade_retriever.py # SPLADE implementation
 │   ├── bm25.py           # BM25Index wrapper (bm25s library)
 │   ├── semantic.py       # SemanticSearch (FAISS)
 │   ├── embedder.py       # EmbeddingEncoder (sentence-transformers)
@@ -35,11 +40,23 @@ search/
 
 | Task | File | Notes |
 |------|------|-------|
+| Switch BM25 ↔ SPLADE | Set `PLM_SPARSE_RETRIEVER=splade` | Environment variable |
+| Enable SPLADE-only mode | Set `PLM_SEMANTIC_ENABLED=false` | Disables semantic, no RRF |
 | Change RRF weights | `retriever.py:73-84` | `DEFAULT_*` / `EXPANDED_*` constants |
-| Add retrieval signal | `retriever.py:retrieve()` | Insert between semantic/BM25 and RRF fusion |
+| Add new sparse retriever | `components/sparse/` | Implement `SparseRetriever` ABC |
 | Change embedding model | `components/embedder.py` | `MODEL_NAME` constant |
 | Add query preprocessing | `components/query_rewriter.py` | Uses Claude for rewriting |
 | Add storage backend | `storage/` | Subclass pattern from `sqlite.py` |
+
+## RETRIEVAL MODES
+
+| Mode | Sparse | Semantic | Fusion | Config |
+|------|--------|----------|--------|--------|
+| **BM25 + Semantic** | BM25 | BGE | RRF | Default |
+| **SPLADE + Semantic** | SPLADE | BGE | RRF | `PLM_SPARSE_RETRIEVER=splade` |
+| **SPLADE-only** | SPLADE | Disabled | None | `PLM_SPARSE_RETRIEVER=splade PLM_SEMANTIC_ENABLED=false` |
+
+**SPLADE-only achieves +26.7% MRR on informed queries vs BM25+Semantic hybrid.**
 
 ## CRITICAL INVARIANTS
 
@@ -66,4 +83,14 @@ for rank, result in enumerate(bm25_results):
 
 - **Don't use `adapters/gliner_adapter.py`** — GLiNER rejected for software NER
 - **Don't use `components/rrf.py` directly** — HybridRetriever has its own inline RRF
-- **Don't change RRF order** — Semantic first, BM25 second is load-bearing
+- **Don't change RRF order** — Semantic first, sparse second is load-bearing
+- **Don't use SPLADE+Semantic hybrid** — POC showed it performs worse than SPLADE-only
+
+## ENVIRONMENT VARIABLES
+
+| Variable | Values | Default |
+|----------|--------|---------|
+| `PLM_SPARSE_RETRIEVER` | `bm25`, `splade` | `bm25` |
+| `PLM_SPLADE_MODEL` | HuggingFace model name | `naver/splade-cocondenser-ensembledistil` |
+| `PLM_SPLADE_DEVICE` | `cpu`, `cuda` | auto-detect |
+| `PLM_SEMANTIC_ENABLED` | `true`, `false` | `true` |

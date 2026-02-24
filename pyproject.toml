@@ -32,6 +32,8 @@ dependencies = [
     "click>=8.0.0",
     "redis>=5.0.0",
     "mcp>=1.0.0",
+    "transformers>=5.1.0",
+    "scipy>=1.15.3",
 ]
 
 [tool.uv.sources]
@@ -57,5 +59,6 @@ packages = ["src/plm"]
 [dependency-groups]
 dev = [
     "basedpyright>=1.38.0",
+    "pytest>=9.0.2",
     "rank-bm25>=0.2.2",  # Required for POC comparison tests
 ]

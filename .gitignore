@@ -29,6 +29,17 @@ contextual_index/
 # Model weights (large binary files)
 poc/poc-2-confidence-scoring/artifacts/gliner-finetuned/
 
+# POC artifacts (large data files)
+poc/*/test_db/
+poc/*/*.json
+poc/*/artifacts/*.json
+poc/*/artifacts/*.npz
+poc/*/artifacts/*.pkl
+poc/*/artifacts/*/*.npz
+poc/*/artifacts/*/*.pkl
+poc/*/corpus/
+*.npy
+
 # Invalid results (marked for reference only)
 results/gems_*.md
 
