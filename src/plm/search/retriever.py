@@ -526,7 +526,8 @@ class HybridRetriever:
         use_rewrite: bool = False,
         use_rerank: bool = False,
         candidates_k: int | None = None,
-    ) -> list[dict]:
+        explain: bool = False,
+    ) -> list[dict] | tuple[list[dict], dict]:
         """Retrieve top-k chunks for a query using hybrid search with RRF.
 
         Implements the retrieval pipeline:
@@ -551,42 +552,57 @@ class HybridRetriever:
             use_rerank: Whether to rerank results with cross-encoder (default: False)
             candidates_k: Number of RRF candidates to pass to reranker.
                 Only used when use_rerank=True. Defaults to k * 5.
+            explain: Whether to return debug info (default: False)
 
         Returns:
-            List of result dicts with fields:
-                - 'chunk_id': Chunk identifier
-                - 'doc_id': Document identifier
-                - 'content': Original chunk content
-                - 'enriched_content': Enriched content used for retrieval
-                - 'score': RRF fusion score (or rerank_score if reranked)
-                - 'heading': Section heading (if available)
-                - 'start_char': Start character offset (if available)
-                - 'end_char': End character offset (if available)
-
-        Example:
-            >>> results = retriever.retrieve('kubernetes autoscaling', k=5)
-            >>> for r in results:
-            ...     print(f"{r['chunk_id']}: {r['score']:.4f}")
+            When explain=False: List of result dicts
+            When explain=True: Tuple of (results, explain_data) where explain_data contains
+                'metadata' (query info) and 'debug_info' (per-chunk scores)
         """
         if use_rerank:
             rerank_candidates = candidates_k if candidates_k is not None else k * 5
-            rrf_results = self._retrieve_rrf(query, k=rerank_candidates, use_rewrite=use_rewrite)
 
             if self._reranker is None:
                 self._reranker = CrossEncoderReranker()
 
-            reranked = self._reranker.rerank(query, rrf_results, top_k=k)
+            if explain:
+                rrf_result = self._retrieve_rrf(
+                    query, k=rerank_candidates, use_rewrite=use_rewrite, explain=True
+                )
+                rrf_results: list[dict]
+                explain_data: dict
+                rrf_results, explain_data = rrf_result  # type: ignore[misc]
+                reranked = self._reranker.rerank(query, rrf_results, top_k=k)
+                logger.debug(
+                    f"[HybridRetriever] Reranked {len(rrf_results)} candidates → {len(reranked)} results"
+                )
+                for r in reranked:
+                    chunk_id = r["chunk_id"]
+                    if chunk_id in explain_data["debug_info"]:
+                        explain_data["debug_info"][chunk_id]["rerank_score"] = r.get("rerank_score")
+                        explain_data["debug_info"][chunk_id]["retrieval_stage"] = "rerank"
+                return reranked, explain_data
+
+            rrf_result_list = self._retrieve_rrf(
+                query, k=rerank_candidates, use_rewrite=use_rewrite, explain=False
+            )
+            rrf_results_no_explain: list[dict] = rrf_result_list  # pyright: ignore[reportAssignmentType]
+            reranked = self._reranker.rerank(query, rrf_results_no_explain, top_k=k)
             logger.debug(
-                f"[HybridRetriever] Reranked {len(rrf_results)} candidates → {len(reranked)} results"
+                f"[HybridRetriever] Reranked {len(rrf_results_no_explain)} candidates → {len(reranked)} results"
             )
             return reranked
 
-        return self._retrieve_rrf(query, k=k, use_rewrite=use_rewrite)
+        return self._retrieve_rrf(query, k=k, use_rewrite=use_rewrite, explain=explain)
 
-    def _retrieve_rrf(self, query: str, k: int = 5, use_rewrite: bool = False) -> list[dict]:
+    def _retrieve_rrf(
+        self, query: str, k: int = 5, use_rewrite: bool = False, explain: bool = False
+    ) -> list[dict] | tuple[list[dict], dict]:
         all_chunks = self.storage.get_all_chunks()
         if not all_chunks or self.sparse_retriever is None:
             logger.debug("[HybridRetriever] No chunks or sparse index available")
+            if explain:
+                return [], {"metadata": {}, "debug_info": {}}
             return []
 
         original_query = Query(text=query)
@@ -627,13 +643,21 @@ class HybridRetriever:
 
         sparse_results = self.sparse_retriever.search(expanded_query, k=n_candidates)
 
+        sparse_score_by_idx: dict[int, float] = {}
+        sparse_rank_by_idx: dict[int, int] = {}
+        for rank, result in enumerate(sparse_results):
+            sparse_score_by_idx[result["index"]] = result["score"]
+            sparse_rank_by_idx[result["index"]] = rank
+
         if not self.config.semantic.enabled:
             results = []
-            for result in sparse_results[:k]:
+            debug_info: dict[str, dict] = {}
+            for rank, result in enumerate(sparse_results[:k]):
                 idx = result["index"]
                 chunk = chunk_index[idx]
+                chunk_id = chunk["id"]
                 results.append({
-                    "chunk_id": chunk["id"],
+                    "chunk_id": chunk_id,
                     "doc_id": chunk["doc_id"],
                     "content": chunk["content"],
                     "enriched_content": chunk.get("enriched_content", ""),
@@ -642,7 +666,28 @@ class HybridRetriever:
                     "start_char": chunk.get("start_char"),
                     "end_char": chunk.get("end_char"),
                 })
+                if explain:
+                    debug_info[chunk_id] = {
+                        "bm25_score": result["score"],
+                        "semantic_score": None,
+                        "bm25_rank": rank,
+                        "semantic_rank": None,
+                        "rrf_score": result["score"],
+                        "rerank_score": None,
+                        "retrieval_stage": "rrf",
+                    }
             logger.debug(f"[HybridRetriever] SPLADE-only: {len(results)} results for query: {query[:50]}...")
+            if explain:
+                metadata = {
+                    "original_query": query,
+                    "rewritten_query": rewritten_query.rewritten if use_rewrite else None,
+                    "expanded_terms": list(expanded.expansions),
+                    "retrieval_mode": "splade_only",
+                    "rrf_k": rrf_k,
+                    "bm25_weight": sparse_weight,
+                    "semantic_weight": sem_weight,
+                }
+                return results, {"metadata": metadata, "debug_info": debug_info}
             return results
 
         query_embedding = self.embedder.process(expanded_query)["embedding"]
@@ -655,9 +700,12 @@ class HybridRetriever:
         sem_scores = np.dot(embeddings, query_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
 
+        sem_rank_by_idx: dict[int, int] = {}
+        for rank, idx in enumerate(sem_ranks[:n_candidates]):
+            sem_rank_by_idx[idx] = rank
+
         rrf_scores: dict[int, float] = {}
 
-        # CRITICAL: Semantic FIRST, then sparse (BM25/SPLADE) SECOND
         for rank, idx in enumerate(sem_ranks[:n_candidates]):
             sem_component = sem_weight / (rrf_k + rank)
             rrf_scores[idx] = rrf_scores.get(idx, 0) + sem_component
@@ -670,10 +718,12 @@ class HybridRetriever:
         top_indices = sorted(rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True)[:k]
 
         results = []
+        debug_info = {}
         for idx in top_indices:
             chunk = chunk_index[idx]
+            chunk_id = chunk["id"]
             results.append({
-                "chunk_id": chunk["id"],
+                "chunk_id": chunk_id,
                 "doc_id": chunk["doc_id"],
                 "content": chunk["content"],
                 "enriched_content": chunk.get("enriched_content", ""),
@@ -682,8 +732,31 @@ class HybridRetriever:
                 "start_char": chunk.get("start_char"),
                 "end_char": chunk.get("end_char"),
             })
+            if explain:
+                debug_info[chunk_id] = {
+                    "bm25_score": sparse_score_by_idx.get(idx),
+                    "semantic_score": float(sem_scores[idx]),
+                    "bm25_rank": sparse_rank_by_idx.get(idx),
+                    "semantic_rank": sem_rank_by_idx.get(idx),
+                    "rrf_score": rrf_scores[idx],
+                    "rerank_score": None,
+                    "retrieval_stage": "rrf",
+                }
 
         logger.debug(f"[HybridRetriever] Retrieved {len(results)} results for query: {query[:50]}...")
+
+        if explain:
+            metadata = {
+                "original_query": query,
+                "rewritten_query": rewritten_query.rewritten if use_rewrite else None,
+                "expanded_terms": list(expanded.expansions),
+                "retrieval_mode": "hybrid",
+                "rrf_k": rrf_k,
+                "bm25_weight": sparse_weight,
+                "semantic_weight": sem_weight,
+            }
+            return results, {"metadata": metadata, "debug_info": debug_info}
+
         return results
 
     def retrieve_headings(self, query: str, k: int = 5) -> list[dict]:

@@ -1,0 +1,23 @@
+{
+  "pod-lifecycle": [
+    {
+      "doc_id": "doc_1",
+      "heading_id": "h_1",
+      "heading_text": "## Pod Lifecycle"
+    }
+  ],
+  "running-pods": [
+    {
+      "doc_id": "doc_1",
+      "heading_id": "h_2",
+      "heading_text": "## Running Pods"
+    }
+  ],
+  "cronjob-spec": [
+    {
+      "doc_id": "doc_2",
+      "heading_id": "h_3",
+      "heading_text": "## CronJob Spec"
+    }
+  ]
+}

@@ -19,12 +19,15 @@ from __future__ import annotations
 import logging
 import os
 import time
+import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Response
 from pydantic import BaseModel, Field
+
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from plm.search.retriever import HybridRetriever
 from plm.search.service.queue_consumer import SearchQueueConsumer
@@ -45,6 +48,29 @@ class QueryRequest(BaseModel):
     k: int = Field(default=5, ge=1, le=100, description="Number of results to return")
     use_rewrite: bool = Field(default=False, description="Whether to use query rewriting")
     use_rerank: bool = Field(default=False, description="Whether to use cross-encoder reranking")
+    explain: bool = Field(default=False, description="Whether to return debug info for each result")
+
+
+class DebugInfo(BaseModel):
+    """Per-result debug information for explain mode."""
+    bm25_score: float | None = Field(None, description="Raw BM25/SPLADE score")
+    semantic_score: float | None = Field(None, description="Cosine similarity score")
+    bm25_rank: int | None = Field(None, description="0-indexed position in sparse results")
+    semantic_rank: int | None = Field(None, description="0-indexed position by semantic score")
+    rrf_score: float = Field(..., description="Final RRF fusion score")
+    rerank_score: float | None = Field(None, description="Cross-encoder score")
+    retrieval_stage: str = Field(..., description="One of: 'rrf', 'rerank'")
+
+
+class QueryMetadata(BaseModel):
+    """Per-query metadata for explain mode."""
+    original_query: str = Field(..., description="Raw query text")
+    rewritten_query: str | None = Field(None, description="LLM-rewritten query")
+    expanded_terms: list[str] = Field(default_factory=list, description="Terms added by QueryExpander")
+    retrieval_mode: str = Field(..., description="'hybrid' or 'splade_only'")
+    rrf_k: int = Field(..., description="RRF k parameter used")
+    bm25_weight: float = Field(..., description="Weight applied to sparse scores")
+    semantic_weight: float = Field(..., description="Weight applied to semantic scores")
 
 
 class QueryResult(BaseModel):
@@ -57,6 +83,7 @@ class QueryResult(BaseModel):
     heading: str | None
     start_char: int | None
     end_char: int | None
+    debug_info: DebugInfo | None = Field(None, description="Debug info (only when explain=True)")
 
 
 class QueryResponse(BaseModel):
@@ -67,6 +94,8 @@ class QueryResponse(BaseModel):
     use_rerank: bool
     results: list[QueryResult]
     elapsed_ms: float
+    metadata: QueryMetadata | None = Field(None, description="Query metadata (only when explain=True)")
+    request_id: str | None = Field(None, description="Request correlation ID (only when explain=True)")
 
 
 class HealthResponse(BaseModel):
@@ -94,6 +123,17 @@ PROCESS_EXISTING = os.environ.get("PROCESS_EXISTING", "false").lower() == "true"
 QUEUE_ENABLED = os.environ.get("QUEUE_ENABLED", "false").lower() == "true"
 QUEUE_URL = os.environ.get("QUEUE_URL", "redis://localhost:6379")
 QUEUE_STREAM = os.environ.get("QUEUE_STREAM", "plm:extraction")
+
+REQUEST_ID_HEADER = "X-Request-ID"
+
+
+class RequestIDMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        request_id = request.headers.get(REQUEST_ID_HEADER) or str(uuid.uuid4())
+        request.state.request_id = request_id
+        response: Response = await call_next(request)
+        response.headers[REQUEST_ID_HEADER] = request_id
+        return response
 
 
 @asynccontextmanager
@@ -172,9 +212,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(RequestIDMiddleware)
+
 
 @app.post("/query", response_model=QueryResponse)
-async def query(request: QueryRequest) -> QueryResponse:
+async def query(request: QueryRequest, http_request: Request) -> QueryResponse:
     """Execute a search query.
 
     Args:
@@ -188,11 +230,12 @@ async def query(request: QueryRequest) -> QueryResponse:
     retriever: HybridRetriever = app.state.retriever
 
     try:
-        results = retriever.retrieve(
+        result = retriever.retrieve(
             query=request.query,
             k=request.k,
             use_rewrite=request.use_rewrite,
             use_rerank=request.use_rerank,
+            explain=request.explain,
         )
     except Exception as e:
         logger.error(f"[Service] Query failed: {e}")
@@ -200,12 +243,9 @@ async def query(request: QueryRequest) -> QueryResponse:
 
     elapsed_ms = (time.time() - start_time) * 1000
 
-    return QueryResponse(
-        query=request.query,
-        k=request.k,
-        use_rewrite=request.use_rewrite,
-        use_rerank=request.use_rerank,
-        results=[
+    if request.explain:
+        results, explain_data = result
+        query_results = [
             QueryResult(
                 chunk_id=r["chunk_id"],
                 doc_id=r["doc_id"],
@@ -215,11 +255,59 @@ async def query(request: QueryRequest) -> QueryResponse:
                 heading=r.get("heading"),
                 start_char=r.get("start_char"),
                 end_char=r.get("end_char"),
+                debug_info=DebugInfo(
+                    bm25_score=explain_data["debug_info"][r["chunk_id"]].get("bm25_score"),
+                    semantic_score=explain_data["debug_info"][r["chunk_id"]].get("semantic_score"),
+                    bm25_rank=explain_data["debug_info"][r["chunk_id"]].get("bm25_rank"),
+                    semantic_rank=explain_data["debug_info"][r["chunk_id"]].get("semantic_rank"),
+                    rrf_score=explain_data["debug_info"][r["chunk_id"]]["rrf_score"],
+                    rerank_score=explain_data["debug_info"][r["chunk_id"]].get("rerank_score"),
+                    retrieval_stage=explain_data["debug_info"][r["chunk_id"]]["retrieval_stage"],
+                ),
             )
             for r in results
-        ],
-        elapsed_ms=elapsed_ms,
-    )
+        ]
+        metadata = QueryMetadata(
+            original_query=explain_data["metadata"]["original_query"],
+            rewritten_query=explain_data["metadata"].get("rewritten_query"),
+            expanded_terms=explain_data["metadata"].get("expanded_terms", []),
+            retrieval_mode=explain_data["metadata"]["retrieval_mode"],
+            rrf_k=explain_data["metadata"]["rrf_k"],
+            bm25_weight=explain_data["metadata"]["bm25_weight"],
+            semantic_weight=explain_data["metadata"]["semantic_weight"],
+        )
+        return QueryResponse(
+            query=request.query,
+            k=request.k,
+            use_rewrite=request.use_rewrite,
+            use_rerank=request.use_rerank,
+            results=query_results,
+            elapsed_ms=elapsed_ms,
+            metadata=metadata,
+            request_id=http_request.state.request_id,
+        )
+    else:
+        results_list: list[dict] = result  # type: ignore[assignment]
+        return QueryResponse(
+            query=request.query,
+            k=request.k,
+            use_rewrite=request.use_rewrite,
+            use_rerank=request.use_rerank,
+            results=[
+                QueryResult(
+                    chunk_id=r["chunk_id"],
+                    doc_id=r["doc_id"],
+                    content=r["content"],
+                    enriched_content=r.get("enriched_content", ""),
+                    score=r["score"],
+                    heading=r.get("heading"),
+                    start_char=r.get("start_char"),
+                    end_char=r.get("end_char"),
+                )
+                for r in results_list
+            ],
+            elapsed_ms=elapsed_ms,
+        )
 
 
 @app.get("/health", response_model=HealthResponse)

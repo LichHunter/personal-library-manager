@@ -1,0 +1,31 @@
+[
+  {
+    "question_id": 1,
+    "question_title": "How to deploy on Kubernetes?",
+    "question_body": "<p>I want to deploy my app on Kubernetes</p>",
+    "question_tags": [
+      "kubernetes",
+      "docker"
+    ],
+    "answer_id": 101,
+    "answer_body": "<p>You can use kubectl apply to deploy your app. The deployment spec should include replicas and containers.</p>",
+    "answer_score": 10,
+    "is_accepted": true,
+    "doc_url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle",
+    "answer_date": "2024-01-15T10:30:00Z"
+  },
+  {
+    "question_id": 2,
+    "question_title": "What is a Service?",
+    "question_body": "<p>What is a Service in Kubernetes?</p>",
+    "question_tags": [
+      "kubernetes"
+    ],
+    "answer_id": 102,
+    "answer_body": "<p>A Service is an abstract way to expose an application running on a set of Pods as a network service.</p>",
+    "answer_score": 8,
+    "is_accepted": false,
+    "doc_url": "https://kubernetes.io/docs/concepts/services",
+    "answer_date": "2024-01-16T11:00:00Z"
+  }
+]
