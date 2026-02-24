@@ -1537,7 +1537,7 @@ Wave 5 (After Wave 4):
 
 ---
 
-- [ ] 6e. Final Assembly and Audit Metadata
+- [x] 6e. Final Assembly and Audit Metadata
 
   **What to do**:
   - Merge all passed cases: verified_passed + regenerated_passed
@@ -1715,7 +1715,7 @@ Wave 5 (After Wave 4):
 
 ### Phase 3: Benchmark Runner
 
-- [ ] 7. Benchmark Runner (API Consumer)
+- [x] 7. Benchmark Runner (API Consumer)
 
   **What to do**:
   - Build HTTP client that calls production search service at configurable URL
@@ -1854,7 +1854,7 @@ Wave 5 (After Wave 4):
 
 ---
 
-- [ ] 8. Integration Evaluation Suite (Tier 5)
+- [x] 8. Integration Evaluation Suite (Tier 5)
 
   **What to do**:
   - Implement complementarity analysis: measure overlap and error correlation between BM25 and semantic
@@ -2010,7 +2010,7 @@ Wave 5 (After Wave 4):
 
 ### Phase 4: Tests and Documentation
 
-- [ ] 9. Tests and Documentation
+- [x] 9. Tests and Documentation
 
   **What to do**:
   - Write unit tests for all benchmark components:

@@ -53,6 +53,8 @@ dev = [
 [project.scripts]
 plm-query = "plm.search.service.cli:main"
 plm-mcp = "plm.search.mcp.server:main"
+plm-benchmark = "plm.benchmark.runner.benchmark:main"
+plm-benchmark-integration = "plm.benchmark.integration.analysis:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/plm"]

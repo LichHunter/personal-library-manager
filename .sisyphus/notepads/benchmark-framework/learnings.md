@@ -633,3 +633,113 @@ Complete audit metadata for each benchmark case:
 - No bundles: Uses "unknown" for corpus_version_hash
 - Empty confidence_scores for tier: Defaults to 0.0 average
 
+## 2026-02-24 Task 7: Benchmark Runner
+
+### Implementation Summary
+- Created module: `src/plm/benchmark/runner/`
+- Files: `__init__.py`, `benchmark.py`, `metrics.py`
+- CLI: `plm-benchmark evaluate --dataset <path> --k <n> --url <url>`
+- Output: JSON with Hit@1, Hit@5, Hit@10, MRR, NDCG@10
+
+### Metric Implementations (metrics.py)
+
+#### hit_at_k(expected, retrieved, k) -> bool
+- Returns True if any expected chunk_id in retrieved[:k]
+- O(k * |expected|) using set membership
+
+#### reciprocal_rank(expected, retrieved) -> float
+- Returns 1/rank of first relevant result, 0.0 if not found
+- Uses first_relevant_rank() helper for 1-indexed rank
+
+#### ndcg_at_k(expected, retrieved, k) -> float
+- Binary relevance: 1 if chunk in expected, 0 otherwise
+- DCG = sum(1/log2(i+1) for relevant in retrieved[:k])
+- IDCG = sum(1/log2(i+1) for i in 1..min(|expected|, k))
+- Returns DCG/IDCG, handles edge cases (empty expected, k=0)
+
+### Dataclasses
+
+#### PerQueryResult (14 fields)
+- case_id, query, expected_chunk_ids, retrieved_chunk_ids
+- hit_at_1, hit_at_5, hit_at_10 (bool)
+- first_relevant_rank (int | None), reciprocal_rank (float), ndcg_at_10 (float)
+- request_id, response_time_ms, debug_info, api_metadata
+
+#### BenchmarkResults (14 fields)
+- run_id, run_timestamp, dataset_path, service_url, k
+- total_queries, hit_at_1, hit_at_5, hit_at_10, mrr, ndcg_at_10 (aggregates)
+- mean_response_time_ms, p95_response_time_ms
+- per_query_results: list[PerQueryResult]
+
+### HTTP Client Details
+- Uses httpx.AsyncClient with configurable timeout
+- asyncio.Semaphore for concurrency control
+- Graceful error handling: logs and skips failed requests
+- explain=True always enabled for traceability
+
+### CLI Arguments
+| Argument | Type | Default | Description |
+|----------|------|---------|-------------|
+| command | str | required | "evaluate" |
+| --dataset | Path | required | Benchmark JSON file |
+| --url | str | localhost:8000 | Service URL |
+| --k | int | 10 | Results to retrieve |
+| --output | Path | stdout | Output file |
+| --tier-filter | str | None | Filter by tier |
+| --min-confidence | float | 0.0 | Min confidence |
+| --concurrency | int | 4 | Parallel requests |
+| --timeout | int | 30 | Request timeout |
+
+### Dataset Format (Input)
+```json
+[
+  {
+    "id": "case_uuid",
+    "query": "search query",
+    "relevant_chunk_ids": ["chunk1", "chunk2"],
+    "tier": "gold",
+    "confidence_score": 0.9
+  }
+]
+```
+- Matches BenchmarkCaseAudit output from Task 6e
+- Filters applied via --tier-filter and --min-confidence
+
+### Output Format
+```json
+{
+  "run_id": "uuid",
+  "run_timestamp": "ISO8601",
+  "total_queries": 100,
+  "hit_at_1": 0.45,
+  "hit_at_5": 0.78,
+  "hit_at_10": 0.92,
+  "mrr": 0.67,
+  "ndcg_at_10": 0.71,
+  "mean_response_time_ms": 125.0,
+  "p95_response_time_ms": 250.0,
+  "per_query_results": [...]
+}
+```
+
+### Test Results
+- Module imports successfully
+- CLI help displays correctly
+- Metrics verified: hit_at_k, reciprocal_rank, ndcg_at_k
+- Dataset loading with tier/confidence filtering verified
+- Aggregate calculation verified with mock results
+
+### Design Decisions
+
+1. **Async with Semaphore**: Uses asyncio.as_completed() for progress reporting, semaphore for concurrency control. More efficient than sequential.
+
+2. **explain=True Always**: Every request includes explain mode for full traceability. debug_info and api_metadata captured per-query.
+
+3. **Graceful Failures**: HTTP errors logged but don't stop evaluation. Failed queries excluded from aggregate metrics.
+
+4. **Percentile Implementation**: Linear interpolation for p95 calculation. Standard approach for latency metrics.
+
+5. **BenchmarkCase Loader**: Lightweight dataclass that maps from BenchmarkCaseAudit JSON. Only loads fields needed for evaluation.
+
+6. **Metrics as Fractions**: All aggregate metrics returned as floats between 0.0 and 1.0. Consistent with academic conventions.
+

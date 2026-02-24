@@ -112,6 +112,33 @@ docker compose -f docker/docker-compose.search.yml up
 docker compose -f src/plm/extraction/slow/docker-compose.yml up slow-extraction
 ```
 
+## BENCHMARK MODULE
+
+Externally-validated benchmark framework using StackOverflow → Kubernetes docs pairs.
+
+### Structure
+benchmark/
+├── extraction/     # SO data extraction, signal bundles
+├── mapping/        # URL-to-chunk mapping
+├── tier/           # Evidence-based tier assignment
+├── matching/       # Quote and fragment matching
+├── generation/     # LLM-based case generation
+├── verification/   # Code-based verification
+├── regeneration/   # Failed case regeneration
+├── assembly/       # Final dataset assembly
+├── runner/         # Benchmark execution
+└── integration/    # Component analysis
+
+### Key Entry Points
+- plm-benchmark evaluate --dataset gold.json
+- plm-benchmark-integration analyze-integration --dataset gold.json
+
+### Critical Invariants
+- Verification is CODE, not LLM (deterministic)
+- Tier from signals is authoritative
+- Must call HTTP API (no direct HybridRetriever)
+- Quarantine rate target < 5%
+
 ## NOTES
 
 - **No CI pipeline** — All testing is manual via `pytest` and `scripts/*.py`
