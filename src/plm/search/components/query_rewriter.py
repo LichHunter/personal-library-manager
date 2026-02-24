@@ -15,18 +15,16 @@ Example:
     >>> print(result.rewritten)  # "token expiration TTL lifetime"
 """
 
+import os
 import time
 import logging
-from typing import Optional
 
-# Import types from search module
 from plm.search.types import Query, RewrittenQuery
-
-# Import shared LLM module
 from plm.shared.llm import call_llm
 
-
 logger = logging.getLogger("plm.search.query_rewriter")
+
+DEFAULT_REWRITE_MODEL = "claude-haiku"
 
 
 QUERY_REWRITE_PROMPT = """You are a technical documentation search expert. Your task is to rewrite user questions as direct documentation lookup queries.
@@ -74,15 +72,22 @@ class QueryRewriter:
         >>> assert result.model == "claude-3-haiku"
     """
 
-    def __init__(self, timeout: float = 5.0):
+    def __init__(self, timeout: float = 5.0, model: str | None = None):
         """Initialize QueryRewriter component.
 
         Args:
             timeout: Timeout in seconds for LLM call (default 5.0).
                     If the LLM takes longer than this, the original query
                     is returned unchanged.
+            model: LLM model to use for rewriting. Defaults to PLM_LLM_MODEL
+                   env var or "claude-haiku". Use "llama3.2" for local Ollama.
         """
         self.timeout = timeout
+        self.model = (
+            model
+            or os.environ.get("PLM_LLM_MODEL", "").strip()
+            or DEFAULT_REWRITE_MODEL
+        )
 
     def _rewrite_query(self, query: str) -> str:
         """Rewrite query using Claude Haiku for better documentation retrieval.
@@ -108,7 +113,7 @@ class QueryRewriter:
         try:
             prompt = QUERY_REWRITE_PROMPT.format(query=query)
             rewritten = call_llm(
-                prompt, model="claude-haiku", timeout=int(self.timeout)
+                prompt, model=self.model, timeout=int(self.timeout)
             )
             elapsed = time.time() - start_time
 
@@ -162,9 +167,8 @@ class QueryRewriter:
         # Call the internal rewrite method
         rewritten_text = self._rewrite_query(data.text)
 
-        # Create RewrittenQuery preserving the original
         return RewrittenQuery(
             original=data,
             rewritten=rewritten_text,
-            model="claude-3-haiku",
+            model=self.model,
         )

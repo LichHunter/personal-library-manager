@@ -57,9 +57,10 @@ class LLMProvider(ABC):
 
 _provider_cache: dict[str, LLMProvider] = {}
 
-# Patterns that identify a Gemini model name
-_GEMINI_PATTERN = re.compile(
-    r"^(gemini|gemma)", re.IGNORECASE
+_GEMINI_PATTERN = re.compile(r"^(gemini)", re.IGNORECASE)
+
+_OLLAMA_PATTERN = re.compile(
+    r"^(ollama/|llama|mistral|qwen|phi|deepseek|gemma)", re.IGNORECASE
 )
 
 
@@ -68,13 +69,27 @@ def _is_gemini_model(model: str) -> bool:
     return bool(_GEMINI_PATTERN.match(model))
 
 
+def _is_ollama_model(model: str) -> bool:
+    """Return True if *model* should be routed to the Ollama provider."""
+    return bool(_OLLAMA_PATTERN.match(model))
+
+
 def get_provider(model: str) -> LLMProvider:
     """Return (cached) provider for *model*.
 
     Routing logic:
-        - Model names starting with ``gemini`` or ``gemma`` → GeminiProvider
+        - ``ollama/*`` or local model names (llama, mistral, qwen, phi, deepseek, gemma) → OllamaProvider
+        - ``gemini*`` → GeminiProvider
         - Everything else → AnthropicProvider
     """
+    if _is_ollama_model(model):
+        key = "ollama"
+        if key not in _provider_cache:
+            from .ollama_provider import OllamaProvider
+            logger.debug("Creating OllamaProvider for model=%s", model)
+            _provider_cache[key] = OllamaProvider()
+        return _provider_cache[key]
+
     if _is_gemini_model(model):
         key = "gemini"
         if key not in _provider_cache:

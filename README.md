@@ -332,6 +332,34 @@ docker compose -f docker/docker-compose.full.yml logs -f
 | `ANTHROPIC_API_KEY` | Direct API key for Claude |
 | `OPENCODE_AUTH_PATH` | Path to OpenCode OAuth `auth.json` |
 
+#### LLM Provider
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PLM_LLM_MODEL` | `claude-haiku` | LLM model for query rewriting. See below for options. |
+| `OLLAMA_HOST` | `http://localhost:11434` | Ollama server URL (for local models) |
+
+**Supported models:**
+
+| Provider | Model Examples | Notes |
+|----------|---------------|-------|
+| **Anthropic** | `claude-haiku`, `sonnet`, `opus` | Default. Requires API key or OpenCode OAuth. |
+| **Ollama** | `llama3.2`, `mistral`, `qwen2.5`, `phi4`, `deepseek` | Local. Auto-downloads models. |
+| **Gemini** | `gemini-2.5-flash`, `gemini-2.5-pro` | Requires OpenCode OAuth with Google. |
+
+**Using local models (Ollama):**
+
+```bash
+# Start Ollama server
+ollama serve
+
+# Use local model for query rewriting (auto-downloads if needed)
+export PLM_LLM_MODEL=llama3.2
+
+# Or use specific model tag
+export PLM_LLM_MODEL=mistral:7b
+```
+
 ---
 
 ### API Endpoints (Search Service)

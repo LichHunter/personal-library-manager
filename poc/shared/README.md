@@ -1,6 +1,6 @@
 # Shared LLM Providers
 
-Unified LLM provider interface for all POCs. Supports **Anthropic (Claude)** and **Google Gemini** via OpenCode OAuth tokens.
+Unified LLM provider interface for all POCs. Supports **Anthropic (Claude)**, **Google Gemini** via OpenCode OAuth, and **Ollama** for local models.
 
 ## Quick Start
 
@@ -15,6 +15,9 @@ response = call_llm("Extract terms from: kubectl get pods", model="sonnet")
 
 # Gemini (auto-routed when model starts with "gemini")
 response = call_llm("Extract terms from: kubectl get pods", model="gemini-2.5-flash")
+
+# Ollama (local models — auto-downloads if needed)
+response = call_llm("Extract terms from: kubectl get pods", model="llama3.2")
 ```
 
 ## Setup
@@ -84,16 +87,20 @@ Convenience wrapper — routes to the correct provider based on model name.
 ```python
 from shared.llm import call_llm
 
-# Anthropic models (anything not starting with "gemini"/"gemma")
+# Anthropic models
 call_llm("Hello", model="sonnet")                    # Claude Sonnet 4.5
 call_llm("Hello", model="haiku")                     # Claude Haiku 3.5
 call_llm("Hello", model="opus")                      # Claude Opus 4.5
-call_llm("Hello", model="claude-sonnet-4-5-20250929") # Full model ID
 
-# Gemini models (starts with "gemini" or "gemma")
+# Gemini models (starts with "gemini")
 call_llm("Hello", model="gemini-2.5-pro")            # Gemini 2.5 Pro
 call_llm("Hello", model="gemini-2.5-flash")          # Gemini 2.5 Flash
-call_llm("Hello", model="gemini-2.0-flash")          # Gemini 2.0 Flash
+
+# Ollama models (local — starts with llama/mistral/qwen/phi/deepseek/gemma)
+call_llm("Hello", model="llama3.2")                  # LLaMA 3.2 3B (default)
+call_llm("Hello", model="mistral")                   # Mistral 7B
+call_llm("Hello", model="qwen2.5")                   # Qwen 2.5 7B
+call_llm("Hello", model="ollama/phi4")               # Explicit ollama/ prefix
 ```
 
 **Parameters:**
@@ -145,10 +152,27 @@ Canonical names pass through unchanged:
 
 **Not supported on Code Assist:** Gemma models, `gemini-2.0-flash-lite`, `gemini-1.5-*`, `models/*` prefix, preview-dated versions (e.g., `gemini-2.5-flash-preview-05-20`), `-latest` aliases.
 
+#### Ollama (Local)
+
+Models tested in POCs:
+
+| Alias | Resolves To | Notes |
+|-------|-------------|-------|
+| `llama`, `llama3.2` | `llama3.2:3b` | Recommended default |
+| `llama3.2-1b` | `llama3.2:1b` | Fastest, lower quality |
+| `llama3.1`, `llama3` | `llama3.1:8b` | Better quality |
+| `mistral` | `mistral:7b` | Alternative architecture |
+| `qwen`, `qwen2.5` | `qwen2.5:7b` | Strong reasoning |
+| `deepseek` | `deepseek-r1:8b` | DeepSeek R1 |
+| `phi`, `phi4` | `phi4:14b` | Microsoft Phi-4 |
+| `gemma2` | `gemma2:9b` | Gemma 2 (local via Ollama) |
+
+**Auto-download:** If a model isn't available locally, OllamaProvider will automatically download it on first use.
+
 ### Direct Provider Access
 
 ```python
-from shared.llm import AnthropicProvider, GeminiProvider
+from shared.llm import AnthropicProvider, GeminiProvider, OllamaProvider
 
 # Anthropic
 anthropic = AnthropicProvider()
@@ -158,8 +182,13 @@ response = anthropic.generate("Hello", model="sonnet", max_tokens=1000)
 gemini = GeminiProvider()
 response = gemini.generate("Hello", model="gemini-2.5-flash", max_tokens=1000)
 
-# Custom auth path
+# Ollama (local)
+ollama = OllamaProvider()
+response = ollama.generate("Hello", model="llama3.2", max_tokens=1000)
+
+# Custom auth path / host
 provider = AnthropicProvider(auth_path="/custom/path/auth.json")
+ollama = OllamaProvider(host="http://remote-server:11434")
 ```
 
 ### Extended Thinking
@@ -205,7 +234,8 @@ poc/shared/
 │   ├── __init__.py              # Public API: call_llm, get_provider, providers
 │   ├── base.py                  # LLMProvider ABC + routing + call_llm()
 │   ├── anthropic_provider.py    # Anthropic Claude via OpenCode OAuth
-│   └── gemini_provider.py       # Google Gemini via OpenCode OAuth (Code Assist)
+│   ├── gemini_provider.py       # Google Gemini via OpenCode OAuth (Code Assist)
+│   └── ollama_provider.py       # Local models via Ollama (auto-download)
 └── tests/
     └── test_llm.py              # Unit tests (mocked, no real API calls)
 ```
@@ -213,7 +243,8 @@ poc/shared/
 ### Provider Routing
 
 `call_llm()` routes based on model name:
-- Starts with `gemini` or `gemma` → `GeminiProvider`
+- Starts with `ollama/` or local model names (`llama`, `mistral`, `qwen`, `phi`, `deepseek`, `gemma`) → `OllamaProvider`
+- Starts with `gemini` → `GeminiProvider`
 - Everything else → `AnthropicProvider`
 
 ### Error Handling
@@ -242,7 +273,25 @@ Both providers:
 5. Wrap request in Code Assist envelope: `{project, model, request}`
 6. POST to `https://cloudcode-pa.googleapis.com/v1internal:generateContent`
 
-## Gemini-Specific: Environment Variables
+## Environment Variables
+
+### Ollama
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `OLLAMA_HOST` | `http://localhost:11434` | Ollama server URL |
+
+**Setup:**
+```bash
+# Start Ollama server
+ollama serve
+
+# Models auto-download on first use, or pull manually:
+ollama pull llama3.2:3b
+ollama pull mistral:7b
+```
+
+### Gemini
 
 **Required** (for token refresh — public OAuth app credentials from [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)):
 
