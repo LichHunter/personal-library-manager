@@ -1,0 +1,65 @@
+# Search Service Dockerfile
+# Hybrid retrieval API with BM25/SPLADE + semantic search
+
+FROM python:3.12-slim AS builder
+
+WORKDIR /app
+
+# Install uv for dependency management
+RUN pip install --no-cache-dir uv
+
+# Copy dependency files and source
+COPY pyproject.toml uv.lock README.md ./
+COPY src/ ./src/
+
+# Install dependencies with CPU-only PyTorch
+RUN uv sync --frozen --no-dev
+
+# -------------------------------------------------------------------
+FROM python:3.12-slim AS runtime
+
+WORKDIR /app
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy virtual environment and source from builder
+COPY --from=builder /app/.venv /app/.venv
+COPY --from=builder /app/src /app/src
+
+# Set environment variables
+ENV PATH="/app/.venv/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Default paths
+ENV INDEX_PATH=/data/index
+ENV WATCH_DIR=/data/watch
+ENV PROCESS_EXISTING=false
+
+# Sparse retriever configuration
+ENV PLM_SPARSE_RETRIEVER=bm25
+ENV PLM_SEMANTIC_ENABLED=true
+
+# SPLADE configuration (if using SPLADE)
+ENV PLM_SPLADE_MODEL=naver/splade-cocondenser-ensembledistil
+ENV PLM_SPLADE_DEVICE=cpu
+ENV PLM_SPLADE_MAX_LENGTH=512
+ENV PLM_SPLADE_BATCH_SIZE=32
+
+# Model caching
+ENV HF_HOME=/data/models
+
+# SSL certificates for API calls
+ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+
+# Expose FastAPI port
+EXPOSE 8000
+
+# Declare volumes
+VOLUME ["/data/index", "/data/watch", "/data/models", "/auth"]
+
+# Entry point - FastAPI server
+CMD ["uvicorn", "plm.search.service.app:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -113,9 +113,13 @@ plm-query "your question" --url http://localhost:8000 --k 10
 
 ## Docker Deployment
 
-Docker images are built using Nix (not Dockerfile). This produces reproducible, minimal images.
+Two build methods are available:
+- **Nix** (recommended): Reproducible, minimal images
+- **Dockerfile**: Standard Docker builds for CI/CD compatibility
 
-### How Nix Docker Builds Work
+### Option 1: Nix Builds (Recommended)
+
+Nix produces reproducible, minimal images without Dockerfiles.
 
 ```bash
 nix build .#<target>    # Creates ./result symlink to image tarball
@@ -159,6 +163,23 @@ docker images | grep -E "(fast|slow|search)"
 | `.#fast-extraction-docker` | `fast-extraction:latest` | Heuristic extraction (regex, YAKE) |
 | `.#slow-extraction-docker` | `slow-extraction:latest` | LLM extraction (Claude) |
 | `.#search-service-docker` | `search-service:latest` | Hybrid retrieval API |
+
+### Option 2: Dockerfile Builds
+
+Standard Docker builds for environments without Nix.
+
+```bash
+# Build from repo root
+docker build -f docker/Dockerfile.search -t plm-search:latest .
+docker build -f docker/Dockerfile.fast-extraction -t plm-fast-extraction:latest .
+docker build -f docker/Dockerfile.slow-extraction -t plm-slow-extraction:latest .
+```
+
+| Dockerfile | Image | Description |
+|------------|-------|-------------|
+| `docker/Dockerfile.search` | `plm-search:latest` | Hybrid retrieval API |
+| `docker/Dockerfile.fast-extraction` | `plm-fast-extraction:latest` | Heuristic extraction |
+| `docker/Dockerfile.slow-extraction` | `plm-slow-extraction:latest` | LLM extraction |
 
 ### Run with Docker Compose
 

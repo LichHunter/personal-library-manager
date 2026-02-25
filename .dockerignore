@@ -1,0 +1,51 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Nix
+.direnv/
+result
+.nix-*
+
+# Development
+.git/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Cache
+.cache/
+enrichment_cache/
+contextual_index/
+
+# POC and tests (not needed in production images)
+poc/
+tests/
+docs/
+
+# Artifacts and data (mounted at runtime)
+artifacts/
+backups/
+fast-extraction/
+slow-extraction/
+data/
+
+# Logs
+*.log
+
+# Large binary files
+*.npy
+*.pkl
+*.index
+*.db
