@@ -97,6 +97,8 @@
 
               ollama
               tmux
+
+	            tree
             ];
 
             LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
