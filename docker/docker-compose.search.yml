@@ -21,7 +21,7 @@ services:
   # ─────────────────────────────────────────────────────────────────────────
 
   search-service:
-    image: plm-search-service:0.1.0
+    image: plm-search-service:0.2.0
     container_name: plm-search-service
     ports:
       - "8000:8000"
@@ -29,6 +29,8 @@ services:
     volumes:
       # Persistent index: SQLite DB + BM25S index survive container restarts
       - plm-search-index:/data/index
+      # Logs: request traces and info logs
+      - plm-search-logs:/data/logs
       # Incoming documents: drop fast-extraction JSON output files here
       # Run: docker compose -f docker/docker-compose.search.yml up search-service
       # (watcher is disabled in this service - use search-service-watch profile instead)
@@ -42,6 +44,11 @@ services:
       - WATCH_DIR=/data/watch
       # Process files already in watched/ on startup (false = only new files)
       - PROCESS_EXISTING=false
+
+      # ── Logging ─────────────────────────────────────────────────────────
+      - PLM_LOG_LEVEL=INFO
+      - PLM_LOG_TO_FILE=true
+      - PLM_LOG_DIR=/data/logs
 
       # ── LLM Auth (for query rewriting via shared LLM module) ───────────
       # Option A: Direct API key (uncomment and set value, or pass via shell env)
@@ -64,7 +71,7 @@ services:
   # ─────────────────────────────────────────────────────────────────────────
 
   search-service-watch:
-    image: plm-search-service:0.1.0
+    image: plm-search-service:0.2.0
     container_name: plm-search-service-watch
     profiles:
       - watch
@@ -74,6 +81,8 @@ services:
     volumes:
       # Persistent index (shared with search-service if both run simultaneously)
       - plm-search-index:/data/index
+      # Logs: request traces and info logs
+      - plm-search-logs:/data/logs
       # Incoming documents: bind-mount so host can drop files in
       - ./watched:/data/watch
       # OpenCode OAuth (Option B auth) - comment out if using ANTHROPIC_API_KEY
@@ -85,6 +94,11 @@ services:
       - WATCH_DIR=/data/watch
       # Process files already present in watched/ at startup
       - PROCESS_EXISTING=true
+
+      # ── Logging ─────────────────────────────────────────────────────────
+      - PLM_LOG_LEVEL=INFO
+      - PLM_LOG_TO_FILE=true
+      - PLM_LOG_DIR=/data/logs
 
       # ── LLM Auth (for query rewriting via shared LLM module) ───────────
       # Option A: Direct API key (uncomment and set value, or pass via shell env)
@@ -102,3 +116,5 @@ volumes:
   # Named volume: SQLite database + BM25S index persist across container restarts
   # Remove with: docker volume rm docker_plm-search-index  (to start fresh)
   plm-search-index:
+  # Logs volume: request traces and info logs
+  plm-search-logs:

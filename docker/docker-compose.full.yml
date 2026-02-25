@@ -54,12 +54,13 @@ services:
   # Replaces DirectoryWatcher when QUEUE_ENABLED=true.
   # ─────────────────────────────────────────────────────────────────────────
   search-service:
-    image: plm-search-service:0.1.0
+    image: plm-search-service:0.2.0
     container_name: plm-search-service
     ports:
       - "8000:8000"
     volumes:
       - plm-search-index:/data/index
+      - plm-search-logs:/data/logs
       - ${HOME}/.local/share/opencode:/auth:ro
     environment:
       - INDEX_PATH=/data/index
@@ -67,6 +68,10 @@ services:
       - QUEUE_ENABLED=true
       - QUEUE_URL=redis://redis:6379
       - QUEUE_STREAM=plm:extraction
+      # Logging (new in 0.2.0)
+      - PLM_LOG_LEVEL=INFO
+      - PLM_LOG_TO_FILE=true
+      - PLM_LOG_DIR=/data/logs
       # LLM Auth for query rewriting
       - OPENCODE_AUTH_PATH=/auth/auth.json
       - PYTHONUNBUFFERED=1
@@ -161,5 +166,7 @@ volumes:
   plm-redis-data:
   # Search index (SQLite + BM25)
   plm-search-index:
+  # Search logs (request traces)
+  plm-search-logs:
   # GLiNER model cache
   plm-gliner-models:

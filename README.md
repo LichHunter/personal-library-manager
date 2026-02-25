@@ -235,6 +235,9 @@ Returns index statistics (document count, chunk count, etc.).
 | `PLM_LLM_MODEL` | `claude-haiku` | LLM for query rewriting |
 | `QUEUE_ENABLED` | `false` | Enable Redis Streams mode |
 | `QUEUE_URL` | `redis://localhost:6379` | Redis connection |
+| `PLM_LOG_LEVEL` | `INFO` | Log level: TRACE, DEBUG, INFO, WARN, ERROR |
+| `PLM_LOG_DIR` | `/data/logs` | Directory for log files |
+| `PLM_LOG_TO_FILE` | `true` | Enable file logging (trace + info) |
 
 ### Supported LLM Providers
 

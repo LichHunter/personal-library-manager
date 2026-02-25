@@ -32,6 +32,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from plm.search.retriever import HybridRetriever
 from plm.search.service.queue_consumer import SearchQueueConsumer
 from plm.search.service.watcher import DirectoryWatcher
+from plm.shared.logger import PipelineLogger
 
 logger = logging.getLogger(__name__)
 
@@ -95,7 +96,7 @@ class QueryResponse(BaseModel):
     results: list[QueryResult]
     elapsed_ms: float
     metadata: QueryMetadata | None = Field(None, description="Query metadata (only when explain=True)")
-    request_id: str | None = Field(None, description="Request correlation ID (only when explain=True)")
+    request_id: str = Field(..., description="Request correlation ID for log tracing")
 
 
 class HealthResponse(BaseModel):
@@ -124,6 +125,11 @@ QUEUE_ENABLED = os.environ.get("QUEUE_ENABLED", "false").lower() == "true"
 QUEUE_URL = os.environ.get("QUEUE_URL", "redis://localhost:6379")
 QUEUE_STREAM = os.environ.get("QUEUE_STREAM", "plm:extraction")
 
+# Logging configuration
+PLM_LOG_DIR = os.environ.get("PLM_LOG_DIR", "/data/logs")
+PLM_LOG_LEVEL = os.environ.get("PLM_LOG_LEVEL", "INFO")
+PLM_LOG_TO_FILE = os.environ.get("PLM_LOG_TO_FILE", "true").lower() == "true"
+
 REQUEST_ID_HEADER = "X-Request-ID"
 
 
@@ -146,10 +152,30 @@ async def lifespan(app: FastAPI):
     db_path = Path(INDEX_PATH) / "index.db"
     db_path.parent.mkdir(parents=True, exist_ok=True)
 
+    # Initialize logger
+    log_dir = Path(PLM_LOG_DIR)
+    try:
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_file = log_dir / "search_info.log" if PLM_LOG_TO_FILE else None
+        trace_file = log_dir / "search_trace.log" if PLM_LOG_TO_FILE else None
+    except (PermissionError, OSError):
+        # Fall back to no file logging if directory can't be created
+        logger.warning(f"[Service] Cannot create log directory {log_dir}, disabling file logging")
+        log_file = None
+        trace_file = None
+
+    app.state.logger = PipelineLogger(
+        log_file=log_file,
+        trace_file=trace_file,
+        console=True,
+        min_level=PLM_LOG_LEVEL,
+    )
+
     # Initialize retriever
     app.state.retriever = HybridRetriever(
         db_path=str(db_path),
         bm25_index_path=INDEX_PATH,
+        logger=app.state.logger,
     )
     app.state.startup_time = time.time()
 
@@ -230,12 +256,14 @@ async def query(request: QueryRequest, http_request: Request) -> QueryResponse:
     retriever: HybridRetriever = app.state.retriever
 
     try:
+        request_id = http_request.state.request_id
         result = retriever.retrieve(
             query=request.query,
             k=request.k,
             use_rewrite=request.use_rewrite,
             use_rerank=request.use_rerank,
             explain=request.explain,
+            request_id=request_id,
         )
     except Exception as e:
         logger.error(f"[Service] Query failed: {e}")
@@ -307,6 +335,7 @@ async def query(request: QueryRequest, http_request: Request) -> QueryResponse:
                 for r in results_list
             ],
             elapsed_ms=elapsed_ms,
+            request_id=request_id,
         )
 
 

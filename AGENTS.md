@@ -43,6 +43,7 @@ Local-first RAG system for personal document corpus (NotebookLM-like). Extracts 
 | Add LLM provider | `src/plm/shared/llm/` | Subclass `LLMProvider` from `base.py` |
 | Add query component | `src/plm/search/components/` | BM25, semantic, enricher, expander, rrf |
 | Test retrieval | `tests/search/test_retriever.py` | Integration tests for HybridRetriever |
+| Configure request tracing | `PLM_LOG_LEVEL=TRACE` | Full pipeline traces in `/data/logs/search_trace.log` |
 
 ## BUILD & RUN
 

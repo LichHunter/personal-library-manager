@@ -94,3 +94,25 @@ for rank, result in enumerate(bm25_results):
 | `PLM_SPLADE_MODEL` | HuggingFace model name | `naver/splade-cocondenser-ensembledistil` |
 | `PLM_SPLADE_DEVICE` | `cpu`, `cuda` | auto-detect |
 | `PLM_SEMANTIC_ENABLED` | `true`, `false` | `true` |
+| `PLM_LOG_LEVEL` | `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR` | `INFO` |
+| `PLM_LOG_DIR` | Path | `/data/logs` |
+| `PLM_LOG_TO_FILE` | `true`, `false` | `true` |
+
+## REQUEST TRACING
+
+Every request is traced with a `request_id` returned in the response. Set `PLM_LOG_LEVEL=TRACE` to see full pipeline traces:
+
+```
+[request_id] [receive] query=... k=... rewrite=...
+[request_id] [rewrite] input=... output=...
+[request_id] [expand] added=[...]
+[request_id] [sparse] found=... top5=[...]
+[request_id] [semantic] computed=... top5=[...]
+[request_id] [rrf] fused=... top_k=[...]
+[request_id] [complete] results=...
+```
+
+Trace a specific request:
+```bash
+grep "request_id" /data/logs/search_trace.log
+```

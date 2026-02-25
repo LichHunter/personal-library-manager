@@ -185,7 +185,7 @@ class TestExplainModeAPI:
         data = response.json()
         assert "results" in data
         assert data.get("metadata") is None
-        assert data.get("request_id") is None
+        assert data.get("request_id") is not None  # request_id always returned for tracing
         if data["results"]:
             assert data["results"][0].get("debug_info") is None
 

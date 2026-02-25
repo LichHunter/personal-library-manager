@@ -41,6 +41,7 @@ from plm.search.components.sparse.base import SparseRetriever
 from plm.search.config import RetrievalConfig, SparseRetrieverType, create_sparse_retriever
 from plm.search.storage.sqlite import SQLiteStorage
 from plm.search.types import Query, RewrittenQuery
+from plm.shared.logger import PipelineLogger
 
 
 logger = logging.getLogger(__name__)
@@ -93,6 +94,7 @@ class HybridRetriever:
         bm25_index_path: str,
         rewrite_timeout: float = 5.0,
         config: RetrievalConfig | None = None,
+        logger: PipelineLogger | None = None,
     ) -> None:
         """Initialize HybridRetriever.
 
@@ -108,6 +110,7 @@ class HybridRetriever:
         self.bm25_index_path = bm25_index_path
         self.rewrite_timeout = rewrite_timeout
         self.config = config or RetrievalConfig.from_env()
+        self.log = logger or PipelineLogger()
 
         self.storage = SQLiteStorage(db_path)
         self.storage.create_tables()
@@ -123,16 +126,16 @@ class HybridRetriever:
         if os.path.exists(bm25_index_path):
             try:
                 self.sparse_retriever = self._load_sparse_index(bm25_index_path)
-                logger.debug(f"[HybridRetriever] Loaded sparse index from {bm25_index_path}")
+                self.log.debug(f"[HybridRetriever] Loaded sparse index from {bm25_index_path}")
             except Exception as e:
-                logger.warning(f"[HybridRetriever] Failed to load sparse index: {e}")
+                self.log.warn(f"[HybridRetriever] Failed to load sparse index: {e}")
                 self.sparse_retriever = None
 
         self.bm25_index = self.sparse_retriever
 
         sparse_type = self.config.sparse_retriever.value
         semantic_mode = "enabled" if self.config.semantic.enabled else "disabled"
-        logger.debug(
+        self.log.debug(
             f"[HybridRetriever] Initialized: db={db_path}, index={bm25_index_path}, "
             f"sparse={sparse_type}, semantic={semantic_mode}"
         )
@@ -527,6 +530,7 @@ class HybridRetriever:
         use_rerank: bool = False,
         candidates_k: int | None = None,
         explain: bool = False,
+        request_id: str | None = None,
     ) -> list[dict] | tuple[list[dict], dict]:
         """Retrieve top-k chunks for a query using hybrid search with RRF.
 
@@ -559,6 +563,8 @@ class HybridRetriever:
             When explain=True: Tuple of (results, explain_data) where explain_data contains
                 'metadata' (query info) and 'debug_info' (per-chunk scores)
         """
+        rid = request_id or str(uuid.uuid4())[:8]
+
         if use_rerank:
             rerank_candidates = candidates_k if candidates_k is not None else k * 5
 
@@ -567,7 +573,8 @@ class HybridRetriever:
 
             if explain:
                 rrf_result = self._retrieve_rrf(
-                    query, k=rerank_candidates, use_rewrite=use_rewrite, explain=True
+                    query, k=rerank_candidates, use_rewrite=use_rewrite, explain=True,
+                    request_id=rid,
                 )
                 rrf_results: list[dict]
                 explain_data: dict
@@ -584,7 +591,8 @@ class HybridRetriever:
                 return reranked, explain_data
 
             rrf_result_list = self._retrieve_rrf(
-                query, k=rerank_candidates, use_rewrite=use_rewrite, explain=False
+                query, k=rerank_candidates, use_rewrite=use_rewrite, explain=False,
+                request_id=rid,
             )
             rrf_results_no_explain: list[dict] = rrf_result_list  # pyright: ignore[reportAssignmentType]
             reranked = self._reranker.rerank(query, rrf_results_no_explain, top_k=k)
@@ -593,11 +601,14 @@ class HybridRetriever:
             )
             return reranked
 
-        return self._retrieve_rrf(query, k=k, use_rewrite=use_rewrite, explain=explain)
+        return self._retrieve_rrf(query, k=k, use_rewrite=use_rewrite, explain=explain, request_id=rid)
 
     def _retrieve_rrf(
-        self, query: str, k: int = 5, use_rewrite: bool = False, explain: bool = False
+        self, query: str, k: int = 5, use_rewrite: bool = False, explain: bool = False,
+        request_id: str | None = None,
     ) -> list[dict] | tuple[list[dict], dict]:
+        rid = request_id or str(uuid.uuid4())[:8]
+
         all_chunks = self.storage.get_all_chunks()
         if not all_chunks or self.sparse_retriever is None:
             logger.debug("[HybridRetriever] No chunks or sparse index available")
@@ -606,12 +617,14 @@ class HybridRetriever:
             return []
 
         original_query = Query(text=query)
+        self.log.request(rid, "receive", f"query={query!r} k={k} rewrite={use_rewrite}")
 
         if use_rewrite:
             if self._query_rewriter is None:
                 self._query_rewriter = QueryRewriter(timeout=self.rewrite_timeout)
             rewritten_query = self._query_rewriter.process(original_query)
             logger.debug(f"[HybridRetriever] Query rewritten: {query} → {rewritten_query.rewritten}")
+            self.log.request(rid, "rewrite", f"input={query!r} output={rewritten_query.rewritten!r}")
         else:
             rewritten_query = RewrittenQuery(
                 original=original_query,
@@ -622,6 +635,7 @@ class HybridRetriever:
         expanded = self.expander.process(rewritten_query)
         expanded_query = expanded.expanded
         expansion_triggered = len(expanded.expansions) > 0
+        self.log.request(rid, "expand", f"added={list(expanded.expansions)}")
 
         if expansion_triggered:
             rrf_k = self.EXPANDED_RRF_K
@@ -648,6 +662,8 @@ class HybridRetriever:
         for rank, result in enumerate(sparse_results):
             sparse_score_by_idx[result["index"]] = result["score"]
             sparse_rank_by_idx[result["index"]] = rank
+
+        self.log.request(rid, "sparse", f"found={len(sparse_results)} top5={[sparse_results[i]['index'] for i in range(min(5, len(sparse_results)))]}")
 
         if not self.config.semantic.enabled:
             results = []
@@ -699,6 +715,7 @@ class HybridRetriever:
 
         sem_scores = np.dot(embeddings, query_emb)
         sem_ranks = np.argsort(sem_scores)[::-1]
+        self.log.request(rid, "semantic", f"computed={len(sem_scores)} top5={list(sem_ranks[:5])}")
 
         sem_rank_by_idx: dict[int, int] = {}
         for rank, idx in enumerate(sem_ranks[:n_candidates]):
@@ -716,6 +733,7 @@ class HybridRetriever:
             rrf_scores[idx] = rrf_scores.get(idx, 0) + sparse_component
 
         top_indices = sorted(rrf_scores.keys(), key=lambda x: rrf_scores[x], reverse=True)[:k]
+        self.log.request(rid, "rrf", f"fused={len(rrf_scores)} top_k={top_indices[:5]}")
 
         results = []
         debug_info = {}
@@ -743,6 +761,7 @@ class HybridRetriever:
                     "retrieval_stage": "rrf",
                 }
 
+        self.log.request(rid, "complete", f"results={len(results)}")
         logger.debug(f"[HybridRetriever] Retrieved {len(results)} results for query: {query[:50]}...")
 
         if explain:

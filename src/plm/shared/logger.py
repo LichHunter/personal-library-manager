@@ -111,6 +111,10 @@ class PipelineLogger:
     def error(self, msg: str) -> None:
         self._emit("ERROR", msg)
 
+    def request(self, request_id: str, stage: str, msg: str) -> None:
+        """Log a request-scoped trace message."""
+        self._emit("TRACE", f"[{request_id}] [{stage}] {msg}")
+
     def section(self, title: str) -> None:
         sep = "=" * 80
         for line in ("", sep, f"  {title}", sep):
