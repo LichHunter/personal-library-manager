@@ -281,6 +281,29 @@ basedpyright
 pytest tests/search/test_retriever.py -v
 ```
 
+## Benchmark
+
+End-to-end retrieval benchmark for measuring search quality against ground-truth question-answer pairs.
+
+```bash
+# Run benchmark against running search service
+python -m plm.benchmark.cli --datasets needle
+
+# With service trace integration
+python -m plm.benchmark.cli --trace-log /path/to/search_trace.log
+```
+
+**Datasets**: `needle` (20 precise questions), `realistic` (400 broad queries), `informed` (25 expert queries)
+
+**Metrics**: Hit@k, MRR (Mean Reciprocal Rank), latency percentiles
+
+**Features**:
+- Auto-detects trace logs from Docker containers
+- Shows full retrieval pipeline traces for failed queries
+- Outputs JSON results for programmatic analysis
+
+See [`src/plm/benchmark/README.md`](./src/plm/benchmark/README.md) for detailed usage.
+
 ## Documentation
 
 - [Architecture](./docs/architecture/) - System design documents

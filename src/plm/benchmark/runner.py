@@ -2,11 +2,13 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass
+from pathlib import Path
 
 import httpx
 
 from plm.benchmark.loader import BenchmarkQuestion
 from plm.benchmark.metrics import QueryResult
+from plm.benchmark.trace import attach_traces, discover_trace_log, parse_trace_log
 from plm.shared.logger import PipelineLogger, get_logger
 
 
@@ -17,6 +19,7 @@ class RunnerConfig:
     use_rewrite: bool = False
     use_rerank: bool = False
     timeout: float = 30.0
+    trace_log_path: Path | None = None
 
 
 class BenchmarkRunner:
@@ -55,9 +58,11 @@ class BenchmarkRunner:
                 retrieved_doc_ids=[],
                 latency_ms=(time.perf_counter() - start_time) * 1000,
                 k=self.config.k,
+                request_id=None,
             )
         
         latency_ms = (time.perf_counter() - start_time) * 1000
+        request_id = data.get("request_id")
         
         retrieved_doc_ids = [r["doc_id"] for r in data.get("results", [])]
         
@@ -90,6 +95,7 @@ class BenchmarkRunner:
             retrieved_doc_ids=retrieved_doc_ids,
             latency_ms=latency_ms,
             k=self.config.k,
+            request_id=request_id,
         )
     
     def run_all(self, questions: list[BenchmarkQuestion]) -> list[QueryResult]:
@@ -105,6 +111,24 @@ class BenchmarkRunner:
             results.append(result)
         
         self.log.info(f"Benchmark run complete: {len(results)} queries evaluated")
+        
+        trace_log_path = self.config.trace_log_path
+        if trace_log_path is None:
+            trace_log_path = discover_trace_log()
+            if trace_log_path:
+                self.log.info(f"Auto-detected trace log: {trace_log_path}")
+        
+        if trace_log_path and trace_log_path.exists():
+            self.log.info(f"Parsing trace log: {trace_log_path}")
+            traces = parse_trace_log(trace_log_path)
+            attach_traces(results, traces)
+            attached = sum(1 for r in results if r.trace is not None)
+            self.log.info(f"Attached traces to {attached}/{len(results)} results")
+        elif trace_log_path:
+            self.log.warn(f"Trace log not found: {trace_log_path}")
+        else:
+            self.log.debug("No trace log available, skipping trace attachment")
+        
         return results
     
     def close(self):

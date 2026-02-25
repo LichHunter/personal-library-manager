@@ -67,6 +67,12 @@ def main():
         default=None,
         help="Limit number of questions to run (for testing)",
     )
+    parser.add_argument(
+        "--trace-log",
+        type=Path,
+        default=None,
+        help="Path to search service trace log (auto-detects from Docker if not provided)",
+    )
     
     args = parser.parse_args()
     
@@ -101,6 +107,7 @@ def main():
         k=args.k,
         use_rewrite=args.use_rewrite,
         use_rerank=args.use_rerank,
+        trace_log_path=args.trace_log,
     )
     
     runner = BenchmarkRunner(config, log)

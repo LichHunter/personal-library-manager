@@ -4,6 +4,18 @@ from dataclasses import dataclass, field
 
 
 @dataclass
+class TraceEntry:
+    stage: str
+    message: str
+
+
+@dataclass
+class RequestTrace:
+    request_id: str
+    entries: list[TraceEntry] = field(default_factory=list)
+
+
+@dataclass
 class QueryResult:
     question_id: str
     question: str
@@ -14,6 +26,8 @@ class QueryResult:
     retrieved_doc_ids: list[str]
     latency_ms: float
     k: int
+    request_id: str | None = None
+    trace: RequestTrace | None = None
 
 
 @dataclass

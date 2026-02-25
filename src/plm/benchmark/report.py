@@ -78,6 +78,10 @@ def generate_report(
         lines.append(f"   Target: {r.target_doc_id}")
         if r.retrieved_doc_ids:
             lines.append(f"   Got: {r.retrieved_doc_ids[:3]}")
+        if r.trace and r.request_id:
+            lines.append(f"   Trace [{r.request_id[:8]}...]:")
+            for entry in r.trace.entries:
+                lines.append(f"      [{entry.stage}] {entry.message}")
     lines.append("")
     
     lines.append("-" * 80)
@@ -129,6 +133,11 @@ def generate_report(
                     "rank": r.rank,
                     "retrieved_doc_ids": r.retrieved_doc_ids,
                     "latency_ms": r.latency_ms,
+                    "request_id": r.request_id,
+                    "trace": [
+                        {"stage": e.stage, "message": e.message}
+                        for e in r.trace.entries
+                    ] if r.trace else None,
                 }
                 for r in results
             ],
