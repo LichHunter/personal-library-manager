@@ -55,3 +55,4 @@ backups/
 # Runtime data
 docker/index/
 fast-extraction/
+src/plm/benchmark/logs/
