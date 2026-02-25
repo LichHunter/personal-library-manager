@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "timestamp": "2026-02-21T11:03:36.881677",
+    "total_queries": 25,
+    "k": 5
+  },
+  "per_question": [
+    {
+      "id": "informed_000",
+      "question": "What is the role of the Infrastructure Provider in the design principles of Gateway API?",
+      "target_doc_id": "concepts_services-networking_gateway",
+      "plm_rank": 1,
+      "plm_latency_ms": 2554.280552023556,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 171.46101198159158,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 69.44760598707944
+    },
+    {
+      "id": "informed_001",
+      "question": "What is the Kubernetes approach to dynamic port allocation?",
+      "target_doc_id": "concepts_cluster-administration_networking",
+      "plm_rank": 1,
+      "plm_latency_ms": 319.62672603549436,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 147.7186520351097,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 71.86088804155588
+    },
+    {
+      "id": "informed_002",
+      "question": "What does a SubjectAccessReview object describe?",
+      "target_doc_id": "reference_access-authn-authz_webhook",
+      "plm_rank": null,
+      "plm_latency_ms": 376.92395300837234,
+      "baseline_enriched_rank": 4,
+      "baseline_enriched_latency_ms": 106.37246404075995,
+      "baseline_naive_rank": 4,
+      "baseline_naive_latency_ms": 49.64643804123625
+    },
+    {
+      "id": "informed_003",
+      "question": "What is the difference between a mutating webhook and a validating webhook?",
+      "target_doc_id": "reference_access-authn-authz_extensible-admission-controllers",
+      "plm_rank": null,
+      "plm_latency_ms": 290.6641580048017,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 93.85210700565949,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 52.90826503187418
+    },
+    {
+      "id": "informed_004",
+      "question": "What does the NamespaceAutoProvision admission controller do?",
+      "target_doc_id": "reference_access-authn-authz_admission-controllers",
+      "plm_rank": 1,
+      "plm_latency_ms": 296.8523820163682,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 99.15343299508095,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 54.792785027530044
+    },
+    {
+      "id": "informed_005",
+      "question": "What types of volumes can be expanded using PersistentVolumeClaims?",
+      "target_doc_id": "concepts_storage_persistent-volumes",
+      "plm_rank": 5,
+      "plm_latency_ms": 301.4419369865209,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 106.28145403461531,
+      "baseline_naive_rank": 3,
+      "baseline_naive_latency_ms": 56.62119097542018
+    },
+    {
+      "id": "informed_006",
+      "question": "What are the two default user accounts for Windows containers?",
+      "target_doc_id": "concepts_security_windows-security",
+      "plm_rank": 1,
+      "plm_latency_ms": 399.4940329575911,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 125.76404097490013,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 66.029516980052
+    },
+    {
+      "id": "informed_007",
+      "question": "What is the purpose of using an Indexed Job in Kubernetes?",
+      "target_doc_id": "tasks_job_indexed-parallel-processing-static",
+      "plm_rank": 1,
+      "plm_latency_ms": 445.13932697009295,
+      "baseline_enriched_rank": 4,
+      "baseline_enriched_latency_ms": 123.68560000322759,
+      "baseline_naive_rank": 3,
+      "baseline_naive_latency_ms": 61.77104701055214
+    },
+    {
+      "id": "informed_008",
+      "question": "What is the etcd API and what risks does it pose to the cluster's security?",
+      "target_doc_id": "concepts_security_api-server-bypass-risks",
+      "plm_rank": null,
+      "plm_latency_ms": 270.97421197686344,
+      "baseline_enriched_rank": 2,
+      "baseline_enriched_latency_ms": 129.1450409917161,
+      "baseline_naive_rank": 3,
+      "baseline_naive_latency_ms": 70.39480499224737
+    },
+    {
+      "id": "informed_009",
+      "question": "What is the role of a signer in Kubernetes?",
+      "target_doc_id": "tasks_tls_managing-tls-in-a-cluster",
+      "plm_rank": 1,
+      "plm_latency_ms": 255.26415195781738,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 134.72845195792615,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 56.921729003079236
+    },
+    {
+      "id": "informed_010",
+      "question": "What tools are required to verify Kubernetes artifacts?",
+      "target_doc_id": "tasks_administer-cluster_verify-signed-artifacts",
+      "plm_rank": 2,
+      "plm_latency_ms": 255.844660976436,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 120.78494299203157,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 42.29536198545247
+    },
+    {
+      "id": "informed_011",
+      "question": "What protocol does Kubernetes components use to emit traces?",
+      "target_doc_id": "concepts_cluster-administration_system-traces",
+      "plm_rank": 3,
+      "plm_latency_ms": 268.17576598841697,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 84.7696969867684,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 113.13283903291449
+    },
+    {
+      "id": "informed_012",
+      "question": "What is the format in which Kubernetes components emit metrics?",
+      "target_doc_id": "concepts_cluster-administration_system-metrics",
+      "plm_rank": 2,
+      "plm_latency_ms": 411.6613520309329,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 159.31684395764023,
+      "baseline_naive_rank": 2,
+      "baseline_naive_latency_ms": 58.21271799504757
+    },
+    {
+      "id": "informed_013",
+      "question": "What are the different types of isolation in Kubernetes?",
+      "target_doc_id": "concepts_security_multi-tenancy",
+      "plm_rank": 1,
+      "plm_latency_ms": 284.13977596210316,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 150.03192803123966,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 76.0565500240773
+    },
+    {
+      "id": "informed_014",
+      "question": "What is Attribute-based access control (ABAC) and how does it work?",
+      "target_doc_id": "reference_access-authn-authz_abac",
+      "plm_rank": 1,
+      "plm_latency_ms": 315.39273797534406,
+      "baseline_enriched_rank": 2,
+      "baseline_enriched_latency_ms": 99.6874250122346,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 54.18443598318845
+    },
+    {
+      "id": "informed_015",
+      "question": "What is the role of the webhook token authenticator in the authentication process?",
+      "target_doc_id": "reference_access-authn-authz_authentication",
+      "plm_rank": null,
+      "plm_latency_ms": 360.12439301703125,
+      "baseline_enriched_rank": 4,
+      "baseline_enriched_latency_ms": 140.65568195655942,
+      "baseline_naive_rank": 4,
+      "baseline_naive_latency_ms": 100.86654400220141
+    },
+    {
+      "id": "informed_016",
+      "question": "What is the purpose of the authentication flow in the aggregation layer?",
+      "target_doc_id": "tasks_extend-kubernetes_configure-aggregation-layer",
+      "plm_rank": 1,
+      "plm_latency_ms": 300.3074249718338,
+      "baseline_enriched_rank": 2,
+      "baseline_enriched_latency_ms": 145.05433099111542,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 56.8134380155243
+    },
+    {
+      "id": "informed_017",
+      "question": "What does sourcing the completion script in your shell enable?",
+      "target_doc_id": "tasks_tools_included_optional-kubectl-configs-fish",
+      "plm_rank": null,
+      "plm_latency_ms": 392.6700950250961,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 152.08035096293315,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 81.6443600342609
+    },
+    {
+      "id": "informed_018",
+      "question": "What is kube proxy?",
+      "target_doc_id": "concepts_cluster-administration_proxies",
+      "plm_rank": null,
+      "plm_latency_ms": 267.40209502168,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 112.03212395776063,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 49.47426595026627
+    },
+    {
+      "id": "informed_019",
+      "question": "How can you use `kubectl` to create an object from a configuration file?",
+      "target_doc_id": "tasks_manage-kubernetes-objects_imperative-config",
+      "plm_rank": 1,
+      "plm_latency_ms": 272.2085230052471,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 84.2455709935166,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 72.12741300463676
+    },
+    {
+      "id": "informed_020",
+      "question": "How can you suspend and resume a Job in Kubernetes?",
+      "target_doc_id": "concepts_workloads_controllers_job",
+      "plm_rank": 1,
+      "plm_latency_ms": 265.3085159836337,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 102.890211972408,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 67.69897701451555
+    },
+    {
+      "id": "informed_021",
+      "question": "What is the purpose of the `kubectl logs pods/job-wq-2-7r7b2` command?",
+      "target_doc_id": "tasks_job_fine-parallel-processing-work-queue",
+      "plm_rank": null,
+      "plm_latency_ms": 272.8915100451559,
+      "baseline_enriched_rank": 2,
+      "baseline_enriched_latency_ms": 119.04562095878646,
+      "baseline_naive_rank": 2,
+      "baseline_naive_latency_ms": 71.42239302629605
+    },
+    {
+      "id": "informed_022",
+      "question": "What are the four supported Topology Manager policies?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 450.2905879635364,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 122.76978802401572,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 66.12396094715223
+    },
+    {
+      "id": "informed_023",
+      "question": "Why do we need admission controllers?",
+      "target_doc_id": "reference_access-authn-authz_admission-controllers",
+      "plm_rank": 1,
+      "plm_latency_ms": 291.3155530113727,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 116.85376899549738,
+      "baseline_naive_rank": 3,
+      "baseline_naive_latency_ms": 47.20952798379585
+    },
+    {
+      "id": "informed_024",
+      "question": "What is a ServiceAccount in Kubernetes?",
+      "target_doc_id": "tasks_configure-pod-container_configure-service-account",
+      "plm_rank": 1,
+      "plm_latency_ms": 249.3550920044072,
+      "baseline_enriched_rank": 3,
+      "baseline_enriched_latency_ms": 128.6542370216921,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 95.68226401461288
+    }
+  ],
+  "plm": {
+    "total_queries": 25,
+    "mrr": 0.6213333333333333,
+    "hit_at_1": 56.00000000000001,
+    "hit_at_3": 68.0,
+    "hit_at_5": 72.0,
+    "avg_latency_ms": 406.7099805967882,
+    "found_count": 18,
+    "not_found_count": 7
+  },
+  "baseline_enriched": {
+    "total_queries": 25,
+    "mrr": 0.6033333333333334,
+    "hit_at_1": 48.0,
+    "hit_at_3": 68.0,
+    "hit_at_5": 80.0,
+    "avg_latency_ms": 123.08139115339145,
+    "found_count": 20,
+    "not_found_count": 5
+  },
+  "baseline_naive": {
+    "total_queries": 25,
+    "mrr": 0.6333333333333333,
+    "hit_at_1": 52.0,
+    "hit_at_3": 76.0,
+    "hit_at_5": 84.0,
+    "avg_latency_ms": 66.53357280418277,
+    "found_count": 21,
+    "not_found_count": 4
+  },
+  "statistics": {
+    "mrr_ci_95": {
+      "plm_vs_naive": [
+        -0.15001666666666666,
+        0.12011666666666655
+      ],
+      "plm_vs_enriched": [
+        -0.12866666666666668,
+        0.16666666666666669
+      ],
+      "enriched_vs_naive": [
+        -0.16666666666666663,
+        0.09333333333333334
+      ]
+    },
+    "attribution": {
+      "total_improvement": -0.01200000000000001,
+      "enrichment_contribution": -0.029999999999999916,
+      "rrf_bm25_expansion_contribution": 0.017999999999999905
+    }
+  }
+}

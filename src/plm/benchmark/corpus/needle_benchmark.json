@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "timestamp": "2026-02-19T18:41:33.331052",
+    "total_queries": 20,
+    "k": 5
+  },
+  "per_question": [
+    {
+      "id": "q_001",
+      "question": "My pod keeps getting rejected with a topology affinity error, what's going on?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 3,
+      "plm_latency_ms": 2720.5394240445457,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 127.01106001622975,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 80.69769100984558
+    },
+    {
+      "id": "q_002",
+      "question": "How do I force all my containers to run on the same NUMA node in k8s?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 334.24030902097,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 58.00696596270427,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 85.83820896456018
+    },
+    {
+      "id": "q_003",
+      "question": "What's the difference between restricted and best-effort topology policies?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 256.9476509816013,
+      "baseline_enriched_rank": 3,
+      "baseline_enriched_latency_ms": 142.50562898814678,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 93.00672495737672
+    },
+    {
+      "id": "q_004",
+      "question": "Getting error about too many NUMA nodes on my server, what's the limit?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 369.54072798835114,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 116.72514502424747,
+      "baseline_naive_rank": 2,
+      "baseline_naive_latency_ms": 90.23416903801262
+    },
+    {
+      "id": "q_005",
+      "question": "How to enable topology manager on Windows nodes?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 263.55686300667,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 154.69377499539405,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 88.36019702721387
+    },
+    {
+      "id": "q_006",
+      "question": "Which k8s version made topology manager GA/stable?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 412.93498600134626,
+      "baseline_enriched_rank": 2,
+      "baseline_enriched_latency_ms": 85.69357998203486,
+      "baseline_naive_rank": 4,
+      "baseline_naive_latency_ms": 64.33939299313352
+    },
+    {
+      "id": "q_007",
+      "question": "What flag do I pass to kubelet for setting topology policy?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 260.3970550117083,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 110.40382698411122,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 134.9411639967002
+    },
+    {
+      "id": "q_008",
+      "question": "My latency-sensitive app is slow, containers seem to be on different NUMA nodes. How to fix?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 262.15152302756906,
+      "baseline_enriched_rank": 4,
+      "baseline_enriched_latency_ms": 129.7635170049034,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 68.94485303200781
+    },
+    {
+      "id": "q_009",
+      "question": "Why would I use pod scope instead of container scope for topology?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 259.9139029625803,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 106.98747297283262,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 123.59750899486244
+    },
+    {
+      "id": "q_010",
+      "question": "What are hint providers in topology manager?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 256.7441880237311,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 133.0375469988212,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 86.34903002530336
+    },
+    {
+      "id": "q_011",
+      "question": "How do I configure kubelet to prefer NUMA nodes that are closer together?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 397.86856999853626,
+      "baseline_enriched_rank": 2,
+      "baseline_enriched_latency_ms": 125.25703001301736,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 153.68427196517587
+    },
+    {
+      "id": "q_012",
+      "question": "When did prefer-closest-numa-nodes become generally available?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 311.26527703600004,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 148.659281025175,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 76.0282389819622
+    },
+    {
+      "id": "q_013",
+      "question": "What's the default topology manager policy if I don't set anything?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 332.67401199555025,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 157.12963201804087,
+      "baseline_naive_rank": 2,
+      "baseline_naive_latency_ms": 113.8455190230161
+    },
+    {
+      "id": "q_014",
+      "question": "Pod was scheduled but then failed on the node, says something about topology. Is that a bug?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": null,
+      "plm_latency_ms": 325.8925059926696,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 189.3531770328991,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 101.11309500643983
+    },
+    {
+      "id": "q_015",
+      "question": "What QoS class does my pod need to be for topology hints to work?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 318.9869999769144,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 130.8142530033365,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 104.27620902191848
+    },
+    {
+      "id": "q_016",
+      "question": "How to set topology scope to pod level in kubelet?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 396.5893309796229,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 118.96486399928108,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 66.62825599778444
+    },
+    {
+      "id": "q_017",
+      "question": "What feature gate do I need for topology manager policy options?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 258.0856030108407,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 150.784288009163,
+      "baseline_naive_rank": 1,
+      "baseline_naive_latency_ms": 43.77977701369673
+    },
+    {
+      "id": "q_018",
+      "question": "My multi-socket server has GPUs and CPUs, how does k8s coordinate their placement?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": null,
+      "plm_latency_ms": 278.05715100839734,
+      "baseline_enriched_rank": null,
+      "baseline_enriched_latency_ms": 102.16722899349406,
+      "baseline_naive_rank": null,
+      "baseline_naive_latency_ms": 74.9947740114294
+    },
+    {
+      "id": "q_019",
+      "question": "With single-numa-node policy, when exactly does a pod get rejected?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 2,
+      "plm_latency_ms": 302.675767976325,
+      "baseline_enriched_rank": 3,
+      "baseline_enriched_latency_ms": 94.65986199211329,
+      "baseline_naive_rank": 2,
+      "baseline_naive_latency_ms": 61.35677394922823
+    },
+    {
+      "id": "q_020",
+      "question": "What happens if topology manager can't find preferred NUMA affinity with best-effort policy?",
+      "target_doc_id": "tasks_administer-cluster_topology-manager",
+      "plm_rank": 1,
+      "plm_latency_ms": 279.7974210116081,
+      "baseline_enriched_rank": 1,
+      "baseline_enriched_latency_ms": 95.17040196806192,
+      "baseline_naive_rank": 2,
+      "baseline_naive_latency_ms": 62.447185977362096
+    }
+  ],
+  "plm": {
+    "total_queries": 20,
+    "mrr": 0.8416666666666666,
+    "hit_at_1": 80.0,
+    "hit_at_3": 90.0,
+    "hit_at_5": 90.0,
+    "avg_latency_ms": 429.9429634527769,
+    "found_count": 18,
+    "not_found_count": 2
+  },
+  "baseline_enriched": {
+    "total_queries": 20,
+    "mrr": 0.6958333333333333,
+    "hit_at_1": 60.0,
+    "hit_at_3": 80.0,
+    "hit_at_5": 85.0,
+    "avg_latency_ms": 123.88942684920039,
+    "found_count": 17,
+    "not_found_count": 3
+  },
+  "baseline_naive": {
+    "total_queries": 20,
+    "mrr": 0.7125,
+    "hit_at_1": 60.0,
+    "hit_at_3": 80.0,
+    "hit_at_5": 85.0,
+    "avg_latency_ms": 88.72315204935148,
+    "found_count": 17,
+    "not_found_count": 3
+  },
+  "statistics": {
+    "mrr_ci_95": {
+      "plm_vs_naive": [
+        0.03333333333333333,
+        0.24166666666666664
+      ],
+      "plm_vs_enriched": [
+        0.05,
+        0.2625
+      ],
+      "enriched_vs_naive": [
+        -0.16260416666666658,
+        0.1125
+      ]
+    },
+    "attribution": {
+      "total_improvement": 0.12916666666666654,
+      "enrichment_contribution": -0.01666666666666672,
+      "rrf_bm25_expansion_contribution": 0.14583333333333326
+    }
+  }
+}
