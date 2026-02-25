@@ -1,442 +1,268 @@
-# Personal Knowledge Assistant
+# PLM - Personal Library Manager
 
-A local-first, NotebookLM-like system for querying a personal document corpus with grounded, cited answers.
+A local-first RAG system for querying personal document corpora with grounded, cited answers. Think NotebookLM, but self-hosted.
 
-## Vision
+## Features
 
-Build a trustworthy personal knowledge assistant that:
-- Handles 1000+ documents with complex queries
-- Provides synthesized answers with proper citations
-- **No hallucinations** - critical requirement
-- Runs locally on consumer hardware (32GB RAM, 8GB VRAM)
+- **Hybrid Search**: BM25 lexical + semantic embeddings with RRF fusion
+- **Entity Extraction**: Automatic technical term extraction (heuristic + LLM pipelines)
+- **Citation-Grounded**: Every answer backed by source references
+- **Local-First**: Runs on consumer hardware (32GB RAM recommended)
+- **Multiple Interfaces**: CLI, REST API, MCP server
 
-## Project Status
+## Prerequisites
 
-**Current Phase**: Research & Proof of Concept
+| Requirement | Version | Install |
+|-------------|---------|---------|
+| **Nix** | 2.18+ | [nix-installer](https://github.com/DeterminateSystems/nix-installer) (recommended) or [nixos.org](https://nixos.org/download/) |
+| **direnv** | 2.32+ | [direnv.net](https://direnv.net/docs/installation.html) |
+| **Docker** | 24+ | [docker.com](https://docs.docker.com/engine/install/) (only for containerized deployment) |
 
-| Phase | Status | Notes |
-|-------|--------|-------|
-| Requirements | Complete | See [REQUIREMENTS.md](./docs/REQUIREMENTS.md) |
-| Architecture Design | In Progress | See [DESIGN_PLAN.md](./docs/DESIGN_PLAN.md) |
-| RAG Pipeline Research | In Progress | See [RAG_PIPELINE_ARCHITECTURE.md](./docs/architecture/RAG_PIPELINE_ARCHITECTURE.md) |
-| Term Extraction Research | **Complete** | POC-1 series done. Target 95/95/5 not achieved; max ~80/90/20. See [POC-1 Results](#poc-1-llm-term-extraction) |
+Python 3.12 is provided by Nix - do not install manually.
 
----
-
-## Key Research Findings
-
-### POC-1: LLM Term Extraction (Complete)
-
-**Status**: Complete (POC-1, POC-1b, POC-1c) | **Original Target**: 95% precision / 95% recall / 5% hallucination
-
-The POC-1 series investigated LLM-based technical term extraction, testing vocabulary-assisted and vocabulary-free approaches.
-
-#### Final Results
-
-| Approach | Precision | Recall | Hallucination | F1 | Vocabulary |
-|----------|-----------|--------|---------------|-----|------------|
-| V6 (best with vocab) | 90.7% | 95.8% | 9.3% | 0.932 | 176 terms |
-| V6 @ 50 docs | 84.2% | 92.8% | 15.8% | 0.883 | 176 terms |
-| Retrieval few-shot | 81.6% | 80.6% | 18.4% | 0.811 | **0 terms** |
-| SLIMER zero-shot | 84.9% | 66.0% | 15.1% | 0.743 | **0 terms** |
-
-#### Key Findings
-
-1. **95/95/5 NOT achievable** — benchmark ceiling is ~P=94%, R=96%, H=6% due to ground truth annotation gaps
-2. **Vocabulary-free maximum: ~80/90/20** — retrieval few-shot eliminates maintenance with ~10% F1 drop
-3. **GLiNER rejected** — produces garbage results for software entities, no usable signal
-4. **Heuristic patterns work** — CamelCase, backticks, ALL_CAPS, dot.paths viable for fast extraction
-
-#### Recommendation
-
-Use **retrieval few-shot** for production (zero vocabulary maintenance). For RAG, recall matters more than matching benchmark conventions. The precision/hallucination tradeoff is acceptable.
-
-#### Production Package
-
-The `src/plm/extraction/` package implements:
-- **Fast system**: Heuristic-based extraction (regex patterns, confidence scoring)
-- **Slow system**: V6 LLM pipeline (5 stages: Extract → Ground → Filter → Validate → Postprocess)
-
-**Full Details**: 
-- [POC-1c Results](./poc/poc-1c-scalable-ner/RESULTS.md)
-- [V6 Analysis](./poc/poc-1c-scalable-ner/docs/V6_RESULTS.md)
-- [POC-1b Results](./poc/poc-1b-llm-extraction-improvements/RESEARCH_RESULTS.md)
-
----
-
-## Project Structure
-
-```
-personal-library-manager/
-├── README.md                 # This file
-├── flake.nix                 # Nix configuration
-├── pyproject.toml            # Python project config
-│
-├── src/plm/                  # Production package
-│   ├── extraction/
-│   │   ├── fast/             # GLiNER + YAKE extraction (cli.py, watcher.py)
-│   │   └── slow/             # V6 LLM pipeline (cli.py, hybrid_ner/)
-│   ├── search/
-│   │   ├── retriever.py      # HybridRetriever (BM25 + semantic + RRF)
-│   │   ├── components/       # BM25, semantic, embedder, enricher, expander
-│   │   ├── storage/          # SQLite storage backend
-│   │   └── service/          # FastAPI app, CLI, watcher, queue consumer
-│   └── shared/
-│       ├── llm/              # LLM providers (Anthropic, Gemini)
-│       └── queue/            # Redis Streams integration
-│
-├── docker/
-│   ├── docker-compose.full.yml   # Full pipeline with Redis
-│   └── docker-compose.search.yml # Search service standalone
-│
-├── tests/                    # Test suite (unit, integration, search, queue)
-├── data/vocabularies/        # auto_vocab.json, train_documents.json
-│
-├── fast-extraction/          # Runtime I/O for fast extraction
-│   ├── input/                # Place documents here
-│   └── output/               # JSON results appear here
-│
-├── slow-extraction/          # Runtime I/O for slow extraction
-│   ├── input/                # Place documents here
-│   ├── output/               # JSON results appear here
-│   └── logs/                 # Low-confidence logs
-│
-├── poc/                      # Proof of Concept experiments
-│   ├── poc-1c-scalable-ner/  # Scalable NER (Complete) - V6 source
-│   └── ...                   # Other POCs
-│
-└── docs/                     # Documentation
-    ├── REQUIREMENTS.md       # System requirements
-    ├── DESIGN_PLAN.md        # Design phase tracker
-    └── architecture/         # Architecture documents
-```
-
-## Quick Links
-
-### Research Results
-
-| POC | Status | Key Finding | Location |
-|-----|--------|-------------|----------|
-| POC-1 (1, 1b, 1c) | **Complete** | Target 95/95/5 not achieved; max ~80/90/20 vocab-free | [poc/poc-1c-scalable-ner/](./poc/poc-1c-scalable-ner/) |
-| Retrieval | In Progress | Strategy comparison | [poc/retrieval_benchmark/](./poc/retrieval_benchmark/) |
-
-### Design Documents
-
-- [Requirements](./docs/REQUIREMENTS.md) - System requirements and success criteria
-- [Design Plan](./docs/DESIGN_PLAN.md) - Development phase tracker
-- [RAG Architecture](./docs/architecture/RAG_PIPELINE_ARCHITECTURE.md) - Detailed pipeline design
-- [Research Notes](./docs/RESEARCH.md) - Research findings and decisions
-
----
-
-## How to Run
-
-### Prerequisites
-
-- Nix (with flakes enabled)
-- Python 3.11+
-- Anthropic API access (for LLM features)
-- Docker (optional, for containerized deployment)
-
-### Development Setup
+### Enable Nix Flakes
 
 ```bash
-# Enter development shell (auto-creates .venv, runs uv sync)
-cd personal-library-manager
-direnv allow  # or: nix develop
-
-# Verify installation
-pytest tests/
+# Add to ~/.config/nix/nix.conf (create if doesn't exist)
+experimental-features = nix-command flakes
 ```
 
-### Running Services
+If using the Determinate Systems installer, flakes are enabled by default.
 
-The system has three services that can run **standalone** (file-based) or in **queue mode** (Redis Streams):
+### Anthropic API Key
 
-| Service | Purpose | Standalone | Queue Mode |
-|---------|---------|------------|------------|
-| Fast Extraction | GLiNER + YAKE entity extraction | Writes JSON files | Publishes to Redis |
-| Slow Extraction | LLM V6 pipeline extraction | Writes JSON files | Publishes to Redis |
-| Search Service | Hybrid retrieval (BM25 + semantic) | Watches directory | Consumes from Redis |
+Required for LLM features (slow extraction, query rewriting):
 
----
+```bash
+export ANTHROPIC_API_KEY="sk-ant-..."
+```
 
-### Option 1: Direct Python (Development)
+## Installation
 
-#### Fast Extraction (Batch)
+```bash
+# Clone repository
+git clone <repo-url>
+cd personal-library-manager
+
+# Enter development environment (creates .venv, installs dependencies)
+direnv allow
+
+# Or manually:
+nix develop
+uv sync
+```
+
+The Nix shell provides Python 3.12, uv, and all system dependencies. First run downloads ~2GB of dependencies.
+
+## Quick Start
+
+```bash
+# 1. Extract entities from documents
+python -m plm.extraction.fast.cli \
+  --input ./my-docs \
+  --output ./extracted \
+  --workers 4
+
+# 2. Start search service
+INDEX_PATH=./index WATCH_DIR=./extracted \
+uv run uvicorn plm.search.service.app:app --port 8000
+
+# 3. Query
+plm-query "How does X work?" --k 5
+```
+
+## Services
+
+| Service | Purpose | Entry Point |
+|---------|---------|-------------|
+| **Fast Extraction** | Heuristic entity extraction (regex, YAKE) | `python -m plm.extraction.fast.cli` |
+| **Slow Extraction** | LLM-powered extraction (Claude) | `python -m plm.extraction.slow.cli` |
+| **Search Service** | Hybrid retrieval API | `uvicorn plm.search.service.app:app` |
+| **MCP Server** | Model Context Protocol interface | `plm-mcp` |
+
+## CLI Reference
+
+### Fast Extraction
 
 ```bash
 python -m plm.extraction.fast.cli \
   --input ./documents \
-  --output ./extraction-output \
+  --output ./extracted \
   --workers 8 \
   --pattern "**/*.md,**/*.txt"
 ```
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--input` | (required) | Input directory containing documents |
-| `--output` | (required) | Output directory for JSON results |
-| `--workers` | `1` | Parallel threads (recommended: 8) |
-| `--pattern` | `**/*.md,**/*.txt` | Comma-separated glob patterns |
-| `--log-file` | none | INFO+ log file |
-| `--trace-file` | none | TRACE+ log file (per-chunk detail) |
-| `--low-confidence-dir` | none | Copy flagged documents here |
-| `--confidence-threshold` | `0.7` | Document confidence threshold |
-| `--extraction-threshold` | `0.3` | GLiNER entity threshold |
+| `--input` | required | Input directory |
+| `--output` | required | Output directory for JSON |
+| `--workers` | 1 | Parallel threads |
+| `--pattern` | `**/*.md,**/*.txt` | File glob patterns |
 
-#### Fast Extraction (Watch Mode)
+### Search CLI
 
 ```bash
-python -m plm.extraction.fast.watcher \
-  --input ./watch-input \
-  --output ./extraction-output \
-  --poll-interval 5 \
-  --process-existing
+plm-query "your question" --url http://localhost:8000 --k 10
 ```
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `--input` | (required) | Directory to watch |
-| `--output` | (required) | Output directory for JSON files |
-| `--pattern` | `*.md,*.txt` | Glob patterns (non-recursive by default) |
-| `--poll-interval` | `5.0` | Seconds between directory scans |
-| `--process-existing` | false | Process existing files on startup |
+| `--url` | `http://localhost:8000` | Search service URL |
+| `--k` | 5 | Number of results |
+| `--rewrite` | false | Use LLM query rewriting |
 
-#### Slow Extraction
+## Docker Deployment
 
-Slow extraction is environment-variable configured (designed for Docker):
+Docker images are built using Nix (not Dockerfile). This produces reproducible, minimal images.
+
+### How Nix Docker Builds Work
 
 ```bash
-INPUT_DIR=./documents \
-OUTPUT_DIR=./slow-output \
-VOCAB_PATH=./data/vocabularies/auto_vocab.json \
-TRAIN_DOCS_PATH=./data/vocabularies/train_documents.json \
-PROCESS_ONCE=true \
-python -m plm.extraction.slow.cli
+nix build .#<target>    # Creates ./result symlink to image tarball
+docker load < result    # Imports tarball into Docker daemon
 ```
 
-#### Search Service
+**Important**: Each `nix build` overwrites the `result` symlink. You must `docker load` before building the next image.
+
+### Build Single Image
 
 ```bash
-INDEX_PATH=./search-index \
-WATCH_DIR=./extraction-output \
-uv run uvicorn plm.search.service.app:app --port 8000
+# Search service (most common)
+nix build .#search-service-docker && docker load < result
+# Loaded: search-service:latest
+
+# Fast extraction
+nix build .#fast-extraction-docker && docker load < result
+# Loaded: fast-extraction:latest
+
+# Slow extraction (LLM pipeline)
+nix build .#slow-extraction-docker && docker load < result
+# Loaded: slow-extraction:latest
 ```
 
-Query the service:
+### Build All Images
 
 ```bash
-# CLI tool
-plm-query "What is Kubernetes?" --url http://localhost:8000 --k 5
+for target in fast-extraction-docker slow-extraction-docker search-service-docker; do
+  echo "Building $target..."
+  nix build .#$target && docker load < result
+done
 
-# Or direct HTTP
+# Verify
+docker images | grep -E "(fast|slow|search)"
+```
+
+### Available Targets
+
+| Nix Target | Docker Image | Description |
+|------------|--------------|-------------|
+| `.#fast-extraction-docker` | `fast-extraction:latest` | Heuristic extraction (regex, YAKE) |
+| `.#slow-extraction-docker` | `slow-extraction:latest` | LLM extraction (Claude) |
+| `.#search-service-docker` | `search-service:latest` | Hybrid retrieval API |
+
+### Run with Docker Compose
+
+```bash
+# Search service standalone
+docker compose -f docker/docker-compose.search.yml up
+
+# Full pipeline with Redis queue
+docker compose -f docker/docker-compose.full.yml --profile extraction up
+```
+
+## API Reference
+
+### POST /query
+
+```bash
 curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
   -d '{"query": "What is Kubernetes?", "k": 5}'
 ```
 
----
-
-### Option 2: Docker Compose (Production)
-
-#### Build Docker Images
-
-```bash
-# Build all images (from repo root)
-nix build .#fast-extraction-docker && docker load < result
-nix build .#slow-extraction-docker && docker load < result
-nix build .#search-service-docker && docker load < result
-```
-
-#### Standalone Mode (File-Based)
-
-Each service has its own `docker-compose.yml` for standalone operation:
-
-```bash
-# Fast extraction (batch processing)
-mkdir -p fast-extraction/input fast-extraction/output
-cp my-documents/*.md fast-extraction/input/
-docker compose -f src/plm/extraction/fast/docker-compose.yml up
-
-# Slow extraction
-mkdir -p slow-extraction/input slow-extraction/output
-cp my-documents/*.md slow-extraction/input/
-docker compose -f src/plm/extraction/slow/docker-compose.yml up
-
-# Search service (with directory watcher)
-docker compose -f docker/docker-compose.search.yml up
-```
-
-#### Queue Mode (Full Pipeline)
-
-Use `docker/docker-compose.full.yml` for the complete pipeline with Redis:
-
-```bash
-# Start Redis + Search service (queue consumer mode)
-docker compose -f docker/docker-compose.full.yml up -d redis search-service
-
-# Start with extraction services
-docker compose -f docker/docker-compose.full.yml --profile extraction up -d
-
-# Process documents through fast extraction
-cp document.md fast-extraction/input/
-
-# Watch the pipeline flow
-docker compose -f docker/docker-compose.full.yml logs -f
-```
-
----
-
-### Environment Variables Reference
-
-#### Queue Configuration (All Services)
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `QUEUE_ENABLED` | `false` | Enable Redis Streams integration |
-| `QUEUE_URL` | `redis://localhost:6379` | Redis connection URL |
-| `QUEUE_STREAM` | `plm:extraction` | Stream name for messages |
-
-#### Fast Extraction
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `QUEUE_ENABLED` | `false` | Publish to queue instead of files |
-
-#### Slow Extraction
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `INPUT_DIR` | `/data/input` | Input directory to watch |
-| `OUTPUT_DIR` | `/data/output` | Output directory for JSON |
-| `LOG_DIR` | `/data/logs` | Log directory |
-| `VOCAB_PATH` | `/data/vocabularies/auto_vocab.json` | Vocabulary file path |
-| `TRAIN_DOCS_PATH` | `/data/vocabularies/train_documents.json` | Training docs for FAISS |
-| `POLL_INTERVAL` | `30` | Watch interval in seconds |
-| `PROCESS_ONCE` | `false` | Process existing and exit |
-| `DRY_RUN` | `false` | Skip writing output |
-
-#### Search Service
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `INDEX_PATH` | `/data/index` | SQLite + BM25 index directory |
-| `WATCH_DIR` | none | Directory to watch (standalone mode) |
-| `PROCESS_EXISTING` | `false` | Process existing files on start |
-
-#### Authentication
-
-| Variable | Description |
-|----------|-------------|
-| `ANTHROPIC_API_KEY` | Direct API key for Claude |
-| `OPENCODE_AUTH_PATH` | Path to OpenCode OAuth `auth.json` |
-
-#### LLM Provider
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PLM_LLM_MODEL` | `claude-haiku` | LLM model for query rewriting. See below for options. |
-| `OLLAMA_HOST` | `http://localhost:11434` | Ollama server URL (for local models) |
-
-**Supported models:**
-
-| Provider | Model Examples | Notes |
-|----------|---------------|-------|
-| **Anthropic** | `claude-haiku`, `sonnet`, `opus` | Default. Requires API key or OpenCode OAuth. |
-| **Ollama** | `llama3.2`, `mistral`, `qwen2.5`, `phi4`, `deepseek` | Local. Auto-downloads models. |
-| **Gemini** | `gemini-2.5-flash`, `gemini-2.5-pro` | Requires OpenCode OAuth with Google. |
-
-**Using local models (Ollama):**
-
-```bash
-# Start Ollama server
-ollama serve
-
-# Use local model for query rewriting (auto-downloads if needed)
-export PLM_LLM_MODEL=llama3.2
-
-# Or use specific model tag
-export PLM_LLM_MODEL=mistral:7b
-```
-
----
-
-### API Endpoints (Search Service)
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/query` | POST | Execute search query |
-| `/health` | GET | Service health (`ready`/`starting`) |
-| `/status` | GET | Detailed index statistics |
-
-**POST /query** request body:
+Response:
 ```json
 {
-  "query": "What is Kubernetes?",
-  "k": 5,
-  "use_rewrite": false
+  "results": [
+    {
+      "content": "...",
+      "doc_id": "kubernetes-intro.md",
+      "score": 0.85,
+      "heading": "Overview"
+    }
+  ]
 }
 ```
 
----
+### GET /health
 
-### Example Workflows
+Returns `{"status": "ready"}` when service is operational.
 
-#### Workflow 1: Quick Local Test
+### GET /status
 
-```bash
-# 1. Extract entities from documents
-python -m plm.extraction.fast.cli \
-  --input ./my-docs --output ./extracted --workers 4
+Returns index statistics (document count, chunk count, etc.).
 
-# 2. Start search service watching extracted output
-INDEX_PATH=./index WATCH_DIR=./extracted \
-uv run uvicorn plm.search.service.app:app --port 8000
+## Configuration
 
-# 3. Query
-plm-query "deployment strategies" --k 10
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `INDEX_PATH` | `/data/index` | Search index directory |
+| `WATCH_DIR` | none | Directory to watch for new extractions |
+| `ANTHROPIC_API_KEY` | none | Claude API key |
+| `PLM_LLM_MODEL` | `claude-haiku` | LLM for query rewriting |
+| `QUEUE_ENABLED` | `false` | Enable Redis Streams mode |
+| `QUEUE_URL` | `redis://localhost:6379` | Redis connection |
+
+### Supported LLM Providers
+
+| Provider | Models | Notes |
+|----------|--------|-------|
+| Anthropic | `claude-haiku`, `sonnet`, `opus` | Default, requires API key |
+| Ollama | `llama3.2`, `mistral`, `qwen2.5` | Local, auto-downloads |
+| Gemini | `gemini-2.5-flash`, `gemini-2.5-pro` | Requires OAuth |
+
+## Project Structure
+
+```
+personal-library-manager/
+├── src/plm/
+│   ├── extraction/
+│   │   ├── fast/          # Heuristic extraction
+│   │   └── slow/          # LLM extraction pipeline
+│   ├── search/
+│   │   ├── retriever.py   # HybridRetriever (BM25 + semantic)
+│   │   ├── components/    # BM25, semantic, RRF fusion
+│   │   └── service/       # FastAPI, CLI, MCP
+│   ├── shared/
+│   │   └── llm/           # LLM provider abstraction
+│   └── benchmark/         # Retrieval benchmark suite
+├── docker/                # Docker Compose files
+├── tests/                 # pytest test suite
+├── docs/                  # Architecture & research docs
+└── poc/archive/           # Archived proof-of-concept experiments
 ```
 
-#### Workflow 2: Continuous Pipeline (Docker)
+## Development
 
 ```bash
-# 1. Start full pipeline
-docker compose -f docker/docker-compose.full.yml --profile extraction up -d
+# Run tests
+pytest tests/
 
-# 2. Drop documents into input directory
-cp new-document.md fast-extraction/input/
+# Type checking
+basedpyright
 
-# 3. Document flows: fast-extraction → Redis queue → search-service → indexed
-
-# 4. Query via API
-curl -X POST http://localhost:8000/query \
-  -H "Content-Type: application/json" \
-  -d '{"query": "new document topic", "k": 5}'
+# Run specific test
+pytest tests/search/test_retriever.py -v
 ```
 
----
+## Documentation
 
-## Running POCs
+- [Architecture](./docs/architecture/) - System design documents
+- [Research](./docs/RESEARCH.md) - RAG research findings
+- [Requirements](./docs/REQUIREMENTS.md) - Project requirements
 
-Each POC has its own README with setup and execution instructions. See [poc/README.md](./poc/README.md) for guidelines.
+## License
 
-```bash
-# Navigate to specific POC
-cd poc/poc-1c-scalable-ner
-uv sync
-source .venv/bin/activate
-```
-
----
-
-## Core Principles
-
-1. **No Hallucinations** - Critical requirement, especially no fake citations
-2. **Trustworthy Answers** - Must be reliable enough to use without verifying everything
-3. **Local-First** - Designed for consumer hardware
-4. **Grounded Responses** - Every claim backed by source citations
-
----
-
-*Last Updated: 2026-02-18*
+MIT

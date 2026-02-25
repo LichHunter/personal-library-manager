@@ -5,9 +5,9 @@ build-backend = "hatchling.build"
 [project]
 name = "plm"
 version = "0.1.0"
-description = "Personal Library Manager - Extract and organize book metadata"
+description = "Personal Library Manager - Local-first RAG system for document Q&A with citations"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = {text = "MIT"}
 authors = [
     {name = "Author", email = "author@example.com"}
