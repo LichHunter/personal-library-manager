@@ -1,10 +1,10 @@
 # Slow Extraction System
 
-LLM-powered technical term extraction using the V6 pipeline from POC-1c. This is an **exact replica** of the POC-1c V6 extraction strategy, achieving 91-93% precision/recall on the SO NER benchmark.
+LLM-powered technical term extraction using candidate-verify pipeline. Achieves 91-93% precision/recall on the SO NER benchmark.
 
-## V6 Pipeline Overview
+## Pipeline Overview
 
-The V6 strategy uses retrieval-augmented few-shot prompting with FAISS indexing:
+The candidate-verify strategy uses retrieval-augmented few-shot prompting with FAISS indexing:
 
 1. **Retrieval**: Find similar documents from 741 training examples using sentence-transformers
 2. **Few-shot extraction**: Use retrieved examples as context for LLM extraction
@@ -173,9 +173,9 @@ Terms below threshold are logged to `/data/logs/low_confidence.jsonl`:
 {"file": "doc.md", "term": "ambiguous", "confidence": 0.3, "level": "LOW", "context": "..."}
 ```
 
-## V6 Pipeline Details
+## Pipeline Details
 
-The V6 strategy (`strategy_v6` in `hybrid_ner/config.py`) implements:
+The candidate-verify strategy (`strategy_candidate_verify` in `hybrid_ner/config.py`) implements:
 
 1. **FAISS Index Building**: Embeds 741 training documents using `all-MiniLM-L6-v2`
 2. **Retrieval**: For each input document, retrieves k=3 most similar training examples
@@ -256,9 +256,11 @@ The first run downloads the `all-MiniLM-L6-v2` model (~90MB). Subsequent runs us
 
 ## Implementation Notes
 
-This Docker image uses the V6 extraction pipeline (exact POC-1c replication):
-- `cli.py` - Docker entrypoint (folder watcher + V6 orchestration)
+This Docker image uses the candidate-verify extraction pipeline:
+- `cli.py` - Docker entrypoint (folder watcher + extraction orchestration)
 - `hybrid_ner/` - Core pipeline package (11 modules: config, prompts, extractors, grounding, noise_filter, validation, postprocess, pipeline, parsing, constants)
 - `scoring.py` - Term normalization and span verification
 - `retrieval_ner.py` - FAISS retrieval index for few-shot examples
 - `benchmark_prompt_variants.py` - Prompt variant registry for testing
+
+See `hybrid_ner/AGENTS.md` for detailed pipeline architecture and module responsibilities.

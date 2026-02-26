@@ -1,4 +1,4 @@
-"""Main pipeline orchestrators: extract_hybrid (v1-v4) and extract_hybrid_v5 (v5-v6)."""
+"""Candidate-verify extraction pipeline."""
 
 import json
 import re
@@ -8,189 +8,20 @@ from pathlib import Path
 from ..scoring import normalize_term
 from .config import StrategyConfig
 from .extractors import (
-    _extract_exhaustive_sonnet,
-    _extract_haiku_simple,
-    _extract_retrieval_fixed,
     _extract_seeds,
     _extract_heuristic,
     _extract_haiku_fewshot,
     _extract_haiku_taxonomy,
+    _extract_haiku_simple,
 )
 from .grounding import _ground_and_dedup
-from .noise_filter import _auto_keep_structural, _auto_reject_noise, _run_sonnet_review
+from .noise_filter import _auto_keep_structural, _auto_reject_noise
 from .validation import (
     _run_context_validation,
     _run_term_retrieval_validation,
-    _run_term_retrieval_review,
     _has_technical_context,
 )
 from .postprocess import _expand_spans, _is_embedded_in_path, _suppress_subspans
-
-
-# ============================================================================
-# STAGE 5: MAIN PIPELINE (v1-v4)
-# ============================================================================
-
-def extract_hybrid(
-    doc: dict,
-    train_docs: list[dict],
-    index,  # faiss.Index
-    model,  # SentenceTransformer
-    auto_vocab: dict,
-    term_index: dict[str, dict] | None = None,
-    strategy: StrategyConfig | None = None,
-) -> list[str]:
-    cfg = strategy or StrategyConfig()
-
-    bypass_set = set(t.lower() for t in auto_vocab.get("bypass", []))
-    seeds_list = list(auto_vocab.get("seeds", []))
-    negatives_set = set(t.lower() for t in auto_vocab.get("negatives", []))
-
-    if cfg.boost_common_word_seeds and cfg.common_word_seed_list:
-        seeds_list = seeds_list + [s for s in cfg.common_word_seed_list if s not in seeds_list]
-        bypass_set.update(s.lower() for s in cfg.common_word_seed_list)
-
-    doc_text = doc["text"]
-
-    retrieval_terms, _ = _extract_retrieval_fixed(doc, train_docs, index, model)
-    exhaustive_terms, _ = _extract_exhaustive_sonnet(doc)
-    haiku_terms, _ = _extract_haiku_simple(doc)
-    seed_terms = _extract_seeds(doc, seeds_list)
-
-    candidates_by_source = {
-        "retrieval": retrieval_terms,
-        "exhaustive": exhaustive_terms,
-        "haiku": haiku_terms,
-        "seeds": seed_terms,
-    }
-
-    grounded = _ground_and_dedup(candidates_by_source, doc_text)
-
-    after_noise: dict[str, dict] = {}
-    for key, cand in grounded.items():
-        term = cand["term"]
-        if _auto_reject_noise(term, negatives_set, bypass_set, strategy=cfg, doc_text=doc_text):
-            continue
-        after_noise[key] = cand
-
-    high_confidence: list[str] = []
-    needs_validation: list[str] = []
-    needs_review: list[str] = []
-
-    protected_seed_set: set[str] = set()
-    if cfg.seed_bypass_to_high_confidence and cfg.common_word_seed_list:
-        protected_seed_set = {s.lower() for s in cfg.common_word_seed_list}
-
-    for key, cand in after_noise.items():
-        term = cand["term"]
-        source_count = cand["source_count"]
-
-        if _auto_keep_structural(term):
-            high_confidence.append(term)
-            continue
-
-        if cfg.seed_bypass_to_high_confidence and term.lower() in protected_seed_set and "seeds" in cand["sources"]:
-            if not cfg.seed_bypass_require_context:
-                high_confidence.append(term)
-                continue
-            if source_count >= cfg.seed_bypass_min_sources_for_auto:
-                high_confidence.append(term)
-                continue
-            if _has_technical_context(term, doc_text):
-                high_confidence.append(term)
-                continue
-
-        if source_count >= cfg.high_confidence_min_sources:
-            high_confidence.append(term)
-            continue
-
-        if source_count >= cfg.validate_min_sources:
-            needs_validation.append(term)
-            continue
-
-        needs_review.append(term)
-
-    if needs_review:
-        if cfg.ratio_gated_review and term_index:
-            protected_terms = set(bypass_set)
-            if cfg.boost_common_word_seeds and cfg.common_word_seed_list:
-                protected_terms.update(s.lower() for s in cfg.common_word_seed_list)
-
-            auto_approved: list[str] = []
-            uncertain: list[str] = []
-            for term in needs_review:
-                info = term_index.get(term.lower())
-                is_protected = term.lower() in protected_terms
-
-                if is_protected:
-                    uncertain.append(term)
-                elif info:
-                    ratio = info.get("entity_ratio", 0.5)
-                    if ratio > cfg.ratio_auto_approve_threshold:
-                        auto_approved.append(term)
-                    elif ratio < cfg.ratio_auto_reject_threshold:
-                        pass
-                    else:
-                        uncertain.append(term)
-                else:
-                    uncertain.append(term)
-
-            review_decisions = _run_sonnet_review(uncertain, doc_text) if uncertain else {}
-            for term in uncertain:
-                decision = review_decisions.get(term, cfg.review_default_decision)
-                if decision == "APPROVE":
-                    needs_validation.append(term)
-            needs_validation.extend(auto_approved)
-
-        elif cfg.use_term_retrieval_for_review and term_index:
-            review_decisions = _run_term_retrieval_review(
-                needs_review, doc_text, term_index, strategy=cfg,
-            )
-            for term in needs_review:
-                decision = review_decisions.get(term, cfg.review_default_decision)
-                if decision == "APPROVE":
-                    needs_validation.append(term)
-        else:
-            review_decisions = _run_sonnet_review(needs_review, doc_text)
-            for term in needs_review:
-                decision = review_decisions.get(term, cfg.review_default_decision)
-                if decision == "APPROVE":
-                    needs_validation.append(term)
-
-    if cfg.validate_high_confidence_too and term_index:
-        all_to_validate = high_confidence + needs_validation
-        validated = _run_term_retrieval_validation(
-            all_to_validate, doc_text, term_index, strategy=cfg,
-            bypass_set=bypass_set,
-        )
-    elif term_index:
-        validated_subset = _run_term_retrieval_validation(
-            needs_validation, doc_text, term_index, strategy=cfg,
-            bypass_set=bypass_set,
-        )
-        validated = high_confidence + validated_subset
-    else:
-        validated_subset = _run_context_validation(
-            needs_validation, doc_text, bypass_set,
-        )
-        validated = high_confidence + validated_subset
-
-    expanded = _expand_spans(validated, doc_text)
-
-    if cfg.suppress_path_embedded:
-        expanded = [t for t in expanded if not _is_embedded_in_path(t, doc_text)]
-
-    suppressed = _suppress_subspans(expanded, protected_seeds=protected_seed_set)
-
-    seen: set[str] = set()
-    final: list[str] = []
-    for term in suppressed:
-        key = normalize_term(term)
-        if key not in seen:
-            seen.add(key)
-            final.append(term)
-
-    return final
 
 
 # ============================================================================
@@ -228,10 +59,10 @@ def clear_low_confidence_stats() -> None:
 
 
 # ============================================================================
-# STAGE 5b: V5 PIPELINE (3 Haiku + Heuristic + Sonnet validation)
+# PRODUCTION PIPELINE (candidate-verify extraction)
 # ============================================================================
 
-def extract_hybrid_v5(
+def extract_candidate_verify(
     doc: dict,
     train_docs: list[dict],
     index,  # faiss.Index
@@ -260,7 +91,7 @@ def extract_hybrid_v5(
     if cfg.use_candidate_verify:
         from ..benchmark_prompt_variants import run_prompt_variant
         cv_terms, _ = run_prompt_variant(
-            "candidate_verify_v1", doc, train_docs, index, model,
+            "candidate_verify", doc, train_docs, index, model,
         )
         taxonomy_model = "sonnet" if cfg.use_sonnet_taxonomy else "haiku"
         taxonomy_terms, _ = _extract_haiku_taxonomy(doc, llm_model=taxonomy_model)
@@ -416,7 +247,7 @@ def extract_hybrid_v5(
             needs_validation.append(term)
             continue
 
-        # v5.2: Route single-vote LLM terms to validation instead of LOW
+        # Route single-vote LLM terms to validation instead of LOW
         if cfg.route_single_vote_to_validation and has_llm_vote and source_count >= 1:
             if entity_ratio >= cfg.single_vote_min_entity_ratio:
                 needs_validation.append(term)

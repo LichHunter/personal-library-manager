@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""Scoring functions ported from poc-1b test_dplus_v3_sweep.py.
-
-Uses the same v3_match + many_to_many_score as iter 26 for fair comparison.
-"""
+"""Scoring functions for term matching and evaluation."""
 
 import re
 
@@ -50,8 +47,8 @@ def camel_to_words(s: str) -> str:
     return re.sub(r"([a-z])([A-Z])", r"\1 \2", s).lower().strip()
 
 
-def v3_match(extracted: str, ground_truth: str) -> bool:
-    """V3 matcher with prefix/suffix for short terms — same as iter 26."""
+def fuzzy_term_match(extracted: str, ground_truth: str) -> bool:
+    """Fuzzy matching with normalization, depluralization, and 85% fuzz threshold."""
     ext_norm = normalize_term(extracted)
     gt_norm = normalize_term(ground_truth)
 
@@ -102,7 +99,7 @@ def v3_match(extracted: str, ground_truth: str) -> bool:
 def many_to_many_score(
     extracted: list[str], gt_terms: list[str],
 ) -> dict:
-    """V4 many-to-many scoring — same as iter 26."""
+    """Many-to-many scoring with fuzzy matching."""
     if not extracted or not gt_terms:
         return {
             "precision": 0, "recall": 0, "hallucination": 1 if extracted else 0,
@@ -114,7 +111,7 @@ def many_to_many_score(
     covered_gt: set[int] = set()
     for j, gt in enumerate(gt_terms):
         for ext in extracted:
-            if v3_match(ext, gt):
+            if fuzzy_term_match(ext, gt):
                 covered_gt.add(j)
                 break
 
@@ -122,7 +119,7 @@ def many_to_many_score(
     for ext in extracted:
         found = False
         for gt in gt_terms:
-            if v3_match(ext, gt):
+            if fuzzy_term_match(ext, gt):
                 found = True
                 break
         if not found:

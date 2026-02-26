@@ -14,7 +14,7 @@ Local-first RAG system for personal document corpus (NotebookLM-like). Extracts 
 ./
 ├── src/plm/                    # Production package (55 files, ~10k lines)
 │   ├── extraction/fast/        # Heuristic extraction (GLiNER, YAKE, regex)
-│   ├── extraction/slow/        # V6 LLM pipeline (Claude, 11-module hybrid_ner/)
+│   ├── extraction/slow/        # LLM pipeline (Claude, 11-module hybrid_ner/)
 │   ├── search/                 # HybridRetriever, BM25, semantic, RRF
 │   └── shared/llm/             # LLM provider abstraction (Anthropic, Gemini)
 ├── poc/                        # Isolated experiments (each has own pyproject.toml)
@@ -39,7 +39,7 @@ Local-first RAG system for personal document corpus (NotebookLM-like). Extracts 
 |------|----------|-------|
 | Add search feature | `src/plm/search/retriever.py` | `HybridRetriever` orchestrates all search |
 | Modify RRF weights | `src/plm/search/retriever.py:73-84` | `DEFAULT_*` and `EXPANDED_*` constants |
-| Add extraction stage | `src/plm/extraction/slow/hybrid_ner/pipeline.py` | V6 pipeline: extract→ground→filter→validate→postprocess |
+| Add extraction stage | `src/plm/extraction/slow/hybrid_ner/pipeline.py` | Candidate-verify pipeline: extract→ground→filter→validate→postprocess |
 | Add LLM provider | `src/plm/shared/llm/` | Subclass `LLMProvider` from `base.py` |
 | Add query component | `src/plm/search/components/` | BM25, semantic, enricher, expander, rrf |
 | Test retrieval | `tests/search/test_retriever.py` | Integration tests for HybridRetriever |
@@ -87,14 +87,14 @@ pytest tests/
 - **RRF order**: Semantic FIRST, BM25 SECOND — changing breaks POC parity
 - **RRF accumulation**: `dict.get(idx, 0)` pattern required
 - **Embeddings normalized**: EmbeddingEncoder normalizes, cosine = dot product
-- **V6 pipeline stages**: Extract → Ground → Filter → Validate → Postprocess (order matters)
+- **Candidate-verify pipeline stages**: Extract → Ground → Filter → Validate → Postprocess (order matters)
 
 ## UNIQUE PATTERNS
 
 - **Nix sub-flakes inside src/**: Each service (`fast/`, `slow/`, `search/`) has own `flake.nix` imported by root
 - **OpenCode OAuth**: Services authenticate via `~/.local/share/opencode/auth.json`, not API key
 - **Runtime I/O at root**: `slow-extraction/` directory is live data exchange, not in `src/`
-- **POC → Production promotion**: `src/plm/extraction/slow/hybrid_ner/` is direct copy of POC-1c V6
+- **POC → Production promotion**: `src/plm/extraction/slow/hybrid_ner/` is direct copy of POC-1c candidate-verify strategy
 
 ## COMMANDS
 

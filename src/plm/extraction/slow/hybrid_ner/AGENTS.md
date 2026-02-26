@@ -1,6 +1,6 @@
-# V6 HYBRID NER PIPELINE
+# HYBRID NER PIPELINE
 
-11-module LLM-powered technical term extraction. Direct copy of POC-1c V6 strategy (91-93% P/R).
+11-module LLM-powered technical term extraction. Achieves 91-93% P/R on SO NER benchmark.
 
 ## OVERVIEW
 
@@ -10,7 +10,7 @@
 
 ```
 hybrid_ner/
-├── pipeline.py      # extract_hybrid() and extract_hybrid_v5() orchestrators
+├── pipeline.py      # extract_candidate_verify() orchestrator
 ├── config.py        # StrategyConfig dataclass (50+ knobs)
 ├── constants.py     # _ALLCAPS_EXCLUDE, structural patterns
 ├── prompts.py       # LLM prompt templates
@@ -73,4 +73,4 @@ hybrid_ner/
 - **Don't skip grounding** — Dedup prevents double-counting votes
 - **Don't filter seeds aggressively** — They're data-driven from training
 - **Don't change _ALLCAPS_EXCLUDE** — TODO/FIXME/WARNING etc. are never entities
-- **Don't use V1-V4 pipelines** — `extract_hybrid()` is legacy, use `extract_hybrid_v5()`
+

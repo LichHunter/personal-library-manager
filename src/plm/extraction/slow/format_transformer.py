@@ -11,7 +11,7 @@ Slow extraction format:
             "text": "...",
             "chunk_index": 0,
             "heading": "Section",
-            "terms": [{"term": "Kubernetes", "confidence": 0.9, "level": "HIGH", "sources": ["v6"]}]
+            "terms": [{"term": "Kubernetes", "confidence": 0.9, "level": "HIGH", "sources": ["candidate_verify"]}]
         }],
         "stats": {...}
     }

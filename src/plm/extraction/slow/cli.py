@@ -1,4 +1,4 @@
-"""Docker entrypoint CLI using V6 extraction pipeline (exact POC-1c replication).
+"""Docker entrypoint CLI for candidate-verify extraction pipeline.
 
 Environment Variables:
     INPUT_DIR: Input directory to watch (default: /data/input)
@@ -29,7 +29,7 @@ from sentence_transformers import SentenceTransformer
 import faiss
 
 from plm.extraction.slow import (
-    extract_hybrid_v5,
+    extract_candidate_verify,
     build_term_index,
     get_strategy_config,
     build_retrieval_index,
@@ -76,9 +76,9 @@ def get_input_files(input_dir: Path, processed: set[Path]) -> list[Path]:
     return [f for f in all_files if f not in processed]
 
 
-def load_v6_resources(config: dict[str, Any]) -> dict[str, Any]:
-    """Load all V6 extraction resources (vocab, train docs, index, model)."""
-    print("Loading V6 resources...")
+def load_extraction_resources(config: dict[str, Any]) -> dict[str, Any]:
+    """Load extraction resources: vocabulary, training docs, FAISS index, embedding model."""
+    print("Loading extraction resources...")
     
     with open(config["vocab_path"]) as f:
         auto_vocab = json.load(f)
@@ -102,7 +102,7 @@ def load_v6_resources(config: dict[str, Any]) -> dict[str, Any]:
     index.add(np.array(train_embeddings).astype('float32'))
     print(f"  Built FAISS index: {index.ntotal} vectors")
     
-    strategy = get_strategy_config("strategy_v6")
+    strategy = get_strategy_config("strategy_candidate_verify")
     print(f"  Using strategy: {strategy.name}")
     
     return {
@@ -119,7 +119,7 @@ def process_document(
     file_path: Path,
     resources: dict[str, Any],
 ) -> dict[str, Any]:
-    """Process document using V6 extraction."""
+    """Process document using candidate-verify extraction."""
     try:
         text = file_path.read_text(encoding="utf-8")
     except Exception as e:
@@ -135,7 +135,7 @@ def process_document(
         "gt_terms": [],
     }
     
-    terms = extract_hybrid_v5(
+    terms = extract_candidate_verify(
         doc,
         resources["train_docs"],
         resources["index"],
@@ -151,7 +151,7 @@ def process_document(
             "term": t,
             "confidence": 0.9,
             "level": "HIGH",
-            "sources": ["v6"],
+            "sources": ["candidate_verify"],
         })
     
     return {
@@ -186,7 +186,7 @@ def write_output(result: dict[str, Any], output_path: Path, dry_run: bool) -> No
 def watch_loop(config: dict[str, Any]) -> None:
     processed: set[Path] = set()
     
-    resources = load_v6_resources(config)
+    resources = load_extraction_resources(config)
     
     setup_directories(config)
     
